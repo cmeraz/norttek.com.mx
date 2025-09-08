@@ -1,0 +1,85 @@
+# Activar Rewrite Engine
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+ErrorDocument 404 /404.php
+
+# -------------------------------
+# REDIRECCIONES SEO + HTTPS
+# -------------------------------
+
+# Forzar HTTPS y quitar www (redirección 301 SEO-friendly)
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,NE,R=301]
+
+# -------------------------------
+# QUITAR .php DE LAS URLS
+# -------------------------------
+
+# Si el archivo existe con .php, permitir acceder sin la extensión
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^/]+)/?$ $1.php [L]
+
+# Evitar duplicado: si escriben con .php, redirigir a la versión sin extensión
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.php[\s?] [NC]
+RewriteRule ^ %1 [R=301,L]
+
+# -------------------------------
+# MANEJO DE ERRORES
+# -------------------------------
+ErrorDocument 404 /404.php
+
+# -------------------------------
+# SEGURIDAD
+# -------------------------------
+
+# Bloquear acceso a archivos sensibles
+<FilesMatch "(^\.|composer\.json|composer\.lock|package\.json|yarn\.lock|env|config\.php|phpunit\.xml)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Evitar listado de directorios
+Options -Indexes
+
+# Evitar ejecución de scripts en uploads
+<Directory "/uploads">
+    RemoveHandler .php .phtml .php3 .php4 .php5 .php7 .phps
+    RemoveType .php .phtml .php3 .php4 .php5 .php7 .phps
+</Directory>
+
+# -------------------------------
+# OPTIMIZACIONES DE RENDIMIENTO
+# -------------------------------
+
+# Compresión Gzip
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json application/xml
+</IfModule>
+
+# Cache de archivos estáticos
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 6 months"
+    ExpiresByType image/jpeg "access plus 6 months"
+    ExpiresByType image/gif "access plus 6 months"
+    ExpiresByType image/png "access plus 6 months"
+    ExpiresByType image/webp "access plus 6 months"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/x-javascript "access plus 1 month"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+    ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+</IfModule>
+
+# Habilitar encabezados de caché
+<IfModule mod_headers.c>
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|ico|css|js|woff|woff2|ttf|otf)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
+</IfModule>

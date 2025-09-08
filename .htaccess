@@ -1,0 +1,21 @@
+# Habilitar reescritura de URL
+RewriteEngine On
+RewriteBase /
+
+# =========================
+# Ocultar extensiones .php y .html
+# =========================
+
+# Si existe el archivo o directorio, dejarlo pasar
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Reescribir URL sin extensión a .php
+RewriteRule ^([a-zA-Z0-9_-]+)$ $1.php [L]
+
+# =========================
+# Manejar errores 404
+# =========================
+
+# Redirigir cualquier página no encontrada a 404.php
+ErrorDocument 404 /404.php
