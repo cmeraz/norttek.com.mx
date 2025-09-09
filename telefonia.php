@@ -349,7 +349,80 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+window.addEventListener('load', () => {
+  gsap.to(".hero-text h1", {opacity:1, y:0, duration:1, ease:"power3.out"});
+  gsap.to(".hero-text p", {opacity:1, y:0, duration:1, ease:"power3.out", delay:0.3});
+  gsap.to(".hero-text div", {opacity:1, y:0, duration:1, ease:"power3.out", delay:0.6});
+  gsap.to(".hero-image-container", {opacity:1, y:0, duration:1, ease:"power3.out", delay:0.9});
+});
 </script>
+
+<script>
+/* -------------------------
+   Ajuste dinámico: evita que el hero quede oculto bajo el header fijo
+   - Calcula header.offsetHeight y aplica padding-top al #hero
+   - Actualiza en load / resize / scroll (header puede cambiar de tamaño en móvil)
+   - Reemplaza el smooth-scroll para descontar la altura del header
+   ------------------------- */
+(function(){
+  const header = document.getElementById('site-header'); // tu header
+  const hero = document.getElementById('hero');         // tu sección hero
+  const mobileTopBar = document.getElementById('mobile-top-bar'); // si existe
+
+  if(!header || !hero) return; // si no están, no hacemos nada
+
+  // Aplica el padding-top al hero con la altura actual del header
+  function applyHeroOffset(){
+    const h = header.offsetHeight;
+    // inline style (mayor prioridad que clases)
+    hero.style.paddingTop = h + 'px';
+    // opcional: guarda variable CSS para usar en otros estilos
+    document.documentElement.style.setProperty('--site-header-height', h + 'px');
+  }
+
+  // simple throttle para no ejecutar demasiado seguido
+  function throttle(fn, wait = 120){
+    let timer = null;
+    return function(...args){
+      if(timer) return;
+      timer = setTimeout(() => { fn.apply(this, args); timer = null; }, wait);
+    };
+  }
+
+  // Llamadas principales
+  window.addEventListener('load', applyHeroOffset);
+  window.addEventListener('resize', throttle(applyHeroOffset, 150));
+  // El header puede cambiar al hacer scroll (en tu código ocultas/mostrás top-bar)
+  window.addEventListener('scroll', throttle(applyHeroOffset, 150));
+
+  // Observa cambios en la bar móvil (cuando se añaden/quitan clases 'hidden')
+  if(mobileTopBar){
+    const mo = new MutationObserver(throttle(applyHeroOffset, 100));
+    mo.observe(mobileTopBar, { attributes: true, attributeFilter: ['class', 'style'] });
+  }
+
+  // Reemplaza / unifica el comportamiento de "smooth scroll" para descontar el header
+  // (Evita el problema de anchors que terminan detrás del header)
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if(!href || href === '#') return;
+      const target = document.querySelector(href);
+      if(!target) return;
+
+      e.preventDefault();
+      // recalcula la altura del header justo ahora
+      const headerH = header.offsetHeight;
+      const targetTop = target.getBoundingClientRect().top + window.pageYOffset - headerH;
+      window.scrollTo({ top: targetTop, behavior: 'smooth' });
+    });
+  });
+
+  // Ejecuta una vez al inicio
+  applyHeroOffset();
+})();
+</script>
+
 
 </body>
 </html>

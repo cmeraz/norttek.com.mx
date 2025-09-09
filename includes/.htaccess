@@ -2,6 +2,9 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
+# Redirigir /inicio a /
+RewriteRule ^inicio$ / [R=301,L]
+
 ErrorDocument 404 /404.php
 
 # -------------------------------

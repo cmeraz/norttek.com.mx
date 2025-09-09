@@ -103,4 +103,11 @@ Dropdown y menú activos
   background-color: #1D4ED8;
 }
 
+}#hero {
+  padding-top: 120px; /* ajusta según header */
+}
+@media (max-width: 1024px) {
+  #hero {
+    padding-top: 160px; /* en móvil porque el header es más alto */
+  }
 }

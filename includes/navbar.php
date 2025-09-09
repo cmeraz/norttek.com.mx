@@ -80,11 +80,11 @@ $google_maps_link = "https://maps.app.goo.gl/Q6XmT59jjiWULAWu5?g_st=aw";
                 $sublabel = $subdata['label'];
                 $subicon = $subdata['icon'];
                 $activeSubClass = ($activePage == $subkey) ? 'font-bold text-blue-600' : 'font-normal hover:text-blue-600';
-                echo '<li><a href="#'.$subkey.'" class="flex items-center gap-2 px-4 py-2 rounded '.$activeSubClass.'"><i class="'.$subicon.'"></i> '.$sublabel.'</a></li>';
+                echo '<li><a href="'.$subkey.'" class="flex items-center gap-2 px-4 py-2 rounded '.$activeSubClass.'"><i class="'.$subicon.'"></i> '.$sublabel.'</a></li>';
             }
             echo '</ul></div>';
         } else {
-            echo '<a href="#'.$key.'" class="flex items-center gap-2 px-3 py-2 rounded '.$activeClass.'"><i class="'.$icon.'"></i> '.$label.'</a>';
+            echo '<a href="'.$key.'" class="flex items-center gap-2 px-3 py-2 rounded '.$activeClass.'"><i class="'.$icon.'"></i> '.$label.'</a>';
         }
     }
     ?>
