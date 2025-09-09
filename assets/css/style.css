@@ -5,6 +5,17 @@ html {
 /* ------------------- 
 Efecto suavizado en hover del menú (colores armonizados)
 ----------------------- */
+
+.sub-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.sub-menu.open {
+    max-height: 500px; /* suficientemente grande para el contenido */
+}
+
 .menu-link {
   position: relative;
   transition: color 0.3s;
