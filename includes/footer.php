@@ -1,3 +1,17 @@
+<?php
+/**
+ * footer.php
+ * Cierra main y body, carga JS locales y librerías CDN
+ */
+
+// Asegurarse de que $pageName esté definido
+if(!isset($pageName)) {
+    $pageName = basename($_SERVER['PHP_SELF'], ".php");
+}
+?>
+
+</main> <!-- Cierre de main -->
+
 <!-- Footer -->
 <footer class="bg-gray-900 text-gray-200 pt-20 pb-12 relative overflow-hidden">
 
@@ -74,3 +88,36 @@
     once: true
   });
 </script>
+
+<!-- JS locales -->
+<?php
+if(isset($jsFiles) && is_array($jsFiles)){
+    foreach($jsFiles as $js){
+        $jsPathServer = __DIR__ . "/../assets/js/$js";
+        $jsPathBrowser = "assets/js/$js";
+        if(file_exists($jsPathServer)){
+            echo "<script src='$jsPathBrowser'></script>\n";
+        } else {
+            echo "<!-- JS $jsPathBrowser no encontrado -->\n";
+        }
+    }
+}
+
+// JS automático por nombre de página
+$autoJsPathServer = __DIR__ . "/../assets/js/$pageName.js";
+$autoJsPathBrowser = "assets/js/$pageName.js";
+
+if(file_exists($autoJsPathServer)){
+    echo "<script src='$autoJsPathBrowser'></script>\n";
+} else {
+    echo "<!-- JS automático $autoJsPathBrowser no encontrado -->\n";
+}
+?>
+
+<!-- JS desde CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+</body>
+</html>

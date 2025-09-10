@@ -1,13 +1,14 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <?php include('includes/header.php'); ?>
-</head>
-<body class="bg-gray-50 font-sans text-gray-900">
-<?php include('includes/navbar.php'); ?>
+<?php
+// Título de la página (se usa en header)
+$pageTitle = "Servicios - Norttek";
 
+// Archivos CSS y JS adicionales (opcional)
+$cssFiles  = ["styles.css"];       // CSS global opcional
+$jsFiles   = ["scripts.js"];       // JS global opcional
+
+// Incluye la plantilla base
+include 'includes/pageTemplate.php';
+?>
 
 <!-- HERO -->
 <section class="relative bg-blue-900 pt-24">
@@ -222,87 +223,7 @@
     </div>
   </div>
 
-  <script>
-    feather.replace();
-
-    // Modal
-    const demoModal = document.getElementById('demoModal');
-    const openDemoModalButtons = [document.getElementById('openDemoModal'), document.getElementById('openDemoModal2')];
-    const closeModal = document.getElementById('closeModal');
-
-    openDemoModalButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        demoModal.classList.remove('opacity-0','pointer-events-none');
-        demoModal.classList.add('opacity-100');
-        demoModal.querySelector('div').classList.remove('scale-95');
-        demoModal.querySelector('div').classList.add('scale-100');
-      });
-    });
-
-    closeModal.addEventListener('click', () => {
-      demoModal.classList.add('opacity-0','pointer-events-none');
-      demoModal.querySelector('div').classList.add('scale-95');
-      demoModal.querySelector('div').classList.remove('scale-100');
-    });
-
-    // Form submit
-    document.getElementById('demoForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const nombre = encodeURIComponent(this.nombre.value.trim());
-      const email = encodeURIComponent(this.email.value.trim());
-      const telefono = encodeURIComponent(this.telefono.value.trim());
-
-      if(!nombre || !email || !telefono) return alert("Completa todos los campos correctamente.");
-
-      const mensaje = `Hola, soy ${nombre}, mi email es ${email}, y quiero solicitar la demo del sistema de conmutador en la nube.`;
-      window.open(`https://wa.me/526252690997?text=${mensaje}`, '_blank');
-    });
-
-    // WhatsApp header button
-    document.getElementById('ctaWhatsapp').addEventListener('click', () => {
-      window.open('https://wa.me/526252690997', '_blank');
-    });
-  </script>
-
-  <script>
-  // Abrir modal del hero
-  const openModalHero = document.getElementById('openModalHero');
-  const openModal = document.getElementById('openModal'); // tu modal existente
-  openModalHero.addEventListener('click', () => openModal.classList.remove('hidden'));
-</script>
-
-<script>
-  const btnWhatsapp = document.getElementById('btnWhatsapp');
-  const modal = document.getElementById('modalWhatsapp');
-  const cerrar = document.getElementById('cerrarModal');
-  const enviar = document.getElementById('enviarWhatsapp');
-
-  // Abrir modal
-  btnWhatsapp.addEventListener('click', () => {
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-  });
-
-  // Cerrar modal
-  cerrar.addEventListener('click', () => {
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-  });
-
-  // Enviar mensaje por WhatsApp con código de país +52
-  enviar.addEventListener('click', () => {
-    const numeroLocal = document.getElementById('numeroWhatsapp').value.trim();
-    if(numeroLocal === '') {
-      alert('Por favor ingresa un número de WhatsApp');
-      return;
-    }
-    const numero = '52' + numeroLocal; // Código de país fijo
-    const mensaje = encodeURIComponent("¡Mira esta tienda online para empresas y oficinas! Pide todo desde tu celular y recibe tus productos cómodamente a domicilio. https://tienda.norttek.com.mx");
-
-    window.open(`https://wa.me/${numero}?text=${mensaje}`, '_blank');
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-  });
-</script>
-</body>
-</html>
+<?php
+  // Al final, cerrar main y cargar footer
+  includeTemplate("footer");
+?>
