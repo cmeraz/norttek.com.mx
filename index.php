@@ -49,7 +49,7 @@ include 'includes/pageTemplate.php';
         <span>Redes</span>
       </div>
       <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
-  <i class="fas fa-network-wired text-white text-2xl"></i>
+  <i class="fas fa-plug text-white text-2xl"></i>
   <span>Cableado</span>
 </div>
       <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
