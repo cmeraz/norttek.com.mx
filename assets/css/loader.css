@@ -1,5 +1,10 @@
 /* Loader full screen */
 #loader {
+    display: none; /* oculto por defecto */
+    /* resto del CSS */
+}
+
+#loader {
     position: fixed;
     top: 0; 
     left: 0;

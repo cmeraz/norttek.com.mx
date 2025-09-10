@@ -51,6 +51,7 @@
     
 </head>
 <body>
+    <img id="preload-bg" src="assets/img/loader.jpg" style="display:none;">
 <!-- Loader -->
     <div id="loader">
         <div class="loader-content">
