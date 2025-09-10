@@ -49,9 +49,9 @@ include 'includes/pageTemplate.php';
         <span>Redes</span>
       </div>
       <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
-        <img src="https://img.icons8.com/ios-filled/50/ffffff/cable.png" alt="Cableado" class="w-10 h-10">
-        <span>Cableado</span>
-      </div>
+  <i class="fas fa-network-wired text-white text-2xl"></i>
+  <span>Cableado</span>
+</div>
       <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
         <img src="https://img.icons8.com/ios-filled/50/ffffff/light-on.png" alt="Automatización" class="w-10 h-10">
         <span>Automatización</span>
