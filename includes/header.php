@@ -14,6 +14,30 @@
 
     <title>Norttek Solutions - <?php echo isset($pageTitle) ? $pageTitle : "Bienvenido"; ?></title>
 
+    <!-- Meta descripción dinámica (opcionalmente se puede variar por página) -->
+    <meta name="description" content="Seguridad empresarial completa: instalación de CCTV, alarmas y control de accesos, y papelería para empresas y oficinas con entrega confiable a domicilio.">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
+
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- Open Graph Meta Tags para Facebook y WhatsApp -->
+    <meta property="og:title" content="Norttek Solutions - Seguridad y Servicios Empresariales">
+    <meta property="og:description" content="Seguridad empresarial completa: instalación de CCTV, alarmas y control de accesos, y papelería para empresas y oficinas con entrega confiable a domicilio.">
+    <meta property="og:url" content="https://www.norttek.com.mx/">
+    <meta property="og:image" content="https://www.norttek.com.mx/assets/images/og-image.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Norttek Solutions">
+    <meta property="og:locale" content="es_MX">
+
+    <!-- Twitter Card (opcional, si quieres compartir también en Twitter) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Norttek Solutions - Seguridad y Servicios Empresariales">
+    <meta name="twitter:description" content="Seguridad empresarial completa: instalación de CCTV, alarmas y control de accesos, y papelería para empresas y oficinas con entrega confiable a domicilio.">
+    <meta name="twitter:image" content="https://www.norttek.com.mx/assets/images/og-image.jpg">
+
     <!-- CSS locales -->
     <?php
     if(isset($cssFiles) && is_array($cssFiles)){
@@ -39,6 +63,12 @@
         echo "<!-- CSS automático $autoCssPathBrowser no encontrado -->\n";
     }
     ?>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets//imgfavicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">    
 
     <!-- CSS desde CDN -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
