@@ -71,7 +71,7 @@ if(!isset($pageName)) {
     © 2025 <span class="text-white font-semibold">Norttek Solutions</span>. Todos los derechos reservados. <a href="#privacidad" class="hover:text-teal-400 transition">Aviso de privacidad</a>
   </div>
 </footer>
-
+</main>
 
 
 <!-- JS locales -->

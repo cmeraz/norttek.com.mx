@@ -44,9 +44,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/loader.css" rel="stylesheet">
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
+    <script src="assets/js/loader.js"></script>
     
-
 </head>
 <body>
+<!-- Loader -->
+    <div id="loader">
+        <div class="loader-content">
+            <img src="assets/img/logo-norttek.png" alt="Logo Norttek" class="company-logo">
+            <div class="spinner"></div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="progress-text">0%</div>
+        </div>  
+    </div>

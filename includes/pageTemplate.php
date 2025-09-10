@@ -12,7 +12,7 @@ includeTemplate("header");
 includeTemplate("navbar");
 
 // Abrir main
-echo "<main>\n";
+echo "<main id=\"main-content\" style=\"display:none;\">\n";
 
 // La página específica insertará su contenido aquí
 // Por ejemplo, en index.php o nosotros.php:
