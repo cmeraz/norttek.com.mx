@@ -11,61 +11,105 @@ include 'includes/pageTemplate.php';
 ?>
 
 <!-- HERO -->
-<section class="relative bg-blue-900 pt-24">
-  <!-- Imagen de fondo con overlay -->
-  <div class="absolute inset-0">
-    <img src="https://images.unsplash.com/photo-1695668548342-c0c1ad479aee?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Tecnología y seguridad" class="w-full h-full object-cover brightness-50">
-    <div class="absolute inset-0 bg-blue-900/70"></div>
-  </div>
+<section class="relative pt-24">
+  <!-- Fondo con degradado personalizado y patrón de puntos -->
+  <div class="absolute inset-0 bg-cover bg-center z-[-1]" style="
+    background-image: 
+      linear-gradient(rgba(0, 50, 80, 0.7), rgba(0, 0, 0, 0.7)), /* degradado oscuro con toque de color de logo */
+      repeating-radial-gradient(rgba(255,255,255,0.15) 0 2px, transparent 2px 20px), /* puntos más visibles */
+      url('assets/img/cctv-hero_img.jpg');
+  "></div>
 
   <!-- Contenido del hero -->
   <div class="relative max-w-7xl mx-auto px-6 py-32 text-center text-white">
-    <h1 class="text-4xl md:text-5xl font-bold mb-2">
-  Protege y optimiza tu empresa
-</h1>
-<h2 class="text-2xl md:text-3xl font-semibold mb-6">
-  Soluciones de seguridad y tecnología integrales
-</h2>
-<p class="text-lg md:text-xl mb-8">
-  Implementa CCTV de última generación, alarmas inteligentes, control de acceso eficiente, redes confiables, cableado estructurado profesional y sistemas de automatización de iluminación y audio ambiental. Todo diseñado para que tu empresa funcione de manera segura, moderna y eficiente.
-</p>
 
-    <!-- Lista de servicios con iconos -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-      <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
-        <img src="https://img.icons8.com/ios-filled/50/ffffff/zoom.png" alt="CCTV" class="w-10 h-10">
-        <span>CCTV</span>
-      </div>
-      <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
-        <img src="https://img.icons8.com/ios-filled/50/ffffff/siren.png" alt="Alarmas" class="w-10 h-10">
-        <span>Alarmas</span>
-      </div>
-      <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
-        <img src="https://img.icons8.com/ios-filled/50/ffffff/lock.png" alt="Control de acceso" class="w-10 h-10">
-        <span>Control de acceso</span>
-      </div>
-      <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
-        <img src="https://img.icons8.com/ios-filled/50/ffffff/wifi.png" alt="Redes" class="w-10 h-10">
-        <span>Redes</span>
-      </div>
-      <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
-  <i class="fas fa-plug text-white text-2xl"></i>
-  <span>Cableado</span>
+<h1 class="leading-snug pb-2">
+  <span class="text-4xl md:text-5xl font-semibold">Protege</span>
+  <span class="text-4xl md:text-5xl font-thin ml-1">tu espacio</span>
+  <br />
+  <span class="text-3xl md:text-4xl font-semibold">Potencia</span>
+  <span class="text-3xl md:text-4xl font-thin ml-1">tu productividad</span>
+</h1>
+
+<h2 class="text-xl md:text-2xl font-thin mt-4 mb-4">
+  Soluciones integrales para tu hogar y oficina
+</h2>
+
+<div class="max-w-4xl mx-auto mb-8">
+  <p class="text-base md:text-lg font-thin leading-relaxed text-center">
+    En <strong>Norttek Solutions</strong>, con sede en <strong>Cd. Cuauhtémoc, Chihuahua</strong>, ofrecemos soluciones integrales para hogares y empresas, combinando tecnología, seguridad y eficiencia. Trabajamos con <strong>empresas, oficinas, comercios y residencias</strong>, brindando servicios de <strong>CCTV</strong> de última generación, <strong>alarmas inteligentes</strong>, <strong>control de acceso</strong>, <strong>accesos vehiculares</strong>, <strong>redes confiables</strong> y <strong>cableado estructurado profesional</strong>. Además, proporcionamos soluciones de <strong>automatización</strong>, <strong>audio ambiental</strong>, <strong>telefonía IP</strong>, <strong>equipos electrónicos</strong> y servicios de <strong>consultoría y mantenimiento</strong>. Todo diseñado para que tu espacio funcione de manera segura, moderna y eficiente.
+  </p>
 </div>
-      <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
-        <img src="https://img.icons8.com/ios-filled/50/ffffff/light-on.png" alt="Automatización" class="w-10 h-10">
-        <span>Automatización</span>
-      </div>
-      <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
-        <img src="https://img.icons8.com/ios-filled/50/ffffff/speaker.png" alt="Audio ambiental" class="w-10 h-10">
-        <span>Audio ambiental</span>
-      </div>
-      <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
-        <img src="https://img.icons8.com/ios-filled/50/ffffff/phone.png" alt="Telefonía IP" class="w-10 h-10">
-        <span>Telefonía IP</span>
-      </div>
-    </div>
+
+
+<!-- Lista de servicios con iconos -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+  <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/keyboard.png" alt="Accesorios" class="w-10 h-10">
+    <span>Accesorios</span>
   </div>
+  <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/car.png" alt="Accesos vehiculares" class="w-10 h-10">
+    <span>Accesos vehiculares</span>
+  </div>
+  <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/siren.png" alt="Alarmas" class="w-10 h-10">
+    <span>Alarmas</span>
+  </div>
+  <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/speaker.png" alt="Audio ambiental" class="w-10 h-10">
+    <span>Audio ambiental</span>
+  </div>
+  <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/light-on.png" alt="Automatización" class="w-10 h-10">
+    <span>Automatización</span>
+  </div>
+  <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
+    <i class="fas fa-plug text-white text-2xl"></i>
+    <span>Cableado</span>
+  </div>
+  <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/zoom.png" alt="CCTV" class="w-10 h-10">
+    <span>CCTV</span>
+  </div>
+  <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/laptop.png" alt="Cómputo" class="w-10 h-10">
+    <span>Cómputo</span>
+  </div>
+  <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/lock.png" alt="Control de acceso" class="w-10 h-10">
+    <span>Control de acceso</span>
+  </div>
+  <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/business-report.png" alt="Consultoría" class="w-10 h-10">
+    <span>Consultoría</span>
+  </div>
+  <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/electronics.png" alt="Electrónicos" class="w-10 h-10">
+    <span>Electrónicos</span>
+  </div>
+  <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/print.png" alt="Impresión" class="w-10 h-10">
+    <span>Impresión</span>
+  </div>
+  <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/maintenance.png" alt="Mantenimiento" class="w-10 h-10">
+    <span>Mantenimiento</span>
+  </div>
+  <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/notepad.png" alt="Papelería" class="w-10 h-10">
+    <span>Papelería</span>
+  </div>
+  <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/wifi.png" alt="Redes" class="w-10 h-10">
+    <span>Redes</span>
+  </div>
+  <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/phone.png" alt="Telefonía IP" class="w-10 h-10">
+    <span>Telefonía IP</span>
+  </div>
+</div>
+
 </section>
 
 <!-- SECCIÓN DE TIENDA -->
