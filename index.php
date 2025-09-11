@@ -123,8 +123,10 @@ include 'includes/pageTemplate.php';
     <div class="md:w-1/2 text-left">
       <h2 class="text-2xl font-bold text-blue-900 mb-4">Explora nuestra tienda en línea</h2>
       <p class="text-gray-700 mb-6">
-        Descubre todos nuestros productos y soluciones para seguridad, control de acceso, redes, cableado estructurado, automatización de iluminación y audio ambiental. Compra fácil y rápido desde nuestra plataforma en línea.
-      </p>
+  Descubre nuestro <strong>catálogo con un completo surtido de productos</strong> para tu hogar, negocio o empresa. 
+  Ofrecemos soluciones en <strong>seguridad, control de acceso, redes, cableado estructurado, automatización de iluminación y audio ambiental</strong>. 
+  Compra fácil y rápido <strong>directamente desde tu celular o computadora</strong>, con <strong>envíos a domicilio en toda la ciudad y zonas cercanas</strong>.
+</p>
 
       <!-- Contenedor de botones con espacio -->
       <div class="flex flex-col sm:flex-row gap-4">
@@ -171,106 +173,7 @@ include 'includes/pageTemplate.php';
   </div>
 </section>
 
-
-  <!-- SERVICIOS -->
-  <section id="servicios" class="py-20 bg-gray-100">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold text-blue-600">Nuestros Servicios</h2>
-      <p class="mt-2 text-gray-600 max-w-2xl mx-auto">
-        Ofrecemos soluciones completas de seguridad y telecomunicaciones adaptadas a tu empresa.
-      </p>
-      <div class="mt-10 grid md:grid-cols-3 gap-6">
-        <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center hover:scale-105 transition">
-          <i data-feather="video" class="w-12 h-12 text-blue-600 mb-4"></i>
-          <h3 class="font-semibold text-lg mb-2">CCTV</h3>
-          <p class="text-gray-600 text-sm text-center">Instalación y monitoreo de cámaras de seguridad para proteger tus instalaciones.</p>
-        </div>
-        <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center hover:scale-105 transition">
-          <i data-feather="alert-triangle" class="w-12 h-12 text-blue-600 mb-4"></i>
-          <h3 class="font-semibold text-lg mb-2">Alarmas</h3>
-          <p class="text-gray-600 text-sm text-center">Sistemas de alarmas conectados a monitoreo para mayor seguridad.</p>
-        </div>
-        <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center hover:scale-105 transition">
-          <i data-feather="phone" class="w-12 h-12 text-blue-600 mb-4"></i>
-          <h3 class="font-semibold text-lg mb-2">Interfón & Control de Acceso</h3>
-          <p class="text-gray-600 text-sm text-center">Gestión de accesos y comunicación interna de manera segura y eficiente.</p>
-        </div>
-        <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center hover:scale-105 transition">
-          <i data-feather="phone-call" class="w-12 h-12 text-blue-600 mb-4"></i>
-          <h3 class="font-semibold text-lg mb-2">Telefonía IP</h3>
-          <p class="text-gray-600 text-sm text-center">Conmutador en la nube para manejar llamadas, extensiones y reportes sin infraestructura local.</p>
-        </div>
-        <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center hover:scale-105 transition">
-          <i data-feather="cpu" class="w-12 h-12 text-blue-600 mb-4"></i>
-          <h3 class="font-semibold text-lg mb-2">Cableado Estructurado</h3>
-          <p class="text-gray-600 text-sm text-center">Diseño e instalación de redes estructuradas para asegurar conectividad estable.</p>
-        </div>
-        <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center hover:scale-105 transition">
-          <i data-feather="wifi" class="w-12 h-12 text-blue-600 mb-4"></i>
-          <h3 class="font-semibold text-lg mb-2">Redes</h3>
-          <p class="text-gray-600 text-sm text-center">Implementación y mantenimiento de redes LAN/WAN para oficinas y sucursales.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <?php includeTemplate("servicios"); ?>
-
-  <!-- FUNCIONES -->
-  <section id="funciones" class="py-16 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold text-blue-600">Funciones destacadas</h2>
-      <p class="mt-2 text-gray-600">Todo lo que tu empresa necesita para comunicarse y gestionar su seguridad</p>
-      <ul class="mt-6 grid md:grid-cols-2 gap-4 list-disc list-inside text-left max-w-4xl mx-auto text-gray-700">
-        <li>Administración de extensiones y troncales</li>
-        <li>Ruteo automático de llamadas con IVR personalizado</li>
-        <li>Grabación de llamadas y reportes detallados</li>
-        <li>Control de accesos y gestión de alarmas</li>
-        <li>Monitoreo de CCTV en tiempo real</li>
-        <li>Telefonía IP desde cualquier dispositivo</li>
-        <li>Configuración rápida y sin infraestructura local</li>
-        <li>Soporte técnico dedicado</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- PLANES -->
-  <section id="planes" class="py-20 bg-gray-100">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold text-blue-600">Planes y llamadas ilimitadas</h2>
-      <p class="mt-4 text-gray-600 text-lg max-w-2xl mx-auto">
-        Elige el plan que se adapta a tu empresa. Todos incluyen numeración LADA México y soporte técnico. Además, solicita una demo gratuita de 30 días con numeración demo para probar todas las funciones sin compromiso.
-      </p>
-      <button id="openDemoModal2" class="mt-6 px-6 py-3 rounded-xl bg-blue-600 text-white shadow hover:bg-blue-700 transition">
-        Solicitar Demo
-      </button>
-    </div>
-  </section>
-
-  <!-- MODAL DEMO -->
-  <div id="demoModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
-    <div class="bg-white rounded-xl p-8 max-w-md w-full relative scale-95 transition-transform duration-300">
-      <button id="closeModal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
-        &times;
-      </button>
-      <h2 class="text-2xl font-bold mb-4 text-blue-600">Solicita tu Demo Gratuita</h2>
-      <form id="demoForm" class="flex flex-col gap-4">
-        <div class="flex items-center gap-2 border rounded p-2">
-          <i data-feather="user" class="w-5 h-5 text-gray-400"></i>
-          <input type="text" name="nombre" placeholder="Nombre" class="w-full outline-none text-gray-700" required>
-        </div>
-        <div class="flex items-center gap-2 border rounded p-2">
-          <i data-feather="mail" class="w-5 h-5 text-gray-400"></i>
-          <input type="email" name="email" placeholder="Email" class="w-full outline-none text-gray-700" required>
-        </div>
-        <div class="flex items-center gap-2 border rounded p-2">
-          <i data-feather="phone" class="w-5 h-5 text-gray-400"></i>
-          <input type="tel" name="telefono" placeholder="Teléfono" class="w-full outline-none text-gray-700" required pattern="[0-9]{10,15}">
-        </div>
-        <button type="submit" class="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Enviar por WhatsApp</button>
-      </form>
-    </div>
-  </div>
 
 <?php
   // Al final, cerrar main y cargar footer
