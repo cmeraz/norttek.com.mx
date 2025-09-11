@@ -1,0 +1,8 @@
+/* En pantallas grandes la imagen se ajusta al contenedor cargada a la izquierda */
+@media (min-width: 768px) {
+  section .absolute {
+    background-size: cover !important;      /* ocupa todo el contenedor */
+    background-position: left center !important; /* cargada a la izquierda */
+    background-repeat: no-repeat !important;
+  }
+}

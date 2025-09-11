@@ -12,12 +12,15 @@ include 'includes/pageTemplate.php';
 
 <!-- HERO -->
 <section class="relative pt-24">
-  <!-- Fondo con degradado personalizado y patrón de puntos -->
-  <div class="absolute inset-0 bg-cover bg-center z-[-1]" style="
+  <!-- Fondo con degradado, patrón de puntos e imagen -->
+  <div class="absolute inset-0 bg-center z-[-1]" style="
     background-image: 
-      linear-gradient(rgba(0, 50, 80, 0.7), rgba(0, 0, 0, 0.7)), /* degradado oscuro con toque de color de logo */
-      repeating-radial-gradient(rgba(255,255,255,0.15) 0 2px, transparent 2px 20px), /* puntos más visibles */
+      linear-gradient(rgba(0, 50, 80, 0.7), rgba(0, 0, 0, 0.85)), 
+      repeating-radial-gradient(rgba(255,255,255,0.12) 0 1px, transparent 1px 16px), 
       url('assets/img/cctv-hero_img.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain; /* En móvil se ajusta completa */
   "></div>
 
   <!-- Contenido del hero -->
@@ -166,7 +169,7 @@ include 'includes/pageTemplate.php';
 </div>
 
   </div>
-</section
+</section>
 
 
   <!-- SERVICIOS -->
@@ -210,6 +213,8 @@ include 'includes/pageTemplate.php';
       </div>
     </div>
   </section>
+
+  <?php includeTemplate("servicios"); ?>
 
   <!-- FUNCIONES -->
   <section id="funciones" class="py-16 bg-gray-50">
