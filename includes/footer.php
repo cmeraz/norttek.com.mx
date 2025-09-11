@@ -99,7 +99,6 @@ if(file_exists($autoJsPathServer)){
 }
 ?>
 
-<!-- JS desde CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
