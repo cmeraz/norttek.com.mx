@@ -20,7 +20,7 @@ include 'includes/pageTemplate.php';
       url('assets/img/cctv-hero_img.jpg');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain; /* En móvil se ajusta completa */
+    background-size: cover; /* En móvil se ajusta completa */
   "></div>
 
   <!-- Contenido del hero -->

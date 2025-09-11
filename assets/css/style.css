@@ -122,3 +122,30 @@ Dropdown y menú activos
     padding-top: 160px; /* en móvil porque el header es más alto */
   }
 }
+/* Sobrescribir bg-blue-600 de Tailwind */
+.bg-blue-600 {
+    background-color: #1677a6 !important;
+}
+
+.bg-blue-700 {
+    background-color: #1677a6 !important;
+}
+
+/* Si quieres también el hover de bg-blue-700 a un tono más oscuro */
+.bg-blue-700:hover {
+    background-color: #145e85 !important; /* ajusta según prefieras */
+}
+
+.text-blue-500 {
+  color: #1677a6;
+}
+
+.text-blue-600 {
+    --tw-text-opacity: 1;
+    color: #1677a6;
+}
+
+.text-blue-700 {
+    --tw-text-opacity: 1;
+    color: #1677a6;
+}
