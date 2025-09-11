@@ -26,7 +26,7 @@ $soluciones = [
     ],
     [
         'imagen' => 'https://sc04.alicdn.com/kf/Hc9a43650fc274d9fae898b6bb45ab3dcr.png',
-        'icono' => 'jki jki-speaker-line',
+        'icono' => 'fas fa-volume-up',
         'titulo' => 'Audio Ambiental',
         'descripcion' => 'Crea espacios que brinden una experiencia de audio de alta calidad para conferencias, películas o reuniones.',
         'link' => '#',
@@ -113,7 +113,7 @@ $soluciones = [
         'visible' => false
     ],
     [
-        'imagen' => 'https://plus.unsplash.com/premium_photo-1671017656975-9bde40e8d1ae?q=80&w=645&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        'imagen' => 'https://databoxsolutions.com.au/wp-content/uploads/2025/02/yealink-IP-phone-3devices.webp',
         'icono' => 'fas fa-phone',
         'titulo' => 'Telefonía IP',
         'descripcion' => 'Implementa sistemas de comunicación IP eficientes y confiables para tu empresa.',
