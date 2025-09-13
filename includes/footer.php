@@ -3,7 +3,6 @@
  * footer.php
  * Cierra main y body, carga JS locales y librerías CDN
  */
-
 // Asegurarse de que $pageName esté definido
 if(!isset($pageName)) {
     $pageName = basename($_SERVER['PHP_SELF'], ".php");
@@ -76,6 +75,8 @@ if(!isset($pageName)) {
 
 <!-- JS locales -->
 <?php
+global $jsFiles;
+
 if(isset($jsFiles) && is_array($jsFiles)){
     foreach($jsFiles as $js){
         $jsPathServer = __DIR__ . "/../assets/js/$js";
@@ -86,7 +87,10 @@ if(isset($jsFiles) && is_array($jsFiles)){
             echo "<!-- JS $jsPathBrowser no encontrado -->\n";
         }
     }
+} else {
+    echo "<!-- jsFiles no está definido o no es un array -->\n";
 }
+
 
 // JS automático por nombre de página
 $autoJsPathServer = __DIR__ . "/../assets/js/$pageName.js";

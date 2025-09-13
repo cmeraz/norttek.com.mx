@@ -4,6 +4,10 @@
  * Header dinámico que abre html, head y body
  * Incluye CSS locales, CSS por página y librerías CDN
  */
+
+if(!isset($pageName)) {
+    $pageName = basename($_SERVER['PHP_SELF'], ".php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
