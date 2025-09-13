@@ -25,7 +25,33 @@ if(!isset($pageName)) {
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
 
     <!-- CSS principal -->
-    <link rel="stylesheet" href="assets/css/styles.css">
+       <?php
+global $cssFiles;
+$pageName = basename($_SERVER['PHP_SELF'], ".php");
+
+// Archivos CSS del array
+if(!empty($cssFiles) && is_array($cssFiles)){
+    foreach($cssFiles as $css){
+        $cssPathServer = __DIR__ . "/../assets/css/$css";
+        $cssPathBrowser = "assets/css/$css";
+        if(file_exists($cssPathServer)){
+            echo "<link rel='stylesheet' href='$cssPathBrowser'>\n";
+        } else {
+            echo "<!-- CSS $cssPathBrowser no encontrado -->\n";
+        }
+    }
+}
+
+// CSS automático por página
+$autoCssPathServer = __DIR__ . "/../assets/css/$pageName.css";
+$autoCssPathBrowser = "assets/css/$pageName.css";
+
+if(file_exists($autoCssPathServer)){
+    echo "<link rel='stylesheet' href='$autoCssPathBrowser'>\n";
+} else {
+    echo "<!-- CSS automático $autoCssPathBrowser no encontrado -->\n";
+}
+?>
 
     <!-- Open Graph Meta Tags para Facebook y WhatsApp -->
     <meta property="og:title" content="Norttek Solutions - Seguridad y Servicios Empresariales">
@@ -42,31 +68,6 @@ if(!isset($pageName)) {
     <meta name="twitter:description" content="Seguridad empresarial completa: instalación de CCTV, alarmas y control de accesos, y papelería para empresas y oficinas con entrega confiable a domicilio.">
     <meta name="twitter:image" content="https://www.norttek.com.mx/assets/images/og-image.jpg">
 
-    <!-- CSS locales -->
-    <?php
-    if(isset($cssFiles) && is_array($cssFiles)){
-        foreach($cssFiles as $css){
-            $cssPathServer = __DIR__ . "/../assets/css/$css";
-            $cssPathBrowser = "assets/css/$css";
-            if(file_exists($cssPathServer)){
-                echo "<link rel='stylesheet' href='$cssPathBrowser'>\n";
-            } else {
-                echo "<!-- CSS $cssPathBrowser no encontrado -->\n";
-            }
-        }
-    }
-
-    // CSS automático por nombre de página
-    $pageName = basename($_SERVER['PHP_SELF'], ".php");
-    $autoCssPathServer = __DIR__ . "/../assets/css/$pageName.css";
-    $autoCssPathBrowser = "assets/css/$pageName.css";
-
-    if(file_exists($autoCssPathServer)){
-        echo "<link rel='stylesheet' href='$autoCssPathBrowser'>\n";
-    } else {
-        echo "<!-- CSS automático $autoCssPathBrowser no encontrado -->\n";
-    }
-    ?>
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
