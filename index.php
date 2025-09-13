@@ -1,17 +1,10 @@
 <?php
-// Cargar funciones y templates
-require_once __DIR__ . '/includes/includeTemplate.php';
-
+// Título de la página (se usa en header)
 $pageTitle = "Servicios - Norttek";
-$pageName  = "servicios";
-$cssFiles  = ["styles.css"];
-$jsFiles   = ["scripts.js"];
 
-includeTemplate("header", [
-    "pageTitle" => $pageTitle,
-    "cssFiles"  => $cssFiles,
-    "pageName"  => $pageName
-]);
+// Archivos CSS y JS adicionales (opcional)
+$cssFiles  = ["styles.css"];       // CSS global opcional
+$jsFiles   = ["scripts.js"];       // JS global opcional
 
 // Incluye la plantilla base
 include 'includes/pageTemplate.php';
