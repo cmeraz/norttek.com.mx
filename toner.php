@@ -41,7 +41,7 @@ function impresorasList($impresoras) {
      HTML: Tabla completa con encabezado
      ====================================== -->
 <!-- Contenedor principal con margen superior para que no lo cubra el header -->
-<div class="mt-[100px] p-4 overflow-x-auto">
+<div class="pt-[150px]">
     <table class="min-w-full bg-white border border-gray-300">
         <thead class="bg-gray-100">
             <tr>
