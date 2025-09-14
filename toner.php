@@ -41,10 +41,12 @@ function impresorasList($impresoras) {
      HTML: Tabla completa con encabezado
      ====================================== -->
 <!-- Contenedor principal con margen superior para que no lo cubra el header -->
-<div class="pt-[150px]">
+<!-- Contenedor principal con margen superior para que no lo cubra el header -->
+<div class="pt-[150px] p-4 overflow-x-auto">
     <table class="min-w-full bg-white border border-gray-300">
         <thead class="bg-gray-100">
             <tr>
+                <th class="px-4 py-2 border">Marca</th>
                 <th class="px-4 py-2 border">Modelo</th>
                 <th class="px-4 py-2 border">Impresoras Compatibles</th>
                 <th class="px-4 py-2 border">Rendimiento Toner</th>
@@ -55,6 +57,7 @@ function impresorasList($impresoras) {
         <tbody>
             <?php foreach ($cartuchos['HP'] as $cartucho): ?>
                 <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-2 border"><?= htmlspecialchars('HP'); ?></td>
                     <td class="px-4 py-2 border"><?= htmlspecialchars($cartucho['modelo']); ?></td>
                     <td class="px-4 py-2 border"><?= impresorasList($cartucho['impresoras_compatibles']); ?></td>
                     <td class="px-4 py-2 border"><?= htmlspecialchars($cartucho['toner_rendimiento']); ?></td>
@@ -65,6 +68,7 @@ function impresorasList($impresoras) {
         </tbody>
     </table>
 </div>
+
 
 
 
