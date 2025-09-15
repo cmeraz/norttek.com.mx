@@ -18,9 +18,12 @@ include 'includes/pageTemplate.php';
 // ======================================
 // Lógica PHP: Leer JSON y generar funciones
 // ======================================
+
+// Archivo JSON con información de cartuchos
 $jsonFile = __DIR__ . '/includes/json/cartuchos.json';
 $cartuchos = [];
 
+// Validar existencia del archivo JSON
 if (file_exists($jsonFile)) {
     $jsonData = file_get_contents($jsonFile);
     $cartuchos = json_decode($jsonData, true);
@@ -43,14 +46,13 @@ function impresorasList($impresoras) {
 }
 ?>
 
-
-
 <!-- ======================================
-     HTML: Buscador + Tabla
+     HTML: Sección principal con título, subtítulo y descripción
      ====================================== -->
 
 <div class="pt-[150px] px-4 max-w-7xl mx-auto">
 <section class="p-8 mb-8 max-w-6xl mx-auto">
+
     <!-- Título principal con ícono -->
     <div class="flex items-center justify-center mb-6 space-x-3">
         <i class="fas fa-print text-blue-600 text-4xl"></i>
@@ -68,8 +70,9 @@ function impresorasList($impresoras) {
         <hr class="border-t-2 border-blue-300 w-16 ml-3">
     </div>
 
-    <!-- Contenido con imagen y texto -->
+    <!-- Contenido con imagen decorativa y texto explicativo -->
     <div class="flex flex-col lg:flex-row items-center gap-8">
+
         <!-- Imagen decorativa -->
         <div class="flex-shrink-0">
             <img src="https://images.pexels.com/photos/33475146/pexels-photo-33475146.jpeg?cs=srgb&dl=pexels-zeleboba-33475146.jpg&fm=jpg&w=640&h=480&_gl=1*flopsy*_ga*NTcxNDE2NTY3LjE3NTc2NDgwMDk.*_ga_8JE65Q40S6*czE3NTc5MDkxMjQkbzIkZzEkdDE3NTc5MDkxNjEkajIzJGwwJGgw" 
@@ -96,43 +99,53 @@ function impresorasList($impresoras) {
     </div>
 </section>
 
+<!-- ======================================
+     Buscador interactivo con iconos y botón limpiar
+     ====================================== -->
+<div class="relative w-full max-w-xl mx-auto mb-6">
 
-
-    <!-- 🔍 Buscador con lupa y limpiar -->
-    <div class="relative w-full max-w-xl mx-auto mb-6">
-        <!-- Icono lupa -->
-        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
-                 viewBox="0 0 24 24">
-                <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
-                <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2"/>
-            </svg>
-        </div>
-
-        <!-- Input -->
-        <input 
-            type="text"
-            id="buscador"
-            placeholder="Buscar por marca, modelo, impresora o tambor..."
-            class="w-full pl-10 pr-10 p-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900"
-        >
-
-        <!-- Botón limpiar -->
-        <button 
-            id="limpiarBusqueda"
-            type="button"
-            class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700"
-            title="Borrar búsqueda"
-        >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <line x1="18" y1="6" x2="6" y2="18"/>
-                <line x1="6" y1="6" x2="18" y2="18"/>
-            </svg>
-        </button>
+    <!-- Icono de lupa -->
+    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+             viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2"/>
+        </svg>
     </div>
 
-    <!-- 📋 Tabla premium -->
-    <div class="overflow-x-auto shadow-lg rounded-lg relative">
+    <!-- Input de búsqueda -->
+    <input 
+        type="text"
+        id="buscador"
+        placeholder="Buscar por marca, modelo, impresora o tambor..."
+        class="w-full pl-10 pr-10 p-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900"
+    >
+
+    <!-- Botón limpiar búsqueda -->
+    <button 
+        id="limpiarBusqueda"
+        type="button"
+        class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700"
+        title="Borrar búsqueda"
+    >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+    </button>
+</div>
+
+<!-- ======================================
+     Contador de resultados dinámico
+     ====================================== -->
+<div class="mb-4 text-right text-gray-600 font-semibold" id="resultado-contador">
+    Mostrando <span id="total-resultados">0</span> cartuchos
+</div>
+
+<!-- ======================================
+     Tabla interactiva premium
+     ====================================== -->
+<div class="overflow-x-auto shadow-lg rounded-lg relative">
     <table id="tablaCartuchos" class="min-w-full table-fixed border-collapse">
         <thead class="text-white sticky top-0 z-10" style="background-color: rgba(22, 119, 166, 0.5);">
             <tr>
@@ -165,23 +178,30 @@ function impresorasList($impresoras) {
     </table>
 </div>
 
-
-<!-- 🟢 Script: Filtrado en vivo + resaltar coincidencias + limpiar -->
+<!-- ======================================
+     Script: Filtrado en vivo y contador dinámico
+     ====================================== -->
 <script>
-const buscador = document.getElementById("buscador");
-const limpiarBtn = document.getElementById("limpiarBusqueda");
+// Selección de elementos
 const filas = document.querySelectorAll("#tablaCartuchos tbody tr");
+const contador = document.getElementById("total-resultados");
+const buscador = document.getElementById("buscador");
+const btnBorrar = document.getElementById("limpiarBusqueda");
 
-// Evento limpiar búsqueda
-limpiarBtn.addEventListener("click", () => {
-    buscador.value = "";
-    buscador.dispatchEvent(new Event("input")); // restaurar tabla
-    buscador.focus();
+// Función para actualizar el contador de resultados visibles
+function actualizarContador() {
+    const visibles = Array.from(filas).filter(fila => fila.style.display !== "none");
+    contador.textContent = visibles.length;
+}
+
+// Inicializar contador al cargar la página
+window.addEventListener("DOMContentLoaded", () => {
+    actualizarContador();
 });
 
-// Filtrado en vivo
+// Filtrado en vivo según el texto ingresado
 buscador.addEventListener("input", function () {
-    const filtro = this.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const filtro = this.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
 
     filas.forEach(fila => {
         const celdas = fila.querySelectorAll("td");
@@ -190,23 +210,17 @@ buscador.addEventListener("input", function () {
 
         const textoNormalizado = textoFila.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
-        if (textoNormalizado.includes(filtro)) {
-            fila.style.display = "";
-            // Restaurar contenido original
-            celdas.forEach(celda => {
-                celda.innerHTML = celda.innerText;
-            });
-            // Resaltar coincidencias
-            if (filtro.trim() !== "") {
-                celdas.forEach(celda => {
-                    const regex = new RegExp(`(${filtro})`, "gi");
-                    celda.innerHTML = celda.innerHTML.replace(regex, '<mark style="background-color: orange; transition: background-color 2s;">$1</mark>');
-                });
-            }
-        } else {
-            fila.style.display = "none";
-        }
+        fila.style.display = textoNormalizado.includes(filtro) ? "" : "none";
     });
+
+    actualizarContador();
+});
+
+// Botón para borrar búsqueda y mostrar todos los cartuchos
+btnBorrar.addEventListener("click", () => {
+    buscador.value = "";
+    filas.forEach(fila => fila.style.display = "");
+    actualizarContador();
 });
 </script>
 
