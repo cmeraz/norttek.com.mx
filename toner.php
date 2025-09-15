@@ -62,15 +62,41 @@ function impresorasList($impresoras) {
      ====================================== -->
 <div class="pt-[150px] p-4 overflow-x-auto">
 
-    <!-- 🔍 Formulario de búsqueda en vivo -->
-    <div class="mt-[50px] p-4">
+    <!-- 🔍 Formulario de búsqueda mejorado -->
+<div class="mt-[50px] p-4 flex justify-center">
+    <div class="relative w-full max-w-xl">
+        <!-- Icono de lupa dentro del input -->
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                 viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2"/>
+            </svg>
+        </div>
+
+        <!-- Input de búsqueda -->
         <input 
-            type="text" 
-            id="buscador" 
-            placeholder="Buscar por marca, modelo, impresora o tambor..." 
-            class="w-full p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            type="text"
+            id="buscador"
+            placeholder="Buscar por marca, modelo, impresora o tambor..."
+            class="w-full pl-10 pr-10 p-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
+
+        <!-- Botón de limpiar búsqueda -->
+        <button 
+            id="limpiarBusqueda"
+            type="button"
+            class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700"
+            title="Borrar búsqueda"
+        >
+            <!-- Icono de cruz -->
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
     </div>
+</div>
 
     <!-- 📋 Tabla de cartuchos -->
     <table id="tablaCartuchos" class="min-w-full bg-white border border-gray-300">
@@ -154,6 +180,18 @@ buscador.addEventListener("input", function () {
             fila.style.display = "none";
         }
     });
+});
+</script>
+
+<!-- 🟢 Script para limpiar búsqueda -->
+<script>
+const limpiarBtn = document.getElementById("limpiarBusqueda");
+const buscadorInput = document.getElementById("buscador");
+
+limpiarBtn.addEventListener("click", () => {
+    buscadorInput.value = "";           // Limpiar input
+    buscadorInput.dispatchEvent(new Event("input")); // Disparar evento para restaurar tabla
+    buscadorInput.focus();              // Mantener foco en input
 });
 </script>
 
