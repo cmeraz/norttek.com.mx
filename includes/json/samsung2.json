@@ -1,0 +1,227 @@
+{
+  "Samsung": [
+    {
+      "modelo": "MLT-D201L",
+      "impresoras_compatibles": [
+        "Samsung ML-2510",
+        "Samsung ML-2570"
+      ],
+      "toner_rendimiento": "3,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D205E",
+      "impresoras_compatibles": [
+        "Samsung ML-3310",
+        "Samsung ML-3312"
+      ],
+      "toner_rendimiento": "2,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D205L",
+      "impresoras_compatibles": [
+        "Samsung ML-3310",
+        "Samsung ML-3312"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D209L",
+      "impresoras_compatibles": [
+        "Samsung SCX-4828FN"
+      ],
+      "toner_rendimiento": "3,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D203L",
+      "impresoras_compatibles": [
+        "Samsung ML-2850",
+        "Samsung ML-2851ND",
+        "Samsung SCX-4824"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D203E",
+      "impresoras_compatibles": [
+        "Samsung ML-2850",
+        "Samsung ML-2851ND",
+        "Samsung SCX-4824"
+      ],
+      "toner_rendimiento": "2,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D203U",
+      "impresoras_compatibles": [
+        "Samsung ML-2850",
+        "Samsung SCX-4828FN"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D203U V2",
+      "impresoras_compatibles": [
+        "Samsung ML-2850",
+        "Samsung SCX-4828FN"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D208S",
+      "impresoras_compatibles": [
+        "Samsung ML-2855",
+        "Samsung SCX-4824"
+      ],
+      "toner_rendimiento": "1,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D208L",
+      "impresoras_compatibles": [
+        "Samsung ML-2855",
+        "Samsung SCX-4824"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D307L",
+      "impresoras_compatibles": [
+        "Samsung ML-3470",
+        "Samsung SCX-4729"
+      ],
+      "toner_rendimiento": "3,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D307E",
+      "impresoras_compatibles": [
+        "Samsung ML-3470",
+        "Samsung SCX-4729"
+      ],
+      "toner_rendimiento": "2,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D358S",
+      "impresoras_compatibles": [
+        "Samsung SCX-5637",
+        "Samsung SCX-5639"
+      ],
+      "toner_rendimiento": "7,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "SCX-D4725A",
+      "impresoras_compatibles": [
+        "Samsung SCX-4725FN"
+      ],
+      "toner_rendimiento": "2,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "SCX-4655FN",
+      "impresoras_compatibles": [
+        "Samsung SCX-4655FN"
+      ],
+      "toner_rendimiento": "10,000 páginas",
+      "tambor": {
+        "modelo": "DR-4655",
+        "rendimiento": "50,000 páginas"
+      }
+    },
+    {
+      "modelo": "SCX-6320D8",
+      "impresoras_compatibles": [
+        "Samsung SCX-6320"
+      ],
+      "toner_rendimiento": "8,000 páginas",
+      "tambor": {
+        "modelo": "DR-630",
+        "rendimiento": "50,000 páginas"
+      }
+    },
+    {
+      "modelo": "SCX-D6555A TONER",
+      "impresoras_compatibles": [
+        "Samsung SCX-6555"
+      ],
+      "toner_rendimiento": "20,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D708S",
+      "impresoras_compatibles": [
+        "Samsung SCX-6345"
+      ],
+      "toner_rendimiento": "5,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D709S",
+      "impresoras_compatibles": [
+        "Samsung SCX-6545"
+      ],
+      "toner_rendimiento": "5,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    }
+  ]
+}

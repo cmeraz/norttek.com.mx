@@ -1,0 +1,265 @@
+{
+  "HP": [
+    {
+      "modelo": "Q7570A",
+      "impresoras_compatibles": [
+        "HP LaserJet P3010",
+        "HP LaserJet P3015",
+        "HP LaserJet P3015d",
+        "HP LaserJet P3015dn",
+        "HP LaserJet P3015x",
+        "HP LaserJet M525"
+      ],
+      "toner_rendimiento": "6,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "Q2613A",
+      "impresoras_compatibles": [
+        "HP LaserJet 2400",
+        "HP LaserJet 2410",
+        "HP LaserJet 2420",
+        "HP LaserJet 2430",
+        "HP LaserJet 3005",
+        "HP LaserJet 3015",
+        "HP LaserJet 3020",
+        "HP LaserJet 3030",
+        "HP LaserJet 3050",
+        "HP LaserJet 3052",
+        "HP LaserJet 3055"
+      ],
+      "toner_rendimiento": "2,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "Q2613X",
+      "impresoras_compatibles": [
+        "HP LaserJet 2400",
+        "HP LaserJet 2410",
+        "HP LaserJet 2420",
+        "HP LaserJet 2430",
+        "HP LaserJet 3005",
+        "HP LaserJet 3015",
+        "HP LaserJet 3020",
+        "HP LaserJet 3030",
+        "HP LaserJet 3050",
+        "HP LaserJet 3052",
+        "HP LaserJet 3055"
+      ],
+      "toner_rendimiento": "6,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "Q2610A",
+      "impresoras_compatibles": [
+        "HP LaserJet 2300",
+        "HP LaserJet 2300d",
+        "HP LaserJet 2300dn",
+        "HP LaserJet 2300n"
+      ],
+      "toner_rendimiento": "2,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "C4127X",
+      "impresoras_compatibles": [
+        "HP Color LaserJet 4730",
+        "HP Color LaserJet 4730MFP"
+      ],
+      "toner_rendimiento": "12,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "Q8061X",
+      "impresoras_compatibles": [
+        "HP Color LaserJet 4730",
+        "HP Color LaserJet 4730MFP"
+      ],
+      "toner_rendimiento": "12,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "Q6511A",
+      "impresoras_compatibles": [
+        "HP LaserJet 2420",
+        "HP LaserJet 2430",
+        "HP LaserJet 3390",
+        "HP LaserJet 3380"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "Q6511X",
+      "impresoras_compatibles": [
+        "HP LaserJet 2420",
+        "HP LaserJet 2430",
+        "HP LaserJet 3390",
+        "HP LaserJet 3380"
+      ],
+      "toner_rendimiento": "8,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "Q7516A",
+      "impresoras_compatibles": [
+        "HP LaserJet 4200",
+        "HP LaserJet 4300"
+      ],
+      "toner_rendimiento": "10,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "C4092",
+      "impresoras_compatibles": [
+        "HP LaserJet 1160",
+        "HP LaserJet 1320"
+      ],
+      "toner_rendimiento": "2,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "C4096A",
+      "impresoras_compatibles": [
+        "HP LaserJet 1160",
+        "HP LaserJet 1320"
+      ],
+      "toner_rendimiento": "5,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF233A",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP3505",
+        "HP Color LaserJet CM3530 MFP"
+      ],
+      "toner_rendimiento": "2,300 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF289A",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP3505",
+        "HP Color LaserJet CM3530 MFP"
+      ],
+      "toner_rendimiento": "2,300 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF289X",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP3505",
+        "HP Color LaserJet CM3530 MFP"
+      ],
+      "toner_rendimiento": "6,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF258A",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP3525",
+        "HP Color LaserJet CP3525n",
+        "HP Color LaserJet CP3525dn"
+      ],
+      "toner_rendimiento": "2,300 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF258X",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP3525",
+        "HP Color LaserJet CP3525n",
+        "HP Color LaserJet CP3525dn"
+      ],
+      "toner_rendimiento": "6,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W1103A",
+      "impresoras_compatibles": [
+        "HP LaserJet 3050",
+        "HP LaserJet 3052",
+        "HP LaserJet 3055"
+      ],
+      "toner_rendimiento": "2,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W1105A S/CHIP",
+      "impresoras_compatibles": [
+        "HP LaserJet 3050",
+        "HP LaserJet 3052",
+        "HP LaserJet 3055"
+      ],
+      "toner_rendimiento": "2,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W1105X SIN/CHIP",
+      "impresoras_compatibles": [
+        "HP LaserJet 3050",
+        "HP LaserJet 3052",
+        "HP LaserJet 3055"
+      ],
+      "toner_rendimiento": "6,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "HP": [
+    {
+      "modelo": "CE285A",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro P1102",
+        "HP LaserJet Pro P1102w",
+        "HP LaserJet Pro M1132",
+        "HP LaserJet Pro M1132w",
+        "HP LaserJet Pro M1212nf",
+        "HP LaserJet Pro M1217nfw",
+        "HP LaserJet Pro M1219nf"
+      ],
+      "toner_rendimiento": "1,600 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CB435A",
+      "impresoras_compatibles": [
+        "HP LaserJet P1005",
+        "HP LaserJet P1006",
+        "HP LaserJet P1009",
+        "HP LaserJet P1102",
+        "HP LaserJet P1102w",
+        "HP LaserJet Pro M1120",
+        "HP LaserJet Pro M1130",
+        "HP LaserJet Pro M1210",
+        "HP LaserJet Pro M1212nf",
+        "HP LaserJet Pro M1217nfw",
+        "HP LaserJet Pro M1522",
+        "HP LaserJet Pro M1522f",
+        "HP LaserJet Pro M1522n",
+        "HP LaserJet Pro M1522nf"
+      ],
+      "toner_rendimiento": "1,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CB436A",
+      "impresoras_compatibles": [
+        "HP LaserJet P1505",
+        "HP LaserJet P1505n",
+        "HP LaserJet MFP M1522n",
+        "HP LaserJet MFP M1522nf",
+        "HP LaserJet M1120"
+      ],
+      "toner_rendimiento": "2,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CE278A",
+      "impresoras_compatibles": [
+        "HP LaserJet P1566",
+        "HP LaserJet P1566n",
+        "HP LaserJet P1606dn"
+      ],
+      "toner_rendimiento": "2,100 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF279A",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro M12w",
+        "HP LaserJet Pro MFP M26nw"
+      ],
+      "toner_rendimiento": "1,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF279X",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro M12w",
+        "HP LaserJet Pro MFP M26nw"
+      ],
+      "toner_rendimiento": "2,300 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF217A",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro M102w",
+        "HP LaserJet Pro M102a",
+        "HP LaserJet Pro MFP M130fn",
+        "HP LaserJet Pro MFP M130nw",
+        "HP LaserJet Pro MFP M130fw",
+        "HP LaserJet Pro MFP M130a"
+      ],
+      "toner_rendimiento": "1,600 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF230A",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro M203d",
+        "HP LaserJet Pro M203dn",
+        "HP LaserJet Pro M203dw",
+        "HP LaserJet Pro MFP M227fdn",
+        "HP LaserJet Pro MFP M227fdw",
+        "HP LaserJet Pro MFP M227sdn",
+        "HP LaserJet Pro MFP M227sdw"
+      ],
+      "toner_rendimiento": "1,600 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF230X",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro M203d",
+        "HP LaserJet Pro M203dn",
+        "HP LaserJet Pro M203dw",
+        "HP LaserJet Pro MFP M227fdn",
+        "HP LaserJet Pro MFP M227fdw",
+        "HP LaserJet Pro MFP M227sdn",
+        "HP LaserJet Pro MFP M227sdw"
+      ],
+      "toner_rendimiento": "3,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF237A",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro MFP M130fn",
+        "HP LaserJet Pro MFP M130fw",
+        "HP LaserJet Pro MFP M130a",
+        "HP LaserJet Pro MFP M130nw",
+        "HP LaserJet Pro M102w",
+        "HP LaserJet Pro M102a"
+      ],
+      "toner_rendimiento": "1,600 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF248A",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro MFP M426fdn",
+        "HP LaserJet Pro MFP M426fdw",
+        "HP LaserJet Pro MFP M426dw",
+        "HP LaserJet Pro MFP M426dw"
+      ],
+      "toner_rendimiento": "6,900 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF283A",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro M201dw",
+        "HP LaserJet Pro MFP M225dn",
+        "HP LaserJet Pro MFP M225dw",
+        "HP LaserJet Pro MFP M225nw"
+      ],
+      "toner_rendimiento": "1,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF283X",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro M201dw",
+        "HP LaserJet Pro MFP M225dn",
+        "HP LaserJet Pro MFP M225dw",
+        "HP LaserJet Pro MFP M225nw"
+      ],
+      "toner_rendimiento": "2,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF287A",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro M402d",
+        "HP LaserJet Pro M402dn",
+        "HP LaserJet Pro M402dw",
+        "HP LaserJet Pro MFP M426fdn",
+        "HP LaserJet Pro MFP M426fdw",
+        "HP LaserJet Pro MFP M426dw"
+      ],
+      "toner_rendimiento": "3,100 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    }
+  ]
+}

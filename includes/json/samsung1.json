@@ -1,0 +1,191 @@
+{
+  "Samsung": [
+    {
+      "modelo": "MLT-D101S",
+      "impresoras_compatibles": [
+        "Samsung ML-2165",
+        "Samsung ML-2160"
+      ],
+      "toner_rendimiento": "1,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D103S",
+      "impresoras_compatibles": [
+        "Samsung ML-1660",
+        "Samsung ML-1665"
+      ],
+      "toner_rendimiento": "1,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D103L",
+      "impresoras_compatibles": [
+        "Samsung ML-1660",
+        "Samsung ML-1665"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D104S",
+      "impresoras_compatibles": [
+        "Samsung ML-1660"
+      ],
+      "toner_rendimiento": "1,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D105L",
+      "impresoras_compatibles": [
+        "Samsung ML-1910"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D111S",
+      "impresoras_compatibles": [
+        "Samsung ML-2020",
+        "Samsung ML-2020 V2"
+      ],
+      "toner_rendimiento": "1,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D111L",
+      "impresoras_compatibles": [
+        "Samsung ML-2020K",
+        "Samsung ML-2020K V2"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D115L",
+      "impresoras_compatibles": [
+        "Samsung ML-2850",
+        "Samsung ML-2851ND"
+      ],
+      "toner_rendimiento": "3,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D116L",
+      "impresoras_compatibles": [
+        "Samsung ML-2850",
+        "Samsung ML-2851ND"
+      ],
+      "toner_rendimiento": "3,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D118S",
+      "impresoras_compatibles": [
+        "Samsung ML-1610D2",
+        "Samsung ML-1640"
+      ],
+      "toner_rendimiento": "1,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D118L",
+      "impresoras_compatibles": [
+        "Samsung ML-1610D2",
+        "Samsung ML-1640"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "ML-1710",
+      "impresoras_compatibles": [
+        "Samsung ML-1710"
+      ],
+      "toner_rendimiento": "1,000 páginas",
+      "tambor": {
+        "modelo": "DR-110",
+        "rendimiento": "10,000 páginas"
+      }
+    },
+    {
+      "modelo": "ML-2250DS",
+      "impresoras_compatibles": [
+        "Samsung ML-2250"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "DR-220",
+        "rendimiento": "15,000 páginas"
+      }
+    },
+    {
+      "modelo": "MLT-D2850B",
+      "impresoras_compatibles": [
+        "Samsung ML-2850",
+        "Samsung ML-2851ND"
+      ],
+      "toner_rendimiento": "3,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "SCX-D4200A",
+      "impresoras_compatibles": [
+        "Samsung SCX-4200",
+        "Samsung SCX-4216"
+      ],
+      "toner_rendimiento": "1,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-109S",
+      "impresoras_compatibles": [
+        "Samsung SCX-4300"
+      ],
+      "toner_rendimiento": "2,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    }
+  ]
+}

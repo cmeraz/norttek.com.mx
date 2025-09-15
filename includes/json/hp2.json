@@ -1,0 +1,280 @@
+{
+  "HP": [
+    {
+      "modelo": "CF226A",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP1215",
+        "HP Color LaserJet CP1515n",
+        "HP Color LaserJet CP1518ni",
+        "HP Color LaserJet CM1312 MFP"
+      ],
+      "toner_rendimiento": "1,200 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF226X",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP1215",
+        "HP Color LaserJet CP1515n",
+        "HP Color LaserJet CP1518ni",
+        "HP Color LaserJet CM1312 MFP"
+      ],
+      "toner_rendimiento": "2,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "Q2612A",
+      "impresoras_compatibles": [
+        "HP LaserJet 1010",
+        "HP LaserJet 1012",
+        "HP LaserJet 1015",
+        "HP LaserJet 1018",
+        "HP LaserJet 1020",
+        "HP LaserJet 1022",
+        "HP LaserJet 3015",
+        "HP LaserJet 3020",
+        "HP LaserJet 3030",
+        "HP LaserJet 3050",
+        "HP LaserJet 3052",
+        "HP LaserJet 3055"
+      ],
+      "toner_rendimiento": "2,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "Q2612X",
+      "impresoras_compatibles": [
+        "HP LaserJet 1010",
+        "HP LaserJet 1012",
+        "HP LaserJet 1015",
+        "HP LaserJet 1018",
+        "HP LaserJet 1020",
+        "HP LaserJet 1022",
+        "HP LaserJet 3015",
+        "HP LaserJet 3020",
+        "HP LaserJet 3030",
+        "HP LaserJet 3050",
+        "HP LaserJet 3052",
+        "HP LaserJet 3055"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CE505A",
+      "impresoras_compatibles": [
+        "HP LaserJet P2035",
+        "HP LaserJet P2035n",
+        "HP LaserJet P2055",
+        "HP LaserJet P2055dn"
+      ],
+      "toner_rendimiento": "2,300 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CE505X",
+      "impresoras_compatibles": [
+        "HP LaserJet P2035",
+        "HP LaserJet P2035n",
+        "HP LaserJet P2055",
+        "HP LaserJet P2055dn"
+      ],
+      "toner_rendimiento": "6,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "Q5949A",
+      "impresoras_compatibles": [
+        "HP LaserJet P2035",
+        "HP LaserJet P2035n",
+        "HP LaserJet P2055",
+        "HP LaserJet P2055dn"
+      ],
+      "toner_rendimiento": "2,300 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "Q5949X",
+      "impresoras_compatibles": [
+        "HP LaserJet P2035",
+        "HP LaserJet P2035n",
+        "HP LaserJet P2055",
+        "HP LaserJet P2055dn"
+      ],
+      "toner_rendimiento": "6,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CE255A",
+      "impresoras_compatibles": [
+        "HP LaserJet Enterprise MFP M525c",
+        "HP LaserJet Enterprise MFP M525f",
+        "HP LaserJet Enterprise MFP M525dn",
+        "HP LaserJet Enterprise P3010",
+        "HP LaserJet Enterprise P3015",
+        "HP LaserJet Enterprise P3015dn",
+        "HP LaserJet Enterprise P3015x",
+        "HP LaserJet Pro 500 MFP M521dn",
+        "HP LaserJet Pro 500 MFP M521dw"
+      ],
+      "toner_rendimiento": "6,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CE255X",
+      "impresoras_compatibles": [
+        "HP LaserJet Enterprise MFP M525c",
+        "HP LaserJet Enterprise MFP M525f",
+        "HP LaserJet Enterprise MFP M525dn",
+        "HP LaserJet Enterprise P3010",
+        "HP LaserJet Enterprise P3015",
+        "HP LaserJet Enterprise P3015dn",
+        "HP LaserJet Enterprise P3015x",
+        "HP LaserJet Pro 500 MFP M521dn",
+        "HP LaserJet Pro 500 MFP M521dw"
+      ],
+      "toner_rendimiento": "10,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF281A",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP3525",
+        "HP Color LaserJet CP3525n",
+        "HP Color LaserJet CP3525dn"
+      ],
+      "toner_rendimiento": "2,300 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF281X",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP3525",
+        "HP Color LaserJet CP3525n",
+        "HP Color LaserJet CP3525dn"
+      ],
+      "toner_rendimiento": "6,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF214A",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP1215",
+        "HP Color LaserJet CP1515n",
+        "HP Color LaserJet CP1518ni",
+        "HP Color LaserJet CM1312 MFP"
+      ],
+      "toner_rendimiento": "1,400 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF214X",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP1215",
+        "HP Color LaserJet CP1515n",
+        "HP Color LaserJet CP1518ni",
+        "HP Color LaserJet CM1312 MFP"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CC364A",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP3505",
+        "HP Color LaserJet CM3530 MFP",
+        "HP Color LaserJet CM3530fs MFP"
+      ],
+      "toner_rendimiento": "6,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CC364X",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP3505",
+        "HP Color LaserJet CM3530 MFP",
+        "HP Color LaserJet CM3530fs MFP"
+      ],
+      "toner_rendimiento": "12,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "Q7551A",
+      "impresoras_compatibles": [
+        "HP LaserJet P3015",
+        "HP LaserJet P3015d",
+        "HP LaserJet P3015dn",
+        "HP LaserJet P3015x",
+        "HP LaserJet M525"
+      ],
+      "toner_rendimiento": "6,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "Q7551X",
+      "impresoras_compatibles": [
+        "HP LaserJet P3015",
+        "HP LaserJet P3015d",
+        "HP LaserJet P3015dn",
+        "HP LaserJet P3015x",
+        "HP LaserJet M525"
+      ],
+      "toner_rendimiento": "10,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    }
+  ]
+}

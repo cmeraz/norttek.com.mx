@@ -6,7 +6,7 @@ $pages = [
     'inicio'=>['label'=>'Inicio','icon'=>'fas fa-home'],
     'nosotros'=>['label'=>'Nosotros','icon'=>'fas fa-users'],
     'servicios'=>['label'=>'Servicios ▾','icon'=>'fas fa-cogs'],
-    'herramientas'=>['label'=>'Herramientas','icon'=>'fas fa-wrench'],
+    'cartuchos'=>['label'=>'Herramientas','icon'=>'fas fa-wrench'],
     'contacto'=>['label'=>'Contacto','icon'=>'fas fa-envelope']
 ];
 

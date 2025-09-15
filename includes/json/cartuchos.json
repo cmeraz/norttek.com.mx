@@ -1,6 +1,351 @@
 {
   "HP": [
     {
+      "modelo": "CE285A",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro P1102",
+        "HP LaserJet Pro P1102w",
+        "HP LaserJet Pro M1132",
+        "HP LaserJet Pro M1132w",
+        "HP LaserJet Pro M1212nf",
+        "HP LaserJet Pro M1217nfw",
+        "HP LaserJet Pro M1219nf"
+      ],
+      "toner_rendimiento": "1,600 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CB435A",
+      "impresoras_compatibles": [
+        "HP LaserJet P1005",
+        "HP LaserJet P1006",
+        "HP LaserJet P1009",
+        "HP LaserJet P1102",
+        "HP LaserJet P1102w",
+        "HP LaserJet Pro M1120",
+        "HP LaserJet Pro M1130",
+        "HP LaserJet Pro M1210",
+        "HP LaserJet Pro M1212nf",
+        "HP LaserJet Pro M1217nfw",
+        "HP LaserJet Pro M1522",
+        "HP LaserJet Pro M1522f",
+        "HP LaserJet Pro M1522n",
+        "HP LaserJet Pro M1522nf"
+      ],
+      "toner_rendimiento": "1,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CB436A",
+      "impresoras_compatibles": [
+        "HP LaserJet P1505",
+        "HP LaserJet P1505n",
+        "HP LaserJet MFP M1522n",
+        "HP LaserJet MFP M1522nf",
+        "HP LaserJet M1120"
+      ],
+      "toner_rendimiento": "2,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CE278A",
+      "impresoras_compatibles": [
+        "HP LaserJet P1566",
+        "HP LaserJet P1566n",
+        "HP LaserJet P1606dn"
+      ],
+      "toner_rendimiento": "2,100 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF279A",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro M12w",
+        "HP LaserJet Pro MFP M26nw"
+      ],
+      "toner_rendimiento": "1,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF279X",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro M12w",
+        "HP LaserJet Pro MFP M26nw"
+      ],
+      "toner_rendimiento": "2,300 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF217A",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro M102w",
+        "HP LaserJet Pro M102a",
+        "HP LaserJet Pro MFP M130fn",
+        "HP LaserJet Pro MFP M130nw",
+        "HP LaserJet Pro MFP M130fw",
+        "HP LaserJet Pro MFP M130a"
+      ],
+      "toner_rendimiento": "1,600 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF230A",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro M203d",
+        "HP LaserJet Pro M203dn",
+        "HP LaserJet Pro M203dw",
+        "HP LaserJet Pro MFP M227fdn",
+        "HP LaserJet Pro MFP M227fdw",
+        "HP LaserJet Pro MFP M227sdn",
+        "HP LaserJet Pro MFP M227sdw"
+      ],
+      "toner_rendimiento": "1,600 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF230X",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro M203d",
+        "HP LaserJet Pro M203dn",
+        "HP LaserJet Pro M203dw",
+        "HP LaserJet Pro MFP M227fdn",
+        "HP LaserJet Pro MFP M227fdw",
+        "HP LaserJet Pro MFP M227sdn",
+        "HP LaserJet Pro MFP M227sdw"
+      ],
+      "toner_rendimiento": "3,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF237A",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro MFP M130fn",
+        "HP LaserJet Pro MFP M130fw",
+        "HP LaserJet Pro MFP M130a",
+        "HP LaserJet Pro MFP M130nw",
+        "HP LaserJet Pro M102w",
+        "HP LaserJet Pro M102a"
+      ],
+      "toner_rendimiento": "1,600 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF248A",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro MFP M426fdn",
+        "HP LaserJet Pro MFP M426fdw",
+        "HP LaserJet Pro MFP M426dw",
+        "HP LaserJet Pro MFP M426dw"
+      ],
+      "toner_rendimiento": "6,900 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF283A",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro M201dw",
+        "HP LaserJet Pro MFP M225dn",
+        "HP LaserJet Pro MFP M225dw",
+        "HP LaserJet Pro MFP M225nw"
+      ],
+      "toner_rendimiento": "1,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF283X",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro M201dw",
+        "HP LaserJet Pro MFP M225dn",
+        "HP LaserJet Pro MFP M225dw",
+        "HP LaserJet Pro MFP M225nw"
+      ],
+      "toner_rendimiento": "2,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF287A",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro M402d",
+        "HP LaserJet Pro M402dn",
+        "HP LaserJet Pro M402dw",
+        "HP LaserJet Pro MFP M426fdn",
+        "HP LaserJet Pro MFP M426fdw",
+        "HP LaserJet Pro MFP M426dw"
+      ],
+      "toner_rendimiento": "3,100 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF226A",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP1215",
+        "HP Color LaserJet CP1515n",
+        "HP Color LaserJet CP1518ni",
+        "HP Color LaserJet CM1312 MFP"
+      ],
+      "toner_rendimiento": "1,200 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF226X",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP1215",
+        "HP Color LaserJet CP1515n",
+        "HP Color LaserJet CP1518ni",
+        "HP Color LaserJet CM1312 MFP"
+      ],
+      "toner_rendimiento": "2,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "Q2612A",
+      "impresoras_compatibles": [
+        "HP LaserJet 1010",
+        "HP LaserJet 1012",
+        "HP LaserJet 1015",
+        "HP LaserJet 1018",
+        "HP LaserJet 1020",
+        "HP LaserJet 1022",
+        "HP LaserJet 3015",
+        "HP LaserJet 3020",
+        "HP LaserJet 3030",
+        "HP LaserJet 3050",
+        "HP LaserJet 3052",
+        "HP LaserJet 3055"
+      ],
+      "toner_rendimiento": "2,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "Q2612X",
+      "impresoras_compatibles": [
+        "HP LaserJet 1010",
+        "HP LaserJet 1012",
+        "HP LaserJet 1015",
+        "HP LaserJet 1018",
+        "HP LaserJet 1020",
+        "HP LaserJet 1022",
+        "HP LaserJet 3015",
+        "HP LaserJet 3020",
+        "HP LaserJet 3030",
+        "HP LaserJet 3050",
+        "HP LaserJet 3052",
+        "HP LaserJet 3055"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CE505A",
+      "impresoras_compatibles": [
+        "HP LaserJet P2035",
+        "HP LaserJet P2035n",
+        "HP LaserJet P2055",
+        "HP LaserJet P2055dn"
+      ],
+      "toner_rendimiento": "2,300 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CE505X",
+      "impresoras_compatibles": [
+        "HP LaserJet P2035",
+        "HP LaserJet P2035n",
+        "HP LaserJet P2055",
+        "HP LaserJet P2055dn"
+      ],
+      "toner_rendimiento": "6,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "Q5949A",
+      "impresoras_compatibles": [
+        "HP LaserJet P2035",
+        "HP LaserJet P2035n",
+        "HP LaserJet P2055",
+        "HP LaserJet P2055dn"
+      ],
+      "toner_rendimiento": "2,300 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "Q5949X",
+      "impresoras_compatibles": [
+        "HP LaserJet P2035",
+        "HP LaserJet P2035n",
+        "HP LaserJet P2055",
+        "HP LaserJet P2055dn"
+      ],
+      "toner_rendimiento": "6,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
       "modelo": "CE255A",
       "impresoras_compatibles": [
         "HP LaserJet Enterprise MFP M525c",
@@ -32,53 +377,18 @@
         "HP LaserJet Pro 500 MFP M521dn",
         "HP LaserJet Pro 500 MFP M521dw"
       ],
-      "toner_rendimiento": "12,500 páginas",
+      "toner_rendimiento": "10,000 páginas",
       "tambor": {
         "modelo": "No aplica",
         "rendimiento": "No aplica"
       }
     },
     {
-      "modelo": "CE278A",
+      "modelo": "CF281A",
       "impresoras_compatibles": [
-        "HP LaserJet Pro P1606dn",
-        "HP LaserJet Pro P1606",
-        "HP LaserJet Pro P1566",
-        "HP LaserJet Pro P1560",
-        "HP LaserJet Pro MFP M1536dnf",
-        "HP LaserJet Pro MFP M1536dnf MFP"
-      ],
-      "toner_rendimiento": "1,600 páginas",
-      "tambor": {
-        "modelo": "No aplica",
-        "rendimiento": "No aplica"
-      }
-    },
-    {
-      "modelo": "CE285A",
-      "impresoras_compatibles": [
-        "HP LaserJet Pro P1102",
-        "HP LaserJet Pro P1102w",
-        "HP LaserJet Pro P1109",
-        "HP LaserJet Pro MFP M1212nf",
-        "HP LaserJet Pro MFP M1217nfw"
-      ],
-      "toner_rendimiento": "1,600 páginas",
-      "tambor": {
-        "modelo": "No aplica",
-        "rendimiento": "No aplica"
-      }
-    },
-    {
-      "modelo": "CE505A",
-      "impresoras_compatibles": [
-        "HP LaserJet P2035",
-        "HP LaserJet P2035n",
-        "HP LaserJet P2035dn",
-        "HP LaserJet P2055",
-        "HP LaserJet P2055d",
-        "HP LaserJet P2055dn",
-        "HP LaserJet P2055x"
+        "HP Color LaserJet CP3525",
+        "HP Color LaserJet CP3525n",
+        "HP Color LaserJet CP3525dn"
       ],
       "toner_rendimiento": "2,300 páginas",
       "tambor": {
@@ -87,15 +397,11 @@
       }
     },
     {
-      "modelo": "CE505X",
+      "modelo": "CF281X",
       "impresoras_compatibles": [
-        "HP LaserJet P2035",
-        "HP LaserJet P2035n",
-        "HP LaserJet P2035dn",
-        "HP LaserJet P2055",
-        "HP LaserJet P2055d",
-        "HP LaserJet P2055dn",
-        "HP LaserJet P2055x"
+        "HP Color LaserJet CP3525",
+        "HP Color LaserJet CP3525n",
+        "HP Color LaserJet CP3525dn"
       ],
       "toner_rendimiento": "6,500 páginas",
       "tambor": {
@@ -104,106 +410,192 @@
       }
     },
     {
-      "modelo": "CF217X",
+      "modelo": "CF214A",
       "impresoras_compatibles": [
-        "HP LaserJet Pro M102a",
-        "HP LaserJet Pro M102w",
-        "HP LaserJet Pro MFP M130a",
-        "HP LaserJet Pro MFP M130fn",
-        "HP LaserJet Pro MFP M130fw",
-        "HP LaserJet Pro MFP M130nw"
+        "HP Color LaserJet CP1215",
+        "HP Color LaserJet CP1515n",
+        "HP Color LaserJet CP1518ni",
+        "HP Color LaserJet CM1312 MFP"
+      ],
+      "toner_rendimiento": "1,400 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF214X",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP1215",
+        "HP Color LaserJet CP1515n",
+        "HP Color LaserJet CP1518ni",
+        "HP Color LaserJet CM1312 MFP"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CC364A",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP3505",
+        "HP Color LaserJet CM3530 MFP",
+        "HP Color LaserJet CM3530fs MFP"
+      ],
+      "toner_rendimiento": "6,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CC364X",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP3505",
+        "HP Color LaserJet CM3530 MFP",
+        "HP Color LaserJet CM3530fs MFP"
       ],
       "toner_rendimiento": "12,000 páginas",
       "tambor": {
-        "modelo": "CF219A",
-        "rendimiento": "12,000 páginas"
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
       }
     },
     {
-      "modelo": "CF219A",
+      "modelo": "Q7551A",
       "impresoras_compatibles": [
-        "HP LaserJet Pro M102a",
-        "HP LaserJet Pro M102w",
-        "HP LaserJet Pro MFP M130a",
-        "HP LaserJet Pro MFP M130fn",
-        "HP LaserJet Pro MFP M130fw",
-        "HP LaserJet Pro MFP M130nw"
+        "HP LaserJet P3015",
+        "HP LaserJet P3015d",
+        "HP LaserJet P3015dn",
+        "HP LaserJet P3015x",
+        "HP LaserJet M525"
       ],
-      "toner_rendimiento": "1,600 páginas",
-      "tambor": {
-        "modelo": "CF219A",
-        "rendimiento": "1,600 páginas"
-      }
-    },
-    {
-      "modelo": "CF226A",
-      "impresoras_compatibles": [
-        "HP LaserJet Pro M402d",
-        "HP LaserJet Pro M402dn",
-        "HP LaserJet Pro M402dw",
-        "HP LaserJet Pro MFP M426dn",
-        "HP LaserJet Pro MFP M426dw",
-        "HP LaserJet Pro MFP M426fdn",
-        "HP LaserJet Pro MFP M426fdw"
-      ],
-      "toner_rendimiento": "3,100 páginas",
+      "toner_rendimiento": "6,000 páginas",
       "tambor": {
         "modelo": "No aplica",
         "rendimiento": "No aplica"
       }
     },
     {
-      "modelo": "CF226X",
+      "modelo": "Q7551X",
       "impresoras_compatibles": [
-        "HP LaserJet Pro M402d",
-        "HP LaserJet Pro M402dn",
-        "HP LaserJet Pro M402dw",
-        "HP LaserJet Pro MFP M426dn",
-        "HP LaserJet Pro MFP M426dw",
-        "HP LaserJet Pro MFP M426fdn",
-        "HP LaserJet Pro MFP M426fdw"
+        "HP LaserJet P3015",
+        "HP LaserJet P3015d",
+        "HP LaserJet P3015dn",
+        "HP LaserJet P3015x",
+        "HP LaserJet M525"
       ],
-      "toner_rendimiento": "9,000 páginas",
+      "toner_rendimiento": "10,000 páginas",
       "tambor": {
         "modelo": "No aplica",
         "rendimiento": "No aplica"
       }
     },
     {
-      "modelo": "CF230A",
+      "modelo": "Q7570A",
       "impresoras_compatibles": [
-        "HP LaserJet Pro M203d",
-        "HP LaserJet Pro M203dn",
-        "HP LaserJet Pro M203dw",
-        "HP LaserJet Pro MFP M227fdn",
-        "HP LaserJet Pro MFP M227fdw",
-        "HP LaserJet Pro MFP M227sdn"
+        "HP LaserJet P3010",
+        "HP LaserJet P3015",
+        "HP LaserJet P3015d",
+        "HP LaserJet P3015dn",
+        "HP LaserJet P3015x",
+        "HP LaserJet M525"
       ],
-      "toner_rendimiento": "1,600 páginas",
+      "toner_rendimiento": "6,000 páginas",
       "tambor": {
         "modelo": "No aplica",
         "rendimiento": "No aplica"
       }
     },
     {
-      "modelo": "CF248A",
+      "modelo": "Q2613A",
       "impresoras_compatibles": [
-        "HP LaserJet Pro MFP M148dw",
-        "HP LaserJet Pro MFP M148fdw",
-        "HP LaserJet Pro MFP M148a"
+        "HP LaserJet 2400",
+        "HP LaserJet 2410",
+        "HP LaserJet 2420",
+        "HP LaserJet 2430",
+        "HP LaserJet 3005",
+        "HP LaserJet 3015",
+        "HP LaserJet 3020",
+        "HP LaserJet 3030",
+        "HP LaserJet 3050",
+        "HP LaserJet 3052",
+        "HP LaserJet 3055"
       ],
-      "toner_rendimiento": "1,500 páginas",
+      "toner_rendimiento": "2,500 páginas",
       "tambor": {
         "modelo": "No aplica",
         "rendimiento": "No aplica"
       }
     },
     {
-      "modelo": "CF248X",
+      "modelo": "Q2613X",
       "impresoras_compatibles": [
-        "HP LaserJet Pro MFP M148dw",
-        "HP LaserJet Pro MFP M148fdw",
-        "HP LaserJet Pro MFP M148a"
+        "HP LaserJet 2400",
+        "HP LaserJet 2410",
+        "HP LaserJet 2420",
+        "HP LaserJet 2430",
+        "HP LaserJet 3005",
+        "HP LaserJet 3015",
+        "HP LaserJet 3020",
+        "HP LaserJet 3030",
+        "HP LaserJet 3050",
+        "HP LaserJet 3052",
+        "HP LaserJet 3055"
+      ],
+      "toner_rendimiento": "6,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "Q2610A",
+      "impresoras_compatibles": [
+        "HP LaserJet 2300",
+        "HP LaserJet 2300d",
+        "HP LaserJet 2300dn",
+        "HP LaserJet 2300n"
+      ],
+      "toner_rendimiento": "2,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "C4127X",
+      "impresoras_compatibles": [
+        "HP Color LaserJet 4730",
+        "HP Color LaserJet 4730MFP"
+      ],
+      "toner_rendimiento": "12,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "Q8061X",
+      "impresoras_compatibles": [
+        "HP Color LaserJet 4730",
+        "HP Color LaserJet 4730MFP"
+      ],
+      "toner_rendimiento": "12,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "Q6511A",
+      "impresoras_compatibles": [
+        "HP LaserJet 2420",
+        "HP LaserJet 2430",
+        "HP LaserJet 3390",
+        "HP LaserJet 3380"
       ],
       "toner_rendimiento": "3,000 páginas",
       "tambor": {
@@ -212,88 +604,74 @@
       }
     },
     {
-      "modelo": "CF258X",
+      "modelo": "Q6511X",
       "impresoras_compatibles": [
-        "HP LaserJet Pro MFP M577dn",
-        "HP LaserJet Pro MFP M577f",
-        "HP LaserJet Pro MFP M577z",
-        "HP LaserJet Pro MFP M570dn",
-        "HP LaserJet Pro MFP M570f"
+        "HP LaserJet 2420",
+        "HP LaserJet 2430",
+        "HP LaserJet 3390",
+        "HP LaserJet 3380"
       ],
-      "toner_rendimiento": "10,500 páginas",
+      "toner_rendimiento": "8,000 páginas",
       "tambor": {
         "modelo": "No aplica",
         "rendimiento": "No aplica"
       }
     },
     {
-      "modelo": "CF258X-AI/CONCHIP",
+      "modelo": "Q7516A",
       "impresoras_compatibles": [
-        "HP LaserJet Pro MFP M577dn",
-        "HP LaserJet Pro MFP M577f",
-        "HP LaserJet Pro MFP M577z",
-        "HP LaserJet Pro MFP M570dn",
-        "HP LaserJet Pro MFP M570f"
+        "HP LaserJet 4200",
+        "HP LaserJet 4300"
       ],
-      "toner_rendimiento": "10,500 páginas",
+      "toner_rendimiento": "10,000 páginas",
       "tambor": {
         "modelo": "No aplica",
         "rendimiento": "No aplica"
       }
     },
     {
-      "modelo": "CF279A",
+      "modelo": "C4092",
       "impresoras_compatibles": [
-        "HP LaserJet Pro M12a",
-        "HP LaserJet Pro M12w",
-        "HP LaserJet Pro MFP M26a",
-        "HP LaserJet Pro MFP M26nw"
+        "HP LaserJet 1160",
+        "HP LaserJet 1320"
       ],
-      "toner_rendimiento": "1,000 páginas",
+      "toner_rendimiento": "2,500 páginas",
       "tambor": {
         "modelo": "No aplica",
         "rendimiento": "No aplica"
       }
     },
     {
-      "modelo": "CF283A",
+      "modelo": "C4096A",
       "impresoras_compatibles": [
-        "HP LaserJet Pro M125a",
-        "HP LaserJet Pro M125nw",
-        "HP LaserJet Pro MFP M127fn",
-        "HP LaserJet Pro MFP M127fw"
+        "HP LaserJet 1160",
+        "HP LaserJet 1320"
       ],
-      "toner_rendimiento": "1,500 páginas",
+      "toner_rendimiento": "5,000 páginas",
       "tambor": {
         "modelo": "No aplica",
         "rendimiento": "No aplica"
       }
     },
     {
-      "modelo": "CF283X",
+      "modelo": "CF233A",
       "impresoras_compatibles": [
-        "HP LaserJet Pro M125a",
-        "HP LaserJet Pro M125nw",
-        "HP LaserJet Pro MFP M127fn",
-        "HP LaserJet Pro MFP M127fw"
+        "HP Color LaserJet CP3505",
+        "HP Color LaserJet CM3530 MFP"
       ],
-      "toner_rendimiento": "3,000 páginas",
+      "toner_rendimiento": "2,300 páginas",
       "tambor": {
         "modelo": "No aplica",
         "rendimiento": "No aplica"
       }
     },
     {
-      "modelo": "CF287X",
+      "modelo": "CF289A",
       "impresoras_compatibles": [
-        "HP LaserJet Pro MFP M477fnw",
-        "HP LaserJet Pro MFP M477fdw",
-        "HP LaserJet Pro MFP M477fdn",
-        "HP LaserJet Pro MFP M452dn",
-        "HP LaserJet Pro MFP M452dw",
-        "HP LaserJet Pro MFP M452nw"
+        "HP Color LaserJet CP3505",
+        "HP Color LaserJet CM3530 MFP"
       ],
-      "toner_rendimiento": "6,900 páginas",
+      "toner_rendimiento": "2,300 páginas",
       "tambor": {
         "modelo": "No aplica",
         "rendimiento": "No aplica"
@@ -302,17 +680,791 @@
     {
       "modelo": "CF289X",
       "impresoras_compatibles": [
-        "HP LaserJet Pro MFP M477fnw",
-        "HP LaserJet Pro MFP M477fdw",
-        "HP LaserJet Pro MFP M477fdn",
-        "HP LaserJet Pro MFP M452dn",
-        "HP LaserJet Pro MFP M452dw",
-        "HP LaserJet Pro MFP M452nw"
+        "HP Color LaserJet CP3505",
+        "HP Color LaserJet CM3530 MFP"
       ],
-      "toner_rendimiento": "6,900 páginas",
+      "toner_rendimiento": "6,500 páginas",
       "tambor": {
         "modelo": "No aplica",
         "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF258A",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP3525",
+        "HP Color LaserJet CP3525n",
+        "HP Color LaserJet CP3525dn"
+      ],
+      "toner_rendimiento": "2,300 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "CF258X",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP3525",
+        "HP Color LaserJet CP3525n",
+        "HP Color LaserJet CP3525dn"
+      ],
+      "toner_rendimiento": "6,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W1103A",
+      "impresoras_compatibles": [
+        "HP LaserJet 3050",
+        "HP LaserJet 3052",
+        "HP LaserJet 3055"
+      ],
+      "toner_rendimiento": "2,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W1105A S/CHIP",
+      "impresoras_compatibles": [
+        "HP LaserJet 3050",
+        "HP LaserJet 3052",
+        "HP LaserJet 3055"
+      ],
+      "toner_rendimiento": "2,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W1105X SIN/CHIP",
+      "impresoras_compatibles": [
+        "HP LaserJet 3050",
+        "HP LaserJet 3052",
+        "HP LaserJet 3055"
+      ],
+      "toner_rendimiento": "6,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    }
+  ],
+  "Samsung": [
+    {
+      "modelo": "MLT-D101S",
+      "impresoras_compatibles": [
+        "Samsung ML-2165",
+        "Samsung ML-2160"
+      ],
+      "toner_rendimiento": "1,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D103S",
+      "impresoras_compatibles": [
+        "Samsung ML-1660",
+        "Samsung ML-1665"
+      ],
+      "toner_rendimiento": "1,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D103L",
+      "impresoras_compatibles": [
+        "Samsung ML-1660",
+        "Samsung ML-1665"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D104S",
+      "impresoras_compatibles": [
+        "Samsung ML-1660"
+      ],
+      "toner_rendimiento": "1,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D105L",
+      "impresoras_compatibles": [
+        "Samsung ML-1910"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D111S",
+      "impresoras_compatibles": [
+        "Samsung ML-2020",
+        "Samsung ML-2020 V2"
+      ],
+      "toner_rendimiento": "1,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D111L",
+      "impresoras_compatibles": [
+        "Samsung ML-2020K",
+        "Samsung ML-2020K V2"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D115L",
+      "impresoras_compatibles": [
+        "Samsung ML-2850",
+        "Samsung ML-2851ND"
+      ],
+      "toner_rendimiento": "3,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D116L",
+      "impresoras_compatibles": [
+        "Samsung ML-2850",
+        "Samsung ML-2851ND"
+      ],
+      "toner_rendimiento": "3,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D118S",
+      "impresoras_compatibles": [
+        "Samsung ML-1610D2",
+        "Samsung ML-1640"
+      ],
+      "toner_rendimiento": "1,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D118L",
+      "impresoras_compatibles": [
+        "Samsung ML-1610D2",
+        "Samsung ML-1640"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "ML-1710",
+      "impresoras_compatibles": [
+        "Samsung ML-1710"
+      ],
+      "toner_rendimiento": "1,000 páginas",
+      "tambor": {
+        "modelo": "DR-110",
+        "rendimiento": "10,000 páginas"
+      }
+    },
+    {
+      "modelo": "ML-2250DS",
+      "impresoras_compatibles": [
+        "Samsung ML-2250"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "DR-220",
+        "rendimiento": "15,000 páginas"
+      }
+    },
+    {
+      "modelo": "MLT-D2850B",
+      "impresoras_compatibles": [
+        "Samsung ML-2850",
+        "Samsung ML-2851ND"
+      ],
+      "toner_rendimiento": "3,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "SCX-D4200A",
+      "impresoras_compatibles": [
+        "Samsung SCX-4200",
+        "Samsung SCX-4216"
+      ],
+      "toner_rendimiento": "1,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-109S",
+      "impresoras_compatibles": [
+        "Samsung SCX-4300"
+      ],
+      "toner_rendimiento": "2,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D201L",
+      "impresoras_compatibles": [
+        "Samsung ML-2510",
+        "Samsung ML-2570"
+      ],
+      "toner_rendimiento": "3,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D205E",
+      "impresoras_compatibles": [
+        "Samsung ML-3310",
+        "Samsung ML-3312"
+      ],
+      "toner_rendimiento": "2,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D205L",
+      "impresoras_compatibles": [
+        "Samsung ML-3310",
+        "Samsung ML-3312"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D209L",
+      "impresoras_compatibles": [
+        "Samsung SCX-4828FN"
+      ],
+      "toner_rendimiento": "3,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D203L",
+      "impresoras_compatibles": [
+        "Samsung ML-2850",
+        "Samsung ML-2851ND",
+        "Samsung SCX-4824"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D203E",
+      "impresoras_compatibles": [
+        "Samsung ML-2850",
+        "Samsung ML-2851ND",
+        "Samsung SCX-4824"
+      ],
+      "toner_rendimiento": "2,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D203U",
+      "impresoras_compatibles": [
+        "Samsung ML-2850",
+        "Samsung SCX-4828FN"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D203U V2",
+      "impresoras_compatibles": [
+        "Samsung ML-2850",
+        "Samsung SCX-4828FN"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D208S",
+      "impresoras_compatibles": [
+        "Samsung ML-2855",
+        "Samsung SCX-4824"
+      ],
+      "toner_rendimiento": "1,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D208L",
+      "impresoras_compatibles": [
+        "Samsung ML-2855",
+        "Samsung SCX-4824"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D307L",
+      "impresoras_compatibles": [
+        "Samsung ML-3470",
+        "Samsung SCX-4729"
+      ],
+      "toner_rendimiento": "3,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D307E",
+      "impresoras_compatibles": [
+        "Samsung ML-3470",
+        "Samsung SCX-4729"
+      ],
+      "toner_rendimiento": "2,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D358S",
+      "impresoras_compatibles": [
+        "Samsung SCX-5637",
+        "Samsung SCX-5639"
+      ],
+      "toner_rendimiento": "7,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "SCX-D4725A",
+      "impresoras_compatibles": [
+        "Samsung SCX-4725FN"
+      ],
+      "toner_rendimiento": "2,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "SCX-4655FN",
+      "impresoras_compatibles": [
+        "Samsung SCX-4655FN"
+      ],
+      "toner_rendimiento": "10,000 páginas",
+      "tambor": {
+        "modelo": "DR-4655",
+        "rendimiento": "50,000 páginas"
+      }
+    },
+    {
+      "modelo": "SCX-6320D8",
+      "impresoras_compatibles": [
+        "Samsung SCX-6320"
+      ],
+      "toner_rendimiento": "8,000 páginas",
+      "tambor": {
+        "modelo": "DR-630",
+        "rendimiento": "50,000 páginas"
+      }
+    },
+    {
+      "modelo": "SCX-D6555A TONER",
+      "impresoras_compatibles": [
+        "Samsung SCX-6555"
+      ],
+      "toner_rendimiento": "20,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D708S",
+      "impresoras_compatibles": [
+        "Samsung SCX-6345"
+      ],
+      "toner_rendimiento": "5,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "MLT-D709S",
+      "impresoras_compatibles": [
+        "Samsung SCX-6545"
+      ],
+      "toner_rendimiento": "5,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    }
+  ],
+  "Brother": [
+    {
+      "modelo": "TN1060",
+      "impresoras_compatibles": [
+        "HL-1110",
+        "HL-1210W",
+        "DCP-1510",
+        "DCP-1610W",
+        "MFC-1810"
+      ],
+      "toner_rendimiento": "1,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "TN350",
+      "impresoras_compatibles": [
+        "HL-2140",
+        "HL-2150N",
+        "DCP-7030",
+        "MFC-7320"
+      ],
+      "toner_rendimiento": "1,400 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "TN360",
+      "impresoras_compatibles": [
+        "HL-2130",
+        "HL-2132",
+        "DCP-7055",
+        "MFC-7360N"
+      ],
+      "toner_rendimiento": "1,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "TN410",
+      "impresoras_compatibles": [
+        "HL-5240",
+        "HL-5250DN",
+        "DCP-8060",
+        "MFC-8460N"
+      ],
+      "toner_rendimiento": "2,600 páginas",
+      "tambor": {
+        "modelo": "DR410",
+        "rendimiento": "12,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN420",
+      "impresoras_compatibles": [
+        "HL-5250DN",
+        "HL-5270DN",
+        "DCP-8065DN",
+        "MFC-8660DN"
+      ],
+      "toner_rendimiento": "2,600 páginas",
+      "tambor": {
+        "modelo": "DR420",
+        "rendimiento": "12,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN450",
+      "impresoras_compatibles": [
+        "HL-5280DN",
+        "HL-5340D",
+        "DCP-8070D",
+        "MFC-8870DN"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "DR450",
+        "rendimiento": "12,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN460",
+      "impresoras_compatibles": [
+        "HL-6180DW",
+        "HL-6170DW",
+        "DCP-8110DN",
+        "MFC-8510DN"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "DR460",
+        "rendimiento": "12,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN560",
+      "impresoras_compatibles": [
+        "HL-6180DW",
+        "HL-6170DW",
+        "DCP-8110DN",
+        "MFC-8510DN"
+      ],
+      "toner_rendimiento": "3,500 páginas",
+      "tambor": {
+        "modelo": "DR560",
+        "rendimiento": "12,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN570",
+      "impresoras_compatibles": [
+        "HL-6180DW",
+        "HL-6170DW",
+        "DCP-8110DN",
+        "MFC-8510DN"
+      ],
+      "toner_rendimiento": "3,500 páginas",
+      "tambor": {
+        "modelo": "DR570",
+        "rendimiento": "12,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN580",
+      "impresoras_compatibles": [
+        "HL-6180DW",
+        "HL-6170DW",
+        "DCP-8110DN",
+        "MFC-8510DN"
+      ],
+      "toner_rendimiento": "4,000 páginas",
+      "tambor": {
+        "modelo": "DR580",
+        "rendimiento": "12,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN620",
+      "impresoras_compatibles": [
+        "HL-6180DW",
+        "HL-6170DW",
+        "DCP-8110DN",
+        "MFC-8510DN"
+      ],
+      "toner_rendimiento": "4,000 páginas",
+      "tambor": {
+        "modelo": "DR620",
+        "rendimiento": "12,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN650",
+      "impresoras_compatibles": [
+        "HL-6180DW",
+        "HL-6170DW",
+        "DCP-8110DN",
+        "MFC-8510DN"
+      ],
+      "toner_rendimiento": "4,500 páginas",
+      "tambor": {
+        "modelo": "DR650",
+        "rendimiento": "12,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN630",
+      "impresoras_compatibles": [
+        "HL-6180DW",
+        "HL-6170DW",
+        "DCP-8110DN",
+        "MFC-8510DN"
+      ],
+      "toner_rendimiento": "4,500 páginas",
+      "tambor": {
+        "modelo": "DR630",
+        "rendimiento": "12,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN660",
+      "impresoras_compatibles": [
+        "HL-6180DW",
+        "HL-6170DW",
+        "DCP-8110DN",
+        "MFC-8510DN"
+      ],
+      "toner_rendimiento": "5,000 páginas",
+      "tambor": {
+        "modelo": "DR660",
+        "rendimiento": "12,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN720",
+      "impresoras_compatibles": [
+        "HL-5440D",
+        "HL-5450DN"
+      ],
+      "toner_rendimiento": "8,000 páginas",
+      "tambor": {
+        "modelo": "DR720",
+        "rendimiento": "50,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN730",
+      "impresoras_compatibles": [
+        "HL-5450DN",
+        "HL-5470DW"
+      ],
+      "toner_rendimiento": "8,500 páginas",
+      "tambor": {
+        "modelo": "DR730",
+        "rendimiento": "50,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN750",
+      "impresoras_compatibles": [
+        "HL-6180DW",
+        "HL-6200DW"
+      ],
+      "toner_rendimiento": "10,000 páginas",
+      "tambor": {
+        "modelo": "DR750",
+        "rendimiento": "50,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN760",
+      "impresoras_compatibles": [
+        "HL-6180DW",
+        "HL-6200DW"
+      ],
+      "toner_rendimiento": "10,000 páginas",
+      "tambor": {
+        "modelo": "DR760",
+        "rendimiento": "50,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN780",
+      "impresoras_compatibles": [
+        "HL-6180DW",
+        "HL-6200DW"
+      ],
+      "toner_rendimiento": "10,000 páginas",
+      "tambor": {
+        "modelo": "DR780",
+        "rendimiento": "50,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN850",
+      "impresoras_compatibles": [
+        "HL-L6200DW",
+        "HL-L6200DWT",
+        "MFC-L6700DW",
+        "MFC-L6900DW"
+      ],
+      "toner_rendimiento": "12,000 páginas",
+      "tambor": {
+        "modelo": "DR-820/DR-890",
+        "rendimiento": "50,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN880",
+      "impresoras_compatibles": [
+        "HL-L6200DW",
+        "HL-L6200DWT",
+        "MFC-L6700DW",
+        "MFC-L6900DW"
+      ],
+      "toner_rendimiento": "12,000 páginas",
+      "tambor": {
+        "modelo": "DR-820/DR-890",
+        "rendimiento": "50,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN890",
+      "impresoras_compatibles": [
+        "HL-L6200DW",
+        "HL-L6200DWT",
+        "MFC-L6700DW",
+        "MFC-L6900DW"
+      ],
+      "toner_rendimiento": "12,000 páginas",
+      "tambor": {
+        "modelo": "DR-820/DR-890",
+        "rendimiento": "50,000 páginas"
       }
     }
   ]
