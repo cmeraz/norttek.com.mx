@@ -50,7 +50,10 @@ function impresorasList($impresoras) {
      HTML: Sección principal con título, subtítulo y descripción
      ====================================== -->
 
-<div class="pt-[150px] px-4 max-w-7xl mx-auto">
+<div class="pt-[180px] px-4 max-w-7xl mx-auto">
+    <a href="index.php" class="text-sm text-blue-600 hover:underline flex items-center gap-1 mb-4">
+        <i class="fas fa-arrow-left"></i> Volver al inicio
+    </a>
 <section class="p-8 mb-8 max-w-6xl mx-auto">
 
     <!-- Título principal con ícono -->
@@ -145,7 +148,7 @@ function impresorasList($impresoras) {
 <!-- ======================================
      Tabla interactiva premium
      ====================================== -->
-<div class="overflow-x-auto shadow-lg rounded-lg relative">
+<div class="overflow-x-auto shadow-lg rounded-lg relative mb-20">
     <table id="tablaCartuchos" class="min-w-full table-fixed border-collapse">
         <thead class="text-white sticky top-0 z-10" style="background-color: rgba(22, 119, 166, 0.5);">
             <tr>
@@ -176,6 +179,7 @@ function impresorasList($impresoras) {
             <?php endforeach; ?>
         </tbody>
     </table>
+</div>
 </div>
 
 <!-- ======================================
