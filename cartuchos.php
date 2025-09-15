@@ -86,18 +86,32 @@ function impresorasList($impresoras) {
         <!-- Texto descriptivo -->
         <div class="flex-1 space-y-4">
             <p class="text-gray-700 text-lg leading-relaxed">
-                Bienvenido al catálogo interactivo de <strong>cartuchos de toner HP</strong>, diseñado para que encuentres de manera rápida y segura el cartucho compatible con tu impresora. 
-                Cada registro incluye información detallada sobre <strong>marca, modelo, impresoras compatibles, rendimiento del toner</strong> y, cuando corresponda, <strong>modelo y rendimiento del tambor</strong>.
-            </p>
+    Sabemos que al momento de comprar un cartucho siempre surge la misma pregunta: 
+    <em>¿será el adecuado para mi impresora?</em>.  
+    Por eso creamos esta <strong>herramienta interactiva</strong>, pensada para que encuentres en segundos el 
+    <strong>cartucho o tambor correcto</strong>, con información confiable sobre <strong>marcas, modelos, compatibilidad y rendimiento</strong>.  
+    Así podrás elegir tu consumible con total seguridad, evitando errores y ahorrando tiempo.
+</p>
+
 
             <p class="text-gray-700 text-lg leading-relaxed">
                 Nuestra <span class="font-semibold text-blue-600">tabla interactiva</span> permite filtrar en tiempo real cualquier cartucho por marca, modelo, impresora o tambor, garantizando eficiencia y evitando errores de compatibilidad.
             </p>
 
-            <p class="text-gray-700 text-lg leading-relaxed flex items-center gap-2">
-                <i class="fas fa-bolt text-orange-500"></i>
-                <span>Rápido, intuitivo y confiable: todo lo que necesitas para elegir el cartucho correcto sin complicaciones.</span>
-            </p>
+
+<p class="text-gray-700 text-lg leading-relaxed flex items-center gap-2">
+    <i class="fas fa-bolt text-orange-500"></i>
+    <span><strong>Rápido, intuitivo y confiable</strong>: diseñado para ahorrarte tiempo y garantizar compatibilidad total con tu impresora.</span>
+</p>
+
+<p class="text-center mt-4">
+    <a href="https://tienda.norttek.com.mx" target="_blank" 
+       class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition duration-300 inline-flex items-center gap-2">
+        🛒 Comprar mi cartucho de tóner ahora
+    </a>
+</p>
+
+
         </div>
     </div>
 </section>
