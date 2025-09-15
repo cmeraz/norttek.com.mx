@@ -198,35 +198,40 @@ function actualizarContador() {
     contador.textContent = visibles.length;
 }
 
-// Inicializar contador al cargar la página
-window.addEventListener("DOMContentLoaded", () => {
-    actualizarContador();
-});
+// Función de normalización (minúsculas y sin acentos)
+function normalizar(texto) {
+    return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
 
-// Filtrado en vivo según el texto ingresado
+// Filtrado mejorado: palabras separadas y compuestas
 buscador.addEventListener("input", function () {
-    const filtro = this.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
+    const filtro = normalizar(this.value.trim());
+    const palabras = filtro.split(/\s+/); // Dividir por espacios
 
     filas.forEach(fila => {
-        const celdas = fila.querySelectorAll("td");
-        let textoFila = "";
-        celdas.forEach(celda => textoFila += celda.innerText + " ");
+        const textoFila = Array.from(fila.cells)
+            .map(celda => normalizar(celda.innerText))
+            .join(" ");
 
-        const textoNormalizado = textoFila.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
-        fila.style.display = textoNormalizado.includes(filtro) ? "" : "none";
+        // Mostrar la fila solo si contiene todas las palabras
+        const mostrar = palabras.every(palabra => textoFila.includes(palabra));
+        fila.style.display = mostrar ? "" : "none";
     });
 
     actualizarContador();
 });
 
-// Botón para borrar búsqueda y mostrar todos los cartuchos
+// Botón para limpiar búsqueda
 btnBorrar.addEventListener("click", () => {
     buscador.value = "";
     filas.forEach(fila => fila.style.display = "");
     actualizarContador();
 });
+
+// Inicializar contador al cargar la página
+window.addEventListener("DOMContentLoaded", () => actualizarContador());
 </script>
+
 
 <?php
 // ======================================
