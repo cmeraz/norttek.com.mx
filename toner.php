@@ -36,6 +36,7 @@ function impresorasList($impresoras) {
     return $html;
 }
 ?>
+
 <div class="pt-[150px] p-4 overflow-x-auto"]>
 <!-- 🔍 Formulario de búsqueda -->
 <div class="mt-[50px] p-4">
@@ -107,7 +108,7 @@ buscador.addEventListener("input", function () {
             if (filtro.trim() !== "") {
                 celdas.forEach(celda => {
                     const regex = new RegExp(`(${filtro})`, "gi");
-                    celda.innerHTML = celda.innerHTML.replace(regex, `<mark class="bg-yellow-300">$1</mark>`);
+                    celda.innerHTML = celda.innerHTML.replace(regex, `<mark style="background-color: rgba(22, 119, 166, 0.5);">$1</mark>`);
                 });
             }
         } else {
