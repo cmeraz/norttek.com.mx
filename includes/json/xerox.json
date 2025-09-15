@@ -1,0 +1,430 @@
+{
+  "Xerox": [
+    {
+      "modelo": "006R01278 X4118",
+      "impresoras_compatibles": [
+        "Xerox WorkCentre 4118"
+      ],
+      "toner_rendimiento": "8,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "013R00621 PE220",
+      "impresoras_compatibles": [
+        "Samsung ML-1610",
+        "Samsung ML-2010",
+        "Samsung SCX-4521F",
+        "Samsung SCX-4321",
+        "Dell Laser Printer 1100",
+        "Xerox 3117",
+        "Xerox PE220"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R01485 X3220",
+      "impresoras_compatibles": [
+        "Xerox WorkCentre 3210",
+        "Xerox WorkCentre 3220"
+      ],
+      "toner_rendimiento": "2,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R01487 X3220",
+      "impresoras_compatibles": [
+        "Xerox WorkCentre 3210",
+        "Xerox WorkCentre 3220"
+      ],
+      "toner_rendimiento": "4,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R02723 X3615X",
+      "impresoras_compatibles": [
+        "Xerox WorkCentre 3615"
+      ],
+      "toner_rendimiento": "14,100 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R02732 X3615XX",
+      "impresoras_compatibles": [
+        "Xerox Phaser 3610",
+        "Xerox WorkCentre 3615"
+      ],
+      "toner_rendimiento": "25,300 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "006R01046 PRO245",
+      "impresoras_compatibles": [
+        "Xerox WorkCentre PRO245"
+      ],
+      "toner_rendimiento": "30,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R02182 X3045",
+      "impresoras_compatibles": [
+        "Xerox WorkCentre 3045",
+        "Xerox Phaser 3040",
+        "Xerox Phaser 3010"
+      ],
+      "toner_rendimiento": "2,300 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R02310 X3325",
+      "impresoras_compatibles": [
+        "Xerox WorkCentre 3325"
+      ],
+      "toner_rendimiento": "5,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R02312 X3325",
+      "impresoras_compatibles": [
+        "Xerox WorkCentre 3325"
+      ],
+      "toner_rendimiento": "11,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R03621 X3330",
+      "impresoras_compatibles": [
+        "Xerox Phaser 3335"
+      ],
+      "toner_rendimiento": "8,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R01529 X3550A",
+      "impresoras_compatibles": [
+        "Xerox WorkCentre 3550"
+      ],
+      "toner_rendimiento": "5,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R01531 X3550",
+      "impresoras_compatibles": [
+        "Xerox WorkCentre 3550"
+      ],
+      "toner_rendimiento": "11,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "108R00794 X3635",
+      "impresoras_compatibles": [
+        "Xerox Phaser 3635"
+      ],
+      "toner_rendimiento": "5,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R01410 X4250",
+      "impresoras_compatibles": [
+        "Xerox WorkCentre 4250",
+        "Xerox WorkCentre 4260"
+      ],
+      "toner_rendimiento": "25,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R01305 X5230",
+      "impresoras_compatibles": [
+        "Xerox WorkCentre 5222",
+        "Xerox WorkCentre 5225",
+        "Xerox WorkCentre 5230"
+      ],
+      "toner_rendimiento": "30,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "006R01182 XC128",
+      "impresoras_compatibles": [
+        "Xerox WorkCentre M123",
+        "Xerox WorkCentre M128"
+      ],
+      "toner_rendimiento": "30,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R02778 XER3225",
+      "impresoras_compatibles": [
+        "Xerox WorkCentre 3225"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R02773 X3020",
+      "impresoras_compatibles": [
+        "Xerox Phaser 3020",
+        "Xerox Phaser 3025"
+      ],
+      "toner_rendimiento": "1,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "013R00625 X3119",
+      "impresoras_compatibles": [
+        "Xerox WorkCentre 3119",
+        "Xerox PE16"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R01378 X3100",
+      "impresoras_compatibles": [
+        "Xerox Phaser 3100 MFP"
+      ],
+      "toner_rendimiento": "2,200 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R01373 X3250",
+      "impresoras_compatibles": [
+        "Xerox Phaser 3250"
+      ],
+      "toner_rendimiento": "3,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R01374 X3250",
+      "impresoras_compatibles": [
+        "Xerox Phaser 3250"
+      ],
+      "toner_rendimiento": "5,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R02304 X3320",
+      "impresoras_compatibles": [
+        "Xerox Phaser 3320"
+      ],
+      "toner_rendimiento": "5,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R02306 X3320",
+      "impresoras_compatibles": [
+        "Xerox Phaser 3320"
+      ],
+      "toner_rendimiento": "11,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R00555 X3330",
+      "impresoras_compatibles": [
+        "Xerox Phaser 3330",
+        "Xerox WorkCentre 3335",
+        "Xerox WorkCentre 3345"
+      ],
+      "toner_rendimiento": "30,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R01245 XER3428",
+      "impresoras_compatibles": [
+        "Xerox Phaser 3428"
+      ],
+      "toner_rendimiento": "4,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R01246 XER3428",
+      "impresoras_compatibles": [
+        "Xerox Phaser 3428"
+      ],
+      "toner_rendimiento": "8,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R02738 X3655",
+      "impresoras_compatibles": [
+        "Xerox WorkCentre 3655"
+      ],
+      "toner_rendimiento": "14,400 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "113R00711 X4510",
+      "impresoras_compatibles": [
+        "Xerox 4510V_B",
+        "Xerox 4510V_DT",
+        "Xerox 4510V_DX",
+        "Xerox 4510V_N"
+      ],
+      "toner_rendimiento": "10,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "113R00712 X4510",
+      "impresoras_compatibles": [
+        "Xerox 4510V_B",
+        "Xerox 4510V_DT",
+        "Xerox 4510V_DX",
+        "Xerox 4510V_N"
+      ],
+      "toner_rendimiento": "19,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "006R01573 X5024",
+      "impresoras_compatibles": [
+        "Xerox WorkCentre 5022",
+        "Xerox WorkCentre 5024"
+      ],
+      "toner_rendimiento": "9,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "006R01160 X5325",
+      "impresoras_compatibles": [
+        "Xerox WorkCentre 5325",
+        "Xerox WorkCentre 5330",
+        "Xerox WorkCentre 5335"
+      ],
+      "toner_rendimiento": "30,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R03583 XB405",
+      "impresoras_compatibles": [
+        "Xerox Versalink B400",
+        "Xerox Versalink B405"
+      ],
+      "toner_rendimiento": "13,900 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "106R03585 XB405",
+      "impresoras_compatibles": [
+        "Xerox Versalink B400",
+        "Xerox Versalink B405"
+      ],
+      "toner_rendimiento": "22,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "006R00914 AL100",
+      "impresoras_compatibles": [
+        "Xerox WorkCentre XD100 Series"
+      ],
+      "toner_rendimiento": "6,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    }
+  ]
+}
