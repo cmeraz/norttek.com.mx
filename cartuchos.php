@@ -37,7 +37,7 @@ if (file_exists($jsonFile)) {
 
 // Función para generar HTML de impresoras compatibles
 function impresorasList($impresoras) {
-    $html = '<ul class="list-disc list-inside">';
+    $html = '<ul class="list-disc list-inside list-none pl-0">';
     foreach ($impresoras as $impresora) {
         $html .= '<li>' . htmlspecialchars($impresora) . '</li>';
     }
