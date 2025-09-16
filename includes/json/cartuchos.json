@@ -753,6 +753,367 @@
         "modelo": "No aplica",
         "rendimiento": "No aplica"
       }
+    },
+    {
+      "modelo": "W1103A",
+      "impresoras_compatibles": [
+        "HP Neverstop Laser 1000A",
+        "HP Neverstop Laser 1000W",
+        "HP Neverstop Laser MFP 1200A",
+        "HP Neverstop Laser MFP 1200W"
+      ],
+      "toner_rendimiento": "2,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W1105A",
+      "impresoras_compatibles": [
+        "HP Laser MFP 107a",
+        "HP Laser MFP 107w",
+        "HP Laser MFP 135a",
+        "HP Laser MFP 135w",
+        "HP Laser MFP 137fnw"
+      ],
+      "toner_rendimiento": "1,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W1105X",
+      "impresoras_compatibles": [
+        "HP Laser MFP 107a",
+        "HP Laser MFP 107w",
+        "HP Laser MFP 135a",
+        "HP Laser MFP 135w",
+        "HP Laser MFP 137fnw"
+      ],
+      "toner_rendimiento": "5,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W1330A",
+      "impresoras_compatibles": [
+        "HP LaserJet 408dn",
+        "HP LaserJet MFP 432fdn"
+      ],
+      "toner_rendimiento": "7,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W1360A",
+      "impresoras_compatibles": [
+        "HP LaserJet M211dw",
+        "HP LaserJet MFP M236sdw"
+      ],
+      "toner_rendimiento": "1,150 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W1360X",
+      "impresoras_compatibles": [
+        "HP LaserJet M211dw",
+        "HP LaserJet MFP M236sdw"
+      ],
+      "toner_rendimiento": "2,600 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W1450A",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro 3003dn",
+        "HP LaserJet Pro 3003dw",
+        "HP LaserJet Pro MFP 3103fdn",
+        "HP LaserJet Pro MFP 3103fdw"
+      ],
+      "toner_rendimiento": "1,700 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W1450X",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro 3003dn",
+        "HP LaserJet Pro 3003dw",
+        "HP LaserJet Pro MFP 3103fdn",
+        "HP LaserJet Pro MFP 3103fdw"
+      ],
+      "toner_rendimiento": "3,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W1470A",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro MFP 3103fdw",
+        "HP LaserJet Pro MFP 3103fdn",
+        "HP LaserJet Pro 3003dw",
+        "HP LaserJet Pro 3003dn"
+      ],
+      "toner_rendimiento": "1,700 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W1470X",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro MFP 3103fdw",
+        "HP LaserJet Pro MFP 3103fdn",
+        "HP LaserJet Pro 3003dw",
+        "HP LaserJet Pro 3003dn"
+      ],
+      "toner_rendimiento": "3,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W1500A",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro MFP 3103fdw",
+        "HP LaserJet Pro MFP 3103fdn",
+        "HP LaserJet Pro 3003dw",
+        "HP LaserJet Pro 3003dn"
+      ],
+      "toner_rendimiento": "1,700 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W1500X",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro MFP 3103fdw",
+        "HP LaserJet Pro MFP 3103fdn",
+        "HP LaserJet Pro 3003dw",
+        "HP LaserJet Pro 3003dn"
+      ],
+      "toner_rendimiento": "3,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W1510A",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro MFP 3103fdw",
+        "HP LaserJet Pro MFP 3103fdn",
+        "HP LaserJet Pro 3003dw",
+        "HP LaserJet Pro 3003dn"
+      ],
+      "toner_rendimiento": "1,700 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W1510X",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro MFP 3103fdw",
+        "HP LaserJet Pro MFP 3103fdn",
+        "HP LaserJet Pro 3003dw",
+        "HP LaserJet Pro 3003dn"
+      ],
+      "toner_rendimiento": "3,500 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W2020A",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Enterprise M553dn",
+        "HP Color LaserJet Enterprise M553n",
+        "HP Color LaserJet Enterprise M553xh"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W2020X",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Enterprise M553dn",
+        "HP Color LaserJet Enterprise M553n",
+        "HP Color LaserJet Enterprise M553xh"
+      ],
+      "toner_rendimiento": "7,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W2021A",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Enterprise M577dn",
+        "HP Color LaserJet Enterprise M577f",
+        "HP Color LaserJet Enterprise M577c"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W2022A",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Enterprise M577dn",
+        "HP Color LaserJet Enterprise M577f",
+        "HP Color LaserJet Enterprise M577c"
+      ],
+      "toner_rendimiento": "7,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W2110A",
+      "impresoras_compatibles": [
+        "HP LaserJet Enterprise M506dn",
+        "HP LaserJet Enterprise M506x",
+        "HP LaserJet Enterprise M506n"
+      ],
+      "toner_rendimiento": "6,900 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W2111A",
+      "impresoras_compatibles": [
+        "HP LaserJet Enterprise M506dn",
+        "HP LaserJet Enterprise M506x",
+        "HP LaserJet Enterprise M506n"
+      ],
+      "toner_rendimiento": "6,900 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W2112A",
+      "impresoras_compatibles": [
+        "HP LaserJet Enterprise M506dn",
+        "HP LaserJet Enterprise M506x",
+        "HP LaserJet Enterprise M506n"
+      ],
+      "toner_rendimiento": "6,900 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W2113A",
+      "impresoras_compatibles": [
+        "HP LaserJet Enterprise M506dn",
+        "HP LaserJet Enterprise M506x",
+        "HP LaserJet Enterprise M506n"
+      ],
+      "toner_rendimiento": "6,900 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W2300A",
+      "impresoras_compatibles": [
+        "HP LaserJet Enterprise M553dn",
+        "HP LaserJet Enterprise M553n",
+        "HP LaserJet Enterprise M553xh"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W2301A",
+      "impresoras_compatibles": [
+        "HP LaserJet Enterprise M553dn",
+        "HP LaserJet Enterprise M553n",
+        "HP LaserJet Enterprise M553xh"
+      ],
+      "toner_rendimiento": "7,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W2302A",
+      "impresoras_compatibles": [
+        "HP LaserJet Enterprise M553dn",
+        "HP LaserJet Enterprise M553n",
+        "HP LaserJet Enterprise M553xh"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W2310A",
+      "impresoras_compatibles": [
+        "HP LaserJet Enterprise M506dn",
+        "HP LaserJet Enterprise M506x",
+        "HP LaserJet Enterprise M506n"
+      ],
+      "toner_rendimiento": "6,900 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
+    },
+    {
+      "modelo": "W2313A",
+      "impresoras_compatibles": [
+        "HP LaserJet Enterprise M506dn",
+        "HP LaserJet Enterprise M506x",
+        "HP LaserJet Enterprise M506n"
+      ],
+      "toner_rendimiento": "6,900 páginas",
+      "tambor": {
+        "modelo": "No aplica",
+        "rendimiento": "No aplica"
+      }
     }
   ],
   "Samsung": [
@@ -1466,6 +1827,21 @@
         "modelo": "DR-820/DR-890",
         "rendimiento": "50,000 páginas"
       }
+    },
+    {
+      "modelo": "TNB022",
+      "impresoras_compatibles": [
+        "Brother HL-2140",
+        "Brother HL-2150N",
+        "Brother HL-2170W",
+        "Brother DCP-7030",
+        "Brother DCP-7040"
+      ],
+      "toner_rendimiento": "1,200 páginas",
+      "tambor": {
+        "modelo": "DR-2200",
+        "rendimiento": "12,000 páginas"
+      }
     }
   ],
   "Xerox": [
@@ -1893,6 +2269,32 @@
       "tambor": {
         "modelo": "No aplica",
         "rendimiento": "No aplica"
+      }
+    }
+  ],
+  "Kyocera": [
+    {
+      "modelo": "TK-1152",
+      "impresoras_compatibles": [
+        "Kyocera FS-C1020MFP",
+        "Kyocera FS-C1025MFP"
+      ],
+      "toner_rendimiento": "2,000 páginas",
+      "tambor": {
+        "modelo": "DR-1150",
+        "rendimiento": "15,000 páginas"
+      }
+    },
+    {
+      "modelo": "TK-1175",
+      "impresoras_compatibles": [
+        "Kyocera FS-C2126MFP",
+        "Kyocera FS-C2026MFP"
+      ],
+      "toner_rendimiento": "3,000 páginas",
+      "tambor": {
+        "modelo": "DR-1175",
+        "rendimiento": "20,000 páginas"
       }
     }
   ]
