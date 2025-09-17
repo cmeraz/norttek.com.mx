@@ -24,6 +24,9 @@ if(!isset($pageName)) {
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
 
+    <!-- Toastify CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
     <!-- CSS principal -->
        <?php
 global $cssFiles;
