@@ -75,27 +75,33 @@ if(!isset($pageName)) {
 
 <!-- JS locales -->
 <?php
-global $jsFiles;
+/**
+ * footer.php
+ * Cierra main y body, carga JS locales y librerías CDN
+ */
 
-if(isset($jsFiles) && is_array($jsFiles)){
-    foreach($jsFiles as $js){
-        $jsPathServer = __DIR__ . "/../assets/js/$js";
-        $jsPathBrowser = "assets/js/$js";
-        if(file_exists($jsPathServer)){
-            echo "<script src='$jsPathBrowser'></script>\n";
-        } else {
-            echo "<!-- JS $jsPathBrowser no encontrado -->\n";
-        }
-    }
-} else {
-    echo "<!-- jsFiles no está definido o no es un array -->\n";
+// Asegurarse de que $jsFiles sea global y un array
+global $jsFiles;
+if(!isset($jsFiles) || !is_array($jsFiles)){
+    $jsFiles = [];
 }
 
+// JS específicos por página
+foreach($jsFiles as $js){
+    $jsFile = "$js.js"; // agregar extensión automáticamente
+    $jsPathServer = __DIR__ . "/../assets/js/$jsFile";
+    $jsPathBrowser = "assets/js/$jsFile"; // ruta absoluta
+    if(file_exists($jsPathServer)){
+        echo "<script src='$jsPathBrowser'></script>\n";
+    } else {
+        echo "<!-- JS $jsPathBrowser no encontrado -->\n";
+    }
+}
 
-// JS automático por nombre de página
-$autoJsPathServer = __DIR__ . "/../assets/js/$pageName.js";
-$autoJsPathBrowser = "assets/js/$pageName.js";
-
+// JS automático por página según $pageName
+$autoJsFile = "$pageName.js";
+$autoJsPathServer = __DIR__ . "/../assets/js/$autoJsFile";
+$autoJsPathBrowser = "/assets/js/$autoJsFile"; // ruta absoluta
 if(file_exists($autoJsPathServer)){
     echo "<script src='$autoJsPathBrowser'></script>\n";
 } else {
@@ -103,9 +109,11 @@ if(file_exists($autoJsPathServer)){
 }
 ?>
 
+
+
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 <!-- Toastify JS -->
 <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
