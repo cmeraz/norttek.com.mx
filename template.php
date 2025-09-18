@@ -25,6 +25,7 @@ if(file_exists($metaFile)){
         'title' => 'Norttek Solutions',
         'description' => 'Soluciones integrales de seguridad electrónica',
         'keywords' => 'CCTV, Alarmas, Control de acceso'
+        "robots" => "noindex, nofollow"
     ];
 }
 
