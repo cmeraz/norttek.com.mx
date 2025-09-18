@@ -72,6 +72,25 @@ if(!isset($pageName)) {
 </footer>
 </main>
 
+<!-- Schema.org: LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Norttek Solutions",
+    "image": "https://nortteksolutions.com/assets/img/logo-norttek.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rayón y Agustin Meglar #608, Zona Centro",
+      "addressLocality": "Ciudad Cuauhtémoc",
+      "postalCode": "31500",
+      "addressCountry": "MX"
+    },
+    "telephone": "+52-625-269-0997",
+    "url": "https://norttek.com.mx",
+     }
+  </script>
+
 
 <!-- JS locales -->
 <?php
