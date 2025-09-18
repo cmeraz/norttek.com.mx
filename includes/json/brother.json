@@ -88,64 +88,6 @@
     }
   },
   {
-    "modelo": "TN410",
-    "impresoras_compatibles": [
-      "HL-2240",
-      "HL-2240D",
-      "HL-2250DN",
-      "HL-2270DW",
-      "HL-2220",
-      "HL-2230",
-      "HL-2275DW",
-      "HL-2280DW",
-      "MFC-7360",
-      "MFC-7460DN",
-      "MFC-7860D",
-      "MFC-7240",
-      "MFC-7360N",
-      "MFC-7460DN",
-      "MFC-7860DW",
-      "DCP-7060",
-      "DCP-7065DN",
-      "DCP-7055",
-      "DCP-7060D"
-    ],
-    "toner_rendimiento": "2,600 páginas",
-    "tambor": {
-      "modelo": "DR420",
-      "rendimiento": "12,000 páginas"
-    }
-  },
-  {
-    "modelo": "TN420",
-    "impresoras_compatibles": [
-      "HL-2240",
-      "HL-2240D",
-      "HL-2250DN",
-      "HL-2270DW",
-      "HL-2220",
-      "HL-2230",
-      "HL-2275DW",
-      "HL-2280DW",
-      "MFC-7360",
-      "MFC-7460DN",
-      "MFC-7860D",
-      "MFC-7240",
-      "MFC-7360N",
-      "MFC-7460DN",
-      "MFC-7860DW",
-      "DCP-7060",
-      "DCP-7065DN",
-      "DCP-7055",
-      "DCP-7060D"
-    ],
-    "toner_rendimiento": "2,600 páginas",
-    "tambor": {
-      "modelo": "DR420",
-      "rendimiento": "12,000 páginas"
-    }
-  },
-  {
     "modelo": "TN450",
     "impresoras_compatibles": [
       "HL-2240",
