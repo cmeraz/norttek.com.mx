@@ -1,10 +1,17 @@
 <?php
 /**
  * header.php
- * Header dinámico que usa variables SEO, CSS y nombre de página
+ * Header dinámico que configura el SEO, CSS, meta robots y scripts para cada página.
+ * Usa variables globales:
+ *   $pageName -> nombre de la página actual (sin extensión .php)
+ *   $cssFiles -> array de archivos CSS adicionales por página
+ *   $seo      -> array con datos de SEO (title, description, keywords, robots, Open Graph, Twitter Card)
  */
 
+// Determina el nombre de la página si no se ha definido previamente
 $pageName = $pageName ?? basename($_SERVER['PHP_SELF'], ".php");
+
+// Inicializa arrays si no existen
 $cssFiles = $cssFiles ?? [];
 $seo = $seo ?? [];
 ?>
@@ -15,10 +22,20 @@ $seo = $seo ?? [];
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Título de la página -->
 <title><?= $seo['title'] ?? 'Norttek Solutions' ?></title>
+
+<!-- Meta descripción y palabras clave -->
 <meta name="description" content="<?= $seo['description'] ?? 'Soluciones de seguridad integral para empresas y hogares.' ?>">
 <meta name="keywords" content="<?= $seo['keywords'] ?? 'CCTV, alarmas, control de acceso, redes, automatización' ?>">
 
+<!-- Meta robots para controlar indexación y seguimiento -->
+<meta name="robots" content="<?= $seo['robots'] ?? 'index, follow' ?>">
+
+<!-- URL canonical para evitar contenido duplicado -->
+<link rel="canonical" href="https://www.norttek.com.mx/<?= $pageName ?>.php">
+
+<!-- Favicon -->
 <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
 
 <!-- CSS global -->
@@ -30,15 +47,16 @@ $seo = $seo ?? [];
 <!-- CSS específicos por página -->
 <?php
 foreach($cssFiles as $css){
-    $cssFile = "$css.css"; // Agregar extensión automáticamente
-    $cssPathServer = __DIR__ . "/../assets/css/$cssFile";
-    $cssPathBrowser = "assets/css/$cssFile";
+    // Construye la ruta de cada archivo CSS
+    $cssFile = "$css.css"; 
+    $cssPathServer = __DIR__ . "/../assets/css/$cssFile"; // Ruta del servidor
+    $cssPathBrowser = "assets/css/$cssFile";             // Ruta para el navegador
     if(file_exists($cssPathServer)){
         echo "<link rel='stylesheet' href='$cssPathBrowser'>\n";
     }
 }
 
-// CSS automático por página según $pageName
+// CSS automático según el nombre de la página
 $autoCssFile = "$pageName.css";
 $autoCssPathServer = __DIR__ . "/../assets/css/$autoCssFile";
 $autoCssPathBrowser = "assets/css/$autoCssFile";
@@ -47,8 +65,7 @@ if(file_exists($autoCssPathServer)){
 }
 ?>
 
-
-<!-- Open Graph -->
+<!-- Open Graph (para compartir en redes sociales) -->
 <meta property="og:title" content="<?= $seo['og_title'] ?? $seo['title'] ?>">
 <meta property="og:description" content="<?= $seo['og_description'] ?? $seo['description'] ?>">
 <meta property="og:url" content="<?= $seo['og_url'] ?? 'https://www.norttek.com.mx/' ?>">
@@ -61,19 +78,23 @@ if(file_exists($autoCssPathServer)){
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="<?= $seo['twitter_title'] ?? $seo['title'] ?>">
 <meta name="twitter:description" content="<?= $seo['twitter_description'] ?? $seo['description'] ?>">
-
+<meta name="twitter:image" content="<?= $seo['twitter_image'] ?? $seo['og_image'] ?>">
 
 <!-- Librerías externas -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
+<!-- Scripts generales -->
 <script src="https://unpkg.com/feather-icons"></script>
 <script src="assets/js/loader.js"></script>
 </head>
 <body>
+
+<!-- Preload de imagen de fondo (oculto inicialmente) -->
 <img id="preload-bg" src="assets/img/loader.jpg" style="display:none;">
-<!-- Loader -->
+
+<!-- Loader inicial de la página -->
 <div id="loader">
     <div class="loader-content">
         <img src="assets/img/logo-norttek.png" alt="Logo Norttek" class="company-logo">
