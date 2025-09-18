@@ -40,26 +40,92 @@
     </div>
 
     <!-- Lista de servicios con iconos -->
-    <?php
-    $itemsHero = [
-        ["titulo"=>"Accesorios","icono"=>"https://img.icons8.com/ios-filled/50/ffffff/keyboard.png","enlace"=>"accesorios"],
-        ["titulo"=>"Accesos vehiculares","icono"=>"https://img.icons8.com/ios-filled/50/ffffff/car.png","enlace"=>"accesosVehiculares"],
-        ["titulo"=>"Alarmas","icono"=>"https://img.icons8.com/ios-filled/50/ffffff/siren.png","enlace"=>"alarmas"],
-        ["titulo"=>"Audio ambiental","icono"=>"https://img.icons8.com/ios-filled/50/ffffff/speaker.png","enlace"=>"audioAmbiental"],
-        ["titulo"=>"Automatización","icono"=>"https://img.icons8.com/ios-filled/50/ffffff/light-on.png","enlace"=>"automatizacion"],
-        ["titulo"=>"Cableado","icono"=>"fas fa-plug","enlace"=>"cableado","tipo"=>"fa"],
-        ["titulo"=>"CCTV","icono"=>"https://img.icons8.com/ios-filled/50/ffffff/zoom.png","enlace"=>"cctv"],
-        ["titulo"=>"Cómputo","icono"=>"https://img.icons8.com/ios-filled/50/ffffff/laptop.png","enlace"=>"computo"],
-        ["titulo"=>"Control de acceso","icono"=>"https://img.icons8.com/ios-filled/50/ffffff/lock.png","enlace"=>"controlAcceso"],
-        ["titulo"=>"Consultoría","icono"=>"https://img.icons8.com/ios-filled/50/ffffff/business-report.png","enlace"=>"consultoria"],
-        ["titulo"=>"Electrónicos","icono"=>"https://img.icons8.com/ios-filled/50/ffffff/electronics.png","enlace"=>"electronicos"],
-        ["titulo"=>"Impresión","icono"=>"https://img.icons8.com/ios-filled/50/ffffff/print.png","enlace"=>"impresion"],
-        ["titulo"=>"Mantenimiento","icono"=>"https://img.icons8.com/ios-filled/50/ffffff/maintenance.png","enlace"=>"mantenimiento"],
-        ["titulo"=>"Papelería","icono"=>"https://img.icons8.com/ios-filled/50/ffffff/notepad.png","enlace"=>"papeleria"],
-        ["titulo"=>"Redes","icono"=>"https://img.icons8.com/ios-filled/50/ffffff/wifi.png","enlace"=>"redes"],
-        ["titulo"=>"Telefonía IP","icono"=>"https://img.icons8.com/ios-filled/50/ffffff/phone.png","enlace"=>"telefoniaIP"]
-    ];
-    ?>
+<?php
+$itemsHero = [
+    [
+        "titulo" => "Accesorios",
+        "icono"  => "https://img.icons8.com/ios-filled/50/ffffff/keyboard.png",
+        "enlace" => "accesorios"
+    ],
+    [
+        "titulo" => "Accesos vehiculares",
+        "icono"  => "https://img.icons8.com/ios-filled/50/ffffff/car.png",
+        "enlace" => "accesosVehiculares"
+    ],
+    [
+        "titulo" => "Alarmas",
+        "icono"  => "https://img.icons8.com/ios-filled/50/ffffff/siren.png",
+        "enlace" => "alarmas"
+    ],
+    [
+        "titulo" => "Audio ambiental",
+        "icono"  => "https://img.icons8.com/ios-filled/50/ffffff/speaker.png",
+        "enlace" => "audioAmbiental"
+    ],
+    [
+        "titulo" => "Automatización",
+        "icono"  => "https://img.icons8.com/ios-filled/50/ffffff/light-on.png",
+        "enlace" => "automatizacion"
+    ],
+    [
+        "titulo" => "Cableado",
+        "icono"  => "fas fa-plug",
+        "enlace" => "cableado",
+        "tipo"   => "fa"
+    ],
+    [
+        "titulo" => "CCTV",
+        "icono"  => "https://img.icons8.com/ios-filled/50/ffffff/zoom.png",
+        "enlace" => "cctv"
+    ],
+    [
+        "titulo" => "Cómputo",
+        "icono"  => "https://img.icons8.com/ios-filled/50/ffffff/laptop.png",
+        "enlace" => "computo"
+    ],
+    [
+        "titulo" => "Control de acceso",
+        "icono"  => "https://img.icons8.com/ios-filled/50/ffffff/lock.png",
+        "enlace" => "controlAcceso"
+    ],
+    [
+        "titulo" => "Consultoría",
+        "icono"  => "https://img.icons8.com/ios-filled/50/ffffff/business-report.png",
+        "enlace" => "consultoria"
+    ],
+    [
+        "titulo" => "Electrónicos",
+        "icono"  => "https://img.icons8.com/ios-filled/50/ffffff/electronics.png",
+        "enlace" => "electronicos"
+    ],
+    [
+        "titulo" => "Impresión",
+        "icono"  => "https://img.icons8.com/ios-filled/50/ffffff/print.png",
+        "enlace" => "impresion"
+    ],
+    [
+        "titulo" => "Mantenimiento",
+        "icono"  => "https://img.icons8.com/ios-filled/50/ffffff/maintenance.png",
+        "enlace" => "mantenimiento"
+    ],
+    [
+        "titulo" => "Papelería",
+        "icono"  => "https://img.icons8.com/ios-filled/50/ffffff/notepad.png",
+        "enlace" => "papeleria"
+    ],
+    [
+        "titulo" => "Redes",
+        "icono"  => "https://img.icons8.com/ios-filled/50/ffffff/wifi.png",
+        "enlace" => "redes"
+    ],
+    [
+        "titulo" => "Telefonía IP",
+        "icono"  => "https://img.icons8.com/ios-filled/50/ffffff/phone.png",
+        "enlace" => "telefoniaIP"
+    ]
+];
+?>
+
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
         <?php foreach ($itemsHero as $item): ?>
