@@ -6,9 +6,10 @@
 
 $seo = [
     // SEO básico
-    'title'       => 'Hola - Seguridad Integral para tu Hogar y Oficina',
+    'title'       => 'Norttek Solutions - Seguridad Integral para tu Hogar y Oficina',
     'description' => 'Norttek Solutions ofrece instalación profesional de CCTV, alarmas inteligentes, control de acceso, redes y cableado estructurado.',
     'keywords'    => 'Seguridad, CCTV, Alarmas, Control de acceso, Redes, Automatización, Norttek, Oficina, Hogar, Empresas',
+    'robots'      => 'index, follow',
 
     // Open Graph
     'og_title'       => 'Norttek Solutions - Inicio',
