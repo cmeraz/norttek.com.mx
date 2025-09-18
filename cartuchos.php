@@ -245,11 +245,3 @@ btnBorrar.addEventListener("click", () => {
 // Inicializar contador al cargar la página
 window.addEventListener("DOMContentLoaded", () => actualizarContador());
 </script>
-
-
-<?php
-// ======================================
-// Cierre de contenido y footer
-// ======================================
-includeTemplate("footer");
-?>
