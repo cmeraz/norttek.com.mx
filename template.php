@@ -22,9 +22,9 @@ if(file_exists($metaFile)){
 } else {
     // Valores por defecto si no hay archivo de metas
     $seo = [
-        'title' => 'Norttek Solutions - Compatibilidad de Cartuchos de Toner',
-        'description' => 'Catalogo de cartuchos de toner compatibles con impresoras de diversas marcas. Encuentra el cartucho ideal para tu equipo.',
-        'keywords' => 'Toner, Toner Cartridge, HP, Canon, Brother, Epson, Samsung, Xerox, Lexmark, Dell',
+        'title' => 'Norttek Solutions',
+        'description' => 'Soluciones integrales de seguridad electrónica',
+        'keywords' => 'CCTV, Alarmas, Control de acceso'
     ];
 }
 

@@ -61,7 +61,7 @@ if(file_exists($autoCssPathServer)){
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="<?= $seo['twitter_title'] ?? $seo['title'] ?>">
 <meta name="twitter:description" content="<?= $seo['twitter_description'] ?? $seo['description'] ?>">
-<meta name="twitter:image" content="<?= $seo['twitter_image'] ?? $seo['og_image'] ?>">
+
 
 <!-- Librerías externas -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
