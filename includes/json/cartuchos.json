@@ -1529,304 +1529,349 @@
     }
   ],
   "Brother": [
-    {
-      "modelo": "TN1060",
-      "impresoras_compatibles": [
-        "HL-1110",
-        "HL-1210W",
-        "DCP-1510",
-        "DCP-1610W",
-        "MFC-1810"
-      ],
-      "toner_rendimiento": "1,000 páginas",
-      "tambor": {
-        "modelo": "No aplica",
-        "rendimiento": "No aplica"
-      }
-    },
-    {
-      "modelo": "TN350",
-      "impresoras_compatibles": [
-        "HL-2140",
-        "HL-2150N",
-        "DCP-7030",
-        "MFC-7320"
-      ],
-      "toner_rendimiento": "1,400 páginas",
-      "tambor": {
-        "modelo": "No aplica",
-        "rendimiento": "No aplica"
-      }
-    },
-    {
-      "modelo": "TN360",
-      "impresoras_compatibles": [
-        "HL-2130",
-        "HL-2132",
-        "DCP-7055",
-        "MFC-7360N"
-      ],
-      "toner_rendimiento": "1,500 páginas",
-      "tambor": {
-        "modelo": "No aplica",
-        "rendimiento": "No aplica"
-      }
-    },
-    {
-      "modelo": "TN410",
-      "impresoras_compatibles": [
-        "HL-5240",
-        "HL-5250DN",
-        "DCP-8060",
-        "MFC-8460N"
-      ],
-      "toner_rendimiento": "2,600 páginas",
-      "tambor": {
-        "modelo": "DR410",
-        "rendimiento": "12,000 páginas"
-      }
-    },
-    {
-      "modelo": "TN420",
-      "impresoras_compatibles": [
-        "HL-5250DN",
-        "HL-5270DN",
-        "DCP-8065DN",
-        "MFC-8660DN"
-      ],
-      "toner_rendimiento": "2,600 páginas",
-      "tambor": {
-        "modelo": "DR420",
-        "rendimiento": "12,000 páginas"
-      }
-    },
-    {
-      "modelo": "TN450",
-      "impresoras_compatibles": [
-        "HL-5280DN",
-        "HL-5340D",
-        "DCP-8070D",
-        "MFC-8870DN"
-      ],
-      "toner_rendimiento": "3,000 páginas",
-      "tambor": {
-        "modelo": "DR450",
-        "rendimiento": "12,000 páginas"
-      }
-    },
-    {
-      "modelo": "TN460",
-      "impresoras_compatibles": [
-        "HL-6180DW",
-        "HL-6170DW",
-        "DCP-8110DN",
-        "MFC-8510DN"
-      ],
-      "toner_rendimiento": "3,000 páginas",
-      "tambor": {
-        "modelo": "DR460",
-        "rendimiento": "12,000 páginas"
-      }
-    },
-    {
-      "modelo": "TN560",
-      "impresoras_compatibles": [
-        "HL-6180DW",
-        "HL-6170DW",
-        "DCP-8110DN",
-        "MFC-8510DN"
-      ],
-      "toner_rendimiento": "3,500 páginas",
-      "tambor": {
-        "modelo": "DR560",
-        "rendimiento": "12,000 páginas"
-      }
-    },
-    {
-      "modelo": "TN570",
-      "impresoras_compatibles": [
-        "HL-6180DW",
-        "HL-6170DW",
-        "DCP-8110DN",
-        "MFC-8510DN"
-      ],
-      "toner_rendimiento": "3,500 páginas",
-      "tambor": {
-        "modelo": "DR570",
-        "rendimiento": "12,000 páginas"
-      }
-    },
-    {
-      "modelo": "TN580",
-      "impresoras_compatibles": [
-        "HL-6180DW",
-        "HL-6170DW",
-        "DCP-8110DN",
-        "MFC-8510DN"
-      ],
-      "toner_rendimiento": "4,000 páginas",
-      "tambor": {
-        "modelo": "DR580",
-        "rendimiento": "12,000 páginas"
-      }
-    },
-    {
-      "modelo": "TN620",
-      "impresoras_compatibles": [
-        "HL-6180DW",
-        "HL-6170DW",
-        "DCP-8110DN",
-        "MFC-8510DN"
-      ],
-      "toner_rendimiento": "4,000 páginas",
-      "tambor": {
-        "modelo": "DR620",
-        "rendimiento": "12,000 páginas"
-      }
-    },
-    {
-      "modelo": "TN650",
-      "impresoras_compatibles": [
-        "HL-6180DW",
-        "HL-6170DW",
-        "DCP-8110DN",
-        "MFC-8510DN"
-      ],
-      "toner_rendimiento": "4,500 páginas",
-      "tambor": {
-        "modelo": "DR650",
-        "rendimiento": "12,000 páginas"
-      }
-    },
-    {
-      "modelo": "TN630",
-      "impresoras_compatibles": [
-        "HL-6180DW",
-        "HL-6170DW",
-        "DCP-8110DN",
-        "MFC-8510DN"
-      ],
-      "toner_rendimiento": "4,500 páginas",
-      "tambor": {
-        "modelo": "DR630",
-        "rendimiento": "12,000 páginas"
-      }
-    },
-    {
-      "modelo": "TN660",
-      "impresoras_compatibles": [
-        "HL-6180DW",
-        "HL-6170DW",
-        "DCP-8110DN",
-        "MFC-8510DN"
-      ],
-      "toner_rendimiento": "5,000 páginas",
-      "tambor": {
-        "modelo": "DR660",
-        "rendimiento": "12,000 páginas"
-      }
-    },
-    {
-      "modelo": "TN720",
-      "impresoras_compatibles": [
-        "HL-5440D",
-        "HL-5450DN"
-      ],
-      "toner_rendimiento": "8,000 páginas",
-      "tambor": {
-        "modelo": "DR720",
-        "rendimiento": "50,000 páginas"
-      }
-    },
-    {
-      "modelo": "TN730",
-      "impresoras_compatibles": [
-        "HL-5450DN",
-        "HL-5470DW"
-      ],
-      "toner_rendimiento": "8,500 páginas",
-      "tambor": {
-        "modelo": "DR730",
-        "rendimiento": "50,000 páginas"
-      }
-    },
-    {
-      "modelo": "TN750",
-      "impresoras_compatibles": [
-        "HL-6180DW",
-        "HL-6200DW"
-      ],
-      "toner_rendimiento": "10,000 páginas",
-      "tambor": {
-        "modelo": "DR750",
-        "rendimiento": "50,000 páginas"
-      }
-    },
-    {
-      "modelo": "TN760",
-      "impresoras_compatibles": [
-        "HL-6180DW",
-        "HL-6200DW"
-      ],
-      "toner_rendimiento": "10,000 páginas",
-      "tambor": {
-        "modelo": "DR760",
-        "rendimiento": "50,000 páginas"
-      }
-    },
-    {
-      "modelo": "TN780",
-      "impresoras_compatibles": [
-        "HL-6180DW",
-        "HL-6200DW"
-      ],
-      "toner_rendimiento": "10,000 páginas",
-      "tambor": {
-        "modelo": "DR780",
-        "rendimiento": "50,000 páginas"
-      }
-    },
-    {
-      "modelo": "TN850",
-      "impresoras_compatibles": [
-        "HL-L6200DW",
-        "HL-L6200DWT",
-        "MFC-L6700DW",
-        "MFC-L6900DW"
-      ],
-      "toner_rendimiento": "12,000 páginas",
-      "tambor": {
-        "modelo": "DR-820/DR-890",
-        "rendimiento": "50,000 páginas"
-      }
-    },
-    {
-      "modelo": "TN880",
-      "impresoras_compatibles": [
-        "HL-L6200DW",
-        "HL-L6200DWT",
-        "MFC-L6700DW",
-        "MFC-L6900DW"
-      ],
-      "toner_rendimiento": "12,000 páginas",
-      "tambor": {
-        "modelo": "DR-820/DR-890",
-        "rendimiento": "50,000 páginas"
-      }
-    },
-    {
-      "modelo": "TN890",
-      "impresoras_compatibles": [
-        "HL-L6200DW",
-        "HL-L6200DWT",
-        "MFC-L6700DW",
-        "MFC-L6900DW"
-      ],
-      "toner_rendimiento": "12,000 páginas",
-      "tambor": {
-        "modelo": "DR-820/DR-890",
-        "rendimiento": "50,000 páginas"
-      }
+  {
+    "modelo": "TN1060",
+    "impresoras_compatibles": [
+      "HL-1110",
+      "HL-1112",
+      "HL-1111",
+      "HL-1118",
+      "DCP-1511",
+      "DCP-1518",
+      "MFC-1811",
+      "MFC-1813",
+      "MFC-1818",
+      "MFC-1815",
+      "DCP-1510",
+      "DCP-1512",
+      "MFC-1810"
+    ],
+    "toner_rendimiento": "1,000 páginas",
+    "tambor": {
+      "modelo": "DR1060",
+      "rendimiento": "10,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN350",
+    "impresoras_compatibles": [
+      "HL-2040",
+      "HL-2045",
+      "HL-2070",
+      "HL-2460",
+      "HL-2075N",
+      "HL-2070N",
+      "DCP-7020",
+      "DCP-7010",
+      "DCP-7025",
+      "MFC-7220",
+      "MFC-7225",
+      "MFC-7420",
+      "MFC-7820",
+      "intellifax-2820",
+      "intellifax-2920",
+      "intellifax-2910"
+    ],
+    "toner_rendimiento": "2,500 páginas",
+    "tambor": {
+      "modelo": "DR350",
+      "rendimiento": "12,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN360",
+    "impresoras_compatibles": [
+      "HL-2140",
+      "HL-2170W",
+      "HL-2150N",
+      "DCP-7030",
+      "DCP-7040",
+      "MFC-7440N",
+      "MFC-7840W",
+      "MFC-7340",
+      "MFC-7345N"
+    ],
+    "toner_rendimiento": "2,600 páginas",
+    "tambor": {
+      "modelo": "DR360",
+      "rendimiento": "12,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN330",
+    "impresoras_compatibles": [
+      "HL-2140",
+      "HL-2170W",
+      "HL-2150N",
+      "DCP-7030",
+      "DCP-7040",
+      "MFC-7440N",
+      "MFC-7840W",
+      "MFC-7340",
+      "MFC-7345N"
+    ],
+    "toner_rendimiento": "2,600 páginas",
+    "tambor": {
+      "modelo": "DR360",
+      "rendimiento": "12,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN450",
+    "impresoras_compatibles": [
+      "HL-2240",
+      "HL-2240D",
+      "HL-2250DN",
+      "HL-2270DW",
+      "HL-2220",
+      "HL-2230",
+      "HL-2275DW",
+      "HL-2280DW",
+      "MFC-7360",
+      "MFC-7460DN",
+      "MFC-7860D",
+      "MFC-7240",
+      "MFC-7360N",
+      "MFC-7460DN",
+      "MFC-7860DW",
+      "DCP-7060",
+      "DCP-7065DN",
+      "DCP-7055",
+      "DCP-7060D"
+    ],
+    "toner_rendimiento": "2,600 páginas",
+    "tambor": {
+      "modelo": "DR420",
+      "rendimiento": "12,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN500",
+    "impresoras_compatibles": [
+      "MFC-8420",
+      "MFC-8820D",
+      "MFC-8820DN",
+      "MFC-8220",
+      "MFC-8440",
+      "MFC-8840D",
+      "MFC-8840DN",
+      "MFC-8120",
+      "HL-1650",
+      "HL-1670N",
+      "HL-1850",
+      "HL-1870N",
+      "HL-5030",
+      "HL-5040",
+      "HL-5050",
+      "HL-5070N",
+      "HL-5140",
+      "HL-5150DLT",
+      "HL-5170DN",
+      "HL-5170DNLT"
+    ],
+    "toner_rendimiento": "20,000 páginas",
+    "tambor": {
+      "modelo": "DR500/DR510",
+      "rendimiento": "20,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN520",
+    "impresoras_compatibles": [
+      "HL-5240",
+      "HL-5250DN",
+      "HL-5250DNT",
+      "HL-5280DW",
+      "DCP-8060",
+      "DCP-8065DN",
+      "MFC-8460N",
+      "MFC-8660DN",
+      "MFC-8670DN",
+      "MFC-8860DN",
+      "MFC-8870DW"
+    ],
+    "toner_rendimiento": "8,000 páginas",
+    "tambor": {
+      "modelo": "DR520",
+      "rendimiento": "25,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN630",
+    "impresoras_compatibles": [
+      "DCP-8050DN",
+      "DCP-8080DN",
+      "DCP-8085DN",
+      "HL-5340D",
+      "HL-5350DN",
+      "HL-5370DW",
+      "HL-5380DN",
+      "HL-5370DWT",
+      "DCP-8085DN",
+      "DCP-8080DN",
+      "DCP-8380DN",
+      "DCP-8480DN",
+      "DCP-8890DW",
+      "DCP-8880DN",
+      "MFC-8680DN",
+      "MFC-8690DW"
+    ],
+    "toner_rendimiento": "2,600 páginas",
+    "tambor": {
+      "modelo": "DR630",
+      "rendimiento": "12,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN720",
+    "impresoras_compatibles": [
+      "HL-5440D",
+      "HL-5450DN",
+      "HL-5450DNT",
+      "HL-5470DW",
+      "HL-5470DWT",
+      "HL-6180DW",
+      "HL-6180DWT",
+      "HL-5452DN",
+      "HL-5472DW",
+      "HL-5472DWT",
+      "HL-6182DW",
+      "HL-6182DWT",
+      "MFC-8710DW",
+      "MFC-8910DW",
+      "MFC-8950DW",
+      "MFC-8950DWT",
+      "MFC-8510DN",
+      "MFC-8810DW",
+      "MFC-8512DN",
+      "MFC-8712DW",
+      "MFC-8912DW",
+      "MFC-8952DW"
+    ],
+    "toner_rendimiento": "3,000 páginas",
+    "tambor": {
+      "modelo": "DR720",
+      "rendimiento": "30,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN730",
+    "impresoras_compatibles": [
+      "HL-L2350",
+      "HL-2370",
+      "HL-2390",
+      "HL-2395",
+      "DCP-L2550",
+      "MFC-L2710",
+      "MFC-2750",
+      "HL-L2370"
+    ],
+    "toner_rendimiento": "1,200 páginas",
+    "tambor": {
+      "modelo": "DR-730",
+      "rendimiento": "12,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN750",
+    "impresoras_compatibles": [
+      "HL-5440D",
+      "HL-5450DN",
+      "HL-5470DW",
+      "HL-6180DW",
+      "MFC-8710W",
+      "MFC-8910DW",
+      "DCP-8150DN"
+    ],
+    "toner_rendimiento": "8,000 páginas",
+    "tambor": {
+      "modelo": "DR720",
+      "rendimiento": "30,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN760",
+    "impresoras_compatibles": [
+      "HL-L2350",
+      "HL-2370",
+      "HL-2390",
+      "HL-2395",
+      "DCP-L2550",
+      "MFC-L2710",
+      "MFC-2750",
+      "HL-L2370"
+    ],
+    "toner_rendimiento": "3,000 páginas",
+    "tambor": {
+      "modelo": "DR-730",
+      "rendimiento": "12,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN780",
+    "impresoras_compatibles": [
+      "HL-6180DW"
+    ],
+    "toner_rendimiento": "12,000 páginas",
+    "tambor": {
+      "modelo": "DR720",
+      "rendimiento": "30,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN850",
+    "impresoras_compatibles": [
+      "DCP-L5500DN",
+      "DCP-L5600DN",
+      "DCP-L5650DN",
+      "HL-L5000D",
+      "HL-L5100DN",
+      "HL-L5200DW",
+      "HL-L5200DWT",
+      "HL-L6200DW",
+      "HL-L6200DWT",
+      "HL-L6300DW",
+      "MFC-L5700DW",
+      "MFC-L5800DW",
+      "MFC-L5850DW",
+      "MFC-L5900DW",
+      "MFC-L6700DW",
+      "MFC-L6800DW"
+    ],
+    "toner_rendimiento": "8,000 páginas",
+    "tambor": {
+      "modelo": "DR820",
+      "rendimiento": "30,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN880",
+    "impresoras_compatibles": [
+      "HL-6200",
+      "HL-6250",
+      "HL-6300",
+      "HL-6400",
+      "MFC-L6750",
+      "MFC-6800",
+      "MFC-6900"
+    ],
+    "toner_rendimiento": "12,000 páginas",
+    "tambor": {
+      "modelo": "DR820",
+      "rendimiento": "30,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN890",
+    "impresoras_compatibles": [
+      "HL-6400",
+      "MFC-6900"
+    ],
+    "toner_rendimiento": "20,000 páginas",
+    "tambor": {
+      "modelo": "DR820",
+      "rendimiento": "30,000 páginas"
+    }
     },
     {
       "modelo": "TNB022",
