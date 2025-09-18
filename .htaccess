@@ -19,3 +19,6 @@ RewriteRule ^([a-zA-Z0-9_-]+)$ $1.php [L]
 
 # Redirigir cualquier página no encontrada a 404.php
 ErrorDocument 404 /404.php
+
+# Si la URL es /inicio.php, redirigir a /index.php
+RewriteRule ^inicio\.php$ /index.php [R=301,L]
