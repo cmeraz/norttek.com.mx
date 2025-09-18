@@ -7,10 +7,17 @@
 // 1️⃣ Determinar nombre de la página
 $pageName = basename(__FILE__, ".php");
 
-// 2️⃣ Incluir metas específicas
+// Metas específicas si existen
 $metaFile = __DIR__ . '/extra/metas/' . $pageName . '.php';
 if(file_exists($metaFile)){
-    include $metaFile; // Esto define $seo
+    include $metaFile; // Define $seo
+} else {
+    $seo = [
+        'title' => 'Norttek Solutions',
+        'description' => 'Soluciones integrales de seguridad electrónica',
+        'keywords' => 'CCTV, Alarmas, Control de acceso',
+        'robots' => 'noindex, nofollow'
+    ];
 }
 
 // 3️⃣ Archivos CSS extra para esta página
