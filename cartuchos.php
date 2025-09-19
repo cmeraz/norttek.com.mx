@@ -12,21 +12,27 @@
  * 6️⃣ Incluye pageTemplate.php para cargar la estructura base.
  */
 
+$seo = [
+    // SEO básico
+    'title'       => 'Norttek Solutions - Seguridad Integral para tu Hogar y Oficina',
+    'description' => 'Norttek Solutions ofrece instalación profesional de CCTV, alarmas inteligentes, control de acceso, redes y cableado estructurado.',
+    'keywords'    => 'Seguridad, CCTV, Alarmas, Control de acceso, Redes, Automatización, Norttek, Oficina, Hogar, Empresas',
+    'robots'      => 'index, follow',
+
+    // Open Graph
+    'og_title'       => 'Norttek Solutions - Inicio',
+    'og_description' => 'Protege tu hogar y empresa con soluciones integrales de seguridad de Norttek.',
+    'og_url'         => 'https://www.norttek.com.mx/',
+    'og_image'       => 'https://www.norttek.com.mx/assets/images/og-image.jpg',
+
+    // Twitter Card
+    'twitter_title'       => 'Norttek Solutions - Inicio',
+    'twitter_description' => 'Protege tu hogar y empresa con soluciones integrales de seguridad de Norttek.',
+    'twitter_image'       => 'https://www.norttek.com.mx/assets/images/og-image.jpg'
+];
+
 // 1️⃣ Determinar nombre de la página automáticamente (por defecto, nombre del archivo sin .php)
 $pageName = basename(__FILE__, ".php");
-
-// 2️⃣ Incluir metas específicas si existen
-$metaFile = __DIR__ . '/extra/metas/' . $pageName . '.php';
-if(file_exists($metaFile)){
-    include $metaFile; // Esto define $seo con título, descripción, etc.
-} else {
-    // Valores por defecto si no hay archivo de metas
-    $seo = [
-        'title' => 'Norttek Solutions - Compatibilidad de Cartuchos de Toner',
-        'description' => 'Catalogo de cartuchos de toner compatibles con impresoras de diversas marcas. Encuentra el cartucho ideal para tu equipo.',
-        'keywords' => 'Toner, Toner Cartridge, HP, Canon, Brother, Epson, Samsung, Xerox, Lexmark, Dell',
-    ];
-}
 
 // 3️⃣ Archivos CSS extra para esta página (vacío por defecto)
 $cssFiles = [

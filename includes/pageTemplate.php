@@ -4,7 +4,7 @@
  * Plantilla base modular
  */
 
-include __DIR__ . '/includeTemplate.php';
+include __DIR__ . '/functions.php';
 
 // Determinar nombre de la página
 $pageName = basename($_SERVER['PHP_SELF'], ".php");
@@ -25,18 +25,12 @@ if (!isset($seo)) {
     ];
 }
 
-// Cargar metas extra por página (si existe)
-$metaExtraFile = __DIR__ . '/../extra/metas/' . $pageName . '.php';
-if (file_exists($metaExtraFile)) {
-    include $metaExtraFile; // Esto puede sobrescribir $seo
-}
-
 // CSS extra específico por página (opcional)
 $cssFiles = $cssFiles ?? [];
 
 // 1️⃣ Cargar header y navbar
-includeTemplate('header', ['seo' => $seo, 'pageName' => $pageName, 'cssFiles' => $cssFiles]);
-includeTemplate('navbar');
+includeSection('header', ['seo' => $seo, 'pageName' => $pageName, 'cssFiles' => $cssFiles]);
+includeSection('navbar');
 
 // 2️⃣ Determinar archivo de contenido
 $contentFile = __DIR__ . '/../contents/' . $pageName . 'Content.php';
@@ -49,7 +43,7 @@ if(file_exists($contentFile)){
 echo "</main>";
 
 // 3️⃣ Cargar footer
-includeTemplate('footer');
+includeSection('footer');
 
 // 4️⃣ JS extra específico por página
 $scriptFiles = $scriptFiles ?? [];

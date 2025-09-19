@@ -1,10 +1,33 @@
 <?php
 /**
  * includeTemplate.php
+ * 
+ * Función para incluir archivos de plantilla (templates) desde la carpeta "templates".
+ * Permite incluir cualquier archivo .php dentro de esa carpeta simplemente pasando
+ * el nombre del template sin la extensión.
+ *
+ * Ejemplo de uso:
+ *   includeTemplate('header'); // Incluye templates/header.php
+ *   includeTemplate('footer'); // Incluye templates/footer.php
+ */
+
+function includeTemplate($templateName) {
+    $templateName = basename($templateName); // evita rutas externas
+    $file = __DIR__ . "/../templates/{$templateName}.php";
+
+    if (file_exists($file)) {
+        include $file;
+    } else {
+        echo "<!-- Template {$templateName}.php not found in templates folder {$file} -->";
+    }
+}
+
+/**
+ * includeSection.php
  * Función para incluir templates pasando variables y con valores por defecto
  */
 
-function includeTemplate($templateName, $variables = []) {
+function includeSection($templateName, $variables = []) {
     $file = __DIR__ . "/$templateName.php";
 
     // Valores por defecto
