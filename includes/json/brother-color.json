@@ -1,0 +1,928 @@
+{
+  "Brother Color": [
+    {
+      "modelo": "TN115BK Negro",
+      "impresoras_compatibles": [
+        "Brother HL-4040CN",
+        "Brother HL-4070CDW",
+        "Brother MFC-9440CN"
+      ],
+      "toner_rendimiento": "5,000 páginas",
+      "tambor": {
+        "modelo": "DR-115CL",
+        "rendimiento": "12,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN115C Cian",
+      "impresoras_compatibles": [
+        "Brother HL-4040CN",
+        "Brother HL-4070CDW",
+        "Brother MFC-9440CN"
+      ],
+      "toner_rendimiento": "4,000 páginas",
+      "tambor": {
+        "modelo": "DR-115CL",
+        "rendimiento": "12,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN115M Magenta",
+      "impresoras_compatibles": [
+        "Brother HL-4040CN",
+        "Brother HL-4070CDW",
+        "Brother MFC-9440CN"
+      ],
+      "toner_rendimiento": "4,000 páginas",
+      "tambor": {
+        "modelo": "DR-115CL",
+        "rendimiento": "12,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN115Y Amarillo",
+      "impresoras_compatibles": [
+        "Brother HL-4040CN",
+        "Brother HL-4070CDW",
+        "Brother MFC-9440CN"
+      ],
+      "toner_rendimiento": "4,000 páginas",
+      "tambor": {
+        "modelo": "DR-115CL",
+        "rendimiento": "12,000 páginas"
+      }
+    },
+    {
+  "modelo": "TN210BK Negro",
+  "impresoras_compatibles": [
+    "Brother HL-3040CN",
+    "Brother HL-3045CN",
+    "Brother HL-3070CW",
+    "Brother HL-3075CW",
+    "Brother MFC-9010CN",
+    "Brother MFC-9120CN",
+    "Brother MFC-9125CN",
+    "Brother MFC-9320CW",
+    "Brother MFC-9325CW"
+  ],
+  "toner_rendimiento": "2,200 páginas",
+  "tambor": {
+    "modelo": "DR-210CL",
+    "rendimiento": "15,000 páginas"
+  }
+},
+{
+  "modelo": "TN210C Cian",
+  "impresoras_compatibles": [
+    "Brother HL-3040CN",
+    "Brother HL-3045CN",
+    "Brother HL-3070CW",
+    "Brother HL-3075CW",
+    "Brother MFC-9010CN",
+    "Brother MFC-9120CN",
+    "Brother MFC-9125CN",
+    "Brother MFC-9320CW",
+    "Brother MFC-9325CW"
+  ],
+  "toner_rendimiento": "1,400 páginas",
+  "tambor": {
+    "modelo": "DR-210CL",
+    "rendimiento": "15,000 páginas"
+  }
+},
+{
+  "modelo": "TN210M Magenta",
+  "impresoras_compatibles": [
+    "Brother HL-3040CN",
+    "Brother HL-3045CN",
+    "Brother HL-3070CW",
+    "Brother HL-3075CW",
+    "Brother MFC-9010CN",
+    "Brother MFC-9120CN",
+    "Brother MFC-9125CN",
+    "Brother MFC-9320CW",
+    "Brother MFC-9325CW"
+  ],
+  "toner_rendimiento": "1,400 páginas",
+  "tambor": {
+    "modelo": "DR-210CL",
+    "rendimiento": "15,000 páginas"
+  }
+},
+{
+  "modelo": "TN210Y Amarillo",
+  "impresoras_compatibles": [
+    "Brother HL-3040CN",
+    "Brother HL-3045CN",
+    "Brother HL-3070CW",
+    "Brother HL-3075CW",
+    "Brother MFC-9010CN",
+    "Brother MFC-9120CN",
+    "Brother MFC-9125CN",
+    "Brother MFC-9320CW",
+    "Brother MFC-9325CW"
+  ],
+  "toner_rendimiento": "1,400 páginas",
+  "tambor": {
+    "modelo": "DR-210CL",
+    "rendimiento": "15,000 páginas"
+  }
+},
+{
+  "modelo": "TN221BK Negro",
+  "impresoras_compatibles": [
+    "Brother HL-3140CW",
+    "Brother HL-3150CDW",
+    "Brother HL-3170CDW",
+    "Brother DCP-9020CDW",
+    "Brother MFC-9130CW",
+    "Brother MFC-9140CDN",
+    "Brother MFC-9330CDW",
+    "Brother MFC-9340CDW"
+  ],
+  "toner_rendimiento": "2,500 páginas",
+  "tambor": {
+    "modelo": "DR-221BK",
+    "rendimiento": "15,000 páginas"
+  }
+},
+{
+  "modelo": "TN221C Cian",
+  "impresoras_compatibles": [
+    "Brother HL-3140CW",
+    "Brother HL-3150CDW",
+    "Brother HL-3170CDW",
+    "Brother DCP-9020CDW",
+    "Brother MFC-9130CW",
+    "Brother MFC-9140CDN",
+    "Brother MFC-9330CDW",
+    "Brother MFC-9340CDW"
+  ],
+  "toner_rendimiento": "1,400 páginas",
+  "tambor": {
+    "modelo": "DR-221CY",
+    "rendimiento": "15,000 páginas"
+  }
+},
+{
+  "modelo": "TN221M Magenta",
+  "impresoras_compatibles": [
+    "Brother HL-3140CW",
+    "Brother HL-3150CDW",
+    "Brother HL-3170CDW",
+    "Brother DCP-9020CDW",
+    "Brother MFC-9130CW",
+    "Brother MFC-9140CDN",
+    "Brother MFC-9330CDW",
+    "Brother MFC-9340CDW"
+  ],
+  "toner_rendimiento": "1,400 páginas",
+  "tambor": {
+    "modelo": "DR-221MG",
+    "rendimiento": "15,000 páginas"
+  }
+},
+{
+  "modelo": "TN221Y Amarillo",
+  "impresoras_compatibles": [
+    "Brother HL-3140CW",
+    "Brother HL-3150CDW",
+    "Brother HL-3170CDW",
+    "Brother DCP-9020CDW",
+    "Brother MFC-9130CW",
+    "Brother MFC-9140CDN",
+    "Brother MFC-9330CDW",
+    "Brother MFC-9340CDW"
+  ],
+  "toner_rendimiento": "1,400 páginas",
+  "tambor": {
+    "modelo": "DR-221YL",
+    "rendimiento": "15,000 páginas"
+  }
+},
+{
+  "modelo": "TN223BK Negro",
+  "impresoras_compatibles": [
+    "Brother HL-L3210CW",
+    "Brother HL-L3230CDW",
+    "Brother HL-L3270CDW",
+    "Brother HL-L3290CDW",
+    "Brother MFC-L3710CW",
+    "Brother MFC-L3750CDW",
+    "Brother MFC-L3770CDW"
+  ],
+  "toner_rendimiento": "1,400 páginas",
+  "tambor": {
+    "modelo": "DR223CL",
+    "rendimiento": "18,000 páginas"
+  }
+},
+{
+  "modelo": "TN223C Cian",
+  "impresoras_compatibles": [
+    "Brother HL-L3210CW",
+    "Brother HL-L3230CDW",
+    "Brother HL-L3270CDW",
+    "Brother HL-L3290CDW",
+    "Brother MFC-L3710CW",
+    "Brother MFC-L3750CDW",
+    "Brother MFC-L3770CDW"
+  ],
+  "toner_rendimiento": "1,300 páginas",
+  "tambor": {
+    "modelo": "DR223CL",
+    "rendimiento": "18,000 páginas"
+  }
+},
+{
+  "modelo": "TN223M Magenta",
+  "impresoras_compatibles": [
+    "Brother HL-L3210CW",
+    "Brother HL-L3230CDW",
+    "Brother HL-L3270CDW",
+    "Brother HL-L3290CDW",
+    "Brother MFC-L3710CW",
+    "Brother MFC-L3750CDW",
+    "Brother MFC-L3770CDW"
+  ],
+  "toner_rendimiento": "1,300 páginas",
+  "tambor": {
+    "modelo": "DR223CL",
+    "rendimiento": "18,000 páginas"
+  }
+},
+{
+  "modelo": "TN223Y Amarillo",
+  "impresoras_compatibles": [
+    "Brother HL-L3210CW",
+    "Brother HL-L3230CDW",
+    "Brother HL-L3270CDW",
+    "Brother HL-L3290CDW",
+    "Brother MFC-L3710CW",
+    "Brother MFC-L3750CDW",
+    "Brother MFC-L3770CDW"
+  ],
+  "toner_rendimiento": "1,300 páginas",
+  "tambor": {
+    "modelo": "DR223CL",
+    "rendimiento": "18,000 páginas"
+  }
+},
+{
+  "modelo": "TN227BK Negro",
+  "impresoras_compatibles": [
+    "Brother HL-3210CW",
+    "Brother HL-L3230CDW",
+    "Brother HL-L3270CDW",
+    "Brother HL-L3290CDW",
+    "Brother MFC-L3710CW",
+    "Brother MFC-L3750CDW",
+    "Brother MFC-L3770CDW"
+  ],
+  "toner_rendimiento": "3,000 páginas",
+  "tambor": {
+    "modelo": "DR223CL",
+    "rendimiento": "18,000 páginas"
+  }
+},
+{
+  "modelo": "TN227C Cian",
+  "impresoras_compatibles": [
+    "Brother HL-3210CW",
+    "Brother HL-L3230CDW",
+    "Brother HL-L3270CDW",
+    "Brother HL-L3290CDW",
+    "Brother MFC-L3710CW",
+    "Brother MFC-L3750CDW",
+    "Brother MFC-L3770CDW"
+  ],
+  "toner_rendimiento": "2,300 páginas",
+  "tambor": {
+    "modelo": "DR223CL",
+    "rendimiento": "18,000 páginas"
+  }
+},
+{
+  "modelo": "TN227M Magenta",
+  "impresoras_compatibles": [
+    "Brother HL-3210CW",
+    "Brother HL-L3230CDW",
+    "Brother HL-L3270CDW",
+    "Brother HL-L3290CDW",
+    "Brother MFC-L3710CW",
+    "Brother MFC-L3750CDW",
+    "Brother MFC-L3770CDW"
+  ],
+  "toner_rendimiento": "2,300 páginas",
+  "tambor": {
+    "modelo": "DR223CL",
+    "rendimiento": "18,000 páginas"
+  }
+},
+{
+  "modelo": "TN227Y Amarillo",
+  "impresoras_compatibles": [
+    "Brother HL-3210CW",
+    "Brother HL-L3230CDW",
+    "Brother HL-L3270CDW",
+    "Brother HL-L3290CDW",
+    "Brother MFC-L3710CW",
+    "Brother MFC-L3750CDW",
+    "Brother MFC-L3770CDW"
+  ],
+  "toner_rendimiento": "2,300 páginas",
+  "tambor": {
+    "modelo": "DR223CL",
+    "rendimiento": "18,000 páginas"
+  }
+},
+{
+  "modelo": "TN229BK Negro",
+  "impresoras_compatibles": [
+    "Brother HL-L3220CDW",
+    "Brother HL-L3280CDW",
+    "Brother HL-L3295CDW",
+    "Brother HL-L3300CDW",
+    "Brother HL-L8245CDW",
+    "Brother MFC-L3720CDW",
+    "Brother MFC-L3765CDW",
+    "Brother MFC-L3780CDW",
+    "Brother MFC-L8395CDW",
+    "Brother DCP-L3560CDW"
+  ],
+  "toner_rendimiento": "1,500 páginas",
+  "tambor": {
+    "modelo": "DR229",
+    "rendimiento": "22,000 páginas"
+  }
+},
+{
+  "modelo": "TN229C Cian",
+  "impresoras_compatibles": [
+    "Brother HL-L3220CDW",
+    "Brother HL-L3280CDW",
+    "Brother HL-L3295CDW",
+    "Brother HL-L3300CDW",
+    "Brother HL-L8245CDW",
+    "Brother MFC-L3720CDW",
+    "Brother MFC-L3765CDW",
+    "Brother MFC-L3780CDW",
+    "Brother MFC-L8395CDW",
+    "Brother DCP-L3560CDW"
+  ],
+  "toner_rendimiento": "1,200 páginas",
+  "tambor": {
+    "modelo": "DR229",
+    "rendimiento": "22,000 páginas"
+  }
+},
+{
+  "modelo": "TN229M Magenta",
+  "impresoras_compatibles": [
+    "Brother HL-L3220CDW",
+    "Brother HL-L3280CDW",
+    "Brother HL-L3295CDW",
+    "Brother HL-L3300CDW",
+    "Brother HL-L8245CDW",
+    "Brother MFC-L3720CDW",
+    "Brother MFC-L3765CDW",
+    "Brother MFC-L3780CDW",
+    "Brother MFC-L8395CDW",
+    "Brother DCP-L3560CDW"
+  ],
+  "toner_rendimiento": "1,200 páginas",
+  "tambor": {
+    "modelo": "DR229",
+    "rendimiento": "22,000 páginas"
+  }
+},
+{
+  "modelo": "TN229Y Amarillo",
+  "impresoras_compatibles": [
+    "Brother HL-L3220CDW",
+    "Brother HL-L3280CDW",
+    "Brother HL-L3295CDW",
+    "Brother HL-L3300CDW",
+    "Brother HL-L8245CDW",
+    "Brother MFC-L3720CDW",
+    "Brother MFC-L3765CDW",
+    "Brother MFC-L3780CDW",
+    "Brother MFC-L8395CDW",
+    "Brother DCP-L3560CDW"
+  ],
+  "toner_rendimiento": "1,200 páginas",
+  "tambor": {
+    "modelo": "DR229",
+    "rendimiento": "22,000 páginas"
+  }
+},
+{
+  "modelo": "TN229XBK Negro",
+  "impresoras_compatibles": [
+    "Brother HL-L3220CDW",
+    "Brother HL-L3280CDW",
+    "Brother HL-L3295CDW",
+    "Brother HL-L3300CDW",
+    "Brother HL-L8245CDW",
+    "Brother MFC-L3720CDW",
+    "Brother MFC-L3765CDW",
+    "Brother MFC-L3780CDW",
+    "Brother MFC-L8395CDW",
+    "Brother DCP-L3560CDW"
+  ],
+  "toner_rendimiento": "3,000 páginas",
+  "tambor": {
+    "modelo": "DR229",
+    "rendimiento": "22,000 páginas"
+  }
+},
+{
+  "modelo": "TN229XC Cian",
+  "impresoras_compatibles": [
+    "Brother HL-L3220CDW",
+    "Brother HL-L3280CDW",
+    "Brother HL-L3295CDW",
+    "Brother HL-L3300CDW",
+    "Brother HL-L8245CDW",
+    "Brother MFC-L3720CDW",
+    "Brother MFC-L3765CDW",
+    "Brother MFC-L3780CDW",
+    "Brother MFC-L8395CDW",
+    "Brother DCP-L3560CDW"
+  ],
+  "toner_rendimiento": "2,300 páginas",
+  "tambor": {
+    "modelo": "DR229",
+    "rendimiento": "22,000 páginas"
+  }
+},
+{
+  "modelo": "TN229XM Magenta",
+  "impresoras_compatibles": [
+    "Brother HL-L3220CDW",
+    "Brother HL-L3280CDW",
+    "Brother HL-L3295CDW",
+    "Brother HL-L3300CDW",
+    "Brother HL-L8245CDW",
+    "Brother MFC-L3720CDW",
+    "Brother MFC-L3765CDW",
+    "Brother MFC-L3780CDW",
+    "Brother MFC-L8395CDW",
+    "Brother DCP-L3560CDW"
+  ],
+  "toner_rendimiento": "2,300 páginas",
+  "tambor": {
+    "modelo": "DR229",
+    "rendimiento": "22,000 páginas"
+  }
+},
+{
+  "modelo": "TN229XY Amarillo",
+  "impresoras_compatibles": [
+    "Brother HL-L3220CDW",
+    "Brother HL-L3280CDW",
+    "Brother HL-L3295CDW",
+    "Brother HL-L3300CDW",
+    "Brother HL-L8245CDW",
+    "Brother MFC-L3720CDW",
+    "Brother MFC-L3765CDW",
+    "Brother MFC-L3780CDW",
+    "Brother MFC-L8395CDW",
+    "Brother DCP-L3560CDW"
+  ],
+  "toner_rendimiento": "2,300 páginas",
+  "tambor": {
+    "modelo": "DR229",
+    "rendimiento": "22,000 páginas"
+  }
+},
+{
+  "modelo": "TN315BK Negro",
+  "impresoras_compatibles": [
+    "Brother HL-4150CDN",
+    "Brother HL-4140CD",
+    "Brother HL-4170CDW",
+    "Brother HL-4570CDWT",
+    "Brother MFC-9460CDN",
+    "Brother MFC-9465CDN",
+    "Brother MFC-9560CDW",
+    "Brother MFC-9970CDW",
+    "Brother DCP-9055CDN"
+  ],
+  "toner_rendimiento": "6,000 páginas",
+  "tambor": {
+    "modelo": "DR310CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+  "modelo": "TN315C Cian",
+  "impresoras_compatibles": [
+    "Brother HL-4150CDN",
+    "Brother HL-4140CD",
+    "Brother HL-4170CDW",
+    "Brother HL-4570CDWT",
+    "Brother MFC-9460CDN",
+    "Brother MFC-9465CDN",
+    "Brother MFC-9560CDW",
+    "Brother MFC-9970CDW",
+    "Brother DCP-9055CDN"
+  ],
+  "toner_rendimiento": "3,500 páginas",
+  "tambor": {
+    "modelo": "DR310CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+  "modelo": "TN315M Magenta",
+  "impresoras_compatibles": [
+    "Brother HL-4150CDN",
+    "Brother HL-4140CD",
+    "Brother HL-4170CDW",
+    "Brother HL-4570CDWT",
+    "Brother MFC-9460CDN",
+    "Brother MFC-9465CDN",
+    "Brother MFC-9560CDW",
+    "Brother MFC-9970CDW",
+    "Brother DCP-9055CDN"
+  ],
+  "toner_rendimiento": "3,500 páginas",
+  "tambor": {
+    "modelo": "DR310CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+  "modelo": "TN315Y Amarillo",
+  "impresoras_compatibles": [
+    "Brother HL-4150CDN",
+    "Brother HL-4140CD",
+    "Brother HL-4170CDW",
+    "Brother HL-4570CDWT",
+    "Brother MFC-9460CDN",
+    "Brother MFC-9465CDN",
+    "Brother MFC-9560CDW",
+    "Brother MFC-9970CDW",
+    "Brother DCP-9055CDN"
+  ],
+  "toner_rendimiento": "3,500 páginas",
+  "tambor": {
+    "modelo": "DR310CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+  "modelo": "TN336BK Negro",
+  "impresoras_compatibles": [
+    "Brother HL-L8250CD",
+    "Brother HL-L8350CD",
+    "Brother HL-L8850CD"
+  ],
+  "toner_rendimiento": "4,000 páginas",
+  "tambor": {
+    "modelo": "DR336CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+  "modelo": "TN336C Cian",
+  "impresoras_compatibles": [
+    "Brother HL-L8250CD",
+    "Brother HL-L8350CD",
+    "Brother HL-L8850CD"
+  ],
+  "toner_rendimiento": "3,500 páginas",
+  "tambor": {
+    "modelo": "DR336CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+  "modelo": "TN336M Magenta",
+  "impresoras_compatibles": [
+    "Brother HL-L8250CD",
+    "Brother HL-L8350CD",
+    "Brother HL-L8850CD"
+  ],
+  "toner_rendimiento": "3,500 páginas",
+  "tambor": {
+    "modelo": "DR336CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+  "modelo": "TN336Y Amarillo",
+  "impresoras_compatibles": [
+    "Brother HL-L8250CD",
+    "Brother HL-L8350CD",
+    "Brother HL-L8850CD"
+  ],
+  "toner_rendimiento": "3,500 páginas",
+  "tambor": {
+    "modelo": "DR336CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+  "modelo": "TN339BK Negro",
+  "impresoras_compatibles": [
+    "Brother DCP-L8400CDN",
+    "Brother DCP-L8450CDW",
+    "Brother MFC-L8600CDW",
+    "Brother MFC-L8650CDW",
+    "Brother MFC-L8850CDW",
+    "Brother MFC-L9550CDW"
+  ],
+  "toner_rendimiento": "6,000 páginas",
+  "tambor": {
+    "modelo": "DR339CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+  "modelo": "TN339C Cian",
+  "impresoras_compatibles": [
+    "Brother DCP-L8400CDN",
+    "Brother DCP-L8450CDW",
+    "Brother MFC-L8600CDW",
+    "Brother MFC-L8650CDW",
+    "Brother MFC-L8850CDW",
+    "Brother MFC-L9550CDW"
+  ],
+  "toner_rendimiento": "6,000 páginas",
+  "tambor": {
+    "modelo": "DR339CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+  "modelo": "TN339M Magenta",
+  "impresoras_compatibles": [
+    "Brother DCP-L8400CDN",
+    "Brother DCP-L8450CDW",
+    "Brother MFC-L8600CDW",
+    "Brother MFC-L8650CDW",
+    "Brother MFC-L8850CDW",
+    "Brother MFC-L9550CDW"
+  ],
+  "toner_rendimiento": "6,000 páginas",
+  "tambor": {
+    "modelo": "DR339CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+  "modelo": "TN339Y Amarillo",
+  "impresoras_compatibles": [
+    "Brother DCP-L8400CDN",
+    "Brother DCP-L8450CDW",
+    "Brother MFC-L8600CDW",
+    "Brother MFC-L8650CDW",
+    "Brother MFC-L8850CDW",
+    "Brother MFC-L9550CDW"
+  ],
+  "toner_rendimiento": "6,000 páginas",
+  "tambor": {
+    "modelo": "DR339CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+    "modelo": "TN310BK Negro",
+    "impresoras_compatibles": [
+      "Brother HL-4140CN",
+      "Brother HL-4150CDN",
+      "Brother HL-4570CDW",
+      "Brother HL-4570CDWT",
+      "Brother DCP-9055CDN",
+      "Brother DCP-9270CDN",
+      "Brother MFC-9460CDN",
+      "Brother MFC-9465CDN",
+      "Brother MFC-9560CDW",
+      "Brother MFC-9970CDW"
+    ],
+    "toner_rendimiento": "2,500 páginas",
+    "tambor": {
+      "modelo": "DR310CL",
+      "rendimiento": "25,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN310C Cian",
+    "impresoras_compatibles": [
+      "Brother HL-4140CN",
+      "Brother HL-4150CDN",
+      "Brother HL-4570CDW",
+      "Brother HL-4570CDWT",
+      "Brother DCP-9055CDN",
+      "Brother DCP-9270CDN",
+      "Brother MFC-9460CDN",
+      "Brother MFC-9465CDN",
+      "Brother MFC-9560CDW",
+      "Brother MFC-9970CDW"
+    ],
+    "toner_rendimiento": "1,500 páginas",
+    "tambor": {
+      "modelo": "DR310CL",
+      "rendimiento": "25,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN310M Magenta",
+    "impresoras_compatibles": [
+      "Brother HL-4140CN",
+      "Brother HL-4150CDN",
+      "Brother HL-4570CDW",
+      "Brother HL-4570CDWT",
+      "Brother DCP-9055CDN",
+      "Brother DCP-9270CDN",
+      "Brother MFC-9460CDN",
+      "Brother MFC-9465CDN",
+      "Brother MFC-9560CDW",
+      "Brother MFC-9970CDW"
+    ],
+    "toner_rendimiento": "1,500 páginas",
+    "tambor": {
+      "modelo": "DR310CL",
+      "rendimiento": "25,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN310Y Amarillo",
+    "impresoras_compatibles": [
+      "Brother HL-4140CN",
+      "Brother HL-4150CDN",
+      "Brother HL-4570CDW",
+      "Brother HL-4570CDWT",
+      "Brother DCP-9055CDN",
+      "Brother DCP-9270CDN",
+      "Brother MFC-9460CDN",
+      "Brother MFC-9465CDN",
+      "Brother MFC-9560CDW",
+      "Brother MFC-9970CDW"
+    ],
+    "toner_rendimiento": "1,500 páginas",
+    "tambor": {
+      "modelo": "DR310CL",
+      "rendimiento": "25,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN413BK Negro",
+    "impresoras_compatibles": [
+      "Brother HL-L8260",
+      "Brother HL-L8360",
+      "Brother MFC-L8160",
+      "Brother MFC-L8690",
+      "Brother MFC-L8900",
+      "Brother DCP-L8410"
+    ],
+    "toner_rendimiento": "4,500 páginas",
+    "tambor": {
+      "modelo": "DR431CL",
+      "rendimiento": "50,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN413C Cian",
+    "impresoras_compatibles": [
+      "Brother HL-L8260",
+      "Brother HL-L8360",
+      "Brother MFC-L8160",
+      "Brother MFC-L8690",
+      "Brother MFC-L8900",
+      "Brother DCP-L8410"
+    ],
+    "toner_rendimiento": "4,000 páginas",
+    "tambor": {
+      "modelo": "DR431CL",
+      "rendimiento": "50,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN413M Magenta",
+    "impresoras_compatibles": [
+      "Brother HL-L8260",
+      "Brother HL-L8360",
+      "Brother MFC-L8160",
+      "Brother MFC-L8690",
+      "Brother MFC-L8900",
+      "Brother DCP-L8410"
+    ],
+    "toner_rendimiento": "4,000 páginas",
+    "tambor": {
+      "modelo": "DR431CL",
+      "rendimiento": "50,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN413Y Amarillo",
+    "impresoras_compatibles": [
+      "Brother HL-L8260",
+      "Brother HL-L8360",
+      "Brother MFC-L8160",
+      "Brother MFC-L8690",
+      "Brother MFC-L8900",
+      "Brother DCP-L8410"
+    ],
+    "toner_rendimiento": "4,000 páginas",
+    "tambor": {
+      "modelo": "DR431CL",
+      "rendimiento": "50,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN439BK Negro",
+    "impresoras_compatibles": [
+      "Brother HL-L9310",
+      "Brother MFC-L9570"
+    ],
+    "toner_rendimiento": "9,000 páginas",
+    "tambor": {
+      "modelo": "DR433CL",
+      "rendimiento": "50,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN439C Cian",
+    "impresoras_compatibles": [
+      "Brother HL-L9310",
+      "Brother MFC-L9570"
+    ],
+    "toner_rendimiento": "9,000 páginas",
+    "tambor": {
+      "modelo": "DR433CL",
+      "rendimiento": "50,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN439M Magenta",
+    "impresoras_compatibles": [
+      "Brother HL-L9310",
+      "Brother MFC-L9570"
+    ],
+    "toner_rendimiento": "9,000 páginas",
+    "tambor": {
+      "modelo": "DR433CL",
+      "rendimiento": "50,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN439Y Amarillo",
+    "impresoras_compatibles": [
+      "Brother HL-L9310",
+      "Brother MFC-L9570"
+    ],
+    "toner_rendimiento": "9,000 páginas",
+    "tambor": {
+      "modelo": "DR433CL",
+      "rendimiento": "50,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN810BK Negro",
+    "impresoras_compatibles": [
+      "Brother MFC-L9630CDN"
+    ],
+    "toner_rendimiento": "9,000 páginas",
+    "tambor": {
+      "modelo": "DR810CL",
+      "rendimiento": "50,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN810C Cian",
+    "impresoras_compatibles": [
+      "Brother MFC-L9630CDN"
+    ],
+    "toner_rendimiento": "6,500 páginas",
+    "tambor": {
+      "modelo": "DR810CL",
+      "rendimiento": "50,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN810M Magenta",
+    "impresoras_compatibles": [
+      "Brother MFC-L9630CDN"
+    ],
+    "toner_rendimiento": "6,500 páginas",
+    "tambor": {
+      "modelo": "DR810CL",
+      "rendimiento": "50,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN810Y Amarillo",
+    "impresoras_compatibles": [
+      "Brother MFC-L9630CDN"
+    ],
+    "toner_rendimiento": "6,500 páginas",
+    "tambor": {
+      "modelo": "DR810CL",
+      "rendimiento": "50,000 páginas"
+    }
+  }
+  ]
+}

@@ -14,15 +14,15 @@
 
 $seo = [
     // SEO básico
-    'title'       => 'Norttek Solutions - Seguridad Integral para tu Hogar y Oficina',
-    'description' => 'Norttek Solutions ofrece instalación profesional de CCTV, alarmas inteligentes, control de acceso, redes y cableado estructurado.',
-    'keywords'    => 'Seguridad, CCTV, Alarmas, Control de acceso, Redes, Automatización, Norttek, Oficina, Hogar, Empresas',
+    'title'       => 'Norttek Solutions - Catálogo de Cartuchos de Toner HP',
+    'description' => 'Herramienta interactiva, pensada para que encuentres en segundos el cartucho o tambor correcto, con información confiable sobre marcas, modelos, compatibilidad y rendimiento. Así podrás elegir tu consumible con total seguridad, evitando errores y ahorrando tiempo.',
+    'keywords'    => 'Cartuchos de toner, HP, impresoras, consumibles, Norttek, hewlett-packard, Samsung, Brother, Xerox, Kyocera, cartuchos compatibles, toner laser, impresoras laser',
     'robots'      => 'index, follow',
 
     // Open Graph
-    'og_title'       => 'Norttek Solutions - Inicio',
-    'og_description' => 'Protege tu hogar y empresa con soluciones integrales de seguridad de Norttek.',
-    'og_url'         => 'https://www.norttek.com.mx/',
+    'og_title'       => 'Norttek Solutions - Catálogo de Cartuchos de Toner HP',
+    'og_description' => 'Herramienta interactiva, pensada para que encuentres en segundos el cartucho o tambor correcto, con información confiable sobre marcas, modelos, compatibilidad y rendimiento. Así podrás elegir tu consumible con total seguridad, evitando errores y ahorrando tiempo.',
+    'og_url'         => 'https://www.norttek.com.mx/cartuchos',
     'og_image'       => 'https://www.norttek.com.mx/assets/images/og-image.jpg',
 
     // Twitter Card

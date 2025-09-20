@@ -94,21 +94,37 @@
       }
     },
     {
-      "modelo": "CF217A",
-      "impresoras_compatibles": [
-        "HP LaserJet Pro M102w",
-        "HP LaserJet Pro M102a",
-        "HP LaserJet Pro MFP M130fn",
-        "HP LaserJet Pro MFP M130nw",
-        "HP LaserJet Pro MFP M130fw",
-        "HP LaserJet Pro MFP M130a"
-      ],
-      "toner_rendimiento": "1,600 páginas",
-      "tambor": {
-        "modelo": "No aplica",
-        "rendimiento": "No aplica"
-      }
-    },
+  "modelo": "CF217A",
+  "impresoras_compatibles": [
+    "HP LaserJet Pro M102w",
+    "HP LaserJet Pro M102a",
+    "HP LaserJet Pro MFP M130fn",
+    "HP LaserJet Pro MFP M130nw",
+    "HP LaserJet Pro MFP M130fw",
+    "HP LaserJet Pro MFP M130a"
+  ],
+  "toner_rendimiento": "1,600 páginas",
+  "tambor": {
+    "modelo": "CF219A",
+    "rendimiento": "12,000 páginas"
+  }
+},
+{
+  "modelo": "CF217X",
+  "impresoras_compatibles": [
+    "HP LaserJet Pro M102w",
+    "HP LaserJet Pro M102a",
+    "HP LaserJet Pro MFP M130fn",
+    "HP LaserJet Pro MFP M130nw",
+    "HP LaserJet Pro MFP M130fw",
+    "HP LaserJet Pro MFP M130a"
+  ],
+  "toner_rendimiento": "3,500 páginas",
+  "tambor": {
+    "modelo": "CF219A",
+    "rendimiento": "12,000 páginas"
+  }
+},
     {
       "modelo": "CF230A",
       "impresoras_compatibles": [
@@ -945,176 +961,1970 @@
         "modelo": "No aplica",
         "rendimiento": "No aplica"
       }
-    },
-    {
-      "modelo": "W2020A",
-      "impresoras_compatibles": [
-        "HP Color LaserJet Enterprise M553dn",
-        "HP Color LaserJet Enterprise M553n",
-        "HP Color LaserJet Enterprise M553xh"
-      ],
-      "toner_rendimiento": "3,000 páginas",
-      "tambor": {
-        "modelo": "No aplica",
-        "rendimiento": "No aplica"
-      }
-    },
-    {
-      "modelo": "W2020X",
-      "impresoras_compatibles": [
-        "HP Color LaserJet Enterprise M553dn",
-        "HP Color LaserJet Enterprise M553n",
-        "HP Color LaserJet Enterprise M553xh"
-      ],
-      "toner_rendimiento": "7,000 páginas",
-      "tambor": {
-        "modelo": "No aplica",
-        "rendimiento": "No aplica"
-      }
-    },
-    {
-      "modelo": "W2021A",
-      "impresoras_compatibles": [
-        "HP Color LaserJet Enterprise M577dn",
-        "HP Color LaserJet Enterprise M577f",
-        "HP Color LaserJet Enterprise M577c"
-      ],
-      "toner_rendimiento": "3,000 páginas",
-      "tambor": {
-        "modelo": "No aplica",
-        "rendimiento": "No aplica"
-      }
-    },
-    {
-      "modelo": "W2022A",
-      "impresoras_compatibles": [
-        "HP Color LaserJet Enterprise M577dn",
-        "HP Color LaserJet Enterprise M577f",
-        "HP Color LaserJet Enterprise M577c"
-      ],
-      "toner_rendimiento": "7,000 páginas",
-      "tambor": {
-        "modelo": "No aplica",
-        "rendimiento": "No aplica"
-      }
-    },
-    {
-      "modelo": "W2110A",
-      "impresoras_compatibles": [
-        "HP LaserJet Enterprise M506dn",
-        "HP LaserJet Enterprise M506x",
-        "HP LaserJet Enterprise M506n"
-      ],
-      "toner_rendimiento": "6,900 páginas",
-      "tambor": {
-        "modelo": "No aplica",
-        "rendimiento": "No aplica"
-      }
-    },
-    {
-      "modelo": "W2111A",
-      "impresoras_compatibles": [
-        "HP LaserJet Enterprise M506dn",
-        "HP LaserJet Enterprise M506x",
-        "HP LaserJet Enterprise M506n"
-      ],
-      "toner_rendimiento": "6,900 páginas",
-      "tambor": {
-        "modelo": "No aplica",
-        "rendimiento": "No aplica"
-      }
-    },
-    {
-      "modelo": "W2112A",
-      "impresoras_compatibles": [
-        "HP LaserJet Enterprise M506dn",
-        "HP LaserJet Enterprise M506x",
-        "HP LaserJet Enterprise M506n"
-      ],
-      "toner_rendimiento": "6,900 páginas",
-      "tambor": {
-        "modelo": "No aplica",
-        "rendimiento": "No aplica"
-      }
-    },
-    {
-      "modelo": "W2113A",
-      "impresoras_compatibles": [
-        "HP LaserJet Enterprise M506dn",
-        "HP LaserJet Enterprise M506x",
-        "HP LaserJet Enterprise M506n"
-      ],
-      "toner_rendimiento": "6,900 páginas",
-      "tambor": {
-        "modelo": "No aplica",
-        "rendimiento": "No aplica"
-      }
-    },
-    {
-      "modelo": "W2300A",
-      "impresoras_compatibles": [
-        "HP LaserJet Enterprise M553dn",
-        "HP LaserJet Enterprise M553n",
-        "HP LaserJet Enterprise M553xh"
-      ],
-      "toner_rendimiento": "3,000 páginas",
-      "tambor": {
-        "modelo": "No aplica",
-        "rendimiento": "No aplica"
-      }
-    },
-    {
-      "modelo": "W2301A",
-      "impresoras_compatibles": [
-        "HP LaserJet Enterprise M553dn",
-        "HP LaserJet Enterprise M553n",
-        "HP LaserJet Enterprise M553xh"
-      ],
-      "toner_rendimiento": "7,000 páginas",
-      "tambor": {
-        "modelo": "No aplica",
-        "rendimiento": "No aplica"
-      }
-    },
-    {
-      "modelo": "W2302A",
-      "impresoras_compatibles": [
-        "HP LaserJet Enterprise M553dn",
-        "HP LaserJet Enterprise M553n",
-        "HP LaserJet Enterprise M553xh"
-      ],
-      "toner_rendimiento": "3,000 páginas",
-      "tambor": {
-        "modelo": "No aplica",
-        "rendimiento": "No aplica"
-      }
-    },
-    {
-      "modelo": "W2310A",
-      "impresoras_compatibles": [
-        "HP LaserJet Enterprise M506dn",
-        "HP LaserJet Enterprise M506x",
-        "HP LaserJet Enterprise M506n"
-      ],
-      "toner_rendimiento": "6,900 páginas",
-      "tambor": {
-        "modelo": "No aplica",
-        "rendimiento": "No aplica"
-      }
-    },
-    {
-      "modelo": "W2313A",
-      "impresoras_compatibles": [
-        "HP LaserJet Enterprise M506dn",
-        "HP LaserJet Enterprise M506x",
-        "HP LaserJet Enterprise M506n"
-      ],
-      "toner_rendimiento": "6,900 páginas",
-      "tambor": {
-        "modelo": "No aplica",
-        "rendimiento": "No aplica"
-      }
     }
+  ],
+  "HP Color": [
+    {
+      "modelo": "CB380A Negro",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP6015",
+        "HP Color LaserJet CP6015de",
+        "HP Color LaserJet CP6015dn",
+        "HP Color LaserJet CP6015n",
+        "HP Color LaserJet CP6015x",
+        "HP Color LaserJet CP6015xh",
+        "HP Color LaserJet CM6030",
+        "HP Color LaserJet CM6030f",
+        "HP Color LaserJet CM6040",
+        "HP Color LaserJet CM6040f"
+      ],
+      "toner_rendimiento": "16,500 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CB381A Cian",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP6015",
+        "HP Color LaserJet CP6015de",
+        "HP Color LaserJet CP6015dn",
+        "HP Color LaserJet CP6015n",
+        "HP Color LaserJet CP6015x",
+        "HP Color LaserJet CP6015xh",
+        "HP Color LaserJet CM6030",
+        "HP Color LaserJet CM6030f",
+        "HP Color LaserJet CM6040",
+        "HP Color LaserJet CM6040f"
+      ],
+      "toner_rendimiento": "21,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CB382A Amarillo",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP6015",
+        "HP Color LaserJet CP6015de",
+        "HP Color LaserJet CP6015dn",
+        "HP Color LaserJet CP6015n",
+        "HP Color LaserJet CP6015x",
+        "HP Color LaserJet CP6015xh",
+        "HP Color LaserJet CM6030",
+        "HP Color LaserJet CM6030f",
+        "HP Color LaserJet CM6040",
+        "HP Color LaserJet CM6040f"
+      ],
+      "toner_rendimiento": "21,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CB383A Magenta",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP6015",
+        "HP Color LaserJet CP6015de",
+        "HP Color LaserJet CP6015dn",
+        "HP Color LaserJet CP6015n",
+        "HP Color LaserJet CP6015x",
+        "HP Color LaserJet CP6015xh",
+        "HP Color LaserJet CM6030",
+        "HP Color LaserJet CM6030f",
+        "HP Color LaserJet CM6040",
+        "HP Color LaserJet CM6040f"
+      ],
+      "toner_rendimiento": "21,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE250A Negro",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP3525n",
+        "HP Color LaserJet CP3525dn",
+        "HP Color LaserJet CP3525x",
+        "HP Color LaserJet CM3530f",
+        "HP Color LaserJet CM3530fs",
+        "HP Color LaserJet CM3530fxi"
+      ],
+      "toner_rendimiento": "5,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE251A Cian",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP3525n",
+        "HP Color LaserJet CP3525dn",
+        "HP Color LaserJet CP3525x",
+        "HP Color LaserJet CM3530f",
+        "HP Color LaserJet CM3530fs",
+        "HP Color LaserJet CM3530fxi"
+      ],
+      "toner_rendimiento": "7,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE252A Amarillo",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP3525n",
+        "HP Color LaserJet CP3525dn",
+        "HP Color LaserJet CP3525x",
+        "HP Color LaserJet CM3530f",
+        "HP Color LaserJet CM3530fs",
+        "HP Color LaserJet CM3530fxi"
+      ],
+      "toner_rendimiento": "7,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE253A Magenta",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP3525n",
+        "HP Color LaserJet CP3525dn",
+        "HP Color LaserJet CP3525x",
+        "HP Color LaserJet CM3530f",
+        "HP Color LaserJet CM3530fs",
+        "HP Color LaserJet CM3530fxi"
+      ],
+      "toner_rendimiento": "7,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE260A Negro",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP4025n",
+        "HP Color LaserJet CP4025dn",
+        "HP Color LaserJet CP4025x",
+        "HP Color LaserJet CP4525n",
+        "HP Color LaserJet CP4525dn",
+        "HP Color LaserJet CP4525x"
+      ],
+      "toner_rendimiento": "8,500 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE261A Cian",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP4025n",
+        "HP Color LaserJet CP4025dn",
+        "HP Color LaserJet CP4025x",
+        "HP Color LaserJet CP4525n",
+        "HP Color LaserJet CP4525dn",
+        "HP Color LaserJet CP4525x"
+      ],
+      "toner_rendimiento": "11,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE262A Amarillo",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP4025n",
+        "HP Color LaserJet CP4025dn",
+        "HP Color LaserJet CP4025x",
+        "HP Color LaserJet CP4525n",
+        "HP Color LaserJet CP4525dn",
+        "HP Color LaserJet CP4525x"
+      ],
+      "toner_rendimiento": "11,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE263A Magenta",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP4025n",
+        "HP Color LaserJet CP4025dn",
+        "HP Color LaserJet CP4025x",
+        "HP Color LaserJet CP4525n",
+        "HP Color LaserJet CP4525dn",
+        "HP Color LaserJet CP4525x"
+      ],
+      "toner_rendimiento": "11,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE340A Negro",
+      "impresoras_compatibles": [
+        "HP LaserJet Enterprise 700 color M775dn"
+      ],
+      "toner_rendimiento": "13,500 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE341A Cian",
+      "impresoras_compatibles": [
+        "HP LaserJet Enterprise 700 color M775dn"
+      ],
+      "toner_rendimiento": "16,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE342A Amarillo",
+      "impresoras_compatibles": [
+        "HP LaserJet Enterprise 700 color M775dn"
+      ],
+      "toner_rendimiento": "16,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE343A Magenta",
+      "impresoras_compatibles": [
+        "HP LaserJet Enterprise 700 color M775dn"
+      ],
+      "toner_rendimiento": "16,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE400A Negro",
+      "impresoras_compatibles": [
+        "HP LaserJet Enterprise 500 color M551dn",
+        "HP LaserJet Enterprise 500 color M551n",
+        "HP LaserJet Enterprise 500 color M551xh"
+      ],
+      "toner_rendimiento": "5,500 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE401A Cian",
+      "impresoras_compatibles": [
+        "HP LaserJet Enterprise 500 color M551dn",
+        "HP LaserJet Enterprise 500 color M551n",
+        "HP LaserJet Enterprise 500 color M551xh"
+      ],
+      "toner_rendimiento": "6,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE402A Amarillo",
+      "impresoras_compatibles": [
+        "HP LaserJet Enterprise 500 color M551dn",
+        "HP LaserJet Enterprise 500 color M551n",
+        "HP LaserJet Enterprise 500 color M551xh"
+      ],
+      "toner_rendimiento": "6,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE403A Magenta",
+      "impresoras_compatibles": [
+        "HP LaserJet Enterprise 500 color M551dn",
+        "HP LaserJet Enterprise 500 color M551n",
+        "HP LaserJet Enterprise 500 color M551xh"
+      ],
+      "toner_rendimiento": "6,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+        {
+      "modelo": "CE410A Negro",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro 300 color M351a",
+        "HP LaserJet Pro 300 color M375nw",
+        "HP LaserJet Pro 400 color M451",
+        "HP LaserJet Pro 400 color M475"
+      ],
+      "toner_rendimiento": "2,200 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE411A Cian",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro 300 color M351a",
+        "HP LaserJet Pro 300 color M375nw",
+        "HP LaserJet Pro 400 color M451",
+        "HP LaserJet Pro 400 color M475"
+      ],
+      "toner_rendimiento": "2,600 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE412A Amarillo",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro 300 color M351a",
+        "HP LaserJet Pro 300 color M375nw",
+        "HP LaserJet Pro 400 color M451",
+        "HP LaserJet Pro 400 color M475"
+      ],
+      "toner_rendimiento": "2,600 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE413A Magenta",
+      "impresoras_compatibles": [
+        "HP LaserJet Pro 300 color M351a",
+        "HP LaserJet Pro 300 color M375nw",
+        "HP LaserJet Pro 400 color M451",
+        "HP LaserJet Pro 400 color M475"
+      ],
+      "toner_rendimiento": "2,600 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE740A Negro",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro CP5225"
+      ],
+      "toner_rendimiento": "7,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE741A Cian",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro CP5225"
+      ],
+      "toner_rendimiento": "7,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE742A Amarillo",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro CP5225"
+      ],
+      "toner_rendimiento": "7,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE743A Magenta",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro CP5225"
+      ],
+      "toner_rendimiento": "7,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF310A Negro",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Enterprise M855dn",
+        "HP Color LaserJet Enterprise M855x+",
+        "HP Color LaserJet Enterprise M855xh"
+      ],
+      "toner_rendimiento": "29,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF311A Cian",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Enterprise M855dn",
+        "HP Color LaserJet Enterprise M855x+",
+        "HP Color LaserJet Enterprise M855xh"
+      ],
+      "toner_rendimiento": "31,500 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF312A Amarillo",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Enterprise M855dn",
+        "HP Color LaserJet Enterprise M855x+",
+        "HP Color LaserJet Enterprise M855xh"
+      ],
+      "toner_rendimiento": "31,500 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF313A Magenta",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Enterprise M855dn",
+        "HP Color LaserJet Enterprise M855x+",
+        "HP Color LaserJet Enterprise M855xh"
+      ],
+      "toner_rendimiento": "31,500 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF320A Negro",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro M651",
+        "HP Color LaserJet Pro M680"
+      ],
+      "toner_rendimiento": "11,500 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF321A Cian",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro M680"
+      ],
+      "toner_rendimiento": "16,500 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF322A Amarillo",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro M680"
+      ],
+      "toner_rendimiento": "16,500 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF323A Magenta",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro M680"
+      ],
+      "toner_rendimiento": "16,500 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE270A Negro",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP5525 Enterprise"
+      ],
+      "toner_rendimiento": "13,500 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE271A Cian",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP5525 Enterprise"
+      ],
+      "toner_rendimiento": "15,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE272A Amarillo",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP5525 Enterprise"
+      ],
+      "toner_rendimiento": "15,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CE273A Magenta",
+      "impresoras_compatibles": [
+        "HP Color LaserJet CP5525 Enterprise"
+      ],
+      "toner_rendimiento": "15,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+        {
+      "modelo": "CF300A Negro",
+      "impresoras_compatibles": [
+        "HP color LaserJet Flow MFP M880"
+      ],
+      "toner_rendimiento": "29,500 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF301A Cian",
+      "impresoras_compatibles": [
+        "HP color LaserJet Flow MFP M880"
+      ],
+      "toner_rendimiento": "32,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF302A Amarillo",
+      "impresoras_compatibles": [
+        "HP color LaserJet Flow MFP M880"
+      ],
+      "toner_rendimiento": "32,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF303A Magenta",
+      "impresoras_compatibles": [
+        "HP color LaserJet Flow MFP M880"
+      ],
+      "toner_rendimiento": "32,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF360A Negro",
+      "impresoras_compatibles": [
+        "HP Color M552",
+        "HP Color M553",
+        "HP Color M577",
+        "Canon 040 con chip Canon",
+        "Canon 064 con chip Canon"
+      ],
+      "toner_rendimiento": "6,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF360A Cian",
+      "impresoras_compatibles": [
+        "HP Color M552",
+        "HP Color M553",
+        "HP Color M577",
+        "Canon 040 con chip Canon",
+        "Canon 064 con chip Canon"
+      ],
+      "toner_rendimiento": "5,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF360A Amarillo",
+      "impresoras_compatibles": [
+        "HP Color M552",
+        "HP Color M553",
+        "HP Color M577",
+        "Canon 040 con chip Canon",
+        "Canon 064 con chip Canon"
+      ],
+      "toner_rendimiento": "5,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF360A Magenta",
+      "impresoras_compatibles": [
+        "HP Color M552",
+        "HP Color M553",
+        "HP Color M577",
+        "Canon 040 con chip Canon",
+        "Canon 064 con chip Canon"
+      ],
+      "toner_rendimiento": "5,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+        {
+      "modelo": "CF400A Negro",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro M252n",
+        "HP Color LaserJet Pro M252dw",
+        "HP Color LaserJet Pro M254dw",
+        "HP Color LaserJet Pro M254nw",
+        "HP Color LaserJet Pro MFP M274n",
+        "HP Color LaserJet Pro M277n",
+        "HP Color LaserJet Pro M277dw",
+        "HP Color LaserJet Pro M280nw",
+        "HP Color LaserJet Pro M281fdw",
+        "HP Color LaserJet Pro M281cdw",
+        "Canon ImageCLASS LBP612Cdw",
+        "Canon ImageCLASS LBP622Cdw",
+        "Canon MF631Cn",
+        "Canon MF632Cdw",
+        "Canon MF633Cdw",
+        "Canon MF634Cdw",
+        "Canon MF642Cdw",
+        "Canon MF641Cw",
+        "Canon MF644Cdw",
+        "Canon i-SENSYS LBP613",
+        "Canon i-SENSYS LBP611Cn",
+        "Canon i-SENSYS LBP621Cw",
+        "Canon i-SENSYS LBP623Cdw",
+        "Canon MF631Cn",
+        "Canon MF635Cx",
+        "Canon MF641Cw",
+        "Canon MF643Cdw",
+        "Canon MF645Cx"
+      ],
+      "toner_rendimiento": "1,500 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF401A Cian",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro M252n",
+        "HP Color LaserJet Pro M252dw",
+        "HP Color LaserJet Pro M254dw",
+        "HP Color LaserJet Pro M254nw",
+        "HP Color LaserJet Pro MFP M274n",
+        "HP Color LaserJet Pro M277n",
+        "HP Color LaserJet Pro M277dw",
+        "HP Color LaserJet Pro M280nw",
+        "HP Color LaserJet Pro M281fdw",
+        "HP Color LaserJet Pro M281cdw",
+        "Canon ImageCLASS LBP612Cdw",
+        "Canon ImageCLASS LBP622Cdw",
+        "Canon MF631Cn",
+        "Canon MF632Cdw",
+        "Canon MF633Cdw",
+        "Canon MF634Cdw",
+        "Canon MF642Cdw",
+        "Canon MF641Cw",
+        "Canon MF644Cdw",
+        "Canon i-SENSYS LBP613",
+        "Canon i-SENSYS LBP611Cn",
+        "Canon i-SENSYS LBP621Cw",
+        "Canon i-SENSYS LBP623Cdw",
+        "Canon MF631Cn",
+        "Canon MF635Cx",
+        "Canon MF641Cw",
+        "Canon MF643Cdw",
+        "Canon MF645Cx"
+      ],
+      "toner_rendimiento": "1,400 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF402A Amarillo",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro M252n",
+        "HP Color LaserJet Pro M252dw",
+        "HP Color LaserJet Pro M254dw",
+        "HP Color LaserJet Pro M254nw",
+        "HP Color LaserJet Pro MFP M274n",
+        "HP Color LaserJet Pro M277n",
+        "HP Color LaserJet Pro M277dw",
+        "HP Color LaserJet Pro M280nw",
+        "HP Color LaserJet Pro M281fdw",
+        "HP Color LaserJet Pro M281cdw",
+        "Canon ImageCLASS LBP612Cdw",
+        "Canon ImageCLASS LBP622Cdw",
+        "Canon MF631Cn",
+        "Canon MF632Cdw",
+        "Canon MF633Cdw",
+        "Canon MF634Cdw",
+        "Canon MF642Cdw",
+        "Canon MF641Cw",
+        "Canon MF644Cdw",
+        "Canon i-SENSYS LBP613",
+        "Canon i-SENSYS LBP611Cn",
+        "Canon i-SENSYS LBP621Cw",
+        "Canon i-SENSYS LBP623Cdw",
+        "Canon MF631Cn",
+        "Canon MF635Cx",
+        "Canon MF641Cw",
+        "Canon MF643Cdw",
+        "Canon MF645Cx"
+      ],
+      "toner_rendimiento": "1,400 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF403A Magenta",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro M252n",
+        "HP Color LaserJet Pro M252dw",
+        "HP Color LaserJet Pro M254dw",
+        "HP Color LaserJet Pro M254nw",
+        "HP Color LaserJet Pro MFP M274n",
+        "HP Color LaserJet Pro M277n",
+        "HP Color LaserJet Pro M277dw",
+        "HP Color LaserJet Pro M280nw",
+        "HP Color LaserJet Pro M281fdw",
+        "HP Color LaserJet Pro M281cdw",
+        "Canon ImageCLASS LBP612Cdw",
+        "Canon ImageCLASS LBP622Cdw",
+        "Canon MF631Cn",
+        "Canon MF632Cdw",
+        "Canon MF633Cdw",
+        "Canon MF634Cdw",
+        "Canon MF642Cdw",
+        "Canon MF641Cw",
+        "Canon MF644Cdw",
+        "Canon i-SENSYS LBP613",
+        "Canon i-SENSYS LBP611Cn",
+        "Canon i-SENSYS LBP621Cw",
+        "Canon i-SENSYS LBP623Cdw",
+        "Canon MF631Cn",
+        "Canon MF635Cx",
+        "Canon MF641Cw",
+        "Canon MF643Cdw",
+        "Canon MF645Cx"
+      ],
+      "toner_rendimiento": "1,400 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF400X Negro",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro M252n",
+        "HP Color LaserJet Pro M252dw",
+        "HP Color LaserJet Pro M254dw",
+        "HP Color LaserJet Pro M254nw",
+        "HP Color LaserJet Pro MFP M274n",
+        "HP Color LaserJet Pro M277n",
+        "HP Color LaserJet Pro M277dw",
+        "HP Color LaserJet Pro M280nw",
+        "HP Color LaserJet Pro M281fdw",
+        "HP Color LaserJet Pro M281cdw",
+        "Canon ImageCLASS LBP612Cdw",
+        "Canon ImageCLASS LBP622Cdw",
+        "Canon MF631Cn",
+        "Canon MF632Cdw",
+        "Canon MF633Cdw",
+        "Canon MF634Cdw",
+        "Canon MF642Cdw",
+        "Canon MF641Cw",
+        "Canon MF644Cdw",
+        "Canon i-SENSYS LBP613",
+        "Canon i-SENSYS LBP611Cn",
+        "Canon i-SENSYS LBP621Cw",
+        "Canon i-SENSYS LBP623Cdw",
+        "Canon MF631Cn",
+        "Canon MF635Cx",
+        "Canon MF641Cw",
+        "Canon MF643Cdw",
+        "Canon MF645Cx"
+      ],
+      "toner_rendimiento": "2,800 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF401X Cian",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro M252n",
+        "HP Color LaserJet Pro M252dw",
+        "HP Color LaserJet Pro M254dw",
+        "HP Color LaserJet Pro M254nw",
+        "HP Color LaserJet Pro MFP M274n",
+        "HP Color LaserJet Pro M277n",
+        "HP Color LaserJet Pro M277dw",
+        "HP Color LaserJet Pro M280nw",
+        "HP Color LaserJet Pro M281fdw",
+        "HP Color LaserJet Pro M281cdw",
+        "Canon ImageCLASS LBP612Cdw",
+        "Canon ImageCLASS LBP622Cdw",
+        "Canon MF631Cn",
+        "Canon MF632Cdw",
+        "Canon MF633Cdw",
+        "Canon MF634Cdw",
+        "Canon MF642Cdw",
+        "Canon MF641Cw",
+        "Canon MF644Cdw",
+        "Canon i-SENSYS LBP613",
+        "Canon i-SENSYS LBP611Cn",
+        "Canon i-SENSYS LBP621Cw",
+        "Canon i-SENSYS LBP623Cdw",
+        "Canon MF631Cn",
+        "Canon MF635Cx",
+        "Canon MF641Cw",
+        "Canon MF643Cdw",
+        "Canon MF645Cx"
+      ],
+      "toner_rendimiento": "2,300 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF402X Amarillo",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro M252n",
+        "HP Color LaserJet Pro M252dw",
+        "HP Color LaserJet Pro M254dw",
+        "HP Color LaserJet Pro M254nw",
+        "HP Color LaserJet Pro MFP M274n",
+        "HP Color LaserJet Pro M277n",
+        "HP Color LaserJet Pro M277dw",
+        "HP Color LaserJet Pro M280nw",
+        "HP Color LaserJet Pro M281fdw",
+        "HP Color LaserJet Pro M281cdw",
+        "Canon ImageCLASS LBP612Cdw",
+        "Canon ImageCLASS LBP622Cdw",
+        "Canon MF631Cn",
+        "Canon MF632Cdw",
+        "Canon MF633Cdw",
+        "Canon MF634Cdw",
+        "Canon MF642Cdw",
+        "Canon MF641Cw",
+        "Canon MF644Cdw",
+        "Canon i-SENSYS LBP613",
+        "Canon i-SENSYS LBP611Cn",
+        "Canon i-SENSYS LBP621Cw",
+        "Canon i-SENSYS LBP623Cdw",
+        "Canon MF631Cn",
+        "Canon MF635Cx",
+        "Canon MF641Cw",
+        "Canon MF643Cdw",
+        "Canon MF645Cx"
+      ],
+      "toner_rendimiento": "2,300 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF403X Magenta",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro M252n",
+        "HP Color LaserJet Pro M252dw",
+        "HP Color LaserJet Pro M254dw",
+        "HP Color LaserJet Pro M254nw",
+        "HP Color LaserJet Pro MFP M274n",
+        "HP Color LaserJet Pro M277n",
+        "HP Color LaserJet Pro M277dw",
+        "HP Color LaserJet Pro M280nw",
+        "HP Color LaserJet Pro M281fdw",
+        "HP Color LaserJet Pro M281cdw",
+        "Canon ImageCLASS LBP612Cdw",
+        "Canon ImageCLASS LBP622Cdw",
+        "Canon MF631Cn",
+        "Canon MF632Cdw",
+        "Canon MF633Cdw",
+        "Canon MF634Cdw",
+        "Canon MF642Cdw",
+        "Canon MF641Cw",
+        "Canon MF644Cdw",
+        "Canon i-SENSYS LBP613",
+        "Canon i-SENSYS LBP611Cn",
+        "Canon i-SENSYS LBP621Cw",
+        "Canon i-SENSYS LBP623Cdw",
+        "Canon MF631Cn",
+        "Canon MF635Cx",
+        "Canon MF641Cw",
+        "Canon MF643Cdw",
+        "Canon MF645Cx"
+      ],
+      "toner_rendimiento": "2,300 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF410A Negro",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro M452dn",
+        "HP Color LaserJet Pro M452dw",
+        "HP Color LaserJet Pro M452nw",
+        "HP Color LaserJet Pro MFP M377dw",
+        "HP Color LaserJet Pro M477dn",
+        "HP Color LaserJet Pro M477fdw",
+        "HP Color LaserJet Pro M477fnw"
+      ],
+      "toner_rendimiento": "2,300 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF411A Cian",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro M452dn",
+        "HP Color LaserJet Pro M452dw",
+        "HP Color LaserJet Pro M452nw",
+        "HP Color LaserJet Pro MFP M377dw",
+        "HP Color LaserJet Pro M477dn",
+        "HP Color LaserJet Pro M477fdw",
+        "HP Color LaserJet Pro M477fnw"
+      ],
+      "toner_rendimiento": "2,300 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF412A Amarillo",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro M452dn",
+        "HP Color LaserJet Pro M452dw",
+        "HP Color LaserJet Pro M452nw",
+        "HP Color LaserJet Pro MFP M377dw",
+        "HP Color LaserJet Pro M477dn",
+        "HP Color LaserJet Pro M477fdw",
+        "HP Color LaserJet Pro M477fnw"
+      ],
+      "toner_rendimiento": "2,300 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF413A Magenta",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro M452dn",
+        "HP Color LaserJet Pro M452dw",
+        "HP Color LaserJet Pro M452nw",
+        "HP Color LaserJet Pro MFP M377dw",
+        "HP Color LaserJet Pro M477dn",
+        "HP Color LaserJet Pro M477fdw",
+        "HP Color LaserJet Pro M477fnw"
+      ],
+      "toner_rendimiento": "2,300 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF410X Negro",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro M452dn",
+        "HP Color LaserJet Pro M452dw",
+        "HP Color LaserJet Pro M452nw",
+        "HP Color LaserJet Pro MFP M377dw",
+        "HP Color LaserJet Pro M477dn",
+        "HP Color LaserJet Pro M477fdw",
+        "HP Color LaserJet Pro M477fnw"
+      ],
+      "toner_rendimiento": "6,500 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF411X Cian",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro M452dn",
+        "HP Color LaserJet Pro M452dw",
+        "HP Color LaserJet Pro M452nw",
+        "HP Color LaserJet Pro MFP M377dw",
+        "HP Color LaserJet Pro M477dn",
+        "HP Color LaserJet Pro M477fdw",
+        "HP Color LaserJet Pro M477fnw"
+      ],
+      "toner_rendimiento": "5,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF412X Amarillo",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro M452dn",
+        "HP Color LaserJet Pro M452dw",
+        "HP Color LaserJet Pro M452nw",
+        "HP Color LaserJet Pro MFP M377dw",
+        "HP Color LaserJet Pro M477dn",
+        "HP Color LaserJet Pro M477fdw",
+        "HP Color LaserJet Pro M477fnw"
+      ],
+      "toner_rendimiento": "5,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF413X Magenta",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Pro M452dn",
+        "HP Color LaserJet Pro M452dw",
+        "HP Color LaserJet Pro M452nw",
+        "HP Color LaserJet Pro MFP M377dw",
+        "HP Color LaserJet Pro M477dn",
+        "HP Color LaserJet Pro M477fdw",
+        "HP Color LaserJet Pro M477fnw"
+      ],
+      "toner_rendimiento": "5,000 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF450A Negro",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Enterprise M652dn",
+        "HP Color LaserJet Enterprise M652n",
+        "HP Color LaserJet Enterprise M653dn",
+        "HP Color LaserJet Enterprise M653x"
+      ],
+      "toner_rendimiento": "12,500 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF451A Cian",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Enterprise M652dn",
+        "HP Color LaserJet Enterprise M652n",
+        "HP Color LaserJet Enterprise M653dn",
+        "HP Color LaserJet Enterprise M653x"
+      ],
+      "toner_rendimiento": "10,500 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF452A Amarillo",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Enterprise M652dn",
+        "HP Color LaserJet Enterprise M652n",
+        "HP Color LaserJet Enterprise M653dn",
+        "HP Color LaserJet Enterprise M653x"
+      ],
+      "toner_rendimiento": "10,500 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+      "modelo": "CF453A Magenta",
+      "impresoras_compatibles": [
+        "HP Color LaserJet Enterprise M652dn",
+        "HP Color LaserJet Enterprise M652n",
+        "HP Color LaserJet Enterprise M653dn",
+        "HP Color LaserJet Enterprise M653x"
+      ],
+      "toner_rendimiento": "10,500 páginas",
+      "tambor": { "modelo": "No aplica", "rendimiento": "No aplica" }
+    },
+    {
+  "modelo": "CF500A 202A Negro",
+  "impresoras_compatibles": [
+    "HP Color LaserJet Pro M252n",
+    "HP Color LaserJet Pro M252dw",
+    "HP Color LaserJet Pro M254dw",
+    "HP Color LaserJet Pro M254nw",
+    "HP Color LaserJet Pro MFP M274n",
+    "HP Color LaserJet Pro MFP M277n",
+    "HP Color LaserJet Pro MFP M277dw",
+    "HP Color LaserJet Pro MFP M280nw",
+    "HP Color LaserJet Pro MFP M281fdw",
+    "HP Color LaserJet Pro MFP M281cdw",
+    "Canon ImageCLASS LBP612Cdw",
+    "Canon ImageCLASS LBP622Cdw",
+    "Canon ImageCLASS MF631Cn",
+    "Canon ImageCLASS MF632Cdw",
+    "Canon ImageCLASS MF633Cdw",
+    "Canon ImageCLASS MF634Cdw",
+    "Canon ImageCLASS MF642Cdw",
+    "Canon ImageCLASS MF641Cw",
+    "Canon ImageCLASS MF644Cdw",
+    "Canon i-SENSYS LBP613",
+    "Canon i-SENSYS LBP611Cn",
+    "Canon i-SENSYS LBP621Cw",
+    "Canon i-SENSYS LBP623Cdw",
+    "Canon i-SENSYS MF631Cn",
+    "Canon i-SENSYS MF635Cx",
+    "Canon i-SENSYS MF641Cw",
+    "Canon i-SENSYS MF643Cdw",
+    "Canon i-SENSYS MF645Cx"
+  ],
+  "toner_rendimiento": "1,400 páginas",
+  "tambor": {
+    "modelo": "No aplica",
+    "rendimiento": "No aplica"
+  }
+},
+{
+  "modelo": "CF501A 202A Cian",
+  "impresoras_compatibles": [
+    "HP Color LaserJet Pro M252n",
+    "HP Color LaserJet Pro M252dw",
+    "HP Color LaserJet Pro M254dw",
+    "HP Color LaserJet Pro M254nw",
+    "HP Color LaserJet Pro MFP M274n",
+    "HP Color LaserJet Pro MFP M277n",
+    "HP Color LaserJet Pro MFP M277dw",
+    "HP Color LaserJet Pro MFP M280nw",
+    "HP Color LaserJet Pro MFP M281fdw",
+    "HP Color LaserJet Pro MFP M281cdw",
+    "Canon ImageCLASS LBP612Cdw",
+    "Canon ImageCLASS LBP622Cdw",
+    "Canon ImageCLASS MF631Cn",
+    "Canon ImageCLASS MF632Cdw",
+    "Canon ImageCLASS MF633Cdw",
+    "Canon ImageCLASS MF634Cdw",
+    "Canon ImageCLASS MF642Cdw",
+    "Canon ImageCLASS MF641Cw",
+    "Canon ImageCLASS MF644Cdw",
+    "Canon i-SENSYS LBP613",
+    "Canon i-SENSYS LBP611Cn",
+    "Canon i-SENSYS LBP621Cw",
+    "Canon i-SENSYS LBP623Cdw",
+    "Canon i-SENSYS MF631Cn",
+    "Canon i-SENSYS MF635Cx",
+    "Canon i-SENSYS MF641Cw",
+    "Canon i-SENSYS MF643Cdw",
+    "Canon i-SENSYS MF645Cx"
+  ],
+  "toner_rendimiento": "1,300 páginas",
+  "tambor": {
+    "modelo": "No aplica",
+    "rendimiento": "No aplica"
+  }
+},
+{
+  "modelo": "CF502A 202A Amarillo",
+  "impresoras_compatibles": [
+    "HP Color LaserJet Pro M252n",
+    "HP Color LaserJet Pro M252dw",
+    "HP Color LaserJet Pro M254dw",
+    "HP Color LaserJet Pro M254nw",
+    "HP Color LaserJet Pro MFP M274n",
+    "HP Color LaserJet Pro MFP M277n",
+    "HP Color LaserJet Pro MFP M277dw",
+    "HP Color LaserJet Pro MFP M280nw",
+    "HP Color LaserJet Pro MFP M281fdw",
+    "HP Color LaserJet Pro MFP M281cdw",
+    "Canon ImageCLASS LBP612Cdw",
+    "Canon ImageCLASS LBP622Cdw",
+    "Canon ImageCLASS MF631Cn",
+    "Canon ImageCLASS MF632Cdw",
+    "Canon ImageCLASS MF633Cdw",
+    "Canon ImageCLASS MF634Cdw",
+    "Canon ImageCLASS MF642Cdw",
+    "Canon ImageCLASS MF641Cw",
+    "Canon ImageCLASS MF644Cdw",
+    "Canon i-SENSYS LBP613",
+    "Canon i-SENSYS LBP611Cn",
+    "Canon i-SENSYS LBP621Cw",
+    "Canon i-SENSYS LBP623Cdw",
+    "Canon i-SENSYS MF631Cn",
+    "Canon i-SENSYS MF635Cx",
+    "Canon i-SENSYS MF641Cw",
+    "Canon i-SENSYS MF643Cdw",
+    "Canon i-SENSYS MF645Cx"
+  ],
+  "toner_rendimiento": "1,300 páginas",
+  "tambor": {
+    "modelo": "No aplica",
+    "rendimiento": "No aplica"
+  }
+},
+{
+  "modelo": "CF503A 202A Magenta",
+  "impresoras_compatibles": [
+    "HP Color LaserJet Pro M252n",
+    "HP Color LaserJet Pro M252dw",
+    "HP Color LaserJet Pro M254dw",
+    "HP Color LaserJet Pro M254nw",
+    "HP Color LaserJet Pro MFP M274n",
+    "HP Color LaserJet Pro MFP M277n",
+    "HP Color LaserJet Pro MFP M277dw",
+    "HP Color LaserJet Pro MFP M280nw",
+    "HP Color LaserJet Pro MFP M281fdw",
+    "HP Color LaserJet Pro MFP M281cdw",
+    "Canon ImageCLASS LBP612Cdw",
+    "Canon ImageCLASS LBP622Cdw",
+    "Canon ImageCLASS MF631Cn",
+    "Canon ImageCLASS MF632Cdw",
+    "Canon ImageCLASS MF633Cdw",
+    "Canon ImageCLASS MF634Cdw",
+    "Canon ImageCLASS MF642Cdw",
+    "Canon ImageCLASS MF641Cw",
+    "Canon ImageCLASS MF644Cdw",
+    "Canon i-SENSYS LBP613",
+    "Canon i-SENSYS LBP611Cn",
+    "Canon i-SENSYS LBP621Cw",
+    "Canon i-SENSYS LBP623Cdw",
+    "Canon i-SENSYS MF631Cn",
+    "Canon i-SENSYS MF635Cx",
+    "Canon i-SENSYS MF641Cw",
+    "Canon i-SENSYS MF643Cdw",
+    "Canon i-SENSYS MF645Cx"
+  ],
+  "toner_rendimiento": "1,300 páginas",
+  "tambor": {
+    "modelo": "No aplica",
+    "rendimiento": "No aplica"
+  }
+},
+{
+  "modelo": "CF500X 202X Negro",
+  "impresoras_compatibles": [
+    "HP Color LaserJet Pro M252n",
+    "HP Color LaserJet Pro M252dw",
+    "HP Color LaserJet Pro M254dw",
+    "HP Color LaserJet Pro M254nw",
+    "HP Color LaserJet Pro MFP M274n",
+    "HP Color LaserJet Pro MFP M277n",
+    "HP Color LaserJet Pro MFP M277dw",
+    "HP Color LaserJet Pro MFP M280nw",
+    "HP Color LaserJet Pro MFP M281fdw",
+    "HP Color LaserJet Pro MFP M281cdw",
+    "Canon ImageCLASS LBP612Cdw",
+    "Canon ImageCLASS LBP622Cdw",
+    "Canon ImageCLASS MF631Cn",
+    "Canon ImageCLASS MF632Cdw",
+    "Canon ImageCLASS MF633Cdw",
+    "Canon ImageCLASS MF634Cdw",
+    "Canon ImageCLASS MF642Cdw",
+    "Canon ImageCLASS MF641Cw",
+    "Canon ImageCLASS MF644Cdw",
+    "Canon i-SENSYS LBP613",
+    "Canon i-SENSYS LBP611Cn",
+    "Canon i-SENSYS LBP621Cw",
+    "Canon i-SENSYS LBP623Cdw",
+    "Canon i-SENSYS MF631Cn",
+    "Canon i-SENSYS MF635Cx",
+    "Canon i-SENSYS MF641Cw",
+    "Canon i-SENSYS MF643Cdw",
+    "Canon i-SENSYS MF645Cx"
+  ],
+  "toner_rendimiento": "3,200 páginas",
+  "tambor": {
+    "modelo": "No aplica",
+    "rendimiento": "No aplica"
+  }
+},
+{
+  "modelo": "CF501X 202X Cian",
+  "impresoras_compatibles": [
+    "HP Color LaserJet Pro M252n",
+    "HP Color LaserJet Pro M252dw",
+    "HP Color LaserJet Pro M254dw",
+    "HP Color LaserJet Pro M254nw",
+    "HP Color LaserJet Pro MFP M274n",
+    "HP Color LaserJet Pro MFP M277n",
+    "HP Color LaserJet Pro MFP M277dw",
+    "HP Color LaserJet Pro MFP M280nw",
+    "HP Color LaserJet Pro MFP M281fdw",
+    "HP Color LaserJet Pro MFP M281cdw",
+    "Canon ImageCLASS LBP612Cdw",
+    "Canon ImageCLASS LBP622Cdw",
+    "Canon ImageCLASS MF631Cn",
+    "Canon ImageCLASS MF632Cdw",
+    "Canon ImageCLASS MF633Cdw",
+    "Canon ImageCLASS MF634Cdw",
+    "Canon ImageCLASS MF642Cdw",
+    "Canon ImageCLASS MF641Cw",
+    "Canon ImageCLASS MF644Cdw",
+    "Canon i-SENSYS LBP613",
+    "Canon i-SENSYS LBP611Cn",
+    "Canon i-SENSYS LBP621Cw",
+    "Canon i-SENSYS LBP623Cdw",
+    "Canon i-SENSYS MF631Cn",
+    "Canon i-SENSYS MF635Cx",
+    "Canon i-SENSYS MF641Cw",
+    "Canon i-SENSYS MF643Cdw",
+    "Canon i-SENSYS MF645Cx"
+  ],
+  "toner_rendimiento": "2,500 páginas",
+  "tambor": {
+    "modelo": "No aplica",
+    "rendimiento": "No aplica"
+  }
+},
+{
+  "modelo": "CF502X 202X Amarillo",
+  "impresoras_compatibles": [
+    "HP Color LaserJet Pro M252n",
+    "HP Color LaserJet Pro M252dw",
+    "HP Color LaserJet Pro M254dw",
+    "HP Color LaserJet Pro M254nw",
+    "HP Color LaserJet Pro MFP M274n",
+    "HP Color LaserJet Pro MFP M277n",
+    "HP Color LaserJet Pro MFP M277dw",
+    "HP Color LaserJet Pro MFP M280nw",
+    "HP Color LaserJet Pro MFP M281fdw",
+    "HP Color LaserJet Pro MFP M281cdw",
+    "Canon ImageCLASS LBP612Cdw",
+    "Canon ImageCLASS LBP622Cdw",
+    "Canon ImageCLASS MF631Cn",
+    "Canon ImageCLASS MF632Cdw",
+    "Canon ImageCLASS MF633Cdw",
+    "Canon ImageCLASS MF634Cdw",
+    "Canon ImageCLASS MF642Cdw",
+    "Canon ImageCLASS MF641Cw",
+    "Canon ImageCLASS MF644Cdw",
+    "Canon i-SENSYS LBP613",
+    "Canon i-SENSYS LBP611Cn",
+    "Canon i-SENSYS LBP621Cw",
+    "Canon i-SENSYS LBP623Cdw",
+    "Canon i-SENSYS MF631Cn",
+    "Canon i-SENSYS MF635Cx",
+    "Canon i-SENSYS MF641Cw",
+    "Canon i-SENSYS MF643Cdw",
+    "Canon i-SENSYS MF645Cx"
+  ],
+  "toner_rendimiento": "2,500 páginas",
+  "tambor": {
+    "modelo": "No aplica",
+    "rendimiento": "No aplica"
+  }
+},
+{
+  "modelo": "CF503X 202X Magenta",
+  "impresoras_compatibles": [
+    "HP Color LaserJet Pro M252n",
+    "HP Color LaserJet Pro M252dw",
+    "HP Color LaserJet Pro M254dw",
+    "HP Color LaserJet Pro M254nw",
+    "HP Color LaserJet Pro MFP M274n",
+    "HP Color LaserJet Pro MFP M277n",
+    "HP Color LaserJet Pro MFP M277dw",
+    "HP Color LaserJet Pro MFP M280nw",
+    "HP Color LaserJet Pro MFP M281fdw",
+    "HP Color LaserJet Pro MFP M281cdw",
+    "Canon ImageCLASS LBP612Cdw",
+    "Canon ImageCLASS LBP622Cdw",
+    "Canon ImageCLASS MF631Cn",
+    "Canon ImageCLASS MF632Cdw",
+    "Canon ImageCLASS MF633Cdw",
+    "Canon ImageCLASS MF634Cdw",
+    "Canon ImageCLASS MF642Cdw",
+    "Canon ImageCLASS MF641Cw",
+    "Canon ImageCLASS MF644Cdw",
+    "Canon i-SENSYS LBP613",
+    "Canon i-SENSYS LBP611Cn",
+    "Canon i-SENSYS LBP621Cw",
+    "Canon i-SENSYS LBP623Cdw",
+    "Canon i-SENSYS MF631Cn",
+    "Canon i-SENSYS MF635Cx",
+    "Canon i-SENSYS MF641Cw",
+    "Canon i-SENSYS MF643Cdw",
+    "Canon i-SENSYS MF645Cx"
+  ],
+  "toner_rendimiento": "2,500 páginas",
+  "tambor": {
+    "modelo": "No aplica",
+    "rendimiento": "No aplica"
+  }
+},
+{
+  "modelo": "CF510A 204A Negro",
+  "impresoras_compatibles": [
+    "HP Color LaserJet Pro M180nw"
+  ],
+  "toner_rendimiento": "1,100 páginas",
+  "tambor": {
+    "modelo": "No aplica",
+    "rendimiento": "No aplica"
+  }
+},
+{
+  "modelo": "CF511A 204A Cian",
+  "impresoras_compatibles": [
+    "HP Color LaserJet Pro M180nw"
+  ],
+  "toner_rendimiento": "900 páginas",
+  "tambor": {
+    "modelo": "No aplica",
+    "rendimiento": "No aplica"
+  }
+},
+{
+  "modelo": "CF512A 204A Amarillo",
+  "impresoras_compatibles": [
+    "HP Color LaserJet Pro M180nw"
+  ],
+  "toner_rendimiento": "900 páginas",
+  "tambor": {
+    "modelo": "No aplica",
+    "rendimiento": "No aplica"
+  }
+},
+{
+  "modelo": "CF513A 204A Magenta",
+  "impresoras_compatibles": [
+    "HP Color LaserJet Pro M180nw"
+  ],
+  "toner_rendimiento": "900 páginas",
+  "tambor": {
+    "modelo": "No aplica",
+    "rendimiento": "No aplica"
+  }
+},
+{
+    "modelo": "CF510X 204X Negro",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M180nw"
+    ],
+    "toner_rendimiento": "2,300 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "CF511X 204X Cian",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M180nw"
+    ],
+    "toner_rendimiento": "2,100 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "CF512X 204X Amarillo",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M180nw"
+    ],
+    "toner_rendimiento": "2,100 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "CF513X 204X Magenta",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M180nw"
+    ],
+    "toner_rendimiento": "2,100 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "W2020A 414A Negro",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M454dn",
+      "HP Color LaserJet Pro M454dw",
+      "HP Color LaserJet Pro M479dw",
+      "HP Color LaserJet Pro M479fdn",
+      "HP Color LaserJet Pro M479fdw"
+    ],
+    "toner_rendimiento": "2,400 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "W2021A 414A Cian",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M454dn",
+      "HP Color LaserJet Pro M454dw",
+      "HP Color LaserJet Pro M479dw",
+      "HP Color LaserJet Pro M479fdn",
+      "HP Color LaserJet Pro M479fdw"
+    ],
+    "toner_rendimiento": "2,400 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "W2022A 414A Magenta",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M454dn",
+      "HP Color LaserJet Pro M454dw",
+      "HP Color LaserJet Pro M479dw",
+      "HP Color LaserJet Pro M479fdn",
+      "HP Color LaserJet Pro M479fdw"
+    ],
+    "toner_rendimiento": "2,400 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "W2023A 414A Amarillo",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M454dn",
+      "HP Color LaserJet Pro M454dw",
+      "HP Color LaserJet Pro M479dw",
+      "HP Color LaserJet Pro M479fdn",
+      "HP Color LaserJet Pro M479fdw"
+    ],
+    "toner_rendimiento": "2,400 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "W2020X 414X Negro",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M454dn",
+      "HP Color LaserJet Pro M454dw",
+      "HP Color LaserJet Pro M479dw",
+      "HP Color LaserJet Pro M479fdn",
+      "HP Color LaserJet Pro M479fdw"
+    ],
+    "toner_rendimiento": "7,500 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "W2021X 414X Cian",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M454dn",
+      "HP Color LaserJet Pro M454dw",
+      "HP Color LaserJet Pro M479dw",
+      "HP Color LaserJet Pro M479fdn",
+      "HP Color LaserJet Pro M479fdw"
+    ],
+    "toner_rendimiento": "6,000 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "W2022X 414X Magenta",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M454dn",
+      "HP Color LaserJet Pro M454dw",
+      "HP Color LaserJet Pro M479dw",
+      "HP Color LaserJet Pro M479fdn",
+      "HP Color LaserJet Pro M479fdw"
+    ],
+    "toner_rendimiento": "6,000 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "W2023X 414X Amarillo",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M454dn",
+      "HP Color LaserJet Pro M454dw",
+      "HP Color LaserJet Pro M479dw",
+      "HP Color LaserJet Pro M479fdn",
+      "HP Color LaserJet Pro M479fdw"
+    ],
+    "toner_rendimiento": "6,000 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "W2110A 206A Negro",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M255dw",
+      "HP Color LaserJet Pro M255nw",
+      "HP Color LaserJet Pro MFP M283cdw"
+    ],
+    "toner_rendimiento": "1,350 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "W2111A 206A Cian",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M255dw",
+      "HP Color LaserJet Pro M255nw",
+      "HP Color LaserJet Pro MFP M283cdw"
+    ],
+    "toner_rendimiento": "1,250 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "W2112A 206A Magenta",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M255dw",
+      "HP Color LaserJet Pro M255nw",
+      "HP Color LaserJet Pro MFP M283cdw"
+    ],
+    "toner_rendimiento": "1,250 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "W2113A 206A Amarillo",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M255dw",
+      "HP Color LaserJet Pro M255nw",
+      "HP Color LaserJet Pro MFP M283cdw"
+    ],
+    "toner_rendimiento": "1,250 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "W2110X 206X Negro",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M255dw",
+      "HP Color LaserJet Pro M255nw",
+      "HP Color LaserJet Pro MFP M283cdw"
+    ],
+    "toner_rendimiento": "3,150 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "W2111X 206X Cian",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M255dw",
+      "HP Color LaserJet Pro M255nw",
+      "HP Color LaserJet Pro MFP M283cdw"
+    ],
+    "toner_rendimiento": "2,450 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "W2112X 206X Magenta",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M255dw",
+      "HP Color LaserJet Pro M255nw",
+      "HP Color LaserJet Pro MFP M283cdw"
+    ],
+    "toner_rendimiento": "2,450 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "W2113X 206X Amarillo",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M255dw",
+      "HP Color LaserJet Pro M255nw",
+      "HP Color LaserJet Pro MFP M283cdw"
+    ],
+    "toner_rendimiento": "2,450 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "W2120A 212A Negro",
+    "impresoras_compatibles": [
+      "HP LaserJet Enterprise M555dn",
+      "HP LaserJet Enterprise M555x",
+      "HP LaserJet Enterprise M554dn",
+      "HP LaserJet Enterprise M578c",
+      "HP LaserJet Enterprise M578z",
+      "HP LaserJet Enterprise M578dn",
+      "HP LaserJet Enterprise M578f",
+      "Canon LBP722Cdw",
+      "Canon MF832Cdw",
+      "Canon MF842Cdw"
+    ],
+    "toner_rendimiento": "5,500 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "W2121A 212A Cian",
+    "impresoras_compatibles": [
+      "HP LaserJet Enterprise M555dn",
+      "HP LaserJet Enterprise M555x",
+      "HP LaserJet Enterprise M554dn",
+      "HP LaserJet Enterprise M578c",
+      "HP LaserJet Enterprise M578z",
+      "HP LaserJet Enterprise M578dn",
+      "HP LaserJet Enterprise M578f",
+      "Canon LBP722Cdw",
+      "Canon MF832Cdw",
+      "Canon MF842Cdw"
+    ],
+    "toner_rendimiento": "4,500 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "W2122A 212A Magenta",
+    "impresoras_compatibles": [
+      "HP LaserJet Enterprise M555dn",
+      "HP LaserJet Enterprise M555x",
+      "HP LaserJet Enterprise M554dn",
+      "HP LaserJet Enterprise M578c",
+      "HP LaserJet Enterprise M578z",
+      "HP LaserJet Enterprise M578dn",
+      "HP LaserJet Enterprise M578f",
+      "Canon LBP722Cdw",
+      "Canon MF832Cdw",
+      "Canon MF842Cdw"
+    ],
+    "toner_rendimiento": "4,500 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+  {
+    "modelo": "W2123A 212A Amarillo",
+    "impresoras_compatibles": [
+      "HP LaserJet Enterprise M555dn",
+      "HP LaserJet Enterprise M555x",
+      "HP LaserJet Enterprise M554dn",
+      "HP LaserJet Enterprise M578c",
+      "HP LaserJet Enterprise M578z",
+      "HP LaserJet Enterprise M578dn",
+      "HP LaserJet Enterprise M578f",
+      "Canon LBP722Cdw",
+      "Canon MF832Cdw",
+      "Canon MF842Cdw"
+    ],
+    "toner_rendimiento": "4,500 páginas",
+    "tambor": {
+      "modelo": "No aplica",
+      "rendimiento": "No aplica"
+    }
+  },
+   {
+    "modelo": "W2130A 213A Negro",
+    "impresoras_compatibles": [
+      "HP LaserJet Enterprise 5700dn",
+      "HP LaserJet Enterprise MFP 5800dn",
+      "HP LaserJet Enterprise 6700",
+      "HP LaserJet Enterprise 6701",
+      "HP LaserJet Enterprise 6800",
+      "HP LaserJet Enterprise 6801"
+    ],
+    "toner_rendimiento": "3,500 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2131A 213A Cian",
+    "impresoras_compatibles": [
+      "HP LaserJet Enterprise 5700dn",
+      "HP LaserJet Enterprise MFP 5800dn",
+      "HP LaserJet Enterprise 6700",
+      "HP LaserJet Enterprise 6701",
+      "HP LaserJet Enterprise 6800",
+      "HP LaserJet Enterprise 6801"
+    ],
+    "toner_rendimiento": "3,000 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2132A 213A Magenta",
+    "impresoras_compatibles": [
+      "HP LaserJet Enterprise 5700dn",
+      "HP LaserJet Enterprise MFP 5800dn",
+      "HP LaserJet Enterprise 6700",
+      "HP LaserJet Enterprise 6701",
+      "HP LaserJet Enterprise 6800",
+      "HP LaserJet Enterprise 6801"
+    ],
+    "toner_rendimiento": "3,000 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2133A 213A Amarillo",
+    "impresoras_compatibles": [
+      "HP LaserJet Enterprise 5700dn",
+      "HP LaserJet Enterprise MFP 5800dn",
+      "HP LaserJet Enterprise 6700",
+      "HP LaserJet Enterprise 6701",
+      "HP LaserJet Enterprise 6800",
+      "HP LaserJet Enterprise 6801"
+    ],
+    "toner_rendimiento": "3,000 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2130X 213X Negro",
+    "impresoras_compatibles": [
+      "HP LaserJet Enterprise 5700dn",
+      "HP LaserJet Enterprise MFP 5800dn",
+      "HP LaserJet Enterprise 6700",
+      "HP LaserJet Enterprise 6701",
+      "HP LaserJet Enterprise 6800",
+      "HP LaserJet Enterprise 6801"
+    ],
+    "toner_rendimiento": "9,000 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2131X 213X Cian",
+    "impresoras_compatibles": [
+      "HP LaserJet Enterprise 5700dn",
+      "HP LaserJet Enterprise MFP 5800dn",
+      "HP LaserJet Enterprise 6700",
+      "HP LaserJet Enterprise 6701",
+      "HP LaserJet Enterprise 6800",
+      "HP LaserJet Enterprise 6801"
+    ],
+    "toner_rendimiento": "6,000 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2132X 213X Magenta",
+    "impresoras_compatibles": [
+      "HP LaserJet Enterprise 5700dn",
+      "HP LaserJet Enterprise MFP 5800dn",
+      "HP LaserJet Enterprise 6700",
+      "HP LaserJet Enterprise 6701",
+      "HP LaserJet Enterprise 6800",
+      "HP LaserJet Enterprise 6801"
+    ],
+    "toner_rendimiento": "6,000 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2133X 213X Amarillo",
+    "impresoras_compatibles": [
+      "HP LaserJet Enterprise 5700dn",
+      "HP LaserJet Enterprise MFP 5800dn",
+      "HP LaserJet Enterprise 6700",
+      "HP LaserJet Enterprise 6701",
+      "HP LaserJet Enterprise 6800",
+      "HP LaserJet Enterprise 6801"
+    ],
+    "toner_rendimiento": "6,000 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2220A 222A Negro",
+    "impresoras_compatibles": [
+      "HP LaserJet Pro3203",
+      "HP LaserJet Pro3288",
+      "HP LaserJet Pro MFP3303",
+      "HP LaserJet Pro MFP3388"
+    ],
+    "toner_rendimiento": "1,300 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2221A 222A Cian",
+    "impresoras_compatibles": [
+      "HP LaserJet Pro3203",
+      "HP LaserJet Pro3288",
+      "HP LaserJet Pro MFP3303",
+      "HP LaserJet Pro MFP3388"
+    ],
+    "toner_rendimiento": "1,200 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2222A 222A Magenta",
+    "impresoras_compatibles": [
+      "HP LaserJet Pro3203",
+      "HP LaserJet Pro3288",
+      "HP LaserJet Pro MFP3303",
+      "HP LaserJet Pro MFP3388"
+    ],
+    "toner_rendimiento": "1,200 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2223A 222A Amarillo",
+    "impresoras_compatibles": [
+      "HP LaserJet Pro3203",
+      "HP LaserJet Pro3288",
+      "HP LaserJet Pro MFP3303",
+      "HP LaserJet Pro MFP3388"
+    ],
+    "toner_rendimiento": "1,200 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2310A 215A Negro",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M155",
+      "HP Color LaserJet Pro MFP M182",
+      "HP Color LaserJet Pro MFP M183"
+    ],
+    "toner_rendimiento": "1,050 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2311A 215A Cian",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M155",
+      "HP Color LaserJet Pro MFP M182",
+      "HP Color LaserJet Pro MFP M183"
+    ],
+    "toner_rendimiento": "1,000 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2312A 215A Magenta",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M155",
+      "HP Color LaserJet Pro MFP M182",
+      "HP Color LaserJet Pro MFP M183"
+    ],
+    "toner_rendimiento": "1,000 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2313A 215A Amarillo",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro M155",
+      "HP Color LaserJet Pro MFP M182",
+      "HP Color LaserJet Pro MFP M183"
+    ],
+    "toner_rendimiento": "1,000 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2300A 230A Negro",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro 4203dw",
+      "HP Color LaserJet Pro 4303dw",
+      "HP Color LaserJet Pro 4303fdw",
+      "Canon LBP673Cdw",
+      "Canon LBP674Cx",
+      "Canon LBP674Cdw",
+      "Canon MF752Cdw",
+      "Canon MF753Cdw",
+      "Canon MF751Cdw",
+      "Canon MF756Cx"
+    ],
+    "toner_rendimiento": "2,000 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2301A 230A Cian",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro 4203dw",
+      "HP Color LaserJet Pro 4303dw",
+      "HP Color LaserJet Pro 4303fdw",
+      "Canon LBP673Cdw",
+      "Canon LBP674Cx",
+      "Canon LBP674Cdw",
+      "Canon MF752Cdw",
+      "Canon MF753Cdw",
+      "Canon MF751Cdw",
+      "Canon MF756Cx"
+    ],
+    "toner_rendimiento": "1,800 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2302A 230A Magenta",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro 4203dw",
+      "HP Color LaserJet Pro 4303dw",
+      "HP Color LaserJet Pro 4303fdw",
+      "Canon LBP673Cdw",
+      "Canon LBP674Cx",
+      "Canon LBP674Cdw",
+      "Canon MF752Cdw",
+      "Canon MF753Cdw",
+      "Canon MF751Cdw",
+      "Canon MF756Cx"
+    ],
+    "toner_rendimiento": "1,800 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2303A 230A Amarillo",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro 4203dw",
+      "HP Color LaserJet Pro 4303dw",
+      "HP Color LaserJet Pro 4303fdw",
+      "Canon LBP673Cdw",
+      "Canon LBP674Cx",
+      "Canon LBP674Cdw",
+      "Canon MF752Cdw",
+      "Canon MF753Cdw",
+      "Canon MF751Cdw",
+      "Canon MF756Cx"
+    ],
+    "toner_rendimiento": "1,800 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2300X 230X Negro",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro 4203dw",
+      "HP Color LaserJet Pro 4303dw",
+      "HP Color LaserJet Pro 4303fdw",
+      "Canon LBP673Cdw",
+      "Canon LBP674Cx",
+      "Canon LBP674Cdw",
+      "Canon MF752Cdw",
+      "Canon MF753Cdw",
+      "Canon MF751Cdw",
+      "Canon MF756Cx"
+    ],
+    "toner_rendimiento": "7,500 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2301X 230X Cian",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro 4203dw",
+      "HP Color LaserJet Pro 4303dw",
+      "HP Color LaserJet Pro 4303fdw",
+      "Canon LBP673Cdw",
+      "Canon LBP674Cx",
+      "Canon LBP674Cdw",
+      "Canon MF752Cdw",
+      "Canon MF753Cdw",
+      "Canon MF751Cdw",
+      "Canon MF756Cx"
+    ],
+    "toner_rendimiento": "5,500 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2302X 230X Magenta",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro 4203dw",
+      "HP Color LaserJet Pro 4303dw",
+      "HP Color LaserJet Pro 4303fdw",
+      "Canon LBP673Cdw",
+      "Canon LBP674Cx",
+      "Canon LBP674Cdw",
+      "Canon MF752Cdw",
+      "Canon MF753Cdw",
+      "Canon MF751Cdw",
+      "Canon MF756Cx"
+    ],
+    "toner_rendimiento": "5,500 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  },
+  {
+    "modelo": "W2303X 230X Amarillo",
+    "impresoras_compatibles": [
+      "HP Color LaserJet Pro 4203dw",
+      "HP Color LaserJet Pro 4303dw",
+      "HP Color LaserJet Pro 4303fdw",
+      "Canon LBP673Cdw",
+      "Canon LBP674Cx",
+      "Canon LBP674Cdw",
+      "Canon MF752Cdw",
+      "Canon MF753Cdw",
+      "Canon MF751Cdw",
+      "Canon MF756Cx"
+    ],
+    "toner_rendimiento": "5,500 páginas",
+    "tambor": {"modelo": "No aplica", "rendimiento": "No aplica"}
+  }
   ],
   "Samsung": [
     {
@@ -1888,6 +3698,932 @@
         "rendimiento": "12,000 páginas"
       }
     }
+  ],
+  "Brother Color": [
+    {
+      "modelo": "TN115BK Negro",
+      "impresoras_compatibles": [
+        "Brother HL-4040CN",
+        "Brother HL-4070CDW",
+        "Brother MFC-9440CN"
+      ],
+      "toner_rendimiento": "5,000 páginas",
+      "tambor": {
+        "modelo": "DR-115CL",
+        "rendimiento": "12,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN115C Cian",
+      "impresoras_compatibles": [
+        "Brother HL-4040CN",
+        "Brother HL-4070CDW",
+        "Brother MFC-9440CN"
+      ],
+      "toner_rendimiento": "4,000 páginas",
+      "tambor": {
+        "modelo": "DR-115CL",
+        "rendimiento": "12,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN115M Magenta",
+      "impresoras_compatibles": [
+        "Brother HL-4040CN",
+        "Brother HL-4070CDW",
+        "Brother MFC-9440CN"
+      ],
+      "toner_rendimiento": "4,000 páginas",
+      "tambor": {
+        "modelo": "DR-115CL",
+        "rendimiento": "12,000 páginas"
+      }
+    },
+    {
+      "modelo": "TN115Y Amarillo",
+      "impresoras_compatibles": [
+        "Brother HL-4040CN",
+        "Brother HL-4070CDW",
+        "Brother MFC-9440CN"
+      ],
+      "toner_rendimiento": "4,000 páginas",
+      "tambor": {
+        "modelo": "DR-115CL",
+        "rendimiento": "12,000 páginas"
+      }
+    },
+    {
+  "modelo": "TN210BK Negro",
+  "impresoras_compatibles": [
+    "Brother HL-3040CN",
+    "Brother HL-3045CN",
+    "Brother HL-3070CW",
+    "Brother HL-3075CW",
+    "Brother MFC-9010CN",
+    "Brother MFC-9120CN",
+    "Brother MFC-9125CN",
+    "Brother MFC-9320CW",
+    "Brother MFC-9325CW"
+  ],
+  "toner_rendimiento": "2,200 páginas",
+  "tambor": {
+    "modelo": "DR-210CL",
+    "rendimiento": "15,000 páginas"
+  }
+},
+{
+  "modelo": "TN210C Cian",
+  "impresoras_compatibles": [
+    "Brother HL-3040CN",
+    "Brother HL-3045CN",
+    "Brother HL-3070CW",
+    "Brother HL-3075CW",
+    "Brother MFC-9010CN",
+    "Brother MFC-9120CN",
+    "Brother MFC-9125CN",
+    "Brother MFC-9320CW",
+    "Brother MFC-9325CW"
+  ],
+  "toner_rendimiento": "1,400 páginas",
+  "tambor": {
+    "modelo": "DR-210CL",
+    "rendimiento": "15,000 páginas"
+  }
+},
+{
+  "modelo": "TN210M Magenta",
+  "impresoras_compatibles": [
+    "Brother HL-3040CN",
+    "Brother HL-3045CN",
+    "Brother HL-3070CW",
+    "Brother HL-3075CW",
+    "Brother MFC-9010CN",
+    "Brother MFC-9120CN",
+    "Brother MFC-9125CN",
+    "Brother MFC-9320CW",
+    "Brother MFC-9325CW"
+  ],
+  "toner_rendimiento": "1,400 páginas",
+  "tambor": {
+    "modelo": "DR-210CL",
+    "rendimiento": "15,000 páginas"
+  }
+},
+{
+  "modelo": "TN210Y Amarillo",
+  "impresoras_compatibles": [
+    "Brother HL-3040CN",
+    "Brother HL-3045CN",
+    "Brother HL-3070CW",
+    "Brother HL-3075CW",
+    "Brother MFC-9010CN",
+    "Brother MFC-9120CN",
+    "Brother MFC-9125CN",
+    "Brother MFC-9320CW",
+    "Brother MFC-9325CW"
+  ],
+  "toner_rendimiento": "1,400 páginas",
+  "tambor": {
+    "modelo": "DR-210CL",
+    "rendimiento": "15,000 páginas"
+  }
+},
+{
+  "modelo": "TN221BK Negro",
+  "impresoras_compatibles": [
+    "Brother HL-3140CW",
+    "Brother HL-3150CDW",
+    "Brother HL-3170CDW",
+    "Brother DCP-9020CDW",
+    "Brother MFC-9130CW",
+    "Brother MFC-9140CDN",
+    "Brother MFC-9330CDW",
+    "Brother MFC-9340CDW"
+  ],
+  "toner_rendimiento": "2,500 páginas",
+  "tambor": {
+    "modelo": "DR-221BK",
+    "rendimiento": "15,000 páginas"
+  }
+},
+{
+  "modelo": "TN221C Cian",
+  "impresoras_compatibles": [
+    "Brother HL-3140CW",
+    "Brother HL-3150CDW",
+    "Brother HL-3170CDW",
+    "Brother DCP-9020CDW",
+    "Brother MFC-9130CW",
+    "Brother MFC-9140CDN",
+    "Brother MFC-9330CDW",
+    "Brother MFC-9340CDW"
+  ],
+  "toner_rendimiento": "1,400 páginas",
+  "tambor": {
+    "modelo": "DR-221CY",
+    "rendimiento": "15,000 páginas"
+  }
+},
+{
+  "modelo": "TN221M Magenta",
+  "impresoras_compatibles": [
+    "Brother HL-3140CW",
+    "Brother HL-3150CDW",
+    "Brother HL-3170CDW",
+    "Brother DCP-9020CDW",
+    "Brother MFC-9130CW",
+    "Brother MFC-9140CDN",
+    "Brother MFC-9330CDW",
+    "Brother MFC-9340CDW"
+  ],
+  "toner_rendimiento": "1,400 páginas",
+  "tambor": {
+    "modelo": "DR-221MG",
+    "rendimiento": "15,000 páginas"
+  }
+},
+{
+  "modelo": "TN221Y Amarillo",
+  "impresoras_compatibles": [
+    "Brother HL-3140CW",
+    "Brother HL-3150CDW",
+    "Brother HL-3170CDW",
+    "Brother DCP-9020CDW",
+    "Brother MFC-9130CW",
+    "Brother MFC-9140CDN",
+    "Brother MFC-9330CDW",
+    "Brother MFC-9340CDW"
+  ],
+  "toner_rendimiento": "1,400 páginas",
+  "tambor": {
+    "modelo": "DR-221YL",
+    "rendimiento": "15,000 páginas"
+  }
+},
+{
+  "modelo": "TN223BK Negro",
+  "impresoras_compatibles": [
+    "Brother HL-L3210CW",
+    "Brother HL-L3230CDW",
+    "Brother HL-L3270CDW",
+    "Brother HL-L3290CDW",
+    "Brother MFC-L3710CW",
+    "Brother MFC-L3750CDW",
+    "Brother MFC-L3770CDW"
+  ],
+  "toner_rendimiento": "1,400 páginas",
+  "tambor": {
+    "modelo": "DR223CL",
+    "rendimiento": "18,000 páginas"
+  }
+},
+{
+  "modelo": "TN223C Cian",
+  "impresoras_compatibles": [
+    "Brother HL-L3210CW",
+    "Brother HL-L3230CDW",
+    "Brother HL-L3270CDW",
+    "Brother HL-L3290CDW",
+    "Brother MFC-L3710CW",
+    "Brother MFC-L3750CDW",
+    "Brother MFC-L3770CDW"
+  ],
+  "toner_rendimiento": "1,300 páginas",
+  "tambor": {
+    "modelo": "DR223CL",
+    "rendimiento": "18,000 páginas"
+  }
+},
+{
+  "modelo": "TN223M Magenta",
+  "impresoras_compatibles": [
+    "Brother HL-L3210CW",
+    "Brother HL-L3230CDW",
+    "Brother HL-L3270CDW",
+    "Brother HL-L3290CDW",
+    "Brother MFC-L3710CW",
+    "Brother MFC-L3750CDW",
+    "Brother MFC-L3770CDW"
+  ],
+  "toner_rendimiento": "1,300 páginas",
+  "tambor": {
+    "modelo": "DR223CL",
+    "rendimiento": "18,000 páginas"
+  }
+},
+{
+  "modelo": "TN223Y Amarillo",
+  "impresoras_compatibles": [
+    "Brother HL-L3210CW",
+    "Brother HL-L3230CDW",
+    "Brother HL-L3270CDW",
+    "Brother HL-L3290CDW",
+    "Brother MFC-L3710CW",
+    "Brother MFC-L3750CDW",
+    "Brother MFC-L3770CDW"
+  ],
+  "toner_rendimiento": "1,300 páginas",
+  "tambor": {
+    "modelo": "DR223CL",
+    "rendimiento": "18,000 páginas"
+  }
+},
+{
+  "modelo": "TN227BK Negro",
+  "impresoras_compatibles": [
+    "Brother HL-3210CW",
+    "Brother HL-L3230CDW",
+    "Brother HL-L3270CDW",
+    "Brother HL-L3290CDW",
+    "Brother MFC-L3710CW",
+    "Brother MFC-L3750CDW",
+    "Brother MFC-L3770CDW"
+  ],
+  "toner_rendimiento": "3,000 páginas",
+  "tambor": {
+    "modelo": "DR223CL",
+    "rendimiento": "18,000 páginas"
+  }
+},
+{
+  "modelo": "TN227C Cian",
+  "impresoras_compatibles": [
+    "Brother HL-3210CW",
+    "Brother HL-L3230CDW",
+    "Brother HL-L3270CDW",
+    "Brother HL-L3290CDW",
+    "Brother MFC-L3710CW",
+    "Brother MFC-L3750CDW",
+    "Brother MFC-L3770CDW"
+  ],
+  "toner_rendimiento": "2,300 páginas",
+  "tambor": {
+    "modelo": "DR223CL",
+    "rendimiento": "18,000 páginas"
+  }
+},
+{
+  "modelo": "TN227M Magenta",
+  "impresoras_compatibles": [
+    "Brother HL-3210CW",
+    "Brother HL-L3230CDW",
+    "Brother HL-L3270CDW",
+    "Brother HL-L3290CDW",
+    "Brother MFC-L3710CW",
+    "Brother MFC-L3750CDW",
+    "Brother MFC-L3770CDW"
+  ],
+  "toner_rendimiento": "2,300 páginas",
+  "tambor": {
+    "modelo": "DR223CL",
+    "rendimiento": "18,000 páginas"
+  }
+},
+{
+  "modelo": "TN227Y Amarillo",
+  "impresoras_compatibles": [
+    "Brother HL-3210CW",
+    "Brother HL-L3230CDW",
+    "Brother HL-L3270CDW",
+    "Brother HL-L3290CDW",
+    "Brother MFC-L3710CW",
+    "Brother MFC-L3750CDW",
+    "Brother MFC-L3770CDW"
+  ],
+  "toner_rendimiento": "2,300 páginas",
+  "tambor": {
+    "modelo": "DR223CL",
+    "rendimiento": "18,000 páginas"
+  }
+},
+{
+  "modelo": "TN229BK Negro",
+  "impresoras_compatibles": [
+    "Brother HL-L3220CDW",
+    "Brother HL-L3280CDW",
+    "Brother HL-L3295CDW",
+    "Brother HL-L3300CDW",
+    "Brother HL-L8245CDW",
+    "Brother MFC-L3720CDW",
+    "Brother MFC-L3765CDW",
+    "Brother MFC-L3780CDW",
+    "Brother MFC-L8395CDW",
+    "Brother DCP-L3560CDW"
+  ],
+  "toner_rendimiento": "1,500 páginas",
+  "tambor": {
+    "modelo": "DR229",
+    "rendimiento": "22,000 páginas"
+  }
+},
+{
+  "modelo": "TN229C Cian",
+  "impresoras_compatibles": [
+    "Brother HL-L3220CDW",
+    "Brother HL-L3280CDW",
+    "Brother HL-L3295CDW",
+    "Brother HL-L3300CDW",
+    "Brother HL-L8245CDW",
+    "Brother MFC-L3720CDW",
+    "Brother MFC-L3765CDW",
+    "Brother MFC-L3780CDW",
+    "Brother MFC-L8395CDW",
+    "Brother DCP-L3560CDW"
+  ],
+  "toner_rendimiento": "1,200 páginas",
+  "tambor": {
+    "modelo": "DR229",
+    "rendimiento": "22,000 páginas"
+  }
+},
+{
+  "modelo": "TN229M Magenta",
+  "impresoras_compatibles": [
+    "Brother HL-L3220CDW",
+    "Brother HL-L3280CDW",
+    "Brother HL-L3295CDW",
+    "Brother HL-L3300CDW",
+    "Brother HL-L8245CDW",
+    "Brother MFC-L3720CDW",
+    "Brother MFC-L3765CDW",
+    "Brother MFC-L3780CDW",
+    "Brother MFC-L8395CDW",
+    "Brother DCP-L3560CDW"
+  ],
+  "toner_rendimiento": "1,200 páginas",
+  "tambor": {
+    "modelo": "DR229",
+    "rendimiento": "22,000 páginas"
+  }
+},
+{
+  "modelo": "TN229Y Amarillo",
+  "impresoras_compatibles": [
+    "Brother HL-L3220CDW",
+    "Brother HL-L3280CDW",
+    "Brother HL-L3295CDW",
+    "Brother HL-L3300CDW",
+    "Brother HL-L8245CDW",
+    "Brother MFC-L3720CDW",
+    "Brother MFC-L3765CDW",
+    "Brother MFC-L3780CDW",
+    "Brother MFC-L8395CDW",
+    "Brother DCP-L3560CDW"
+  ],
+  "toner_rendimiento": "1,200 páginas",
+  "tambor": {
+    "modelo": "DR229",
+    "rendimiento": "22,000 páginas"
+  }
+},
+{
+  "modelo": "TN229XBK Negro",
+  "impresoras_compatibles": [
+    "Brother HL-L3220CDW",
+    "Brother HL-L3280CDW",
+    "Brother HL-L3295CDW",
+    "Brother HL-L3300CDW",
+    "Brother HL-L8245CDW",
+    "Brother MFC-L3720CDW",
+    "Brother MFC-L3765CDW",
+    "Brother MFC-L3780CDW",
+    "Brother MFC-L8395CDW",
+    "Brother DCP-L3560CDW"
+  ],
+  "toner_rendimiento": "3,000 páginas",
+  "tambor": {
+    "modelo": "DR229",
+    "rendimiento": "22,000 páginas"
+  }
+},
+{
+  "modelo": "TN229XC Cian",
+  "impresoras_compatibles": [
+    "Brother HL-L3220CDW",
+    "Brother HL-L3280CDW",
+    "Brother HL-L3295CDW",
+    "Brother HL-L3300CDW",
+    "Brother HL-L8245CDW",
+    "Brother MFC-L3720CDW",
+    "Brother MFC-L3765CDW",
+    "Brother MFC-L3780CDW",
+    "Brother MFC-L8395CDW",
+    "Brother DCP-L3560CDW"
+  ],
+  "toner_rendimiento": "2,300 páginas",
+  "tambor": {
+    "modelo": "DR229",
+    "rendimiento": "22,000 páginas"
+  }
+},
+{
+  "modelo": "TN229XM Magenta",
+  "impresoras_compatibles": [
+    "Brother HL-L3220CDW",
+    "Brother HL-L3280CDW",
+    "Brother HL-L3295CDW",
+    "Brother HL-L3300CDW",
+    "Brother HL-L8245CDW",
+    "Brother MFC-L3720CDW",
+    "Brother MFC-L3765CDW",
+    "Brother MFC-L3780CDW",
+    "Brother MFC-L8395CDW",
+    "Brother DCP-L3560CDW"
+  ],
+  "toner_rendimiento": "2,300 páginas",
+  "tambor": {
+    "modelo": "DR229",
+    "rendimiento": "22,000 páginas"
+  }
+},
+{
+  "modelo": "TN229XY Amarillo",
+  "impresoras_compatibles": [
+    "Brother HL-L3220CDW",
+    "Brother HL-L3280CDW",
+    "Brother HL-L3295CDW",
+    "Brother HL-L3300CDW",
+    "Brother HL-L8245CDW",
+    "Brother MFC-L3720CDW",
+    "Brother MFC-L3765CDW",
+    "Brother MFC-L3780CDW",
+    "Brother MFC-L8395CDW",
+    "Brother DCP-L3560CDW"
+  ],
+  "toner_rendimiento": "2,300 páginas",
+  "tambor": {
+    "modelo": "DR229",
+    "rendimiento": "22,000 páginas"
+  }
+},
+{
+  "modelo": "TN315BK Negro",
+  "impresoras_compatibles": [
+    "Brother HL-4150CDN",
+    "Brother HL-4140CD",
+    "Brother HL-4170CDW",
+    "Brother HL-4570CDWT",
+    "Brother MFC-9460CDN",
+    "Brother MFC-9465CDN",
+    "Brother MFC-9560CDW",
+    "Brother MFC-9970CDW",
+    "Brother DCP-9055CDN"
+  ],
+  "toner_rendimiento": "6,000 páginas",
+  "tambor": {
+    "modelo": "DR310CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+  "modelo": "TN315C Cian",
+  "impresoras_compatibles": [
+    "Brother HL-4150CDN",
+    "Brother HL-4140CD",
+    "Brother HL-4170CDW",
+    "Brother HL-4570CDWT",
+    "Brother MFC-9460CDN",
+    "Brother MFC-9465CDN",
+    "Brother MFC-9560CDW",
+    "Brother MFC-9970CDW",
+    "Brother DCP-9055CDN"
+  ],
+  "toner_rendimiento": "3,500 páginas",
+  "tambor": {
+    "modelo": "DR310CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+  "modelo": "TN315M Magenta",
+  "impresoras_compatibles": [
+    "Brother HL-4150CDN",
+    "Brother HL-4140CD",
+    "Brother HL-4170CDW",
+    "Brother HL-4570CDWT",
+    "Brother MFC-9460CDN",
+    "Brother MFC-9465CDN",
+    "Brother MFC-9560CDW",
+    "Brother MFC-9970CDW",
+    "Brother DCP-9055CDN"
+  ],
+  "toner_rendimiento": "3,500 páginas",
+  "tambor": {
+    "modelo": "DR310CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+  "modelo": "TN315Y Amarillo",
+  "impresoras_compatibles": [
+    "Brother HL-4150CDN",
+    "Brother HL-4140CD",
+    "Brother HL-4170CDW",
+    "Brother HL-4570CDWT",
+    "Brother MFC-9460CDN",
+    "Brother MFC-9465CDN",
+    "Brother MFC-9560CDW",
+    "Brother MFC-9970CDW",
+    "Brother DCP-9055CDN"
+  ],
+  "toner_rendimiento": "3,500 páginas",
+  "tambor": {
+    "modelo": "DR310CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+  "modelo": "TN336BK Negro",
+  "impresoras_compatibles": [
+    "Brother HL-L8250CD",
+    "Brother HL-L8350CD",
+    "Brother HL-L8850CD"
+  ],
+  "toner_rendimiento": "4,000 páginas",
+  "tambor": {
+    "modelo": "DR336CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+  "modelo": "TN336C Cian",
+  "impresoras_compatibles": [
+    "Brother HL-L8250CD",
+    "Brother HL-L8350CD",
+    "Brother HL-L8850CD"
+  ],
+  "toner_rendimiento": "3,500 páginas",
+  "tambor": {
+    "modelo": "DR336CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+  "modelo": "TN336M Magenta",
+  "impresoras_compatibles": [
+    "Brother HL-L8250CD",
+    "Brother HL-L8350CD",
+    "Brother HL-L8850CD"
+  ],
+  "toner_rendimiento": "3,500 páginas",
+  "tambor": {
+    "modelo": "DR336CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+  "modelo": "TN336Y Amarillo",
+  "impresoras_compatibles": [
+    "Brother HL-L8250CD",
+    "Brother HL-L8350CD",
+    "Brother HL-L8850CD"
+  ],
+  "toner_rendimiento": "3,500 páginas",
+  "tambor": {
+    "modelo": "DR336CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+  "modelo": "TN339BK Negro",
+  "impresoras_compatibles": [
+    "Brother DCP-L8400CDN",
+    "Brother DCP-L8450CDW",
+    "Brother MFC-L8600CDW",
+    "Brother MFC-L8650CDW",
+    "Brother MFC-L8850CDW",
+    "Brother MFC-L9550CDW"
+  ],
+  "toner_rendimiento": "6,000 páginas",
+  "tambor": {
+    "modelo": "DR339CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+  "modelo": "TN339C Cian",
+  "impresoras_compatibles": [
+    "Brother DCP-L8400CDN",
+    "Brother DCP-L8450CDW",
+    "Brother MFC-L8600CDW",
+    "Brother MFC-L8650CDW",
+    "Brother MFC-L8850CDW",
+    "Brother MFC-L9550CDW"
+  ],
+  "toner_rendimiento": "6,000 páginas",
+  "tambor": {
+    "modelo": "DR339CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+  "modelo": "TN339M Magenta",
+  "impresoras_compatibles": [
+    "Brother DCP-L8400CDN",
+    "Brother DCP-L8450CDW",
+    "Brother MFC-L8600CDW",
+    "Brother MFC-L8650CDW",
+    "Brother MFC-L8850CDW",
+    "Brother MFC-L9550CDW"
+  ],
+  "toner_rendimiento": "6,000 páginas",
+  "tambor": {
+    "modelo": "DR339CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+  "modelo": "TN339Y Amarillo",
+  "impresoras_compatibles": [
+    "Brother DCP-L8400CDN",
+    "Brother DCP-L8450CDW",
+    "Brother MFC-L8600CDW",
+    "Brother MFC-L8650CDW",
+    "Brother MFC-L8850CDW",
+    "Brother MFC-L9550CDW"
+  ],
+  "toner_rendimiento": "6,000 páginas",
+  "tambor": {
+    "modelo": "DR339CL",
+    "rendimiento": "25,000 páginas"
+  }
+},
+{
+    "modelo": "TN310BK Negro",
+    "impresoras_compatibles": [
+      "Brother HL-4140CN",
+      "Brother HL-4150CDN",
+      "Brother HL-4570CDW",
+      "Brother HL-4570CDWT",
+      "Brother DCP-9055CDN",
+      "Brother DCP-9270CDN",
+      "Brother MFC-9460CDN",
+      "Brother MFC-9465CDN",
+      "Brother MFC-9560CDW",
+      "Brother MFC-9970CDW"
+    ],
+    "toner_rendimiento": "2,500 páginas",
+    "tambor": {
+      "modelo": "DR310CL",
+      "rendimiento": "25,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN310C Cian",
+    "impresoras_compatibles": [
+      "Brother HL-4140CN",
+      "Brother HL-4150CDN",
+      "Brother HL-4570CDW",
+      "Brother HL-4570CDWT",
+      "Brother DCP-9055CDN",
+      "Brother DCP-9270CDN",
+      "Brother MFC-9460CDN",
+      "Brother MFC-9465CDN",
+      "Brother MFC-9560CDW",
+      "Brother MFC-9970CDW"
+    ],
+    "toner_rendimiento": "1,500 páginas",
+    "tambor": {
+      "modelo": "DR310CL",
+      "rendimiento": "25,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN310M Magenta",
+    "impresoras_compatibles": [
+      "Brother HL-4140CN",
+      "Brother HL-4150CDN",
+      "Brother HL-4570CDW",
+      "Brother HL-4570CDWT",
+      "Brother DCP-9055CDN",
+      "Brother DCP-9270CDN",
+      "Brother MFC-9460CDN",
+      "Brother MFC-9465CDN",
+      "Brother MFC-9560CDW",
+      "Brother MFC-9970CDW"
+    ],
+    "toner_rendimiento": "1,500 páginas",
+    "tambor": {
+      "modelo": "DR310CL",
+      "rendimiento": "25,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN310Y Amarillo",
+    "impresoras_compatibles": [
+      "Brother HL-4140CN",
+      "Brother HL-4150CDN",
+      "Brother HL-4570CDW",
+      "Brother HL-4570CDWT",
+      "Brother DCP-9055CDN",
+      "Brother DCP-9270CDN",
+      "Brother MFC-9460CDN",
+      "Brother MFC-9465CDN",
+      "Brother MFC-9560CDW",
+      "Brother MFC-9970CDW"
+    ],
+    "toner_rendimiento": "1,500 páginas",
+    "tambor": {
+      "modelo": "DR310CL",
+      "rendimiento": "25,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN413BK Negro",
+    "impresoras_compatibles": [
+      "Brother HL-L8260",
+      "Brother HL-L8360",
+      "Brother MFC-L8160",
+      "Brother MFC-L8690",
+      "Brother MFC-L8900",
+      "Brother DCP-L8410"
+    ],
+    "toner_rendimiento": "4,500 páginas",
+    "tambor": {
+      "modelo": "DR431CL",
+      "rendimiento": "50,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN413C Cian",
+    "impresoras_compatibles": [
+      "Brother HL-L8260",
+      "Brother HL-L8360",
+      "Brother MFC-L8160",
+      "Brother MFC-L8690",
+      "Brother MFC-L8900",
+      "Brother DCP-L8410"
+    ],
+    "toner_rendimiento": "4,000 páginas",
+    "tambor": {
+      "modelo": "DR431CL",
+      "rendimiento": "50,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN413M Magenta",
+    "impresoras_compatibles": [
+      "Brother HL-L8260",
+      "Brother HL-L8360",
+      "Brother MFC-L8160",
+      "Brother MFC-L8690",
+      "Brother MFC-L8900",
+      "Brother DCP-L8410"
+    ],
+    "toner_rendimiento": "4,000 páginas",
+    "tambor": {
+      "modelo": "DR431CL",
+      "rendimiento": "50,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN413Y Amarillo",
+    "impresoras_compatibles": [
+      "Brother HL-L8260",
+      "Brother HL-L8360",
+      "Brother MFC-L8160",
+      "Brother MFC-L8690",
+      "Brother MFC-L8900",
+      "Brother DCP-L8410"
+    ],
+    "toner_rendimiento": "4,000 páginas",
+    "tambor": {
+      "modelo": "DR431CL",
+      "rendimiento": "50,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN439BK Negro",
+    "impresoras_compatibles": [
+      "Brother HL-L9310",
+      "Brother MFC-L9570"
+    ],
+    "toner_rendimiento": "9,000 páginas",
+    "tambor": {
+      "modelo": "DR433CL",
+      "rendimiento": "50,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN439C Cian",
+    "impresoras_compatibles": [
+      "Brother HL-L9310",
+      "Brother MFC-L9570"
+    ],
+    "toner_rendimiento": "9,000 páginas",
+    "tambor": {
+      "modelo": "DR433CL",
+      "rendimiento": "50,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN439M Magenta",
+    "impresoras_compatibles": [
+      "Brother HL-L9310",
+      "Brother MFC-L9570"
+    ],
+    "toner_rendimiento": "9,000 páginas",
+    "tambor": {
+      "modelo": "DR433CL",
+      "rendimiento": "50,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN439Y Amarillo",
+    "impresoras_compatibles": [
+      "Brother HL-L9310",
+      "Brother MFC-L9570"
+    ],
+    "toner_rendimiento": "9,000 páginas",
+    "tambor": {
+      "modelo": "DR433CL",
+      "rendimiento": "50,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN810BK Negro",
+    "impresoras_compatibles": [
+      "Brother MFC-L9630CDN"
+    ],
+    "toner_rendimiento": "9,000 páginas",
+    "tambor": {
+      "modelo": "DR810CL",
+      "rendimiento": "50,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN810C Cian",
+    "impresoras_compatibles": [
+      "Brother MFC-L9630CDN"
+    ],
+    "toner_rendimiento": "6,500 páginas",
+    "tambor": {
+      "modelo": "DR810CL",
+      "rendimiento": "50,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN810M Magenta",
+    "impresoras_compatibles": [
+      "Brother MFC-L9630CDN"
+    ],
+    "toner_rendimiento": "6,500 páginas",
+    "tambor": {
+      "modelo": "DR810CL",
+      "rendimiento": "50,000 páginas"
+    }
+  },
+  {
+    "modelo": "TN810Y Amarillo",
+    "impresoras_compatibles": [
+      "Brother MFC-L9630CDN"
+    ],
+    "toner_rendimiento": "6,500 páginas",
+    "tambor": {
+      "modelo": "DR810CL",
+      "rendimiento": "50,000 páginas"
+    }
+  }
   ],
   "Xerox": [
     {
