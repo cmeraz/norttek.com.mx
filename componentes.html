@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo de Componentes Demo</title>
+<style>
+/* ===================== Reset y base ===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f7f7;
+    color: #333;
+}
+h1, h2, h3 {
+    margin-bottom: 0.5rem;
+}
+a { text-decoration: none; }
+
+/* ===================== Header ===================== */
+header {
+    background: #1E3A8A;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* ===================== Secciones ===================== */
+section {
+    padding: 2rem;
+    background: white;
+    margin: 1rem auto;
+    max-width: 900px;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+section h2 {
+    margin-bottom: 1rem;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Catálogo de Componentes Demo</h1>
+</header>
+
+<main>
+
+<!-- ===================== 1. Botones ===================== -->
+<section id="botones">
+    <h2>Botones</h2>
+
+    <!-- HTML -->
+    <a href="/superprecio">
+        <button class="chakra-btn">
+            <p class="chakra-icon"></p>
+            <p class="chakra-text">Super Precio</p>
+        </button>
+    </a>
+
+    <button class="chakra-btn">Botón simple</button>
+
+    <!-- CSS -->
+    <style>
+    .chakra-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        background: #1E3A8A;
+        color: white;
+        font-weight: bold;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    .chakra-btn:hover {
+        background: #16306b;
+        transform: scale(1.05);
+    }
+    .chakra-icon, .chakra-text { margin: 0; display: inline-block; }
+    </style>
+</section>
+
+<!-- ===================== 2. Cards ===================== -->
+<section id="cards">
+    <h2>Cards</h2>
+
+    <!-- HTML -->
+    <div class="card">
+        <h3>Card de ejemplo</h3>
+        <p>Este es un ejemplo de card con sombra y borde redondeado.</p>
+        <button class="chakra-btn">Acción</button>
+    </div>
+
+    <!-- CSS -->
+    <style>
+    .card {
+        border-radius: 0.5rem;
+        padding: 1rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        margin-bottom: 1rem;
+        background: white;
+    }
+    </style>
+</section>
+
+<!-- ===================== 3. Menús ===================== -->
+<section id="menus">
+    <h2>Menús</h2>
+
+    <!-- HTML -->
+    <div class="menu">
+        <a href="#"><button class="menu-btn">Inicio</button></a>
+        <a href="#"><button class="menu-btn">Nosotros</button></a>
+        <a href="#"><button class="menu-btn">Servicios</button></a>
+        <a href="#"><button class="menu-btn">Contacto</button></a>
+    </div>
+
+    <!-- CSS -->
+    <style>
+    .menu { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .menu-btn {
+        background: #2563eb;
+        color: white;
+        border-radius: 0.5rem;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    .menu-btn:hover { background: #1d4ed8; transform: scale(1.05); }
+    </style>
+</section>
+
+<!-- ===================== 4. Formularios ===================== -->
+<section id="formularios">
+    <h2>Formularios</h2>
+
+    <!-- HTML -->
+    <form class="form-demo">
+        <input type="text" placeholder="Nombre">
+        <input type="email" placeholder="Correo">
+        <textarea placeholder="Mensaje"></textarea>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <!-- CSS -->
+    <style>
+    .form-demo input,
+    .form-demo select,
+    .form-demo textarea {
+        width: 100%;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border-radius: 0.5rem;
+        border: 1px solid #ccc;
+    }
+    .form-demo button {
+        background: #10b981;
+        color: white;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    .form-demo button:hover { background: #059669; transform: scale(1.05); }
+    </style>
+</section>
+
+<!-- ===================== 5. Acordeón ===================== -->
+<section id="acordeon">
+    <h2>Acordeón</h2>
+
+    <!-- HTML -->
+    <div class="accordion">
+        <div class="accordion-header">Sección 1</div>
+        <div class="accordion-body"><p>Contenido de la sección 1.</p></div>
+        <div class="accordion-header">Sección 2</div>
+        <div class="accordion-body"><p>Contenido de la sección 2.</p></div>
+    </div>
+
+    <!-- CSS -->
+    <style>
+    .accordion {
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+        overflow: hidden;
+    }
+    .accordion-header {
+        background: #e0e7ff;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+    }
+    .accordion-body {
+        max-height: 0;
+        overflow: hidden;
+        padding: 0 1rem;
+        transition: max-height 0.3s ease;
+    }
+    .accordion-body p { padding: 0.5rem 0; }
+    </style>
+
+    <!-- JS -->
+    <script>
+    document.querySelectorAll('.accordion-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const body = header.nextElementSibling;
+            if(body.style.maxHeight && body.style.maxHeight !== '0px'){
+                body.style.maxHeight = '0';
+            } else {
+                body.style.maxHeight = body.scrollHeight + 'px';
+            }
+        });
+    });
+    </script>
+</section>
+
+</main>
+
+</body>
+</html>
