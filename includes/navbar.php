@@ -11,7 +11,7 @@ $menu = [
     [
         'label' => 'Nosotros',
         'icon'  => 'fas fa-users',
-        'url'   => 'nosotros.php'
+        'url'   => 'about.php'
     ],
     [
         'label' => 'Servicios ▾',
@@ -33,7 +33,7 @@ $menu = [
     [
         'label' => 'Contacto',
         'icon'  => 'fas fa-envelope',
-        'url'   => 'contacto.php'
+        'url'   => 'contact.php'
     ]
 ];
 
