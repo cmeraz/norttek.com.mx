@@ -1,0 +1,56 @@
+/* Estilos creativos para la página de contacto */
+.animate-contact-fade {
+  animation: contactFadeIn 1.2s cubic-bezier(.4,0,.2,1);
+}
+@keyframes contactFadeIn {
+  from { opacity: 0; transform: translateY(40px);}
+  to   { opacity: 1; transform: none;}
+}
+.contact-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 1.5px solid #cbd5e1;
+  background: #f8fafc;
+  font-size: 1rem;
+  color: #334155;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.contact-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px #2563eb22;
+}
+.contact-btn {
+  background: linear-gradient(90deg, #2563eb 60%, #38bdf8 100%);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.75rem 2.5rem;
+  border-radius: 9999px;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px #2563eb22;
+  transition: background 0.2s, transform 0.2s;
+  border: none;
+  cursor: pointer;
+}
+.contact-btn:hover {
+  background: linear-gradient(90deg, #1d4ed8 60%, #0ea5e9 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+.contact-btn-alt {
+  background: #25d366;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.75rem 2.5rem;
+  border-radius: 9999px;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px #25d36633;
+  transition: background 0.2s, transform 0.2s;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+.contact-btn-alt:hover {
+  background: #128c7e;
+  transform: translateY(-2px) scale(1.03);
+}
