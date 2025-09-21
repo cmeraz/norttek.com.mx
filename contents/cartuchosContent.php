@@ -238,3 +238,5 @@ btnBorrar.addEventListener("click", () => {
 // Inicializar contador al cargar la página
 window.addEventListener("DOMContentLoaded", () => actualizarContador());
 </script>
+
+
