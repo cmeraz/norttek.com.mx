@@ -1,4 +1,4 @@
-  // Referencias
+// Referencias
   const openVideoBtn = document.getElementById("openVideo");
   const videoModal = document.getElementById("videoModal");
   const closeVideoBtn = document.getElementById("closeVideo");
@@ -103,81 +103,87 @@
       });
     });
 
-    // Abrir modal
-  const openModalBtn = document.getElementById('openModal');
-  const modal = document.getElementById('modalDemo');
-  const closeModalBtn = document.getElementById('closeModal');
+    document.addEventListener('DOMContentLoaded', () => {
+      // Todas tus referencias y lógica aquí
 
-  function openModalFunc() {
-    modal.classList.remove('hidden');
-    setTimeout(() => {
-      modal.children[0].classList.remove('scale-90', 'opacity-0');
-    }, 50); // permite animación
-  }
+      // Ejemplo para el modal demo:
+      const openModalBtn = document.getElementById('openModal');
+      const modal = document.getElementById('modalDemo');
+      const closeModalBtn = document.getElementById('closeModal');
 
-  function closeModalFunc() {
-    modal.children[0].classList.add('scale-90', 'opacity-0');
-    setTimeout(() => {
-      modal.classList.add('hidden');
-    }, 300);
-  }
+      function openModalFunc() {
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+          modal.children[0].classList.remove('scale-90', 'opacity-0');
+        }, 50);
+      }
 
-  openModalBtn.addEventListener('click', openModalFunc);
-  closeModalBtn.addEventListener('click', closeModalFunc);
-  modal.addEventListener('click', e => {
-    if(e.target === modal) closeModalFunc();
-  });
+      function closeModalFunc() {
+        modal.children[0].classList.add('scale-90', 'opacity-0');
+        setTimeout(() => {
+          modal.classList.add('hidden');
+        }, 300);
+      }
 
-  // Validación y envío
-  const form = document.getElementById('demoForm');
+      if (openModalBtn && closeModalBtn && modal) {
+        openModalBtn.addEventListener('click', openModalFunc);
+        closeModalBtn.addEventListener('click', closeModalFunc);
+        modal.addEventListener('click', e => {
+          if(e.target === modal) closeModalFunc();
+        });
+      }
 
-  function sanitizeInput(str) {
-    const temp = document.createElement('div');
-    temp.textContent = str;
-    return encodeURIComponent(temp.textContent.trim());
-  }
+      // Validación y envío
+      const form = document.getElementById('demoForm');
 
-  form.addEventListener('submit', e => {
-    e.preventDefault();
+      function sanitizeInput(str) {
+        const temp = document.createElement('div');
+        temp.textContent = str;
+        return encodeURIComponent(temp.textContent.trim());
+      }
 
-    let nombre = document.getElementById('nombre').value;
-    let email = document.getElementById('email').value;
-    let telefono = document.getElementById('telefono').value;
+      form.addEventListener('submit', e => {
+        e.preventDefault();
 
-    let errores = [];
+        let nombre = document.getElementById('nombre').value;
+        let email = document.getElementById('email').value;
+        let telefono = document.getElementById('telefono').value;
 
-    if(nombre.trim().length < 2) errores.push("El nombre es demasiado corto.");
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if(!emailRegex.test(email.trim())) errores.push("El correo electrónico no es válido.");
-    const telefonoRegex = /^[0-9]{10,15}$/;
-    if(!telefonoRegex.test(telefono.trim())) errores.push("El teléfono debe tener solo números y entre 10 y 15 dígitos.");
+        let errores = [];
 
-    if(errores.length > 0){
-      alert("Por favor corrige los siguientes errores:\n\n" + errores.join("\n"));
-      return;
-    }
+        if(nombre.trim().length < 2) errores.push("El nombre es demasiado corto.");
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!emailRegex.test(email.trim())) errores.push("El correo electrónico no es válido.");
+        const telefonoRegex = /^[0-9]{10,15}$/;
+        if(!telefonoRegex.test(telefono.trim())) errores.push("El teléfono debe tener solo números y entre 10 y 15 dígitos.");
 
-    // Sanitizar
-    nombre = sanitizeInput(nombre);
-    email = sanitizeInput(email);
-    telefono = sanitizeInput(telefono);
+        if(errores.length > 0){
+          alert("Por favor corrige los siguientes errores:\n\n" + errores.join("\n"));
+          return;
+        }
 
-    const mensaje = `¡Hola!%0AQuiero solicitar la demo del sistema de conmutador en la nube.%0A%0ANombre: ${nombre}%0AEmail: ${email}%0ATeléfono: ${telefono}`;
+        // Sanitizar
+        nombre = sanitizeInput(nombre);
+        email = sanitizeInput(email);
+        telefono = sanitizeInput(telefono);
 
-    window.open(`https://wa.me/526252690997?text=${mensaje}`, '_blank');
+        const mensaje = `¡Hola!%0AQuiero solicitar la demo del sistema de conmutador en la nube.%0A%0ANombre: ${nombre}%0AEmail: ${email}%0ATeléfono: ${telefono}`;
 
-    closeModalFunc();
-    form.reset();
-  });
+        window.open(`https://wa.me/526252690997?text=${mensaje}`, '_blank');
+
+        closeModalFunc();
+        form.reset();
+      });
 
 
-  window.addEventListener("load", () => {
-    // Animar título
-    gsap.to("#hero h1", { duration: 1, opacity: 1, y: 0, ease: "power2.out" });
-    // Animar párrafo
-    gsap.to("#hero p", { duration: 1, opacity: 1, y: 0, delay: 0.3, ease: "power2.out" });
-    // Animar botones
-    gsap.to("#hero .mt-6", { duration: 1, opacity: 1, y: 0, delay: 0.6, ease: "back.out(1.5)" });
-    // Animar imagen
-    gsap.to(".hero-image-container", { duration: 1, opacity: 1, y: 0, delay: 0.9, ease: "power2.out" });
-  });
+      window.addEventListener("load", () => {
+        // Animar título
+        gsap.to("#hero h1", { duration: 1, opacity: 1, y: 0, ease: "power2.out" });
+        // Animar párrafo
+        gsap.to("#hero p", { duration: 1, opacity: 1, y: 0, delay: 0.3, ease: "power2.out" });
+        // Animar botones
+        gsap.to("#hero .mt-6", { duration: 1, opacity: 1, y: 0, delay: 0.6, ease: "back.out(1.5)" });
+        // Animar imagen
+        gsap.to(".hero-image-container", { duration: 1, opacity: 1, y: 0, delay: 0.9, ease: "power2.out" });
+      });
+    });
