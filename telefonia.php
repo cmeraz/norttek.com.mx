@@ -19,6 +19,7 @@ $seo = [
 <html lang="es">
 <head>
     <?php include 'includes/header.php'; ?>
+    <link rel="stylesheet" href="assets/css/telefonia.css">
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
     <?php $activePage = 'telefonia'; ?>
@@ -252,7 +253,49 @@ $seo = [
     </div>
 
     <!-- FAQ -->
-    <div id="faq"></div>
+    <section id="faq-section" class="py-16 bg-white">
+      <div class="max-w-3xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-blue-700 mb-8 text-center">Preguntas frecuentes</h2>
+        <div id="faq">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>¿Qué es la telefonía IP en la nube?</span>
+              <i class="faq-icon fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer" aria-hidden="true">
+              <p class="text-gray-600">La telefonía IP en la nube es un sistema que permite realizar llamadas telefónicas a través de Internet en lugar de líneas telefónicas tradicionales. Utiliza tecnología VoIP (Voz sobre Protocolo de Internet) para convertir la voz en datos y enviarlos a través de la red.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>¿Cuáles son las ventajas de usar Norttek PBX?</span>
+              <i class="faq-icon fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer" aria-hidden="true">
+              <p class="text-gray-600">Norttek PBX ofrece múltiples ventajas, como la reducción de costos en llamadas, mayor flexibilidad y escalabilidad, integración con otras herramientas de negocio, y la posibilidad de trabajar desde cualquier lugar con conexión a Internet.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>¿Necesito un equipo especial para usar telefonía IP?</span>
+              <i class="faq-icon fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer" aria-hidden="true">
+              <p class="text-gray-600">No necesariamente. Puedes usar telefonía IP con dispositivos que ya tienes, como tu computadora, smartphone o tablet. También puedes optar por teléfonos físicos SIP que se integran a la perfección con nuestro sistema.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>¿Qué pasa si tengo problemas técnicos?</span>
+              <i class="faq-icon fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer" aria-hidden="true">
+              <p class="text-gray-600">Nuestro servicio incluye soporte técnico para ayudarte con cualquier inconveniente que puedas tener. Puedes contactarnos a través de nuestros canales de atención al cliente.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ANIMACIONES Y SCRIPTS -->
     <style>
