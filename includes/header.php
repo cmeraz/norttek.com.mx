@@ -89,6 +89,13 @@ if(file_exists($autoCssPathServer)){
 <!-- Scripts generales -->
 <script src="https://unpkg.com/feather-icons"></script>
 <script src="assets/js/loader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
+<?php if (!empty($externalJsHead)): ?>
+    <?php foreach ($externalJsHead as $src): ?>
+        <script src="<?= htmlspecialchars($src) ?>"></script>
+    <?php endforeach; ?>
+<?php endif; ?>
 </head>
 <body>
 
