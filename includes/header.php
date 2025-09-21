@@ -8,86 +8,75 @@
  *   $seo      -> array con datos de SEO (title, description, keywords, robots, Open Graph, Twitter Card)
  */
 
+// Muestra todos los errores (solo para desarrollo, quitar en producción)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Determina el nombre de la página si no se ha definido previamente
 $pageName = $pageName ?? basename($_SERVER['PHP_SELF'], ".php");
 
+// Valores por defecto para SEO
+$defaults = [
+    'title' => 'Norttek Solutions',
+    'description' => 'Soluciones de seguridad integral para empresas y hogares.',
+    'keywords' => 'CCTV, alarmas, control de acceso, redes, automatización',
+    'robots' => 'index, follow',
+    'og_title' => null,
+    'og_description' => null,
+    'og_url' => 'https://www.norttek.com.mx/',
+    'og_image' => 'https://www.norttek.com.mx/assets/images/og-image.jpg',
+    'twitter_title' => null,
+    'twitter_description' => null,
+    'twitter_image' => 'https://www.norttek.com.mx/assets/images/og-image.jpg'
+];
+
+// Mezcla los valores definidos con los defaults
+$seo = array_merge($defaults, $seo ?? []);
+
+// Hereda valores generales si OG/Twitter no están definidos
+$seo['og_title'] = $seo['og_title'] ?? $seo['title'];
+$seo['og_description'] = $seo['og_description'] ?? $seo['description'];
+$seo['twitter_title'] = $seo['twitter_title'] ?? $seo['title'];
+$seo['twitter_description'] = $seo['twitter_description'] ?? $seo['description'];
+
 // Inicializa arrays si no existen
 $cssFiles = $cssFiles ?? [];
-$seo = $seo ?? [];
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title><?= htmlspecialchars($seo['title']) ?></title>
+    <meta name="description" content="<?= htmlspecialchars($seo['description']) ?>">
+    <meta name="keywords" content="<?= htmlspecialchars($seo['keywords']) ?>">
+    <meta name="robots" content="<?= htmlspecialchars($seo['robots']) ?>">
 
-<!-- Título de la página -->
-<title><?= $seo['title'] ?? 'Norttek Solutions' ?></title>
+    <!-- Open Graph -->
+    <meta property="og:title" content="<?= htmlspecialchars($seo['og_title']) ?>">
+    <meta property="og:description" content="<?= htmlspecialchars($seo['og_description']) ?>">
+    <meta property="og:url" content="<?= htmlspecialchars($seo['og_url']) ?>">
+    <meta property="og:image" content="<?= htmlspecialchars($seo['og_image']) ?>">
+    <meta property="og:type" content="website">
 
-<!-- Meta descripción y palabras clave -->
-<meta name="description" content="<?= $seo['description'] ?? 'Soluciones de seguridad integral para empresas y hogares.' ?>">
-<meta name="keywords" content="<?= $seo['keywords'] ?? 'CCTV, alarmas, control de acceso, redes, automatización' ?>">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?= htmlspecialchars($seo['twitter_title']) ?>">
+    <meta name="twitter:description" content="<?= htmlspecialchars($seo['twitter_description']) ?>">
+    <meta name="twitter:image" content="<?= htmlspecialchars($seo['twitter_image']) ?>">
 
-<!-- Meta robots para controlar indexación y seguimiento -->
-<meta name="robots" content="<?= $seo['robots'] ?? 'index, follow' ?>">
-
-<!-- URL canonical para evitar contenido duplicado -->
-<link rel="canonical" href="https://www.norttek.com.mx/<?= $pageName ?>.php">
-
-<!-- Favicon -->
-<link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
-
-<!-- CSS global -->
-<link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
-<link href="assets/css/loader.css" rel="stylesheet">
-<link href="assets/css/style.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
-<!-- CSS específicos por página -->
-<?php
-foreach($cssFiles as $css){
-    // Construye la ruta de cada archivo CSS
-    $cssFile = "$css.css"; 
-    $cssPathServer = __DIR__ . "/../assets/css/$cssFile"; // Ruta del servidor
-    $cssPathBrowser = "assets/css/$cssFile";             // Ruta para el navegador
-    if(file_exists($cssPathServer)){
-        echo "<link rel='stylesheet' href='$cssPathBrowser'>\n";
+    <!-- Favicon, CSS, etc... -->
+    <?php
+    // Carga CSS extra si corresponde
+    if (!empty($cssFiles) && is_array($cssFiles)) {
+        foreach ($cssFiles as $css) {
+            $cssPath = 'assets/css/' . $css . '.css';
+            if (file_exists(__DIR__ . '/../' . $cssPath)) {
+                echo "<link rel='stylesheet' href='/$cssPath'>\n";
+            }
+        }
     }
-}
-
-// CSS automático según el nombre de la página
-$autoCssFile = "$pageName.css";
-$autoCssPathServer = __DIR__ . "/../assets/css/$autoCssFile";
-$autoCssPathBrowser = "assets/css/$autoCssFile";
-if(file_exists($autoCssPathServer)){
-    echo "<link rel='stylesheet' href='$autoCssPathBrowser'>\n";
-}
-?>
-
-<!-- Open Graph (para compartir en redes sociales) -->
-<meta property="og:title" content="<?= $seo['og_title'] ?? $seo['title'] ?>">
-<meta property="og:description" content="<?= $seo['og_description'] ?? $seo['description'] ?>">
-<meta property="og:url" content="<?= $seo['og_url'] ?? 'https://www.norttek.com.mx/' ?>">
-<meta property="og:image" content="<?= $seo['og_image'] ?? 'https://www.norttek.com.mx/assets/images/og-image.jpg' ?>">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Norttek Solutions">
-<meta property="og:locale" content="es_MX">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="<?= $seo['twitter_title'] ?? $seo['title'] ?>">
-<meta name="twitter:description" content="<?= $seo['twitter_description'] ?? $seo['description'] ?>">
-<meta name="twitter:image" content="<?= $seo['twitter_image'] ?? $seo['og_image'] ?>">
-
-<!-- Librerías externas -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-
-<!-- Scripts generales -->
-<script src="https://unpkg.com/feather-icons"></script>
-<script src="assets/js/loader.js"></script>
+    ?>
 </head>
 <body>
 
@@ -105,3 +94,67 @@ if(file_exists($autoCssPathServer)){
         <div class="progress-text">0%</div>
     </div>  
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var loader = document.getElementById('loader');
+  if (loader) {
+    loader.style.opacity = '0';
+    setTimeout(function() {
+      loader.style.display = 'none';
+    }, 400); // Da tiempo a la transición si tienes animación
+  }
+});
+</script>
+
+<!-- Estilos para el loader -->
+<style>
+/* Loader styles */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.4s;
+}
+#loader .loader-content {
+  text-align: center;
+}
+#loader .spinner {
+  border: 4px solid #e5e7eb;
+  border-top: 4px solid #2563eb;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  margin: 16px auto;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+#loader .progress-bar {
+  width: 120px;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  margin: 12px auto;
+  overflow: hidden;
+}
+#loader .progress-fill {
+  width: 100%;
+  height: 100%;
+  background: #2563eb;
+  animation: fillBar 1.2s linear forwards;
+}
+@keyframes fillBar {
+  from { width: 0; }
+  to { width: 100%; }
+}
+#loader .progress-text {
+  color: #2563eb;
+  font-weight: bold;
+  margin-top: 8px;
+}
+</style>
