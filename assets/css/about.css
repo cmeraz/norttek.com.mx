@@ -14,7 +14,3 @@
 .about-visible-timeline { opacity: 1; transform: none; transition-delay: .2s;}
 .about-visible-cta { opacity: 1; transform: scale(1); transition-delay: .2s;}
 .about-animate-cta { transform: scale(.95);}
-
-<?php
-$cssFiles = ['about'];
-$jsFiles = ['about'];
