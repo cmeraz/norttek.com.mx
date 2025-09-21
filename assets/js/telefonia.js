@@ -187,3 +187,41 @@
         gsap.to(".hero-image-container", { duration: 1, opacity: 1, y: 0, delay: 0.9, ease: "power2.out" });
       });
     });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const videoModal = document.getElementById('videoModal');
+      const youtubeVideo = document.getElementById('youtubeVideo');
+      const closeVideo = document.getElementById('closeVideo');
+      const btnVideo = document.getElementById('openVideo');
+      const btnLinkus = document.getElementById('openLinkus');
+
+      function openVideoModal(btn) {
+        let url = btn.dataset.video || '';
+        // Asegura que autoplay=1 esté presente
+        if (!url.includes('autoplay=1')) {
+          url += (url.includes('?') ? '&' : '?') + 'autoplay=1';
+        }
+        youtubeVideo.src = url;
+        videoModal.classList.remove('hidden');
+        youtubeVideo.focus();
+      }
+
+      if (btnVideo) btnVideo.addEventListener('click', () => openVideoModal(btnVideo));
+      if (btnLinkus) btnLinkus.addEventListener('click', () => openVideoModal(btnLinkus));
+      if (closeVideo) closeVideo.addEventListener('click', () => {
+        youtubeVideo.src = '';
+        videoModal.classList.add('hidden');
+      });
+      if (videoModal) videoModal.addEventListener('click', (e) => {
+        if (e.target === videoModal) {
+          youtubeVideo.src = '';
+          videoModal.classList.add('hidden');
+        }
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === "Escape") {
+          youtubeVideo.src = '';
+          videoModal.classList.add('hidden');
+        }
+      });
+    });
