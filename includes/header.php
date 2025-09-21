@@ -77,6 +77,14 @@ $cssFiles = $cssFiles ?? [];
         }
     }
     ?>
+
+    <!-- Mantener estilos externos/globales si aplican -->
+    <link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
+    <link href="assets/css/loader.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- Reconectar la lógica del loader desde el archivo externo (restaura la animación y la muestra de main-content) -->
+    <script src="assets/js/loader.js"></script>
 </head>
 <body>
 
@@ -92,69 +100,7 @@ $cssFiles = $cssFiles ?? [];
             <div class="progress-fill"></div>
         </div>
         <div class="progress-text">0%</div>
-    </div>  
+    </div>
 </div>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  var loader = document.getElementById('loader');
-  if (loader) {
-    loader.style.opacity = '0';
-    setTimeout(function() {
-      loader.style.display = 'none';
-    }, 400); // Da tiempo a la transición si tienes animación
-  }
-});
-</script>
 
-<!-- Estilos para el loader -->
-<style>
-/* Loader styles */
-#loader {
-  position: fixed;
-  inset: 0;
-  background: #fff;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.4s;
-}
-#loader .loader-content {
-  text-align: center;
-}
-#loader .spinner {
-  border: 4px solid #e5e7eb;
-  border-top: 4px solid #2563eb;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  margin: 16px auto;
-  animation: spin 1s linear infinite;
-}
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-#loader .progress-bar {
-  width: 120px;
-  height: 8px;
-  background: #e5e7eb;
-  border-radius: 4px;
-  margin: 12px auto;
-  overflow: hidden;
-}
-#loader .progress-fill {
-  width: 100%;
-  height: 100%;
-  background: #2563eb;
-  animation: fillBar 1.2s linear forwards;
-}
-@keyframes fillBar {
-  from { width: 0; }
-  to { width: 100%; }
-}
-#loader .progress-text {
-  color: #2563eb;
-  font-weight: bold;
-  margin-top: 8px;
-}
-</style>
+<!-- NOTA: se eliminó el script inline conflictivo que solo ocultaba el loader sin manejar main-content -->
