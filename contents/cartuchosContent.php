@@ -136,6 +136,15 @@ function impresorasList($impresoras) {
     </button>
 </div>
 
+<!-- Botón visible siempre -->
+<div class="flex justify-end mb-2">
+    <button id="fotoBtn" type="button"
+        class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow flex items-center gap-2 text-sm">
+        <i class="fas fa-camera"></i> Buscar por foto
+    </button>
+    <input type="file" id="fotoInput" accept="image/*" capture="environment" class="hidden">
+</div>
+
 <!-- ======================================
      Contador de resultados dinámico
      ====================================== -->
