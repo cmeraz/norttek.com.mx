@@ -1,24 +1,105 @@
-# Habilitar reescritura de URL
+# Habilitar reescritura
 RewriteEngine On
 RewriteBase /
 
 # =========================
-# Ocultar extensiones .php y .html
+# Seguridad básica / hardening
+# =========================
+
+# Evitar listado de directorios
+Options -Indexes
+
+# Proteger archivos sensibles (Apache 2.4+)
+<IfModule mod_authz_core.c>
+  <FilesMatch "\.(env|ini|log|sh|sql|bak|inc|psd|git|htaccess)$">
+    Require all denied
+  </FilesMatch>
+</IfModule>
+
+# Para Apache 2.2 (si es necesario), descomentar:
+# <FilesMatch "\.(env|ini|log|sh|sql|bak|inc|psd|git|htaccess)$">
+#   Order allow,deny
+#   Deny from all
+# </FilesMatch>
+
+# =========================
+# (OPCIONAL) Forzar HTTPS y canonicalizar host
+# Descomenta y ajusta según tu configuración.
+# =========================
+
+# Forzar HTTPS (si tu sitio usa HTTPS)
+#RewriteCond %{HTTPS} off
+#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Forzar non-www (cambiar a la preferencia que quieras)
+#RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+#RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+# =========================
+# Ocultar extensiones .php (más robusto)
 # =========================
 
 # Si existe el archivo o directorio, dejarlo pasar
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
 
-# Reescribir URL sin extensión a .php
-RewriteRule ^([a-zA-Z0-9_-]+)$ $1.php [L]
+# Si añadiendo .php el fichero existe, reescribir internamente a .php
+# Esto permite URIs multi-segmento si en el sistema de ficheros hay un .php correspondiente.
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+?)/?$ $1.php [L]
+
+# Notas:
+# - La regla anterior hace una reescritura interna, no una redirección externa.
+# - Si prefieres solo nombres simples (sin slashes), cambiar la expresión a ^([^/]+)$
 
 # =========================
-# Manejar errores 404
+# Redirecciones/Canonicalizaciones específicas
 # =========================
 
-# Redirigir cualquier página no encontrada a 404.php
+# Ejemplo: redirigir /inicio.php a /index.php (usar 302 durante pruebas)
+RewriteCond %{THE_REQUEST} \s/inicio\.php[?\s] [NC]
+RewriteRule ^inicio\.php$ /index.php [R=302,L]
+
+# Cuando verifiques que funciona, cambia R=302 a R=301 para SEO.
+
+# =========================
+# Manejo de errores
+# =========================
+
+# Página 404 personalizada (asegúrate de que exista /404.php)
 ErrorDocument 404 /404.php
 
-# Si la URL es /inicio.php, redirigir a /index.php
-RewriteRule ^inicio\.php$ /index.php [R=301,L]
+# =========================
+# Caché y performance (si mod_expires está disponible)
+# =========================
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/gif "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+</IfModule>
+
+# =========================
+# Cabeceras de seguridad (si mod_headers está disponible)
+# =========================
+<IfModule mod_headers.c>
+  # Evitar clickjacking
+  Header set X-Frame-Options "SAMEORIGIN"
+  # Evitar sniffing de MIME types
+  Header set X-Content-Type-Options "nosniff"
+  # Política de referrer
+  Header set Referrer-Policy "no-referrer-when-downgrade"
+  # HSTS (solo si tienes HTTPS y deseas forzarlo)
+  # Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+</IfModule>
+
+# =========================
+# Fin
+# =========================

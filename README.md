@@ -1,149 +1,141 @@
 # Norttek Solutions - Sitio Web
 
-## Descripción
+Bienvenido al repositorio oficial del sitio web de **Norttek Solutions**.
 
-Este repositorio contiene la versión base del sitio web de **Norttek Solutions**, incluyendo una estructura modular con plantillas, recursos estáticos (CSS, JS, imágenes) y configuración de redirección mediante `.htaccess`.
-
-El sitio está construido en **PHP** con inclusión de plantillas y carga automática de archivos CSS y JS según la página actual.
+Este proyecto implementa una estructura modular y escalable utilizando **PHP**, con plantillas reutilizables y carga automática de recursos según la página. Aquí encontrarás todo lo necesario para desplegar, mantener y extender el sitio institucional de Norttek.
 
 ---
 
-## Estructura del repositorio
+## 🚀 Características principales
+
+- **Estructura modular:** Uso de componentes PHP (`header`, `footer`, `navbar`, etc.) para facilitar el mantenimiento y la escalabilidad.
+- **Carga automática de recursos:** Los archivos CSS y JS se cargan dinámicamente según la página activa.
+- **Redirección y SEO:** Configuración de `.htaccess` para rutas amigables y buenas prácticas SEO.
+- **Separación de recursos:** Archivos estáticos (CSS, JS, imágenes) organizados para fácil gestión.
+- **Soporte para librerías modernas:** Integración con Tailwind CSS, GSAP, AOS, FontAwesome y Toastify.
+
+---
+
+## 📁 Estructura del repositorio
 
 ```
 norttek.com.mx/
-├── assets/                 # Archivos estáticos
-│   ├── css/                # Hojas de estilo
+├── assets/                 
+│   ├── css/                # Hojas de estilo por página
 │   ├── img/                # Imágenes
-│   └── js/                 # Scripts JavaScript
-├── includes/               # Plantillas y componentes PHP
+│   └── js/                 # Scripts JavaScript por página
+├── includes/               # Plantillas y componentes PHP reutilizables
 │   ├── footer.php
 │   ├── header.php
 │   ├── navbar.php
 │   └── pageTemplate.php
-├── .gitattributes          # Configuración de atributos de Git
-├── .htaccess               # Reglas de reescritura y redirección
+├── .gitattributes
+├── .htaccess               # Reglas de reescritura y SEO
 ├── 404.php                 # Página de error 404
 ├── README.md               # Documentación del proyecto
-├── about.php               # Página "Acerca de"
-├── alarma.php              # Página de alarma
-├── cctv.php                # Página de CCTV
-├── contact.php             # Página de contacto
-├── control-acceso.php      # Página de control de acceso
-├── error.php               # Página de error genérica
-├── index.php               # Página de inicio
-├── inicio.php              # Página de inicio (redirige a index.php)
-├── review.php              # Página de reseñas
-├── telefonia.php           # Página de telefonía
-└── test.php                # Página de pruebas
+├── about.php
+├── alarma.php
+├── cctv.php
+├── contact.php
+├── control-acceso.php
+├── error.php
+├── index.php
+├── inicio.php
+├── review.php
+├── telefonia.php
+└── test.php
 ```
 
 ---
 
-## Uso de plantillas e inclusión (`pageTemplate.php`)
+## 🧩 Uso de plantillas e inclusión dinámica
 
-Cada página incluye `pageTemplate.php` para estructurar el contenido y cargar automáticamente los archivos CSS y JS correspondientes.
+Cada página PHP utiliza `pageTemplate.php` para estructurar el contenido y cargar automáticamente los archivos CSS y JS propios.
 
-### Pasos para crear una nueva página:
+### Ejemplo: Crear una nueva página
 
-1. Crear archivo `mi_pagina.php` en la raíz.
-2. Definir el nombre de la página:
-
-```php
-$pageName = basename(__FILE__, ".php");
-```
-
-3. Definir CSS específicos:
-
-```php
-$cssFiles = ['mi_pagina']; // Sin extensión
-```
-
-4. Definir JS específicos:
-
-```php
-$jsFiles = ['mi_pagina']; // Sin extensión
-```
-
-5. Incluir la plantilla:
-
-```php
-include __DIR__ . '/includes/pageTemplate.php';
-```
-
+1. **Crear un archivo** `mi_pagina.php` en la raíz.
+2. **Asignar nombre de página:**
+   ```php
+   $pageName = basename(__FILE__, ".php");
+   ```
+3. **Definir CSS específicos:**
+   ```php
+   $cssFiles = ['mi_pagina']; // Sin extensión
+   ```
+4. **Definir JS específicos:**
+   ```php
+   $jsFiles = ['mi_pagina']; // Sin extensión
+   ```
+5. **Incluir la plantilla:**
+   ```php
+   include __DIR__ . '/includes/pageTemplate.php';
+   ```
 Esto cargará automáticamente `assets/css/mi_pagina.css` y `assets/js/mi_pagina.js` si existen.
 
 ---
 
-## Redirección de `inicio.php` a `index.php`
+## 🔀 Redirección y SEO
 
-Para redirigir automáticamente mediante `.htaccess`:
+Para redirigir automáticamente `inicio.php` a `index.php`, agrega en `.htaccess`:
 
 ```apache
 RewriteEngine On
 RewriteRule ^inicio\.php$ /index.php [R=301,L]
 ```
 
----
-
-## Organización de carpetas y modularidad
-
-* `includes/`: Componentes reutilizables (`header`, `footer`, `navbar`, `pageTemplate`).
-* `assets/css/`: Hojas de estilo separadas por página.
-* `assets/js/`: Scripts separados por página y librerías.
-* `assets/img/`: Imágenes del sitio.
+- **Consejo:** Revisa y actualiza `.htaccess` para mantener reglas limpias, rutas amigables y optimización SEO.
 
 ---
 
-## Recomendaciones
+## 📦 Dependencias externas
 
-* Mantener consistencia en los nombres de archivos CSS y JS para que se carguen automáticamente.
-* Usar `includes/` para separar secciones y componentes, facilitando mantenimiento y escalabilidad.
-* Revisar `.htaccess` para reglas de redirección y optimización SEO.
+El sitio utiliza las siguientes librerías y frameworks:
 
----
-
-## Dependencias externas
-
-* Tailwind CSS
-* GSAP
-* AOS (Animate On Scroll)
-* FontAwesome
-* Toastify
+- [Tailwind CSS](https://tailwindcss.com/)
+- [GSAP](https://greensock.com/gsap/)
+- [AOS (Animate On Scroll)](https://michalsnik.github.io/aos/)
+- [FontAwesome](https://fontawesome.com/)
+- [Toastify](https://apvarun.github.io/toastify-js/)
 
 ---
 
-## Cómo contribuir
+## 🛠️ Recomendaciones y buenas prácticas
 
-1. Clona el repositorio:
-
-```bash
-git clone https://github.com/cmeraz/norttek.com.mx.git
-```
-
-2. Crear nueva rama:
-
-```bash
-git checkout -b mi-nueva-funcionalidad
-```
-
-3. Hacer cambios y commit:
-
-```bash
-git add .
-git commit -m "Agregar nueva funcionalidad"
-```
-
-4. Hacer push a la rama:
-
-```bash
-git push origin mi-nueva-funcionalidad
-```
-
-5. Crear Pull Request en GitHub.
+- **Consistencia:** Mantén los nombres de archivos CSS y JS iguales al nombre de la página correspondiente.
+- **Componentización:** Usa la carpeta `includes/` para secciones y componentes reutilizables.
+- **Organización:** Separa los recursos por tipo y por página para facilitar la gestión.
+- **SEO:** Mantén actualizadas las reglas de `.htaccess` y los metadatos de cada página.
+- **Escalabilidad:** Agrega nuevas páginas siguiendo el método modular descrito arriba.
 
 ---
 
-## Licencia
+## 🤝 Cómo contribuir
 
-Este proyecto es **privado** y para uso interno de Norttek Solutions.
+1. **Clona el repositorio:**
+   ```bash
+   git clone https://github.com/cmeraz/norttek.com.mx.git
+   ```
+2. **Crea una rama nueva:**
+   ```bash
+   git checkout -b mi-nueva-funcionalidad
+   ```
+3. **Realiza tus cambios y haz commit:**
+   ```bash
+   git add .
+   git commit -m "Agregar nueva funcionalidad"
+   ```
+4. **Haz push a tu rama:**
+   ```bash
+   git push origin mi-nueva-funcionalidad
+   ```
+5. **Abre un Pull Request en GitHub.**
+
+---
+
+## 🔒 Licencia
+
+Este proyecto es **privado** y su uso está restringido al equipo de Norttek Solutions.
+
+---
+¿Tienes dudas o sugerencias? Contacta al equipo de desarrollo de Norttek Solutions.
