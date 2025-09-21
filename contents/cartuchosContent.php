@@ -142,7 +142,7 @@ function impresorasList($impresoras) {
         class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow flex items-center gap-2 text-sm">
         <i class="fas fa-camera"></i> Buscar por foto
     </button>
-    <input type="file" id="fotoInput" accept="image/*" capture="environment" class="hidden">
+    <input type="file" id="fotoInput" accept="image/*" class="hidden">
 </div>
 
 <!-- ======================================
