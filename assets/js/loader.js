@@ -5,33 +5,45 @@ document.addEventListener('DOMContentLoaded', function() {
     const progressText = document.querySelector(".progress-text");
     const preloadImg = document.getElementById('preload-bg');
 
+    console.log('Loader init', { loader: !!loader, mainContent: !!mainContent, progressFill: !!progressFill, progressText: !!progressText, preloadImg: !!preloadImg });
+
     function startLoader() {
-        loader.style.display = "flex";
+        if (loader) loader.style.display = "flex";
         let progress = 0;
 
         function animateLoader() {
-            progress += 3; // velocidad del avance
-            if(progress > 100) progress = 100;
+            progress += 3;
+            if (progress > 100) progress = 100;
 
-            progressFill.style.width = progress + "%";
-            progressText.textContent = Math.floor(progress) + "%";
+            if (progressFill) progressFill.style.width = progress + "%";
+            if (progressText) progressText.textContent = Math.floor(progress) + "%";
 
-            if(progress < 100) {
+            if (progress < 100) {
                 requestAnimationFrame(animateLoader);
             } else {
-                loader.style.display = "none";
-                mainContent.style.display = "block";
+                if (loader) loader.style.display = "none";
+                if (mainContent) {
+                    mainContent.style.display = "block";
+                } else {
+                    console.warn('main-content no encontrado, mostrando body por defecto.');
+                    document.body.style.visibility = 'visible';
+                }
             }
         }
 
         animateLoader();
     }
 
-    // Si la imagen ya está cargada en caché, onload no se dispara, por eso revisamos complete
+    if (!preloadImg) {
+        console.warn('preload-bg no encontrado, iniciando loader directamente');
+        startLoader();
+        return;
+    }
+
     if (preloadImg.complete) {
         startLoader();
     } else {
         preloadImg.onload = startLoader;
-        preloadImg.onerror = startLoader; // en caso de error, igual iniciamos loader
+        preloadImg.onerror = startLoader;
     }
 });
