@@ -98,51 +98,83 @@ $seo = [
       </div>
     </section>
 
-    <!-- PLANES -->
-    <section id="planes" class="py-20 bg-gray-50" aria-labelledby="planes-title">
-      <div class="max-w-7xl mx-auto px-4 text-center">
-        <h2 id="planes-title" class="text-4xl font-bold text-gray-900 mb-4">Planes y llamadas ilimitadas</h2>
-        <p class="text-gray-700 mb-4 max-w-2xl mx-auto text-lg">
-          Elige el plan que mejor se adapta a tu empresa. Todos incluyen numeración LADA México y soporte técnico.
-        </p>
-        <div class="mt-12 grid md:grid-cols-3 gap-8">
-          <!-- Plan Básico -->
-          <div class="bg-white p-8 rounded-3xl shadow-lg flex flex-col justify-between">
-            <h3 class="font-bold text-2xl text-blue-600 mb-6">Plan Básico</h3>
-            <ul class="text-gray-700 mb-6 space-y-2 text-left">
-              <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>1 extensión</li>
-              <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>1 troncal (2 canales)</li>
-              <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>Numeración LADA México</li>
-            </ul>
-            <p class="font-bold text-blue-600 text-xl mb-6">$379 / mes + IVA</p>
-            <a href="#" class="bg-blue-600 text-white py-2 px-6 rounded-full font-semibold hover:bg-blue-700 transition" role="button">Solicitar Plan</a>
-          </div>
-          <!-- Plan Premium (destacado) -->
-          <div class="bg-white p-8 rounded-3xl shadow-lg border-2 border-blue-600 relative flex flex-col justify-between">
-            <span class="absolute top-0 left-0 bg-yellow-400 text-xs font-bold px-3 py-1 rounded-br-2xl">Recomendado</span>
-            <h3 class="font-bold text-2xl text-blue-600 mb-6">Plan Premium</h3>
-            <ul class="text-gray-700 mb-6 space-y-2 text-left">
-              <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>3 extensiones</li>
-              <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>1 troncal (2 canales)</li>
-              <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>Numeración LADA México</li>
-            </ul>
-            <p class="font-bold text-blue-600 text-xl mb-6">$605 / mes + IVA</p>
-            <a href="#" class="bg-blue-600 text-white py-2 px-6 rounded-full font-semibold hover:bg-blue-700 transition" role="button">Solicitar Plan</a>
-          </div>
-          <!-- Plan Empresarial -->
-          <div class="bg-white p-8 rounded-3xl shadow-lg flex flex-col justify-between">
-            <h3 class="font-bold text-2xl text-blue-600 mb-6">Plan Empresarial</h3>
-            <ul class="text-gray-700 mb-6 space-y-2 text-left">
-              <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>10 extensiones</li>
-              <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>1 troncal (10 canales)</li>
-              <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>Numeración LADA México</li>
-            </ul>
-            <p class="font-bold text-blue-600 text-xl mb-6">$1,490 / mes + IVA</p>
-            <a href="#" class="bg-blue-600 text-white py-2 px-6 rounded-full font-semibold hover:bg-blue-700 transition" role="button">Solicitar Plan</a>
-          </div>
-        </div>
+ <!-- PLANES -->
+<section id="planes" class="py-20 bg-gray-50" aria-labelledby="planes-title">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <h2 id="planes-title" class="text-4xl font-bold text-gray-900 mb-4">Planes y llamadas ilimitadas</h2>
+    <p class="text-gray-700 mb-4 max-w-2xl mx-auto text-lg">
+      Elige el plan que mejor se adapta a tu empresa. Todos incluyen numeración LADA México y soporte técnico.
+    </p>
+    <div class="mt-12 grid md:grid-cols-3 gap-8">
+      
+      <!-- Plan Básico -->
+      <div class="bg-white p-8 rounded-3xl shadow-lg flex flex-col justify-between">
+        <h3 class="font-bold text-2xl text-blue-600 mb-6">Plan Básico</h3>
+        <ul class="text-gray-700 mb-6 space-y-2 text-left">
+          <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>1 extensión</li>
+          <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>1 troncal (2 canales)</li>
+          <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>Numeración LADA México</li>
+        </ul>
+        <p class="font-bold text-blue-600 text-xl mb-6">$379 / mes + IVA</p>
+        <a href="#"
+           data-plan="Plan Básico"
+           data-precio="$379 / mes + IVA"
+           data-ext="1 extensión"
+           data-troncal="1 troncal (2 canales)"
+           data-numeracion="Numeración LADA México"
+           class="bg-blue-600 text-white py-2 px-6 rounded-full font-semibold hover:bg-blue-700 transition"
+           role="button">
+           Solicitar Plan
+        </a>
       </div>
-    </section>
+
+      <!-- Plan Premium (destacado) -->
+      <div class="bg-white p-8 rounded-3xl shadow-lg border-2 border-blue-600 relative flex flex-col justify-between">
+        <span class="absolute top-0 left-0 bg-yellow-400 text-xs font-bold px-3 py-1 rounded-br-2xl">Recomendado</span>
+        <h3 class="font-bold text-2xl text-blue-600 mb-6">Plan Premium</h3>
+        <ul class="text-gray-700 mb-6 space-y-2 text-left">
+          <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>3 extensiones</li>
+          <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>1 troncal (2 canales)</li>
+          <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>Numeración LADA México</li>
+        </ul>
+        <p class="font-bold text-blue-600 text-xl mb-6">$605 / mes + IVA</p>
+        <a href="#"
+           data-plan="Plan Premium"
+           data-precio="$605 / mes + IVA"
+           data-ext="3 extensiones"
+           data-troncal="1 troncal (2 canales)"
+           data-numeracion="Numeración LADA México"
+           class="bg-blue-600 text-white py-2 px-6 rounded-full font-semibold hover:bg-blue-700 transition"
+           role="button">
+           Solicitar Plan
+        </a>
+      </div>
+
+      <!-- Plan Empresarial -->
+      <div class="bg-white p-8 rounded-3xl shadow-lg flex flex-col justify-between">
+        <h3 class="font-bold text-2xl text-blue-600 mb-6">Plan Empresarial</h3>
+        <ul class="text-gray-700 mb-6 space-y-2 text-left">
+          <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>10 extensiones</li>
+          <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>1 troncal (10 canales)</li>
+          <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>Numeración LADA México</li>
+        </ul>
+        <p class="font-bold text-blue-600 text-xl mb-6">$1,490 / mes + IVA</p>
+        <a href="#"
+           data-plan="Plan Empresarial"
+           data-precio="$1,490 / mes + IVA"
+           data-ext="10 extensiones"
+           data-troncal="1 troncal (10 canales)"
+           data-numeracion="Numeración LADA México"
+           class="bg-blue-600 text-white py-2 px-6 rounded-full font-semibold hover:bg-blue-700 transition"
+           role="button">
+           Solicitar Plan
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
     <!-- DEMO -->
     <section id="demo" class="py-20 bg-gray-50" aria-labelledby="demo-title">
@@ -160,7 +192,7 @@ $seo = [
               <i class="fas fa-clipboard-check"></i>
               Solicitar Demo
             </button>
-            <button id="openVideo" data-video="https://www.youtube.com/embed/6H7w6a4O3dU" class="bg-gray-200 text-blue-600 px-6 py-3 rounded-full hover:bg-gray-300 transition flex items-center gap-2" type="button" role="button">
+            <button id="openVideo" data-video="https://www.youtube.com/embed/HVc0M7uDKAE?si=IGVoEfbvS5Rl5-tG" class="bg-gray-200 text-blue-600 px-6 py-3 rounded-full hover:bg-gray-300 transition flex items-center gap-2" type="button" role="button">
               <i class="fas fa-play-circle"></i>
               Ver Video
             </button>
@@ -218,6 +250,9 @@ $seo = [
         </form>
       </div>
     </div>
+
+    <!-- FAQ -->
+    <div id="faq"></div>
 
     <!-- ANIMACIONES Y SCRIPTS -->
     <style>
