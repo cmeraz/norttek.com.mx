@@ -62,4 +62,11 @@ $extraScriptFile = __DIR__ . '/../extra/scripts/' . $pageName . '.php';
 if(file_exists($extraScriptFile)){
     include $extraScriptFile;
 }
+
+// Cargar scripts externos en el head
+if (!empty($externalJsHead)): ?>
+    <?php foreach ($externalJsHead as $src): ?>
+        <script src="<?= htmlspecialchars($src) ?>"></script>
+    <?php endforeach; ?>
+<?php endif; ?>
 ?>
