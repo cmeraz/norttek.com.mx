@@ -1,4 +1,3 @@
-<!-- JS para modal de video -->
   // Referencias
   const openVideoBtn = document.getElementById("openVideo");
   const videoModal = document.getElementById("videoModal");
