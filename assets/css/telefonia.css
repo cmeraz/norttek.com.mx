@@ -1,0 +1,56 @@
+/* FAQ Styles */
+// filepath: c:\laragon\www\norttek.com.mx\assets\css\telefonia.css
+.faq-item {
+  border-radius: 1rem;
+  background: #f8fafc;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px 0 #0001;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.faq-item.open {
+  box-shadow: 0 4px 16px 0 #0002;
+  background: #e0f2fe;
+}
+.faq-question {
+  cursor: pointer;
+  padding: 1.25rem 2.5rem 1.25rem 1.5rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  outline: none;
+  border: none;
+  background: transparent;
+  width: 100%;
+  transition: background 0.2s;
+}
+.faq-question:focus {
+  background: #dbeafe;
+}
+.faq-icon {
+  transition: transform 0.3s;
+  font-size: 1.25rem;
+}
+.faq-item.open .faq-icon {
+  transform: rotate(180deg);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  background: #fff;
+  color: #334155;
+  font-size: 1rem;
+  padding: 0 1.5rem;
+  transition: max-height 0.4s cubic-bezier(.4,0,.2,1), padding 0.3s;
+}
+.faq-item.open .faq-answer {
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
+  max-height: 300px;
+}
+@media (max-width: 600px) {
+  .faq-question { font-size: 1rem; padding: 1rem 2.5rem 1rem 1rem; }
+  .faq-answer { font-size: 0.97rem; }
+}
