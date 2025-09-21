@@ -225,3 +225,61 @@
         }
       });
     });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const faqs = [
+        {
+          q: "¿Qué es una PBX en la nube?",
+          a: "Una PBX en la nube es un sistema telefónico alojado en servidores remotos que utiliza Internet para gestionar llamadas. Esto elimina la necesidad de equipos físicos en tu oficina y te permite escalar fácilmente tu comunicación empresarial."
+        },
+        {
+          q: "¿Puedo usar mis teléfonos actuales?",
+          a: "Sí. Nuestra solución es compatible con la mayoría de los teléfonos IP que soporten el protocolo SIP. Además, puedes integrar aplicaciones móviles y clientes de escritorio sin costo adicional."
+        },
+        {
+          q: "¿Se puede usar fuera de la oficina?",
+          a: "Por supuesto. Podrás atender llamadas desde cualquier lugar mediante tu PC, aplicación móvil o un teléfono físico configurado. Toda la comunicación está protegida con seguridad TLS/SRTP para mayor tranquilidad."
+        },
+        {
+          q: "¿Qué ventajas ofrece frente a un conmutador físico?",
+          a: "Reducción de costos de mantenimiento, escalabilidad inmediata, actualizaciones automáticas, movilidad total y la posibilidad de gestionar reportes y grabaciones desde cualquier dispositivo."
+        }
+      ];
+
+      const container = document.getElementById("faq");
+      if (!container) return;
+
+      faqs.forEach(({ q, a }, idx) => {
+        const item = document.createElement("div");
+        item.className = "faq-item";
+        item.innerHTML = `
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-${idx}">
+            <span>${q}</span>
+            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer" id="faq-answer-${idx}" aria-hidden="true">
+            ${a}
+          </div>
+        `;
+        const btn = item.querySelector(".faq-question");
+        const answer = item.querySelector(".faq-answer");
+
+        btn.addEventListener("click", () => {
+          const isOpen = item.classList.contains("open");
+          // Cierra todos los demás
+          document.querySelectorAll('.faq-item.open').forEach(el => {
+            if (el !== item) {
+              el.classList.remove("open");
+              el.querySelector(".faq-question").setAttribute("aria-expanded", "false");
+              el.querySelector(".faq-answer").setAttribute("aria-hidden", "true");
+            }
+          });
+          // Alterna el actual
+          item.classList.toggle("open");
+          btn.setAttribute("aria-expanded", String(!isOpen));
+          answer.setAttribute("aria-hidden", String(isOpen));
+        });
+
+        container.appendChild(item);
+      });
+    });
