@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/html; charset=UTF-8');
 /**
  * header.php
  * Header dinámico que configura el SEO, CSS, meta robots y scripts para cada página.
