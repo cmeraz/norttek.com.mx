@@ -1,25 +1,25 @@
 <?php
-// Nombre de la página (por defecto, nombre del archivo sin .php)
+/**
+ * Página de CCTV - Videovigilancia
+ */
+$seo = [
+    'title'       => 'CCTV y Videovigilancia | Norttek Solutions',
+    'description' => 'Instalación profesional de cámaras de seguridad, monitoreo remoto y sistemas de videovigilancia para empresas y hogares en México.',
+    'keywords'    => 'CCTV, cámaras de seguridad, videovigilancia, monitoreo, Norttek',
+    'robots'      => 'index, follow',
+    'og_url'      => 'https://www.norttek.com.mx/cctv',
+    'og_image'    => 'https://www.norttek.com.mx/assets/images/og-cctv.jpg'
+];
+$seo['og_title']        = $seo['og_title']        ?? $seo['title'];
+$seo['og_description']  = $seo['og_description']  ?? $seo['description'];
+$seo['twitter_title']   = $seo['twitter_title']   ?? $seo['title'];
+$seo['twitter_description'] = $seo['twitter_description'] ?? $seo['description'];
+$seo['twitter_image']   = $seo['twitter_image']   ?? $seo['og_image'];
+
 $pageName = basename(__FILE__, ".php");
+$cssFiles = ['cctv'];
+$jsFiles  = ['cctv'];
 
-// Metas específicas si existen
-$metaFile = __DIR__ . '/extra/metas/' . $pageName . '.php';
-if(file_exists($metaFile)){
-    include $metaFile; // Define $seo
-} else {
-    $seo = [
-        'title' => 'Norttek Solutions - CCTV Video Vigilancia',
-        'description' => 'Soluciones integrales de CCTV y video vigilancia para hogares y empresas. Instalación profesional y equipos de alta calidad.',
-        'keywords' => 'CCTV, Hikvision, Dahua, Video Vigilancia, Seguridad, Cámaras, Norttek',
-        'robots' => 'index , follow'
-    ];
-}
-
-// Archivos CSS y JS específicos
-$cssFiles = [];
-$jsFiles = [];
-
-// Plantilla base
 include __DIR__ . '/includes/pageTemplate.php';
 ?>
 

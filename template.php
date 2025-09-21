@@ -3,40 +3,42 @@
  * template.php
  * Plantilla base para crear nuevas páginas en Norttek Solutions
  *
- * IMPORTANTE: Este es un archivo TEMPLATE/EJEMPLO para desarrolladores
- * 
- * Cómo usar:
+ * USO:
  * 1️⃣ Copia este archivo y renómbralo como la página que quieras (ej: servicios.php).
- * 2️⃣ Cambia el contenido de $seo con los datos específicos de tu página.
- * 3️⃣ Modifica $pageName si necesitas un nombre diferente al del archivo.
- * 4️⃣ Agrega archivos CSS específicos en $cssFiles.
- * 5️⃣ Agrega archivos JS específicos en $jsFiles.
- * 6️⃣ Crea el archivo contents/{nombrePagina}Content.php con el contenido principal.
- * 7️⃣ Incluye pageTemplate.php para cargar la estructura base.
+ * 2️⃣ Edita el array $seo con los datos específicos de tu página.
+ * 3️⃣ Si necesitas un nombre de página diferente, cambia $pageName.
+ * 4️⃣ Agrega archivos CSS/JS específicos en $cssFiles y $jsFiles (sin extensión).
+ * 5️⃣ Crea el archivo contents/{nombrePagina}Content.php con el contenido principal.
+ * 6️⃣ Incluye pageTemplate.php para cargar la estructura base y los assets.
+ *
+ * NOTA: Las metas Open Graph y Twitter Card se heredan automáticamente de los valores principales.
  */
 
-// SEO de la página: título, descripción, palabras clave y metas para redes sociales
+// --------------- SEO PRINCIPAL (solo escribe una vez cada dato) ---------------
 $seo = [
-    'title'       => 'Norttek Solutions - Plantilla de Página',
-    'description' => 'Archivo template para crear nuevas páginas en el sitio web de Norttek Solutions. Estructura modular y reutilizable.',
-    'keywords'    => 'Plantilla, Template, Desarrollo, Norttek, PHP, Estructura',
-    'robots'      => 'noindex, nofollow', // No indexar esta página template
-    'og_title'       => 'Norttek Solutions - Plantilla de Página',
-    'og_description' => 'Archivo template para desarrolladores del sitio web de Norttek Solutions.',
-    'og_url'         => 'https://www.norttek.com.mx/template',
-    'og_image'       => 'https://www.norttek.com.mx/assets/images/og-image.jpg',
-    'twitter_title'       => 'Norttek Solutions - Plantilla de Página',
-    'twitter_description' => 'Archivo template para desarrolladores del sitio web de Norttek Solutions.',
-    'twitter_image'       => 'https://www.norttek.com.mx/assets/images/og-image.jpg'
+    'title'       => 'Norttek Solutions - Plantilla de Página', // Título principal de la página
+    'description' => 'Archivo template para crear nuevas páginas en el sitio web de Norttek Solutions. Estructura modular y reutilizable.', // Descripción corta y clara
+    'keywords'    => 'Plantilla, Template, Desarrollo, Norttek, PHP, Estructura', // Palabras clave separadas por coma
+    'robots'      => 'noindex, nofollow', // Controla indexación (cambiar a 'index, follow' en páginas reales)
+    'og_url'      => 'https://www.norttek.com.mx/template', // URL canónica de la página
+    'og_image'    => 'https://www.norttek.com.mx/assets/images/og-image.jpg' // Imagen para compartir en redes
 ];
 
-// Nombre de la página, usado para personalizar o detectar la vista
-$pageName = basename(__FILE__, ".php");
+// ----------- HERENCIA AUTOMÁTICA PARA OG Y TWITTER (no repitas datos) -----------
+// Si necesitas personalizar OG/Twitter, agrega 'og_title', 'og_description', etc. al array $seo
+$seo['og_title']        = $seo['og_title']        ?? $seo['title'];
+$seo['og_description']  = $seo['og_description']  ?? $seo['description'];
+$seo['twitter_title']   = $seo['twitter_title']   ?? $seo['title'];
+$seo['twitter_description'] = $seo['twitter_description'] ?? $seo['description'];
+$seo['twitter_image']   = $seo['twitter_image']   ?? $seo['og_image'];
 
-// CSS y JS específicos de esta página
-$cssFiles = []; // Array de archivos CSS adicionales (sin extensión)
-$jsFiles = [];  // Array de archivos JS adicionales (sin extensión)
+// --------------- NOMBRE DE LA PÁGINA (para assets y contenido) ---------------
+$pageName = basename(__FILE__, ".php"); // Usado para cargar contenido y assets automáticamente
 
-// Incluir la plantilla base, que carga header, footer, CSS/JS y usa $seo
+// --------------- ASSETS ESPECÍFICOS POR PÁGINA (opcional) ---------------
+$cssFiles = []; // Ejemplo: ['servicios', 'custom']
+$jsFiles  = []; // Ejemplo: ['servicios']
+
+// --------------- INCLUYE LA PLANTILLA BASE DEL SITIO ---------------
 include __DIR__ . '/includes/pageTemplate.php';
 ?>

@@ -18,11 +18,12 @@ $menu = [
         'icon'  => 'fas fa-cogs',
         'url'   => '#',
         'children' => [
-            ['label' => 'Seguridad y CCTV', 'icon' => 'fas fa-video', 'url' => 'cctv.php'],
-            ['label' => 'Telefonía IP', 'icon' => 'fas fa-phone', 'url' => 'telefonia.php'],
-            ['label' => 'Control de Acceso', 'icon' => 'fas fa-key', 'url' => 'control.php'],
-            ['label' => 'Redes y Cableado', 'icon' => 'fas fa-network-wired', 'url' => 'redes.php'],
-            ['label' => 'Interfón / Telefonía', 'icon' => 'fas fa-intercom', 'url' => 'interfon.php']
+            ['label' => 'Seguridad y CCTV',      'icon' => 'fas fa-video',      'url' => 'cctv.php'],
+            ['label' => 'Alarmas Inteligentes',  'icon' => 'fas fa-bell',       'url' => 'alarma.php'],
+            ['label' => 'Control de Acceso',     'icon' => 'fas fa-key',        'url' => 'control-acceso.php'],
+            ['label' => 'Redes y Cableado',      'icon' => 'fas fa-network-wired', 'url' => 'networks.php'],
+            ['label' => 'Telefonía IP',          'icon' => 'fas fa-phone',      'url' => 'telefonia.php'],
+            ['label' => 'Interfón / Telefonía',  'icon' => 'fas fa-intercom',   'url' => 'interfon.php']
         ]
     ],
     [

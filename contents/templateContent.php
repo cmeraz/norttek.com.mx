@@ -2,6 +2,7 @@
 /**
  * templateContent.php
  * Contenido para la página template.php - Información para desarrolladores
+ * Compatible con la convención DRY de SEO y la estructura modular del proyecto.
  */
 ?>
 
@@ -30,7 +31,10 @@
                 <div class="ml-3">
                     <h3 class="text-sm font-medium text-amber-800">Información para Desarrolladores</h3>
                     <div class="mt-2 text-sm text-amber-700">
-                        <p>Este archivo (<code>template.php</code>) es una plantilla base para crear nuevas páginas. No está destinado para uso público directo.</p>
+                        <p>
+                            Este archivo (<code>template.php</code>) es una plantilla base para crear nuevas páginas. 
+                            Ahora utiliza la convención DRY para SEO: solo necesitas definir <strong>una vez</strong> el título, descripción, URL e imagen, y estos se heredan automáticamente para Open Graph y Twitter Card.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -45,15 +49,19 @@
                     <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">1</div>
                     <div class="ml-4">
                         <h3 class="text-lg font-medium text-gray-900">Copiar y renombrar</h3>
-                        <p class="text-gray-600">Copia <code>template.php</code> y renómbralo como tu nueva página (ej: <code>servicios.php</code>)</p>
+                        <p class="text-gray-600">Copia <code>template.php</code> y renómbralo como tu nueva página (ej: <code>servicios.php</code>).</p>
                     </div>
                 </div>
 
                 <div class="flex items-start">
                     <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">2</div>
                     <div class="ml-4">
-                        <h3 class="text-lg font-medium text-gray-900">Configurar SEO</h3>
-                        <p class="text-gray-600">Modifica el array <code>$seo</code> con título, descripción y keywords específicos de tu página</p>
+                        <h3 class="text-lg font-medium text-gray-900">Configurar SEO (DRY)</h3>
+                        <p class="text-gray-600">
+                            Modifica el array <code>$seo</code> con los datos principales de tu página:<br>
+                            <code>title</code>, <code>description</code>, <code>keywords</code>, <code>robots</code>, <code>og_url</code>, <code>og_image</code>.<br>
+                            <span class="text-blue-700 font-semibold">No necesitas repetir los valores para OG/Twitter, se heredan automáticamente.</span>
+                        </p>
                     </div>
                 </div>
 
@@ -61,7 +69,10 @@
                     <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">3</div>
                     <div class="ml-4">
                         <h3 class="text-lg font-medium text-gray-900">Agregar recursos</h3>
-                        <p class="text-gray-600">Especifica archivos CSS y JS adicionales en <code>$cssFiles</code> y <code>$jsFiles</code></p>
+                        <p class="text-gray-600">
+                            Especifica archivos CSS y JS adicionales en <code>$cssFiles</code> y <code>$jsFiles</code> (sin extensión).<br>
+                            Los archivos con el mismo nombre que la página se cargan automáticamente.
+                        </p>
                     </div>
                 </div>
 
@@ -69,13 +80,16 @@
                     <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">4</div>
                     <div class="ml-4">
                         <h3 class="text-lg font-medium text-gray-900">Crear contenido</h3>
-                        <p class="text-gray-600">Crea <code>contents/{nombrePagina}Content.php</code> con el contenido principal de tu página</p>
+                        <p class="text-gray-600">
+                            Crea <code>contents/{nombrePagina}Content.php</code> con el contenido principal de tu página.<br>
+                            El sistema lo incluirá automáticamente según el nombre del archivo.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Ejemplo de código -->
+        <!-- Ejemplo de código actualizado -->
         <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
             <h2 class="text-2xl font-semibold text-gray-900 mb-6">💻 Ejemplo de implementación</h2>
             
@@ -86,8 +100,11 @@ $seo = [
     \'title\' => \'Norttek Solutions - Nuestros Servicios\',
     \'description\' => \'Conoce todos los servicios de seguridad que ofrece Norttek Solutions...\',
     \'keywords\' => \'servicios, seguridad, CCTV, alarmas\',
-    \'robots\' => \'index, follow\'
+    \'robots\' => \'index, follow\',
+    \'og_url\' => \'https://www.norttek.com.mx/servicios\',
+    \'og_image\' => \'https://www.norttek.com.mx/assets/images/og-image.jpg\'
 ];
+// No repitas og_title, og_description, twitter_title, etc. Se heredan automáticamente.
 
 $pageName = basename(__FILE__, ".php");
 $cssFiles = [\'servicios\']; // assets/css/servicios.css

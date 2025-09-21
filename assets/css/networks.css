@@ -1,0 +1,30 @@
+/* Animaciones y estilos premium para la página de redes */
+
+.networks-animate-fade,
+.networks-animate-left,
+.networks-animate-right,
+.networks-animate-up,
+.networks-animate-cta {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(.4,0,.2,1);
+}
+
+.networks-animate-left { transform: translateX(-60px);}
+.networks-animate-right { transform: translateX(60px);}
+.networks-animate-up { transform: translateY(40px);}
+.networks-animate-cta { transform: scale(.95);}
+
+.networks-visible-fade { opacity: 1; transform: none; }
+.networks-visible-left { opacity: 1; transform: translateX(0);}
+.networks-visible-right { opacity: 1; transform: translateX(0);}
+.networks-visible-up { opacity: 1; transform: translateY(0);}
+.networks-visible-cta { opacity: 1; transform: scale(1);}
+
+section .rounded-xl { border-radius: 1.25rem; }
+section .shadow-2xl { box-shadow: 0 10px 40px 0 rgba(0,0,0,0.10); }
+section .bg-gradient-to-r { background: linear-gradient(90deg, #2563eb 60%, #38bdf8 100%); }
+section .drop-shadow-lg { filter: drop-shadow(0 4px 16px rgba(37,99,235,0.08)); }
+section .font-extrabold { font-weight: 800; }
+section .font-semibold { font-weight: 600; }
+section .hover\:bg-blue-50:hover { background: #eff6ff; }

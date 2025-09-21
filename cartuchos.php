@@ -1,57 +1,45 @@
 <?php
 /**
- * template.php
- * Plantilla base para crear nuevas páginas en Norttek Solutions
+ * cartuchos.php
+ * Página de catálogo de cartuchos de tóner HP y otras marcas para Norttek Solutions
  *
  * Cómo usar:
- * 1️⃣ Copia este archivo y renómbralo como la página que quieras (ej: servicios.php).
- * 2️⃣ Cambia el contenido de $pageName si quieres un nombre distinto para SEO o metas.
- * 3️⃣ Agrega metas específicas en extra/metas/{nombrePagina}.php
- * 4️⃣ Agrega archivos CSS específicos en $cssFiles.
- * 5️⃣ Agrega archivos JS específicos en $jsFiles.
- * 6️⃣ Incluye pageTemplate.php para cargar la estructura base.
+ * 1️⃣ El contenido principal está en contents/cartuchosContent.php.
+ * 2️⃣ SEO y metas se definen aquí.
+ * 3️⃣ Los assets (CSS/JS) se cargan automáticamente si agregas los archivos en assets/css/ y assets/js/ con el nombre 'cartuchos'.
+ * 4️⃣ Incluye pageTemplate.php para cargar la estructura base.
  */
 
 $seo = [
-    // SEO básico
-    'title'       => 'Norttek Solutions - Catálogo de Cartuchos de Toner HP',
-    'description' => 'Herramienta interactiva, pensada para que encuentres en segundos el cartucho o tambor correcto, con información confiable sobre marcas, modelos, compatibilidad y rendimiento. Así podrás elegir tu consumible con total seguridad, evitando errores y ahorrando tiempo.',
-    'keywords'    => 'Cartuchos de toner, HP, impresoras, consumibles, Norttek, hewlett-packard, Samsung, Brother, Xerox, Kyocera, cartuchos compatibles, toner laser, impresoras laser',
+    'title'       => 'Catálogo de Cartuchos de Tóner HP y Compatibles | Norttek Solutions',
+    'description' => 'Encuentra en segundos el cartucho o tambor correcto para tu impresora HP, Brother, Samsung, Xerox, Kyocera y más. Información confiable sobre compatibilidad y rendimiento.',
+    'keywords'    => 'Cartuchos de tóner, HP, impresoras, consumibles, Norttek, Samsung, Brother, Xerox, Kyocera, cartuchos compatibles, tóner láser, impresoras láser',
     'robots'      => 'index, follow',
 
     // Open Graph
-    'og_title'       => 'Norttek Solutions - Catálogo de Cartuchos de Toner HP',
-    'og_description' => 'Herramienta interactiva, pensada para que encuentres en segundos el cartucho o tambor correcto, con información confiable sobre marcas, modelos, compatibilidad y rendimiento. Así podrás elegir tu consumible con total seguridad, evitando errores y ahorrando tiempo.',
+    'og_title'       => 'Catálogo de Cartuchos de Tóner HP y Compatibles | Norttek Solutions',
+    'og_description' => 'Herramienta interactiva para encontrar el cartucho o tambor correcto, con información confiable sobre marcas, modelos y compatibilidad.',
     'og_url'         => 'https://www.norttek.com.mx/cartuchos',
     'og_image'       => 'https://www.norttek.com.mx/assets/images/og-image.jpg',
 
     // Twitter Card
-    'twitter_title'       => 'Norttek Solutions - Inicio',
-    'twitter_description' => 'Protege tu hogar y empresa con soluciones integrales de seguridad de Norttek.',
+    'twitter_title'       => 'Catálogo de Cartuchos de Tóner HP y Compatibles | Norttek Solutions',
+    'twitter_description' => 'Encuentra el cartucho ideal para tu impresora en segundos con Norttek Solutions.',
     'twitter_image'       => 'https://www.norttek.com.mx/assets/images/og-image.jpg'
 ];
 
-// 1️⃣ Determinar nombre de la página automáticamente (por defecto, nombre del archivo sin .php)
+// Nombre de la página para assets y contenido
 $pageName = basename(__FILE__, ".php");
 
-// 3️⃣ Archivos CSS extra para esta página (vacío por defecto)
-$cssFiles = [
-    // 'estilos-home.css', 'slider.css', etc.
+// Archivos CSS y JS específicos para esta página
+$cssFiles = ['cartuchos'];
+$jsFiles  = ['cartuchos'];
+
+// Mueve esto ANTES del include:
+$externalJsHead = [
+    'https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'
 ];
 
-// 4️⃣ Archivos JS extra para esta página (vacío por defecto)
-$jsFiles = [
-    // 'home.js', 'contacto.js', etc.
-];
-
-// 5️⃣ Incluir plantilla base (header, footer, estructura general)
+// Incluir plantilla base (header, navbar, contenido, footer)
 include __DIR__ . '/includes/pageTemplate.php';
-
-/**
- * 🚀 Tips para crear nuevas páginas:
- * - Cada página puede tener su propio archivo de metas en extra/metas/.
- * - Si agregas CSS o JS, ponlos en las carpetas correspondientes y añádelos a $cssFiles / $jsFiles.
- * - Todo el contenido principal se define dentro de pageTemplate.php usando $pageName para condicionar vistas si es necesario.
- * - Para incluir secciones dinámicas, puedes usar include __DIR__ . '/includes/seccion.php';
- */
 ?>

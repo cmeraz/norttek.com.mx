@@ -1,0 +1,111 @@
+<?php
+/**
+ * aboutContent.php
+ * Contenido principal para la página "Nosotros" de Norttek Solutions
+ * Sigue la convención modular y DRY del proyecto.
+ */
+?>
+
+<section class="bg-white pb-16" style="padding-top:250px;">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8">
+        <!-- Hero Nosotros -->
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-blue-700 mb-4 drop-shadow-lg about-animate-fade">Sobre Nosotros</h1>
+            <p class="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto about-animate-fade">
+                En <span class="font-semibold text-blue-600">Norttek Solutions</span> combinamos experiencia, innovación y pasión para proteger y transformar hogares y empresas en todo México.
+            </p>
+        </div>
+
+        <!-- Historia y valores -->
+        <div class="grid md:grid-cols-2 gap-10 items-center mb-20">
+            <div class="about-animate-left">
+                <h2 class="text-2xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+                    <i class="fas fa-history text-blue-600"></i> Nuestra Historia
+                </h2>
+                <p class="text-gray-600 mb-4">
+                    Desde <span class="font-semibold text-blue-700">2015</span>, Norttek Solutions ha evolucionado de un pequeño emprendimiento familiar a una empresa líder en <span class="font-semibold">seguridad electrónica</span> y <span class="font-semibold">automatización</span>. Nuestro crecimiento se basa en la confianza de nuestros clientes y la mejora continua de nuestro equipo.
+                </p>
+                <ul class="list-disc list-inside text-gray-600 mb-4">
+                    <li>+500 proyectos exitosos en empresas y hogares</li>
+                    <li>Soporte en todo México</li>
+                    <li>Equipo certificado y en constante capacitación</li>
+                </ul>
+                <p class="text-gray-600">
+                    Hoy, somos referentes en <span class="font-semibold">CCTV, alarmas inteligentes, control de acceso, redes y telefonía IP</span>, brindando soluciones integrales y soporte personalizado.
+                </p>
+            </div>
+            <div class="flex justify-center about-animate-right">
+                <img src="/assets/images/about-team.jpg" alt="Equipo Norttek Solutions" class="rounded-xl shadow-2xl w-full max-w-xs hover:scale-105 transition-transform duration-500">
+            </div>
+        </div>
+
+        <!-- Misión, Visión, Valores con animaciones -->
+        <div class="grid md:grid-cols-3 gap-8 text-center mb-20">
+            <div class="about-animate-up">
+                <div class="text-blue-600 text-4xl mb-2"><i class="fas fa-bullseye"></i></div>
+                <h3 class="font-semibold text-xl mb-2">Misión</h3>
+                <p class="text-gray-600">
+                    Brindar soluciones tecnológicas de seguridad y automatización que mejoren la calidad de vida y la productividad de nuestros clientes, con atención personalizada y tecnología de vanguardia.
+                </p>
+            </div>
+            <div class="about-animate-up" style="animation-delay:0.2s;">
+                <div class="text-blue-600 text-4xl mb-2"><i class="fas fa-eye"></i></div>
+                <h3 class="font-semibold text-xl mb-2">Visión</h3>
+                <p class="text-gray-600">
+                    Ser la empresa mexicana líder en innovación, servicio y confianza en el sector de seguridad electrónica y automatización.
+                </p>
+            </div>
+            <div class="about-animate-up" style="animation-delay:0.4s;">
+                <div class="text-blue-600 text-4xl mb-2"><i class="fas fa-handshake"></i></div>
+                <h3 class="font-semibold text-xl mb-2">Valores</h3>
+                <ul class="text-gray-600 list-disc list-inside text-left inline-block">
+                    <li>Compromiso</li>
+                    <li>Honestidad</li>
+                    <li>Innovación</li>
+                    <li>Calidad</li>
+                    <li>Trabajo en equipo</li>
+                    <li>Responsabilidad social</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Línea de tiempo animada -->
+        <div class="mb-20">
+            <h2 class="text-2xl font-bold text-blue-700 text-center mb-8 about-animate-fade">Nuestra Trayectoria</h2>
+            <div class="relative border-l-4 border-blue-200 pl-8">
+                <div class="mb-10 about-animate-timeline" data-year="2015">
+                    <span class="absolute -left-5 top-0 bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center shadow-lg font-bold">2015</span>
+                    <p class="text-gray-700 font-semibold">Fundación de Norttek Solutions</p>
+                    <p class="text-gray-500 text-sm">Comenzamos con proyectos residenciales y pequeñas empresas.</p>
+                </div>
+                <div class="mb-10 about-animate-timeline" data-year="2018">
+                    <span class="absolute -left-5 top-0 bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center shadow-lg font-bold">2018</span>
+                    <p class="text-gray-700 font-semibold">Expansión nacional</p>
+                    <p class="text-gray-500 text-sm">Ampliamos nuestro alcance a todo México y grandes corporativos.</p>
+                </div>
+                <div class="mb-10 about-animate-timeline" data-year="2021">
+                    <span class="absolute -left-5 top-0 bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center shadow-lg font-bold">2021</span>
+                    <p class="text-gray-700 font-semibold">Innovación en automatización</p>
+                    <p class="text-gray-500 text-sm">Integramos soluciones IoT, control remoto y telefonía IP en la nube.</p>
+                </div>
+                <div class="mb-4 about-animate-timeline" data-year="2024">
+                    <span class="absolute -left-5 top-0 bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center shadow-lg font-bold">2024</span>
+                    <p class="text-gray-700 font-semibold">+500 clientes satisfechos</p>
+                    <p class="text-gray-500 text-sm">Seguimos creciendo con pasión y compromiso.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA animada -->
+        <div class="bg-gradient-to-r from-blue-600 to-blue-400 rounded-lg p-10 text-center shadow-lg about-animate-cta">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">¿Por qué elegir Norttek Solutions?</h2>
+            <p class="text-blue-50 mb-4 text-lg">
+                Atención personalizada, soporte técnico especializado y soluciones a la medida.<br>
+                Nuestro compromiso es tu tranquilidad y satisfacción.
+            </p>
+            <a href="/contacto.php" class="inline-block px-8 py-3 bg-white text-blue-700 rounded-full font-semibold shadow hover:bg-blue-50 transition">
+                Contáctanos
+            </a>
+        </div>
+    </div>
+</section>
