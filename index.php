@@ -1,37 +1,35 @@
 <?php
 /**
  * index.php
- * Página de inicio de Norttek Solutions
+ * Página principal de Norttek Solutions
+ *
+ * Basado en template.php y optimizado para SEO.
  */
 
+// --------------- SEO PRINCIPAL ---------------
 $seo = [
-    // SEO básico
-    'title'       => 'Index Solutions - Seguridad Integral para tu Hogar y Oficina',
-    'description' => 'Norttek Solutions ofrece instalación profesional de CCTV, alarmas inteligentes, control de acceso, redes y cableado estructurado.',
-    'keywords'    => 'Seguridad, CCTV, Alarmas, Control de acceso, Redes, Automatización, Norttek, Oficina, Hogar, Empresas',
+    'title'       => 'Norttek Solutions | Seguridad, Automatización y Tecnología para Hogar y Empresa',
+    'description' => 'Especialistas en instalación de CCTV, alarmas inteligentes, control de acceso, redes, cableado estructurado y automatización. Soluciones integrales para proteger y modernizar tu hogar, oficina o negocio en Chihuahua y todo México.',
+    'keywords'    => 'seguridad, cctv, alarmas, automatización, control de acceso, redes, cableado estructurado, tecnología, Norttek Solutions, hogar, empresa, oficina, Chihuahua, México',
     'robots'      => 'index, follow',
-
-    // Open Graph
-    'og_title'       => 'Norttek Solutions - Inicio',
-    'og_description' => 'Protege tu hogar y empresa con soluciones integrales de seguridad de Norttek.',
-    'og_url'         => 'https://www.norttek.com.mx/',
-    'og_image'       => 'https://www.norttek.com.mx/assets/images/og-image.jpg',
-
-    // Twitter Card
-    'twitter_title'       => 'Norttek Solutions - Inicio',
-    'twitter_description' => 'Protege tu hogar y empresa con soluciones integrales de seguridad de Norttek.',
-    'twitter_image'       => 'https://www.norttek.com.mx/assets/images/og-image.jpg'
+    'og_url'      => 'https://www.norttek.com.mx/',
+    'og_image'    => 'https://www.norttek.com.mx/assets/images/og-image.jpg'
 ];
 
-// 1️⃣ Determinar nombre de la página
+// ----------- HERENCIA AUTOMÁTICA PARA OG Y TWITTER -----------
+$seo['og_title']        = $seo['og_title']        ?? $seo['title'];
+$seo['og_description']  = $seo['og_description']  ?? $seo['description'];
+$seo['twitter_title']   = $seo['twitter_title']   ?? $seo['title'];
+$seo['twitter_description'] = $seo['twitter_description'] ?? $seo['description'];
+$seo['twitter_image']   = $seo['twitter_image']   ?? $seo['og_image'];
+
+// --------------- NOMBRE DE LA PÁGINA ---------------
 $pageName = basename(__FILE__, ".php");
 
-// 3️⃣ Archivos CSS extra para esta página
-$cssFiles = ['']; // Si quieres cargar más, agregar al array
+// --------------- ASSETS ESPECÍFICOS POR PÁGINA ---------------
+$cssFiles = []; // Puedes agregar CSS específicos si lo requieres
+$jsFiles  = ['home']; // Archivo JS principal para la home
 
-// 4️⃣ Archivos JS extra para esta página (opcional)
-$jsFiles = ['home'];
-
-// 5️⃣ Incluir plantilla base
+// --------------- INCLUYE LA PLANTILLA BASE DEL SITIO ---------------
 include __DIR__ . '/includes/pageTemplate.php';
 ?>
