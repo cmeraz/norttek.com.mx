@@ -530,6 +530,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Si es el tab de preguntas frecuentes, reinicializa la animación FAQ
                 if (tabId === 'tab2' && typeof window.faqFalconInit === 'function') {
                     window.faqFalconInit();
+                    if (window.ScrollTrigger && typeof ScrollTrigger.refresh === 'function') {
+                        setTimeout(() => ScrollTrigger.refresh(), 200);
+                    }
                 }
             }
         });
