@@ -45,7 +45,7 @@ echo "</main>";
 // 3️⃣ Cargar footer
 includeSection('footer');
 
-// 4️⃣ JS extra específico por página
+/* // 4️⃣ JS extra específico por página
 $scriptFiles = $scriptFiles ?? [];
 if(!empty($scriptFiles) && is_array($scriptFiles)){
     foreach($scriptFiles as $js){
@@ -55,7 +55,7 @@ if(!empty($scriptFiles) && is_array($scriptFiles)){
             echo "<script src='$jsPathBrowser'></script>\n";
         }
     }
-}
+} */
 
 // 5️⃣ Scripts adicionales desde extra/scripts
 $extraScriptFile = __DIR__ . '/../extra/scripts/' . $pageName . '.php';
