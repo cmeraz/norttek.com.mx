@@ -181,12 +181,14 @@ function impresorasList($impresoras) {
 </section>
 <section class="preguntas-frecuentes" id="preguntas-frecuentes">
     <!-- Sección de preguntas frecuentes -->
-        
+
+        <?= faq('faq-general', ['title' => 'Preguntas Frecuentes']) ?>
         <?php
             if (function_exists('faq')) {
                 echo faq('faq-cartuchos', ['title' => 'Preguntas Frecuentes sobre Cartuchos']);
             }
         ?>
+
     
 </section>
 
