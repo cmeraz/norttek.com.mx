@@ -32,8 +32,8 @@ $seo = [
 $pageName = basename(__FILE__, ".php");
 
 // Archivos CSS y JS específicos para esta página
-$cssFiles = ['cartuchos'];
-$jsFiles  = ['cartuchos'];
+$cssFiles = [];
+$jsFiles  = [];
 
 // Mueve esto ANTES del include:
 $externalJsHead = [
