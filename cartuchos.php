@@ -28,12 +28,10 @@ $seo = [
     'twitter_image'       => 'https://www.norttek.com.mx/assets/images/og-image.jpg'
 ];
 
-// Nombre de la página para assets y contenido
-$pageName = basename(__FILE__, ".php");
 
 // Archivos CSS y JS específicos para esta página
-$cssFiles = [];
-$jsFiles  = [];
+$cssFiles = ['cartuchos'];
+$jsFiles  = ['cartuchos'];
 
 // Mueve esto ANTES del include:
 $externalJsHead = [
