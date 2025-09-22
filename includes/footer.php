@@ -117,7 +117,7 @@ foreach($jsFiles as $js){
     }
 }
 
-// JS automático por página según $pageName
+/* // JS automático por página según $pageName
 $autoJsFile = "$pageName.js";
 $autoJsPathServer = __DIR__ . "/../assets/js/$autoJsFile";
 $autoJsPathBrowser = "/assets/js/$autoJsFile"; // ruta absoluta
@@ -125,7 +125,7 @@ if(file_exists($autoJsPathServer)){
     echo "<script src='$autoJsPathBrowser'></script>\n";
 } else {
     echo "<!-- JS automático $autoJsPathBrowser no encontrado -->\n";
-}
+} */
 ?>
 
 

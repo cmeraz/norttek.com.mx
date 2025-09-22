@@ -1,11 +1,16 @@
 // Esperar a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
+    // --- Variables globales ---
     const buscador = document.getElementById('buscador');
+    const fotoBtn = document.getElementById('fotoBtn');
+    const btnBorrar = document.getElementById('limpiarBusqueda');
+    const contador = document.getElementById('total-resultados');
+    const filas = document.querySelectorAll(".cartucho-row");
 
-    // --- Cropper.js loader ---
+    // --- Cargar dinámicamente Cropper.js si es necesario ---
     function loadCropperAssets(callback) {
         if (window.Cropper) return callback();
-        // CSS
+        // Cargar CSS de Cropper.js
         if (!document.getElementById('cropperjs-css')) {
             const link = document.createElement('link');
             link.id = 'cropperjs-css';
@@ -13,18 +18,20 @@ document.addEventListener('DOMContentLoaded', function() {
             link.href = 'https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.css';
             document.head.appendChild(link);
         }
-        // JS
+        // Cargar JS de Cropper.js
         const script = document.createElement('script');
         script.src = 'https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js';
         script.onload = callback;
         document.body.appendChild(script);
     }
 
-    // --- Modal de instrucciones y botón para tomar/cargar foto ---
+    // --- Mostrar modal para tomar o cargar foto ---
     function showFotoModal() {
+        // Elimina cualquier modal anterior
         let oldModal = document.getElementById('foto-modal');
         if (oldModal) oldModal.remove();
 
+        // Crea el modal y su contenido
         const modal = document.createElement('div');
         modal.id = 'foto-modal';
         modal.style.position = 'fixed';
@@ -159,8 +166,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 30);
     }
 
-    // --- Cropper Modal ---
+    // --- Mostrar modal de recorte de imagen con Cropper.js ---
     function showCropperModal(imageSrc) {
+        // Crea y muestra el modal para recortar la imagen seleccionada
+        // Permite rotar, recortar y cancelar
+        // Al recortar, llama a analizarImagen con el blob resultante
         let oldModal = document.getElementById('cropper-modal');
         if (oldModal) oldModal.remove();
 
@@ -283,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 30);
     }
 
-    // --- OCR y selección de modelo ---
+    // --- Analizar imagen con OCR y sugerir modelos ---
     async function analizarImagen(fileOrBlob) {
         buscador.value = "Analizando imagen...";
         buscador.disabled = true;
@@ -321,8 +331,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // --- Modal visual para selección de modelo ---
+    // --- Mostrar modal para seleccionar modelo detectado o escribir manualmente ---
     function showModelModal(modelos, onSelect) {
+        // Crea un modal con botones para cada modelo detectado
+        // Permite escribir manualmente si no aparece el modelo
+        // Llama a onSelect con el modelo elegido
         let oldModal = document.getElementById('modelo-modal');
         if (oldModal) oldModal.remove();
 
@@ -428,8 +441,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 30);
     }
 
-    // --- Botón principal ---
-    const fotoBtn = document.getElementById('fotoBtn');
+    // --- Evento para mostrar el modal de foto al hacer click en el botón ---
     if (fotoBtn) {
         fotoBtn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -438,88 +450,123 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ==========================
-    // Filtrado en vivo y contador
+    // Filtrado en vivo y contador de resultados
     // ==========================
-    document.addEventListener("DOMContentLoaded", function () {
-        // Selección de elementos
-        const filas = document.querySelectorAll("#tablaCartuchos tbody tr");
-        const contador = document.getElementById("total-resultados");
-        const buscador = document.getElementById("buscador");
-        const btnBorrar = document.getElementById("limpiarBusqueda");
+    // Actualiza el contador de filas visibles en la tabla
+    function actualizarContador() {
+        const visibles = Array.from(filas).filter(fila => fila.style.display !== "none");
+        if (contador) contador.textContent = visibles.length;
+    }
 
-        // Función para actualizar el contador de resultados visibles
-        function actualizarContador() {
-            const visibles = Array.from(filas).filter(fila => fila.style.display !== "none");
-            if (contador) contador.textContent = visibles.length;
-        }
+    // Normaliza texto para búsqueda (minúsculas y sin acentos)
+    function normalizar(texto) {
+        return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
 
-        // Función de normalización (minúsculas y sin acentos)
-        function normalizar(texto) {
-            return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        }
+    // Evento de filtrado en vivo
+    if (buscador) {
+        buscador.addEventListener("input", function () {
+            const filtro = normalizar(this.value.trim());
+            const palabras = filtro.split(/\s+/);
 
-        // Filtrado mejorado: palabras separadas y compuestas
-        if (buscador) {
-            buscador.addEventListener("input", function () {
-                const filtro = normalizar(this.value.trim());
-                const palabras = filtro.split(/\s+/);
-
-                filas.forEach(fila => {
-                    const textoFila = Array.from(fila.cells)
-                        .map(celda => normalizar(celda.innerText))
-                        .join(" ");
-                    const mostrar = palabras.every(palabra => textoFila.includes(palabra));
-                    fila.style.display = mostrar ? "" : "none";
-                });
-
-                actualizarContador();
+            filas.forEach(fila => {
+                const textoFila = Array.from(fila.cells)
+                    .map(celda => normalizar(celda.innerText))
+                    .join(" ");
+                const mostrar = palabras.every(palabra => textoFila.includes(palabra));
+                fila.style.display = mostrar ? "" : "none";
             });
-        }
 
-        // Botón para limpiar búsqueda
-        if (btnBorrar) {
-            btnBorrar.addEventListener("click", () => {
-                if (buscador) buscador.value = "";
-                filas.forEach(fila => fila.style.display = "");
-                actualizarContador();
-            });
-        }
-
-        // Inicializar contador al cargar la página
-        actualizarContador();
-
-        // ==========================
-        // Tabs funcionalidad
-        // ==========================
-        const tabBtns = document.querySelectorAll('.cartuchos-tab');
-        const tabContents = document.querySelectorAll('.cartuchos-tab-content');
-
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', function () {
-                // Quitar clase active de todos los tabs
-                tabBtns.forEach(b => b.classList.remove('active'));
-                // Ocultar todos los contenidos
-                tabContents.forEach(tc => tc.classList.add('hidden'));
-
-                // Activar el tab actual
-                btn.classList.add('active');
-                const tabId = btn.getAttribute('data-tab');
-                const content = document.getElementById('tab-' + tabId);
-                if (content) content.classList.remove('hidden');
-            });
+            actualizarContador();
         });
+    }
 
-        // Mostrar por defecto el primer tab si existe
-        if (tabBtns.length && tabContents.length) {
-            tabBtns[0].classList.add('active');
-            tabContents[0].classList.remove('hidden');
-            for (let i = 1; i < tabContents.length; i++) {
-                tabContents[i].classList.add('hidden');
+    // Evento para limpiar la búsqueda y mostrar todas las filas
+    if (btnBorrar) {
+        btnBorrar.addEventListener("click", () => {
+            if (buscador) buscador.value = "";
+            filas.forEach(fila => fila.style.display = "");
+            actualizarContador();
+        });
+    }
+
+    // Inicializa el contador al cargar la página
+    actualizarContador();
+
+    // ==========================
+    // Tabs funcionalidad (ejemplo horizontal)
+    // ==========================
+    const tabBtns = document.querySelectorAll('.ejemplo-tab-btn');
+    const tabContents = {
+        tab1: document.getElementById('compatibilidades'),
+        tab2: document.getElementById('preguntas-frecuentes')
+    };
+
+    // Oculta todos los contenidos de tabs y elimina animación
+    function hideAllTabs() {
+        Object.values(tabContents).forEach(tc => {
+            tc.classList.add('hidden');
+            tc.classList.remove('tab-animate-in');
+        });
+    }
+
+    // Evento para cambiar de tab con animación
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            tabBtns.forEach(b => b.classList.remove('active', 'text-gray-700', 'border-blue-400'));
+            tabBtns.forEach(b => b.classList.add('text-gray-500'));
+
+            btn.classList.add('active', 'text-gray-700', 'border-blue-400');
+            btn.classList.remove('text-gray-500');
+
+            hideAllTabs();
+            const tabId = btn.getAttribute('data-tab');
+            const content = tabContents[tabId];
+            if (content) {
+                content.classList.remove('hidden');
+                // Forzar reflow para reiniciar animación
+                void content.offsetWidth;
+                content.classList.add('tab-animate-in');
+                // Si es el tab de preguntas frecuentes, reinicializa la animación FAQ
+                if (tabId === 'tab2' && typeof window.faqFalconInit === 'function') {
+                    window.faqFalconInit();
+                }
             }
-        }
+        });
     });
-});
 
-// ==========================
-// Tabs en página de ejemplo de modelo
-// ==========================
+    // Mostrar por defecto el primer tab con animación
+    hideAllTabs();
+    if (tabBtns.length && tabContents.tab1) {
+        tabBtns[0].classList.add('active', 'text-gray-700', 'border-blue-400');
+        tabBtns[0].classList.remove('text-gray-500');
+        tabContents.tab1.classList.remove('hidden');
+        tabContents.tab1.classList.add('tab-animate-in');
+    }
+
+    // ==========================
+    // (Opcional) Tabs funcionalidad para cartuchos-tab/cartuchos-tab-content
+    // ==========================
+    const cartuchosTabBtns = document.querySelectorAll('.cartuchos-tab');
+    const cartuchosTabContents = document.querySelectorAll('.cartuchos-tab-content');
+
+    cartuchosTabBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+            cartuchosTabBtns.forEach(b => b.classList.remove('active'));
+            cartuchosTabContents.forEach(tc => tc.classList.add('hidden'));
+
+            btn.classList.add('active');
+            const tabId = btn.getAttribute('data-tab');
+            const content = document.getElementById('tab-' + tabId);
+            if (content) content.classList.remove('hidden');
+        });
+    });
+
+    if (cartuchosTabBtns.length && cartuchosTabContents.length) {
+        cartuchosTabBtns[0].classList.add('active');
+        cartuchosTabContents[0].classList.remove('hidden');
+        for (let i = 1; i < cartuchosTabContents.length; i++) {
+            cartuchosTabContents[i].classList.add('hidden');
+        }
+    }
+});
