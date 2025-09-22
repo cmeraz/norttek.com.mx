@@ -1,0 +1,102 @@
+[
+  {
+    "pregunta": "¿Qué es un sistema de cámaras de seguridad?",
+    "respuesta": "Un sistema de cámaras de seguridad es un conjunto de dispositivos diseñados para monitorear espacios, ya sea en interiores o exteriores, y grabar video de lo que ocurre en tiempo real. Estas cámaras pueden ser conectadas a un grabador o a la nube y permiten visualizar las imágenes desde un teléfono, computadora o pantalla local.",
+    "icono": "fas fa-video"
+  },
+  {
+    "pregunta": "¿Para qué sirven las alarmas de seguridad?",
+    "respuesta": "Las alarmas de seguridad sirven para alertar a los propietarios o a un centro de monitoreo cuando ocurre una intrusión o situación sospechosa. Pueden detectar movimientos, aperturas de puertas o ventanas, humo, fuego o fugas de gas, dependiendo del tipo de sensor instalado.",
+    "icono": "fas fa-bell"
+  },
+  {
+    "pregunta": "¿Cómo se instalan las cámaras?",
+    "respuesta": "Las cámaras se instalan generalmente en puntos estratégicos donde se necesita vigilancia. Algunas requieren cableado de corriente y red, mientras que otras funcionan de manera inalámbrica. La instalación debe garantizar que la cámara tenga buena visibilidad y cobertura del área que se desea monitorear.",
+    "icono": "fas fa-tools"
+  },
+  {
+    "pregunta": "¿Qué tipos de cámaras existen?",
+    "respuesta": "Existen cámaras de interior, exterior, domo, bullet, PTZ (que se mueven), cámaras con visión nocturna, cámaras fijas y cámaras inalámbricas, entre otras. Cada tipo tiene características específicas que permiten cubrir distintas necesidades de vigilancia.",
+    "icono": "fas fa-camera"
+  },
+  {
+    "pregunta": "¿Qué es un sensor de movimiento?",
+    "respuesta": "Un sensor de movimiento es un dispositivo que detecta cambios en el área que monitorea, como desplazamiento de personas u objetos. Cuando detecta movimiento, puede activar una alarma, enviar una notificación al teléfono o activar una cámara para grabar video.",
+    "icono": "fas fa-running"
+  },
+  {
+    "pregunta": "¿Las cámaras funcionan de noche?",
+    "respuesta": "Sí, muchas cámaras de seguridad cuentan con visión nocturna que utiliza luz infrarroja para capturar imágenes incluso en completa oscuridad. Esto permite mantener la vigilancia 24/7 y grabar eventos aunque no haya luz visible.",
+    "icono": "fas fa-moon"
+  },
+  {
+    "pregunta": "¿Se pueden ver las cámaras desde el celular?",
+    "respuesta": "Sí, la mayoría de los sistemas modernos permiten conectar las cámaras a una aplicación en el teléfono móvil. Esto permite ver en tiempo real, recibir alertas y reproducir grabaciones desde cualquier lugar con acceso a internet.",
+    "icono": "fas fa-mobile-alt"
+  },
+  {
+    "pregunta": "¿Qué es un DVR o NVR?",
+    "respuesta": "Un DVR (Digital Video Recorder) o NVR (Network Video Recorder) es un dispositivo que recibe la señal de las cámaras y la graba en un disco duro. Los DVR se usan con cámaras analógicas, mientras que los NVR se usan con cámaras IP digitales. Permiten almacenar y reproducir video cuando se necesite.",
+    "icono": "fas fa-hdd"
+  },
+  {
+    "pregunta": "¿Qué es la grabación en la nube?",
+    "respuesta": "La grabación en la nube consiste en almacenar las imágenes de las cámaras en servidores externos a los que se accede a través de internet. Esto evita la pérdida de información si alguien manipula el equipo local y permite revisar el video desde cualquier dispositivo autorizado.",
+    "icono": "fas fa-cloud"
+  },
+  {
+    "pregunta": "¿Se puede monitorear la alarma desde el celular?",
+    "respuesta": "Sí, muchos sistemas de alarma permiten ser controlados desde aplicaciones móviles, enviando notificaciones de eventos, activando o desactivando la alarma y revisando el estado de sensores desde cualquier lugar.",
+    "icono": "fas fa-shield-alt"
+  },
+  {
+    "pregunta": "¿Qué pasa si se va la luz?",
+    "respuesta": "La mayoría de los sistemas modernos cuentan con baterías de respaldo que permiten seguir funcionando temporalmente durante un corte de energía. Algunas alarmas y cámaras pueden enviar alertas para avisar que hay una interrupción eléctrica.",
+    "icono": "fas fa-bolt"
+  },
+  {
+    "pregunta": "¿Las alarmas pueden detectar incendios o humo?",
+    "respuesta": "Sí, existen sensores de humo y fuego que se integran al sistema de alarma. Estos sensores emiten alertas inmediatas cuando detectan humo o un aumento significativo de temperatura, ayudando a prevenir daños mayores.",
+    "icono": "fas fa-fire"
+  },
+  {
+    "pregunta": "¿Se pueden conectar varias cámaras al mismo sistema?",
+    "respuesta": "Sí, la mayoría de los sistemas permiten conectar varias cámaras al mismo DVR, NVR o aplicación en la nube, dependiendo de la capacidad del equipo. Esto permite monitorear distintos puntos de manera simultánea desde un solo lugar.",
+    "icono": "fas fa-th-large"
+  },
+  {
+    "pregunta": "¿Se necesita internet para que funcionen las cámaras?",
+    "respuesta": "Depende del tipo de cámara. Las cámaras IP inalámbricas necesitan conexión a internet para transmitir video en tiempo real a tu celular o nube, mientras que algunas cámaras con grabación local pueden funcionar sin internet, aunque no se podrán monitorear de forma remota.",
+    "icono": "fas fa-wifi"
+  },
+  {
+    "pregunta": "¿Qué mantenimiento requieren las cámaras y alarmas?",
+    "respuesta": "Se recomienda limpiar las lentes de las cámaras, verificar la conexión de cables y revisar el estado de baterías y sensores de las alarmas. Un mantenimiento periódico asegura un funcionamiento confiable y evita fallas en los momentos críticos.",
+    "icono": "fas fa-wrench"
+  },
+  {
+    "pregunta": "¿Qué es una sirena o alarma sonora?",
+    "respuesta": "Una sirena es un dispositivo que emite un sonido fuerte cuando se activa la alarma. Su función principal es alertar a los ocupantes y ahuyentar a posibles intrusos, además de servir como aviso para vecinos o personal de seguridad.",
+    "icono": "fas fa-volume-up"
+  },
+  {
+    "pregunta": "¿Se puede integrar la alarma con las cámaras?",
+    "respuesta": "Sí, muchos sistemas permiten que al activarse un sensor de alarma se inicie la grabación de las cámaras o se envíen notificaciones con imágenes al celular. Esto permite tener un control más completo de lo que sucede durante un evento de seguridad.",
+    "icono": "fas fa-link"
+  },
+  {
+    "pregunta": "¿Qué es un sensor de puerta o ventana?",
+    "respuesta": "Un sensor de puerta o ventana detecta cuando se abre o se cierra una entrada protegida. Al activarse, puede disparar la alarma, enviar una notificación o activar cámaras cercanas para grabar el evento.",
+    "icono": "fas fa-door-closed"
+  },
+  {
+    "pregunta": "¿Se puede expandir el sistema en el futuro?",
+    "respuesta": "Sí, la mayoría de los sistemas permiten agregar más cámaras, sensores o dispositivos según sea necesario. Esto permite escalar la seguridad a medida que cambian las necesidades o se amplían los espacios.",
+    "icono": "fas fa-plus-square"
+  },
+  {
+    "pregunta": "¿Qué pasa si detecta una intrusión mientras no estoy en casa?",
+    "respuesta": "El sistema puede enviar alertas al celular, activar sirenas y, dependiendo del servicio, notificar a un centro de monitoreo. Esto permite tomar acción inmediata aunque no estés presente físicamente.",
+    "icono": "fas fa-exclamation-triangle"
+  }
+]
