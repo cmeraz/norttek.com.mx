@@ -1,18 +1,17 @@
 <?php
 /**
- * includeTemplate.php
+ * functions.php
+ * Funciones utilitarias y helpers para plantillas, secciones y componentes FAQ.
  * 
- * Función para incluir archivos de plantilla (templates) desde la carpeta "templates".
- * Permite incluir cualquier archivo .php dentro de esa carpeta simplemente pasando
- * el nombre del template sin la extensión.
- *
- * Ejemplo de uso:
- *   includeTemplate('header'); // Incluye templates/header.php
- *   includeTemplate('footer'); // Incluye templates/footer.php
+ * Estructura y convenciones según la arquitectura modular de Norttek Solutions.
  */
 
+/**
+ * Incluye un template desde la carpeta /templates.
+ * Uso: includeTemplate('header');
+ */
 function includeTemplate($templateName) {
-    $templateName = basename($templateName); // evita rutas externas
+    $templateName = basename($templateName); // Seguridad: evita rutas externas
     $file = __DIR__ . "/../templates/{$templateName}.php";
 
     if (file_exists($file)) {
@@ -23,14 +22,13 @@ function includeTemplate($templateName) {
 }
 
 /**
- * includeSection.php
- * Función para incluir templates pasando variables y con valores por defecto
+ * Incluye una sección de template pasando variables (con valores por defecto).
+ * Uso: includeSection('nombre', ['var1' => 'valor']);
  */
-
 function includeSection($templateName, $variables = []) {
     $file = __DIR__ . "/$templateName.php";
 
-    // Valores por defecto
+    // Valores por defecto para SEO y otros
     $defaults = [
         'seo' => [
             'title' => 'Norttek Solutions',
@@ -62,21 +60,9 @@ function includeSection($templateName, $variables = []) {
 }
 
 /**
- * Renderiza un componente FAQ a partir de un archivo JSON.
+ * Renderiza un componente FAQ a partir de un archivo JSON arbitrario.
  * El JSON debe ser un array de objetos con "pregunta", "respuesta", "icono" (opcional), "imagen" (opcional).
- *
- * Ejemplo de JSON:
- * [
- *   { "pregunta": "¿Cómo comprar?", "respuesta": "Puedes comprar en línea.", "icono": "fas fa-shopping-cart", "imagen": "/assets/img/faq1.jpg" },
- *   { "pregunta": "¿Tienen envío?", "respuesta": "Sí, enviamos a todo México." }
- * ]
- *
- * Uso:
- *   echo renderFAQComponent(__DIR__ . '/../includes/json/faq.json', ['title' => 'Preguntas Frecuentes']);
- *
- * @param string $jsonFile Ruta al archivo JSON
- * @param array $options Opciones: 'title' => Título del FAQ (opcional)
- * @return string HTML del componente FAQ
+ * Uso: echo renderFAQComponent('/ruta/faq.json', ['title' => 'Preguntas Frecuentes']);
  */
 function renderFAQComponent($jsonFile, $options = []) {
     $title = isset($options['title']) ? htmlspecialchars($options['title']) : 'Preguntas Frecuentes';
@@ -130,17 +116,12 @@ function renderFAQComponent($jsonFile, $options = []) {
 }
 
 /**
- * Renderiza un componente FAQ a partir de un archivo JSON ubicado en json/faq/{archivo}.json.
+ * Renderiza un componente FAQ a partir de un archivo JSON ubicado en /json/faq/{archivo}.json.
  * El JSON debe ser un array de objetos con "pregunta", "respuesta", "icono" (opcional), "imagen" (opcional).
- *
- * Ejemplo de uso:
- *   echo faq('faq-general');
- *
- * @param string $jsonName Nombre del archivo JSON (sin extensión)
- * @param array $options Opciones: 'title' => Título del FAQ (opcional)
- * @return string HTML del componente FAQ
+ * Uso: echo faq('faq-general', ['title' => 'Preguntas Frecuentes']);
  */
 function faq($jsonName, $options = []) {
+    // Construye la ruta al archivo JSON de FAQ
     $jsonFile = __DIR__ . '/../json/faq/' . basename($jsonName) . '.json';
     $title = isset($options['title']) ? htmlspecialchars($options['title']) : 'Preguntas Frecuentes';
     $iconoGenerico = 'fas fa-question-circle';
@@ -154,7 +135,7 @@ function faq($jsonName, $options = []) {
         return "<!-- FAQ JSON invalid format: {$jsonFile} -->";
     }
 
-    // Incluir GSAP y ScrollTrigger solo una vez
+    // Incluir GSAP y ScrollTrigger solo una vez para animaciones
     static $gsapLoaded = false;
     if (!$gsapLoaded) {
         echo '<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>';
@@ -192,6 +173,7 @@ function faq($jsonName, $options = []) {
         </div>
     </section>
     <style>
+        /* Estilos para el componente FAQ Falcon */
         .faq-falcon__container {
             background: #fff;
             border-radius: 1.5rem;
@@ -223,10 +205,16 @@ function faq($jsonName, $options = []) {
             transition: background 0.2s, color 0.2s;
         }
         .faq-falcon__answer img { max-width: 100%; height: auto; }
+        .faq-falcon__item.faq-hidden {
+            opacity: 0 !important;
+            pointer-events: none;
+            transform: scale(0.96) translateY(80px) !important;
+            transition: opacity 0.5s, transform 0.5s;
+        }
     </style>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Falconmasters FAQ style JS sin clase active
+    window.faqFalconInit = function() {
+        // Toggle de preguntas y respuestas
         document.querySelectorAll('.faq-falcon__question').forEach(function(q, idx) {
             q.addEventListener('click', function() {
                 const item = q.closest('.faq-falcon__item');
@@ -234,7 +222,7 @@ function faq($jsonName, $options = []) {
                 const arrow = q.querySelector('.faq-falcon__arrow');
                 const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px' && answer.style.opacity === '1';
 
-                // Cierra todos
+                // Cierra todos los items
                 document.querySelectorAll('.faq-falcon__item').forEach(function(i) {
                     const a = i.querySelector('.faq-falcon__answer');
                     const ar = i.querySelector('.faq-falcon__arrow');
@@ -244,7 +232,7 @@ function faq($jsonName, $options = []) {
                     if (ar) ar.style.color = '#60a5fa';
                 });
 
-                // Abre si no estaba abierto
+                // Abre el seleccionado si no estaba abierto
                 if (!isOpen) {
                     answer.style.maxHeight = answer.scrollHeight + 'px';
                     answer.style.opacity = '1';
@@ -274,11 +262,12 @@ function faq($jsonName, $options = []) {
             }
         }
 
-        // GSAP stack/cascade animation on scroll into view (lazy, 200px below)
+        // Animación GSAP en scroll (entrada y salida)
         if (window.gsap && window.ScrollTrigger) {
             gsap.set('.faq-falcon__item', {opacity: 0, y: 80, scale: 0.96});
             ScrollTrigger.batch('.faq-falcon__item', {
                 onEnter: batch => {
+                    batch.forEach(el => el.classList.remove('faq-hidden'));
                     gsap.to(batch, {
                         opacity: 1,
                         y: 0,
@@ -289,11 +278,31 @@ function faq($jsonName, $options = []) {
                         overwrite: 'auto'
                     });
                 },
-                once: true,
-                start: "top+=200 bottom"
+                onLeave: batch => {
+                    batch.forEach(el => el.classList.add('faq-hidden'));
+                },
+                onEnterBack: batch => {
+                    batch.forEach(el => el.classList.remove('faq-hidden'));
+                    gsap.to(batch, {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        stagger: 0.13,
+                        duration: 0.7,
+                        ease: "back.out(1.7)",
+                        overwrite: 'auto'
+                    });
+                },
+                onLeaveBack: batch => {
+                    batch.forEach(el => el.classList.add('faq-hidden'));
+                },
+                once: false,
+                start: "top+=200 bottom",
+                end: "bottom top"
             });
         }
-    });
+    };
+    document.addEventListener('DOMContentLoaded', window.faqFalconInit);
     </script>
     <?php
     return ob_get_clean();
