@@ -16,38 +16,21 @@ Options -Indexes
   </FilesMatch>
 </IfModule>
 
-# Para Apache 2.2 (si es necesario), descomentar:
-# <FilesMatch "\.(env|ini|log|sh|sql|bak|inc|psd|git|htaccess)$">
-#   Order allow,deny
-#   Deny from all
-# </FilesMatch>
-
-# =========================
-# (OPCIONAL) Forzar HTTPS y canonicalizar host
-# =========================
-
-# Forzar HTTPS (si tu sitio usa HTTPS)
-#RewriteCond %{HTTPS} off
-#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-# Forzar non-www (cambiar a la preferencia que quieras)
-#RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-#RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
-
 # =========================
 # Ocultar extensiones .php y el index.php en la URL
 # =========================
 
-# Si existe el archivo o directorio, dejarlo pasar
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^ - [L]
+# 1. Redirigir cualquier URL que tenga .php a la versión sin extensión
+RewriteCond %{THE_REQUEST} \s([^\s]+)\.php [NC]
+RewriteRule ^ %1 [R=301,L]
 
-# Redirigir /index.php, /index, o /index/ a /
+# 2. Redirigir /index, /index.php o /index/ a /
 RewriteCond %{THE_REQUEST} /index(\.php)?[/?\s] [NC]
 RewriteRule ^index(\.php)?/?$ / [R=301,L]
 
-# Si añadiendo .php el fichero existe, reescribir internamente a .php
+# 3. Si existe el archivo sin extensión, reescribir internamente a .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteRule ^(.+?)/?$ $1.php [L]
 
@@ -59,18 +42,13 @@ RewriteRule ^(.+?)/?$ $1.php [L]
 RewriteCond %{THE_REQUEST} \s/inicio\.php[?\s] [NC]
 RewriteRule ^inicio\.php$ /index.php [R=302,L]
 
-# Cuando verifiques que funciona, cambia R=302 a R=301 para SEO.
-
 # =========================
 # Manejo de errores
 # =========================
-
-# Página 404 personalizada (asegúrate de que exista /404.php)
 ErrorDocument 404 /404.php
 
 # =========================
-# Caché y performance (si mod_expires está disponible)
-# =========================
+# Caché y performance
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresDefault "access plus 1 month"
@@ -85,19 +63,9 @@ ErrorDocument 404 /404.php
 </IfModule>
 
 # =========================
-# Cabeceras de seguridad (si mod_headers está disponible)
-# =========================
+# Cabeceras de seguridad
 <IfModule mod_headers.c>
-  # Evitar clickjacking
   Header set X-Frame-Options "SAMEORIGIN"
-  # Evitar sniffing de MIME types
   Header set X-Content-Type-Options "nosniff"
-  # Política de referrer
   Header set Referrer-Policy "no-referrer-when-downgrade"
-  # HSTS (solo si tienes HTTPS y deseas forzarlo)
-  # Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
 </IfModule>
-
-# =========================
-# Fin
-# =========================
