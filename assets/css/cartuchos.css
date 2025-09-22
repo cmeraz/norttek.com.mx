@@ -1,0 +1,23 @@
+/* Animación de barrido hacia abajo con degradado para el contenido de los tabs */
+@keyframes tab-sweep-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+        background: linear-gradient(to bottom, #e0e7ef 0%, #fff 100%);
+        clip-path: inset(0 0 100% 0);
+    }
+    60% {
+        opacity: 1;
+        background: linear-gradient(to bottom, #e0e7ef 0%, #fff 100%);
+        clip-path: inset(0 0 0 0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        background: #fff;
+        clip-path: inset(0 0 0 0);
+    }
+}
+.tab-animate-in {
+    animation: tab-sweep-down 0.5s cubic-bezier(.4,0,.2,1);
+}
