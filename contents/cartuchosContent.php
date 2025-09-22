@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/../includes/functions.php';
+
 // ======================================
 // Lógica PHP: Leer JSON y generar funciones
 // ======================================
@@ -31,11 +33,14 @@ function impresorasList($impresoras) {
 ?>
 
 <div class="pt-[180px] px-4 max-w-7xl mx-auto">
+    <!-- Botón para volver al inicio -->
     <a href="index.php" class="text-sm text-blue-600 hover:underline flex items-center gap-1 mb-4">
         <i class="fas fa-arrow-left"></i> Volver al inicio
     </a>
 
-    <!-- Sección principal con título, subtítulo y descripción -->
+    <!-- =========================
+         Sección principal: Título, subtítulo y descripción
+    ========================== -->
     <section class="p-8 mb-8 max-w-6xl mx-auto">
         <div class="flex items-center justify-center mb-6 space-x-3">
             <i class="fas fa-print text-blue-600 text-4xl"></i>
@@ -81,8 +86,9 @@ function impresorasList($impresoras) {
         </div>
     </section>
 
-    <!-- TABS DE EJEMPLO: HORIZONTALES ARRIBA, CONTENIDO DEBAJO, SIN SHADOW NI ROUNDED -->
-
+    <!-- =========================
+         Tabs de navegación (Tabla y FAQ)
+    ========================== -->
     <div class="flex flex-row gap-2 items-start mb-6">
         <button class="ejemplo-tab-btn active flex items-center gap-2 px-5 py-2 rounded-lg bg-blue-600 text-white shadow text-sm hover:bg-blue-700 transition-all duration-200 focus:outline-none"
             data-tab="tab1" type="button">
@@ -95,171 +101,99 @@ function impresorasList($impresoras) {
             <span>Preguntas Frecuentes</span>
         </button>
     </div>
+    <!-- Línea divisoria clara debajo de los tabs -->
     <hr class="border-t-1 border-gray-300 mb-8">
-    
-    <!-- El resto del contenido de tabs debajo de la línea -->
-    
-    <!-- Sección de tabla de compatibilidades con buscador, botón y contador -->
 
-<section class="tabla-compatibilidades" id="compatibilidades">
-    <!-- Buscador interactivo con iconos y botón limpiar -->
-    <div class="relative w-full max-w-xl mx-auto mb-6">
-        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
-                 viewBox="0 0 24 24">
-                <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
-                <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2"/>
-            </svg>
+    <!-- =========================
+         Contenido de la TAB 1: Tabla de compatibilidades
+    ========================== -->
+    <section class="tabla-compatibilidades" id="compatibilidades">
+        <!-- Buscador interactivo con iconos y botón limpiar -->
+        <div class="relative w-full max-w-xl mx-auto mb-6">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <input 
+                type="text"
+                id="buscador"
+                placeholder="Buscar por marca, modelo, impresora o tambor..."
+                class="w-full pl-10 pr-10 p-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900"
+            >
+            <button 
+                id="limpiarBusqueda"
+                type="button"
+                class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700"
+                title="Borrar búsqueda"
+            >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
         </div>
-        <input 
-            type="text"
-            id="buscador"
-            placeholder="Buscar por marca, modelo, impresora o tambor..."
-            class="w-full pl-10 pr-10 p-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900"
-        >
-        <button 
-            id="limpiarBusqueda"
-            type="button"
-            class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700"
-            title="Borrar búsqueda"
-        >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <line x1="18" y1="6" x2="6" y2="18"/>
-                <line x1="6" y1="6" x2="18" y2="18"/>
-            </svg>
-        </button>
-    </div>
 
-    <!-- Botón visible siempre -->
-    <div class="flex justify-end mb-2">
-        <button id="fotoBtn" type="button"
-            class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow flex items-center gap-2 text-sm">
-            <i class="fas fa-camera"></i> Buscar por foto
-        </button>
-        <input type="file" id="fotoInput" accept="image/*" class="hidden">
-    </div>
+        <!-- Botón para buscar por foto -->
+        <div class="flex justify-end mb-2">
+            <button id="fotoBtn" type="button"
+                class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow flex items-center gap-2 text-sm">
+                <i class="fas fa-camera"></i> Buscar por foto
+            </button>
+            <input type="file" id="fotoInput" accept="image/*" class="hidden">
+        </div>
 
-    <!-- Contador de resultados dinámico -->
-    <div class="mb-4 text-right text-gray-600 font-semibold" id="resultado-contador">
-        Mostrando <span id="total-resultados">0</span> cartuchos
-    </div>
+        <!-- Contador de resultados dinámico -->
+        <div class="mb-4 text-right text-gray-600 font-semibold" id="resultado-contador">
+            Mostrando <span id="total-resultados">0</span> cartuchos
+        </div>
 
-    <!-- Tabla interactiva premium -->
-    <div class="overflow-x-auto shadow-lg rounded-lg relative mb-20">
-        <table id="tablaCartuchos" class="min-w-full table-fixed border-collapse">
-            <thead class="text-white sticky top-0 z-10" style="background-color: rgba(22, 119, 166, 0.5);">
-                <tr>
-                    <th class="px-6 py-3 text-left font-semibold text-sm uppercase tracking-wider border-b border-white/40">Marca</th>
-                    <th class="px-6 py-3 text-left font-semibold text-sm uppercase tracking-wider border-b border-white/40">Modelo</th>
-                    <th class="px-6 py-3 text-left font-semibold text-sm uppercase tracking-wider border-b border-white/40">Impresoras Compatibles</th>
-                    <th class="px-6 py-3 text-left font-semibold text-sm uppercase tracking-wider border-b border-white/40">Rendimiento Toner</th>
-                    <th class="px-6 py-3 text-left font-semibold text-sm uppercase tracking-wider border-b border-white/40">Modelo Tambor</th>
-                    <th class="px-6 py-3 text-left font-semibold text-sm uppercase tracking-wider border-b border-white/40">Rendimiento Tambor</th>
-                </tr>
-            </thead>
-            <tbody class="text-gray-900 text-sm font-light">
-                <?php foreach ($cartuchos as $marca => $listaCartuchos): ?>
-                    <?php foreach ($listaCartuchos as $cartucho): ?>
-                        <tr class="odd:bg-white even:bg-gray-50 hover:bg-blue-100 transition-colors duration-200">
-                            <td class="px-6 py-3 border-b border-gray-200"><?= htmlspecialchars($marca); ?></td>
-                            <td class="px-6 py-3 border-b border-gray-200"><?= htmlspecialchars($cartucho['modelo']); ?></td>
-                            <td class="px-6 py-3 border-b border-gray-200"><?= impresorasList($cartucho['impresoras_compatibles']); ?></td>
-                            <td class="px-6 py-3 border-b border-gray-200"><?= htmlspecialchars($cartucho['toner_rendimiento']); ?></td>
-                            <td class="px-6 py-3 border-b border-gray-200">
-                                <?= !empty($cartucho['tambor']['modelo']) ? htmlspecialchars($cartucho['tambor']['modelo']) : 'No aplica'; ?>
-                            </td>
-                            <td class="px-6 py-3 border-b border-gray-200">
-                                <?= !empty($cartucho['tambor']['rendimiento']) ? htmlspecialchars($cartucho['tambor']['rendimiento']) : 'No aplica'; ?>
-                            </td>
-                        </tr>
+        <!-- Tabla interactiva de cartuchos -->
+        <div class="overflow-x-auto shadow-lg rounded-lg relative mb-20">
+            <table id="tablaCartuchos" class="min-w-full table-fixed border-collapse">
+                <thead class="text-white sticky top-0 z-10" style="background-color: rgba(22, 119, 166, 0.5);">
+                    <tr>
+                        <th class="px-6 py-3 text-left font-semibold text-sm uppercase tracking-wider border-b border-white/40">Marca</th>
+                        <th class="px-6 py-3 text-left font-semibold text-sm uppercase tracking-wider border-b border-white/40">Modelo</th>
+                        <th class="px-6 py-3 text-left font-semibold text-sm uppercase tracking-wider border-b border-white/40">Impresoras Compatibles</th>
+                        <th class="px-6 py-3 text-left font-semibold text-sm uppercase tracking-wider border-b border-white/40">Rendimiento Toner</th>
+                        <th class="px-6 py-3 text-left font-semibold text-sm uppercase tracking-wider border-b border-white/40">Modelo Tambor</th>
+                        <th class="px-6 py-3 text-left font-semibold text-sm uppercase tracking-wider border-b border-white/40">Rendimiento Tambor</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-900 text-sm font-light">
+                    <?php foreach ($cartuchos as $marca => $listaCartuchos): ?>
+                        <?php foreach ($listaCartuchos as $cartucho): ?>
+                            <tr class="odd:bg-white even:bg-gray-50 hover:bg-blue-100 transition-colors duration-200 cartucho-row">
+                                <td class="px-6 py-3 border-b border-gray-200"><?= htmlspecialchars($marca); ?></td>
+                                <td class="px-6 py-3 border-b border-gray-200"><?= htmlspecialchars($cartucho['modelo']); ?></td>
+                                <td class="px-6 py-3 border-b border-gray-200"><?= impresorasList($cartucho['impresoras_compatibles']); ?></td>
+                                <td class="px-6 py-3 border-b border-gray-200"><?= htmlspecialchars($cartucho['toner_rendimiento']); ?></td>
+                                <td class="px-6 py-3 border-b border-gray-200">
+                                    <?= !empty($cartucho['tambor']['modelo']) ? htmlspecialchars($cartucho['tambor']['modelo']) : 'No aplica'; ?>
+                                </td>
+                                <td class="px-6 py-3 border-b border-gray-200">
+                                    <?= !empty($cartucho['tambor']['rendimiento']) ? htmlspecialchars($cartucho['tambor']['rendimiento']) : 'No aplica'; ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     <?php endforeach; ?>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
-</div>
-</section>
-<section class="preguntas-frecuentes" id="preguntas-frecuentes">
-    <!-- Sección de preguntas frecuentes -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- =========================
+         Contenido de la TAB 2: Preguntas frecuentes
+    ========================== -->
+    <section class="preguntas-frecuentes" id="preguntas-frecuentes">
+        <!-- Sección de preguntas frecuentes generada dinámicamente -->
         <?php
             if (function_exists('faq')) {
                 echo faq('faq-cartuchos', ['title' => 'Preguntas Frecuentes sobre Cartuchos']);
             }
         ?>
-
-    
-</section>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const tabBtns = document.querySelectorAll('.ejemplo-tab-btn');
-    const tabContents = {
-        tab1: document.getElementById('compatibilidades'),
-        tab2: document.getElementById('preguntas-frecuentes')
-    };
-
-    // Limpia animación previa y oculta todos los tabs
-    function hideAllTabs() {
-        Object.values(tabContents).forEach(tc => {
-            tc.classList.add('hidden');
-            tc.classList.remove('tab-animate-in');
-        });
-    }
-
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Botón activo visual
-            tabBtns.forEach(b => b.classList.remove('active', 'text-gray-700', 'border-blue-400'));
-            tabBtns.forEach(b => b.classList.add('text-gray-500'));
-
-            btn.classList.add('active', 'text-gray-700', 'border-blue-400');
-            btn.classList.remove('text-gray-500');
-
-            // Animación de barrido
-            hideAllTabs();
-            const tabId = btn.getAttribute('data-tab');
-            const content = tabContents[tabId];
-            if (content) {
-                content.classList.remove('hidden');
-                // Forzar reflow para reiniciar animación
-                void content.offsetWidth;
-                content.classList.add('tab-animate-in');
-            }
-        });
-    });
-
-    // Mostrar por defecto el primer tab con animación
-    hideAllTabs();
-    if (tabBtns.length && tabContents.tab1) {
-        tabBtns[0].classList.add('active', 'text-gray-700', 'border-blue-400');
-        tabBtns[0].classList.remove('text-gray-500');
-        tabContents.tab1.classList.remove('hidden');
-        tabContents.tab1.classList.add('tab-animate-in');
-    }
-});
-</script>
-
-<style>
-@keyframes tab-sweep-down {
-    0% {
-        opacity: 0;
-        transform: translateY(-30px);
-        background: linear-gradient(to bottom, #e0e7ef 0%, #fff 100%);
-        clip-path: inset(0 0 100% 0);
-    }
-    60% {
-        opacity: 1;
-        background: linear-gradient(to bottom, #e0e7ef 0%, #fff 100%);
-        clip-path: inset(0 0 0 0);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-        background: #fff;
-        clip-path: inset(0 0 0 0);
-    }
-}
-.tab-animate-in {
-    animation: tab-sweep-down 0.5s cubic-bezier(.4,0,.2,1);
-}
-</style>
+    </section>
+</div>
