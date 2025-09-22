@@ -6,35 +6,35 @@ $menu = [
     [
         'label' => 'Inicio',
         'icon'  => 'fas fa-home',
-        'url'   => 'index.php'
+        'url'   => '/'
     ],
     [
         'label' => 'Nosotros',
         'icon'  => 'fas fa-users',
-        'url'   => 'about.php'
+        'url'   => 'about'
     ],
     [
         'label' => 'Servicios ▾',
         'icon'  => 'fas fa-cogs',
         'url'   => '#',
         'children' => [
-            ['label' => 'Seguridad y CCTV',      'icon' => 'fas fa-video',      'url' => 'cctv.php'],
-            ['label' => 'Alarmas Inteligentes',  'icon' => 'fas fa-bell',       'url' => 'alarma.php'],
-            ['label' => 'Control de Acceso',     'icon' => 'fas fa-key',        'url' => 'control-acceso.php'],
-            ['label' => 'Redes y Cableado',      'icon' => 'fas fa-network-wired', 'url' => 'networks.php'],
-            ['label' => 'Telefonía IP',          'icon' => 'fas fa-phone',      'url' => 'telefonia.php'],
-            ['label' => 'Interfón / Telefonía',  'icon' => 'fas fa-intercom',   'url' => 'interfon.php']
+            ['label' => 'Seguridad y CCTV',      'icon' => 'fas fa-video',      'url' => 'cctv'],
+            ['label' => 'Alarmas Inteligentes',  'icon' => 'fas fa-bell',       'url' => 'alarma'],
+            ['label' => 'Control de Acceso',     'icon' => 'fas fa-key',        'url' => 'control-acceso'],
+            ['label' => 'Redes y Cableado',      'icon' => 'fas fa-network-wired', 'url' => 'networks'],
+            ['label' => 'Telefonía IP',          'icon' => 'fas fa-phone',      'url' => 'telefonia'],
+            ['label' => 'Interfón / Telefonía',  'icon' => 'fas fa-intercom',   'url' => 'interfon']
         ]
     ],
     [
         'label' => 'Herramientas',
         'icon'  => 'fas fa-wrench',
-        'url'   => 'cartuchos.php'
+        'url'   => 'cartuchos'
     ],
     [
         'label' => 'Contacto',
         'icon'  => 'fas fa-envelope',
-        'url'   => 'contact.php'
+        'url'   => 'contact'
     ]
 ];
 
