@@ -1,0 +1,127 @@
+[
+  {
+    "pregunta": "¿Qué es un teléfono IP?",
+    "respuesta": "Es un teléfono que usa internet para hacer llamadas, en lugar de líneas tradicionales. Ofrecemos teléfonos físicos Grandstream y Fanvil, configurados para llamadas claras y confiables.",
+    "icono": "fas fa-phone"
+  },
+  {
+    "pregunta": "¿Qué diferencia hay entre un teléfono IP y uno tradicional?",
+    "respuesta": "Un teléfono IP permite varias llamadas al mismo tiempo, transferencias rápidas, conferencias y movilidad. Las líneas tradicionales solo permiten una llamada por número.",
+    "icono": "fas fa-random"
+  },
+  {
+    "pregunta": "¿Qué tipos de teléfonos físicos ofrecen?",
+    "respuesta": "Teléfonos Grandstream y Fanvil, con opciones cableadas o Wi-Fi, para instalarlos en cualquier lugar sin depender de cables largos.",
+    "icono": "fas fa-wifi"
+  },
+  {
+    "pregunta": "¿Qué es Linkus y cómo funciona?",
+    "respuesta": "Linkus es nuestra app para Yeastar Cloud PBX, que permite usar tu extensión en celular o PC, con todas las funciones del PBX desde cualquier lugar con internet.",
+    "icono": "fas fa-mobile-alt"
+  },
+  {
+    "pregunta": "¿Qué es Wave y cómo funciona?",
+    "respuesta": "Wave es la app para PBX físico Grandstream, que permite extensiones remotas y usar tu número de oficina en celulares o computadoras fuera de la oficina.",
+    "icono": "fas fa-laptop"
+  },
+  {
+    "pregunta": "¿Qué es un PBX y para qué sirve?",
+    "respuesta": "Es la central telefónica de tu empresa. Administra llamadas internas y externas, permite transferencias, buzón de voz, conferencias y extensiones para cada empleado.",
+    "icono": "fas fa-building"
+  },
+  {
+    "pregunta": "¿Cuál es la diferencia entre PBX físico y en la nube?",
+    "respuesta": "El PBX físico Grandstream está instalado en tu oficina y ofrece control local con apps como Wave. El PBX en la nube Yeastar ofrece más flexibilidad: movilidad, sucursales interconectadas y crecimiento inmediato sin hardware.",
+    "icono": "fas fa-cloud"
+  },
+  {
+    "pregunta": "¿Por qué conviene migrar a PBX en la nube?",
+    "respuesta": "Porque puedes llevar tus llamadas donde sea, transferir entre sucursales, agregar usuarios al instante y aprovechar funciones avanzadas como grabación y buzón de voz.",
+    "icono": "fas fa-arrow-up"
+  },
+  {
+    "pregunta": "¿Qué pasa si se corta internet o luz?",
+    "respuesta": "Con PBX físico puedes tener respaldo de energía. Con Yeastar Cloud PBX y Linkus, puedes seguir atendiendo llamadas desde cualquier lugar con internet.",
+    "icono": "fas fa-plug"
+  },
+  {
+    "pregunta": "¿Qué es una extensión y cómo ayuda a mi empresa?",
+    "respuesta": "Es un número interno que permite que empleados hablen entre sí rápidamente. Configuramos extensiones locales y remotas, incluso en diferentes sucursales.",
+    "icono": "fas fa-users"
+  },
+  {
+    "pregunta": "¿Puedo transferir llamadas a otra sucursal?",
+    "respuesta": "Sí. Con PBX en la nube Yeastar, puedes transferir llamadas a cualquier extensión en cualquier sucursal, sin importar la ubicación de los empleados.",
+    "icono": "fas fa-exchange-alt"
+  },
+  {
+    "pregunta": "¿Qué es un buzón de voz?",
+    "respuesta": "Guarda mensajes cuando alguien no contesta. Los recibes en tu teléfono o correo, asegurando que nunca se pierda información importante.",
+    "icono": "fas fa-voicemail"
+  },
+  {
+    "pregunta": "¿Se pueden hacer conferencias con varios empleados o clientes?",
+    "respuesta": "Sí, con PBX físico o nube, puedes organizar llamadas de grupo, ideal para reuniones entre sucursales o con clientes.",
+    "icono": "fas fa-users-cog"
+  },
+  {
+    "pregunta": "¿Qué es un IVR y cómo ayuda a mi empresa?",
+    "respuesta": "Es un menú automático que dirige las llamadas, asegurando que cada llamada llegue al departamento correcto, incluso si hay varias sucursales.",
+    "icono": "fas fa-robot"
+  },
+  {
+    "pregunta": "¿Qué es una línea SIP y qué ventajas tiene?",
+    "respuesta": "Una línea SIP permite llamadas simultáneas ilimitadas, movilidad, portabilidad de números y contratación de ladas nacionales e internacionales. No hay límite de llamadas ni de numeración.",
+    "icono": "fas fa-network-wired"
+  },
+  {
+    "pregunta": "¿Puedo seguir usando mis líneas tradicionales?",
+    "respuesta": "Sí, puedes integrar líneas analógicas de Telmex, IZZI o Totalplay en el PBX mientras aprovechas todas las ventajas de la línea SIP.",
+    "icono": "fas fa-phone-alt"
+  },
+  {
+    "pregunta": "¿Puedo portar mi número de línea fija a SIP?",
+    "respuesta": "Sí, tu número de Telmex, IZZI o Totalplay puede pasar a una línea SIP sin perderlo, manteniendo tu número actual y todas las funciones de telefonía IP.",
+    "icono": "fas fa-exchange-alt"
+  },
+  {
+    "pregunta": "¿Puedo portar mi número de celular a SIP?",
+    "respuesta": "No, no es posible portar números móviles a una línea SIP, solo líneas de telefonía fija. Sin embargo, sí podemos redirigir las llamadas de tu número celular hacia una línea SIP o DID para que las atiendas en tu extensión física o en la app Linkus.",
+    "icono": "fas fa-mobile"
+  },
+  {
+    "pregunta": "¿Puedo usar mi extensión fuera de la oficina?",
+    "respuesta": "Sí, con Yeastar y Linkus, o PBX físico con Wave, tu extensión funciona desde cualquier lugar con internet.",
+    "icono": "fas fa-globe"
+  },
+  {
+    "pregunta": "¿Puedo usar teléfono físico y Linkus al mismo tiempo?",
+    "respuesta": "Sí. Tu teléfono físico en la oficina y Linkus en celular o PC funcionan con la misma extensión, sin perder llamadas.",
+    "icono": "fas fa-clone"
+  },
+  {
+    "pregunta": "¿Qué pasa si quiero más teléfonos o extensiones?",
+    "respuesta": "En PBX en la nube Yeastar, agregar usuarios es instantáneo. En PBX físico Grandstream, también podemos añadir nuevas extensiones y teléfonos sin complicaciones.",
+    "icono": "fas fa-plus-square"
+  },
+  {
+    "pregunta": "¿Se puede grabar llamadas?",
+    "respuesta": "Sí, podemos configurar grabación automática en PBX físico o nube, útil para atención a clientes, seguimiento de ventas y control interno.",
+    "icono": "fas fa-microphone"
+  },
+  {
+    "pregunta": "¿Se escucha bien una llamada IP?",
+    "respuesta": "Sí, priorizamos la voz en la red, asegurando llamadas claras y sin cortes, incluso con mucho tráfico de datos.",
+    "icono": "fas fa-volume-up"
+  },
+  {
+    "pregunta": "¿Se pueden combinar líneas analógicas y SIP?",
+    "respuesta": "Sí, nuestro sistema permite usar ambos tipos de línea juntas, para aprovechar la flexibilidad de SIP sin perder tus líneas tradicionales.",
+    "icono": "fas fa-random"
+  },
+  {
+    "pregunta": "¿Por qué debería cambiarme a telefonía IP ahora?",
+    "respuesta": "Con Yeastar Cloud PBX y Linkus, tu empresa estará siempre conectada: recibes y haces llamadas desde cualquier lugar, transfieres llamadas entre sucursales, usas varias líneas simultáneas, portas tus números fijos actuales y contratas ladas nacionales o internacionales. Tu empresa se verá profesional, organizada y siempre disponible.",
+    "icono": "fas fa-star"
+  }
+]
