@@ -214,6 +214,11 @@ function faq($jsonName, $options = []) {
     </style>
     <script>
     window.faqFalconInit = function() {
+        // Limpia triggers previos para evitar duplicados en móvil
+        if (window.ScrollTrigger && ScrollTrigger.getAll) {
+            ScrollTrigger.getAll().forEach(t => t.kill());
+        }
+
         // Toggle de preguntas y respuestas
         document.querySelectorAll('.faq-falcon__question').forEach(function(q, idx) {
             q.addEventListener('click', function() {
@@ -300,6 +305,11 @@ function faq($jsonName, $options = []) {
                 start: "top+=200 bottom",
                 end: "bottom top"
             });
+
+            // Forzar refresco de ScrollTrigger después de un pequeño delay
+            setTimeout(() => {
+                ScrollTrigger.refresh();
+            }, 200);
         }
     };
     document.addEventListener('DOMContentLoaded', window.faqFalconInit);
