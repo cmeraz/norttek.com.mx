@@ -436,4 +436,90 @@ document.addEventListener('DOMContentLoaded', function() {
             showFotoModal();
         });
     }
+
+    // ==========================
+    // Filtrado en vivo y contador
+    // ==========================
+    document.addEventListener("DOMContentLoaded", function () {
+        // Selección de elementos
+        const filas = document.querySelectorAll("#tablaCartuchos tbody tr");
+        const contador = document.getElementById("total-resultados");
+        const buscador = document.getElementById("buscador");
+        const btnBorrar = document.getElementById("limpiarBusqueda");
+
+        // Función para actualizar el contador de resultados visibles
+        function actualizarContador() {
+            const visibles = Array.from(filas).filter(fila => fila.style.display !== "none");
+            if (contador) contador.textContent = visibles.length;
+        }
+
+        // Función de normalización (minúsculas y sin acentos)
+        function normalizar(texto) {
+            return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        }
+
+        // Filtrado mejorado: palabras separadas y compuestas
+        if (buscador) {
+            buscador.addEventListener("input", function () {
+                const filtro = normalizar(this.value.trim());
+                const palabras = filtro.split(/\s+/);
+
+                filas.forEach(fila => {
+                    const textoFila = Array.from(fila.cells)
+                        .map(celda => normalizar(celda.innerText))
+                        .join(" ");
+                    const mostrar = palabras.every(palabra => textoFila.includes(palabra));
+                    fila.style.display = mostrar ? "" : "none";
+                });
+
+                actualizarContador();
+            });
+        }
+
+        // Botón para limpiar búsqueda
+        if (btnBorrar) {
+            btnBorrar.addEventListener("click", () => {
+                if (buscador) buscador.value = "";
+                filas.forEach(fila => fila.style.display = "");
+                actualizarContador();
+            });
+        }
+
+        // Inicializar contador al cargar la página
+        actualizarContador();
+
+        // ==========================
+        // Tabs funcionalidad
+        // ==========================
+        const tabBtns = document.querySelectorAll('.cartuchos-tab');
+        const tabContents = document.querySelectorAll('.cartuchos-tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                // Quitar clase active de todos los tabs
+                tabBtns.forEach(b => b.classList.remove('active'));
+                // Ocultar todos los contenidos
+                tabContents.forEach(tc => tc.classList.add('hidden'));
+
+                // Activar el tab actual
+                btn.classList.add('active');
+                const tabId = btn.getAttribute('data-tab');
+                const content = document.getElementById('tab-' + tabId);
+                if (content) content.classList.remove('hidden');
+            });
+        });
+
+        // Mostrar por defecto el primer tab si existe
+        if (tabBtns.length && tabContents.length) {
+            tabBtns[0].classList.add('active');
+            tabContents[0].classList.remove('hidden');
+            for (let i = 1; i < tabContents.length; i++) {
+                tabContents[i].classList.add('hidden');
+            }
+        }
+    });
 });
+
+// ==========================
+// Tabs en página de ejemplo de modelo
+// ==========================
