@@ -181,3 +181,5 @@ $itemsHero = [
 // Incluir sección de servicios adicional
 includeTemplate("servicios");
 ?>
+
+<?= faq('faq-general', ['title' => 'Preguntas Frecuentes']) ?>
