@@ -10,7 +10,7 @@
       <p class="hero-subtitle">Conéctate a la mejor experiencia, velocidad y soporte. ¡Descubre la diferencia Norttek!</p>
     </div>
   </section>
-  <main class="app-main">
+    <main class="app-main" style="background:#f7f8fa; color:#222; font-family:'Roboto', Arial, sans-serif;">
   <section class="plans scroll-anim">
       <h2>Elige tu velocidad</h2>
       <div class="plan-cards">
@@ -133,7 +133,7 @@
     </section>
     <!-- Formulario de contacto eliminado -->
   </main>
-  <footer class="app-footer">
+    <footer class="app-footer" style="background:#eaf6ff; color:#2563eb; border-radius:1.5rem 1.5rem 0 0;">
     <p>&copy; 2025 Norttek Solutions</p>
   </footer>
 </div>
