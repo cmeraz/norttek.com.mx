@@ -1,52 +1,102 @@
 [
   {
-    "pregunta": "¿Qué tipo de impresora tengo?",
-    "respuesta": "Para identificar tu impresora, revisa la etiqueta en la parte trasera o inferior del equipo. Allí aparece el modelo y fabricante, lo cual te permitirá saber qué consumibles y toners son compatibles.",
+    "pregunta": "¿Qué es un cartucho de tóner?",
+    "respuesta": "Es el consumible que contienen el polvo de tóner utilizado en impresoras láser para formar la imagen en el papel. A diferencia de la tinta líquida, el tóner no tiene caducidad y no daña la impresora si permanece tiempo sin uso.",
     "icono": "fas fa-print"
   },
   {
-    "pregunta": "¿Cómo sé qué tóner necesito?",
-    "respuesta": "El tóner que necesitas depende del modelo exacto de tu impresora. Cada impresora tiene cartuchos específicos que se ajustan a sus características de impresión, rendimiento y color. Revisar el manual o la etiqueta de la impresora ayuda a identificar el cartucho correcto.",
+    "pregunta": "¿Qué diferencia hay entre tóner y tinta?",
+    "respuesta": "El tóner es polvo seco que no se seca ni caduca, mientras que la tinta líquida puede secarse y obstruir la impresora si no se usa constantemente. Por eso las impresoras láser son ideales para uso intermitente o corporativo.",
     "icono": "fas fa-tint"
   },
   {
-    "pregunta": "¿Se puede usar tóner genérico?",
-    "respuesta": "Sí, existen tóneres compatibles o genéricos que funcionan en muchas impresoras, aunque su calidad puede variar. Es importante verificar que sean compatibles con tu modelo y que no afecten la garantía de tu equipo.",
-    "icono": "fas fa-exchange-alt"
+    "pregunta": "¿Por qué comprar cartuchos nuevos y no recargarlos?",
+    "respuesta": "Aunque los cartuchos se pueden recargar, nosotros ofrecemos **cartuchos nuevos, garantizados, de mejor calidad y más baratos** que recargas. Esto asegura un rendimiento óptimo y protege tu impresora.",
+    "icono": "fas fa-cart-plus"
   },
   {
-    "pregunta": "¿Cómo instalo un cartucho de tóner?",
-    "respuesta": "Para instalar un cartucho de tóner, primero apaga la impresora y abre la cubierta según las indicaciones del fabricante. Retira el cartucho viejo y coloca el nuevo asegurándote de que encaje correctamente. Luego cierra la cubierta y enciende la impresora para que lo reconozca.",
-    "icono": "fas fa-cogs"
+    "pregunta": "¿El tóner genérico daña la impresora?",
+    "respuesta": "No. Los cartuchos genéricos que ofrecemos tienen **calidad similar al original**, mismo rendimiento y están fabricados para no dañar la impresora.",
+    "icono": "fas fa-shield-alt"
   },
   {
-    "pregunta": "¿Cómo sé cuándo cambiar el tóner?",
-    "respuesta": "La mayoría de las impresoras muestran un mensaje en la pantalla o una luz indicadora cuando el tóner se está agotando. También puedes notar impresiones más claras o rayas, lo que indica que el cartucho requiere reemplazo.",
-    "icono": "fas fa-exclamation-circle"
+    "pregunta": "¿Qué diferencias hay entre impresoras monocromáticas y a color?",
+    "respuesta": "Las monocromáticas solo usan un cartucho de tóner negro, mientras que las a color generalmente usan cuatro cartuchos (Cian, Magenta, Amarillo y Negro). Esto impacta en el costo de los consumibles.",
+    "icono": "fas fa-palette"
   },
   {
-    "pregunta": "¿Qué es el rendimiento de un cartucho de tóner?",
-    "respuesta": "El rendimiento de un cartucho indica aproximadamente cuántas páginas puede imprimir antes de agotarse. Esto depende del modelo de impresora, del tipo de documentos y de la cobertura de tinta en cada página.",
+    "pregunta": "¿Todos los cartuchos tienen el mismo rendimiento?",
+    "respuesta": "No, el rendimiento teórico varía según la densidad o saturación de impresión. Además, las marcas ofrecen versiones de rendimiento estándar o alto rendimiento (HP A/X, Brother números incrementales, etc.).",
     "icono": "fas fa-chart-bar"
   },
   {
-    "pregunta": "¿Se puede recargar un tóner?",
-    "respuesta": "Algunos cartuchos se pueden rellenar con tóner, pero no todos lo permiten. La recarga puede ser más económica, pero requiere cuidado para no dañar el cartucho y puede afectar la calidad de impresión o la garantía.",
-    "icono": "fas fa-sync-alt"
+    "pregunta": "¿Por qué algunas impresoras costosas tienen consumibles más económicos?",
+    "respuesta": "En general, entre más costosa es la impresora, más económicos son sus consumibles, y viceversa. Esto está pensado para balancear la inversión total en impresión a largo plazo.",
+    "icono": "fas fa-dollar-sign"
   },
   {
-    "pregunta": "¿Qué hago con los cartuchos usados?",
-    "respuesta": "Los cartuchos usados deben reciclarse adecuadamente. Muchas tiendas o fabricantes ofrecen programas de reciclaje, donde puedes entregar los cartuchos vacíos para que sean reutilizados o desechados de manera segura.",
-    "icono": "fas fa-recycle"
+    "pregunta": "¿Cómo puedo identificar el cartucho que necesito?",
+    "respuesta": "Usa nuestro **localizador de cartucho**, donde puedes ingresar el modelo de tu impresora y ver el consumible compatible, incluyendo información adicional sobre rendimiento y tipo.",
+    "icono": "fas fa-search"
   },
   {
-    "pregunta": "¿Por qué algunas impresiones salen con rayas o manchas?",
-    "respuesta": "Esto puede deberse a un cartucho de tóner que está agotándose, a suciedad en los rodillos o a un tóner de baja calidad. Revisar el cartucho y limpiar los componentes de la impresora ayuda a mantener la calidad de impresión.",
-    "icono": "fas fa-slash"
+    "pregunta": "¿Dónde puedo comprar el cartucho que me indica el localizador?",
+    "respuesta": "Puedes solicitarlo directamente en nuestra **tienda en línea** siguiendo este enlace: [https://tienda.norttek.com.mx](https://tienda.norttek.com.mx).",
+    "icono": "fas fa-shopping-cart"
   },
   {
-    "pregunta": "¿Se puede usar un tóner de otro color en mi impresora?",
-    "respuesta": "No, cada impresora requiere el color específico de cartucho para que funcione correctamente. Usar un color incorrecto puede dañar la impresora o impedir que se reconozca el cartucho.",
-    "icono": "fas fa-palette"
+    "pregunta": "Me ofrecen una impresora americana más barata, ¿me conviene?",
+    "respuesta": "Debes tener cuidado, ya que algunas impresoras americanas utilizan consumibles que no se comercializan en México o son más difíciles de conseguir. Esto puede encarecer la operación a largo plazo.",
+    "icono": "fas fa-exclamation-triangle"
+  },
+  {
+    "pregunta": "¿Por qué mi tóner no dura lo que dice la ficha técnica de rendimiento en páginas?",
+    "respuesta": "El rendimiento teórico indicado en las fichas técnicas se calcula bajo condiciones estándar con densidad de impresión del 5%. Documentos con más texto, gráficos o imágenes consumen más tóner, por lo que la duración real varía según el uso.",
+    "icono": "fas fa-file-alt"
+  },
+  {
+    "pregunta": "¿Se pueden usar chips liberados en cartuchos compatibles?",
+    "respuesta": "Sí, actualmente se están liberando chips para cartuchos compatibles, permitiendo un rendimiento confiable sin necesidad del cartucho original en todos los modelos.",
+    "icono": "fas fa-key"
+  },
+  {
+    "pregunta": "¿El cartucho de tóner caduca?",
+    "respuesta": "No. Al ser polvo seco, el tóner no tiene caducidad como la tinta líquida, por lo que puede almacenarse sin problema y usarlo cuando se necesite.",
+    "icono": "fas fa-hourglass"
+  },
+  {
+    "pregunta": "¿Qué pasa si la impresora permanece tiempo sin uso?",
+    "respuesta": "En impresoras láser no hay riesgo de daño si no se usa, a diferencia de las de tinta, que pueden secarse o taparse los inyectores.",
+    "icono": "fas fa-stopwatch"
+  },
+  {
+    "pregunta": "¿Qué ventajas tiene comprar cartuchos nuevos en lugar de recargados?",
+    "respuesta": "Ofrecemos cartuchos **nuevos, garantizados, más económicos que recargas y de calidad superior**, asegurando impresiones limpias y sin riesgo de daño a la impresora.",
+    "icono": "fas fa-check-circle"
+  },
+  {
+    "pregunta": "¿Todas las marcas manejan cartuchos de alto rendimiento?",
+    "respuesta": "Sí. HP maneja versiones A o X, Brother incrementa el número, y otras marcas tienen sus equivalentes. Esto permite elegir según volumen de impresión.",
+    "icono": "fas fa-layer-group"
+  },
+  {
+    "pregunta": "¿Qué debo considerar al elegir un cartucho genérico?",
+    "respuesta": "Calidad similar al original, mismo rendimiento, garantía, compatibilidad con tu impresora y procedencia confiable para evitar daños.",
+    "icono": "fas fa-check"
+  },
+  {
+    "pregunta": "¿Cómo afecta la densidad de impresión al rendimiento?",
+    "respuesta": "El rendimiento teórico varía según la densidad o saturación de la página. Documentos con más texto o gráficos consumen más tóner que documentos simples.",
+    "icono": "fas fa-file-alt"
+  },
+  {
+    "pregunta": "¿Qué hago si no encuentro mi cartucho?",
+    "respuesta": "Utiliza nuestro **localizador de cartuchos** para identificar el modelo compatible exacto y solicitarlo directamente en nuestra tienda en línea: [https://tienda.norttek.com.mx](https://tienda.norttek.com.mx).",
+    "icono": "fas fa-map-marker-alt"
+  },
+  {
+    "pregunta": "¿Por qué es mejor usar nuestra tienda para comprar consumibles?",
+    "respuesta": "Porque ofrecemos **cartuchos nuevos, garantía, compatibilidad asegurada, asesoría personalizada y acceso a nuestro localizador**, facilitando la compra correcta sin errores ni riesgos para tu impresora.",
+    "icono": "fas fa-store"
   }
 ]

@@ -1,0 +1,52 @@
+[
+  {
+    "pregunta": "¿Qué tipo de impresora tengo?",
+    "respuesta": "Para identificar tu impresora, revisa la etiqueta en la parte trasera o inferior del equipo. Allí aparece el modelo y fabricante, lo cual te permitirá saber qué consumibles y toners son compatibles.",
+    "icono": "fas fa-print"
+  },
+  {
+    "pregunta": "¿Cómo sé qué tóner necesito?",
+    "respuesta": "El tóner que necesitas depende del modelo exacto de tu impresora. Cada impresora tiene cartuchos específicos que se ajustan a sus características de impresión, rendimiento y color. Revisar el manual o la etiqueta de la impresora ayuda a identificar el cartucho correcto.",
+    "icono": "fas fa-tint"
+  },
+  {
+    "pregunta": "¿Se puede usar tóner genérico?",
+    "respuesta": "Sí, existen tóneres compatibles o genéricos que funcionan en muchas impresoras, aunque su calidad puede variar. Es importante verificar que sean compatibles con tu modelo y que no afecten la garantía de tu equipo.",
+    "icono": "fas fa-exchange-alt"
+  },
+  {
+    "pregunta": "¿Cómo instalo un cartucho de tóner?",
+    "respuesta": "Para instalar un cartucho de tóner, primero apaga la impresora y abre la cubierta según las indicaciones del fabricante. Retira el cartucho viejo y coloca el nuevo asegurándote de que encaje correctamente. Luego cierra la cubierta y enciende la impresora para que lo reconozca.",
+    "icono": "fas fa-cogs"
+  },
+  {
+    "pregunta": "¿Cómo sé cuándo cambiar el tóner?",
+    "respuesta": "La mayoría de las impresoras muestran un mensaje en la pantalla o una luz indicadora cuando el tóner se está agotando. También puedes notar impresiones más claras o rayas, lo que indica que el cartucho requiere reemplazo.",
+    "icono": "fas fa-exclamation-circle"
+  },
+  {
+    "pregunta": "¿Qué es el rendimiento de un cartucho de tóner?",
+    "respuesta": "El rendimiento de un cartucho indica aproximadamente cuántas páginas puede imprimir antes de agotarse. Esto depende del modelo de impresora, del tipo de documentos y de la cobertura de tinta en cada página.",
+    "icono": "fas fa-chart-bar"
+  },
+  {
+    "pregunta": "¿Se puede recargar un tóner?",
+    "respuesta": "Algunos cartuchos se pueden rellenar con tóner, pero no todos lo permiten. La recarga puede ser más económica, pero requiere cuidado para no dañar el cartucho y puede afectar la calidad de impresión o la garantía.",
+    "icono": "fas fa-sync-alt"
+  },
+  {
+    "pregunta": "¿Qué hago con los cartuchos usados?",
+    "respuesta": "Los cartuchos usados deben reciclarse adecuadamente. Muchas tiendas o fabricantes ofrecen programas de reciclaje, donde puedes entregar los cartuchos vacíos para que sean reutilizados o desechados de manera segura.",
+    "icono": "fas fa-recycle"
+  },
+  {
+    "pregunta": "¿Por qué algunas impresiones salen con rayas o manchas?",
+    "respuesta": "Esto puede deberse a un cartucho de tóner que está agotándose, a suciedad en los rodillos o a un tóner de baja calidad. Revisar el cartucho y limpiar los componentes de la impresora ayuda a mantener la calidad de impresión.",
+    "icono": "fas fa-slash"
+  },
+  {
+    "pregunta": "¿Se puede usar un tóner de otro color en mi impresora?",
+    "respuesta": "No, cada impresora requiere el color específico de cartucho para que funcione correctamente. Usar un color incorrecto puede dañar la impresora o impedir que se reconozca el cartucho.",
+    "icono": "fas fa-palette"
+  }
+]
