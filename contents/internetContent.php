@@ -12,10 +12,16 @@
   </section>
     <main class="app-main" style="background:#f7f8fa; color:#222; font-family:'Roboto', Arial, sans-serif;">
   <section class="plans scroll-anim">
-      <h2>Elige tu velocidad</h2>
-      <div class="plan-cards">
-        <div class="plan-card animate-card" data-megas="10">
-          <div class="plan-megas"><span class="plan-mega-icon">⚡</span> <span class="plan-mega-value">10</span> <span class="plan-mega-unit">Megas</span></div>
+    <h2 style="text-align:center; margin-bottom:2rem; color:#1565c0;">Elige tu velocidad</h2>
+    <div class="plan-cards">
+      <!-- Plan 10 Megas -->
+      <div class="plan-card animate-card" data-megas="10">
+        <div style="display:flex; flex-direction:column; align-items:flex-start; width:100%;">
+          <div class="plan-megas">
+            <span class="plan-mega-icon">⚡</span>
+            <span class="plan-mega-value">10</span>
+            <span class="plan-mega-unit">Megas</span>
+          </div>
           <p class="price">$299/mes</p>
           <ul class="plan-info">
             <li>Ideal para 1-2 dispositivos</li>
@@ -27,8 +33,15 @@
             <span class="icon">🚀</span> Contratar
           </a>
         </div>
-        <div class="plan-card animate-card" data-megas="20">
-          <div class="plan-megas"><span class="plan-mega-icon">🚀</span> <span class="plan-mega-value">20</span> <span class="plan-mega-unit">Megas</span></div>
+      </div>
+      <!-- Plan 20 Megas -->
+      <div class="plan-card animate-card" data-megas="20">
+        <div style="display:flex; flex-direction:column; align-items:flex-start; width:100%;">
+          <div class="plan-megas">
+            <span class="plan-mega-icon">🚀</span>
+            <span class="plan-mega-value">20</span>
+            <span class="plan-mega-unit">Megas</span>
+          </div>
           <p class="price">$399/mes</p>
           <ul class="plan-info">
             <li>Perfecto para familias pequeñas</li>
@@ -40,8 +53,15 @@
             <span class="icon">⚡</span> Contratar
           </a>
         </div>
-        <div class="plan-card animate-card" data-megas="30">
-          <div class="plan-megas"><span class="plan-mega-icon">🏆</span> <span class="plan-mega-value">30</span> <span class="plan-mega-unit">Megas</span></div>
+      </div>
+      <!-- Plan 30 Megas -->
+      <div class="plan-card animate-card" data-megas="30">
+        <div style="display:flex; flex-direction:column; align-items:flex-start; width:100%;">
+          <div class="plan-megas">
+            <span class="plan-mega-icon">🏆</span>
+            <span class="plan-mega-value">30</span>
+            <span class="plan-mega-unit">Megas</span>
+          </div>
           <p class="price">$499/mes</p>
           <ul class="plan-info">
             <li>Para hogares conectados y gamers</li>
@@ -54,7 +74,8 @@
           </a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
   <section class="proceso-instalacion premium-box scroll-anim">
       <h2>¿Cómo solicitar tu servicio?</h2>
       <div class="proceso-pago-info">
