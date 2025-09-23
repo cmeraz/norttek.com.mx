@@ -1,33 +1,465 @@
+.premium-box {
+  background: #e5e8ef;
+  color: #222;
+}
+.premium-box span, .premium-box strong, .premium-box h2, .premium-box p, .premium-box li {
+  color: #222 !important;
+}
+.plan-cards {
+  align-items: center;
+  justify-content: center;
+}
+.plan-card {
+  align-items: center;
+  text-align: center;
+}
+.plan-card > div {
+  align-items: center !important;
+  text-align: center;
+  margin: 0 auto;
+}
+.plan-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.plan-card > * {
+  display: block;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+.plan-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.plan-megas {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.plan-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  margin-bottom: 0.7rem;
+}
+.plan-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: stretch;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.plan-card {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+@media (max-width: 600px) {
+  .plan-cards {
+    max-width: 100vw;
+    padding: 0 0.5rem;
+  }
+  .plan-card {
+    width: 100%;
+    max-width: 100vw;
+    padding: 1rem 0.5rem;
+  }
+}
+.plans {
+  margin-bottom: 2rem;
+}
+.plan-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
+  width: 100%;
+}
+.plan-card {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+}
+@media (max-width: 600px) {
+  .plan-cards {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .plan-card {
+    width: 98vw;
+    max-width: 98vw;
+  }
+}
+.premium-box, .proceso-instalacion {
+  background: #e3f2fd;
+  color: #222;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px #90caf922;
+  margin-bottom: 2rem;
+  padding: 1.2rem;
+}
+.premium-box h2, .proceso-instalacion h2, .premium-box p, .proceso-instalacion p, .premium-box li, .proceso-instalacion li {
+  color: #222;
+}
+.plan-card {
+  background: #f7f8fa;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px #90caf922;
+  padding: 1.2rem 1rem;
+  width: 100%;
+  max-width: 350px;
+  text-align: center;
+  transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.plan-card:hover {
+  transform: scale(1.05) rotate(-1deg);
+  background: #e3f2fd;
+  box-shadow: 0 4px 16px #90caf944;
+}
+.plan-megas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #1565c0;
+  margin-bottom: 0.3rem;
+  letter-spacing: 1px;
+}
+.plan-mega-icon {
+  font-size: 2rem;
+  color: #1976d2;
+  filter: drop-shadow(0 2px 8px #0006);
+}
+.plan-mega-value {
+  font-size: 2.2rem;
+  color: #222;
+  font-weight: 900;
+  text-shadow: 0 2px 8px #90caf944;
+}
+.plan-mega-unit {
+  font-size: 1.1rem;
+  color: #1976d2;
+  font-weight: 700;
+}
+.price {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+.plan-info {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0.5rem 0;
+  font-size: 1rem;
+  color: #222;
+}
+.plan-info .ilimitado {
+  color: #1976d2;
+  font-weight: 700;
+}
+.btn-contratar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(90deg, #1976d2 0%, #00c6ff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.7rem 1.2rem;
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 2px 8px #90caf944;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  outline: none;
+}
+.btn-contratar-link .icon {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  color: #fff;
+  transition: transform 0.3s, color 0.2s;
+}
+.btn-contratar-link:hover {
+  background: linear-gradient(90deg, #00c6ff 0%, #1976d2 100%);
+  color: #fff;
+  transform: scale(1.08);
+}
+.btn-contratar-link:hover .icon {
+  color: #ffd700;
+  transform: rotate(-12deg) scale(1.2);
+}
+/* Internet Landing Page - Light Theme Norttek Solutions */
+
+body, .internet-app {
+  font-family: 'Inter', Arial, sans-serif;
+  background: #f5faff;
+  color: #222;
+  min-height: 100vh;
+}
+
+/* Section Containers */
+.premium-box, .proceso-instalacion, .app-wisphub, .plan-card, .instalacion, .instalacion-card {
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px #90caf922;
+  color: #222;
+  margin-bottom: 2rem;
+  padding: 1.2rem;
+}
+
+/* Hero Section */
+.hero-internet {
+  position: relative;
+  width: 100vw;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 1;
+}
+.hero-img-bg {
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7) blur(1px);
+}
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(180deg, rgba(227,242,253,0.8) 0%, rgba(187,222,251,0.8) 100%);
+  z-index: 2;
+}
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+  color: #222;
+  padding: 2.5rem 1rem 1.5rem 1rem;
+}
+.logo-hero {
+  width: 70px;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 2px 8px #0008);
+}
+.hero-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 0.7rem;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 12px #90caf944;
+}
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: #1976d2;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 1px 8px #90caf944;
+}
+
+/* Cards & Info */
+.instalacion-card, .plan-card {
+  background: #f5faff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px #90caf922;
+  padding: 1rem 1.2rem;
+  min-width: 160px;
+  max-width: 350px;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.2s;
+  word-break: keep-all;
+}
+.instalacion-card:hover, .plan-card:hover {
+  transform: scale(1.05);
+  background: #e3f2fd;
+}
+.instalacion-card h3, .plan-info {
+  font-size: 1.1rem;
+  color: #1976d2;
+  margin: 0 0 0.2rem 0;
+}
+.instalacion-card p, .plan-card p {
+  font-size: 1rem;
+  color: #222;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Buttons */
+.btn-contratar, .btn-enviar, .btn-contratar-link, .contrata-ahora-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(90deg, #e3f2fd 0%, #bbdefb 100%);
+  color: #1976d2;
+  border: 2px solid #90caf9;
+  border-radius: 0.7rem;
+  padding: 0.7rem 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 2px 8px #90caf944;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  outline: none;
+}
+.btn-contratar .icon, .btn-enviar .icon, .btn-contratar-link .icon, .contrata-ahora-btn .icon {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  color: #1976d2;
+  transition: transform 0.3s, color 0.2s;
+}
+.btn-contratar:hover, .btn-enviar:hover, .btn-contratar-link:hover, .contrata-ahora-btn:hover {
+  background: #bbdefb;
+  color: #1565c0;
+  transform: scale(1.08);
+}
+.btn-contratar:hover .icon, .btn-enviar:hover .icon, .btn-contratar-link:hover .icon, .contrata-ahora-btn:hover .icon {
+  color: #1565c0;
+  transform: rotate(-12deg) scale(1.2);
+}
+
+/* Info & Table */
+.premium-info, .instalacion-info {
+  background: #e3f2fd;
+  color: #222;
+  border-radius: 0.7rem;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 2px 8px #90caf922;
+}
+.total-label, .wisphub-benefits {
+  color: #1976d2;
+}
+.total-amount {
+  background: #bbdefb;
+  color: #1976d2;
+  border-radius: 0.5rem;
+  padding: 0.3rem 1rem;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 8px #90caf944;
+}
+.instalacion-table th {
+  background: #e3f2fd;
+  color: #1976d2;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+.instalacion-table tr {
+  border-bottom: 1px solid #bbdefb;
+}
+.instalacion-table .total-row td {
+  background: #bbdefb;
+  color: #1976d2;
+  font-size: 1.1rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+/* Misc */
+.ilimitado {
+  color: #00c6ff;
+  font-size: 1.05rem;
+  margin-top: 0.3rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.diferido {
+  font-size: 0.9rem;
+  color: #00c6ff;
+  font-weight: 500;
+}
+.logo {
+  width: 64px;
+  margin-bottom: 0.5rem;
+}
+.subtitle {
+  font-size: 1.1rem;
+  color: #1976d2;
+}
+.app-footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #1976d2;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .instalacion-cards, .plan-cards {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .instalacion-card, .plan-card {
+    max-width: 98vw;
+    min-width: 0;
+    flex-direction: row;
+    gap: 0.7rem;
+    padding: 1rem 0.7rem;
+  }
+  .app-main {
+    max-width: 100vw;
+    padding: 0 0.5rem;
+  }
+}
 /* Botón Contrata Ahora */
 .contrata-ahora-wrap {
   display: flex;
   justify-content: center;
   margin-top: 1.2rem;
 }
-.contrata-ahora-btn {
+ .contrata-ahora-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
-  color: #fff;
-  border: 2px solid #0072ff;
+  background: linear-gradient(90deg, #e3f2fd 0%, #bbdefb 100%);
+  color: #0072ff;
+  border: 2px solid #90caf9;
   border-radius: 0.7rem;
   padding: 0.8rem 2rem;
   font-size: 1.15rem;
   font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 4px 18px #0072ff66, 0 1px 0 #fff inset;
+  box-shadow: 0 4px 18px #90caf966, 0 1px 0 #fff inset;
   cursor: pointer;
   transition: background 0.2s, transform 0.3s, box-shadow 0.2s, border 0.2s;
   outline: none;
   animation: btnPop 0.8s cubic-bezier(.68,-0.55,.27,1.55);
   position: relative;
   z-index: 1;
+ }
 }
-.contrata-ahora-btn:hover {
-  background: linear-gradient(90deg, #0072ff 0%, #00c6ff 100%);
+ .contrata-ahora-btn:hover {
+  background: linear-gradient(90deg, #bbdefb 0%, #e3f2fd 100%);
+  color: #1565c0;
   transform: scale(1.08);
-  box-shadow: 0 4px 18px #0072ff66;
+  box-shadow: 0 4px 18px #90caf966;
+ }
 }
 .contrata-icon {
   font-size: 1.3rem;
@@ -64,16 +496,18 @@
 .instalacion-header.vertical .instalacion-icon {
   margin-bottom: 0.2rem;
 }
-.instalacion-header.vertical h2 {
+ .instalacion-header.vertical h2 {
   margin: 0 0 0.3rem 0;
   font-size: 1.4rem;
   font-weight: 800;
-  color: #aee1f9;
+  color: #1976d2;
+ }
 }
-.instalacion-header.vertical .instalacion-desc {
+ .instalacion-header.vertical .instalacion-desc {
   font-size: 1.05rem;
-  color: #fff;
+  color: #333;
   margin: 0;
+ }
 }
 /* Info Pago Proceso Instalación */
 .proceso-pago-info {
@@ -88,20 +522,22 @@
   box-shadow: 0 2px 8px #0072ff22;
 }
 /* Proceso Instalación */
-.proceso-instalacion {
-  background: linear-gradient(120deg, #1c3c5a 60%, #295a7a 100%);
+ .proceso-instalacion {
+  background: #fff;
   border-radius: 1.2rem;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+  box-shadow: 0 4px 24px #90caf922;
   padding: 1.5rem 1.2rem 1.2rem 1.2rem;
   margin-bottom: 2rem;
-  color: #fff;
+  color: #222;
   text-align: left;
+ }
 }
-.proceso-instalacion h2 {
+ .proceso-instalacion h2 {
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #aee1f9;
+  color: #1976d2;
+ }
 }
 .proceso-list {
   list-style: none;
@@ -122,32 +558,35 @@
   font-size: 1.1rem;
   top: 0.1rem;
 }
-.plan-megas {
+ .plan-megas {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   font-size: 1.7rem;
   font-weight: 800;
-  color: #00c6ff;
+  color: #1976d2;
   margin-bottom: 0.3rem;
   letter-spacing: 1px;
+ }
 }
 .plan-mega-icon {
   font-size: 2rem;
   color: #ffd700;
   filter: drop-shadow(0 2px 8px #0006);
 }
-.plan-mega-value {
+ .plan-mega-value {
   font-size: 2.2rem;
-  color: #fff;
+  color: #1976d2;
   font-weight: 900;
-  text-shadow: 0 2px 8px #0072ff44;
+  text-shadow: 0 2px 8px #90caf944;
+ }
 }
-.plan-mega-unit {
+ .plan-mega-unit {
   font-size: 1.1rem;
-  color: #aee1f9;
+  color: #1565c0;
   font-weight: 700;
+ }
 }
 .wisphub-store {
   display: inline-block;
@@ -167,15 +606,16 @@
   padding: 2px 0;
   display: block;
 }
-.wisphub-logo {
-  width: 70px;
-  height: 70px;
-  object-fit: contain;
-  margin-bottom: 0.5rem;
+}
+/* Wisphub App */
+.app-wisphub {
   background: #fff;
-  border-radius: 1rem;
-  box-shadow: 0 2px 8px #0072ff22;
-  padding: 6px;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px #90caf922;
+  padding: 2rem 1.2rem 1.2rem 1.2rem;
+  margin-bottom: 2rem;
+  color: #222;
+  text-align: center;
 }
 .ilimitado {
   color: #00c6ff;
@@ -186,13 +626,12 @@
 }
 
 /* Wisphub App */
-.app-wisphub {
-  background: linear-gradient(120deg, #1c3c5a 60%, #295a7a 100%);
+  background: #fff;
   border-radius: 1.2rem;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+  box-shadow: 0 4px 24px #90caf922;
   padding: 2rem 1.2rem 1.2rem 1.2rem;
   margin-bottom: 2rem;
-  color: #fff;
+  color: #222;
   text-align: center;
 }
 .app-header-wisphub {
@@ -244,7 +683,7 @@
   color: #aee1f9;
 }
 /* Hero Premium */
-.hero-internet {
+ .hero-internet {
   position: relative;
   width: 100vw;
   min-height: 320px;
@@ -265,20 +704,20 @@
   object-fit: cover;
   filter: brightness(0.5) blur(1px);
 }
-.hero-overlay {
+ .hero-overlay {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(180deg, rgba(0,38,77,0.7) 0%, rgba(44,83,100,0.7) 100%);
+  background: linear-gradient(180deg, rgba(227,242,253,0.8) 0%, rgba(187,222,251,0.8) 100%);
   z-index: 2;
 }
-.hero-content {
+ .hero-content {
   position: relative;
   z-index: 3;
   text-align: center;
   width: 100vw;
   max-width: 500px;
   margin: 0 auto;
-  color: #fff;
+  color: #222;
   padding: 2.5rem 1rem 1.5rem 1rem;
 }
 .logo-hero {
@@ -286,28 +725,28 @@
   margin-bottom: 1rem;
   filter: drop-shadow(0 2px 8px #0008);
 }
-.hero-title {
+ .hero-title {
   font-size: 2.2rem;
   font-weight: 800;
   margin-bottom: 0.7rem;
   letter-spacing: 1px;
-  text-shadow: 0 2px 12px #0006;
+  text-shadow: 0 2px 12px #90caf944;
 }
-.hero-subtitle {
+ .hero-subtitle {
   font-size: 1.2rem;
-  color: #aee1f9;
+  color: #1976d2;
   margin-bottom: 0.5rem;
-  text-shadow: 0 1px 8px #0004;
+  text-shadow: 0 1px 8px #90caf944;
 }
 
 /* Instalación Premium */
-.premium-box {
-  background: linear-gradient(120deg, #1c3c5a 60%, #295a7a 100%);
+ .premium-box {
+  background: #fff;
   border-radius: 1.2rem;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+  box-shadow: 0 4px 24px #90caf922;
   padding: 2rem 1.2rem 1.2rem 1.2rem;
   margin-bottom: 2rem;
-  color: #fff;
+  color: #222;
 }
 .instalacion-header {
   display: flex;
@@ -342,10 +781,10 @@
   flex-wrap: wrap;
   width: 100%;
 }
-.instalacion-card {
-  background: #18344a;
+ .instalacion-card {
+  background: #f5faff;
   border-radius: 1rem;
-  box-shadow: 0 2px 8px #0002;
+  box-shadow: 0 2px 8px #90caf922;
   padding: 1rem 1.2rem;
   min-width: 160px;
   max-width: 220px;
@@ -357,24 +796,24 @@
   transition: transform 0.2s;
   word-break: keep-all;
 }
-.instalacion-card:hover {
+ .instalacion-card:hover {
   transform: scale(1.05);
-  background: #295a7a;
+  background: #e3f2fd;
 }
 .card-icon {
   font-size: 2rem;
   margin-bottom: 0;
   flex-shrink: 0;
 }
-.instalacion-card h3 {
+ .instalacion-card h3 {
   font-size: 1.1rem;
   margin: 0 0 0.2rem 0;
-  color: #aee1f9;
+  color: #1976d2;
 }
-.instalacion-card p {
+ .instalacion-card p {
   font-size: 1rem;
   margin: 0;
-  color: #fff;
+  color: #222;
   font-weight: 500;
 }
 @media (max-width: 600px) {
@@ -435,12 +874,12 @@
   font-size: 1.3rem;
 }
 /* Instalación */
-.instalacion {
+ .instalacion {
   margin-bottom: 2rem;
-  background: #18344a;
+  background: #f5faff;
   border-radius: 1rem;
   padding: 1.2rem 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  box-shadow: 0 2px 8px #90caf922;
 }
 .instalacion-table-wrap {
   overflow-x: auto;
@@ -456,23 +895,23 @@
   text-align: left;
   font-size: 1rem;
 }
-.instalacion-table th {
-  background: #295a7a;
-  color: #aee1f9;
+ .instalacion-table th {
+  background: #e3f2fd;
+  color: #1976d2;
   border-radius: 0.5rem 0.5rem 0 0;
 }
-.instalacion-table tr {
-  border-bottom: 1px solid #295a7a;
+ .instalacion-table tr {
+  border-bottom: 1px solid #bbdefb;
 }
-.instalacion-table .total-row td {
-  background: #00c6ff;
-  color: #fff;
+ .instalacion-table .total-row td {
+  background: #bbdefb;
+  color: #1976d2;
   font-size: 1.1rem;
   border-radius: 0 0 0.5rem 0.5rem;
 }
-.instalacion-info {
-  background: #295a7a;
-  color: #fff;
+ .instalacion-info {
+  background: #e3f2fd;
+  color: #222;
   border-radius: 0.5rem;
   padding: 0.7rem 1rem;
   font-size: 1rem;
@@ -485,11 +924,11 @@
   font-size: 1.3rem;
 }
 /* Estilos para la app móvil de Internet */
-.internet-app {
+ .internet-app {
   font-family: 'Inter', Arial, sans-serif;
-  background: linear-gradient(180deg, #0f2027 0%, #2c5364 100%);
+  background: #f5faff;
   min-height: 100vh;
-  color: #fff;
+  color: #222;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -522,13 +961,13 @@
   align-items: center;
   width: 100%;
 }
-.plan-card {
-  background: #1c3c5a;
+ .plan-card {
+  background: #fff;
   border-radius: 1rem;
   padding: 1.2rem 1rem;
   width: 100%;
   max-width: 350px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  box-shadow: 0 2px 8px #90caf922;
   text-align: center;
   transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.2s;
   position: relative;
@@ -543,17 +982,17 @@
   60% { transform: scale(1.08); opacity: 1; }
   100% { transform: scale(1); }
 }
-.plan-card:hover {
+ .plan-card:hover {
   transform: scale(1.05) rotate(-1deg);
-  background: #295a7a;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  background: #e3f2fd;
+  box-shadow: 0 4px 16px #90caf944;
 }
-.plan-info {
+ .plan-info {
   list-style: none;
   padding: 0;
   margin: 0.5rem 0 0.5rem 0;
   font-size: 0.95rem;
-  color: #e0f7fa;
+  color: #1976d2;
 }
 .btn-contratar-link {
   display: inline-flex;
@@ -584,14 +1023,14 @@
 .btn-contratar-link:hover .icon {
   transform: rotate(-12deg) scale(1.2);
 }
-.price {
+ .price {
   font-size: 1.3rem;
   font-weight: bold;
-  color: #aee1f9;
+  color: #1976d2;
 }
-.btn-contratar {
-  background: #00c6ff;
-  color: #fff;
+ .btn-contratar {
+  background: linear-gradient(90deg, #e3f2fd 0%, #bbdefb 100%);
+  color: #1976d2;
   border: none;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
@@ -600,8 +1039,8 @@
   font-size: 1rem;
   transition: background 0.2s;
 }
-.btn-contratar:hover {
-  background: #0072ff;
+ .btn-contratar:hover {
+  background: #bbdefb;
 }
 .extras {
   margin-bottom: 2rem;
@@ -635,9 +1074,9 @@
   border: none;
   font-size: 1rem;
 }
-.btn-enviar {
-  background: #00c6ff;
-  color: #fff;
+ .btn-enviar {
+  background: linear-gradient(90deg, #e3f2fd 0%, #bbdefb 100%);
+  color: #1976d2;
   border: none;
   border-radius: 0.5rem;
   padding: 0.7rem 1rem;
@@ -645,8 +1084,8 @@
   cursor: pointer;
   transition: background 0.2s;
 }
-.btn-enviar:hover {
-  background: #0072ff;
+ .btn-enviar:hover {
+  background: #bbdefb;
 }
 #form-msg {
   margin-top: 1rem;
