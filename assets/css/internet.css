@@ -1,3 +1,489 @@
+/* Botón Contrata Ahora */
+.contrata-ahora-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.2rem;
+}
+.contrata-ahora-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+  color: #fff;
+  border: 2px solid #0072ff;
+  border-radius: 0.7rem;
+  padding: 0.8rem 2rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 18px #0072ff66, 0 1px 0 #fff inset;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.3s, box-shadow 0.2s, border 0.2s;
+  outline: none;
+  animation: btnPop 0.8s cubic-bezier(.68,-0.55,.27,1.55);
+  position: relative;
+  z-index: 1;
+}
+.contrata-ahora-btn:hover {
+  background: linear-gradient(90deg, #0072ff 0%, #00c6ff 100%);
+  transform: scale(1.08);
+  box-shadow: 0 4px 18px #0072ff66;
+}
+.contrata-icon {
+  font-size: 1.3rem;
+  transition: transform 0.3s;
+}
+.contrata-ahora-btn:hover .contrata-icon {
+  transform: rotate(-8deg) scale(1.2);
+}
+@keyframes btnPop {
+  0% { transform: scale(0.7); opacity: 0; }
+  60% { transform: scale(1.12); opacity: 1; }
+  100% { transform: scale(1); }
+}
+/* Animación scroll */
+.scroll-anim {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.7s cubic-bezier(.68,-0.55,.27,1.55), transform 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+}
+.scroll-anim.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.premium-info strong span,
+.instalacion-info strong span {
+  white-space: nowrap;
+}
+.instalacion-header.vertical {
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+.instalacion-header.vertical .instalacion-icon {
+  margin-bottom: 0.2rem;
+}
+.instalacion-header.vertical h2 {
+  margin: 0 0 0.3rem 0;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #aee1f9;
+}
+.instalacion-header.vertical .instalacion-desc {
+  font-size: 1.05rem;
+  color: #fff;
+  margin: 0;
+}
+/* Info Pago Proceso Instalación */
+.proceso-pago-info {
+  margin-bottom: 1.2rem;
+  font-size: 1.08rem;
+  background: rgba(44,83,100,0.18);
+  border-radius: 0.7rem;
+  padding: 0.8rem 1rem;
+  color: #fff;
+  text-align: left;
+  line-height: 1.5;
+  box-shadow: 0 2px 8px #0072ff22;
+}
+/* Proceso Instalación */
+.proceso-instalacion {
+  background: linear-gradient(120deg, #1c3c5a 60%, #295a7a 100%);
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+  padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+  margin-bottom: 2rem;
+  color: #fff;
+  text-align: left;
+}
+.proceso-instalacion h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #aee1f9;
+}
+.proceso-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1.05rem;
+}
+.proceso-list li {
+  margin-bottom: 0.7rem;
+  padding-left: 1.2rem;
+  position: relative;
+}
+.proceso-list li:before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #00c6ff;
+  font-size: 1.1rem;
+  top: 0.1rem;
+}
+.plan-megas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #00c6ff;
+  margin-bottom: 0.3rem;
+  letter-spacing: 1px;
+}
+.plan-mega-icon {
+  font-size: 2rem;
+  color: #ffd700;
+  filter: drop-shadow(0 2px 8px #0006);
+}
+.plan-mega-value {
+  font-size: 2.2rem;
+  color: #fff;
+  font-weight: 900;
+  text-shadow: 0 2px 8px #0072ff44;
+}
+.plan-mega-unit {
+  font-size: 1.1rem;
+  color: #aee1f9;
+  font-weight: 700;
+}
+.wisphub-store {
+  display: inline-block;
+  margin: 0 0.5rem 0.5rem 0.5rem;
+.wisphub-logo {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
+  box-shadow: 0 2px 8px #0072ff22;
+  background: #fff;
+  padding: 2px 0;
+  display: block;
+}
+.wisphub-logo {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px #0072ff22;
+  padding: 6px;
+}
+.ilimitado {
+  color: #00c6ff;
+  font-size: 1.05rem;
+  margin-top: 0.3rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Wisphub App */
+.app-wisphub {
+  background: linear-gradient(120deg, #1c3c5a 60%, #295a7a 100%);
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+  padding: 2rem 1.2rem 1.2rem 1.2rem;
+  margin-bottom: 2rem;
+  color: #fff;
+  text-align: center;
+}
+.app-header-wisphub {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+}
+.wisphub-logo {
+  width: 70px;
+  margin-bottom: 0.5rem;
+}
+.wisphub-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+  font-size: 1.05rem;
+  color: #aee1f9;
+}
+.wisphub-benefits li {
+  margin-bottom: 0.5rem;
+}
+.wisphub-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+.store-img {
+  height: 48px;
+  width: 160px;
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: none;
+  background: none;
+  padding: 0;
+  display: block;
+}
+  text-decoration: none;
+  box-shadow: 0 2px 8px #0072ff44;
+  transition: background 0.2s, transform 0.2s;
+  margin-bottom: 0.5rem;
+}
+.wisphub-btn:hover {
+  background: #0072ff;
+  transform: scale(1.05);
+}
+.wisphub-info {
+  font-size: 0.95rem;
+  color: #aee1f9;
+}
+/* Hero Premium */
+.hero-internet {
+  position: relative;
+  width: 100vw;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 1;
+}
+.hero-img-bg {
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5) blur(1px);
+}
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(180deg, rgba(0,38,77,0.7) 0%, rgba(44,83,100,0.7) 100%);
+  z-index: 2;
+}
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  width: 100vw;
+  max-width: 500px;
+  margin: 0 auto;
+  color: #fff;
+  padding: 2.5rem 1rem 1.5rem 1rem;
+}
+.logo-hero {
+  width: 70px;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 2px 8px #0008);
+}
+.hero-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 0.7rem;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 12px #0006;
+}
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: #aee1f9;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 1px 8px #0004;
+}
+
+/* Instalación Premium */
+.premium-box {
+  background: linear-gradient(120deg, #1c3c5a 60%, #295a7a 100%);
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+  padding: 2rem 1.2rem 1.2rem 1.2rem;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+.instalacion-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.instalacion-icon {
+  font-size: 2.2rem;
+  background: #00c6ff;
+  color: #fff;
+  border-radius: 50%;
+  padding: 0.5rem;
+  box-shadow: 0 2px 8px #0072ff44;
+}
+.instalacion-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+.instalacion-desc {
+  font-size: 1rem;
+  color: #aee1f9;
+  margin-left: auto;
+}
+.instalacion-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 1.2rem;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.instalacion-card {
+  background: #18344a;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px #0002;
+  padding: 1rem 1.2rem;
+  min-width: 160px;
+  max-width: 220px;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.2s;
+  word-break: keep-all;
+}
+.instalacion-card:hover {
+  transform: scale(1.05);
+  background: #295a7a;
+}
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+.instalacion-card h3 {
+  font-size: 1.1rem;
+  margin: 0 0 0.2rem 0;
+  color: #aee1f9;
+}
+.instalacion-card p {
+  font-size: 1rem;
+  margin: 0;
+  color: #fff;
+  font-weight: 500;
+}
+@media (max-width: 600px) {
+  .instalacion-cards {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .instalacion-card {
+    max-width: 98vw;
+    min-width: 0;
+    flex-direction: row;
+    gap: 0.7rem;
+    padding: 1rem 0.7rem;
+  }
+}
+.diferido {
+  font-size: 0.9rem;
+  color: #00c6ff;
+  font-weight: 500;
+}
+.instalacion-total {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.7rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+.total-label {
+  color: #aee1f9;
+}
+.total-amount {
+  background: #00c6ff;
+  color: #fff;
+  border-radius: 0.5rem;
+  padding: 0.3rem 1rem;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 8px #0072ff44;
+}
+.premium-info {
+  background: #295a7a;
+  color: #fff;
+  border-radius: 0.7rem;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  box-shadow: 0 2px 8px #0072ff22;
+  flex-wrap: wrap;
+  word-break: break-word;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.premium-info .icon {
+  font-size: 1.3rem;
+}
+/* Instalación */
+.instalacion {
+  margin-bottom: 2rem;
+  background: #18344a;
+  border-radius: 1rem;
+  padding: 1.2rem 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+.instalacion-table-wrap {
+  overflow-x: auto;
+}
+.instalacion-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0.7rem;
+}
+.instalacion-table th,
+.instalacion-table td {
+  padding: 0.7rem 0.5rem;
+  text-align: left;
+  font-size: 1rem;
+}
+.instalacion-table th {
+  background: #295a7a;
+  color: #aee1f9;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+.instalacion-table tr {
+  border-bottom: 1px solid #295a7a;
+}
+.instalacion-table .total-row td {
+  background: #00c6ff;
+  color: #fff;
+  font-size: 1.1rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+.instalacion-info {
+  background: #295a7a;
+  color: #fff;
+  border-radius: 0.5rem;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.instalacion-info .icon {
+  font-size: 1.3rem;
+}
 /* Estilos para la app móvil de Internet */
 .internet-app {
   font-family: 'Inter', Arial, sans-serif;
@@ -31,22 +517,72 @@
 }
 .plan-cards {
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
+  width: 100%;
 }
 .plan-card {
   background: #1c3c5a;
   border-radius: 1rem;
-  padding: 1rem;
-  width: 110px;
+  padding: 1.2rem 1rem;
+  width: 100%;
+  max-width: 350px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.12);
   text-align: center;
-  transition: transform 0.2s;
+  transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.plan-card.animate-card {
+  animation: cardPop 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+}
+@keyframes cardPop {
+  0% { transform: scale(0.8); opacity: 0; }
+  60% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); }
 }
 .plan-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.05) rotate(-1deg);
   background: #295a7a;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+.plan-info {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0.5rem 0;
+  font-size: 0.95rem;
+  color: #e0f7fa;
+}
+.btn-contratar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s, transform 0.2s;
+  cursor: pointer;
+  outline: none;
+}
+.btn-contratar-link .icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s;
+}
+.btn-contratar-link:hover {
+  background: linear-gradient(90deg, #0072ff 0%, #00c6ff 100%);
+  transform: scale(1.08);
+}
+.btn-contratar-link:hover .icon {
+  transform: rotate(-12deg) scale(1.2);
 }
 .price {
   font-size: 1.3rem;
@@ -129,7 +665,7 @@
     padding: 0 0.5rem;
   }
   .plan-card {
-    width: 90vw;
-    max-width: 180px;
+    width: 98vw;
+    max-width: 98vw;
   }
 }
