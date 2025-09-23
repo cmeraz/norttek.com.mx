@@ -1,3 +1,22 @@
+<!-- Modal de bienvenida para cliente nuevo -->
+<div id="nuevo-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.35); z-index:9999; align-items:center; justify-content:center;">
+  <button id="close-modal" type="button" style="position:absolute; top:1rem; right:1rem; background:none; border:none; font-size:1.5rem; color:#1565c0; cursor:pointer;">&times;</button>
+  <div style="background:#fff; border-radius:1.2rem; max-width:350px; width:90vw; margin:auto; padding:2rem 1.5rem; box-shadow:0 8px 32px #0002; text-align:center; position:relative;">
+    <h2 style="color:#1565c0;">¡Bienvenido!</h2>
+    <form id="modal-form">
+      <div style="margin-bottom:1.5rem;">
+        <label for="input-nombre" style="font-weight:600;">¿Cuál es tu nombre?</label><br>
+        <input id="input-nombre" name="nombre" type="text" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]{2,}" maxlength="30" required style="width:90%; padding:0.7rem; border-radius:0.5rem; border:1px solid #90caf9; margin-top:1rem; font-size:1.1rem;" placeholder="Solo nombre, sin apellido" />
+      </div>
+      <div style="margin-bottom:1.5rem; text-align:left;">
+        <label style="font-weight:600;">¿Ya tienes servicio con otra compañía?<br><small>(¿Tienes antena instalada?)</small></label><br>
+        <label><input type="radio" name="antena" value="si" required> Sí</label>
+        <label style="margin-left:2rem;"><input type="radio" name="antena" value="no"> No</label>
+      </div>
+  <button type="submit" id="btn-modal-continuar" class="btn-contratar-link" style="width:100%; margin-top:1.5rem;">Continuar</button>
+    </form>
+  </div>
+</div>
 <div class="internet-app">
   <section class="hero-internet">
     <div class="hero-bg">

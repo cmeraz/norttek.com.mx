@@ -21,4 +21,28 @@ document.addEventListener('DOMContentLoaded', function() {
   scrollAnim();
 
   // Formulario (eliminado)
+
+  // Modal funcional: abrir/cerrar con botón y ESC
+  var nuevoModal = document.getElementById('nuevo-modal');
+  var closeModal = document.getElementById('close-modal');
+
+  // Función para cerrar el modal
+  function cerrarModal() {
+    if (nuevoModal) nuevoModal.style.display = 'none';
+  }
+
+  // Botón cerrar
+  if (closeModal) {
+    closeModal.addEventListener('click', cerrarModal);
+  }
+
+  // Cerrar con ESC
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      cerrarModal();
+    }
+  });
+
+  // Para abrir el modal desde otro lugar:
+  // nuevoModal.style.display = 'flex';
 });
