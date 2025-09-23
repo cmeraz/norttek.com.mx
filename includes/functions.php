@@ -9,6 +9,8 @@
 /**
  * Incluye un template desde la carpeta /templates.
  * Uso: includeTemplate('header');
+ * 
+ * @param string $templateName Nombre del template (sin extensión)
  */
 function includeTemplate($templateName) {
     $templateName = basename($templateName); // Seguridad: evita rutas externas
@@ -24,6 +26,9 @@ function includeTemplate($templateName) {
 /**
  * Incluye una sección de template pasando variables (con valores por defecto).
  * Uso: includeSection('nombre', ['var1' => 'valor']);
+ * 
+ * @param string $templateName Nombre del template (sin extensión)
+ * @param array $variables Variables a pasar al template
  */
 function includeSection($templateName, $variables = []) {
     $file = __DIR__ . "/$templateName.php";
@@ -63,6 +68,10 @@ function includeSection($templateName, $variables = []) {
  * Renderiza un componente FAQ a partir de un archivo JSON arbitrario.
  * El JSON debe ser un array de objetos con "pregunta", "respuesta", "icono" (opcional), "imagen" (opcional).
  * Uso: echo renderFAQComponent('/ruta/faq.json', ['title' => 'Preguntas Frecuentes']);
+ * 
+ * @param string $jsonFile Ruta absoluta al archivo JSON
+ * @param array $options Opciones como 'title'
+ * @return string HTML renderizado del componente FAQ
  */
 function renderFAQComponent($jsonFile, $options = []) {
     $title = isset($options['title']) ? htmlspecialchars($options['title']) : 'Preguntas Frecuentes';
@@ -92,6 +101,7 @@ function renderFAQComponent($jsonFile, $options = []) {
                     $respuesta .= '<div class="mt-3"><img src="'.$imgSrc.'" alt="Imagen relacionada" class="rounded shadow max-h-40 mx-auto"></div>';
                 }
             ?>
+                <!-- Cada pregunta frecuente se muestra como un <details> para accesibilidad y UX -->
                 <details class="py-3 group" <?= $i === 0 ? 'open' : '' ?>>
                     <summary class="cursor-pointer font-semibold text-gray-800 flex items-center justify-between gap-2">
                         <span>
@@ -105,6 +115,7 @@ function renderFAQComponent($jsonFile, $options = []) {
         </div>
     </section>
     <style>
+        /* Rota el icono de flecha cuando el <details> está abierto */
         .faq-component details[open] summary span:last-child {
             transform: rotate(90deg);
         }
@@ -119,9 +130,12 @@ function renderFAQComponent($jsonFile, $options = []) {
  * Renderiza un componente FAQ a partir de un archivo JSON ubicado en /json/faq/{archivo}.json.
  * El JSON debe ser un array de objetos con "pregunta", "respuesta", "icono" (opcional), "imagen" (opcional).
  * Uso: echo faq('faq-general', ['title' => 'Preguntas Frecuentes']);
+ * 
+ * @param string $jsonName Nombre del archivo JSON (sin extensión)
+ * @param array $options Opciones como 'title'
+ * @return string HTML renderizado del componente FAQ
  */
 function faq($jsonName, $options = []) {
-    // Construye la ruta al archivo JSON de FAQ
     $jsonFile = __DIR__ . '/../json/faq/' . basename($jsonName) . '.json';
     $title = isset($options['title']) ? htmlspecialchars($options['title']) : 'Preguntas Frecuentes';
     $iconoGenerico = 'fas fa-question-circle';
@@ -133,14 +147,6 @@ function faq($jsonName, $options = []) {
     $faqs = json_decode(file_get_contents($jsonFile), true);
     if (!is_array($faqs)) {
         return "<!-- FAQ JSON invalid format: {$jsonFile} -->";
-    }
-
-    // Incluir GSAP y ScrollTrigger solo una vez para animaciones
-    static $gsapLoaded = false;
-    if (!$gsapLoaded) {
-        echo '<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>';
-        echo '<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>';
-        $gsapLoaded = true;
     }
 
     ob_start();
@@ -157,7 +163,8 @@ function faq($jsonName, $options = []) {
                     $respuesta .= '<div class="mt-4"><img src="'.$imgSrc.'" alt="Imagen relacionada" class="rounded-xl shadow-lg max-h-48 mx-auto border border-blue-100"></div>';
                 }
             ?>
-            <div class="faq-falcon__item" data-faq-index="<?= $i ?>">
+            <!-- Cada pregunta frecuente es un bloque con animación de aparición y acordeón -->
+            <div class="faq-falcon__item faq-fade" data-faq-index="<?= $i ?>">
                 <div class="faq-falcon__question flex items-center gap-3 cursor-pointer py-4 px-6 rounded-lg transition hover:bg-blue-50" tabindex="0">
                     <span class="faq-falcon__icon flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-600 text-xl">
                         <i class="<?= $icono ?>"></i>
@@ -173,64 +180,88 @@ function faq($jsonName, $options = []) {
         </div>
     </section>
     <style>
-        /* Estilos para el componente FAQ Falcon */
+        /* Contenedor principal del FAQ */
         .faq-falcon__container {
             background: #fff;
             border-radius: 1.5rem;
             box-shadow: 0 4px 32px 0 rgba(37,99,235,0.09);
             padding: 2rem 1rem;
         }
+        /* Separador entre items */
         .faq-falcon__item + .faq-falcon__item {
             border-top: 1px solid #e0e7ef;
         }
+        /* Accesibilidad: outline al enfocar pregunta */
         .faq-falcon__question:focus {
             outline: 2px solid #2563eb;
             outline-offset: 2px;
         }
+        /* Flecha animada */
         .faq-falcon__arrow {
             transition: transform 0.4s cubic-bezier(.4,0,.2,1);
         }
+        /* Respuesta con transición de altura y opacidad */
         .faq-falcon__answer {
             overflow: hidden;
             transition: max-height 0.5s cubic-bezier(.4,0,.2,1), opacity 0.5s cubic-bezier(.4,0,.2,1);
             will-change: max-height, opacity;
         }
+        /* Icono de pregunta */
         .faq-falcon__icon {
             min-width: 2.5rem;
             min-height: 2.5rem;
         }
+        /* Hover en icono */
         .faq-falcon__question:hover .faq-falcon__icon {
             background: #2563eb;
             color: #fff;
             transition: background 0.2s, color 0.2s;
         }
         .faq-falcon__answer img { max-width: 100%; height: auto; }
-        .faq-falcon__item.faq-hidden {
-            opacity: 0 !important;
-            pointer-events: none;
-            transform: scale(0.96) translateY(80px) !important;
-            transition: opacity 0.5s, transform 0.5s;
+        /* Animación de aparición al hacer scroll */
+        .faq-fade {
+            opacity: 0;
+            transform: translateY(60px) scale(0.97);
+            transition: opacity 0.6s cubic-bezier(.4,1.4,.6,1), transform 0.6s cubic-bezier(.4,1.4,.6,1);
+        }
+        .faq-fade.faq-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
         }
     </style>
     <script>
-    window.faqFalconInit = function() {
-        // Limpia triggers previos para evitar duplicados en móvil
-        if (window.ScrollTrigger && ScrollTrigger.getAll) {
-            ScrollTrigger.getAll().forEach(t => t.kill());
+    // Animación de aparición con Intersection Observer
+    document.addEventListener('DOMContentLoaded', function() {
+        // Observa cada item FAQ y le agrega la clase de animación cuando entra en pantalla
+        var items = document.querySelectorAll('.faq-fade');
+        if ('IntersectionObserver' in window) {
+            var obs = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('faq-visible');
+                    } else {
+                        entry.target.classList.remove('faq-visible');
+                    }
+                });
+            }, { threshold: 0.15 });
+            items.forEach(function(item) { obs.observe(item); });
+        } else {
+            // Fallback: muestra todos si no hay soporte para IntersectionObserver
+            items.forEach(function(item) { item.classList.add('faq-visible'); });
         }
 
-        // Toggle de preguntas y respuestas
+        // Lógica de acordeón: abre/cierra respuestas al hacer click o usar teclado
         document.querySelectorAll('.faq-falcon__question').forEach(function(q, idx) {
-            q.addEventListener('click', function() {
-                const item = q.closest('.faq-falcon__item');
-                const answer = item.querySelector('.faq-falcon__answer');
-                const arrow = q.querySelector('.faq-falcon__arrow');
-                const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px' && answer.style.opacity === '1';
+            q.onclick = function() {
+                var item = q.closest('.faq-falcon__item');
+                var answer = item.querySelector('.faq-falcon__answer');
+                var arrow = q.querySelector('.faq-falcon__arrow');
+                var isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px' && answer.style.opacity === '1';
 
                 // Cierra todos los items
                 document.querySelectorAll('.faq-falcon__item').forEach(function(i) {
-                    const a = i.querySelector('.faq-falcon__answer');
-                    const ar = i.querySelector('.faq-falcon__arrow');
+                    var a = i.querySelector('.faq-falcon__answer');
+                    var ar = i.querySelector('.faq-falcon__arrow');
                     a.style.maxHeight = '0';
                     a.style.opacity = '0';
                     if (ar) ar.style.transform = 'rotate(0deg)';
@@ -246,16 +277,17 @@ function faq($jsonName, $options = []) {
                         arrow.style.color = '#2563eb';
                     }
                 }
-            });
-            // Accesibilidad: abrir/cerrar con Enter o Space
-            q.addEventListener('keydown', function(e) {
+            };
+            // Accesibilidad: permite abrir/cerrar con Enter o Space
+            q.onkeydown = function(e) {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
                     q.click();
                 }
-            });
+            };
         });
-        // Abre el primero por defecto
+
+        // Abre el primer item por defecto al cargar la página
         var first = document.querySelector('.faq-falcon__item .faq-falcon__answer');
         var firstArrow = document.querySelector('.faq-falcon__item .faq-falcon__arrow');
         if (first) {
@@ -266,53 +298,7 @@ function faq($jsonName, $options = []) {
                 firstArrow.style.color = '#2563eb';
             }
         }
-
-        // Animación GSAP en scroll (entrada y salida)
-        if (window.gsap && window.ScrollTrigger) {
-            gsap.set('.faq-falcon__item', {opacity: 0, y: 80, scale: 0.96});
-            ScrollTrigger.batch('.faq-falcon__item', {
-                onEnter: batch => {
-                    batch.forEach(el => el.classList.remove('faq-hidden'));
-                    gsap.to(batch, {
-                        opacity: 1,
-                        y: 0,
-                        scale: 1,
-                        stagger: 0.13,
-                        duration: 0.7,
-                        ease: "back.out(1.7)",
-                        overwrite: 'auto'
-                    });
-                },
-                onLeave: batch => {
-                    batch.forEach(el => el.classList.add('faq-hidden'));
-                },
-                onEnterBack: batch => {
-                    batch.forEach(el => el.classList.remove('faq-hidden'));
-                    gsap.to(batch, {
-                        opacity: 1,
-                        y: 0,
-                        scale: 1,
-                        stagger: 0.13,
-                        duration: 0.7,
-                        ease: "back.out(1.7)",
-                        overwrite: 'auto'
-                    });
-                },
-                onLeaveBack: batch => {
-                    batch.forEach(el => el.classList.add('faq-hidden'));
-                },
-                once: false,
-                start: "top+=200 bottom",
-                end: "bottom top"
-            });
-
-            // Forzar refresco de ScrollTrigger después de un pequeño delay
-            setTimeout(() => {
-                ScrollTrigger.refresh();
-            }, 200);
-        }
-    };
-    document.addEventListener('DOMContentLoaded', window.faqFalconInit);
+    });
     </script>
     <?php
     return ob_get_clean();
