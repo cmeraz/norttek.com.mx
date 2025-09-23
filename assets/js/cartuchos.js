@@ -1,13 +1,29 @@
-// Esperar a que el DOM esté completamente cargado
-document.addEventListener('DOMContentLoaded', function() {
-    // --- Variables globales ---
-    const buscador = document.getElementById('buscador');
-    const fotoBtn = document.getElementById('fotoBtn');
-    const btnBorrar = document.getElementById('limpiarBusqueda');
-    const contador = document.getElementById('total-resultados');
-    const filas = document.querySelectorAll(".cartucho-row");
+/**
+ * cartuchos.js
+ * Funcionalidad principal para la página de cartuchos:
+ * - Modal de foto y recorte con Cropper.js
+ * - OCR para detectar modelo de impresora
+ * - Filtrado en vivo de tabla de cartuchos
+ * - Tabs horizontales y verticales (incluyendo FAQ)
+ * - Inicialización de animación FAQ (sin GSAP)
+ * 
+ * Estructura modular y comentarios para facilitar mantenimiento.
+ */
 
-    // --- Cargar dinámicamente Cropper.js si es necesario ---
+document.addEventListener('DOMContentLoaded', function() {
+    // ==========================
+    // Variables globales y referencias DOM
+    // ==========================
+    const buscador = document.getElementById('buscador'); // Input de búsqueda de cartuchos
+    const fotoBtn = document.getElementById('fotoBtn'); // Botón para abrir modal de foto
+    const btnBorrar = document.getElementById('limpiarBusqueda'); // Botón para limpiar búsqueda
+    const contador = document.getElementById('total-resultados'); // Elemento que muestra el total de resultados
+    const filas = document.querySelectorAll(".cartucho-row"); // Filas de la tabla de cartuchos
+
+    // ==========================
+    // Cargar dinámicamente Cropper.js si es necesario
+    // ==========================
+    // Carga la librería Cropper.js solo si no está cargada
     function loadCropperAssets(callback) {
         if (window.Cropper) return callback();
         // Cargar CSS de Cropper.js
@@ -25,7 +41,10 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.appendChild(script);
     }
 
-    // --- Mostrar modal para tomar o cargar foto ---
+    // ==========================
+    // Modal para tomar o cargar foto y recortar
+    // ==========================
+    // Muestra un modal para seleccionar o tomar una foto y luego recortarla
     function showFotoModal() {
         // Elimina cualquier modal anterior
         let oldModal = document.getElementById('foto-modal');
@@ -71,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         closeBtn.addEventListener('click', () => modal.remove());
         box.appendChild(closeBtn);
 
-        // Imagen de ejemplo
+        // Imagen de ejemplo e instrucciones
         const ejemploImg = document.createElement('img');
         ejemploImg.src = 'assets/img/ejemplo-modelo-impresora.jpg';
         ejemploImg.alt = 'Ejemplo de foto de modelo de impresora';
@@ -81,7 +100,6 @@ document.addEventListener('DOMContentLoaded', function() {
         ejemploImg.style.marginBottom = '1rem';
         box.appendChild(ejemploImg);
 
-        // Instrucciones
         const instrucciones = document.createElement('div');
         instrucciones.innerHTML = `
             <h3 class="font-semibold text-blue-700 mb-2" style="font-size:1.1rem;">
@@ -101,14 +119,13 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         box.appendChild(instrucciones);
 
-        // Input file oculto
+        // Input file oculto y botón para cargar/tomar foto
         const fotoInput = document.createElement('input');
         fotoInput.type = 'file';
         fotoInput.accept = 'image/*';
         fotoInput.style.display = 'none';
         box.appendChild(fotoInput);
 
-        // Botón definitivo para tomar/cargar foto con icono y animación
         const tomarBtn = document.createElement('button');
         tomarBtn.innerHTML = `<span class="foto-btn-icon" style="display:inline-block;vertical-align:middle;margin-right:8px;">
             <i class="fas fa-camera"></i>
@@ -166,7 +183,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 30);
     }
 
-    // --- Mostrar modal de recorte de imagen con Cropper.js ---
+    // ==========================
+    // Modal de recorte de imagen con Cropper.js
+    // ==========================
+    // Muestra un modal para recortar la imagen seleccionada usando Cropper.js
+    // Permite rotar, recortar y cancelar. Al recortar, llama a analizarImagen con el blob resultante.
     function showCropperModal(imageSrc) {
         // Crea y muestra el modal para recortar la imagen seleccionada
         // Permite rotar, recortar y cancelar
@@ -293,7 +314,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 30);
     }
 
-    // --- Analizar imagen con OCR y sugerir modelos ---
+    // ==========================
+    // Analizar imagen con OCR y sugerir modelos
+    // ==========================
+    // Usa Tesseract.js para extraer texto de la imagen recortada y sugerir modelos de impresora
+    // Si encuentra modelos, muestra un modal para seleccionar uno; si no, pone el texto detectado en el buscador
     async function analizarImagen(fileOrBlob) {
         buscador.value = "Analizando imagen...";
         buscador.disabled = true;
@@ -331,7 +356,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // --- Mostrar modal para seleccionar modelo detectado o escribir manualmente ---
+    // ==========================
+    // Modal para seleccionar modelo detectado o escribir manualmente
+    // ==========================
+    // Muestra un modal con botones para cada modelo detectado y un input para escribir manualmente
+    // Llama a onSelect con el modelo elegido o escrito
     function showModelModal(modelos, onSelect) {
         // Crea un modal con botones para cada modelo detectado
         // Permite escribir manualmente si no aparece el modelo
@@ -441,7 +470,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 30);
     }
 
-    // --- Evento para mostrar el modal de foto al hacer click en el botón ---
+    // ==========================
+    // Evento para mostrar el modal de foto
+    // ==========================
+    // Al hacer click en el botón de foto, muestra el modal para tomar/cargar foto
     if (fotoBtn) {
         fotoBtn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -452,18 +484,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // ==========================
     // Filtrado en vivo y contador de resultados
     // ==========================
-    // Actualiza el contador de filas visibles en la tabla
+    // Actualiza el contador de resultados visibles en la tabla
     function actualizarContador() {
         const visibles = Array.from(filas).filter(fila => fila.style.display !== "none");
         if (contador) contador.textContent = visibles.length;
     }
 
-    // Normaliza texto para búsqueda (minúsculas y sin acentos)
+    // Normaliza texto para búsqueda (sin acentos, minúsculas)
     function normalizar(texto) {
         return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     }
 
-    // Evento de filtrado en vivo
+    // Filtra las filas de la tabla según el input de búsqueda
     if (buscador) {
         buscador.addEventListener("input", function () {
             const filtro = normalizar(this.value.trim());
@@ -481,7 +513,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Evento para limpiar la búsqueda y mostrar todas las filas
+    // Limpia el filtro de búsqueda y muestra todas las filas
     if (btnBorrar) {
         btnBorrar.addEventListener("click", () => {
             if (buscador) buscador.value = "";
@@ -496,13 +528,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // ==========================
     // Tabs funcionalidad (ejemplo horizontal)
     // ==========================
+    // Controla los tabs principales (compatibilidades y preguntas frecuentes)
     const tabBtns = document.querySelectorAll('.ejemplo-tab-btn');
     const tabContents = {
         tab1: document.getElementById('compatibilidades'),
         tab2: document.getElementById('preguntas-frecuentes')
     };
 
-    // Oculta todos los contenidos de tabs y elimina animación
+    // Oculta todos los tabs y elimina la animación
     function hideAllTabs() {
         Object.values(tabContents).forEach(tc => {
             tc.classList.add('hidden');
@@ -510,15 +543,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Evento para cambiar de tab con animación
+    // Maneja el click en los botones de tab
     tabBtns.forEach(btn => {
         btn.addEventListener('click', function() {
+            // Actualiza estilos de los botones
             tabBtns.forEach(b => b.classList.remove('active', 'text-gray-700', 'border-blue-400'));
             tabBtns.forEach(b => b.classList.add('text-gray-500'));
 
             btn.classList.add('active', 'text-gray-700', 'border-blue-400');
             btn.classList.remove('text-gray-500');
 
+            // Muestra el contenido del tab seleccionado
             hideAllTabs();
             const tabId = btn.getAttribute('data-tab');
             const content = tabContents[tabId];
@@ -527,12 +562,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Forzar reflow para reiniciar animación
                 void content.offsetWidth;
                 content.classList.add('tab-animate-in');
-                // Si es el tab de preguntas frecuentes, reinicializa la animación FAQ
+                // Si es el tab de preguntas frecuentes, reinicializa la animación FAQ (solo CSS/JS)
                 if (tabId === 'tab2' && typeof window.faqFalconInit === 'function') {
-                    window.faqFalconInit();
-                    if (window.ScrollTrigger && typeof ScrollTrigger.refresh === 'function') {
-                        setTimeout(() => ScrollTrigger.refresh(), 200);
-                    }
+                    setTimeout(() => {
+                        window.faqFalconInit();
+                    }, 50); // Pequeño delay para asegurar visibilidad
                 }
             }
         });
@@ -548,8 +582,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ==========================
-    // (Opcional) Tabs funcionalidad para cartuchos-tab/cartuchos-tab-content
+    // Tabs funcionalidad para cartuchos-tab/cartuchos-tab-content (vertical)
     // ==========================
+    // Controla los tabs secundarios (verticales) para otras secciones de cartuchos
     const cartuchosTabBtns = document.querySelectorAll('.cartuchos-tab');
     const cartuchosTabContents = document.querySelectorAll('.cartuchos-tab-content');
 
@@ -565,6 +600,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Muestra por defecto el primer tab vertical
     if (cartuchosTabBtns.length && cartuchosTabContents.length) {
         cartuchosTabBtns[0].classList.add('active');
         cartuchosTabContents[0].classList.remove('hidden');
