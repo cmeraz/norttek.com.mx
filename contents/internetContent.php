@@ -8,14 +8,15 @@
     </div>
     <form id="modal-form" class="modal-body">
       <div class="form-field">
-        <label for="input-nombre">Nombre completo</label>
+        <label for="input-nombre">Nombre</label>
         <div style="position:relative;">
           <i class="fa-regular fa-user" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:#6b7a90;"></i>
           <input id="input-nombre" name="nombre" type="text" maxlength="60" required placeholder="Nombre y apellido (opcional)" autocomplete="name" style="padding-left:2.2rem;" />
         </div>
       </div>
       <div class="form-field">
-        <label>¿Ya tienes servicio con otra compañía? <small>(¿Tienes antena instalada?)</small></label>
+        <label>¿Ya cuenta con antena o equipo en tu domicilio?
+        </label>
         <div class="radio-group" style="background:#f8fbff; border:1px solid #e7edf6; border-radius:10px; padding:.6rem .8rem;">
           <label class="radio-item"><input type="radio" name="antena" value="si" required> Sí</label>
           <label class="radio-item"><input type="radio" name="antena" value="no"> No</label>
@@ -43,10 +44,22 @@
     </div>
     <div class="hero-content">
       <img src="assets/img/logo-norttek.png" alt="Norttek Logo" class="logo-hero" />
-      <h1 class="hero-title">Internet Premium para tu Hogar</h1>
-      <p class="hero-subtitle">Conéctate a la mejor experiencia, velocidad y soporte. ¡Descubre la diferencia Norttek!</p>
+      <h1 class="hero-title">Internet para el Hogar y la Oficina</h1>
+      <p class="hero-subtitle">Conéctate a internet en donde otras compañias no llegan.</p>
     </div>
   </section>
+    <section id="contacta-un-asesor" class="asesor-section premium-box scroll-anim">
+      <h2>¿Dudas? Contacta a un asesor</h2>
+      <div class="asesor-row">
+        <input id="asesor-nombre" class="asesor-input" type="text" placeholder="Tu nombre" aria-label="Tu nombre" />
+        <button type="button" class="btn-asesor">
+          <span class="icon-whatsapp">📲</span>
+          Contacta a un asesor
+        </button>
+      </div>
+      <p class="asesor-hint">Se abrirá WhatsApp con un mensaje prellenado.</p>
+      <div id="asesor-msg" class="asesor-msg" aria-live="polite"></div>
+    </section>
   <!-- Menú principal debajo del hero -->
   <div id="main-menu">
     <button id="btn-nuevo" class="btn-contratar-link"><i class="fa-solid fa-list-ul" aria-hidden="true"></i> Conoce los planes</button>
@@ -55,10 +68,10 @@
   <!-- Contenedor principal dinámico -->
   <div id="main-content-container">
     <div id="welcome-message" class="section-toggle" style="text-align:center; font-size:2.2rem; color:#a7b3cc; font-weight:800; margin:3rem 0;">Bienvenido a Norttek Internet</div>
-    <div id="nuevo-content" class="section-toggle" style="display:none; padding-top:160px;">
+    <div id="nuevo-content" class="section-toggle" style="display:none;">
       <div id="personal-greeting" style="display:none; text-align:center; margin-bottom:1rem; color:#4f8cff; font-weight:800;">
         <div class="greet-line" style="font-size:1.6rem;">Hola, <span id="customer-name"></span></div>
-        <div id="greeting-detail" style="font-weight:600; color:#6b7a90; margin-top:.35rem;">Gracias por elegirnos. Prepararemos tu instalación y coordinaremos fecha y hora contigo.</div>
+        <div id="greeting-detail" style="font-weight:600; color:#6b7a90; margin-top:.35rem;">Gracias por interesarte en nuestro servicio, aqui podrás encontrar información sobre nuestros planes, y sobre los costos de instalación. Si requieres mas información, puedes contactarnos directamente.</div>
       </div>
       <main class="app-main">
         <!-- Proceso de instalación (primero) -->
@@ -69,24 +82,39 @@
             <strong>No se trata de internet satelital.</strong>
           </p>
           <hr class="section-divider" />
-          <h2 class="section-title"><i class="fa-solid fa-screwdriver-wrench section-icon" aria-hidden="true"></i> ¿Necesitas instalación?</h2>
-          <p class="section-subtitle">Si aún no tienes antena, validaremos disponibilidad y coordinaremos contigo la fecha y hora de instalación.</p>
-          <ul class="proceso-list">
+          <h2 class="section-title"><i class="fa-solid fa-screwdriver-wrench section-icon" aria-hidden="true"></i> ¿Qué necesitas para tu instalación?</h2>
+          <p class="section-subtitle">Tu costo de instalación depende de si ya cuentas con antena o no. Con la información que nos diste en el formulario, te preparamos un resumen personalizado de costos.</p>
+          <ul class="proceso-list equipo-false">
             <li><strong>Costo de instalación:</strong> $850 (único pago)</li>
             <li id="li-antena-financiamiento"><strong>Antena:</strong> $1,800 — puede pagarse de contado o diferirse a 3 meses junto con tu servicio de internet</li>
           </ul>
-          <p id="process-payment-note" style="margin:.8rem 0 0; color:#6b7a90;">Una vez confirmemos la cita, te enviaremos un link de pago (por transferencia o tarjeta) con el importe correspondiente.</p>
+          <ul class="proceso-list equipo-true">
+            <li><strong>Costo de instalación:</strong> $500 (pago único), incluye programación, alineación de antena y ajuste de router WiFi si se requiere.</li>
+          </ul>
+          <div id="process-payment-note" class="process-note">
+            <p><strong>Es muy importante que realices la solicitud de tu instalación</strong>, ya que necesitamos toda tu información para <b>dar de alta tu cuenta</b>, <b>programar tus equipos</b> y asegurarnos de que <b>el técnico lleve todo lo necesario el día de la instalación</b>.</p>
+            <p>Una vez que tengas claro el plan que más se adapte a tus necesidades, <strong>completa el formulario de solicitud</strong>. Con tus datos registrados, podremos <b>agendar la instalación</b> y nos pondremos en contacto contigo para <b>definir la fecha y hora que mejor se acomode a tu rutina</b>.</p>
+            <p>El día de la visita, un técnico se comunicará contigo para <strong>indicar dónde colocar tu router WiFi</strong> y comenzar con la <b>programación del sistema, la alineación de la antena y cualquier ajuste necesario para que todo funcione a la perfección</b>.</p>
+          </div>
+
           <hr class="section-divider" />
-          <h2 class="section-title"><i class="fa-solid fa-wifi section-icon" aria-hidden="true"></i> ¿Qué plan elegir?</h2>
-          <p class="section-subtitle">Elige el plan que mejor se adapte a tus necesidades, según tu uso de internet:</p>
+          <h2 class="section-title"><i class="fa-solid fa-wifi section-icon" aria-hidden="true"></i> ¿Qué plan debo elegir?</h2>
+          <p class="section-subtitle">Todos nuestros planes se adaptan casi a cualquiera de las necesidades de hoy en día como son:</p>
           <ul class="proceso-list">
             <li>Videollamadas</li>
-            <li>Streaming (Netflix, YouTube, etc.)</li>
-            <li>Gaming en línea</li>
-            <li>Trabajo remoto</li>
-            <li>Dispositivos conectados en casa</li>
+            <li>Video Streaming (Netflix, YouTube, etc.)</li>
+            <li>Redes sociales (Facebook, Instagram, Twitter, etc.)</li>
+            <li>Mensajería instantánea (WhatsApp, Telegram, etc.)</li>
+            <li>Trabajo remoto (Zoom, Microsoft Teams, Google Meet, etc.)</li>
+            <li>Dispositivos conectados en casa (IoT, asistentes de voz, etc.)</li>
+            <li>Juegos en línea</li>
+            <li>Visualizar cámaras de videovigilancia</li>
+            <li>Descargas y subidas de archivos</li>
+            <li>Trabajos escolares</li>
           </ul>
-          <p class="section-subtitle" style="margin-top:.6rem;">Da clic en <a href="#solicitar"><strong>“Solicitar”</strong></a> en el plan que prefieras y completa tus datos. Nuestro equipo validará la disponibilidad en tu zona y te contactará para agendar la instalación.</p>
+          <p class="section-subtitle" style="margin-top:.6rem;">
+            Teniendo en cuenta toda la información que nos proporcionaste, te presentamos los planes de internet disponibles para nuestros usuarios. A continuación, podrás ver las opciones para elegir el plan que mejor se adapte a tu rutina y disfrutar de un servicio confiable desde el primer día. Si tienes alguna duda, no dudes en contactarnos directamente <a href="#contacta-un-asesor" class="link-asesor">dando click aqui</a>.
+          </p>
         </section>
 
         <!-- Planes (segundo) -->
@@ -167,7 +195,7 @@
           <div class="instalacion-header vertical">
             <i class="fa-solid fa-screwdriver-wrench instalacion-icon" aria-hidden="true"></i>
             <h2 class="section-title" style="margin:0;">Instalación</h2>
-            <p class="section-subtitle instalacion-desc" style="margin:.2rem 0 0;">Tu conexión lista en menos de 24 horas, con equipo de última generación y técnicos certificados.</p>
+            <p><strong>Recuerda, es muy importante que realices la solicitud de tu instalación</strong>, ya que necesitamos toda tu información para <b>dar de alta tu cuenta</b>, <b>programar tus equipos</b> y asegurarnos de que <b>el técnico lleve todo lo necesario el día de la instalación</b>. Solo presiona el boton de <em>Solicita tu instalacion</em>, para ser llevado al formulario y puedas proporcionar tu informacion.</p>
           </div>
           <div class="instalacion-cards">
             <div id="card-antena" class="instalacion-card">
@@ -207,7 +235,7 @@
         </section>
       </main>
     </div>
-  <div id="cliente-content" class="section-toggle" style="display:none; padding-top:160px;">
+  <div id="cliente-content" class="section-toggle" style="display:none;">
       <div style="text-align:center; margin:3rem 0;">
         <h2 style="font-size:2rem; font-weight:900; margin-bottom:1rem;">Bienvenido cliente Norttek</h2>
         <p style="font-size:1.1rem; color:#a7b3cc; margin-bottom:1.5rem;">Consulta tu cuenta, soporte y promociones exclusivas.</p>
