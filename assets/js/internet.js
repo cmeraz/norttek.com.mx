@@ -55,6 +55,22 @@ document.addEventListener('DOMContentLoaded', function() {
       .join(' ');
   }
 
+  // Helpers para persistir el nombre entre el modal y "Contacta a un asesor"
+  function setStoredName(fullName, firstName) {
+    try {
+      localStorage.setItem('customerNameFull', fullName || '');
+      localStorage.setItem('customerNameFirst', firstName || '');
+    } catch(_) {}
+  }
+  function getStoredName() {
+    try {
+      return {
+        full: localStorage.getItem('customerNameFull') || '',
+        first: localStorage.getItem('customerNameFirst') || ''
+      };
+    } catch(_) { return { full: '', first: '' }; }
+  }
+
   // Menú principal: lógica de contenido dinámico
   var btnNuevo = document.getElementById('btn-nuevo');
   var btnCliente = document.getElementById('btn-cliente');
@@ -111,6 +127,17 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.plan-card.animate-card').forEach(function(card, i) {
     card.style.transitionDelay = (i * 0.12) + 's';
   });
+
+  // Prefill de nombre si ya fue capturado previamente
+  try {
+    var stored = getStoredName();
+    if (stored.full) {
+      var asesorInput = document.getElementById('asesor-nombre');
+      if (asesorInput && !asesorInput.value) asesorInput.value = stored.full;
+      var modalNombre = document.getElementById('input-nombre');
+      if (modalNombre && !modalNombre.value) modalNombre.value = stored.full;
+    }
+  } catch(_) {}
 
   // Animación scroll para secciones (IntersectionObserver)
   var revealTargets = document.querySelectorAll('.scroll-anim');
@@ -195,6 +222,12 @@ document.addEventListener('DOMContentLoaded', function() {
   } catch(_) {}
   // Tomar solo el primer nombre para el saludo
   var primerNombre = nombreNorm.split(/\s+/)[0] || '';
+      // Persistir y sincronizar con el formulario de asesor
+      setStoredName(nombreNorm, primerNombre);
+      try {
+        var asesorInputSync = document.getElementById('asesor-nombre');
+        if (asesorInputSync) asesorInputSync.value = nombreNorm;
+      } catch(_) {}
   var antena = (document.querySelector('input[name="antena"]:checked') || {}).value || 'no';
 
       // Precios base
@@ -306,6 +339,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (btnAsesor) {
       btnAsesor.addEventListener('click', function() {
         var nombreRaw = (document.getElementById('asesor-nombre') || {}).value || '';
+        // Si el campo viene vacío, usa el nombre guardado del modal
+        if (!nombreRaw.trim()) {
+          var st = getStoredName();
+          nombreRaw = st.full || st.first || '';
+        }
         var nombreTrim = nombreRaw.trim().replace(/\s+/g, ' ');
         var nombre = nombreTrim;
         try {
@@ -313,6 +351,8 @@ document.addEventListener('DOMContentLoaded', function() {
             nombre = toTitleCaseEs(nombreTrim);
           }
         } catch(_) {}
+        // Mantener sincronizado el nombre almacenado si el usuario lo escribe aquí
+        if (nombre) setStoredName(nombre, nombre.split(/\s+/)[0] || '');
         var saludo = nombre ? ('Hola, mi nombre es ' + nombre) : 'Hola';
         var copy = saludo + ', me gustaría recibir más información sobre el servicio de Internet Norttek, costos de instalación y planes disponibles. ¿Podrían ayudarme a solicitar la instalación? Muchas gracias.';
         var phone = '526252690997';
