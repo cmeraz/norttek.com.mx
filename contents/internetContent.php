@@ -18,6 +18,11 @@
   </div>
 </div>
 <div class="internet-app">
+  <!-- Menú principal debajo del hero -->
+  <div id="main-menu" style="display:flex; justify-content:center; gap:2rem; margin:2rem 0 2.5rem 0; padding-top:200px;">
+    <button id="btn-nuevo" class="btn-contratar-link" style="font-size:1.2rem; padding:1rem 2.5rem;">Usuarios nuevos</button>
+    <button id="btn-cliente" class="btn-contratar-link" style="font-size:1.2rem; padding:1rem 2.5rem;">Clientes existentes</button>
+  </div>
   <section class="hero-internet">
     <div class="hero-bg">
       <img src="assets/img/cctv-hero_img.jpg" alt="Internet Hero" class="hero-img-bg" />
