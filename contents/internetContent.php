@@ -21,11 +21,6 @@
           <label class="radio-item"><input type="radio" name="antena" value="no"> No</label>
         </div>
       </div>
-      <ul style="list-style:none; padding:0; margin:.4rem 0 0; color:#6b7a90; display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:.35rem;">
-        <li><i class="fa-regular fa-circle-check" style="color:#6fa4ff;"></i> Instalación coordinada contigo</li>
-        <li><i class="fa-regular fa-circle-check" style="color:#6fa4ff;"></i> Equipos nuevos y de ultima generacion</li>
-        <li><i class="fa-regular fa-circle-check" style="color:#6fa4ff;"></i> App movil para registrar tus pagos</li>
-      </ul>
         <ul style="list-style:none; padding:0; margin:.4rem 0 0; color:#6b7a90; display:flex; flex-direction:column; gap:.35rem;">
           <li style="display:flex; align-items:center; gap:.5rem;"><i class="fa-regular fa-circle-check" style="color:#6fa4ff;"></i> Instalación coordinada contigo</li>
           <li style="display:flex; align-items:center; gap:.5rem;"><i class="fa-regular fa-circle-check" style="color:#6fa4ff;"></i> Equipos nuevos y de ultima generacion</li>
