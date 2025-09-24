@@ -1,6 +1,65 @@
 // JS para la app móvil de Internet
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Helper para transiciones: oculta con clase y muestra con forzado de reflow
+  function showSection(el) {
+    if (!el) return;
+    el.style.display = 'block';
+    // Forzar reflow para que la transición ocurra al quitar la clase
+    void el.offsetWidth;
+    el.classList.remove('section-hidden');
+  }
+
+  function hideSection(el) {
+    if (!el) return;
+    el.classList.add('section-hidden');
+    // Ocultar del flujo tras la transición
+    setTimeout(function() { el.style.display = 'none'; }, 230);
+  }
+
+  // Menú principal: lógica de contenido dinámico
+  var btnNuevo = document.getElementById('btn-nuevo');
+  var btnCliente = document.getElementById('btn-cliente');
+  var welcomeMsg = document.getElementById('welcome-message');
+  var nuevoContent = document.getElementById('nuevo-content');
+  var clienteContent = document.getElementById('cliente-content');
+
+  function resetActive() {
+    if (btnNuevo) btnNuevo.classList.remove('active-menu');
+    if (btnCliente) btnCliente.classList.remove('active-menu');
+  }
+
+  // Mostrar solo hero y bienvenida por defecto
+  function mostrarBienvenida() {
+    showSection(welcomeMsg);
+    hideSection(nuevoContent);
+    hideSection(clienteContent);
+    resetActive();
+  }
+
+  // Mostrar contenido de usuarios nuevos
+  function mostrarNuevo() {
+    hideSection(welcomeMsg);
+    showSection(nuevoContent);
+    hideSection(clienteContent);
+    resetActive(); if (btnNuevo) btnNuevo.classList.add('active-menu');
+  }
+
+  // Mostrar contenido de clientes existentes
+  function mostrarCliente() {
+    hideSection(welcomeMsg);
+    hideSection(nuevoContent);
+    showSection(clienteContent);
+    resetActive(); if (btnCliente) btnCliente.classList.add('active-menu');
+  }
+
+  if (btnNuevo) btnNuevo.addEventListener('click', mostrarNuevo);
+  if (btnCliente) btnCliente.addEventListener('click', mostrarCliente);
+
+  // Estado inicial
+  // Asegura que las secciones ocultas tengan la clase para transición
+  [nuevoContent, clienteContent].forEach(function(el){ if (el && el.style.display === 'none') el.classList.add('section-hidden'); });
+  mostrarBienvenida();
   // Menú principal: lógica de contenido dinámico
   var btnNuevo = document.getElementById('btn-nuevo');
   var btnCliente = document.getElementById('btn-cliente');

@@ -18,11 +18,13 @@
   </div>
 </div>
 <div class="internet-app">
-  <!-- Menú principal debajo del hero -->
-  <div id="main-menu" style="display:flex; justify-content:center; gap:2rem; margin:2rem 0 2.5rem 0; padding-top:200px;">
-    <button id="btn-nuevo" class="btn-contratar-link" style="font-size:1.2rem; padding:1rem 2.5rem;">Usuarios nuevos</button>
-    <button id="btn-cliente" class="btn-contratar-link" style="font-size:1.2rem; padding:1rem 2.5rem;">Clientes existentes</button>
-  </div>
+  <style>
+    /* Transiciones suaves para secciones dinámicas */
+    .section-toggle { opacity: 1; transition: opacity 220ms ease-in-out, transform 220ms ease-in-out; }
+    .section-hidden { opacity: 0; pointer-events: none; transform: translateY(8px); }
+    /* Botón activo del menú */
+    #main-menu .active-menu { background:#1565c0 !important; color:#fff !important; box-shadow:0 6px 16px rgba(21,101,192,.25); }
+  </style>
   <section class="hero-internet">
     <div class="hero-bg">
       <img src="assets/img/cctv-hero_img.jpg" alt="Internet Hero" class="hero-img-bg" />
@@ -35,14 +37,14 @@
     </div>
   </section>
   <!-- Menú principal debajo del hero -->
-  <div id="main-menu" style="display:flex; justify-content:center; gap:2rem; margin:2rem 0 2.5rem 0; padding-top:200px;">
+  <div id="main-menu" style="display:flex; justify-content:center; gap:2rem; margin:2rem 0 2.5rem 0;">
     <button id="btn-nuevo" class="btn-contratar-link" style="font-size:1.2rem; padding:1rem 2.5rem;">Usuarios nuevos</button>
     <button id="btn-cliente" class="btn-contratar-link" style="font-size:1.2rem; padding:1rem 2.5rem;">Clientes existentes</button>
   </div>
   <!-- Contenedor principal dinámico -->
   <div id="main-content-container">
-    <div id="welcome-message" style="text-align:center; font-size:2.5rem; color:#d1d5db; font-weight:700; margin:4rem 0;">Bienvenido a Norttek Internet</div>
-    <div id="nuevo-content" style="display:none; padding-top:0;">
+    <div id="welcome-message" class="section-toggle" style="text-align:center; font-size:2.5rem; color:#d1d5db; font-weight:700; margin:4rem 0;">Bienvenido a Norttek Internet</div>
+    <div id="nuevo-content" class="section-toggle" style="display:none; padding-top:200px;">
       <main class="app-main" style="background:#f7f8fa; color:#222; font-family:'Roboto', Arial, sans-serif;">
         <section class="plans scroll-anim">
           <h2 style="text-align:center; margin-bottom:2rem; color:#1565c0;">Elige tu velocidad</h2>
@@ -70,11 +72,89 @@
             <!-- ...otros planes... -->
           </div>
         </section>
-        <!-- Sección de instalación, premium, etc. -->
-        <!-- ...puedes agregar más contenido aquí... -->
+        <!-- Proceso de instalación -->
+        <section class="proceso-instalacion premium-box scroll-anim">
+          <h2>¿Cómo solicitar tu servicio?</h2>
+          <div class="proceso-pago-info">
+            <strong>Antes de instalar, deberás pagar <span style="color:#00c6ff">$850</span> (instalación y módem WiFi).</strong><br>
+            <span style="color:#aee1f9">Este monto <strong>ya incluye el primer mes de servicio</strong>. No se requiere pago adicional al momento de la instalación.</span>
+          </div>
+          <ul class="proceso-list">
+            <li>Solicita la instalación seleccionando el botón <strong>Solicitar</strong> en el plan que prefieras.</li>
+            <li>Agendaremos tu servicio coordinando la hora adecuada entre el instalador y tú.</li>
+            <li>El costo de la antena (<strong>$1,800</strong>) se puede diferir en <strong>3 mensualidades</strong> junto con tus pagos de internet, o puedes pagarlo en una sola exhibición.</li>
+          </ul>
+        </section>
+
+        <!-- Instalación -->
+        <section class="instalacion premium-box scroll-anim">
+          <div class="instalacion-header vertical">
+            <span class="instalacion-icon">🛠️</span>
+            <h2>Instalación</h2>
+            <p class="instalacion-desc">Tu conexión lista en menos de 24 horas, con equipo de última generación y técnicos certificados.</p>
+          </div>
+          <div class="instalacion-cards">
+            <div class="instalacion-card">
+              <span class="card-icon">📡</span>
+              <div>
+                <h3>Antena</h3>
+                <p>$1,800 <span class="diferido">(diferible a 3 meses)</span></p>
+              </div>
+            </div>
+            <div class="instalacion-card">
+              <span class="card-icon">📶</span>
+              <div>
+                <h3>Modem WiFi</h3>
+                <p>$500</p>
+              </div>
+            </div>
+            <div class="instalacion-card">
+              <span class="card-icon">🔌</span>
+              <div>
+                <h3>Instalación y cableado</h3>
+                <p>$350</p>
+              </div>
+            </div>
+          </div>
+          <div class="instalacion-total">
+            <span class="total-label">Total:</span>
+            <span class="total-amount">$2,650</span>
+          </div>
+          <div class="instalacion-info premium-info">
+            <span class="icon">💡</span>
+            <strong>¡Facilitamos tu pago!</strong> El costo de la antena (<strong>$1,800</strong>) puedes diferirlo en <strong>3 mensualidades</strong> junto con el pago de tu plan seleccionado.
+          </div>
+          <div class="contrata-ahora-wrap scroll-anim">
+            <a href="http://clientes.portalinternet.net/solicitar-instalacion/norttek/" target="_blank" class="contrata-ahora-btn">
+              <span class="contrata-icon">📝</span> Solicita tu Instalación
+            </a>
+          </div>
+        </section>
+
+        <!-- App Wisphub -->
+        <section class="app-wisphub premium-box scroll-anim">
+          <div class="app-header-wisphub">
+            <img src="http://wisphub-media.s3.amazonaws.com/media/uploadsCKEditor/jorge%40wisphub/2020/02/20/logo-servicio-wifi.png" alt="Wisphub App" class="wisphub-logo" />
+            <h2>Administra tu servicio desde la app móvil</h2>
+          </div>
+          <ul class="wisphub-benefits">
+            <li>Consulta y reporta tus pagos fácilmente</li>
+            <li>Recibe notificaciones y recordatorios</li>
+            <li>Administra tu cuenta y servicio desde cualquier lugar</li>
+            <li>Disponible para Android y iOS</li>
+          </ul>
+          <div class="wisphub-links">
+            <a href="https://play.google.com/store/apps/details?id=net.wisphub.app" target="_blank" class="wisphub-store">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="store-img" />
+            </a>
+            <a href="https://apps.apple.com/mx/app/wisphub/id6445943532" target="_blank" class="wisphub-store">
+              <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="store-img" />
+            </a>
+          </div>
+        </section>
       </main>
     </div>
-    <div id="cliente-content" style="display:none;">
+  <div id="cliente-content" class="section-toggle" style="display:none; padding-top:200px;">
       <div style="text-align:center; margin:4rem 0;">
         <h2 style="font-size:2.2rem; color:#1565c0; font-weight:800; margin-bottom:1.5rem;">Bienvenido cliente Norttek</h2>
         <p style="font-size:1.3rem; color:#444; margin-bottom:2rem;">Aquí puedes consultar tu estado de cuenta, soporte y promociones exclusivas.</p>
