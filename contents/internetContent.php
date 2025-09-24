@@ -1,30 +1,41 @@
 <!-- Modal de bienvenida para cliente nuevo -->
-<div id="nuevo-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.35); z-index:9999; align-items:center; justify-content:center;">
-  <button id="close-modal" type="button" style="position:absolute; top:1rem; right:1rem; background:none; border:none; font-size:1.5rem; color:#1565c0; cursor:pointer;">&times;</button>
-  <div style="background:#fff; border-radius:1.2rem; max-width:350px; width:90vw; margin:auto; padding:2rem 1.5rem; box-shadow:0 8px 32px #0002; text-align:center; position:relative;">
-    <h2 style="color:#1565c0;">¡Bienvenido!</h2>
-    <form id="modal-form">
-      <div style="margin-bottom:1.5rem;">
-        <label for="input-nombre" style="font-weight:600;">¿Cuál es tu nombre?</label><br>
-        <input id="input-nombre" name="nombre" type="text" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]{2,}" maxlength="30" required style="width:90%; padding:0.7rem; border-radius:0.5rem; border:1px solid #90caf9; margin-top:1rem; font-size:1.1rem;" placeholder="Solo nombre, sin apellido" />
+<div id="nuevo-modal" class="internet-modal-backdrop" style="display:none;">
+  <div class="internet-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button id="close-modal" type="button" class="modal-close" aria-label="Cerrar">&times;</button>
+    <div class="modal-header">
+      <h3 id="modal-title">Empecemos</h3>
+      <p class="modal-subtitle">Cuéntanos un poco para personalizar tu instalación</p>
+    </div>
+    <form id="modal-form" class="modal-body">
+      <div class="form-field">
+        <label for="input-nombre">Nombre completo</label>
+        <div style="position:relative;">
+          <i class="fa-regular fa-user" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:#6b7a90;"></i>
+          <input id="input-nombre" name="nombre" type="text" maxlength="60" required placeholder="Nombre y apellido (opcional)" autocomplete="name" style="padding-left:2.2rem;" />
+        </div>
       </div>
-      <div style="margin-bottom:1.5rem; text-align:left;">
-        <label style="font-weight:600;">¿Ya tienes servicio con otra compañía?<br><small>(¿Tienes antena instalada?)</small></label><br>
-        <label><input type="radio" name="antena" value="si" required> Sí</label>
-        <label style="margin-left:2rem;"><input type="radio" name="antena" value="no"> No</label>
+      <div class="form-field">
+        <label>¿Ya tienes servicio con otra compañía? <small>(¿Tienes antena instalada?)</small></label>
+        <div class="radio-group" style="background:#f8fbff; border:1px solid #e7edf6; border-radius:10px; padding:.6rem .8rem;">
+          <label class="radio-item"><input type="radio" name="antena" value="si" required> Sí</label>
+          <label class="radio-item"><input type="radio" name="antena" value="no"> No</label>
+        </div>
       </div>
-  <button type="submit" id="btn-modal-continuar" class="btn-contratar-link" style="width:100%; margin-top:1.5rem;">Continuar</button>
+      <ul style="list-style:none; padding:0; margin:.4rem 0 0; color:#6b7a90; display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:.35rem;">
+        <li><i class="fa-regular fa-circle-check" style="color:#6fa4ff;"></i> Instalación coordinada contigo</li>
+        <li><i class="fa-regular fa-circle-check" style="color:#6fa4ff;"></i> Equipos preconfigurados</li>
+        <li><i class="fa-regular fa-circle-check" style="color:#6fa4ff;"></i> Pago por link seguro</li>
+      </ul>
+      <div class="modal-actions">
+        <button type="submit" id="btn-modal-continuar" class="btn btn-primary">Aceptar</button>
+  <button type="button" id="btn-cancelar" class="btn btn-secondary">Cancelar</button>
+
+      </div>
     </form>
   </div>
+  
 </div>
 <div class="internet-app">
-  <style>
-    /* Transiciones suaves para secciones dinámicas */
-    .section-toggle { opacity: 1; transition: opacity 220ms ease-in-out, transform 220ms ease-in-out; }
-    .section-hidden { opacity: 0; pointer-events: none; transform: translateY(8px); }
-    /* Botón activo del menú */
-    #main-menu .active-menu { background:#1565c0 !important; color:#fff !important; box-shadow:0 6px 16px rgba(21,101,192,.25); }
-  </style>
   <section class="hero-internet">
     <div class="hero-bg">
       <img src="assets/img/cctv-hero_img.jpg" alt="Internet Hero" class="hero-img-bg" />
@@ -37,23 +48,59 @@
     </div>
   </section>
   <!-- Menú principal debajo del hero -->
-  <div id="main-menu" style="display:flex; justify-content:center; gap:2rem; margin:2rem 0 2.5rem 0;">
-    <button id="btn-nuevo" class="btn-contratar-link" style="font-size:1.2rem; padding:1rem 2.5rem;">Usuarios nuevos</button>
-    <button id="btn-cliente" class="btn-contratar-link" style="font-size:1.2rem; padding:1rem 2.5rem;">Clientes existentes</button>
+  <div id="main-menu">
+    <button id="btn-nuevo" class="btn-contratar-link"><i class="fa-solid fa-user-plus" aria-hidden="true"></i> Usuarios nuevos</button>
+    <button id="btn-cliente" class="btn-contratar-link"><i class="fa-solid fa-user-check" aria-hidden="true"></i> Clientes existentes</button>
   </div>
   <!-- Contenedor principal dinámico -->
   <div id="main-content-container">
-    <div id="welcome-message" class="section-toggle" style="text-align:center; font-size:2.5rem; color:#d1d5db; font-weight:700; margin:4rem 0;">Bienvenido a Norttek Internet</div>
-    <div id="nuevo-content" class="section-toggle" style="display:none; padding-top:200px;">
-      <main class="app-main" style="background:#f7f8fa; color:#222; font-family:'Roboto', Arial, sans-serif;">
+    <div id="welcome-message" class="section-toggle" style="text-align:center; font-size:2.2rem; color:#a7b3cc; font-weight:800; margin:3rem 0;">Bienvenido a Norttek Internet</div>
+    <div id="nuevo-content" class="section-toggle" style="display:none; padding-top:160px;">
+      <div id="personal-greeting" style="display:none; text-align:center; margin-bottom:1rem; color:#4f8cff; font-weight:800;">
+        <div class="greet-line" style="font-size:1.6rem;">Hola, <span id="customer-name"></span></div>
+        <div id="greeting-detail" style="font-weight:600; color:#6b7a90; margin-top:.35rem;">Gracias por elegirnos. Prepararemos tu instalación y coordinaremos fecha y hora contigo.</div>
+      </div>
+      <main class="app-main">
+        <!-- Proceso de instalación (primero) -->
+        <section class="proceso-instalacion premium-box scroll-anim">
+          <h2 class="section-title"><i class="fa-solid fa-list-check section-icon" aria-hidden="true"></i> ¿Cómo funciona nuestro servicio de internet?</h2>
+          <p class="section-subtitle">
+            Nuestro internet llega a tu hogar de forma inalámbrica, a través de una antena exterior que se conecta con nuestros equipos locales en tu zona.
+            <strong>No se trata de internet satelital.</strong>
+          </p>
+          <hr class="section-divider" />
+          <h2 class="section-title"><i class="fa-solid fa-screwdriver-wrench section-icon" aria-hidden="true"></i> ¿Necesitas instalación?</h2>
+          <p class="section-subtitle">Si aún no tienes antena, validaremos disponibilidad y coordinaremos contigo la fecha y hora de instalación.</p>
+          <ul class="proceso-list">
+            <li><strong>Costo de instalación:</strong> $850 (único pago)</li>
+            <li id="li-antena-financiamiento"><strong>Antena:</strong> $1,800 — puede pagarse de contado o diferirse a 3 meses junto con tu servicio de internet</li>
+          </ul>
+          <p id="process-payment-note" style="margin:.8rem 0 0; color:#6b7a90;">Una vez confirmemos la cita, te enviaremos un link de pago (por transferencia o tarjeta) con el importe correspondiente.</p>
+          <hr class="section-divider" />
+          <h2 class="section-title"><i class="fa-solid fa-wifi section-icon" aria-hidden="true"></i> ¿Qué plan elegir?</h2>
+          <p class="section-subtitle">Elige el plan que mejor se adapte a tus necesidades, según tu uso de internet:</p>
+          <ul class="proceso-list">
+            <li>Videollamadas</li>
+            <li>Streaming (Netflix, YouTube, etc.)</li>
+            <li>Gaming en línea</li>
+            <li>Trabajo remoto</li>
+            <li>Dispositivos conectados en casa</li>
+          </ul>
+          <p class="section-subtitle" style="margin-top:.6rem;">Da clic en <a href="#solicitar"><strong>“Solicitar”</strong></a> en el plan que prefieras y completa tus datos. Nuestro equipo validará la disponibilidad en tu zona y te contactará para agendar la instalación.</p>
+        </section>
+
+        <!-- Planes (segundo) -->
         <section class="plans scroll-anim">
-          <h2 style="text-align:center; margin-bottom:2rem; color:#1565c0;">Elige tu velocidad</h2>
+          <h2 class="section-title"><i class="fa-solid fa-wifi section-icon" aria-hidden="true"></i> Elige tu velocidad</h2>
+          <p class="section-subtitle">
+            Como guía: pocos dispositivos y uso básico funcionan bien con planes de menor velocidad; para streaming 4K, videollamadas o gaming en varios equipos, elige un plan más alto.
+          </p>
           <div class="plan-cards">
             <!-- Planes renderizados aquí -->
             <div class="plan-card animate-card" data-megas="10">
-              <div style="display:flex; flex-direction:column; align-items:flex-start; width:100%;">
+              <div style="display:flex; flex-direction:column; align-items:center; width:100%;">
                 <div class="plan-megas">
-                  <span class="plan-mega-icon">⚡</span>
+                  <i class="fa-solid fa-bolt plan-mega-icon" aria-hidden="true"></i>
                   <span class="plan-mega-value">10</span>
                   <span class="plan-mega-unit">Megas</span>
                 </div>
@@ -65,104 +112,131 @@
                   <li class="ilimitado"><strong>Internet ilimitado</strong></li>
                 </ul>
                 <a class="btn-contratar-link" href="http://clientes.portalinternet.net/solicitar-instalacion/norttek/?plan=10" target="_blank">
-                  <span class="icon">🚀</span> Contratar
+                  <i class="fa-solid fa-rocket icon" aria-hidden="true"></i> Contratar
                 </a>
               </div>
             </div>
-            <!-- ...otros planes... -->
-          </div>
-        </section>
-        <!-- Proceso de instalación -->
-        <section class="proceso-instalacion premium-box scroll-anim">
-          <h2>¿Cómo solicitar tu servicio?</h2>
-          <div class="proceso-pago-info">
-            <strong>Antes de instalar, deberás pagar <span style="color:#00c6ff">$850</span> (instalación y módem WiFi).</strong><br>
-            <span style="color:#aee1f9">Este monto <strong>ya incluye el primer mes de servicio</strong>. No se requiere pago adicional al momento de la instalación.</span>
-          </div>
-          <ul class="proceso-list">
-            <li>Solicita la instalación seleccionando el botón <strong>Solicitar</strong> en el plan que prefieras.</li>
-            <li>Agendaremos tu servicio coordinando la hora adecuada entre el instalador y tú.</li>
-            <li>El costo de la antena (<strong>$1,800</strong>) se puede diferir en <strong>3 mensualidades</strong> junto con tus pagos de internet, o puedes pagarlo en una sola exhibición.</li>
-          </ul>
-        </section>
+            <!-- Plan 20 Mbps -->
+            <div class="plan-card animate-card" data-megas="20">
+              <span class="plan-badge" aria-hidden="true">Recomendado</span>
+              <div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+                <div class="plan-megas">
+                  <i class="fa-solid fa-bolt plan-mega-icon" aria-hidden="true"></i>
+                  <span class="plan-mega-value">20</span>
+                  <span class="plan-mega-unit">Megas</span>
+                </div>
+                <p class="price">$399/mes</p>
+                <ul class="plan-info">
+                  <li>Ideal para 2-4 dispositivos</li>
+                  <li>Streaming HD y videollamadas estables</li>
+                  <li>Instalación rápida</li>
+                  <li class="ilimitado"><strong>Internet ilimitado</strong></li>
+                </ul>
+                <a class="btn-contratar-link" href="http://clientes.portalinternet.net/solicitar-instalacion/norttek/?plan=20" target="_blank">
+                  <i class="fa-solid fa-rocket icon" aria-hidden="true"></i> Contratar
+                </a>
+              </div>
+            </div>
 
-        <!-- Instalación -->
+            <!-- Plan 30 Mbps -->
+            <div class="plan-card animate-card" data-megas="30">
+              <div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+                <div class="plan-megas">
+                  <i class="fa-solid fa-bolt plan-mega-icon" aria-hidden="true"></i>
+                  <span class="plan-mega-value">30</span>
+                  <span class="plan-mega-unit">Megas</span>
+                </div>
+                <p class="price">$499/mes</p>
+                <ul class="plan-info">
+                  <li>Ideal para 4-6 dispositivos</li>
+                  <li>Streaming Full HD/4K puntual</li>
+                  <li>Home office y clases en línea</li>
+                  <li class="ilimitado"><strong>Internet ilimitado</strong></li>
+                </ul>
+                <a class="btn-contratar-link" href="http://clientes.portalinternet.net/solicitar-instalacion/norttek/?plan=30" target="_blank">
+                  <i class="fa-solid fa-rocket icon" aria-hidden="true"></i> Contratar
+                </a>
+              </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Costos de Instalación (último) -->
         <section class="instalacion premium-box scroll-anim">
           <div class="instalacion-header vertical">
-            <span class="instalacion-icon">🛠️</span>
-            <h2>Instalación</h2>
-            <p class="instalacion-desc">Tu conexión lista en menos de 24 horas, con equipo de última generación y técnicos certificados.</p>
+            <i class="fa-solid fa-screwdriver-wrench instalacion-icon" aria-hidden="true"></i>
+            <h2 class="section-title" style="margin:0;">Instalación</h2>
+            <p class="section-subtitle instalacion-desc" style="margin:.2rem 0 0;">Tu conexión lista en menos de 24 horas, con equipo de última generación y técnicos certificados.</p>
           </div>
           <div class="instalacion-cards">
-            <div class="instalacion-card">
-              <span class="card-icon">📡</span>
+            <div id="card-antena" class="instalacion-card">
+              <i class="fa-solid fa-satellite-dish card-icon" aria-hidden="true"></i>
               <div>
                 <h3>Antena</h3>
                 <p>$1,800 <span class="diferido">(diferible a 3 meses)</span></p>
               </div>
             </div>
             <div class="instalacion-card">
-              <span class="card-icon">📶</span>
-              <div>
-                <h3>Modem WiFi</h3>
-                <p>$500</p>
-              </div>
-            </div>
-            <div class="instalacion-card">
-              <span class="card-icon">🔌</span>
+              <i class="fa-solid fa-plug card-icon" aria-hidden="true"></i>
               <div>
                 <h3>Instalación y cableado</h3>
-                <p>$350</p>
+                <p id="install-cable-cost">$Variable$</p>
               </div>
             </div>
           </div>
           <div class="instalacion-total">
             <span class="total-label">Total:</span>
-            <span class="total-amount">$2,650</span>
+            <span id="install-total" class="total-amount">$Variable$</span>
           </div>
-          <div class="instalacion-info premium-info">
-            <span class="icon">💡</span>
-            <strong>¡Facilitamos tu pago!</strong> El costo de la antena (<strong>$1,800</strong>) puedes diferirlo en <strong>3 mensualidades</strong> junto con el pago de tu plan seleccionado.
+          <div id="install-explain" style="text-align:center; margin-top:.5rem;"></div>
+          <!-- Pago anticipado (movido abajo, previo al CTA) -->
+          <div class="proceso-pago-info" style="margin-top: .8rem;">
+            <strong>El pago anticipado es de <span id="install-upfront" style="color:#00c6ff">$850</span>.</strong><br>
+            <span style="color:#6b7a90">Este monto cubre los <strong>costos de instalación y equipo</strong> y puede variar si <strong>ya cuentas o no con antena</strong>.</span>
+          </div>
+          <div id="install-financing" class="instalacion-info premium-info">
+            <i class="fa-regular fa-lightbulb icon" aria-hidden="true"></i>
+            <span class="instalacion-info-text"><strong>¡Facilitamos tu pago!</strong> El costo de la antena (<strong>$1,800</strong>) puedes diferirlo en <strong>3 mensualidades</strong> junto con el pago de tu plan seleccionado.</span>
           </div>
           <div class="contrata-ahora-wrap scroll-anim">
-            <a href="http://clientes.portalinternet.net/solicitar-instalacion/norttek/" target="_blank" class="contrata-ahora-btn">
-              <span class="contrata-icon">📝</span> Solicita tu Instalación
-            </a>
-          </div>
-        </section>
-
-        <!-- App Wisphub -->
-        <section class="app-wisphub premium-box scroll-anim">
-          <div class="app-header-wisphub">
-            <img src="http://wisphub-media.s3.amazonaws.com/media/uploadsCKEditor/jorge%40wisphub/2020/02/20/logo-servicio-wifi.png" alt="Wisphub App" class="wisphub-logo" />
-            <h2>Administra tu servicio desde la app móvil</h2>
-          </div>
-          <ul class="wisphub-benefits">
-            <li>Consulta y reporta tus pagos fácilmente</li>
-            <li>Recibe notificaciones y recordatorios</li>
-            <li>Administra tu cuenta y servicio desde cualquier lugar</li>
-            <li>Disponible para Android y iOS</li>
-          </ul>
-          <div class="wisphub-links">
-            <a href="https://play.google.com/store/apps/details?id=net.wisphub.app" target="_blank" class="wisphub-store">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="store-img" />
-            </a>
-            <a href="https://apps.apple.com/mx/app/wisphub/id6445943532" target="_blank" class="wisphub-store">
-              <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="store-img" />
+            <a id="solicitar" href="http://clientes.portalinternet.net/solicitar-instalacion/norttek/" target="_blank" class="contrata-ahora-btn">
+              <i class="fa-solid fa-pen-to-square contrata-icon" aria-hidden="true"></i> Solicita tu Instalación
             </a>
           </div>
         </section>
       </main>
     </div>
-  <div id="cliente-content" class="section-toggle" style="display:none; padding-top:200px;">
-      <div style="text-align:center; margin:4rem 0;">
-        <h2 style="font-size:2.2rem; color:#1565c0; font-weight:800; margin-bottom:1.5rem;">Bienvenido cliente Norttek</h2>
-        <p style="font-size:1.3rem; color:#444; margin-bottom:2rem;">Aquí puedes consultar tu estado de cuenta, soporte y promociones exclusivas.</p>
-        <a href="https://clientes.norttek.com.mx" class="btn-contratar-link" style="font-size:1.1rem; padding:1rem 2.5rem;">Acceder a mi cuenta</a>
-        <div style="margin-top:2rem;">
-          <a href="mailto:soporte@norttek.com.mx" class="btn-contratar-link" style="font-size:1.1rem; padding:1rem 2.5rem; background:#1565c0; color:#fff;">Soporte técnico</a>
+  <div id="cliente-content" class="section-toggle" style="display:none; padding-top:160px;">
+      <div style="text-align:center; margin:3rem 0;">
+        <h2 style="font-size:2rem; font-weight:900; margin-bottom:1rem;">Bienvenido cliente Norttek</h2>
+        <p style="font-size:1.1rem; color:#a7b3cc; margin-bottom:1.5rem;">Consulta tu cuenta, soporte y promociones exclusivas.</p>
+        <a href="https://clientes.norttek.com.mx" class="btn-contratar-link">Acceder a mi cuenta</a>
+        <div style="margin-top:1rem;">
+          <a href="mailto:soporte@norttek.com.mx" class="btn-contratar-link">Soporte técnico</a>
         </div>
       </div>
+      <!-- App Wisphub (solo clientes) -->
+      <section class="app-wisphub premium-box scroll-anim" style="margin:1rem auto 2rem; max-width:820px; text-align:center;">
+        <div class="app-header-wisphub">
+          <img src="http://wisphub-media.s3.amazonaws.com/media/uploadsCKEditor/jorge%40wisphub/2020/02/20/logo-servicio-wifi.png" alt="Wisphub App" class="wisphub-logo" />
+          <h2>Administra tu servicio desde la app móvil</h2>
+        </div>
+        <ul class="wisphub-benefits">
+          <li>Consulta y reporta tus pagos fácilmente</li>
+          <li>Recibe notificaciones y recordatorios</li>
+          <li>Administra tu cuenta y servicio desde cualquier lugar</li>
+          <li>Disponible para Android y iOS</li>
+        </ul>
+        <div class="wisphub-links" style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+          <a href="https://play.google.com/store/apps/details?id=net.wisphub.app" target="_blank" class="wisphub-store" style="text-decoration:none;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="store-img" style="height:48px; width:160px; object-fit:contain; display:block;" />
+          </a>
+          <a href="https://apps.apple.com/mx/app/wisphub/id6445943532" target="_blank" class="wisphub-store" style="text-decoration:none;">
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="store-img" style="height:48px; width:160px; object-fit:contain; display:block;" />
+          </a>
+        </div>
+      </section>
     </div>
   </div>
 </div>
