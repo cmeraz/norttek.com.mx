@@ -313,7 +313,7 @@ document.addEventListener('DOMContentLoaded', function() {
             nombre = toTitleCaseEs(nombreTrim);
           }
         } catch(_) {}
-        var saludo = nombre ? ('Hola, soy ' + nombre) : 'Hola';
+        var saludo = nombre ? ('Hola, mi nombre es ' + nombre) : 'Hola';
         var copy = saludo + ', me gustaría recibir más información sobre el servicio de Internet Norttek, costos de instalación y planes disponibles. ¿Podrían ayudarme a solicitar la instalación? Muchas gracias.';
         var phone = '526252690997';
         var url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(copy);
