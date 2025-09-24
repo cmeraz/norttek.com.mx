@@ -6,6 +6,9 @@
   --primary: #9bc4ff;
   --primary-600: #6fa4ff;
   --ring: rgba(111, 164, 255, 0.20);
+  --danger-500: #ff3b3b;
+  --danger-600: #ff1f1f;
+  --danger-ring: rgba(255, 61, 61, 0.25);
 }
 
 .internet-app {
@@ -18,6 +21,7 @@
   --primary: #9bc4ff;       /* primary accent (pastel blue) */
   --primary-600: #6fa4ff;   /* slightly stronger pastel */
   --accent: #bcd8ff;        /* soft blue for small details */
+  --icon-accent: #ff8a00;   /* warm orange for higher contrast icons */
   --ring: rgba(111, 164, 255, 0.20);
   color: var(--text);
   background: var(--bg);
@@ -45,9 +49,37 @@
 
 /* Top menu */
 .internet-app #main-menu { display:flex; justify-content:center; gap:.75rem; margin:1.2rem auto 2rem; padding:.4rem; background: var(--surface-2); border:1px solid #e7edf6; border-radius:999px; box-shadow: 0 1px 6px rgba(15,23,42,.035); width:max-content; }
-.internet-app #main-menu .btn-contratar-link { background: transparent; color: var(--muted); border:1px solid transparent; padding:.72rem 1.1rem; border-radius:999px; font-weight:700; letter-spacing:.1px; transition: all .2s ease; transform: translateY(8px); opacity: 0; }
-.internet-app #main-menu .btn-contratar-link:hover { color: var(--text); background: #fff; border-color: #e7edf6; }
-.internet-app #main-menu .active-menu { background: linear-gradient(180deg, var(--primary) 0%, var(--primary-600) 100%); color:#fff !important; box-shadow: 0 8px 18px var(--ring); border-color: transparent; }
+.internet-app #main-menu .btn-contratar-link {
+  position: relative;
+  color: var(--muted);
+  border: 1px solid transparent;
+  padding: .64rem 1rem;
+  border-radius: 8px; /* casi cuadrado, ligera curva */
+  font-weight: 800;
+  letter-spacing: .1px;
+  transition: color .2s ease, box-shadow .2s ease, transform .2s ease, background .8s ease; /* animación degradada más lenta */
+  transform: translateY(8px);
+  opacity: 0;
+  background: linear-gradient(#fff, #fff) padding-box,
+              linear-gradient(135deg, var(--primary) 0%, var(--primary-600) 100%) border-box; /* borde con "rayo" azul */
+}
+.internet-app #main-menu .btn-contratar-link:hover {
+  color: var(--primary-600);
+  background: linear-gradient(180deg, #e9f1ff, #e1ecff) padding-box,
+              linear-gradient(135deg, var(--primary) 0%, var(--primary-600) 100%) border-box;
+  box-shadow: 0 6px 14px var(--ring);
+}
+.internet-app #main-menu .active-menu {
+  color: var(--primary-600) !important;
+  background: linear-gradient(#fff, #fff) padding-box,
+              linear-gradient(135deg, var(--primary) 0%, var(--primary-600) 100%) border-box;
+  box-shadow: 0 8px 18px var(--ring);
+  border-color: transparent;
+}
+.internet-app #main-menu .active-menu:hover {
+  background: linear-gradient(180deg, #e5efff, #dbe7ff) padding-box,
+              linear-gradient(135deg, var(--primary) 0%, var(--primary-600) 100%) border-box;
+}
 .internet-app #main-menu.menu-visible .btn-contratar-link { transform: translateY(0); opacity: 1; }
 .internet-app #main-menu.menu-visible .btn-contratar-link:nth-child(1) { transition-delay: .05s; }
 .internet-app #main-menu.menu-visible .btn-contratar-link:nth-child(2) { transition-delay: .15s; }
@@ -71,7 +103,7 @@
   max-width: 1100px;
 }
 .internet-app .premium-box h2, .internet-app .proceso-instalacion h2, .internet-app .instalacion h2, .internet-app .app-wisphub h2 { color: #0f172a; letter-spacing:.1px; margin: 0 0 .6rem 0; text-align:center; }
-.internet-app .section-icon { color: var(--primary-600); margin-right:.5rem; }
+.internet-app .section-icon { color: var(--icon-accent); margin-right:.5rem; }
 .internet-app .premium-info, .internet-app .instalacion-info { color: var(--muted); }
 
 /* Unified section title/subtitle */
@@ -89,7 +121,8 @@
 .internet-app .plan-cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1rem; max-width:1100px; margin:0 auto; padding:0 1rem; }
 .internet-app .plan-card { background: var(--surface); border: 1px solid #eef3fa; border-radius:14px; padding:1rem; box-shadow: 0 2px 8px rgba(15,23,42,.045); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; text-align: center; position: relative; }
 .internet-app .plan-card:hover { transform: translateY(-2px); border-color: rgba(111,164,255,0.45); box-shadow: 0 6px 16px rgba(15,23,42,.07); }
-.internet-app .plan-badge { position:absolute; top:10px; right:10px; background: linear-gradient(180deg, var(--primary), var(--primary-600)); color:#fff; font-weight:900; font-size:.72rem; padding:.28rem .6rem; border-radius:999px; box-shadow:0 4px 10px var(--ring); letter-spacing:.2px; }
+.internet-app .plan-badge { position:absolute; top:10px; right:10px; background: linear-gradient(180deg, var(--primary), var(--primary-600)); color:#fff; font-weight:900; font-size:.72rem; padding:.28rem .6rem; border-radius:8px; box-shadow:0 4px 10px var(--ring); letter-spacing:.2px; transition: transform .18s ease, box-shadow .18s ease; }
+.internet-app .plan-card:hover .plan-badge { transform: scale(1.02); box-shadow: 0 6px 14px var(--ring); }
 .internet-app .plan-megas { display:flex; align-items:center; gap:.5rem; font-weight:900; color:#0f172a; letter-spacing:.2px; }
 .internet-app .plan-card .plan-megas { justify-content:center; }
 .internet-app .plan-mega-icon { color:#ffd54f; filter: drop-shadow(0 2px 6px rgba(0,0,0,.15)); }
@@ -100,18 +133,38 @@
 .internet-app .plan-info li { margin:.25rem 0; }
 .internet-app .ilimitado { color: var(--primary); font-weight: 800; }
 
-/* Buttons */
-.internet-app .btn-contratar-link { background: linear-gradient(180deg, var(--primary) 0%, var(--primary-600) 100%); color:#fff; border:none; border-radius:10px; padding:.7rem 1rem; display:inline-flex; align-items:center; gap:.5rem; font-weight:700; letter-spacing:.1px; box-shadow:0 6px 14px var(--ring); transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease; text-decoration:none; }
-.internet-app .btn-contratar-link:hover { transform: translateY(-1px); box-shadow: 0 8px 18px var(--ring); }
+/* Buttons - unified style */
+.internet-app .btn-contratar-link {
+  position: relative;
+  color: var(--primary-600);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: .7rem 1rem;
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-weight: 800; letter-spacing: .1px;
+  text-decoration: none;
+  background: linear-gradient(#fff, #fff) padding-box,
+              linear-gradient(135deg, var(--primary) 0%, var(--primary-600) 100%) border-box;
+  box-shadow: 0 4px 10px var(--ring);
+  transition: transform .18s ease, box-shadow .18s ease, background .6s ease, color .18s ease;
+}
+.internet-app .btn-contratar-link:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(180deg, #e9f1ff, #e1ecff) padding-box,
+              linear-gradient(135deg, var(--primary) 0%, var(--primary-600) 100%) border-box;
+  box-shadow: 0 8px 18px var(--ring);
+}
 .internet-app .btn-contratar-link .icon { font-size:1.1rem; }
 
 /* Install */
 .internet-app .instalacion-header { display:flex; align-items:center; gap:.75rem; margin-bottom:.6rem; }
 .internet-app .instalacion-header.vertical { flex-direction: column; align-items:center; text-align:center; }
-.internet-app .instalacion-icon { font-size:1.3rem; }
+.internet-app .instalacion-icon { font-size:1.6rem; color: var(--icon-accent); }
 .internet-app .instalacion-desc { color: var(--muted); margin:0; }
 .internet-app .instalacion-cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:.75rem; align-items:stretch; }
-.internet-app .instalacion-card { display:flex; align-items:center; gap:.75rem; background: var(--surface); border:1px solid #eef3fa; border-radius:12px; padding:.9rem 1rem; box-shadow: 0 2px 6px rgba(15,23,42,.045); }
+.internet-app .instalacion-card { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.5rem; text-align:center; background: var(--surface); border:1px solid #eef3fa; border-radius:12px; padding:1rem 1rem; box-shadow: 0 2px 6px rgba(15,23,42,.045); }
+.internet-app .instalacion-card .card-icon { font-size:1.6rem; color: var(--icon-accent); margin-bottom:.1rem; }
+.internet-app .instalacion-card > div { text-align:center; }
 .internet-app .instalacion-total { display:flex; align-items:baseline; justify-content:center; gap:.5rem; margin-top:.8rem; font-weight:900; }
 .internet-app .total-label { color: var(--muted); }
 .internet-app .total-amount { font-size:1.45rem; color: var(--primary); }
@@ -119,8 +172,25 @@
 .internet-app .instalacion-info .icon { flex:0 0 auto; margin-top:.1rem; }
 .internet-app .instalacion-info-text { flex:1 1 240px; min-width:0; }
 .internet-app .contrata-ahora-wrap { display:flex; justify-content:center; margin-top:1rem; }
-.internet-app .contrata-ahora-btn { background: linear-gradient(180deg, var(--primary), var(--primary-600)); color:#fff; border-radius:12px; padding:.85rem 1.2rem; font-weight:900; text-decoration:none; box-shadow:0 6px 14px var(--ring); transition: transform .18s ease, box-shadow .18s ease; display:inline-flex; align-items:center; gap:.5rem; }
-.internet-app .contrata-ahora-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 18px var(--ring); }
+.internet-app .contrata-ahora-btn {
+  position: relative;
+  color: var(--primary-600);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: .85rem 1.2rem;
+  font-weight: 900; text-decoration: none;
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: linear-gradient(#fff, #fff) padding-box,
+              linear-gradient(135deg, var(--primary) 0%, var(--primary-600) 100%) border-box;
+  box-shadow: 0 6px 14px var(--ring);
+  transition: transform .18s ease, box-shadow .18s ease, background .6s ease, color .18s ease;
+}
+.internet-app .contrata-ahora-btn:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(180deg, #e7f0ff, #dfebff) padding-box,
+              linear-gradient(135deg, var(--primary) 0%, var(--primary-600) 100%) border-box;
+  box-shadow: 0 8px 18px var(--ring);
+}
 
 /* Wisphub */
 .internet-app .app-wisphub { text-align:center; }
@@ -133,6 +203,14 @@
 /* Scroll reveal */
 .internet-app .scroll-anim { opacity:0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
 .internet-app .scroll-anim.visible { opacity:1; transform: translateY(0); }
+/* Title/subtitle micro-animations on reveal */
+.internet-app .scroll-anim .section-title { opacity: 0; transform: translateY(8px); transition: opacity .4s ease, transform .4s ease; }
+.internet-app .scroll-anim.visible .section-title { opacity: 1; transform: translateY(0); }
+.internet-app .scroll-anim .section-subtitle { opacity: 0; transform: translateY(8px); transition: opacity .4s ease .06s, transform .4s ease .06s; }
+.internet-app .scroll-anim.visible .section-subtitle { opacity: 1; transform: translateY(0); }
+/* Plan cards staggered on section reveal */
+.internet-app .plans.scroll-anim .plan-card.animate-card { opacity:0; transform: translateY(16px); transition: opacity .45s ease, transform .45s ease; }
+.internet-app .plans.scroll-anim.visible .plan-card.animate-card { opacity:1; transform: translateY(0); }
 
 /* Utilities */
 .internet-app .plans { width:100%; }
@@ -173,33 +251,75 @@
 .internet-modal input[type="text"] { width:100%; padding:.7rem .8rem; border-radius:10px; border:1px solid #e7edf6; outline:none; background:#fff; color:#1f2937; transition: box-shadow .15s ease, border-color .15s ease; }
 .internet-modal input[type="text"]:focus { border-color: var(--primary-600); box-shadow: 0 0 0 4px var(--ring); }
 .internet-modal .radio-group { display:flex; gap:1rem; }
-.internet-modal .radio-item { display:flex; align-items:center; gap:.45rem; color:#1f2937; }
+.internet-modal .radio-group { display:flex; gap:1rem; flex-wrap: wrap; background:#f8fbff; border:1px solid #e7edf6; border-radius:10px; padding:.6rem .8rem; justify-content:center; }
+.internet-modal .radio-item { display:flex; align-items:center; gap:.5rem; color:#1f2937; padding:.2rem .35rem; border-radius:999px; }
+.internet-modal .radio-item:hover { background:#f1f5fb; }
+/* Custom radios */
+.internet-modal .radio-item input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px; height: 18px;
+  border-radius: 999px;
+  border: 2px solid #bcd8ff;
+  background:#fff;
+  position: relative;
+  display:inline-block;
+  transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.internet-modal .radio-item input[type="radio"]::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 8px; height: 8px;
+  background: var(--primary-600);
+  border-radius: 999px;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform .15s ease;
+}
+.internet-modal .radio-item input[type="radio"]:checked { border-color: var(--primary-600); }
+.internet-modal .radio-item input[type="radio"]:checked::before { transform: translate(-50%, -50%) scale(1); }
+.internet-modal .radio-item input[type="radio"]:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--ring); border-color: var(--primary-600); }
 .internet-modal .modal-actions { position:sticky; bottom:0; left:0; right:0; background:#fff; display:flex; justify-content:flex-end; gap:.6rem; padding:.8rem 1.1rem 1.1rem; margin-top:.3rem; border-top:1px solid #eef3fa; }
 .internet-modal .modal-actions .btn { min-width:120px; flex: 0 0 auto; }
 @media (max-width: 520px) {
   .internet-modal .modal-actions { justify-content:stretch; gap:.5rem; }
   .internet-modal .modal-actions .btn { flex:1 1 0; }
 }
-.internet-modal .btn { display:inline-flex; align-items:center; justify-content:center; border-radius:10px; padding:.8rem 1rem; font-weight:800; border:1px solid transparent; cursor:pointer; transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease; }
+.internet-modal .btn { display:inline-flex; align-items:center; justify-content:center; border-radius:8px; padding:.8rem 1rem; font-weight:800; border:1px solid transparent; cursor:pointer; transition: transform .15s ease, box-shadow .15s ease, background .6s ease, border-color .15s ease; }
 .internet-modal .modal-actions .btn-primary {
-  background: linear-gradient(180deg, var(--primary), var(--primary-600));
-  background-color: #6fa4ff; /* fallback solid */
-  color:#fff;
-  font-weight:900;
+  color: var(--primary-600);
+  border: 1px solid transparent;
+  background: linear-gradient(#fff, #fff) padding-box,
+              linear-gradient(135deg, var(--primary) 0%, var(--primary-600) 100%) border-box;
   box-shadow: 0 6px 14px var(--ring);
-  border-color: #6fa4ff;
 }
-.internet-modal .modal-actions .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 18px var(--ring); }
-.internet-modal .modal-actions .btn-secondary { background:#fff; color:#1f2937; border-color:#e7edf6; }
-.internet-modal .modal-actions .btn-secondary:hover { background:#f8fbff; }
+.internet-modal .modal-actions .btn-primary:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(#f8fbff, #f8fbff) padding-box,
+              linear-gradient(135deg, var(--primary) 0%, var(--primary-600) 100%) border-box;
+  box-shadow: 0 8px 18px var(--ring);
+}
+.internet-modal .modal-actions .btn-secondary {
+  color: var(--danger-600);
+  border: 1px solid transparent;
+  background: linear-gradient(#fff, #fff) padding-box,
+              linear-gradient(135deg, var(--danger-500) 0%, var(--danger-600) 100%) border-box;
+  box-shadow: 0 4px 10px var(--danger-ring);
+}
+.internet-modal .modal-actions .btn-secondary:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(#fff5f5, #fff5f5) padding-box,
+              linear-gradient(135deg, var(--danger-500) 0%, var(--danger-600) 100%) border-box;
+  box-shadow: 0 8px 18px var(--danger-ring);
+}
 .internet-modal .modal-close { position:absolute; top:.6rem; right:.7rem; background:transparent; border:none; font-size:1.5rem; color:#6b7a90; cursor:pointer; padding:.2rem; border-radius:8px; }
 .internet-modal .modal-close:hover { background:#f1f5fb; color:#1f2937; }
 
 @keyframes modalIn { from { opacity:0; transform: translateY(6px);} to { opacity:1; transform: translateY(0);} }
 
 /* Monochrome icons (scoped) */
-.internet-app .plan-mega-icon { color: var(--primary-600); /* unify color */ filter: grayscale(1) brightness(.92) contrast(1.05); /* remove previous drop-shadow */ text-shadow: none; }
+.internet-app .plan-mega-icon { color: var(--icon-accent); font-size:1.35rem; filter: none; text-shadow: none; }
 .internet-app .icon,
 .internet-app .instalacion-icon,
 .internet-app .card-icon,
-.internet-app .contrata-icon { display:inline-block; color: var(--primary-600); filter: grayscale(1) brightness(.92) contrast(1.05); }
+.internet-app .contrata-icon { display:inline-block; color: var(--icon-accent); filter: none; }

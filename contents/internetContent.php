@@ -23,9 +23,14 @@
       </div>
       <ul style="list-style:none; padding:0; margin:.4rem 0 0; color:#6b7a90; display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:.35rem;">
         <li><i class="fa-regular fa-circle-check" style="color:#6fa4ff;"></i> Instalación coordinada contigo</li>
-        <li><i class="fa-regular fa-circle-check" style="color:#6fa4ff;"></i> Equipos preconfigurados</li>
-        <li><i class="fa-regular fa-circle-check" style="color:#6fa4ff;"></i> Pago por link seguro</li>
+        <li><i class="fa-regular fa-circle-check" style="color:#6fa4ff;"></i> Equipos nuevos y de ultima generacion</li>
+        <li><i class="fa-regular fa-circle-check" style="color:#6fa4ff;"></i> App movil para registrar tus pagos</li>
       </ul>
+        <ul style="list-style:none; padding:0; margin:.4rem 0 0; color:#6b7a90; display:flex; flex-direction:column; gap:.35rem;">
+          <li style="display:flex; align-items:center; gap:.5rem;"><i class="fa-regular fa-circle-check" style="color:#6fa4ff;"></i> Instalación coordinada contigo</li>
+          <li style="display:flex; align-items:center; gap:.5rem;"><i class="fa-regular fa-circle-check" style="color:#6fa4ff;"></i> Equipos nuevos y de ultima generacion</li>
+          <li style="display:flex; align-items:center; gap:.5rem;"><i class="fa-regular fa-circle-check" style="color:#6fa4ff;"></i> App movil para registrar tus pagos</li>
+        </ul>
       <div class="modal-actions">
         <button type="submit" id="btn-modal-continuar" class="btn btn-primary">Aceptar</button>
   <button type="button" id="btn-cancelar" class="btn btn-secondary">Cancelar</button>
@@ -49,8 +54,8 @@
   </section>
   <!-- Menú principal debajo del hero -->
   <div id="main-menu">
-    <button id="btn-nuevo" class="btn-contratar-link"><i class="fa-solid fa-user-plus" aria-hidden="true"></i> Usuarios nuevos</button>
-    <button id="btn-cliente" class="btn-contratar-link"><i class="fa-solid fa-user-check" aria-hidden="true"></i> Clientes existentes</button>
+    <button id="btn-nuevo" class="btn-contratar-link"><i class="fa-solid fa-list-ul" aria-hidden="true"></i> Conoce los planes</button>
+    <button id="btn-cliente" class="btn-contratar-link"><i class="fa-solid fa-user-shield" aria-hidden="true"></i> ¿Ya eres cliente?</button>
   </div>
   <!-- Contenedor principal dinámico -->
   <div id="main-content-container">

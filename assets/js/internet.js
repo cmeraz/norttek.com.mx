@@ -90,9 +90,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // Asegura que las secciones ocultas tengan la clase para transición
   [nuevoContent, clienteContent].forEach(function(el){ if (el && el.style.display === 'none') el.classList.add('section-hidden'); });
   mostrarBienvenida();
-  // Animación de fichas al cargar
+  // Stagger para tarjetas de planes (usa transitionDelay)
   document.querySelectorAll('.plan-card.animate-card').forEach(function(card, i) {
-    card.style.animationDelay = (i * 0.15) + 's';
+    card.style.transitionDelay = (i * 0.12) + 's';
   });
 
   // Animación scroll para secciones (IntersectionObserver)
