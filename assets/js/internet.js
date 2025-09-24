@@ -71,6 +71,49 @@ document.addEventListener('DOMContentLoaded', function() {
     } catch(_) { return { full: '', first: '' }; }
   }
 
+  // Helpers para persistir y usar el plan seleccionado
+  function setStoredPlan(megas, price) {
+    try {
+      localStorage.setItem('selectedPlanMegas', megas || '');
+      localStorage.setItem('selectedPlanPrice', price || '');
+    } catch(_) {}
+  }
+  function getStoredPlan() {
+    try {
+      return {
+        megas: localStorage.getItem('selectedPlanMegas') || '',
+        price: localStorage.getItem('selectedPlanPrice') || ''
+      };
+    } catch(_) { return { megas: '', price: '' }; }
+  }
+  function renderCtaPlan() {
+    var cta = document.getElementById('solicitar');
+    if (!cta) return;
+    var plan = getStoredPlan();
+    var labelId = 'cta-plan-suffix';
+    var suffix = document.getElementById(labelId);
+    if (plan.megas) {
+      if (!suffix) {
+        suffix = document.createElement('span');
+        suffix.id = labelId;
+        suffix.style.marginLeft = '.5rem';
+        suffix.style.fontWeight = '700';
+        suffix.style.color = '#4f8cff';
+        cta.appendChild(suffix);
+      }
+      suffix.textContent = '(Plan ' + plan.megas + ' Megas)';
+      try {
+        var baseHref = (cta.getAttribute('data-base-href') || cta.getAttribute('href') || '').split('?')[0];
+        cta.setAttribute('data-base-href', baseHref);
+        cta.setAttribute('href', baseHref + '?plan=' + encodeURIComponent(plan.megas));
+      } catch(_) {}
+    } else if (suffix) {
+      suffix.remove();
+      var base = cta.getAttribute('data-base-href');
+      if (base) cta.setAttribute('href', base);
+    }
+  }
+
   // Menú principal: lógica de contenido dinámico
   var btnNuevo = document.getElementById('btn-nuevo');
   var btnCliente = document.getElementById('btn-cliente');
@@ -138,6 +181,9 @@ document.addEventListener('DOMContentLoaded', function() {
       if (modalNombre && !modalNombre.value) modalNombre.value = stored.full;
     }
   } catch(_) {}
+
+  // Inicializa CTA con plan seleccionado previo (si existe)
+  try { renderCtaPlan(); } catch(_) {}
 
   // Animación scroll para secciones (IntersectionObserver)
   var revealTargets = document.querySelectorAll('.scroll-anim');
@@ -360,6 +406,54 @@ document.addEventListener('DOMContentLoaded', function() {
         var msg = document.getElementById('asesor-msg');
         if (msg) msg.textContent = 'Abriendo WhatsApp…';
         window.open(url, '_blank');
+      });
+    }
+  } catch(_) {}
+
+  // Al contratar un plan: persistir selección, actualizar CTA y abrir WhatsApp al número solicitado
+  try {
+    document.querySelectorAll('.plan-card .btn-contratar-link').forEach(function(a){
+      a.addEventListener('click', function(){
+        var card = a.closest('.plan-card');
+        var megas = (card && card.getAttribute('data-megas')) || '';
+        var price = '';
+        try {
+          var priceEl = card ? card.querySelector('.price') : null;
+          price = priceEl ? priceEl.textContent.trim() : '';
+        } catch(_) {}
+        // Guardar plan y refrescar CTA
+        setStoredPlan(megas, price);
+        try { renderCtaPlan(); } catch(_) {}
+        // Preparar WhatsApp
+        var st = getStoredName();
+        var nombre = (st.full || st.first || '').trim();
+        try {
+          if (nombre && nombre === nombre.toLocaleLowerCase('es-MX')) {
+            nombre = toTitleCaseEs(nombre);
+          }
+        } catch(_) {}
+        var saludo = nombre ? ('Hola, mi nombre es ' + nombre + '.') : 'Hola.';
+        var planTxt = megas ? (megas + ' Megas') : 'Internet';
+        var priceTxt = price ? (' (' + price + ')') : '';
+        var texto = saludo + ' Me gustaría contratar el plan de ' + planTxt + priceTxt + '. ¿Pueden ayudarme a continuar con la solicitud? ' + 'Este es el enlace del formulario: ' + a.href;
+        var phonePlan = '526252690097';
+        var wa = 'https://wa.me/' + phonePlan + '?text=' + encodeURIComponent(texto);
+        window.open(wa, '_blank');
+      });
+    });
+  } catch(_) {}
+
+  // Al hacer click en el CTA final, asegurar que el plan elegido esté en el querystring
+  try {
+    var ctaBtn = document.getElementById('solicitar');
+    if (ctaBtn) {
+      ctaBtn.addEventListener('click', function(){
+        var plan = getStoredPlan();
+        if (plan.megas) {
+          var baseHref = (ctaBtn.getAttribute('data-base-href') || ctaBtn.getAttribute('href') || '').split('?')[0];
+          ctaBtn.setAttribute('data-base-href', baseHref);
+          ctaBtn.setAttribute('href', baseHref + '?plan=' + encodeURIComponent(plan.megas));
+        }
       });
     }
   } catch(_) {}
