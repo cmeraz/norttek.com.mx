@@ -195,14 +195,27 @@ document.addEventListener('DOMContentLoaded', function() {
   } catch(_) {}
   // Tomar solo el primer nombre para el saludo
   var primerNombre = nombreNorm.split(/\s+/)[0] || '';
-      var antena = (document.querySelector('input[name="antena"]:checked') || {}).value || 'no';
+  var antena = (document.querySelector('input[name="antena"]:checked') || {}).value || 'no';
 
       // Precios base
       var costoInstalacion = antena === 'si' ? 500 : 850; // si ya tiene servicio/antena: 500; no: 850
       var costoAntena = antena === 'si' ? 0 : 1800;       // solo si no tiene antena
       var total = costoInstalacion + costoAntena;
 
-      // Actualizar placeholders
+      // Mostrar/ocultar listas según equipo (antena)
+      try {
+        var listNo = document.querySelector('.proceso-list.equipo-false');
+        var listSi = document.querySelector('.proceso-list.equipo-true');
+        if (listNo) listNo.classList.remove('show');
+        if (listSi) listSi.classList.remove('show');
+        if (antena === 'si') {
+          if (listSi) listSi.classList.add('show');
+        } else {
+          if (listNo) listNo.classList.add('show');
+        }
+      } catch(_) {}
+
+      // Actualizar placeholders / costos
   var elUpfront = document.getElementById('install-upfront');
   var elCable = document.getElementById('install-cable-cost');
   var elTotal = document.getElementById('install-total');
@@ -227,11 +240,8 @@ document.addEventListener('DOMContentLoaded', function() {
       // Explicación dinámica y saludo
       var explain = document.getElementById('install-explain');
       if (explain) {
-        if (antena === 'si') {
-          explain.textContent = 'Tienes antena/servicio: el pago anticipado por link es solo instalación ($500).';
-        } else {
-          explain.textContent = 'No tienes antena: el pago anticipado por link corresponde a instalación ($850) + antena ($1,800).';
-        }
+        var montoConfirm = '$' + costoInstalacion.toLocaleString('es-MX');
+        explain.textContent = 'Cuando agendemos tu instalación, nos pondremos en contacto contigo para compartir nuestras cuentas o links de pago con tarjeta. Con el pago de ' + montoConfirm + ' podrás confirmar tu visita y asegurar la instalación.';
       }
       var greetWrap = document.getElementById('personal-greeting');
       var greetName = document.getElementById('customer-name');
@@ -254,9 +264,63 @@ document.addEventListener('DOMContentLoaded', function() {
       // Cerrar modal y mostrar contenido
       cerrarModal();
       showSection(nuevoContent);
+      // Desplazar suavemente a la sección de proceso inicial para ver costos
+      try {
+        var target = document.querySelector('.proceso-instalacion');
+        if (target) {
+          var header = document.getElementById('site-header');
+          var y = target.getBoundingClientRect().top + window.pageYOffset - ((header && header.offsetHeight) || 0) - 8;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      } catch(_) {}
     });
   }
   // Guardar selección cuando se navega entre pestañas del menú
   if (btnCliente) btnCliente.addEventListener('click', function(){ try { localStorage.setItem('internetSection', 'cliente'); } catch (_) {} });
   if (btnNuevo) btnNuevo.addEventListener('click', function(){ try { localStorage.setItem('internetSection', 'nuevo'); } catch (_) {} });
+
+  // Smooth scroll to advisor with sticky header offset and highlight
+  document.querySelectorAll('a.link-asesor').forEach(function(a){
+    a.addEventListener('click', function(ev){
+      var href = a.getAttribute('href') || '';
+      if (href.startsWith('#')) {
+        ev.preventDefault();
+        var id = href.slice(1);
+        var el = document.getElementById(id);
+        if (el) {
+          var header = document.getElementById('site-header');
+          var y = el.getBoundingClientRect().top + window.pageYOffset - ((header && header.offsetHeight) || 0) - 10;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+          // resaltar contenedor con animación
+          el.classList.remove('highlight');
+          void el.offsetWidth; // reflow to restart animation
+          el.classList.add('highlight');
+        }
+      }
+    });
+  });
+
+  // Contacta a un asesor (WhatsApp)
+  try {
+    var btnAsesor = document.querySelector('.btn-asesor');
+    if (btnAsesor) {
+      btnAsesor.addEventListener('click', function() {
+        var nombreRaw = (document.getElementById('asesor-nombre') || {}).value || '';
+        var nombreTrim = nombreRaw.trim().replace(/\s+/g, ' ');
+        var nombre = nombreTrim;
+        try {
+          if (nombreTrim && nombreTrim === nombreTrim.toLocaleLowerCase('es-MX')) {
+            nombre = toTitleCaseEs(nombreTrim);
+          }
+        } catch(_) {}
+        var saludo = nombre ? ('Hola, soy ' + nombre) : 'Hola';
+        var copy = saludo + ', me gustaría recibir más información sobre el servicio de Internet Norttek, costos de instalación y planes disponibles. ¿Podrían ayudarme a solicitar la instalación? Muchas gracias.';
+        var phone = '526252690997';
+        var url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(copy);
+        var msg = document.getElementById('asesor-msg');
+        if (msg) msg.textContent = 'Abriendo WhatsApp…';
+        window.open(url, '_blank');
+      });
+    }
+  } catch(_) {}
 });
