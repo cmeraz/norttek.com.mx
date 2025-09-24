@@ -43,47 +43,49 @@
           </div>
           <p class="price">$299/mes</p>
           <ul class="plan-info">
-            <li>Ideal para 1-2 dispositivos</li>
-            <li>Streaming HD y redes sociales</li>
-            <li>Instalación rápida</li>
-            <li class="ilimitado"><strong>Internet ilimitado</strong></li>
-          </ul>
-          <a class="btn-contratar-link" href="http://clientes.portalinternet.net/solicitar-instalacion/norttek/?plan=10" target="_blank">
-            <span class="icon">🚀</span> Contratar
-          </a>
-        </div>
-      </div>
-      <!-- Plan 20 Megas -->
-      <div class="plan-card animate-card" data-megas="20">
-        <div style="display:flex; flex-direction:column; align-items:flex-start; width:100%;">
-          <div class="plan-megas">
-            <span class="plan-mega-icon">🚀</span>
-            <span class="plan-mega-value">20</span>
-            <span class="plan-mega-unit">Megas</span>
-          </div>
-          <p class="price">$399/mes</p>
-          <ul class="plan-info">
-            <li>Perfecto para familias pequeñas</li>
-            <li>Videollamadas y gaming casual</li>
-            <li>WiFi Mesh disponible</li>
-            <li class="ilimitado"><strong>Internet ilimitado</strong></li>
-          </ul>
-          <a class="btn-contratar-link" href="http://clientes.portalinternet.net/solicitar-instalacion/norttek/?plan=20" target="_blank">
-            <span class="icon">⚡</span> Contratar
-          </a>
-        </div>
-      </div>
-      <!-- Plan 30 Megas -->
-      <div class="plan-card animate-card" data-megas="30">
-        <div style="display:flex; flex-direction:column; align-items:flex-start; width:100%;">
-          <div class="plan-megas">
-            <span class="plan-mega-icon">🏆</span>
-            <span class="plan-mega-value">30</span>
-            <span class="plan-mega-unit">Megas</span>
-          </div>
-          <p class="price">$499/mes</p>
-          <ul class="plan-info">
-            <li>Para hogares conectados y gamers</li>
+          <div id="nuevo-content" style="display:none; padding-top:200px;">
+                <section class="hero-internet">
+                  <div class="hero-bg">
+                    <img src="assets/img/cctv-hero_img.jpg" alt="Internet Hero" class="hero-img-bg" />
+                    <div class="hero-overlay"></div>
+                  </div>
+                  <div class="hero-content">
+                    <img src="assets/img/logo-norttek.png" alt="Norttek Logo" class="logo-hero" />
+                    <h1 class="hero-title">Internet Premium para tu Hogar</h1>
+                    <p class="hero-subtitle">Conéctate a la mejor experiencia, velocidad y soporte. ¡Descubre la diferencia Norttek!</p>
+                  </div>
+                </section>
+                <main class="app-main" style="background:#f7f8fa; color:#222; font-family:'Roboto', Arial, sans-serif;">
+                  <section class="plans scroll-anim">
+                    <h2 style="text-align:center; margin-bottom:2rem; color:#1565c0;">Elige tu velocidad</h2>
+                    <div class="plan-cards">
+                      <!-- Planes renderizados aquí -->
+                      <div class="plan-card animate-card" data-megas="10">
+                        <div style="display:flex; flex-direction:column; align-items:flex-start; width:100%;">
+                          <div class="plan-megas">
+                            <span class="plan-mega-icon">⚡</span>
+                            <span class="plan-mega-value">10</span>
+                            <span class="plan-mega-unit">Megas</span>
+                          </div>
+                          <p class="price">$299/mes</p>
+                          <ul class="plan-info">
+                            <li>Ideal para 1-2 dispositivos</li>
+                            <li>Streaming HD y redes sociales</li>
+                            <li>Instalación rápida</li>
+                            <li class="ilimitado"><strong>Internet ilimitado</strong></li>
+                          </ul>
+                          <a class="btn-contratar-link" href="http://clientes.portalinternet.net/solicitar-instalacion/norttek/?plan=10" target="_blank">
+                            <span class="icon">🚀</span> Contratar
+                          </a>
+                        </div>
+                      </div>
+                      <!-- ...otros planes... -->
+                    </div>
+                  </section>
+                  <!-- Sección de instalación, premium, etc. -->
+                  <!-- ...puedes agregar más contenido aquí... -->
+                </main>
+              </div>
             <li>Streaming 4K y trabajo remoto</li>
             <li>Soporte prioritario</li>
             <li class="ilimitado"><strong>Internet ilimitado</strong></li>
