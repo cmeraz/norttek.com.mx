@@ -38,6 +38,23 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() { el.style.display = 'none'; }, 230);
   }
 
+  // Helper: convierte a Title Case respetando locale ES (para nombres en minúsculas)
+  function toTitleCaseEs(str) {
+    var locale = 'es-MX';
+    return String(str)
+      .split(/\s+/)
+      .map(function(word){
+        // Maneja compuestos con guión: "juan-pablo" -> "Juan-Pablo"
+        return word.split('-').map(function(seg){
+          if (!seg) return seg;
+          var first = seg.charAt(0).toLocaleUpperCase(locale);
+          var rest = seg.slice(1).toLocaleLowerCase(locale);
+          return first + rest;
+        }).join('-');
+      })
+      .join(' ');
+  }
+
   // Menú principal: lógica de contenido dinámico
   var btnNuevo = document.getElementById('btn-nuevo');
   var btnCliente = document.getElementById('btn-cliente');
@@ -164,9 +181,20 @@ document.addEventListener('DOMContentLoaded', function() {
   if (modalForm) {
     modalForm.addEventListener('submit', function(e) {
       e.preventDefault();
-  var nombre = (document.getElementById('input-nombre') || {}).value || '';
+  var inputNombreEl = document.getElementById('input-nombre');
+  var nombreRaw = (inputNombreEl || {}).value || '';
+  // Normaliza espacios
+  var nombreTrim = nombreRaw.trim().replace(/\s+/g, ' ');
+  // Si todo viene en minúsculas, capitaliza por palabra (Juan Pablo, Ana-María)
+  var nombreNorm = nombreTrim;
+  try {
+    if (nombreTrim && nombreTrim === nombreTrim.toLocaleLowerCase('es-MX')) {
+      nombreNorm = toTitleCaseEs(nombreTrim);
+      if (inputNombreEl) inputNombreEl.value = nombreNorm; // refleja el formato en el input
+    }
+  } catch(_) {}
   // Tomar solo el primer nombre para el saludo
-  var primerNombre = nombre.trim().split(/\s+/)[0] || '';
+  var primerNombre = nombreNorm.split(/\s+/)[0] || '';
       var antena = (document.querySelector('input[name="antena"]:checked') || {}).value || 'no';
 
       // Precios base
