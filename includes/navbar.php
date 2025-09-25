@@ -45,7 +45,10 @@ function nt_is_active($itemUrl, $activePage){
             <span class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-blue-600"></i><?= $business_address ?></span>
             <a href="tel:<?= $business_phone_tel ?>" class="flex items-center gap-2 hover:underline"><i class="fa-solid fa-phone text-blue-600"></i><?= $business_phone_raw ?></a>
             <a href="<?= $google_maps_link ?>" target="_blank" class="nt-btn nt-btn-outline" style="--_border:linear-gradient(135deg,#c8daec,#a7c6e2);font-size:.6rem;padding:.35rem .6rem;"> <i class="fa-solid fa-map"></i><span>Ubicación</span></a>
-            <button id="theme-toggle-desktop" class="nt-btn nt-btn-outline icon-only" aria-label="Cambiar tema" style="padding:.45rem .55rem;"><i class="fa-solid fa-moon"></i></button>
+            <button id="theme-toggle-desktop" class="nt-btn nt-btn-disabled nt-btn-locked icon-only" aria-label="Modo oscuro bloqueado" aria-disabled="true" data-feature="dark-mode" title="Modo oscuro (próximamente)" style="padding:.45rem .55rem;" tabindex="-1">
+                <i class="fa-solid fa-moon"></i>
+                <span class="lock-indicator" aria-hidden="true"><i class="fa-solid fa-lock"></i></span>
+            </button>
         </div>
     </div>
 
@@ -92,12 +95,13 @@ function nt_is_active($itemUrl, $activePage){
         </nav>
 
         <!-- Acciones derecha -->
-        <div class="flex items-center gap-2 md:gap-3">
-            <!-- Buscador compacto -->
-            <form id="nav-search" class="nt-nav-search" role="search" method="get" action="/search.php" aria-label="Buscar en el sitio" data-track="nav-search">
-                <button type="button" class="search-trigger" aria-label="Abrir búsqueda" tabindex="0"><i class="fa-solid fa-magnifying-glass"></i></button>
-                <input type="text" name="q" placeholder="Buscar..." aria-label="Término de búsqueda" autocomplete="off" />
-            </form>
+        <div class="flex items-center gap-2 md:gap-3 nt-nav-actions-stagger">
+            <!-- Búsqueda bloqueada -->
+            <button class="nt-btn nt-btn-disabled nt-btn-locked nav-fx-item" type="button" aria-disabled="true" data-feature="search" title="Búsqueda (próximamente)" tabindex="-1">
+                <i class="fa-solid fa-magnifying-glass"></i><span class="hidden xl:inline">Buscar</span>
+                <span class="lock-indicator" aria-hidden="true"><i class="fa-solid fa-lock"></i></span>
+            </button>
+            <!-- (Dark mode moved to top bar) -->
             <a href="https://tienda.norttek.com.mx" target="_blank" class="nt-btn nt-btn-primary hidden md:inline-flex" style="font-size:.72rem; padding:.55rem .85rem;" data-track="nav" data-item="tienda" data-action="open" data-label="tienda-top">
                 <i class="fa-solid fa-bag-shopping"></i><span>Tienda</span>
             </a>
@@ -122,15 +126,13 @@ function nt_is_active($itemUrl, $activePage){
         <a href="<?= $google_maps_link ?>" target="_blank" class="nt-btn nt-btn-outline w-full justify-center" style="font-size:.65rem;padding:.45rem .6rem;">
             <i class="fa-solid fa-map"></i><span>Ubicación</span>
         </a>
-        <button id="theme-toggle-mobile" class="nt-btn nt-btn-outline w-full justify-center" style="font-size:.65rem;padding:.45rem .6rem;" aria-label="Cambiar tema">
+        <button id="theme-toggle-mobile" class="nt-btn nt-btn-disabled nt-btn-locked w-full justify-center" style="font-size:.65rem;padding:.45rem .6rem;" aria-label="Modo oscuro bloqueado" aria-disabled="true" data-feature="dark-mode" tabindex="-1">
             <i class="fa-solid fa-moon"></i><span>Tema</span>
+            <span class="lock-indicator" aria-hidden="true"><i class="fa-solid fa-lock"></i></span>
         </button>
-        <form id="mobile-search" class="nt-mobile-search" role="search" method="get" action="/search.php" data-track="nav-search-mobile">
-            <div class="field">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" name="q" placeholder="Buscar..." aria-label="Buscar" autocomplete="off" />
-            </div>
-        </form>
+        <div class="nt-mobile-search-locked" aria-disabled="true" title="Búsqueda (próximamente)">
+            <i class="fa-solid fa-magnifying-glass"></i><span>Búsqueda próximamente</span><i class="fa-solid fa-lock lock"></i>
+        </div>
     </div>
     <nav class="flex-1 overflow-y-auto py-3" aria-label="Menú móvil">
         <ul class="px-2 space-y-1">
@@ -262,6 +264,31 @@ html.dark .nt-mobile-search .field { background:linear-gradient(#16293a,#132435)
 html.dark .nt-mobile-search i { color:#9bc4ff; }
 html.dark .nt-mobile-search input { color:#d6e6f2; }
 
+/* Estado locked / disabled mejorado */
+.nt-btn-locked { position:relative; background:linear-gradient(135deg,#d1d7de,#c3ccd5); color:#5d6a74 !important; border:1px solid #c2ccd5; box-shadow:0 2px 4px rgba(15,23,42,.08) inset,0 1px 2px rgba(15,23,42,.06); }
+.nt-btn-locked .lock-indicator { position:absolute; top:-6px; right:-6px; width:20px; height:20px; background:linear-gradient(135deg,#ffffff,#f0f4f8); border:1px solid #cfd8df; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 4px rgba(15,23,42,.15); font-size:.55rem; color:#5e6c76; }
+.nt-btn-locked.icon-only .lock-indicator { top:-4px; right:-4px; }
+.nt-btn-locked i { color:#5d6a74 !important; }
+.nt-btn-locked:before { content:""; position:absolute; inset:0; background:repeating-linear-gradient(45deg,rgba(255,255,255,.55) 0 8px,rgba(255,255,255,0) 8px 16px); opacity:.4; pointer-events:none; border-radius:inherit; }
+.nt-btn-locked:hover, .nt-btn-locked:focus-visible { filter:none; transform:none !important; box-shadow:0 2px 4px rgba(15,23,42,.08) inset; }
+.nt-btn-locked:active { transform:none; }
+.nt-mobile-search-locked { display:flex; align-items:center; gap:.55rem; background:linear-gradient(#f0f3f6,#e7edf2); border:1px solid #cfd8e0; padding:.55rem .75rem; font-size:.65rem; font-weight:600; color:#62707b; border-radius:12px; letter-spacing:.4px; box-shadow:0 2px 4px rgba(15,23,42,.06) inset; }
+.nt-mobile-search-locked i.lock { margin-left:auto; font-size:.7rem; opacity:.75; }
+
+/* Botones deshabilitados (placeholders de funciones futuras) */
+.nt-btn-disabled { position:relative; cursor:not-allowed !important; opacity:.65; background:linear-gradient(135deg,#d5dae0,#c9d1d9); border:1px solid #c4ccd5; color:#5f6e7b; box-shadow:0 2px 4px rgba(15,23,42,.08) inset,0 1px 2px rgba(15,23,42,.06); font-size:.7rem; padding:.55rem .85rem; display:inline-flex; align-items:center; gap:.45rem; border-radius:10px; font-weight:600; letter-spacing:.4px; transition:background .35s ease, color .35s ease; }
+.nt-btn-disabled.icon-only { width:38px; height:38px; padding:0; justify-content:center; }
+.nt-btn-disabled i { color:inherit; }
+.nt-btn-disabled:before { content:""; position:absolute; inset:0; background:repeating-linear-gradient(45deg,rgba(255,255,255,.4) 0 6px,rgba(255,255,255,0) 6px 12px); opacity:.35; pointer-events:none; border-radius:inherit; }
+.nt-btn-disabled:hover, .nt-btn-disabled:focus-visible { transform:none; box-shadow:0 2px 4px rgba(15,23,42,.08) inset; }
+.nt-btn-disabled:active { transform:none; }
+/* Contenedor con aparición escalonada */
+.nt-nav-actions-stagger { --stagger-base:.18s; --stagger-shift: .08s; }
+.nt-nav-actions-stagger .nav-fx-item { opacity:0; transform:translateY(-6px) scale(.96); animation:navItemIn .7s cubic-bezier(.4,.8,.4,1) forwards; }
+.nt-nav-actions-stagger .nav-fx-item:nth-child(1){ animation-delay:calc(var(--stagger-base) + var(--stagger-shift)*1); }
+.nt-nav-actions-stagger .nav-fx-item:nth-child(2){ animation-delay:calc(var(--stagger-base) + var(--stagger-shift)*2); }
+@keyframes navItemIn { 0% { opacity:0; transform:translateY(-10px) scale(.92); filter:blur(3px);} 60% { filter:blur(0);} 100% { opacity:1; transform:translateY(0) scale(1); } }
+
 /* Mobile drawer */
 #nt-mobile-drawer { font-size:.82rem; }
 .nt-mobile-parent { position:relative; display:flex; align-items:center; justify-content:space-between; width:100%; padding:.7rem .9rem; font-weight:700; border:none; background:transparent; color:#27455c; border-radius:10px; transition:.25s; text-align:left; }
@@ -368,29 +395,34 @@ html.dark .group:hover .nt-logo-title-mobile { color:#d6e6f2; opacity:.92; }
     });
 
   // Tema (íconos) reutilizando NTTheme
-  function updateThemeIcons(){
-    const isDark = document.documentElement.classList.contains('dark');
-        document.querySelectorAll('#theme-toggle-desktop i, #theme-toggle-mobile i').forEach(ic=>{
-      ic.classList.toggle('fa-moon', !isDark); ic.classList.toggle('fa-sun', isDark);
-    });
-  }
-    ['theme-toggle-desktop','theme-toggle-mobile'].forEach(id=>{
-    const btn=document.getElementById(id); if(!btn) return; btn.addEventListener('click',()=>{ if(window.NTTheme){ NTTheme.toggle(); updateThemeIcons(); }});
-  });
-  updateThemeIcons();
+    // === Dark Mode (desactivado en fase desarrollo: placeholders) ===
+    // Mantener función preparada para activación futura
+    function updateThemeIcons(){
+        const isDark = document.documentElement.classList.contains('dark');
+        document.querySelectorAll('[data-feature="dark-mode"] i').forEach(ic=>{
+            ic.classList.toggle('fa-moon', !isDark);
+            ic.classList.toggle('fa-sun', isDark);
+        });
+    }
+    // Para activar en lanzamiento: agregar listener a botón real
+    // document.querySelector('[data-feature="dark-mode"]').addEventListener('click',()=>{ if(window.NTTheme){ NTTheme.toggle(); updateThemeIcons(); }});
+    updateThemeIcons();
 
     // ============= Buscador Desktop =============
-    const searchForm = document.getElementById('nav-search');
-    if(searchForm){
-        const trigger = searchForm.querySelector('.search-trigger');
-        const input = searchForm.querySelector('input');
-        function openSearch(){ searchForm.classList.add('open'); setTimeout(()=>input.focus(),50); }
-        function closeSearch(){ if(!input.value){ searchForm.classList.remove('open'); input.blur(); } }
-        trigger.addEventListener('click',(e)=>{ if(!searchForm.classList.contains('open')){ e.preventDefault(); openSearch(); } else if(!input.value){ closeSearch(); } else { searchForm.submit(); }});
-        input.addEventListener('keydown',e=>{ if(e.key==='Escape'){ input.value=''; closeSearch(); }});
-        input.addEventListener('blur',()=>{ setTimeout(closeSearch,120); });
-        searchForm.addEventListener('submit',e=>{ if(!input.value.trim()){ e.preventDefault(); closeSearch(); }});
-    }
+    // === Búsqueda Desktop (desactivada: placeholder). Código listo para reactivar ===
+    // function initSearch(){
+    //   const searchForm = document.getElementById('nav-search');
+    //   if(!searchForm) return;
+    //   const trigger = searchForm.querySelector('.search-trigger');
+    //   const input = searchForm.querySelector('input');
+    //   function openSearch(){ searchForm.classList.add('open'); setTimeout(()=>input.focus(),50); }
+    //   function closeSearch(){ if(!input.value){ searchForm.classList.remove('open'); input.blur(); } }
+    //   trigger.addEventListener('click',(e)=>{ if(!searchForm.classList.contains('open')){ e.preventDefault(); openSearch(); } else if(!input.value){ closeSearch(); } else { searchForm.submit(); }});
+    //   input.addEventListener('keydown',e=>{ if(e.key==='Escape'){ input.value=''; closeSearch(); }});
+    //   input.addEventListener('blur',()=>{ setTimeout(closeSearch,120); });
+    //   searchForm.addEventListener('submit',e=>{ if(!input.value.trim()){ e.preventDefault(); closeSearch(); }});
+    // }
+    // initSearch();
 
     // ============= Tracking básico (console) =============
     document.querySelectorAll('[data-track]').forEach(el=>{
