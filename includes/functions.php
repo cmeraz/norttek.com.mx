@@ -26,19 +26,18 @@ function includeTemplate($templateName) {
 /**
  * Genera un encabezado estandarizado según el nuevo sistema visual 2025.
  * Ejemplo:
- *   echo nt_heading('Instalación Profesional', 'fa-solid fa-plug', 'lg', 'Opcional subtítulo', true);
+ *   echo nt_heading('Instalación Profesional', 'fa-solid fa-plug', 'lg', 'Opcional subtítulo');
  * @param string $text       Texto principal del heading
  * @param string $icon       Clase(s) del icono FontAwesome (sin <i>)
  * @param string $size       xl|lg|md|sm (default lg)
  * @param string|null $sub   Subtítulo opcional (renderizado debajo en menor tamaño)
- * @param bool $underline    Si true añade una barra decorativa inferior
  * @param array $attrs       Atributos HTML extra (['id' => 'mi-id'])
  * @return string            HTML del encabezado
  */
-function nt_heading($text, $icon = 'fa-solid fa-circle', $size = 'lg', $sub = null, $underline = false, $attrs = []) {
+function nt_heading($text, $icon = 'fa-solid fa-circle', $size = 'lg', $sub = null, $attrs = []) {
     $allowedSizes = ['xl','lg','md','sm'];
     if (!in_array($size, $allowedSizes, true)) { $size = 'lg'; }
-    $cls = 'nt-heading nt-heading-' . $size . ($underline ? ' underline' : '');
+    $cls = 'nt-heading nt-heading-' . $size;
 
     // Soporte de flags especiales dentro de $attrs sin romper firma existente
     $animate = false;
@@ -357,5 +356,61 @@ function faq($jsonName, $options = []) {
     </script>
     <?php
     return ob_get_clean();
+}
+
+/**
+ * Renderiza una alerta contextual usando el sistema de clases .nt-alert.
+ * @param string $type info|success|warning|danger
+ * @param string $message HTML o texto del mensaje (se escapa por defecto, usar $raw=true para HTML confiable)
+ * @param bool $dismissible (reservado para futura implementación de cierre)
+ * @param bool $raw Si true no escapa $message (solo contenido seguro)
+ * @return string
+ */
+function nt_alert($type = 'info', $message = '', $dismissible = false, $raw = false){
+    $allowed = ['info','success','warning','danger'];
+    if(!in_array($type,$allowed,true)) $type='info';
+    $cls = 'nt-alert nt-alert-' . $type;
+    $iconMap = [
+        'info' => 'fa-solid fa-circle-info',
+        'success' => 'fa-solid fa-circle-check',
+        'warning' => 'fa-solid fa-triangle-exclamation',
+        'danger' => 'fa-solid fa-circle-exclamation'
+    ];
+    $icon = $iconMap[$type];
+    $msg = $raw ? $message : htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
+    return "<div class='$cls'><i class='$icon'></i><div class='nt-alert-body'>$msg</div></div>";
+}
+
+/**
+ * Componente Timeline reutilizable.
+ * @param array $events Lista de eventos: [['year'=>2020,'title'=>'Título','text'=>'Descripción']]
+ * @param array $opts ['title'=>..., 'subtitle'=>..., 'icon'=>...]
+ * @return string HTML
+ */
+function nt_timeline(array $events, array $opts = []): string {
+    if(empty($events)) return '<!-- nt_timeline: sin eventos -->';
+    $title = $opts['title'] ?? null;
+    $subtitle = $opts['subtitle'] ?? null;
+    $icon = $opts['icon'] ?? 'fa-solid fa-route';
+    ob_start(); ?>
+    <section class="nt-section nt-timeline">
+    <?php if($title){ echo nt_heading($title, $icon, 'md', $subtitle, ['animate'=>true]); } ?>
+        <div class="nt-timeline-track">
+            <?php foreach($events as $ev):
+                $year = htmlspecialchars((string)($ev['year'] ?? ''), ENT_QUOTES,'UTF-8');
+                $t = htmlspecialchars((string)($ev['title'] ?? ''), ENT_QUOTES,'UTF-8');
+                $txt = htmlspecialchars((string)($ev['text'] ?? ''), ENT_QUOTES,'UTF-8');
+            ?>
+            <div class="nt-timeline-item nt-fade-in">
+                <div class="nt-timeline-badge"><?=$year?></div>
+                <div class="nt-timeline-content">
+                    <h4 class="nt-timeline-title"><?=$t?></h4>
+                    <p class="nt-timeline-text"><?=$txt?></p>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </section>
+    <?php return ob_get_clean();
 }
 ?>
