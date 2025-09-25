@@ -248,36 +248,49 @@
       </main>
     </div>
   <div id="cliente-content" class="section-toggle" style="display:none;">
-      <div style="text-align:center; margin:3rem 0;">
-  <?= nt_heading('Bienvenido cliente Norttek', 'fa-solid fa-user-shield', 'md', null, ['animate'=>true,'delay'=>'sm']); ?>
-        <p style="font-size:1.1rem; color:#a7b3cc; margin-bottom:1.5rem;">Consulta tu cuenta, soporte y promociones exclusivas.</p>
-        <a href="https://clientes.norttek.com.mx" class="btn-contratar-link">Acceder a mi cuenta</a>
-        <div style="margin-top:1rem;">
-          <a href="mailto:soporte@norttek.com.mx" class="btn-contratar-link">Soporte técnico</a>
-        </div>
+    <section class="cliente-dashboard scroll-anim">
+      <?= nt_heading('Panel del Cliente', 'fa-solid fa-gauge-high', 'md', null, ['animate'=>true,'delay'=>'sm']); ?>
+      <p class="cliente-dashboard-sub">Accede rápidamente a las herramientas de tu servicio Norttek.</p>
+      <div class="cliente-grid">
+        <article class="cliente-card login-card">
+          <h3><i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i> Inicio de Sesión</h3>
+          <p>Ingresa usando solo tu usuario (sin el slug de empresa).</p>
+          <a href="https://clientes.portalinternet.net/accounts/login/?empresa=norttek" target="_blank" class="cliente-btn" rel="noopener noreferrer">Ir a Login</a>
+          <small class="hint-url">URL: /accounts/login/?empresa=norttek</small>
+        </article>
+        <article class="cliente-card saldo-card">
+          <h3><i class="fa-solid fa-wallet" aria-hidden="true"></i> Consultar Saldo</h3>
+          <p>Revisa tu saldo pendiente de forma directa.</p>
+          <a href="http://clientes.portalinternet.net/saldo/norttek/" target="_blank" class="cliente-btn" rel="noopener noreferrer">Ver Saldo</a>
+          <small class="hint-url">/saldo/norttek/</small>
+        </article>
+        <article class="cliente-card soporte-card">
+          <h3><i class="fa-solid fa-headset" aria-hidden="true"></i> Soporte Técnico</h3>
+          <p>¿Tienes una falla? Contáctanos por WhatsApp.</p>
+          <button type="button" class="cliente-btn btn-soporte-wa" data-wa="Necesito soporte técnico para mi servicio.">Solicitar Soporte</button>
+          <small class="hint-url">WhatsApp directo</small>
+        </article>
+        <article class="cliente-card ayuda-card">
+          <h3><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Ayuda y Soluciones</h3>
+          <p>Consulta fallas comunes y pasos recomendados.</p>
+          <a href="ayuda-servicio.php" class="cliente-btn" rel="noopener">Ver Guía</a>
+          <small class="hint-url">/ayuda-servicio</small>
+        </article>
+        <article class="cliente-card app-card wide">
+          <h3><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i> App Servicio WiFi</h3>
+          <p>Administra pagos, notificaciones y tu red desde la app oficial.</p>
+          <div class="app-links-inline">
+            <a href="https://play.google.com/store/apps/details?id=net.wisphub.app" target="_blank" rel="noopener" class="mini-store">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" />
+            </a>
+            <a href="https://apps.apple.com/mx/app/wisphub/id6445943532" target="_blank" rel="noopener" class="mini-store">
+              <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" />
+            </a>
+          </div>
+        </article>
       </div>
-      <!-- App Wisphub (solo clientes) -->
-      <section class="app-wisphub premium-box scroll-anim" style="margin:1rem auto 2rem; max-width:820px; text-align:center;">
-        <div class="app-header-wisphub">
-          <img src="http://wisphub-media.s3.amazonaws.com/media/uploadsCKEditor/jorge%40wisphub/2020/02/20/logo-servicio-wifi.png" alt="Wisphub App" class="wisphub-logo" />
-          <h2>Administra tu servicio desde la app móvil</h2>
-        </div>
-        <ul class="wisphub-benefits">
-          <li>Consulta y reporta tus pagos fácilmente</li>
-          <li>Recibe notificaciones y recordatorios</li>
-          <li>Administra tu cuenta y servicio desde cualquier lugar</li>
-          <li>Disponible para Android y iOS</li>
-        </ul>
-        <div class="wisphub-links" style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
-          <a href="https://play.google.com/store/apps/details?id=net.wisphub.app" target="_blank" class="wisphub-store" style="text-decoration:none;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="store-img" style="height:48px; width:160px; object-fit:contain; display:block;" />
-          </a>
-          <a href="https://apps.apple.com/mx/app/wisphub/id6445943532" target="_blank" class="wisphub-store" style="text-decoration:none;">
-            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="store-img" style="height:48px; width:160px; object-fit:contain; display:block;" />
-          </a>
-        </div>
-      </section>
-    </div>
+    </section>
+  </div>
   </div>
 </div>
 
