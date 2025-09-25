@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } catch(_) { return { megas: '', price: '' }; }
   }
   function renderCtaPlan() {
-    var cta = document.getElementById('solicitar');
+    var cta = document.getElementById('contratar') || document.getElementById('solicitar');
     if (!cta) return;
     var plan = getStoredPlan();
     var labelId = 'cta-plan-suffix';
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
         suffix.style.color = '#4f8cff';
         cta.appendChild(suffix);
       }
-      suffix.textContent = '(Plan ' + plan.megas + ' Megas)';
+      suffix.textContent = plan.megas + ' Megas';
       try {
         var baseHref = (cta.getAttribute('data-base-href') || cta.getAttribute('href') || '').split('?')[0];
         cta.setAttribute('data-base-href', baseHref);
@@ -171,6 +171,54 @@ document.addEventListener('DOMContentLoaded', function() {
     card.style.transitionDelay = (i * 0.12) + 's';
   });
 
+    // Interceptar clic en "Contratar" de cada plan: desplazar al CTA, persistir plan y abrir WhatsApp con el plan seleccionado
+    try {
+      document.querySelectorAll('.plan-card a.btn-contratar-link').forEach(function(a){
+        a.addEventListener('click', function(ev){
+          ev.preventDefault();
+          var planCard = a.closest('.plan-card');
+          var megas = planCard ? (planCard.getAttribute('data-megas') || '').trim() : '';
+          var price = '';
+          try { var priceEl = planCard ? planCard.querySelector('.price') : null; price = priceEl ? priceEl.textContent.trim() : ''; } catch(_) {}
+          var planText = megas ? (megas + ' Megas') : '';
+          try { localStorage.setItem('selectedPlan', planText); } catch (_) {}
+          try { setStoredPlan(megas, price); renderCtaPlan(); } catch(_) {}
+
+          // Desplazar al botón de "Solicita tu Instalación" y resaltarlo
+          try {
+            var cta = document.getElementById('contratar') || document.getElementById('solicitar');
+            if (cta) {
+              var header = document.getElementById('site-header');
+              var y = cta.getBoundingClientRect().top + window.pageYOffset - ((header && header.offsetHeight) || 0) - 10;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+              cta.classList.remove('highlight-pulse');
+              void cta.offsetWidth; // reflow para reiniciar animación
+              cta.classList.add('highlight-pulse');
+            }
+          } catch(_) {}
+
+          // Construir y abrir WhatsApp con el mensaje solicitado
+          var nombreRaw = '';
+          var inputNombre = document.getElementById('input-nombre');
+          var asesorInput = document.getElementById('asesor-nombre');
+          if (inputNombre && inputNombre.value) nombreRaw = inputNombre.value;
+          else if (asesorInput && asesorInput.value) nombreRaw = asesorInput.value;
+          var nombreTrim = (nombreRaw || '').trim().replace(/\s+/g, ' ');
+          var nombre = nombreTrim;
+          try { if (nombreTrim && nombreTrim === nombreTrim.toLocaleLowerCase('es-MX')) nombre = toTitleCaseEs(nombreTrim); } catch(_) {}
+          var saludo = nombre ? ('👋 Hola, mi nombre es ' + nombre + '.') : '👋 Hola.';
+          var formLink = 'http://clientes.portalinternet.net/solicitar-instalacion/norttek/';
+          var planLinea = planText ? ('Me gustaría contratar el plan de ' + planText + '.') : 'Me gustaría contratar un plan de internet.';
+          var copy = saludo + '\n\n' +
+                     planLinea + '\n\n' +
+                     '¿Pueden ayudarme a continuar con la solicitud?\n\n' +
+                     'Posteriormente llenaré el formulario para agendar mi instalación:\n' +
+                     formLink + '\n\n' +
+                     '✅ Quedo pendiente de su apoyo.';
+          // Nota: ya no abrimos WhatsApp en el click del plan, solo guardamos y desplazamos al CTA.
+        });
+      });
+    } catch(_) {}
   // Prefill de nombre si ya fue capturado previamente
   try {
     var stored = getStoredName();
@@ -399,8 +447,12 @@ document.addEventListener('DOMContentLoaded', function() {
         } catch(_) {}
         // Mantener sincronizado el nombre almacenado si el usuario lo escribe aquí
         if (nombre) setStoredName(nombre, nombre.split(/\s+/)[0] || '');
-        var saludo = nombre ? ('Hola, mi nombre es ' + nombre) : 'Hola';
-        var copy = saludo + ', me gustaría recibir más información sobre el servicio de Internet Norttek, costos de instalación y planes disponibles. ¿Podrían ayudarme a solicitar la instalación? Muchas gracias.';
+  var saludo = nombre ? ('👋 Hola, mi nombre es ' + nombre + '.') : '👋 Hola.';
+  var planSel = '';
+  try { planSel = localStorage.getItem('selectedPlan') || ''; } catch(_) {}
+  var planLinea = planSel ? ('Me gustaría contratar el plan de ' + planSel + '.') : 'Me gustaría recibir más información sobre el servicio de Internet Norttek, costos de instalación y planes disponibles.';
+  var formLink = 'http://clientes.portalinternet.net/solicitar-instalacion/norttek/';
+  var copy = saludo + '\n\n' + planLinea + '\n\n' + '¿Pueden ayudarme a continuar con la solicitud?\n\n' + 'Posteriormente llenaré el formulario para agendar mi instalación:\n' + formLink + '\n\n' + '✅ Quedo pendiente de su apoyo.';
         var phone = '526252690997';
         var url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(copy);
         var msg = document.getElementById('asesor-msg');
@@ -410,50 +462,58 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   } catch(_) {}
 
-  // Al contratar un plan: persistir selección, actualizar CTA y abrir WhatsApp al número solicitado
-  try {
-    document.querySelectorAll('.plan-card .btn-contratar-link').forEach(function(a){
-      a.addEventListener('click', function(){
-        var card = a.closest('.plan-card');
-        var megas = (card && card.getAttribute('data-megas')) || '';
-        var price = '';
-        try {
-          var priceEl = card ? card.querySelector('.price') : null;
-          price = priceEl ? priceEl.textContent.trim() : '';
-        } catch(_) {}
-        // Guardar plan y refrescar CTA
-        setStoredPlan(megas, price);
-        try { renderCtaPlan(); } catch(_) {}
-        // Preparar WhatsApp
-        var st = getStoredName();
-        var nombre = (st.full || st.first || '').trim();
-        try {
-          if (nombre && nombre === nombre.toLocaleLowerCase('es-MX')) {
-            nombre = toTitleCaseEs(nombre);
-          }
-        } catch(_) {}
-        var saludo = nombre ? ('Hola, mi nombre es ' + nombre + '.') : 'Hola.';
-        var planTxt = megas ? (megas + ' Megas') : 'Internet';
-        var priceTxt = price ? (' (' + price + ')') : '';
-        var texto = saludo + ' Me gustaría contratar el plan de ' + planTxt + priceTxt + '. ¿Pueden ayudarme a continuar con la solicitud? ' + 'Este es el enlace del formulario: ' + a.href;
-        var phonePlan = '526252690097';
-        var wa = 'https://wa.me/' + phonePlan + '?text=' + encodeURIComponent(texto);
-        window.open(wa, '_blank');
-      });
-    });
-  } catch(_) {}
+  // (Eliminado) Manejador duplicado que abría WhatsApp desde el botón de plan
 
   // Al hacer click en el CTA final, asegurar que el plan elegido esté en el querystring
   try {
-    var ctaBtn = document.getElementById('solicitar');
+    var ctaBtn = document.getElementById('contratar') || document.getElementById('solicitar');
     if (ctaBtn) {
       ctaBtn.addEventListener('click', function(){
+        // Asegura que el href del CTA incluya el plan seleccionado (para abrir formulario en nueva pestaña)
         var plan = getStoredPlan();
         if (plan.megas) {
-          var baseHref = (ctaBtn.getAttribute('data-base-href') || ctaBtn.getAttribute('href') || '').split('?')[0];
+          var baseHref = (ctaBtn.getAttribute('data-base-href') || ctaBtn.getAttribute('href') || 'http://clientes.portalinternet.net/solicitar-instalacion/norttek/').split('?')[0];
           ctaBtn.setAttribute('data-base-href', baseHref);
           ctaBtn.setAttribute('href', baseHref + '?plan=' + encodeURIComponent(plan.megas));
         }
+        // Construir y abrir WhatsApp con el mensaje completo (en paralelo al open del link del CTA)
+        var st = getStoredName();
+        var nombre = (st.full || st.first || '').trim();
+        try { if (nombre && nombre === nombre.toLocaleLowerCase('es-MX')) nombre = toTitleCaseEs(nombre); } catch(_) {}
+        var saludo = nombre ? ('👋 Hola, mi nombre es ' + nombre + '.') : '👋 Hola.';
+        var planTxt = plan.megas ? ('Me gustaría contratar el plan de ' + plan.megas + ' Megas' + (plan.price ? (' (' + plan.price + ')') : '') + '.') : 'Me gustaría contratar un plan de internet.';
+        // Leer costos actuales desde el DOM para incluirlos en el mensaje
+        var upfrontEl = document.getElementById('install-upfront');
+        var totalEl = document.getElementById('install-total');
+        var antennaCard = document.getElementById('card-antena');
+        var upfront = upfrontEl ? (upfrontEl.textContent || '').trim() : '';
+        var total = totalEl ? (totalEl.textContent || '').trim() : '';
+        var incluyeAntena = false;
+        try {
+          // Si la tarjeta de antena está visible, el usuario no tenía antena y aplica costo de antena
+          if (antennaCard) {
+            incluyeAntena = (antennaCard.style.display !== 'none');
+          }
+        } catch(_) {}
+        // Solo incluir costos si el total es válido (evitar placeholders como $Variable$)
+        var totalValido = /\$\s*\d/.test(total);
+        var costosLineas = [];
+        if (totalValido) {
+          if (upfront) costosLineas.push('Anticipo de instalación: ' + upfront);
+          if (incluyeAntena) costosLineas.push('Antena: $1,800 (diferible a 3 meses)');
+          costosLineas.push('Total estimado inicial: ' + total);
+        }
+        var costosBloque = costosLineas.length ? ('Resumen de costos de instalación:\n- ' + costosLineas.join('\n- ')) : '';
+        var formLink = ctaBtn.getAttribute('href') || 'http://clientes.portalinternet.net/solicitar-instalacion/norttek/';
+        var partes = [saludo, planTxt];
+        if (costosBloque) partes.push(costosBloque);
+        partes.push('¿Pueden ayudarme a continuar con la solicitud?');
+        partes.push('Posteriormente llenaré el formulario para agendar mi instalación:\n' + formLink);
+        partes.push('✅ Quedo pendiente de su apoyo.');
+        var copy = partes.join('\n\n');
+        var wa = 'https://wa.me/526252690997?text=' + encodeURIComponent(copy);
+        try { window.open(wa, '_blank'); } catch(_) {}
+        // No se previene el default: el link del CTA abrirá el formulario en otra pestaña (target=_blank)
       });
     }
   } catch(_) {}
