@@ -37,13 +37,17 @@
   
 </div>
 <div class="internet-app">
-  <section class="hero-internet nt-hero-wrapper" style="min-height:420px;">
-    <img src="assets/img/cctv-hero_img.jpg" alt="Internet Hero" class="nt-hero-bg-img" />
-    <div class="nt-hero-overlay"></div>
-    <div class="hero-content">
-      <img src="assets/img/logo-norttek.png" alt="Norttek Logo" class="logo-hero" />
-  <?= nt_heading('Internet para el Hogar y la Oficina', 'fa-solid fa-wifi', 'xl', null, ['animate'=>true,'delay'=>'sm','class'=>'nt-heading-hero']); ?>
-  <p class="hero-subtitle nt-heading-anim delay-md" style="opacity:0; transform:translateY(34px) scale(.955);">Conéctate a internet en donde otras compañias no llegan.</p>
+  <section class="nt-hero-wrapper is-soft internet-hero" style="min-height:420px;" aria-label="Conectividad inalámbrica Norttek">
+    <div class="hero-content max-w-6xl mx-auto px-6 py-16 text-center flex flex-col items-center">
+      <div class="opacity-0 nt-heading-anim delay-sm" style="transform:translateY(34px) scale(.955);">
+  <?= nt_heading('Internet para el Hogar y la Oficina', 'fa-solid fa-wifi', 'xl', null, ['animate'=>false,'class'=>'nt-heading-hero nt-heading-invert nt-heading-accent-bar']); ?>
+      </div>
+  <p class="nt-hero-sub nt-hero-sub-invert nt-heading-anim delay-md" style="opacity:0; transform:translateY(34px) scale(.955); max-width:820px;">Conéctate a internet donde otras compañías no llegan.</p>
+      <div class="flex flex-wrap justify-center gap-4 mt-10 opacity-0 nt-heading-anim delay-lg" style="transform:translateY(34px) scale(.955);">
+        <a id="btn-nuevo" href="#" class="nt-btn" data-variant="primary" role="button"><i class="fa-solid fa-list-ul" aria-hidden="true"></i><span>Ver Planes</span></a>
+        <a href="#contacta-un-asesor" class="nt-btn" data-variant="subtle"><i class="fa-solid fa-comments" aria-hidden="true"></i><span>Contactar</span></a>
+        <a id="btn-cliente" href="#" class="nt-btn" data-variant="accent" role="button"><i class="fa-solid fa-user-shield" aria-hidden="true"></i><span>Ya eres cliente</span></a>
+      </div>
     </div>
   </section>
     <section id="contacta-un-asesor" class="asesor-section premium-box scroll-anim">
@@ -58,11 +62,6 @@
       <p class="asesor-hint">Se abrirá WhatsApp con un mensaje prellenado.</p>
       <div id="asesor-msg" class="asesor-msg" aria-live="polite"></div>
     </section>
-  <!-- Menú principal debajo del hero -->
-  <div id="main-menu">
-    <button id="btn-nuevo" class="btn-contratar-link"><i class="fa-solid fa-list-ul" aria-hidden="true"></i> Conoce los planes</button>
-    <button id="btn-cliente" class="btn-contratar-link"><i class="fa-solid fa-user-shield" aria-hidden="true"></i> ¿Ya eres cliente?</button>
-  </div>
   <!-- Contenedor principal dinámico -->
   <div id="main-content-container">
     <div id="welcome-message" class="section-toggle" style="text-align:center; font-size:2.2rem; color:#a7b3cc; font-weight:800; margin:3rem 0;">Bienvenido a Norttek Internet</div>
