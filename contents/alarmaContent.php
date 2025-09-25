@@ -3,7 +3,7 @@
  * Contenido modular: Página Alarmas Inteligentes
  */
 ?>
-<section class="nt-hero-wrapper relative" style="padding-top:150px;">
+<section class="nt-hero-wrapper relative">
   <div class="absolute inset-0 -z-[1]" style="background:linear-gradient(180deg,#04121d,#062f3d 55%,#04121d);"></div>
   <div class="max-w-6xl mx-auto px-6 lg:px-12 text-slate-100">
     <?php echo nt_heading('Alarmas Inteligentes','fa-solid fa-bell','lg','Detección temprana y reacción oportuna',[ 'animate'=>true,'class'=>'nt-heading-accent-bar']); ?>
@@ -101,7 +101,7 @@
  * Contenido principal para la página Alarmas Inteligentes (refactor 2025 design system)
  */
 ?>
-<section class="nt-section pb-16 bg-white nt-hero-wrapper" style="padding-top:150px;">
+<section class="nt-section pb-16 bg-white nt-hero-wrapper">
     <div class="max-w-6xl mx-auto px-6 lg:px-10">
         <div class="text-center mb-12">
             <?= nt_heading('Alarmas Inteligentes', 'fa-solid fa-bell', 'xl', null, ['id' => 'alarmas-hero','animate'=>true,'delay'=>'sm','class'=>'nt-heading-accent-bar']); ?>

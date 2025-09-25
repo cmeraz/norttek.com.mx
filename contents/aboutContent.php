@@ -4,7 +4,7 @@
  * Estructura: Hero + Misión/Visión + Valores + Timeline + CTA
  */
 ?>
-<section class="nt-hero-wrapper relative overflow-hidden" style="padding-top:150px;">
+<section class="nt-hero-wrapper relative overflow-hidden">
   <div class="absolute inset-0 -z-[1]" style="background:radial-gradient(circle at 20% 30%,rgba(14,165,233,.25),transparent 60%),radial-gradient(circle at 80% 70%,rgba(20,184,166,.25),transparent 55%),linear-gradient(180deg,#0f172a,#111827 70%,#0f172a);"></div>
   <div class="max-w-6xl mx-auto px-6 lg:px-12 text-center text-slate-100">
     <?php echo nt_heading('Sobre Norttek Solutions','fa-solid fa-layer-group','lg','Tecnología y seguridad con propósito',[ 'animate'=>true,'class'=>'nt-heading-accent-bar']); ?>
@@ -91,7 +91,7 @@
  */
 ?>
 
-<section class="bg-white pb-16 nt-hero-wrapper" style="padding-top:250px;">
+<section class="bg-white pb-16 nt-hero-wrapper is-compact">
     <div class="max-w-5xl mx-auto px-6 lg:px-8">
         <!-- Hero Nosotros -->
         <div class="text-center mb-16 nt-fade-in">

@@ -4,7 +4,7 @@
  * Incluye formulario accesible + datos directos + mapa embebido (placeholder)
  */
 ?>
-<section class="nt-hero-wrapper relative" style="padding-top:150px;">
+<section class="nt-hero-wrapper relative">
   <div class="absolute inset-0 -z-[1]" style="background:linear-gradient(135deg,#0f172a,#134e4a 55%,#0f766e);opacity:.95;"></div>
   <div class="max-w-5xl mx-auto px-6 lg:px-10 text-slate-100">
     <?php echo nt_heading('Contacto','fa-solid fa-paper-plane','lg','Resolvemos dudas y diseñamos contigo',[ 'animate'=>true,'class'=>'nt-heading-accent-bar']); ?>

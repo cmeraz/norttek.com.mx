@@ -6,7 +6,7 @@
 ?>
 
 <!-- HERO: Sección principal con fondo unificado (.nt-hero-overlay) -->
-<section class="nt-hero-wrapper relative pt-36 pb-10 overflow-hidden">
+<section class="nt-hero-wrapper relative overflow-hidden">
   <img src="assets/img/cctv-hero_img.jpg" alt="Fondo CCTV" class="nt-hero-bg-img" loading="lazy">
   <div class="nt-hero-overlay"></div>
 

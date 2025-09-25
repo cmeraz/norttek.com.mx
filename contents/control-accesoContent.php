@@ -3,7 +3,7 @@
  * Contenido modular: Página Control de Acceso
  */
 ?>
-<section class="nt-hero-wrapper relative" style="padding-top:150px;">
+<section class="nt-hero-wrapper relative">
   <div class="absolute inset-0 -z-[1]" style="background:radial-gradient(circle at 30% 40%,rgba(13,148,136,.4),transparent 65%),radial-gradient(circle at 80% 70%,rgba(8,145,178,.35),transparent 60%),linear-gradient(180deg,#0f172a,#082f49 70%);"></div>
   <div class="max-w-6xl mx-auto px-6 lg:px-12 text-slate-100">
     <?php echo nt_heading('Control de Acceso','fa-solid fa-door-closed','lg','Gestión y trazabilidad de entradas', ['animate'=>true,'class'=>'nt-heading-accent-bar']); ?>
@@ -73,7 +73,7 @@
  * Contenido principal para la página Control de Acceso (refactor 2025 design system)
  */
 ?>
-<section class="nt-section pb-16 bg-white nt-hero-wrapper" style="padding-top:150px;">
+<section class="nt-section pb-16 bg-white nt-hero-wrapper">
     <div class="max-w-6xl mx-auto px-6 lg:px-10">
         <div class="text-center mb-12">
             <?= nt_heading('Control de Acceso Inteligente', 'fa-solid fa-door-open', 'xl', null, ['id' => 'control-acceso-hero','animate'=>true,'delay'=>'sm','class'=>'nt-heading-accent-bar']); ?>
