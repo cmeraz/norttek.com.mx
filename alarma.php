@@ -8,7 +8,7 @@ $seo = [
     'keywords'    => 'alarmas, seguridad, sensores, monitoreo, Norttek',
     'robots'      => 'index, follow',
     'og_url'      => 'https://www.norttek.com.mx/alarma',
-    'og_image'    => 'https://www.norttek.com.mx/assets/images/og-alarma.jpg'
+    'og_image'    => 'https://www.norttek.com.mx/assets/img/webpage.png'
 ];
 $seo['og_title']        = $seo['og_title']        ?? $seo['title'];
 $seo['og_description']  = $seo['og_description']  ?? $seo['description'];
