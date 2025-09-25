@@ -5,8 +5,8 @@
  */
 ?>
 
-<!-- HERO: Sección principal con fondo, título y lista de servicios -->
-<section class="relative pt-24">
+<!-- HERO: Sección principal con fondo, título y lista de servicios (refactor design system) -->
+<section class="relative pt-36 pb-10 overflow-hidden">
   <!-- Fondo con degradado, patrón de puntos e imagen -->
   <div class="absolute inset-0 bg-center z-[-1]" style="
     background-image: 
@@ -19,20 +19,13 @@
   "></div>
 
   <!-- Contenido del hero -->
-  <div class="relative max-w-7xl mx-auto px-6 py-32 text-center text-white">
-    <h1 class="leading-snug pb-2">
-      <span class="text-4xl md:text-5xl font-semibold">Protege</span>
-      <span class="text-4xl md:text-5xl font-thin ml-1">tu espacio</span>
-      <br />
-      <span class="text-3xl md:text-4xl font-semibold">Potencia</span>
-      <span class="text-3xl md:text-4xl font-thin ml-1">tu productividad</span>
-    </h1>
-    <h2 class="text-xl md:text-2xl font-thin mt-4 mb-4">
-      Soluciones integrales para tu hogar y oficina
-    </h2>
-    <div class="max-w-4xl mx-auto mb-8">
-      <p class="text-base md:text-lg font-thin leading-relaxed text-center">
-        En <strong>Norttek Solutions</strong>, con sede en <strong>Cd. Cuauhtémoc, Chihuahua</strong>, ofrecemos soluciones integrales para hogares y empresas, combinando tecnología, seguridad y eficiencia. Trabajamos con <strong>empresas, oficinas, comercios y residencias</strong>, brindando servicios de <strong>CCTV</strong> de última generación, <strong>alarmas inteligentes</strong>, <strong>control de acceso</strong>, <strong>accesos vehiculares</strong>, <strong>redes confiables</strong> y <strong>cableado estructurado profesional</strong>. Además, proporcionamos soluciones de <strong>automatización</strong>, <strong>audio ambiental</strong>, <strong>telefonía IP</strong>, <strong>equipos electrónicos</strong> y servicios de <strong>consultoría y mantenimiento</strong>. Todo diseñado para que tu espacio funcione de manera segura, moderna y eficiente.
+  <div class="relative max-w-7xl mx-auto px-6 py-24 text-center text-white">
+    <div class="mb-6">
+      <?= nt_heading('Protege tu espacio · Potencia tu productividad', 'fa-solid fa-shield-halved', 'lg', 'Soluciones integrales para hogar y empresa', true, ['animate'=>true,'delay'=>'sm','class'=>'mx-auto']); ?>
+    </div>
+    <div class="max-w-4xl mx-auto mb-10">
+      <p class="text-base md:text-lg leading-relaxed font-light">
+        En <strong>Norttek Solutions</strong> (Cd. Cuauhtémoc, Chihuahua) integramos <strong>seguridad</strong>, <strong>tecnología</strong> y <strong>automatización</strong> para empresas, oficinas, comercios y residencias: <strong>CCTV</strong>, <strong>alarmas inteligentes</strong>, <strong>control de acceso</strong>, <strong>accesos vehiculares</strong>, <strong>redes</strong>, <strong>cableado estructurado</strong>, <strong>automatización</strong>, <strong>audio ambiental</strong>, <strong>telefonía IP</strong>, <strong>electrónicos</strong> y <strong>consultoría</strong>.
       </p>
     </div>
 
@@ -124,60 +117,58 @@
     ];
     ?>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-        <?php foreach ($itemsHero as $item): ?>
-            <a href="#<?= $item['enlace']; ?>">
-                <div class="flex flex-col items-center gap-2 bg-white/10 rounded-lg p-4 hover:bg-white/20 transition">
-                    <?php if(isset($item['tipo']) && $item['tipo']=='fa'): ?>
-                        <!-- Icono FontAwesome -->
-                        <i class="<?= $item['icono']; ?> text-2xl text-white"></i>
-                    <?php else: ?>
-                        <!-- Icono de imagen -->
-                        <img src="<?= $item['icono']; ?>" alt="<?= $item['titulo']; ?>" class="w-10 h-10">
-                    <?php endif; ?>
-                    <span><?= $item['titulo']; ?></span>
-                </div>
-            </a>
-        <?php endforeach; ?>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 max-w-4xl mx-auto">
+      <?php foreach ($itemsHero as $i => $item): ?>
+        <a href="#<?= $item['enlace']; ?>" class="group block">
+          <div class="relative overflow-hidden rounded-xl bg-white/10 backdrop-blur-sm p-4 flex flex-col items-center gap-3 border border-white/10 hover:border-white/30 transition shadow-sm hover:shadow">
+            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-white/15 group-hover:bg-white/25 transition">
+              <?php if(isset($item['tipo']) && $item['tipo']=='fa'): ?>
+                <i class="<?= $item['icono']; ?> text-xl text-white"></i>
+              <?php else: ?>
+                <img src="<?= $item['icono']; ?>" alt="<?= $item['titulo']; ?>" class="w-8 h-8 object-contain"/>
+              <?php endif; ?>
+            </div>
+            <span class="text-sm font-medium tracking-wide group-hover:text-white/90"><?= $item['titulo']; ?></span>
+          </div>
+        </a>
+      <?php endforeach; ?>
     </div>
   </div>
 </section>
 
 <!-- SECCIÓN DE TIENDA: Botones con iconos y modal para compartir por WhatsApp -->
-<section class="bg-gray-50 py-12">
-  <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-14">
     <div class="md:w-1/2 text-left">
-      <h2 class="text-2xl font-bold text-blue-900 mb-4">Explora nuestra tienda en línea</h2>
-      <p class="text-gray-700 mb-6">
-        Descubre nuestro <strong>catálogo con un completo surtido de productos</strong> para tu hogar, negocio o empresa. Ofrecemos soluciones en <strong>seguridad, control de acceso, redes, cableado estructurado, automatización de iluminación y audio ambiental</strong>. Compra fácil y rápido <strong>directamente desde tu celular o computadora</strong>, con <strong>envíos a domicilio en toda la ciudad y zonas cercanas</strong>.
+      <?= nt_heading('Explora nuestra tienda en línea', 'fa-solid fa-store', 'md', 'Compra fácil y segura', true, ['animate'=>true]); ?>
+      <p class="nt-lead mt-6">
+        Catálogo amplio en <strong>seguridad</strong>, <strong>control de acceso</strong>, <strong>redes</strong>, <strong>cableado</strong>, <strong>automatización</strong>, <strong>audio ambiental</strong> y más. Compra desde cualquier dispositivo con envíos locales.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4">
-        <!-- Botón visitar tienda con icono -->
-        <a href="https://tienda.norttek.com.mx" class="inline-flex items-center gap-2 px-6 py-3 bg-blue-700 text-white font-semibold rounded-xl shadow hover:bg-blue-800 transition">
-          <i class="fas fa-store"></i>
-          Visitar Tienda
-        </a>
-        <!-- Botón compartir por WhatsApp con icono -->
-        <button id="btnWhatsapp" class="px-6 py-3 bg-green-500 text-white rounded-xl shadow hover:opacity-90 flex items-center gap-2">
-          <i class="fab fa-whatsapp"></i>
-          Compartir por WhatsApp
-        </button>
+      <div class="flex flex-col sm:flex-row gap-4 mt-8">
+        <a href="https://tienda.norttek.com.mx" class="nt-btn nt-btn-primary"><i class="fas fa-store"></i><span>Visitar Tienda</span></a>
+        <button id="btnWhatsapp" class="nt-btn nt-btn-outline"><i class="fab fa-whatsapp"></i><span>Compartir</span></button>
       </div>
     </div>
     <div class="md:w-1/2 flex justify-center">
-      <img src="https://www.sicarx.com/images/new/analyze-data-03.webp" alt="Tienda en línea Norttek" class="w-full max-w-sm">
+      <div class="rounded-2xl overflow-hidden shadow-lg ring-1 ring-gray-200 bg-white">
+        <img src="https://www.sicarx.com/images/new/analyze-data-03.webp" alt="Tienda en línea Norttek" class="w-full max-w-sm">
+      </div>
     </div>
   </div>
 </section>
 
 <!-- Modal WhatsApp para compartir enlace de la tienda -->
-<div id="modalWhatsapp" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center">
-  <div class="bg-white rounded-xl p-6 w-80 relative">
-    <h2 class="text-lg font-bold mb-4">Compartir Tienda en línea</h2>
-    <label class="block mb-2">Número de WhatsApp de la persona a la que le quieres compartir el enlace:</label>
-    <input type="text" id="numeroWhatsapp" placeholder="Ej: 6251234455" class="border p-2 w-full rounded mb-4" />
-    <button id="enviarWhatsapp" class="bg-green-500 text-white px-4 py-2 rounded w-full">Enviar</button>
-    <button id="cerrarModal" class="absolute top-2 right-2 text-gray-600 hover:text-gray-900 font-bold">X</button>
+<div id="modalWhatsapp" class="fixed inset-0 bg-black/60 hidden justify-center items-center z-50">
+  <div class="bg-white rounded-2xl p-6 w-80 relative shadow-xl nt-fade-in">
+    <?= nt_heading('Compartir tienda', 'fa-brands fa-whatsapp', 'sm', 'Envia el enlace por WhatsApp', true); ?>
+    <label class="nt-field mt-4">
+      <span class="text-xs font-semibold tracking-wide text-gray-600">Número destinatario</span>
+      <input type="text" id="numeroWhatsapp" placeholder="Ej: 6251234455" class="nt-input" />
+    </label>
+    <div class="mt-5 flex flex-col gap-3">
+      <button id="enviarWhatsapp" class="nt-btn nt-btn-primary w-full"><i class="fa-solid fa-paper-plane"></i><span>Enviar</span></button>
+      <button id="cerrarModal" class="nt-btn nt-btn-outline w-full"><i class="fa-solid fa-xmark"></i><span>Cerrar</span></button>
+    </div>
   </div>
 </div>
 
