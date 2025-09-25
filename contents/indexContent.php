@@ -35,8 +35,8 @@
         ],
         [
             "titulo" => "Accesos vehiculares",
-            "icono"  => "https://img.icons8.com/ios-filled/50/ffffff/car.png",
-            "enlace" => "accesosVehiculares"
+      "icono"  => "https://img.icons8.com/ios-filled/50/ffffff/car.png",
+      "enlace" => "accesoVehicular" // ajustado para coincidir con id real
         ],
         [
             "titulo" => "Alarmas",
@@ -72,7 +72,7 @@
         [
             "titulo" => "Control de acceso",
             "icono"  => "https://img.icons8.com/ios-filled/50/ffffff/lock.png",
-            "enlace" => "controlAcceso"
+      "enlace" => "ControlAcceso" // coincide exactamente con id existente (pendiente normalizar más adelante)
         ],
         [
             "titulo" => "Consultoría",
@@ -107,7 +107,7 @@
         [
             "titulo" => "Telefonía IP",
             "icono"  => "https://img.icons8.com/ios-filled/50/ffffff/phone.png",
-            "enlace" => "telefoniaIP"
+      "enlace" => "telefonia" // alinea con id real
         ]
     ];
     ?>
