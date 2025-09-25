@@ -356,6 +356,43 @@
 .internet-app .wisphub-links { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
 .internet-app .store-img { height:48px; width:160px; object-fit:contain; display:block; }
 
+/* Cliente Dashboard */
+.internet-app .cliente-dashboard { background: var(--surface); border:1px solid #e7edf6; border-radius:14px; padding:1.5rem 1.4rem 1.6rem; box-shadow:0 6px 16px rgba(15,23,42,.05); max-width:1150px; margin:0 auto 2.4rem; }
+.internet-app .cliente-dashboard-sub { text-align:center; color: var(--muted); margin:-.2rem auto 1.4rem; font-size:1rem; max-width:760px; }
+.internet-app .cliente-grid { display:grid; gap:1rem; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); align-items:stretch; }
+.internet-app .cliente-card { position:relative; background: linear-gradient(180deg,#ffffff,#f6f9fe); border:1px solid #e4ecf6; border-radius:14px; padding:1rem .95rem 1.1rem; display:flex; flex-direction:column; gap:.55rem; box-shadow:0 2px 6px rgba(15,23,42,.04); transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease; }
+.internet-app .cliente-card:hover { transform: translateY(-3px); box-shadow:0 8px 18px rgba(15,23,42,.08); border-color:#d7e5f5; }
+.internet-app .cliente-card h3 { margin:0; font-size:1.05rem; font-weight:800; display:flex; align-items:center; gap:.45rem; color:#0f172a; }
+.internet-app .cliente-card p { margin:.1rem 0 .3rem; font-size:.9rem; line-height:1.45; color: var(--muted); }
+.internet-app .cliente-card .hint-url { font-size:.7rem; letter-spacing:.5px; text-transform:uppercase; font-weight:700; color:#9aa8bb; margin-top:auto; }
+.internet-app .cliente-card.wide { grid-column: span 2; }
+@media (max-width:680px){ .internet-app .cliente-card.wide { grid-column: span 1; } }
+.internet-app .cliente-btn { display:inline-flex; align-items:center; justify-content:center; gap:.4rem; padding:.6rem .85rem; border-radius:8px; font-weight:800; font-size:.82rem; text-decoration:none; background: linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg,var(--primary) 0%, var(--primary-600) 100%) border-box; border:1px solid transparent; color: var(--primary-600); box-shadow:0 4px 10px var(--ring); cursor:pointer; transition: transform .18s ease, box-shadow .18s ease, background .6s ease; }
+.internet-app .cliente-btn:hover { transform: translateY(-2px); box-shadow:0 7px 18px var(--ring); background: linear-gradient(180deg,#eef5ff,#e3efff) padding-box, linear-gradient(135deg,var(--primary) 0%, var(--primary-600) 100%) border-box; }
+.internet-app .cliente-card .mini-store img { height:42px; width:140px; object-fit:contain; display:block; filter: drop-shadow(0 4px 12px rgba(15,23,42,.1)); transition: transform .2s ease; }
+.internet-app .cliente-card .mini-store:hover img { transform: translateY(-3px); }
+.internet-app .cliente-card .app-links-inline { display:flex; gap:.6rem; flex-wrap:wrap; }
+.internet-app .btn-soporte-wa { background: linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg,#25D366 0%, #128C7E 100%) border-box; color:#06553e; }
+.internet-app .btn-soporte-wa:hover { background: linear-gradient(180deg,#e9fff3,#d8fbe9) padding-box, linear-gradient(135deg,#25D366 0%, #128C7E 100%) border-box; }
+
+/* Ayuda servicio page (simple scope) */
+.ayuda-servicio-page { max-width:1150px; margin:0 auto 2.8rem; padding:1rem 1rem 2rem; }
+.ayuda-servicio-page .ayuda-hero { text-align:center; margin-bottom:2rem; }
+.ayuda-servicio-page .ayuda-hero h1 { font-size:1.9rem; font-weight:900; margin:.4rem 0 .6rem; }
+.ayuda-servicio-page .intro { color: var(--muted); max-width:780px; margin:0 auto .9rem; line-height:1.55; }
+.ayuda-servicio-page .ayuda-btn { display:inline-flex; align-items:center; justify-content:center; padding:.7rem 1rem; font-weight:800; border-radius:8px; text-decoration:none; background: linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg,var(--primary) 0%, var(--primary-600) 100%) border-box; color: var(--primary-600); border:1px solid transparent; box-shadow:0 4px 12px var(--ring); }
+.ayuda-servicio-page .ayuda-btn:hover { transform: translateY(-2px); box-shadow:0 7px 18px var(--ring); }
+.ayuda-servicio-page .ayuda-grid { display:grid; gap:1rem; grid-template-columns: repeat(auto-fill,minmax(260px,1fr)); margin-bottom:2.2rem; }
+.ayuda-servicio-page .ayuda-card { background:#fff; border:1px solid #e4ecf6; border-radius:14px; padding:1rem 1rem .9rem; box-shadow:0 2px 6px rgba(15,23,42,.05); display:flex; flex-direction:column; }
+.ayuda-servicio-page .ayuda-card h2 { margin:0 0 .55rem; font-size:1.05rem; font-weight:800; display:flex; gap:.5rem; align-items:center; color:#0f172a; }
+.ayuda-servicio-page .ayuda-card ul { margin:.25rem 0 .5rem; padding-left:1.1rem; color: var(--muted); font-size:.85rem; line-height:1.4; }
+.ayuda-servicio-page .ayuda-card li { margin:.3rem 0; }
+.ayuda-servicio-page .ayuda-card .action { margin:.2rem 0 0; font-size:.75rem; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:#6f8094; }
+.ayuda-servicio-page .ayuda-extra { text-align:center; }
+.ayuda-servicio-page .ayuda-extra h2 { font-size:1.4rem; font-weight:900; margin:0 0 .5rem; }
+.ayuda-servicio-page .soporte-btn { background: linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg,#25D366 0%, #128C7E 100%) border-box; color:#06553e; }
+.ayuda-servicio-page .soporte-btn:hover { background: linear-gradient(180deg,#e9fff3,#d8fbe9) padding-box, linear-gradient(135deg,#25D366 0%, #128C7E 100%) border-box; }
+
 /* Scroll reveal */
 .internet-app .scroll-anim { opacity:0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
 .internet-app .scroll-anim.visible { opacity:1; transform: translateY(0); }
