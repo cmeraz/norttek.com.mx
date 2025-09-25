@@ -375,23 +375,7 @@
 .internet-app .btn-soporte-wa { background: linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg,#25D366 0%, #128C7E 100%) border-box; color:#06553e; }
 .internet-app .btn-soporte-wa:hover { background: linear-gradient(180deg,#e9fff3,#d8fbe9) padding-box, linear-gradient(135deg,#25D366 0%, #128C7E 100%) border-box; }
 
-/* Ayuda servicio page (simple scope) */
-.ayuda-servicio-page { max-width:1150px; margin:0 auto 2.8rem; padding:1rem 1rem 2rem; }
-.ayuda-servicio-page .ayuda-hero { text-align:center; margin-bottom:2rem; }
-.ayuda-servicio-page .ayuda-hero h1 { font-size:1.9rem; font-weight:900; margin:.4rem 0 .6rem; }
-.ayuda-servicio-page .intro { color: var(--muted); max-width:780px; margin:0 auto .9rem; line-height:1.55; }
-.ayuda-servicio-page .ayuda-btn { display:inline-flex; align-items:center; justify-content:center; padding:.7rem 1rem; font-weight:800; border-radius:8px; text-decoration:none; background: linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg,var(--primary) 0%, var(--primary-600) 100%) border-box; color: var(--primary-600); border:1px solid transparent; box-shadow:0 4px 12px var(--ring); }
-.ayuda-servicio-page .ayuda-btn:hover { transform: translateY(-2px); box-shadow:0 7px 18px var(--ring); }
-.ayuda-servicio-page .ayuda-grid { display:grid; gap:1rem; grid-template-columns: repeat(auto-fill,minmax(260px,1fr)); margin-bottom:2.2rem; }
-.ayuda-servicio-page .ayuda-card { background:#fff; border:1px solid #e4ecf6; border-radius:14px; padding:1rem 1rem .9rem; box-shadow:0 2px 6px rgba(15,23,42,.05); display:flex; flex-direction:column; }
-.ayuda-servicio-page .ayuda-card h2 { margin:0 0 .55rem; font-size:1.05rem; font-weight:800; display:flex; gap:.5rem; align-items:center; color:#0f172a; }
-.ayuda-servicio-page .ayuda-card ul { margin:.25rem 0 .5rem; padding-left:1.1rem; color: var(--muted); font-size:.85rem; line-height:1.4; }
-.ayuda-servicio-page .ayuda-card li { margin:.3rem 0; }
-.ayuda-servicio-page .ayuda-card .action { margin:.2rem 0 0; font-size:.75rem; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:#6f8094; }
-.ayuda-servicio-page .ayuda-extra { text-align:center; }
-.ayuda-servicio-page .ayuda-extra h2 { font-size:1.4rem; font-weight:900; margin:0 0 .5rem; }
-.ayuda-servicio-page .soporte-btn { background: linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg,#25D366 0%, #128C7E 100%) border-box; color:#06553e; }
-.ayuda-servicio-page .soporte-btn:hover { background: linear-gradient(180deg,#e9fff3,#d8fbe9) padding-box, linear-gradient(135deg,#25D366 0%, #128C7E 100%) border-box; }
+/* Estilos de página de ayuda movidos a assets/css/ayuda-servicio.css para separar responsabilidades. */
 
 /* Scroll reveal */
 .internet-app .scroll-anim { opacity:0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
@@ -413,6 +397,45 @@
 .internet-app .plans { width:100%; }
 /* Section divider for copy blocks */
 .internet-app .section-divider { border:0; border-top:1px solid #e7edf6; margin:1.8rem auto; max-width:900px; }
+
+/* === Animaciones suaves secuenciales (inspiradas en parpadeo / enfoque) === */
+@keyframes ntSoftReveal { 0% { opacity:0; transform:translateY(28px) scale(.96); filter:blur(6px);} 55% { filter:blur(0);} 100% { opacity:1; transform:translateY(0) scale(1);} }
+@keyframes ntCardBreath { 0%,100% { transform:translateY(0) scale(1);} 50% { transform:translateY(-3px) scale(1.01);} }
+@keyframes ntEyeBlink { 0%,92%,100% { opacity:1; filter:none;} 93% { opacity:.55; filter:blur(1px);} 95% { opacity:.3; } 97% { opacity:.85; filter:blur(.5px);} }
+@keyframes ntSheenSlow { 0% { background-position:-120%; } 60% { background-position:120%; } 100% { background-position:120%; } }
+
+.nt-soft-seq { opacity:0; animation: ntSoftReveal 1.4s cubic-bezier(.22,.95,.3,1) forwards; }
+.nt-soft-loop { animation: ntCardBreath 5.8s ease-in-out infinite; }
+.nt-eye-blink { animation: ntEyeBlink 7.5s ease-in-out infinite; }
+
+/* Variantes de retardo secuencial (generadas manualmente) */
+.nt-delay-1 { animation-delay:.08s; }
+.nt-delay-2 { animation-delay:.18s; }
+.nt-delay-3 { animation-delay:.28s; }
+.nt-delay-4 { animation-delay:.38s; }
+.nt-delay-5 { animation-delay:.48s; }
+.nt-delay-6 { animation-delay:.58s; }
+.nt-delay-7 { animation-delay:.68s; }
+.nt-delay-8 { animation-delay:.78s; }
+.nt-delay-9 { animation-delay:.88s; }
+.nt-delay-10 { animation-delay:.98s; }
+.nt-delay-11 { animation-delay:1.08s; }
+.nt-delay-12 { animation-delay:1.18s; }
+.nt-delay-13 { animation-delay:1.28s; }
+.nt-delay-14 { animation-delay:1.38s; }
+.nt-delay-15 { animation-delay:1.48s; }
+
+/* Aplicar respiración sólo cuando el usuario interactuó (opt-in con clase) */
+.nt-breath { animation: ntCardBreath 6.2s ease-in-out infinite; }
+
+/* Efecto sheen lento opcional para iconos */
+.nt-icon-sheen { position:relative; overflow:hidden; }
+.nt-icon-sheen:after { content:""; position:absolute; inset:0; background:linear-gradient(110deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.45) 45%, rgba(255,255,255,0) 70%); transform:translateX(-120%); animation: ntSheenSlow 9s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce){
+  .nt-soft-seq, .nt-soft-loop, .nt-eye-blink, .nt-breath { animation:none !important; opacity:1 !important; transform:none !important; filter:none !important; }
+  .nt-icon-sheen:after { animation:none !important; display:none; }
+}
 
 /* Responsive: increase spacing on larger screens */
 @media (min-width: 900px) {
@@ -538,6 +561,12 @@
   box-shadow: 0 8px 18px var(--danger-ring);
 }
 .internet-modal .modal-close { position:absolute; top:.6rem; right:.7rem; background:transparent; border:none; font-size:1.5rem; color:#6b7a90; cursor:pointer; padding:.2rem; border-radius:8px; }
+.internet-modal .modal-close:hover { background:#f1f5fb; }
+/* Bloque auth cliente */
+#cliente-auth-info { animation: authBlockIn .4s ease; }
+@keyframes authBlockIn { 0% { opacity:0; transform: translateY(10px) scale(.98);} 100% { opacity:1; transform: translateY(0) scale(1);} }
+#cliente-auth-info code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+#cliente-auth-info button#cliente-auth-logout:hover { transform: translateY(-2px); box-shadow:0 6px 16px var(--danger-ring); }
 .internet-modal .modal-close:hover { background:#f1f5fb; color:#1f2937; }
 
 @keyframes modalIn { from { opacity:0; transform: translateY(6px);} to { opacity:1; transform: translateY(0);} }
