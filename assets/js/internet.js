@@ -179,6 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var clienteLoginModal = null;
   var clientesCache = null; // se carga bajo demanda
   var clientesLoading = false;
+  var clientesPhoneIndex = null; // Map de telefono normalizado -> registro
 
   function getAuth() {
     try {
@@ -206,7 +207,31 @@ document.addEventListener('DOMContentLoaded', function() {
       clientesLoading = true;
       fetch('json/clientes.json', { cache:'no-cache' })
         .then(function(r){ if(!r.ok) throw new Error('Carga fallida'); return r.json(); })
-        .then(function(data){ clientesCache = Array.isArray(data)?data:[]; resolve(clientesCache); })
+        .then(function(data){
+          clientesCache = Array.isArray(data)?data:[];
+          // Construir índice de teléfonos y validar duplicados
+          try {
+            clientesPhoneIndex = Object.create(null);
+            var dupes = [];
+            clientesCache.forEach(function(item, idx){
+              var tels = Array.isArray(item.Telefonos)?item.Telefonos:[];
+              if(!tels.length){ /* se puede loggear si se requiere */ }
+              tels.forEach(function(tRaw){
+                var t = normalizePhone(tRaw);
+                if(!t) return;
+                if(clientesPhoneIndex[t]) {
+                  dupes.push({ telefono:t, existente: clientesPhoneIndex[t].Usuario, duplicado: item.Usuario });
+                } else {
+                  clientesPhoneIndex[t] = item;
+                }
+              });
+            });
+            if(dupes.length && window.console){
+              console.warn('[Clientes] Teléfonos duplicados detectados:', dupes.slice(0,10));
+            }
+          } catch(errIdx){ console.error('Error construyendo índice de clientes', errIdx); }
+          resolve(clientesCache);
+        })
         .catch(function(err){ console.error('Error cargando clientes.json', err); reject(err); })
         .finally(function(){ clientesLoading = false; });
     });
@@ -215,7 +240,10 @@ document.addEventListener('DOMContentLoaded', function() {
   function findClientByPhone(phone, list) {
     var target = normalizePhone(phone);
     if (!target || target.length < 7) return null;
-    list = list || [];
+    // Usar índice si está disponible
+    if (clientesPhoneIndex && clientesPhoneIndex[target]) return clientesPhoneIndex[target];
+    // Fallback escaneo lineal (si índice no construido aún)
+    list = list || clientesCache || [];
     for (var i=0;i<list.length;i++) {
       var item = list[i];
       var tels = Array.isArray(item.Telefonos)?item.Telefonos:[];
