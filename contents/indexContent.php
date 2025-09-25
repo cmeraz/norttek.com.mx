@@ -15,7 +15,7 @@
     <div class="mb-6">
   <?= nt_heading('Protege tu espacio · Potencia tu productividad', 'fa-solid fa-shield-halved', 'lg', 'Soluciones integrales para hogar y empresa', ['animate'=>true,'delay'=>'sm','class'=>'nt-heading-hero nt-heading-invert']); ?>
     </div>
-    <div class="max-w-2xl mx-auto mb-8">
+    <div class="max-w-2xl mx-auto mb-8 site-status-wrap">
   <?= nt_alert('accent', 'Sitio en actualización visual. Algunos módulos están en fase de integración al nuevo sistema.'); ?>
     </div>
     <div class="max-w-4xl mx-auto mb-10">
@@ -174,3 +174,22 @@ includeTemplate("servicios");
 
 <!-- Sección de preguntas frecuentes generada dinámicamente -->
 <?= faq('faq-general', ['title' => 'Preguntas Frecuentes']) ?>
+
+<style>
+/* Override fuerte (naranja) para el alert "accent" sólo en esta página */
+.site-status-wrap .nt-alert,
+.nt-hero-wrapper .site-status-wrap .nt-alert.nt-alert-accent,
+.nt-hero-wrapper .site-status-wrap .nt-alert.accent {
+  background:linear-gradient(92deg,#ff8a00,#ff6a00) !important;
+  border:1px solid #ff8a00 !important;
+  color:#fff !important;
+  box-shadow:0 4px 14px -4px rgba(255,118,0,.45);
+}
+.site-status-wrap .nt-alert a {
+  color:#fff !important;
+  text-decoration:underline;
+}
+@media (prefers-reduced-motion:reduce){
+  .site-status-wrap .nt-alert {box-shadow:none !important;}
+}
+</style>
