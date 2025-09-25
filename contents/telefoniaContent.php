@@ -4,27 +4,19 @@
 ?>
 
 <!-- HERO -->
-<section class="relative nt-hero-wrapper" id="hero" aria-labelledby="hero-title" style="background:#0c2234;">
-  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(circle at 18% 32%,rgba(111,164,255,.35),transparent 60%),radial-gradient(circle at 82% 68%,rgba(155,196,255,.25),transparent 65%),linear-gradient(160deg,#0e2d44,#0a1d2b 65%);"></div>
-  <div class="absolute inset-0 opacity-60 mix-blend-screen" style="background:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0 6px, transparent 6px 12px);"></div>
-  <div class="absolute inset-0" style="background:linear-gradient(to bottom,rgba(10,25,38,.2),rgba(10,25,38,.9));"></div>
-  <div class="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
-  <div class="hero-text nt-stack">
-      <div id="hero-title" class="opacity-0 translate-y-10">
-        <?= nt_heading('Telefonía IP en la Nube', 'fa-solid fa-phone-volume', 'xl', 'Norttek PBX', ['animate' => true, 'delay' => 'sm','class'=>'nt-heading-hero nt-heading-invert']); ?>
-      </div>
-  <p class="text-slate-200 text-lg leading-relaxed opacity-0 translate-y-10 max-w-xl">
-        Gestiona todas las comunicaciones de tu empresa de manera <strong>centralizada desde la nube</strong>. Administra <strong>extensiones</strong>, configura <strong>troncales</strong>, IVR personalizado, grabación de llamadas y <strong>reportes detallados</strong>. Accede desde <strong>PC, smartphone o teléfono físico</strong>, sin infraestructura local ni mantenimiento complejo.
-      </p>
-  <div class="flex flex-col sm:flex-row sm:flex-wrap gap-4 opacity-0 translate-y-10 nt-stack-tight">
-        <a href="#planes" class="nt-btn nt-btn-primary nt-pulse" role="button"><i class="fa-solid fa-coins"></i><span>Cotiza tu plan</span></a>
-        <a href="#demo" class="nt-btn nt-btn-outline" role="button"><i class="fa-solid fa-rocket"></i><span>Solicitar demo</span></a>
-        <a href="#faq" class="nt-btn nt-btn-accent" role="button"><i class="fas fa-question-circle"></i><span>Preguntas Frecuentes</span></a>
-      </div>
+<section class="telefonia-hero nt-hero-wrapper" id="hero" aria-labelledby="hero-title">
+  <div class="telefonia-hero-bg" aria-hidden="true"></div>
+  <div class="telefonia-hero-inner">
+    <div id="hero-title" class="opacity-0 translate-y-10">
+  <?= nt_heading('Telefonía IP en la Nube', 'fa-solid fa-phone-volume', 'xl', 'Norttek PBX', ['animate' => true, 'delay' => 'sm','class'=>'nt-heading-hero nt-heading-invert']); ?>
     </div>
-    <div class="hero-image-container opacity-0 translate-y-10 relative">
-      <div class="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-blue-600/30 via-cyan-400/25 to-transparent blur-2xl"></div>
-      <img class="hero-image rounded-2xl shadow-xl ring-1 ring-white/10" width="996" height="749" src="https://www.net2phone.com/hs-fs/hubfs/Business%20phone%20systems%20interface.webp?width=996&height=749&name=Business%20phone%20systems%20interface.webp" alt="Interfaz Norttek PBX en laptop">
+    <p class="telefonia-hero-sub opacity-0 translate-y-10">
+      Gestiona todas las comunicaciones de tu empresa de manera <strong>centralizada desde la nube</strong>. Administra <strong>extensiones</strong>, configura <strong>troncales</strong>, IVR personalizado, grabación de llamadas y <strong>reportes detallados</strong>. Accede desde <strong>PC, smartphone o teléfono físico</strong>, sin infraestructura local ni mantenimiento complejo.
+    </p>
+    <div class="telefonia-hero-actions opacity-0 translate-y-10 nt-stack-tight">
+      <a href="#planes" class="nt-btn nt-btn-primary nt-pulse" role="button"><i class="fa-solid fa-coins"></i><span>Cotiza tu plan</span></a>
+      <a href="#demo" class="nt-btn nt-btn-outline" role="button"><i class="fa-solid fa-rocket"></i><span>Solicitar demo</span></a>
+      <a href="#faq" class="nt-btn nt-btn-accent" role="button"><i class="fas fa-question-circle"></i><span>Preguntas Frecuentes</span></a>
     </div>
   </div>
 </section>
@@ -35,47 +27,52 @@
   <div id="dispositivos-title" class="nt-stack-loose">
       <?= nt_heading('Accede desde cualquier dispositivo', 'fa-solid fa-display', 'lg', null, ['animate' => true,'class'=>'nt-heading-accent-bar']); ?>
     </div>
-    <div class="grid md:grid-cols-1 gap-8">
-      <!-- Card 1: PC / Laptop -->
-      <div class="flex flex-col md:flex-row md:items-center md:gap-8 bg-white rounded-2xl shadow-lg p-6 transform transition hover:-translate-y-2 hover:shadow-2xl animate-fade-in">
-        <div class="md:w-1/3 flex justify-center">
-          <img src="https://4423252.fs1.hubspotusercontent-na1.net/hubfs/4423252/net2phones%20business%20phone%20system%20interface%20on%20a%20laptop.webp" alt="Interfaz PBX en laptop" class="rounded-2xl shadow" loading="lazy">
+    <div class="dev-cards-grid">
+      <!-- Nueva Card 1: PC / Laptop -->
+      <article class="dev-card" data-device="pc" aria-labelledby="dev-pc-title">
+        <div class="dev-card__media">
+          <img src="https://4423252.fs1.hubspotusercontent-na1.net/hubfs/4423252/net2phones%20business%20phone%20system%20interface%20on%20a%20laptop.webp" alt="Interfaz PBX en laptop" loading="lazy" width="640" height="400">
         </div>
-        <div class="md:w-2/3 mt-6 md:mt-0 text-left">
-          <?= nt_heading('PC / Laptop', 'fa-solid fa-computer', 'md', null, ['class'=>'nt-heading-accent-bar']); ?>
-          <p class="text-gray-700 text-lg leading-relaxed">
-            Accede a tu <span class="font-semibold text-blue-600">central telefónica</span> desde tu computadora.
-            Gestiona <span class="font-semibold">llamadas, videollamadas, mensajes y reportes</span> sin instalar hardware adicional.
-            Ideal para oficinas modernas donde necesitas controlar todas las comunicaciones desde un solo lugar, <span class="text-blue-600 font-semibold">rápida y eficientemente</span>.
-          </p>
+        <div class="dev-card__content">
+          <h3 id="dev-pc-title" class="dev-card__title"><span class="dev-card__icon"><i class="fa-solid fa-computer" aria-hidden="true"></i></span>PC / Laptop</h3>
+          <p class="dev-card__desc">Control total desde escritorio: panel unificado para llamadas, videollamadas, mensajería y reportes en tiempo real sin hardware adicional.</p>
+          <ul class="dev-card__highlights" aria-label="Ventajas clave">
+            <li><i class="fa-solid fa-circle-check"></i><span>Operación multi‑ventana</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span>Atajos y productividad</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span>Reportes inmediatos</span></li>
+          </ul>
         </div>
-      </div>
-      <!-- Card 2: Smartphone / Linkus -->
-      <div class="flex flex-col md:flex-row-reverse md:items-center md:gap-8 bg-white rounded-2xl shadow-lg p-6 transform transition hover:-translate-y-2 hover:shadow-2xl animate-fade-in">
-        <div class="md:w-1/3 flex justify-center mb-6 md:mb-0">
-          <img src="https://4423252.fs1.hubspotusercontent-na1.net/hubfs/4423252/net2phone%D1%91s%20business%20phone%20system%20interface%20on%20mobile%20and%20tablet.webp" alt="App Linkus en smartphone" class="rounded-2xl shadow" loading="lazy">
+      </article>
+      <!-- Nueva Card 2: Smartphone / App Linkus -->
+      <article class="dev-card dev-card--alt" data-device="mobile" aria-labelledby="dev-mobile-title">
+        <div class="dev-card__media">
+          <img src="https://4423252.fs1.hubspotusercontent-na1.net/hubfs/4423252/net2phone%D1%91s%20business%20phone%20system%20interface%20on%20mobile%20and%20tablet.webp" alt="Aplicación Linkus en smartphone y tablet" loading="lazy" width="640" height="400">
         </div>
-        <div class="md:w-2/3 text-left">
-          <?= nt_heading('Smartphone / App Linkus', 'fa-solid fa-mobile-screen-button', 'md', null, ['class'=>'nt-heading-accent-bar']); ?>
-          <p class="text-gray-700 text-lg leading-relaxed">
-            Mantente <span class="font-semibold text-blue-600">conectado estés donde estés</span>. Con la app <span class="font-semibold">Linkus</span> para móvil, puedes realizar y recibir llamadas, transferir, grabar y acceder a reportes desde cualquier lugar.
-            Perfecto para empleados remotos o que necesitan movilidad, <span class="text-blue-600 font-semibold">sin perder conexión con tu empresa</span>.
-          </p>
+        <div class="dev-card__content">
+          <h3 id="dev-mobile-title" class="dev-card__title"><span class="dev-card__icon"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i></span>Smartphone / App Linkus</h3>
+          <p class="dev-card__desc">Movilidad absoluta: extiende tu extensión a cualquier lugar y mantén presencia corporativa desde el móvil.</p>
+          <ul class="dev-card__highlights" aria-label="Ventajas clave">
+            <li><i class="fa-solid fa-circle-check"></i><span>Llamadas y transferencia</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span>Grabación y buzón</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span>Notificaciones push</span></li>
+          </ul>
         </div>
-      </div>
-      <!-- Card 3: Teléfono físico SIP -->
-      <div class="flex flex-col md:flex-row md:items-center md:gap-8 bg-white rounded-2xl shadow-lg p-6 transform transition hover:-translate-y-2 hover:shadow-2xl animate-fade-in">
-        <div class="md:w-1/3 flex justify-center mb-6 md:mb-0">
-          <img src="https://4423252.fs1.hubspotusercontent-na1.net/hubfs/4423252/Desk%20Business%20Phone.webp" alt="Teléfono físico SIP" class="rounded-2xl shadow" loading="lazy">
+      </article>
+      <!-- Nueva Card 3: Teléfono físico SIP -->
+      <article class="dev-card" data-device="sip" aria-labelledby="dev-sip-title">
+        <div class="dev-card__media">
+          <img src="https://4423252.fs1.hubspotusercontent-na1.net/hubfs/4423252/Desk%20Business%20Phone.webp" alt="Teléfono físico SIP de escritorio" loading="lazy" width="640" height="400">
         </div>
-        <div class="md:w-2/3 text-left">
-          <?= nt_heading('Teléfono físico SIP', 'fa-solid fa-phone', 'md', null, ['class'=>'nt-heading-accent-bar']); ?>
-          <p class="text-gray-700 text-lg leading-relaxed">
-            Si prefieres la experiencia tradicional de un teléfono, los <span class="font-semibold text-blue-600">dispositivos SIP físicos</span> se integran perfectamente con tu PBX Norttek.
-            Garantizan <span class="font-semibold text-blue-600">calidad de voz superior, facilidad de uso</span> y compatibilidad con funciones avanzadas como transferencias, colas y buzón de voz.
-          </p>
+        <div class="dev-card__content">
+          <h3 id="dev-sip-title" class="dev-card__title"><span class="dev-card__icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>Teléfono físico SIP</h3>
+          <p class="dev-card__desc">Dispositivo dedicado para puestos operativos que requieren audio nítido y confiabilidad continua.</p>
+          <ul class="dev-card__highlights" aria-label="Ventajas clave">
+            <li><i class="fa-solid fa-circle-check"></i><span>Calidad de voz HD</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span>Funciones avanzadas (colas / IVR)</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span>Bajo mantenimiento</span></li>
+          </ul>
         </div>
-      </div>
+      </article>
     </div>
   </div>
 </section>
@@ -89,47 +86,77 @@
   <p class="text-gray-700 max-w-2xl mx-auto text-lg">
       Elige el plan que mejor se adapta a tu empresa. Todos incluyen numeración LADA México y soporte técnico.
     </p>
-    <div class="mt-14 grid md:grid-cols-3 gap-10">
-      <!-- Plan Básico -->
-      <div class="bg-white p-8 rounded-3xl shadow-lg flex flex-col justify-between border border-gray-100">
-        <?= nt_heading('Plan Básico', 'fa-solid fa-circle-dot', 'sm', null, ['animate' => true, 'delay' => 'sm']); ?>
-        <ul class="text-gray-700 mb-6 space-y-2 text-left">
-          <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>1 extensión</li>
-          <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>1 troncal (2 canales)</li>
-          <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>Numeración LADA México</li>
-        </ul>
-        <p class="font-bold text-blue-600 text-xl mb-6">$379 / mes + IVA</p>
-        <a href="#" data-plan="Plan Básico" data-precio="$379 / mes + IVA" data-ext="1 extensión" data-troncal="1 troncal (2 canales)" data-numeracion="Numeración LADA México" class="nt-btn nt-btn-primary justify-center w-full mt-auto" role="button">
-          <i class="fa-solid fa-cart-plus"></i><span>Solicitar Plan</span>
-        </a>
-      </div>
-      <!-- Plan Premium -->
-      <div class="bg-white p-8 rounded-3xl shadow-lg border-2 border-blue-600 relative flex flex-col justify-between">
-        <span class="absolute top-0 left-0 bg-yellow-400 text-xs font-bold px-3 py-1 rounded-br-2xl">Recomendado</span>
-        <?= nt_heading('Plan Premium', 'fa-solid fa-star', 'sm', null, ['animate' => true, 'delay' => 'md']); ?>
-        <ul class="text-gray-700 mb-6 space-y-2 text-left">
-          <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>3 extensiones</li>
-          <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>1 troncal (2 canales)</li>
-          <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>Numeración LADA México</li>
-        </ul>
-        <p class="font-bold text-blue-600 text-xl mb-6">$605 / mes + IVA</p>
-        <a href="#" data-plan="Plan Premium" data-precio="$605 / mes + IVA" data-ext="3 extensiones" data-troncal="1 troncal (2 canales)" data-numeracion="Numeración LADA México" class="nt-btn nt-btn-primary justify-center w-full mt-auto" role="button">
-          <i class="fa-solid fa-cart-plus"></i><span>Solicitar Plan</span>
-        </a>
-      </div>
-      <!-- Plan Empresarial -->
-      <div class="bg-white p-8 rounded-3xl shadow-lg flex flex-col justify-between border border-gray-100">
-        <?= nt_heading('Plan Empresarial', 'fa-solid fa-building', 'sm', null, ['animate' => true, 'delay' => 'lg']); ?>
-        <ul class="text-gray-700 mb-6 space-y-2 text-left">
-          <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>10 extensiones</li>
-          <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>1 troncal (10 canales)</li>
-          <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>Numeración LADA México</li>
-        </ul>
-        <p class="font-bold text-blue-600 text-xl mb-6">$1,490 / mes + IVA</p>
-        <a href="#" data-plan="Plan Empresarial" data-precio="$1,490 / mes + IVA" data-ext="10 extensiones" data-troncal="1 troncal (10 canales)" data-numeracion="Numeración LADA México" class="nt-btn nt-btn-primary justify-center w-full mt-auto" role="button">
-          <i class="fa-solid fa-cart-plus"></i><span>Solicitar Plan</span>
-        </a>
-      </div>
+    <div class="mt-14 tel-plans-modern grid md:grid-cols-3 gap-10">
+      <!-- Nuevo Plan Básico -->
+      <article class="tel-plan tel-plan--tier-basico" data-plan-tier="basico">
+        <header class="tel-plan__hdr">
+          <div class="tel-plan__icon" aria-hidden="true"><i class="fa-solid fa-circle-dot"></i></div>
+          <div class="tel-plan__titles">
+            <h3 class="tel-plan__name">Plan Básico</h3>
+            <p class="tel-plan__tag">Para iniciar sin complicaciones</p>
+          </div>
+        </header>
+        <div class="tel-plan__body">
+          <ul class="tel-plan__features" aria-label="Características incluidas">
+            <li><i class="fa-solid fa-phone"></i><span>1 extensión</span></li>
+            <li><i class="fa-solid fa-diagram-project"></i><span>1 troncal (2 canales)</span></li>
+            <li><i class="fa-solid fa-hashtag"></i><span>Numeración LADA México</span></li>
+          </ul>
+          <div class="tel-plan__meta">
+            <div class="tel-plan__price" aria-label="Precio mensual">$379 <small>/ mes + IVA</small></div>
+          </div>
+        </div>
+        <footer class="tel-plan__ftr">
+          <a href="#" class="nt-btn tel-plan__btn" role="button" data-plan="Plan Básico" data-precio="$379 / mes + IVA" data-ext="1 extensión" data-troncal="1 troncal (2 canales)" data-numeracion="Numeración LADA México"><i class="fa-solid fa-cart-plus"></i><span>Solicitar Plan</span></a>
+        </footer>
+      </article>
+      <!-- Nuevo Plan Premium -->
+      <article class="tel-plan tel-plan--tier-premium is-featured" data-plan-tier="premium">
+        <div class="tel-plan__badge" aria-label="Plan recomendado"><i class="fa-solid fa-award" aria-hidden="true"></i><span>Recomendado</span></div>
+        <header class="tel-plan__hdr">
+          <div class="tel-plan__icon" aria-hidden="true"><i class="fa-solid fa-star"></i></div>
+          <div class="tel-plan__titles">
+            <h3 class="tel-plan__name">Plan Premium</h3>
+            <p class="tel-plan__tag">Más capacidad y escalabilidad</p>
+          </div>
+        </header>
+        <div class="tel-plan__body">
+          <ul class="tel-plan__features" aria-label="Características incluidas">
+            <li><i class="fa-solid fa-phone"></i><span>3 extensiones</span></li>
+            <li><i class="fa-solid fa-diagram-project"></i><span>1 troncal (2 canales)</span></li>
+            <li><i class="fa-solid fa-hashtag"></i><span>Numeración LADA México</span></li>
+          </ul>
+          <div class="tel-plan__meta">
+            <div class="tel-plan__price" aria-label="Precio mensual">$605 <small>/ mes + IVA</small></div>
+          </div>
+        </div>
+        <footer class="tel-plan__ftr">
+          <a href="#" class="nt-btn tel-plan__btn" role="button" data-plan="Plan Premium" data-precio="$605 / mes + IVA" data-ext="3 extensiones" data-troncal="1 troncal (2 canales)" data-numeracion="Numeración LADA México"><i class="fa-solid fa-cart-plus"></i><span>Solicitar Plan</span></a>
+        </footer>
+      </article>
+      <!-- Nuevo Plan Empresarial -->
+      <article class="tel-plan tel-plan--tier-empresarial" data-plan-tier="empresarial">
+        <header class="tel-plan__hdr">
+          <div class="tel-plan__icon" aria-hidden="true"><i class="fa-solid fa-building"></i></div>
+          <div class="tel-plan__titles">
+            <h3 class="tel-plan__name">Plan Empresarial</h3>
+            <p class="tel-plan__tag">Expansión y operación intensiva</p>
+          </div>
+        </header>
+        <div class="tel-plan__body">
+          <ul class="tel-plan__features" aria-label="Características incluidas">
+            <li><i class="fa-solid fa-phone"></i><span>10 extensiones</span></li>
+            <li><i class="fa-solid fa-diagram-project"></i><span>1 troncal (10 canales)</span></li>
+            <li><i class="fa-solid fa-hashtag"></i><span>Numeración LADA México</span></li>
+          </ul>
+          <div class="tel-plan__meta">
+            <div class="tel-plan__price" aria-label="Precio mensual">$1,490 <small>/ mes + IVA</small></div>
+          </div>
+        </div>
+        <footer class="tel-plan__ftr">
+          <a href="#" class="nt-btn tel-plan__btn" role="button" data-plan="Plan Empresarial" data-precio="$1,490 / mes + IVA" data-ext="10 extensiones" data-troncal="1 troncal (10 canales)" data-numeracion="Numeración LADA México"><i class="fa-solid fa-cart-plus"></i><span>Solicitar Plan</span></a>
+        </footer>
+      </article>
     </div>
   </div>
 </section>
