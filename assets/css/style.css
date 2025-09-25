@@ -57,6 +57,22 @@ html {
   --nt-gradient-border: linear-gradient(135deg, var(--nt-primary-strong) 0%, var(--nt-primary) 100%);
 }
 
+/* =============================================
+  Hero Wrapper Unificado (nt-hero-wrapper)
+  Aplica estilos base reutilizables para héroes
+  ============================================= */
+.nt-hero-wrapper { position:relative; overflow:hidden; }
+.nt-hero-wrapper .nt-hero-bg-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.9) saturate(1.05); }
+.nt-hero-wrapper .nt-hero-overlay { position:absolute; inset:0; background:var(--nt-hero-overlay); backdrop-filter:saturate(1.2); }
+.nt-hero-wrapper .hero-content { position:relative; z-index:10; }
+
+/* Variante clara degradada (para páginas como Internet) */
+.nt-hero-wrapper.is-soft { background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.78) 70%,rgba(255,255,255,.95) 100%); }
+
+/* Subtítulos hero sincronizados con animación global */
+.nt-hero-sub { font-size:clamp(1rem,1.2vw,1.15rem); color:var(--nt-text-muted); margin-top:.85rem; }
+
+
 body.dark { background: var(--nt-bg); color: var(--nt-text); }
 
 /* Ajustes componentes en modo oscuro */
@@ -129,6 +145,13 @@ body {
 .nt-heading-hero { justify-content:center; text-align:center; line-height:1.08; width:100%; }
 .nt-heading-hero i { font-size:1.05em; }
 .nt-heading-hero .nt-sub { margin-top:.55rem; }
+/* Hero subtitle base */
+.nt-hero-sub { color: var(--nt-text-muted); line-height:1.5; font-weight:500; }
+/* Variante invertida para fondos oscuros/mixtos */
+.nt-hero-sub-invert { color:#e4eef5; text-shadow:0 2px 6px rgba(0,0,0,.45); }
+@media (prefers-color-scheme: dark) {
+  .nt-hero-sub-invert { color:#d8e7f0; }
+}
 
 /* Subtle animation base (opt-in) */
 .nt-heading-anim { opacity:0; transform: translateY(34px) scale(.955); transition: opacity 1.35s cubic-bezier(.22,.95,.3,1), transform 1.35s cubic-bezier(.22,.95,.3,1); will-change: opacity, transform; }
