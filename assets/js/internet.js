@@ -418,6 +418,8 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         }
         greetWrap.style.display = 'block';
+        // Reinicia animación del saludo
+        try { greetWrap.classList.remove('greet-anim'); void greetWrap.offsetWidth; greetWrap.classList.add('greet-anim'); } catch(_) {}
       }
 
       // Guardar selección
@@ -427,9 +429,9 @@ document.addEventListener('DOMContentLoaded', function() {
       cerrarModal();
       showSection(nuevoContent);
       try { nuevoContent.classList.add('visited'); } catch(_) {}
-      // Desplazar suavemente a la sección de proceso inicial para ver costos
+      // Desplazar suavemente al saludo personalizado (mejor visibilidad)
       try {
-        var target = document.querySelector('.proceso-instalacion');
+        var target = document.getElementById('personal-greeting') || document.querySelector('.proceso-instalacion');
         if (target) {
           var header = document.getElementById('site-header');
           var y = target.getBoundingClientRect().top + window.pageYOffset - ((header && header.offsetHeight) || 0) - 8;
