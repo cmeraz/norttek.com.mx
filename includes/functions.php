@@ -59,12 +59,21 @@ function nt_heading($text, $icon = 'fa-solid fa-circle', $size = 'lg', $sub = nu
         if ($delay) { $cls .= ' delay-' . $delay; }
     }
 
+    // Añadir semántica accesible si no se define explícitamente
+    $sizeMap = ['xl'=>1,'lg'=>2,'md'=>3,'sm'=>4];
+    if (!isset($attrs['role'])) {
+        $attrs['role'] = 'heading';
+    }
+    if (!isset($attrs['aria-level'])) {
+        $attrs['aria-level'] = $sizeMap[$size] ?? 2;
+    }
+
     $attrStr = '';
     if (!empty($attrs) && is_array($attrs)) {
         foreach ($attrs as $k => $v) {
             if ($v === null) continue;
             $k = htmlspecialchars($k, ENT_QUOTES, 'UTF-8');
-            $v = htmlspecialchars($v, ENT_QUOTES, 'UTF-8');
+            $v = htmlspecialchars((string)$v, ENT_QUOTES, 'UTF-8');
             $attrStr .= " {$k}='{$v}'";
         }
     }
