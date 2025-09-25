@@ -121,26 +121,29 @@
         <section class="plans scroll-anim">
           <h2 class="section-title"><i class="fa-solid fa-wifi section-icon" aria-hidden="true"></i> Elige tu velocidad</h2>
           <p class="section-subtitle">
-            Como guía: pocos dispositivos y uso básico funcionan bien con planes de menor velocidad; para streaming 4K, videollamadas o gaming en varios equipos, elige un plan más alto.
+            Como guía: pocos dispositivos y uso básico funcionan bien con planes de menor velocidad; para una familia completa de 4-6 personas y múltiples dispositivos, recomendamos planes de 20 Mbps o más.
           </p>
           <div class="plan-cards">
             <!-- Planes renderizados aquí -->
             <div class="plan-card animate-card" data-megas="10">
               <div style="display:flex; flex-direction:column; align-items:center; width:100%;">
                 <div class="plan-megas">
+                  <h3>Plan Esencial</h3>
                   <i class="fa-solid fa-bolt plan-mega-icon" aria-hidden="true"></i>
                   <span class="plan-mega-value">10</span>
                   <span class="plan-mega-unit">Megas</span>
                 </div>
                 <p class="price">$299/mes</p>
                 <ul class="plan-info">
-                  <li>Ideal para 1-2 dispositivos</li>
-                  <li>Streaming HD y redes sociales</li>
-                  <li>Instalación rápida</li>
-                  <li class="ilimitado"><strong>Internet ilimitado</strong></li>
+                  <li><i class="fa-solid fa-mobile"></i> Ideal para 1-2 dispositivos</li>
+                  <li><i class="fa-solid fa-video"></i> Streaming HD y redes sociales</li>
+                  <li><i class="fa-solid fa-phone"></i> Videollamadas</li>
+                  <li><i class="fa-solid fa-laptop"></i> Trabajo remoto</li>
+                  <li><i class="fa-solid fa-wrench"></i> Instalación rápida</li>
+                  <li class="ilimitado"><i class="fa-solid fa-circle-right"></i><strong> Internet ilimitado</strong></li>
                 </ul>
-                <a class="btn-contratar-link" href="http://clientes.portalinternet.net/solicitar-instalacion/norttek/?plan=10" target="_blank">
-                  <i class="fa-solid fa-rocket icon" aria-hidden="true"></i> Contratar
+                <a class="btn-contratar-link" href="#contratar" target="_blank">
+                  <i class="fa-solid fa-rocket icon" aria-hidden="true"></i> Obtener Plan
                 </a>
               </div>
             </div>
@@ -149,19 +152,22 @@
               <span class="plan-badge" aria-hidden="true">Recomendado</span>
               <div style="display:flex; flex-direction:column; align-items:center; width:100%;">
                 <div class="plan-megas">
+                  <h3>Plan Avanzado</h3>
                   <i class="fa-solid fa-bolt plan-mega-icon" aria-hidden="true"></i>
                   <span class="plan-mega-value">20</span>
                   <span class="plan-mega-unit">Megas</span>
                 </div>
                 <p class="price">$399/mes</p>
                 <ul class="plan-info">
-                  <li>Ideal para 2-4 dispositivos</li>
-                  <li>Streaming HD y videollamadas estables</li>
-                  <li>Instalación rápida</li>
-                  <li class="ilimitado"><strong>Internet ilimitado</strong></li>
+                  <li><i class="fa-solid fa-mobile"></i> Ideal para 3-8 dispositivos</li>
+                  <li><i class="fa-solid fa-video"></i> Streaming HD y videollamadas estables</li>
+                  <li><i class="fa-solid fa-headset"></i> Juegos en línea</li>
+                  <li><i class="fa-solid fa-arrow-down"></i> Descargas rápidas</li>
+                  <li><i class="fa-solid fa-wrench"></i> Instalación rápida</li>
+                  <li class="ilimitado"><i class="fa-solid fa-circle-right"></i><strong> Internet ilimitado</strong></li>
                 </ul>
-                <a class="btn-contratar-link" href="http://clientes.portalinternet.net/solicitar-instalacion/norttek/?plan=20" target="_blank">
-                  <i class="fa-solid fa-rocket icon" aria-hidden="true"></i> Contratar
+                <a class="btn-contratar-link" href="#contratar" target="_blank">
+                  <i class="fa-solid fa-rocket icon" aria-hidden="true"></i> Obtener Plan
                 </a>
               </div>
             </div>
@@ -170,19 +176,22 @@
             <div class="plan-card animate-card" data-megas="30">
               <div style="display:flex; flex-direction:column; align-items:center; width:100%;">
                 <div class="plan-megas">
+                  <h3>Plan Superior</h3>
                   <i class="fa-solid fa-bolt plan-mega-icon" aria-hidden="true"></i>
                   <span class="plan-mega-value">30</span>
                   <span class="plan-mega-unit">Megas</span>
                 </div>
                 <p class="price">$499/mes</p>
                 <ul class="plan-info">
-                  <li>Ideal para 4-6 dispositivos</li>
-                  <li>Streaming Full HD/4K puntual</li>
-                  <li>Home office y clases en línea</li>
-                  <li class="ilimitado"><strong>Internet ilimitado</strong></li>
+                    <li><i class="fa-solid fa-mobile"></i> Ideal para 8 dispositivos en adelante</li>
+                  <li><i class="fa-solid fa-video"></i> Streaming Full HD/4K puntual</li>
+                  <li><i class="fa-solid fa-laptop"></i> Home office y clases en línea</li>
+                  <li><i class="fa-solid fa-gamepad"></i> Experiencia de juego fluida</li>
+                  <li><i class="fa-solid fa-wrench"></i> Instalación rápida</li>
+                  <li class="ilimitado"><i class="fa-solid fa-circle-right"></i><strong> Internet ilimitado</strong></li>
                 </ul>
-                <a class="btn-contratar-link" href="http://clientes.portalinternet.net/solicitar-instalacion/norttek/?plan=30" target="_blank">
-                  <i class="fa-solid fa-rocket icon" aria-hidden="true"></i> Contratar
+                <a class="btn-contratar-link" href="#contratar" target="_blank">
+                  <i class="fa-solid fa-rocket icon" aria-hidden="true"></i> Obtener Plan
                 </a>
               </div>
               </div>
@@ -228,7 +237,7 @@
             <span class="instalacion-info-text"><strong>¡Facilitamos tu pago!</strong> El costo de la antena (<strong>$1,800</strong>) puedes diferirlo en <strong>3 mensualidades</strong> junto con el pago de tu plan seleccionado.</span>
           </div>
           <div class="contrata-ahora-wrap scroll-anim">
-            <a id="solicitar" href="http://clientes.portalinternet.net/solicitar-instalacion/norttek/" target="_blank" class="contrata-ahora-btn">
+            <a id="contratar" href="http://clientes.portalinternet.net/solicitar-instalacion/norttek/" target="_blank" class="contrata-ahora-btn">
               <i class="fa-solid fa-pen-to-square contrata-icon" aria-hidden="true"></i> Solicita tu Instalación
             </a>
           </div>
