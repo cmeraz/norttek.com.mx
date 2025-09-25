@@ -52,13 +52,13 @@ function nt_is_active($itemUrl, $activePage){
     <!-- Línea principal -->
     <div class="nt-nav-main flex items-center justify-between px-4 md:px-8 py-2 gap-6">
         <!-- Logo -->
-        <a href="/" class="flex items-center gap-2 shrink-0 group" aria-label="Inicio Norttek Solutions">
-            <img src="assets/img/logo-norttek.png" alt="Norttek" class="w-12 md:w-14 h-auto drop-shadow" loading="lazy">
+    <a href="/" class="flex items-center gap-2 shrink-0 group leading-none" aria-label="Inicio Norttek Solutions">
+            <img src="assets/img/logo-norttek.png" alt="Norttek" class="nt-logo w-12 md:w-14 h-auto drop-shadow transition-all duration-300" loading="lazy">
             <span class="hidden sm:inline text-base md:text-lg font-semibold tracking-tight text-slate-800 group-hover:text-slate-900 dark:text-slate-100">Norttek Solutions</span>
         </a>
 
         <!-- Menú Desktop -->
-        <nav class="nt-primary-nav hidden lg:flex items-stretch gap-1" aria-label="Principal">
+    <nav class="nt-primary-nav hidden lg:flex items-center gap-1" aria-label="Principal">
             <?php foreach($menu as $item): ?>
                 <?php $isActive = nt_is_active($item['url'], $activePage) || (!empty($item['children']) && array_filter($item['children'], fn($c)=>nt_is_active($c['url'],$activePage))); ?>
                 <?php if(isset($item['children'])): ?>
@@ -188,12 +188,17 @@ html.dark .nt-nav-top { color:#90a4b8; }
 .nt-nav-shell.scrolled .nt-nav-top { transition: transform .55s cubic-bezier(.55,.1,.35,1), opacity .45s ease; }
 .nt-nav-shell.scrolled .nt-nav-top:not(.force-visible){ transform:translateY(-120%); opacity:0; }
 .nt-nav-shell:not(.scrolled) .nt-nav-top { transform:translateY(0); opacity:1; }
-.nt-nav-main { position:relative; }
-.nt-nav-shell.scrolled .nt-nav-main { padding-top:.3rem; padding-bottom:.3rem; }
+.nt-nav-main { position:relative; display:flex; align-items:center; min-height:82px; }
+.nt-nav-shell.scrolled .nt-nav-main { padding-top:.15rem; padding-bottom:.15rem; transition:padding .35s ease, min-height .35s ease; min-height:60px; }
 .nt-primary-nav { font-size:.78rem; }
-.nt-nav-link { position:relative; display:inline-flex; align-items:center; gap:.55rem; padding:.55rem .95rem; font-weight:700; color:#2a516d; border-radius:8px; line-height:1.1; letter-spacing:.4px; transition:.25s; background:transparent; cursor:pointer; }
+.nt-nav-shell.scrolled .nt-primary-nav { font-size:.72rem; transition:font-size .35s ease; }
+.nt-nav-link { position:relative; display:inline-flex; align-items:center; gap:.55rem; padding:.55rem .95rem; font-weight:700; color:#2a516d; border-radius:8px; line-height:1.05; letter-spacing:.4px; transition:.25s; background:transparent; cursor:pointer; }
+.nt-nav-link i, .nt-nav-link .lbl, .nt-nav-link .caret { line-height:1; display:inline-flex; align-items:center; }
+.nt-nav-shell.scrolled .nt-nav-link { padding:.4rem .6rem; }
 .nt-nav-link i { font-size:.95em; }
 .nt-nav-link .caret { font-size:.6rem; opacity:.6; transition:transform .3s; }
+.nt-logo { transform-origin:left center; }
+.nt-nav-shell.scrolled .nt-logo { width:2.1rem; }
 .nt-nav-link .lbl { display:inline; }
 .nt-nav-link:hover { color:#174261; background:rgba(0,0,0,.04); }
 .nt-nav-link.is-active { color:#0f3f76; background:linear-gradient(#fff,#fff) padding-box,var(--nt-gradient-border) border-box; border:1px solid transparent; box-shadow:0 4px 8px rgba(15,23,42,.06); }
@@ -274,7 +279,7 @@ html.dark .nt-mobile-link.active { background:linear-gradient(var(--nt-surface-a
 @media (min-width:1024px){
   .nt-nav-shell.scrolled .nt-nav-top{ transform:translateY(-100%); opacity:0; pointer-events:none; }
   .nt-nav-shell.scrolled .nt-nav-backdrop{ backdrop-filter:blur(18px); }
-    .nt-nav-shell.scrolled .nt-primary-nav .nt-nav-link { padding:.55rem .65rem; }
+        .nt-nav-shell.scrolled .nt-primary-nav .nt-nav-link { padding:.4rem .55rem; }
         .nt-nav-shell.scrolled .nt-primary-nav .nt-nav-link .lbl { width:0; opacity:0; margin:0; padding:0; overflow:hidden; transition:.3s; }
         .nt-nav-shell.scrolled .nt-primary-nav .nt-nav-item.has-panel .nt-nav-link .caret { display:none; }
     .nt-nav-shell.scrolled .nt-primary-nav:hover .nt-nav-link .lbl { width:auto; opacity:1; padding-left:.1rem; }
