@@ -133,14 +133,14 @@ function nt_is_active($itemUrl, $activePage){
     </div>
     <nav class="flex-1 overflow-y-auto py-3" aria-label="Menú móvil">
         <ul class="px-2 space-y-1">
-            <?php foreach($menu as $item): $isActive = nt_is_active($item['url'],$activePage); ?>
+            <?php $__mobiIndex=0; foreach($menu as $item): $isActive = nt_is_active($item['url'],$activePage); ?>
                 <li>
-                    <?php if(isset($item['children'])): ?>
-                        <button class="nt-mobile-parent w-full" data-mobile-panel>
+                    <?php if(isset($item['children'])): $subId='m-sub-'.($__mobiIndex++); ?>
+                        <button class="nt-mobile-parent w-full" data-mobile-panel aria-expanded="false" aria-controls="<?= $subId ?>">
                             <span class="flex items-center gap-2"><i class="<?= $item['icon'] ?>"></i><span><?= $item['label'] ?></span></span>
-                            <i class="fa-solid fa-chevron-down caret"></i>
+                            <i class="fa-solid fa-chevron-down caret" aria-hidden="true"></i>
                         </button>
-                        <ul class="nt-mobile-sub" hidden>
+                        <ul class="nt-mobile-sub" id="<?= $subId ?>" hidden role="group" aria-label="Submenú <?= htmlspecialchars($item['label'],ENT_QUOTES) ?>">
                             <?php foreach($item['children'] as $child): $childActive=nt_is_active($child['url'],$activePage); ?>
                                 <li>
                                     <a href="/<?= $child['url'] ?>" class="nt-mobile-link <?= $childActive?'active':'' ?>">
@@ -263,9 +263,10 @@ html.dark .nt-mobile-search input { color:#d6e6f2; }
 
 /* Mobile drawer */
 #nt-mobile-drawer { font-size:.82rem; }
-.nt-mobile-parent { position:relative; display:flex; align-items:center; justify-content:space-between; width:100%; padding:.7rem .9rem; font-weight:700; border:none; background:transparent; color:#27455c; border-radius:10px; transition:.25s; }
-.nt-mobile-parent:hover { background:rgba(0,0,0,.04); }
-.nt-mobile-parent .caret { font-size:.65rem; opacity:.6; transition:transform .3s; }
+.nt-mobile-parent { position:relative; display:flex; align-items:center; justify-content:space-between; width:100%; padding:.7rem .9rem; font-weight:700; border:none; background:transparent; color:#27455c; border-radius:10px; transition:.25s; text-align:left; }
+.nt-mobile-parent:hover, .nt-mobile-parent.open { background:rgba(0,0,0,.04); }
+.nt-mobile-parent .caret { font-size:.65rem; opacity:.6; transition:transform .35s cubic-bezier(.4,.8,.4,1); }
+.nt-mobile-parent.open .caret { transform:rotate(180deg); }
 html.dark .nt-mobile-parent { color:#d1e2ef; }
 .nt-mobile-sub { padding:.25rem .25rem .6rem 1.2rem; display:flex; flex-direction:column; gap:.2rem; }
 .nt-mobile-link { display:flex; align-items:center; gap:.55rem; padding:.55rem .9rem; text-decoration:none; font-weight:600; border-radius:10px; color:#325067; position:relative; }
@@ -329,15 +330,32 @@ html.dark .nt-mobile-link.active { background:linear-gradient(var(--nt-surface-a
   document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeDrawer(); });
 
   // Submenús móviles
-  drawer.querySelectorAll('[data-mobile-panel]').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const sub = btn.parentElement.querySelector('.nt-mobile-sub');
-      const caret = btn.querySelector('.caret');
-      const isHidden = sub.hasAttribute('hidden');
-      if(isHidden){ sub.removeAttribute('hidden'); sub.style.maxHeight=sub.scrollHeight+'px'; caret.style.transform='rotate(180deg)'; }
-      else { sub.setAttribute('hidden',''); caret.style.transform=''; }
+    // Submenús móviles accesibles (solo uno abierto)
+    drawer.querySelectorAll('[data-mobile-panel]').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+            const subId = btn.getAttribute('aria-controls');
+            const sub = subId ? document.getElementById(subId) : null;
+            if(!sub) return;
+            const isOpen = !sub.hasAttribute('hidden');
+            // Cierra otros
+            drawer.querySelectorAll('.nt-mobile-sub:not([hidden])').forEach(openSub=>{
+                if(openSub === sub) return;
+                openSub.setAttribute('hidden','');
+                const otherBtn = drawer.querySelector('[aria-controls="'+openSub.id+'"]');
+                if(otherBtn){ otherBtn.setAttribute('aria-expanded','false'); otherBtn.classList.remove('open'); }
+            });
+            // Toggle actual
+            if(isOpen){
+                sub.setAttribute('hidden','');
+                btn.setAttribute('aria-expanded','false');
+                btn.classList.remove('open');
+            } else {
+                sub.removeAttribute('hidden');
+                btn.setAttribute('aria-expanded','true');
+                btn.classList.add('open');
+            }
+        });
     });
-  });
 
   // Tema (íconos) reutilizando NTTheme
   function updateThemeIcons(){
