@@ -52,7 +52,7 @@ $seo = [
     <section id="dispositivos" class="py-20 bg-gray-100" aria-labelledby="dispositivos-title">
       <div class="max-w-7xl mx-auto px-6 text-center">
         <div id="dispositivos-title" class="mb-14">
-          <?= nt_heading('Accede desde cualquier dispositivo', 'fa-solid fa-display', 'lg', null, ['animate' => true]); ?>
+          <?= nt_heading('Accede desde cualquier dispositivo', 'fa-solid fa-display', 'lg', null, ['animate' => true,'class'=>'nt-heading-accent-bar']); ?>
         </div>
         <div class="grid md:grid-cols-1 gap-8">
           <!-- Card 1: PC / Laptop -->
@@ -103,7 +103,7 @@ $seo = [
 <section id="planes" class="py-24 bg-gray-50" aria-labelledby="planes-title">
   <div class="max-w-7xl mx-auto px-6 text-center">
     <div id="planes-title" class="mb-6">
-  <?= nt_heading('Planes y llamadas ilimitadas', 'fa-solid fa-boxes-stacked', 'lg', null, ['animate' => true, 'delay' => 'sm']); ?>
+  <?= nt_heading('Planes y llamadas ilimitadas', 'fa-solid fa-boxes-stacked', 'lg', null, ['animate' => true, 'delay' => 'sm','class'=>'nt-heading-accent-bar']); ?>
     </div>
     <p class="text-gray-700 mb-6 max-w-2xl mx-auto text-lg">
       Elige el plan que mejor se adapta a tu empresa. Todos incluyen numeración LADA México y soporte técnico.
@@ -184,7 +184,7 @@ $seo = [
       <div class="max-w-7xl mx-auto px-6 lg:flex lg:items-center lg:justify-between gap-10">
         <!-- Texto -->
         <div class="flex-1 text-center lg:text-left animate-fadeInSlow">
-          <div id="demo-title" class="mb-4"><?= nt_heading('¿Listo para migrar a la nube?', 'fa-solid fa-cloud-arrow-up', 'lg', 'Solicita tu demo gratuita', ['animate' => true, 'delay' => 'sm']); ?></div>
+          <div id="demo-title" class="mb-4"><?= nt_heading('¿Listo para migrar a la nube?', 'fa-solid fa-cloud-arrow-up', 'lg', 'Solicita tu demo gratuita', ['animate' => true, 'delay' => 'sm','class'=>'nt-heading-accent-bar']); ?></div>
           <p class="text-gray-700 text-lg mb-6">
             Eleva la productividad de tu empresa, reduce costos y olvídate del mantenimiento de sistemas locales. Solicita ahora tu <strong>demo gratuita de 30 días</strong> y prueba todas las funciones avanzadas de Norttek PBX.
           </p>

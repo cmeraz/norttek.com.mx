@@ -11,7 +11,7 @@
     </div>
     <div class="relative z-10 max-w-3xl w-full mx-auto bg-white rounded-2xl shadow-xl p-10 nt-fade-in" id="contact-card">
         <div class="text-center mb-8">
-            <?php echo nt_heading('¡Hablemos!', 'fa-solid fa-comments', 'lg', 'Compártenos tu proyecto o duda', ['id'=>'contact-heading']); ?>
+            <?php echo nt_heading('¡Hablemos!', 'fa-solid fa-comments', 'lg', 'Compártenos tu proyecto o duda', ['id'=>'contact-heading','class'=>'nt-heading-accent-bar']); ?>
             <p class="nt-lead max-w-2xl mx-auto" style="margin-top:.9rem;">¿Tienes una idea, un reto o solo quieres saludar? Cuéntanos y te contactamos con soluciones a tu medida.</p>
         </div>
         <form id="contactForm" class="nt-form" autocomplete="off">

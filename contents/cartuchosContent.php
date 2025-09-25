@@ -37,7 +37,7 @@ function impresorasList($impresoras) {
 
     <section class="nt-section inset mb-10">
         <div class="text-center mb-10">
-            <?= nt_heading('Catálogo de Cartuchos de Tóner HP', 'fa-solid fa-print', 'lg', 'Encuentra el modelo compatible en segundos', ['animate'=>true,'delay'=>'sm']); ?>
+            <?= nt_heading('Catálogo de Cartuchos de Tóner HP', 'fa-solid fa-print', 'lg', 'Encuentra el modelo compatible en segundos', ['animate'=>true,'delay'=>'sm','class'=>'nt-heading-accent-bar']); ?>
             <p class="nt-lead max-w-3xl mx-auto mt-5">Herramienta interactiva para localizar rápidamente el <strong>cartucho o tambor correcto</strong> según tu impresora. Datos confiables de <strong>modelos, compatibilidad y rendimiento</strong> para que compres sin duda.</p>
         </div>
         <div class="flex flex-col lg:flex-row items-center gap-10">
@@ -70,7 +70,7 @@ function impresorasList($impresoras) {
     ========================== -->
     <section class="tabla-compatibilidades nt-section" id="compatibilidades">
         <div class="mb-6">
-          <?= nt_heading('Tabla interactiva', 'fa-solid fa-table-list', 'md', 'Filtra por cualquier campo', ['animate'=>true]); ?>
+          <?= nt_heading('Tabla interactiva', 'fa-solid fa-table-list', 'md', 'Filtra por cualquier campo', ['animate'=>true,'class'=>'nt-heading-accent-bar']); ?>
         </div>
         <!-- Buscador interactivo con iconos y botón limpiar -->
         <div class="relative w-full max-w-xl mx-auto mb-8">
@@ -150,7 +150,7 @@ function impresorasList($impresoras) {
          Contenido de la TAB 2: Preguntas frecuentes
     ========================== -->
     <section class="preguntas-frecuentes nt-section" id="preguntas-frecuentes">
-    <?= nt_heading('Preguntas Frecuentes', 'fa-solid fa-circle-question', 'md', 'Dudas comunes sobre cartuchos', ['animate'=>true]); ?>
+    <?= nt_heading('Preguntas Frecuentes', 'fa-solid fa-circle-question', 'md', 'Dudas comunes sobre cartuchos', ['animate'=>true,'class'=>'nt-heading-accent-bar']); ?>
         <!-- Sección de preguntas frecuentes generada dinámicamente -->
         <?php
             if (function_exists('faq')) {

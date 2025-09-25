@@ -10,7 +10,7 @@
     <div class="max-w-5xl mx-auto px-6 lg:px-8">
         <!-- Hero Nosotros -->
         <div class="text-center mb-16 nt-fade-in">
-            <?php echo nt_heading('Sobre Nosotros', 'fa-solid fa-users', 'xl', 'Conoce quiénes somos', ['id' => 'about-hero-heading','animate'=>true,'delay'=>'sm']); ?>
+            <?php echo nt_heading('Sobre Nosotros', 'fa-solid fa-users', 'xl', 'Conoce quiénes somos', ['id' => 'about-hero-heading','animate'=>true,'delay'=>'sm','class'=>'nt-heading-accent-bar']); ?>
             <p class="nt-lead max-w-2xl mx-auto" style="margin-top:1rem;">
                 En <strong class="nt-icon-accent">Norttek Solutions</strong> combinamos experiencia, innovación y pasión para proteger y transformar hogares y empresas en todo México.
             </p>
