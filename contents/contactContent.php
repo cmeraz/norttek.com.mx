@@ -5,43 +5,50 @@
  */
 ?>
 
-<section class="relative bg-gradient-to-br from-blue-50 to-blue-100 min-h-screen flex items-center justify-center py-24" style="padding-top:180px;">
+<section class="relative min-h-screen flex items-center justify-center py-24" style="padding-top:180px; background:linear-gradient(145deg,#f0f7ff,#e4effb);">
     <div class="absolute inset-0 pointer-events-none select-none">
         <img src="/assets/images/contact-bg.svg" alt="" class="w-full h-full object-cover opacity-10">
     </div>
-    <div class="relative z-10 max-w-3xl w-full mx-auto bg-white/90 rounded-2xl shadow-2xl p-10 animate-contact-fade">
+    <div class="relative z-10 max-w-3xl w-full mx-auto bg-white rounded-2xl shadow-xl p-10 nt-fade-in" id="contact-card">
         <div class="text-center mb-8">
-            <h1 class="text-4xl font-extrabold text-blue-700 mb-2 drop-shadow">¡Hablemos!</h1>
-            <p class="text-lg text-gray-700">¿Tienes una idea, un reto o solo quieres saludar? Cuéntanos tu proyecto y te contactamos con soluciones a tu medida.</p>
+            <?php echo nt_heading('¡Hablemos!', 'fa-solid fa-comments', 'lg', 'Compártenos tu proyecto o duda', true, ['id'=>'contact-heading']); ?>
+            <p class="nt-lead max-w-2xl mx-auto" style="margin-top:.9rem;">¿Tienes una idea, un reto o solo quieres saludar? Cuéntanos y te contactamos con soluciones a tu medida.</p>
         </div>
-        <form id="contactForm" class="space-y-6" autocomplete="off">
-            <div class="flex flex-col md:flex-row gap-6">
-                <div class="flex-1">
-                    <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">¿Cómo te llamas?</label>
-                    <input type="text" id="nombre" name="nombre" required class="contact-input" placeholder="Tu nombre completo">
+        <form id="contactForm" class="nt-form" autocomplete="off">
+            <div class="nt-form-row">
+                <div class="nt-field">
+                    <label for="nombre">¿Cómo te llamas?</label>
+                    <div class="nt-input-icon">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" id="nombre" name="nombre" required class="nt-input" placeholder="Tu nombre completo" autocomplete="name">
+                    </div>
                 </div>
-                <div class="flex-1">
-                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">¿Cuál es tu correo?</label>
-                    <input type="email" id="email" name="email" required class="contact-input" placeholder="tucorreo@email.com">
+                <div class="nt-field">
+                    <label for="email">¿Cuál es tu correo?</label>
+                    <div class="nt-input-icon">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" id="email" name="email" required class="nt-input" placeholder="tucorreo@email.com" autocomplete="email">
+                    </div>
                 </div>
             </div>
-            <div>
-                <label for="mensaje" class="block text-sm font-medium text-gray-700 mb-1">¿Qué necesitas?</label>
-                <textarea id="mensaje" name="mensaje" required rows="4" class="contact-input" placeholder="Cuéntanos tu idea, problema o proyecto..."></textarea>
+            <div class="nt-field">
+                <label for="mensaje">¿Qué necesitas?</label>
+                <textarea id="mensaje" name="mensaje" required rows="5" class="nt-input" placeholder="Cuéntanos tu idea, problema o proyecto..."></textarea>
+                <span class="nt-help">Sé específico para ayudarte mejor.</span>
             </div>
-            <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
-                <button type="submit" class="contact-btn w-full md:w-auto flex items-center justify-center gap-2">
-                    <i class="fas fa-paper-plane"></i> Enviar mensaje
+            <div class="nt-form-row" style="align-items:stretch;">
+                <button type="submit" class="nt-btn" data-variant="primary" style="flex:1 1 200px; justify-content:center;">
+                    <i class="fa-solid fa-paper-plane"></i> Enviar mensaje
                 </button>
-                <a href="https://wa.me/5215555555555?text=Hola%20Norttek%20Solutions%2C%20quiero%20más%20información" target="_blank" class="contact-btn-alt w-full md:w-auto flex items-center justify-center gap-2">
-                    <i class="fab fa-whatsapp"></i> WhatsApp Directo
+                <a id="contact-whatsapp" href="https://wa.me/526252690097?text=Hola%20Norttek%20Solutions%2C%20quiero%20información" target="_blank" class="nt-btn" data-variant="outline" style="flex:1 1 200px; justify-content:center;">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp Directo
                 </a>
             </div>
-            <div id="contactSuccess" class="hidden text-green-600 text-center font-semibold mt-4"></div>
-            <div id="contactError" class="hidden text-red-600 text-center font-semibold mt-4"></div>
+            <div id="contactSuccess" class="hidden nt-text-success text-center font-semibold mt-2" style="color:#15803d;"></div>
+            <div id="contactError" class="hidden text-center font-semibold mt-2" style="color:#b91c1c;"></div>
         </form>
-        <div class="mt-10 text-center text-gray-500 text-sm">
-            <i class="fas fa-lock mr-1"></i> Tus datos están seguros. Solo los usamos para responderte.
+        <div class="mt-8 text-center nt-text-muted text-xs" style="letter-spacing:.4px;">
+            <i class="fa-solid fa-lock nt-icon-accent"></i> Tus datos están seguros. Solo los usamos para responderte.
         </div>
     </div>
 </section>
