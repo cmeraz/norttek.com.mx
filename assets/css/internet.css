@@ -111,6 +111,15 @@
     radial-gradient(circle at 55% 38%, rgba(255,255,255,.045), rgba(0,0,0,0) 60%),
     rgba(10,18,27,.62); }
 }
+/* Blur ligero en móviles para priorizar legibilidad del texto sobre el detalle de la imagen */
+@media (max-width: 640px) {
+  .internet-hero::before { filter:brightness(.70) saturate(1.08) contrast(1.03) blur(2px); }
+  /* Ajuste mínimo al overlay para no oscurecer demasiado con el blur aplicado */
+  .internet-hero::after { background:
+    repeating-linear-gradient(45deg, rgba(255,255,255,.03) 0 1px, rgba(0,0,0,0) 1px 14px),
+    radial-gradient(circle at 55% 40%, rgba(255,255,255,.05), rgba(0,0,0,0) 58%),
+    rgba(10,18,27,.58); }
+}
 @media (prefers-color-scheme: dark) {
   /* En dark mode subir ligeramente brillo para evitar bloque oscuro plano */
   .internet-hero::before { filter:brightness(.75) saturate(1.08) contrast(1.02); }
