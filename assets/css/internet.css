@@ -236,21 +236,54 @@
 .internet-app .asesor-section.highlight { animation: highlightPulse 1s ease 2; }
 
 /* Plans */
+/* Deprecated old plan card styles removed in favor of new .int-plan-card system */
 .internet-app .plans { margin: 1.2rem auto 2.1rem; }
-.internet-app .plan-cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1.2rem; max-width:1100px; margin:0 auto; padding:0 1.2rem; }
-.internet-app .plan-card { background: var(--surface); border: 1px solid #eef3fa; border-radius:14px; padding:1rem; box-shadow: 0 2px 8px rgba(15,23,42,.045); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; text-align: center; position: relative; }
-.internet-app .plan-card:hover { transform: translateY(-2px); border-color: rgba(111,164,255,0.45); box-shadow: 0 6px 16px rgba(15,23,42,.07); }
-.internet-app .plan-badge { position:absolute; top:10px; right:10px; background: linear-gradient(180deg, var(--nt-primary), var(--nt-primary-strong)); color:#fff; font-weight:900; font-size:.72rem; padding:.28rem .6rem; border-radius:8px; box-shadow:0 4px 10px var(--nt-ring); letter-spacing:.2px; transition: transform .18s ease, box-shadow .18s ease; }
-.internet-app .plan-card:hover .plan-badge { transform: scale(1.02); box-shadow: 0 6px 14px var(--nt-ring); }
-.internet-app .plan-megas { display:flex; align-items:center; gap:.5rem; font-weight:900; color:#0f172a; letter-spacing:.2px; }
-.internet-app .plan-card .plan-megas { justify-content:center; }
-.internet-app .plan-mega-icon { color:#ffd54f; filter: drop-shadow(0 2px 6px rgba(0,0,0,.15)); }
-.internet-app .plan-mega-value { font-size:2rem; color:#0f172a; }
-.internet-app .plan-mega-unit { font-size:1rem; color: var(--muted); font-weight:700; }
-.internet-app .price { font-size:1.22rem; font-weight:800; color: var(--nt-primary); margin:.25rem 0 .5rem; }
-.internet-app .plan-info { list-style:none; padding:0; margin:0 auto .7rem; color: var(--muted); text-align:left; max-width:85%; }
-.internet-app .plan-info li { margin:.25rem 0; }
-.internet-app .ilimitado { color: var(--nt-primary); font-weight: 800; }
+.internet-app .int-plans { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1.2rem; max-width:1100px; margin:0 auto; padding:0 1.2rem; position:relative; }
+.internet-app .int-plan-card { position:relative; display:flex; flex-direction:column; gap:.9rem; background:linear-gradient(180deg,#ffffff,#f4f9ff); border:1px solid #dbe6f1; border-radius:20px; padding:1.4rem 1.3rem 1.55rem; text-align:left; box-shadow:0 8px 22px -12px rgba(15,23,42,.18),0 4px 12px rgba(15,23,42,.06); transition:.45s cubic-bezier(.4,.8,.4,1); overflow:hidden; }
+.internet-app .int-plan-card:before { content:""; position:absolute; inset:0; background:
+  radial-gradient(circle at 22% 18%, rgba(111,164,255,.18), rgba(111,164,255,0) 60%),
+  radial-gradient(circle at 78% 82%, rgba(155,196,255,.14), rgba(155,196,255,0) 62%);
+  opacity:.85; pointer-events:none; mix-blend-mode:overlay; transition:.6s; }
+.internet-app .int-plan-card:hover { transform:translateY(-6px); box-shadow:0 16px 40px -16px rgba(15,23,42,.3),0 6px 18px rgba(15,23,42,.18); }
+.internet-app .int-plan-card:hover:before { opacity:1; }
+.internet-app .int-plan-card.destacado { border:2px solid var(--nt-primary-strong); box-shadow:0 18px 54px -20px rgba(80,130,210,.55),0 8px 24px rgba(15,23,42,.22); }
+.internet-app .int-plan-ribbon { position:absolute; top:0; right:0; background:linear-gradient(135deg,var(--nt-primary),var(--nt-primary-strong)); padding:.5rem .8rem .45rem; font-size:.6rem; font-weight:800; letter-spacing:.8px; text-transform:uppercase; color:#fff; border-bottom-left-radius:16px; box-shadow:0 4px 14px var(--nt-ring); z-index:5; }
+.internet-app .int-plan-header { text-align:center; display:flex; flex-direction:column; align-items:center; gap:.4rem; }
+.internet-app .int-plan-icon { width:62px; height:62px; border-radius:20px; display:flex; align-items:center; justify-content:center; font-size:1.45rem; color:#fff; font-weight:900; position:relative; overflow:hidden; box-shadow:0 6px 18px -6px rgba(15,23,42,.22),0 2px 6px rgba(15,23,42,.15); background:linear-gradient(145deg,rgba(255,255,255,.85),rgba(255,255,255,.6)); border:1px solid rgba(111,164,255,.45); backdrop-filter:saturate(1.25) blur(2px); -webkit-backdrop-filter: saturate(1.25) blur(2px); }
+.internet-app .int-plan-icon:before { content:""; position:absolute; inset:0; background:var(--nt-plan-icon-base); opacity:.55; z-index:0; mix-blend-mode:overlay; }
+.internet-app .int-plan-icon:after { content:""; position:absolute; inset:0; background:var(--nt-plan-icon-sheen); mix-blend-mode:screen; transform:translateX(-65%); animation: ntIconSheen 5.5s cubic-bezier(.4,.8,.4,1) infinite; opacity:.9; z-index:2; pointer-events:none; }
+.internet-app .int-plan-icon i { position:relative; z-index:1; }
+.internet-app .int-plan-icon.esencial:before { background:var(--nt-plan-grad-cool); }
+.internet-app .int-plan-icon.avanzado:before { background:var(--nt-plan-grad-warm); }
+.internet-app .int-plan-icon.superior:before { background:var(--nt-plan-grad-indigo); }
+/* Colores sólidos (tono lleno) para los íconos según variante */
+.internet-app .int-plan-icon i { color:#2563eb; text-shadow:none; }
+.internet-app .int-plan-icon.avanzado i { color:#f97316; }
+.internet-app .int-plan-icon.superior i { color:#4f46e5; }
+/* Borde variante para reforzar identidad sin oscurecer el fondo */
+.internet-app .int-plan-icon.esencial { border-color: rgba(111,164,255,.55); }
+.internet-app .int-plan-icon.avanzado { border-color: rgba(255,138,43,.5); }
+.internet-app .int-plan-icon.superior { border-color: rgba(99,102,241,.5); }
+.internet-app .int-plan-title { font-size:1.18rem; font-weight:900; letter-spacing:.45px; color:#0f2335; margin:0; }
+.internet-app .int-plan-tagline { font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:1.2px; color:#3d5b73; margin:0; background:linear-gradient(90deg,#4f8cff,#6fa4ff); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.internet-app .int-plan-features { list-style:none; margin:.3rem 0 0; padding:0; display:flex; flex-direction:column; gap:.45rem; font-size:.93rem; }
+.internet-app .int-plan-features li { display:flex; align-items:flex-start; gap:.55rem; line-height:1.45; color:#24465c; font-weight:500; }
+.internet-app .int-plan-features i { color:var(--nt-primary-strong); font-size:.85rem; margin-top:.15rem; }
+.internet-app .int-plan-pricewrap { margin-top:.4rem; text-align:center; }
+.internet-app .int-plan-price { font-size:1.75rem; font-weight:900; letter-spacing:.45px; display:inline-flex; align-items:baseline; gap:.25rem; background:linear-gradient(90deg,#1d4d7a,#153551); -webkit-background-clip:text; background-clip:text; color:transparent; position:relative; }
+.internet-app .int-plan-price small { font-size:.7rem; font-weight:700; color:#4a6a82; letter-spacing:.6px; background:transparent; -webkit-background-clip:initial; background-clip:initial; color:#4a6a82; }
+.internet-app .int-plan-cta { margin-top:auto; text-align:center; }
+.internet-app .int-plan-card .btn-contratar-link { font-size:.68rem; padding:.7rem .95rem; font-weight:800; letter-spacing:.5px; }
+@media (max-width: 900px){
+  .internet-app .int-plan-card { padding:1.3rem 1.05rem 1.4rem; }
+  .internet-app .int-plan-price { font-size:1.55rem; }
+  .internet-app .int-plan-icon { width:56px; height:56px; font-size:1.3rem; }
+}
+@media (prefers-reduced-motion: reduce){
+  .internet-app .int-plan-card, .internet-app .int-plan-card:before { transition:none; }
+  .internet-app .int-plan-card:hover { transform:none; }
+  .internet-app .int-plan-icon:after { animation:none; opacity:.5; }
+}
 
 /* Buttons - unified style */
 .internet-app .btn-contratar-link {
@@ -332,8 +365,12 @@
 .internet-app .scroll-anim .section-subtitle { opacity: 0; transform: translateY(8px); transition: opacity .4s ease .06s, transform .4s ease .06s; }
 .internet-app .scroll-anim.visible .section-subtitle { opacity: 1; transform: translateY(0); }
 /* Plan cards staggered on section reveal */
-.internet-app .plans.scroll-anim .plan-card.animate-card { opacity:0; transform: translateY(16px); transition: opacity .45s ease, transform .45s ease; }
-.internet-app .plans.scroll-anim.visible .plan-card.animate-card { opacity:1; transform: translateY(0); }
+.internet-app .plans.scroll-anim .plan-card.animate-card,
+.internet-app .plans.scroll-anim .int-plan-card.animate-card { opacity:0; transform: translateY(16px); transition: opacity .45s ease, transform .45s ease; }
+.internet-app .plans.scroll-anim.visible .plan-card.animate-card,
+.internet-app .plans.scroll-anim.visible .int-plan-card.animate-card { opacity:1; transform: translateY(0); }
+
+/* iconSheen reemplazado por animación global ntIconSheen en style.css */
 
 /* Utilities */
 .internet-app .plans { width:100%; }
