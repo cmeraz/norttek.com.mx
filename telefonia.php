@@ -9,11 +9,11 @@ $seo = [
     'og_title'       => 'Telefonía IP en la Nube - Norttek Solutions',
     'og_description' => 'Centraliza tus comunicaciones empresariales en la nube y trabaja desde cualquier lugar.',
     'og_url'         => 'https://www.norttek.com.mx/telefonia.php',
-    'og_image'       => 'https://www.norttek.com.mx/assets/images/telefonia-og.jpg',
+  'og_image'       => 'https://www.norttek.com.mx/assets/img/webpage.png',
     // Twitter Card
     'twitter_title'       => 'Telefonía IP en la Nube - Norttek Solutions',
     'twitter_description' => 'Centraliza tus comunicaciones empresariales en la nube con Norttek PBX.',
-    'twitter_image'       => 'https://www.norttek.com.mx/assets/images/telefonia-og.jpg'
+  'twitter_image'       => 'https://www.norttek.com.mx/assets/img/webpage.png'
 ];
 ?>
 <!DOCTYPE html>

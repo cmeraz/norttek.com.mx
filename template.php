@@ -21,7 +21,7 @@ $seo = [
     'keywords'    => 'Plantilla, Template, Desarrollo, Norttek, PHP, Estructura', // Palabras clave separadas por coma
     'robots'      => 'noindex, nofollow', // Controla indexación (cambiar a 'index, follow' en páginas reales)
     'og_url'      => 'https://www.norttek.com.mx/template', // URL canónica de la página
-    'og_image'    => 'https://www.norttek.com.mx/assets/images/og-image.jpg' // Imagen para compartir en redes
+    'og_image'    => 'https://www.norttek.com.mx/assets/img/webpage.png' // Imagen para compartir en redes
 ];
 
 // ----------- HERENCIA AUTOMÁTICA PARA OG Y TWITTER (no repitas datos) -----------

@@ -8,7 +8,7 @@ $seo = [
     'keywords'    => 'redes, cableado estructurado, wifi, conectividad, Norttek, instalación de redes',
     'robots'      => 'index, follow',
     'og_url'      => 'https://www.norttek.com.mx/networks',
-    'og_image'    => 'https://www.norttek.com.mx/assets/images/og-networks.jpg'
+    'og_image'    => 'https://www.norttek.com.mx/assets/img/webpage.png'
 ];
 $seo['og_title']        = $seo['og_title']        ?? $seo['title'];
 $seo['og_description']  = $seo['og_description']  ?? $seo['description'];

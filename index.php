@@ -13,7 +13,7 @@ $seo = [
     'keywords'    => 'seguridad, cctv, alarmas, automatización, control de acceso, redes, cableado estructurado, tecnología, Norttek Solutions, hogar, empresa, oficina, Chihuahua, México',
     'robots'      => 'index, follow',
     'og_url'      => 'https://www.norttek.com.mx/',
-    'og_image'    => 'https://www.norttek.com.mx/assets/images/og-image.jpg'
+    'og_image'    => 'https://www.norttek.com.mx/assets/img/webpage.png'
 ];
 
 // ----------- HERENCIA AUTOMÁTICA PARA OG Y TWITTER -----------

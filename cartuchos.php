@@ -20,12 +20,12 @@ $seo = [
     'og_title'       => 'Catálogo de Cartuchos de Tóner HP y Compatibles | Norttek Solutions',
     'og_description' => 'Herramienta interactiva para encontrar el cartucho o tambor correcto, con información confiable sobre marcas, modelos y compatibilidad.',
     'og_url'         => 'https://www.norttek.com.mx/cartuchos',
-    'og_image'       => 'https://www.norttek.com.mx/assets/images/og-image.jpg',
+    'og_image'       => 'https://www.norttek.com.mx/assets/img/webpage.png',
 
     // Twitter Card
     'twitter_title'       => 'Catálogo de Cartuchos de Tóner HP y Compatibles | Norttek Solutions',
     'twitter_description' => 'Encuentra el cartucho ideal para tu impresora en segundos con Norttek Solutions.',
-    'twitter_image'       => 'https://www.norttek.com.mx/assets/images/og-image.jpg'
+    'twitter_image'       => 'https://www.norttek.com.mx/assets/img/webpage.png'
 ];
 
 

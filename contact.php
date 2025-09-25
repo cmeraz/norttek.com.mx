@@ -17,7 +17,7 @@ $seo = [
     'keywords'    => 'Contacto, Norttek, asesoría, seguridad, automatización, cotización, soporte',
     'robots'      => 'index, follow',
     'og_url'      => 'https://www.norttek.com.mx/contact',
-    'og_image'    => 'https://www.norttek.com.mx/assets/images/og-image.jpg'
+    'og_image'    => 'https://www.norttek.com.mx/assets/img/webpage.png'
 ];
 
 // ----------- HERENCIA AUTOMÁTICA PARA OG Y TWITTER (no repitas datos) -----------

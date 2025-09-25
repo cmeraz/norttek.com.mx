@@ -1,5 +1,4 @@
 <?php
-<?php
 /**
  * Página de Control de Acceso
  */
@@ -9,7 +8,7 @@ $seo = [
     'keywords'    => 'control de acceso, biometría, tarjetas, seguridad, Norttek',
     'robots'      => 'index, follow',
     'og_url'      => 'https://www.norttek.com.mx/control-acceso',
-    'og_image'    => 'https://www.norttek.com.mx/assets/images/og-control-acceso.jpg'
+    'og_image'    => 'https://www.norttek.com.mx/assets/img/webpage.png'
 ];
 $seo['og_title']        = $seo['og_title']        ?? $seo['title'];
 $seo['og_description']  = $seo['og_description']  ?? $seo['description'];
