@@ -214,27 +214,54 @@ window.addEventListener('load', () => {
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const links = document.querySelectorAll('a[href^="#"]');
+  const header = document.getElementById('site-header');
+
+  function getHeaderHeight(){
+    if(!header) return 0;
+    return header.getBoundingClientRect().height;
+  }
+
+  function smoothScrollTo(targetY, duration = 650){
+    const startY = window.scrollY || window.pageYOffset;
+    const diff = targetY - startY;
+    let start;
+    function step(ts){
+      if(!start) start = ts;
+      const t = Math.min(1, (ts - start)/duration);
+      const eased = t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2; // easeInOutCubic
+      window.scrollTo(0, startY + diff*eased);
+      if(t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
 
   links.forEach(link => {
     link.addEventListener('click', (e) => {
-      e.preventDefault(); // prevenimos el salto brusco
+      const href = link.getAttribute('href');
+      if(!href || href === '#') return;
+      const targetId = href.substring(1);
+      const wrapper = document.getElementById(targetId);
+      if(!wrapper) return;
+      const card = wrapper.querySelector('.card-content');
+      if(!card) return;
+      e.preventDefault();
 
-      const targetId = link.getAttribute('href').substring(1);
-      const card = document.querySelector(`#${targetId} .card-content`);
-      if (!card) return;
-
-      // Scroll suave al card
-      card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-      // Quitamos highlight de todas las cards
       document.querySelectorAll('.card-content').forEach(c => c.classList.remove('highlight'));
 
-      // Agregamos highlight a la card seleccionada
+      const cardRect = card.getBoundingClientRect();
+      const absoluteCardTop = window.scrollY + cardRect.top;
+      const viewportH = window.innerHeight;
+      const headerH = getHeaderHeight();
+      const targetY = absoluteCardTop - headerH - (viewportH * 0.4 - cardRect.height/2);
+      smoothScrollTo(Math.max(0, targetY));
+
       card.classList.add('highlight');
+      card.style.transition = 'background-color .3s, box-shadow .6s';
+      card.style.boxShadow = '0 0 0 3px rgba(255,180,60,.8),0 8px 24px -6px rgba(0,0,0,.25)';
+      setTimeout(()=>{ card.style.boxShadow=''; }, 1200);
     });
   });
 
-  // Quitar highlight si se hace click fuera de cards y enlaces
   document.addEventListener('click', (e) => {
     if (!e.target.closest('.card-content') && !e.target.closest('a[href^="#"]')) {
       document.querySelectorAll('.card-content').forEach(c => c.classList.remove('highlight'));
