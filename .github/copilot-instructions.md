@@ -45,3 +45,6 @@ This codebase is a modular PHP website for Norttek Solutions, structured for mai
 - When adding product data, update the relevant JSON and ensure the content PHP reads from it.
 - Follow the navigation and component patterns in `includes/` and `templates/`.
 - Keep file and variable naming consistent for auto-loading and maintainability.
+
+# Language
+Todas las respuestas, mensajes de commit y descripciones de pull request deben estar en español neutro. Usa un tono profesional, conciso y claro.
