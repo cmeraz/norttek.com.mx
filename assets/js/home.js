@@ -1,4 +1,6 @@
     // ==========================
+    // NOTA: Lógica de anclas y FAQ movida a servicios.js para separación de responsabilidades.
+    // ==========================
     // REEMPLAZAR ICONOS FEATHER
     // ==========================
     if (typeof feather !== "undefined") {
