@@ -110,10 +110,13 @@
       }
       return { info:(m,o)=>push('info',m,o), success:(m,o)=>push('success',m,o), warning:(m,o)=>push('warning',m,o), danger:(m,o)=>push('danger',m,o) };
     })();
-    // Mensaje temporal de construcción
-    setTimeout(()=>{ const n=NTNotify.warning('<strong>Sitio en construcción</strong><br>Seguimos afinando detalles.',{ttl:4000}); n.el.classList.add('nt-alert-emph'); },700);
-    window.ntShowConstruction=()=>{ const n=NTNotify.warning('<strong>Sitio en construcción</strong><br>Avanzando módulos.',{ttl:4000}); n.el.classList.add('nt-alert-emph'); };
+    <?php if (basename($_SERVER['PHP_SELF']) === 'index.php'): ?>
+    // Aviso solo en página principal
+    setTimeout(()=>{ const n=NTNotify.info('<strong>Página en desarrollo</strong><br>Estamos mejorando tu experiencia.',{ttl:4200}); n.el.classList.add('nt-alert-emph'); },700);
+    // Atajo interno opcional para volver a mostrar (Alt+N)
+    window.ntShowConstruction=()=>{ const n=NTNotify.info('<strong>Página en desarrollo</strong><br>Trabajando en nuevos módulos.',{ttl:4000}); n.el.classList.add('nt-alert-emph'); };
     document.addEventListener('keydown',e=>{ if(e.altKey && e.key==='n'){ ntShowConstruction(); }});
+    <?php endif; ?>
     </script>
 
     <script src="assets/js/scripts.js"></script>
