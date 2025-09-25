@@ -139,6 +139,20 @@ body {
 
 /* Decorative underline opt-in */
 /* Subrayado decorativo eliminado para un look más limpio (antes: .nt-heading.underline::after) */
+/* Variante sutil opcional: barra/acento ligero */
+.nt-heading-accent-bar { padding-bottom:.35rem; }
+.nt-heading-accent-bar::after {
+  content:""; position:absolute; left:0; bottom:-2px; height:3px; width:44px; border-radius:2px;
+  background: linear-gradient(90deg,var(--nt-primary) 0%, var(--nt-primary-strong) 70%);
+  opacity:.55; pointer-events:none;
+}
+/* Ajustes por tamaño */
+.nt-heading-sm.nt-heading-accent-bar::after { width:34px; height:2px; }
+.nt-heading-xl.nt-heading-accent-bar::after { width:54px; }
+/* Centrado automático cuando es hero */
+.nt-heading-hero.nt-heading-accent-bar::after { left:50%; transform:translateX(-50%); }
+/* Invertida sobre fondo oscuro */
+.nt-heading-invert.nt-heading-accent-bar::after { background:linear-gradient(90deg,rgba(255,255,255,.9),rgba(255,255,255,.55)); opacity:.9; }
 
 /* =============================================
    Unified Button System (.nt-btn)
