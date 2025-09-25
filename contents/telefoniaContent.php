@@ -4,19 +4,19 @@
 ?>
 
 <!-- HERO -->
-<section class="relative py-28 nt-hero-wrapper" id="hero" aria-labelledby="hero-title" style="background:#0c2234;">
+<section class="relative nt-hero-wrapper" id="hero" aria-labelledby="hero-title" style="background:#0c2234;">
   <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(circle at 18% 32%,rgba(111,164,255,.35),transparent 60%),radial-gradient(circle at 82% 68%,rgba(155,196,255,.25),transparent 65%),linear-gradient(160deg,#0e2d44,#0a1d2b 65%);"></div>
   <div class="absolute inset-0 opacity-60 mix-blend-screen" style="background:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0 6px, transparent 6px 12px);"></div>
   <div class="absolute inset-0" style="background:linear-gradient(to bottom,rgba(10,25,38,.2),rgba(10,25,38,.9));"></div>
   <div class="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
-    <div class="hero-text">
+  <div class="hero-text nt-stack">
       <div id="hero-title" class="opacity-0 translate-y-10">
         <?= nt_heading('Telefonía IP en la Nube', 'fa-solid fa-phone-volume', 'xl', 'Norttek PBX', ['animate' => true, 'delay' => 'sm','class'=>'nt-heading-hero nt-heading-invert']); ?>
       </div>
-      <p class="text-slate-200 text-lg leading-relaxed mt-5 opacity-0 translate-y-10 max-w-xl">
+  <p class="text-slate-200 text-lg leading-relaxed opacity-0 translate-y-10 max-w-xl">
         Gestiona todas las comunicaciones de tu empresa de manera <strong>centralizada desde la nube</strong>. Administra <strong>extensiones</strong>, configura <strong>troncales</strong>, IVR personalizado, grabación de llamadas y <strong>reportes detallados</strong>. Accede desde <strong>PC, smartphone o teléfono físico</strong>, sin infraestructura local ni mantenimiento complejo.
       </p>
-      <div class="mt-8 flex flex-wrap gap-4 opacity-0 translate-y-10">
+  <div class="flex flex-wrap gap-4 opacity-0 translate-y-10 nt-stack-tight">
         <a href="#planes" class="nt-btn nt-btn-primary nt-pulse" role="button"><i class="fa-solid fa-coins"></i><span>Cotiza tu plan</span></a>
         <a href="#demo" class="nt-btn nt-btn-outline" role="button"><i class="fa-solid fa-rocket"></i><span>Solicitar demo</span></a>
         <a href="#faq" class="nt-btn nt-btn-accent" role="button"><i class="fas fa-question-circle"></i><span>Preguntas Frecuentes</span></a>
@@ -32,7 +32,7 @@
 <!-- DISPOSITIVOS -->
 <section id="dispositivos" class="py-20 bg-gray-100" aria-labelledby="dispositivos-title">
   <div class="max-w-7xl mx-auto px-6 text-center">
-    <div id="dispositivos-title" class="mb-14">
+  <div id="dispositivos-title" class="nt-stack-loose">
       <?= nt_heading('Accede desde cualquier dispositivo', 'fa-solid fa-display', 'lg', null, ['animate' => true,'class'=>'nt-heading-accent-bar']); ?>
     </div>
     <div class="grid md:grid-cols-1 gap-8">
@@ -82,11 +82,11 @@
 
 <!-- PLANES -->
 <section id="planes" class="py-24 bg-gray-50" aria-labelledby="planes-title">
-  <div class="max-w-7xl mx-auto px-6 text-center">
-    <div id="planes-title" class="mb-6">
+  <div class="max-w-7xl mx-auto px-6 text-center nt-stack">
+  <div id="planes-title" class="nt-stack">
       <?= nt_heading('Planes y llamadas ilimitadas', 'fa-solid fa-boxes-stacked', 'lg', null, ['animate' => true, 'delay' => 'sm','class'=>'nt-heading-accent-bar']); ?>
     </div>
-    <p class="text-gray-700 mb-6 max-w-2xl mx-auto text-lg">
+  <p class="text-gray-700 max-w-2xl mx-auto text-lg">
       Elige el plan que mejor se adapta a tu empresa. Todos incluyen numeración LADA México y soporte técnico.
     </p>
     <div class="mt-14 grid md:grid-cols-3 gap-10">
@@ -136,7 +136,7 @@
 
 <!-- DEMO -->
 <section id="demo" class="py-24 bg-gray-50" aria-labelledby="demo-title">
-  <div class="max-w-7xl mx-auto px-6 lg:flex lg:items-center lg:justify-between gap-10">
+  <div class="max-w-7xl mx-auto px-6 lg:flex lg:items-center lg:justify-between gap-10 nt-stack">
     <div class="flex-1 text-center lg:text-left animate-fadeInSlow">
       <div id="demo-title" class="mb-4"><?= nt_heading('¿Listo para migrar a la nube?', 'fa-solid fa-cloud-arrow-up', 'lg', 'Solicita tu demo gratuita', ['animate' => true, 'delay' => 'sm','class'=>'nt-heading-accent-bar']); ?></div>
       <p class="text-gray-700 text-lg mb-6">
