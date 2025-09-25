@@ -1,0 +1,434 @@
+[
+    {
+        "Nombre": "Elfido Castillo",
+        "Usuario": "elfido-castillo@norttek",
+        "Telefonos": [
+            "6251212112"
+        ]
+    },
+    {
+        "Nombre": "Mauricio Hernandez",
+        "Usuario": "mauricio-hernandez@norttek",
+        "Telefonos": [
+            "6351042834"
+        ]
+    },
+    {
+        "Nombre": "Jorge Torres",
+        "Usuario": "jorge-torres@norttek",
+        "Telefonos": [
+            "6251037186"
+        ]
+    },
+    {
+        "Nombre": "Brayan santiago Diaz chaparro",
+        "Usuario": "bryan-diaz@norttek",
+        "Telefonos": [
+            "6674793269",
+            "6671842675"
+        ]
+    },
+    {
+        "Nombre": "Ada Ordóñez Legarda",
+        "Usuario": "ada-ordonez@norttek",
+        "Telefonos": [
+            "6251201274",
+            "6251087888"
+        ]
+    },
+    {
+        "Nombre": "Carlos Eduardo Galicia Fierro",
+        "Usuario": "carlos-galicia@norttek",
+        "Telefonos": [
+            "6251051330",
+            "6255917756"
+        ]
+    },
+    {
+        "Nombre": "Rocio Rosas Bermudez",
+        "Usuario": "rocio-rosas@norttek",
+        "Telefonos": [
+            "2231151031"
+        ]
+    },
+    {
+        "Nombre": "Jose Luis Leyva Rodriguez",
+        "Usuario": "jose-luis-leyva@norttek",
+        "Telefonos": [
+            "6251064776",
+            "6251513565"
+        ]
+    },
+    {
+        "Nombre": "Fenix Alan Regalado Ramos",
+        "Usuario": "alan-regalado@norttek",
+        "Telefonos": [
+            "6251603836",
+            "6521062210"
+        ]
+    },
+    {
+        "Nombre": "Jorge Luis Bustamante Lizárraga",
+        "Usuario": "jorge-bustamante@norttek",
+        "Telefonos": [
+            "6692450004"
+        ]
+    },
+    {
+        "Nombre": "Alfonso Ortega Quintana",
+        "Usuario": "alfonso-ortega@norttek",
+        "Telefonos": [
+            "6251505685",
+            "6251343025"
+        ]
+    },
+    {
+        "Nombre": "Alexa Arisbeth Urbina Rico",
+        "Usuario": "alexa-urbina@norttek",
+        "Telefonos": [
+            "6255893463",
+            "6258371620"
+        ]
+    },
+    {
+        "Nombre": "Maritza Alejandra Rodriguez Rosales",
+        "Usuario": "alejandra-rodriguez@norttek",
+        "Telefonos": [
+            "6251978474"
+        ]
+    },
+    {
+        "Nombre": "Blanca Lilia Daniel Peinado",
+        "Usuario": "lilia-daniel@norttek",
+        "Telefonos": [
+            "6251961187",
+            "6251259369"
+        ]
+    },
+    {
+        "Nombre": "Lorena Gutierrez",
+        "Usuario": "lorena-gutierrez@norttek",
+        "Telefonos": [
+            "6251317433"
+        ]
+    },
+    {
+        "Nombre": "Elia Calderón Fernández",
+        "Usuario": "elia-calderon@norttek",
+        "Telefonos": [
+            "6251204871"
+        ]
+    },
+    {
+        "Nombre": "Gerardo Martinez",
+        "Usuario": "gerardo-martinez@norttek",
+        "Telefonos": [
+            "6142329381"
+        ]
+    },
+    {
+        "Nombre": "Moises Solis",
+        "Usuario": "moises-solis@norttek",
+        "Telefonos": []
+    },
+    {
+        "Nombre": "Silvia Derma Manriquez",
+        "Usuario": "silvia-derma@norttek",
+        "Telefonos": [
+            "6251184258"
+        ]
+    },
+    {
+        "Nombre": "Patricia Domitila Moran Ramos",
+        "Usuario": "patricia-moran@norttek",
+        "Telefonos": [
+            "6251208857",
+            "6251043246"
+        ]
+    },
+    {
+        "Nombre": "Arturo Varela Sias",
+        "Usuario": "arturo-varela@norttek",
+        "Telefonos": [
+            "6258374305",
+            "6255941017"
+        ]
+    },
+    {
+        "Nombre": "Luis Armando Arzate Calderon",
+        "Usuario": "luis-arzate@norttek",
+        "Telefonos": [
+            "6251300941",
+            "6251104802"
+        ]
+    },
+    {
+        "Nombre": "Miriam Janeth Armenta Gutierrez",
+        "Usuario": "miriam-armenta@norttek",
+        "Telefonos": []
+    },
+    {
+        "Nombre": "Melissa Erives",
+        "Usuario": "melissa-erives@norttek",
+        "Telefonos": [
+            "6251135713"
+        ]
+    },
+    {
+        "Nombre": "Javier Cornelio Sinaloa",
+        "Usuario": "javier-cornelio@norttek",
+        "Telefonos": [
+            "6251345008",
+            "6251345008"
+        ]
+    },
+    {
+        "Nombre": "Ana Karen Ramirez Najera",
+        "Usuario": "ana-karen@norttek",
+        "Telefonos": [
+            "6251051433",
+            "6255917248"
+        ]
+    },
+    {
+        "Nombre": "Juan Alfredo Colmenero Chavarria",
+        "Usuario": "juan-colmenero@norttek",
+        "Telefonos": [
+            "6251345615"
+        ]
+    },
+    {
+        "Nombre": "Emanuel Lopez Garcia",
+        "Usuario": "emanuel-lopez@norttek",
+        "Telefonos": [
+            "6251968459"
+        ]
+    },
+    {
+        "Nombre": "Nayeli Duran Gonzalez",
+        "Usuario": "nayeli-duran@norttek",
+        "Telefonos": [
+            "6251110141"
+        ]
+    },
+    {
+        "Nombre": "Margarita Alanis Duran",
+        "Usuario": "margarita-alanis@norttek",
+        "Telefonos": [
+            "6251336746",
+            "6251586235"
+        ]
+    },
+    {
+        "Nombre": "Santos Cruz Arce",
+        "Usuario": "santos-cruz@norttek",
+        "Telefonos": [
+            "6251261632"
+        ]
+    },
+    {
+        "Nombre": "Noel Trejo Muñoz",
+        "Usuario": "noel-trejo@norttek",
+        "Telefonos": [
+            "6355926966",
+            "6252837465"
+        ]
+    },
+    {
+        "Nombre": "Ada Ordóñez Legarda",
+        "Usuario": "ada-ordonez@norttek",
+        "Telefonos": [
+            "6251201274",
+            "6251087888"
+        ]
+    },
+    {
+        "Nombre": "Jilda Yudit Mendoza Rojo",
+        "Usuario": "jilda-mendoza@norttek",
+        "Telefonos": [
+            "6251278464"
+        ]
+    },
+    {
+        "Nombre": "Fatima Perez",
+        "Usuario": "fatima-perez@norttek",
+        "Telefonos": [
+            "6251549022"
+        ]
+    },
+    {
+        "Nombre": "Juan Luis Gallegos",
+        "Usuario": "luis-gallegos@norttek",
+        "Telefonos": [
+            "6258374117"
+        ]
+    },
+    {
+        "Nombre": "Daniel Gregorio Ríos Muñoz",
+        "Usuario": "gregorio-rios@norttek",
+        "Telefonos": [
+            "6144037249"
+        ]
+    },
+    {
+        "Nombre": "Rafael Juarez",
+        "Usuario": "rafael-juarez@norttek",
+        "Telefonos": [
+            "6258427376"
+        ]
+    },
+    {
+        "Nombre": "Ana Maria Prado",
+        "Usuario": "ana-prado@norttek",
+        "Telefonos": [
+            "6251523642"
+        ]
+    },
+    {
+        "Nombre": "Arlett Griselda Dominguez Mariscal",
+        "Usuario": "arlett-dominguez@norttek",
+        "Telefonos": [
+            "6251459879"
+        ]
+    },
+    {
+        "Nombre": "Saul Muruato Camacho",
+        "Usuario": "saul-muruato@norttek",
+        "Telefonos": [
+            "6251190729"
+        ]
+    },
+    {
+        "Nombre": "Diana Abigail Aragón Panduro",
+        "Usuario": "diana-aragon@norttek",
+        "Telefonos": [
+            "6251015880"
+        ]
+    },
+    {
+        "Nombre": "Alarico Poisot",
+        "Usuario": "alarico-poisot@norttek",
+        "Telefonos": [
+            "6251978096"
+        ]
+    },
+    {
+        "Nombre": "Luis Alfonso Orozco Silva",
+        "Usuario": "alfonso-orozco@norttek",
+        "Telefonos": [
+            "6251509127"
+        ]
+    },
+    {
+        "Nombre": "Agustina Chavez",
+        "Usuario": "agustina-chavez@norttek",
+        "Telefonos": [
+            "6251151189"
+        ]
+    },
+    {
+        "Nombre": "Sarahi Cantu Cortinas",
+        "Usuario": "sarahi-cantu@norttek",
+        "Telefonos": [
+            "6251182344"
+        ]
+    },
+    {
+        "Nombre": "Jonathan Quiñonez Nuñez",
+        "Usuario": "jonathan-quinonez@norttek",
+        "Telefonos": [
+            "6251534820"
+        ]
+    },
+    {
+        "Nombre": "Luis Rául Díaz Muños",
+        "Usuario": "raul-diaz@norttek",
+        "Telefonos": [
+            "6251155213"
+        ]
+    },
+    {
+        "Nombre": "Hortencia Chavez Parra",
+        "Usuario": "hortencia-chavez@norttek",
+        "Telefonos": [
+            "6252064928"
+        ]
+    },
+    {
+        "Nombre": "Gilberto Castañeda",
+        "Usuario": "gilberto-castaneda@norttek",
+        "Telefonos": [
+            "6255846811"
+        ]
+    },
+    {
+        "Nombre": "Alfredo Arturo Parra Pineda",
+        "Usuario": "alfredo-parra@norttek",
+        "Telefonos": [
+            "6251174299"
+        ]
+    },
+    {
+        "Nombre": "Juan Pablo Rojo Ordoñez",
+        "Usuario": "juan-pablo-rojo@norttek",
+        "Telefonos": [
+            "6255947457"
+        ]
+    },
+    {
+        "Nombre": "Pamela Tenorio",
+        "Usuario": "pamela-tenorio@norttek",
+        "Telefonos": [
+            "6251205305"
+        ]
+    },
+    {
+        "Nombre": "Luz Maria Gamboa Breach",
+        "Usuario": "luz-maria-gamboa@norttek",
+        "Telefonos": [
+            "6251019900"
+        ]
+    },
+    {
+        "Nombre": "Uriel Ramos",
+        "Usuario": "uriel-ramos@norttek",
+        "Telefonos": [
+            "6251272783"
+        ]
+    },
+    {
+        "Nombre": "Adalberto Hernandez Tovar",
+        "Usuario": "adal-hernandez@norttek",
+        "Telefonos": [
+            "6251279495"
+        ]
+    },
+    {
+        "Nombre": "Josue Bordier Ortega",
+        "Usuario": "josue-bordier@norttek",
+        "Telefonos": [
+            "6145557717"
+        ]
+    },
+    {
+        "Nombre": "Rodrigo Avitia Varela",
+        "Usuario": "rodrigo-avitia@norttek",
+        "Telefonos": [
+            "6251154759"
+        ]
+    },
+    {
+        "Nombre": "Enrique Ordoñez Trujillo",
+        "Usuario": "enrique-ordonez@norttek",
+        "Telefonos": [
+            "6251101132"
+        ]
+    },
+    {
+        "Nombre": "Adolfo Arvizu",
+        "Usuario": "adolfo-arvizu@norttek",
+        "Telefonos": [
+            "6251339160"
+        ]
+    }
+]
