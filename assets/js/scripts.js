@@ -10,12 +10,14 @@ let lastScroll = 0;
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
 
-    if(currentScroll > 100 && currentScroll > lastScroll){
-        header.classList.add('bg-white/80', 'backdrop-blur-md');
-        header.classList.remove('bg-white');
-    } else {
-        header.classList.remove('bg-white/80', 'backdrop-blur-md');
-        header.classList.add('bg-white');
+    if(header){
+        if(currentScroll > 100 && currentScroll > lastScroll){
+            header.classList.add('bg-white/80', 'backdrop-blur-md');
+            header.classList.remove('bg-white');
+        } else {
+            header.classList.remove('bg-white/80', 'backdrop-blur-md');
+            header.classList.add('bg-white');
+        }
     }
 
     lastScroll = currentScroll;
