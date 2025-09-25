@@ -1,6 +1,15 @@
 // JS para la app móvil de Internet
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Pre-carga de imagen hero para activar fade-in
+  try {
+    var hero = document.querySelector('.internet-hero');
+    if (hero) {
+      var bg = new Image();
+      bg.onload = function(){ hero.classList.add('hero-loaded'); };
+      bg.src = 'assets/img/internet-hero.jpg';
+    }
+  } catch(_) {}
   // Emojis como secuencias Unicode para máxima compatibilidad de renderizado
   var EMOJI = {
     wave: "\uD83D\uDC4B", // 👋
@@ -12,8 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
   try {
     var app = document.querySelector('.internet-app');
     if (app) requestAnimationFrame(function(){ app.classList.add('page-ready'); });
-    var menu = document.getElementById('main-menu');
-    if (menu) setTimeout(function(){ menu.classList.add('menu-visible'); }, 120);
+  // Menú inferior eliminado; los botones viven ahora en el hero (IDs conservados)
   } catch(_){}
   // Ya no se recalcula padding al redimensionar; el layout global maneja compensaciones.
   // Helper para transiciones: oculta con clase y muestra con forzado de reflow
@@ -123,6 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var clienteContent = document.getElementById('cliente-content');
 
   function resetActive() {
+    // Mantiene la semántica por si se reintroducen estilos de estado; actualmente no hay menú separado.
     if (btnNuevo) btnNuevo.classList.remove('active-menu');
     if (btnCliente) btnCliente.classList.remove('active-menu');
   }
@@ -149,7 +158,20 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 50);
     }
     hideSection(clienteContent);
-    resetActive(); if (btnNuevo) btnNuevo.classList.add('active-menu');
+  resetActive(); if (btnNuevo) btnNuevo.classList.add('active-menu');
+    // Si ya se ha abierto antes (existe clase visited) hacer scroll inmediato a la sección de proceso
+    try {
+      if (nuevoContent && nuevoContent.classList.contains('visited')) {
+        requestAnimationFrame(function(){
+          var target = document.querySelector('.proceso-instalacion') || nuevoContent;
+          var header = document.getElementById('site-header');
+          var offset = (header && header.offsetHeight) ? header.offsetHeight + 8 : 70;
+          var rect = target.getBoundingClientRect();
+          var y = rect.top + window.pageYOffset - offset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        });
+      }
+    } catch(_) {}
   }
 
   // Mostrar contenido de clientes existentes
@@ -158,6 +180,18 @@ document.addEventListener('DOMContentLoaded', function() {
     hideSection(nuevoContent);
     showSection(clienteContent);
     resetActive(); if (btnCliente) btnCliente.classList.add('active-menu');
+    // Scroll automático a la sección de clientes
+    try {
+      if (clienteContent) {
+        requestAnimationFrame(function(){
+          var header = document.getElementById('site-header');
+          var offset = (header && header.offsetHeight) ? header.offsetHeight + 8 : 70;
+          var rect = clienteContent.getBoundingClientRect();
+          var targetY = rect.top + window.pageYOffset - offset;
+          window.scrollTo({ top: targetY, behavior: 'smooth' });
+        });
+      }
+    } catch(_) {}
   }
 
   if (btnNuevo) btnNuevo.addEventListener('click', mostrarNuevo);
@@ -392,6 +426,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Cerrar modal y mostrar contenido
       cerrarModal();
       showSection(nuevoContent);
+      try { nuevoContent.classList.add('visited'); } catch(_) {}
       // Desplazar suavemente a la sección de proceso inicial para ver costos
       try {
         var target = document.querySelector('.proceso-instalacion');
