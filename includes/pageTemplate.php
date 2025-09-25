@@ -34,7 +34,8 @@ includeSection('navbar');
 
 // 2️⃣ Determinar archivo de contenido
 $contentFile = __DIR__ . '/../contents/' . $pageName . 'Content.php';
-echo '<main id="main-content">' . PHP_EOL;
+// Offset superior para no quedar oculto tras navbar fijo
+echo '<main id="main-content" class="nt-main-shell">' . PHP_EOL;
 if(file_exists($contentFile)){
     include $contentFile;
 } else {
