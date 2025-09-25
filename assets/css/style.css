@@ -154,6 +154,18 @@ body {
 /* Invertida sobre fondo oscuro */
 .nt-heading-invert.nt-heading-accent-bar::after { background:linear-gradient(90deg,rgba(255,255,255,.9),rgba(255,255,255,.55)); opacity:.9; }
 
+/* Variante ultra sutil (hairline) para headings pequeños o contextos donde se necesita un acento mínimo */
+.nt-heading-accent-hairline { padding-bottom:.28rem; }
+.nt-heading-accent-hairline::after {
+  content:""; position:absolute; left:0; bottom:-2px; height:1px; width:42px; border-radius:1px;
+  background: linear-gradient(90deg, var(--nt-text-muted) 0%, var(--nt-primary) 90%);
+  opacity:.4; pointer-events:none;
+}
+.nt-heading-sm.nt-heading-accent-hairline::after { width:36px; }
+.nt-heading-xl.nt-heading-accent-hairline::after { width:50px; }
+.nt-heading-hero.nt-heading-accent-hairline::after { left:50%; transform:translateX(-50%); }
+.nt-heading-invert.nt-heading-accent-hairline::after { background:linear-gradient(90deg,rgba(255,255,255,.55),rgba(255,255,255,.25)); opacity:.7; }
+
 /* =============================================
    Unified Button System (.nt-btn)
    Usage: <a class="nt-btn" data-variant="primary"><i class="fa ..."></i>Texto</a>

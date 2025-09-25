@@ -155,7 +155,7 @@
 <!-- Modal WhatsApp para compartir enlace de la tienda -->
 <div id="modalWhatsapp" class="fixed inset-0 bg-black/60 hidden justify-center items-center z-50">
   <div class="bg-white rounded-2xl p-6 w-80 relative shadow-xl nt-fade-in">
-  <?= nt_heading('Compartir tienda', 'fa-brands fa-whatsapp', 'sm', 'Envia el enlace por WhatsApp', ['class'=>'nt-heading-accent-bar']); ?>
+  <?= nt_heading('Compartir tienda', 'fa-brands fa-whatsapp', 'sm', 'Envia el enlace por WhatsApp', ['class'=>'nt-heading-accent-hairline']); ?>
     <label class="nt-field mt-4">
       <span class="text-xs font-semibold tracking-wide text-gray-600">Número destinatario</span>
       <input type="text" id="numeroWhatsapp" placeholder="Ej: 6251234455" class="nt-input" />
