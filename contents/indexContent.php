@@ -13,7 +13,10 @@
   <!-- Contenido del hero -->
   <div class="relative max-w-7xl mx-auto px-6 py-24 text-center text-white">
     <div class="mb-6">
-      <?= nt_heading('Protege tu espacio · Potencia tu productividad', 'fa-solid fa-shield-halved', 'lg', 'Soluciones integrales para hogar y empresa', true, ['animate'=>true,'delay'=>'sm','class'=>'mx-auto']); ?>
+  <?= nt_heading('Protege tu espacio · Potencia tu productividad', 'fa-solid fa-shield-halved', 'lg', 'Soluciones integrales para hogar y empresa', ['animate'=>true,'delay'=>'sm','class'=>'nt-heading-hero nt-heading-invert']); ?>
+    </div>
+    <div class="max-w-2xl mx-auto mb-8">
+      <?= nt_alert('info', 'Sitio en actualización visual. Algunos módulos están en fase de integración al nuevo sistema.'); ?>
     </div>
     <div class="max-w-4xl mx-auto mb-10">
       <p class="text-base md:text-lg leading-relaxed font-light">
@@ -132,7 +135,7 @@
 <section class="py-20 bg-gray-50">
   <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-14">
     <div class="md:w-1/2 text-left">
-      <?= nt_heading('Explora nuestra tienda en línea', 'fa-solid fa-store', 'md', 'Compra fácil y segura', true, ['animate'=>true]); ?>
+  <?= nt_heading('Explora nuestra tienda en línea', 'fa-solid fa-store', 'md', 'Compra fácil y segura', ['animate'=>true]); ?>
       <p class="nt-lead mt-6">
         Catálogo amplio en <strong>seguridad</strong>, <strong>control de acceso</strong>, <strong>redes</strong>, <strong>cableado</strong>, <strong>automatización</strong>, <strong>audio ambiental</strong> y más. Compra desde cualquier dispositivo con envíos locales.
       </p>
@@ -152,7 +155,7 @@
 <!-- Modal WhatsApp para compartir enlace de la tienda -->
 <div id="modalWhatsapp" class="fixed inset-0 bg-black/60 hidden justify-center items-center z-50">
   <div class="bg-white rounded-2xl p-6 w-80 relative shadow-xl nt-fade-in">
-    <?= nt_heading('Compartir tienda', 'fa-brands fa-whatsapp', 'sm', 'Envia el enlace por WhatsApp', true); ?>
+  <?= nt_heading('Compartir tienda', 'fa-brands fa-whatsapp', 'sm', 'Envia el enlace por WhatsApp'); ?>
     <label class="nt-field mt-4">
       <span class="text-xs font-semibold tracking-wide text-gray-600">Número destinatario</span>
       <input type="text" id="numeroWhatsapp" placeholder="Ej: 6251234455" class="nt-input" />

@@ -6,7 +6,7 @@
 <section class="nt-section pb-16 bg-white nt-hero-wrapper" style="padding-top:150px;">
     <div class="max-w-6xl mx-auto px-6 lg:px-10">
         <div class="text-center mb-12">
-            <?= nt_heading('Alarmas Inteligentes', 'fa-solid fa-bell', 'xl', null, true, ['id' => 'alarmas-hero','animate'=>true,'delay'=>'sm']); ?>
+            <?= nt_heading('Alarmas Inteligentes', 'fa-solid fa-bell', 'xl', null, ['id' => 'alarmas-hero','animate'=>true,'delay'=>'sm']); ?>
             <p class="nt-lead max-w-3xl mx-auto mt-4">
                 Sistemas de alarma con sensores de movimiento, apertura, humo y más. Recibe alertas en tu celular y mantén tu propiedad protegida 24/7.
             </p>
@@ -14,7 +14,7 @@
 
         <div class="grid md:grid-cols-2 gap-14 items-center">
             <div class="order-2 md:order-1">
-                <?= nt_heading('¿Qué ofrecemos?', 'fa-solid fa-list-check', 'md', null, true, ['animate'=>true]); ?>
+                <?= nt_heading('¿Qué ofrecemos?', 'fa-solid fa-list-check', 'md', null, ['animate'=>true]); ?>
                 <ul class="space-y-3 mt-6 mb-8">
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i><span>Alarmas cableadas e inalámbricas</span></li>
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i><span>Control desde app móvil</span></li>
