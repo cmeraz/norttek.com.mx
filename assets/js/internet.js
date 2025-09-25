@@ -175,23 +175,170 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Mostrar contenido de clientes existentes
-  function mostrarCliente() {
+  // --- Autenticación básica de cliente (por teléfono) ---
+  var clienteLoginModal = null;
+  var clientesCache = null; // se carga bajo demanda
+  var clientesLoading = false;
+
+  function getAuth() {
+    try {
+      var raw = localStorage.getItem('clienteAuth');
+      if (!raw) return null;
+      return JSON.parse(raw);
+    } catch(_) { return null; }
+  }
+  function setAuth(obj) {
+    try { localStorage.setItem('clienteAuth', JSON.stringify(obj || {})); } catch(_) {}
+  }
+  function clearAuth() {
+    try { localStorage.removeItem('clienteAuth'); } catch(_) {}
+  }
+  function normalizePhone(p) { return (p||'').replace(/[^0-9]/g,''); }
+  function clienteEstaAutenticado() { return !!(getAuth() && getAuth().usuario); }
+
+  function fetchClientes() {
+    return new Promise(function(resolve, reject){
+      if (clientesCache) return resolve(clientesCache);
+      if (clientesLoading) {
+        var int = setInterval(function(){ if(!clientesLoading){ clearInterval(int); resolve(clientesCache||[]); } }, 80);
+        return;
+      }
+      clientesLoading = true;
+      fetch('json/clientes.json', { cache:'no-cache' })
+        .then(function(r){ if(!r.ok) throw new Error('Carga fallida'); return r.json(); })
+        .then(function(data){ clientesCache = Array.isArray(data)?data:[]; resolve(clientesCache); })
+        .catch(function(err){ console.error('Error cargando clientes.json', err); reject(err); })
+        .finally(function(){ clientesLoading = false; });
+    });
+  }
+
+  function findClientByPhone(phone, list) {
+    var target = normalizePhone(phone);
+    if (!target || target.length < 7) return null;
+    list = list || [];
+    for (var i=0;i<list.length;i++) {
+      var item = list[i];
+      var tels = Array.isArray(item.Telefonos)?item.Telefonos:[];
+      for (var j=0;j<tels.length;j++) {
+        if (normalizePhone(tels[j]) === target) {
+          return item;
+        }
+      }
+    }
+    return null;
+  }
+
+  function renderClienteAuthInfo() {
+    var box = document.getElementById('cliente-auth-info');
+    if (!box) return;
+    var auth = getAuth();
+    if (auth && auth.usuario) {
+      try {
+        var nomEl = document.getElementById('cliente-auth-nombre');
+        var usuEl = document.getElementById('cliente-auth-usuario');
+        var passEl = document.getElementById('cliente-auth-pass');
+        var telEl = document.getElementById('cliente-auth-tels');
+        if (nomEl) nomEl.textContent = auth.nombre || '';
+        if (usuEl) {
+          var simpleUser = (auth.usuario||'').replace(/@.*$/,'');
+          usuEl.textContent = simpleUser;
+        }
+        if (passEl) passEl.textContent = 'norttek123';
+        if (telEl) telEl.textContent = (auth.telefonos||[]).join(', ');
+        box.style.display = 'block';
+      } catch(_) {}
+    } else {
+      box.style.display = 'none';
+    }
+  }
+
+  function abrirLoginCliente() {
+    if (!clienteLoginModal) clienteLoginModal = document.getElementById('cliente-login-modal');
+    if (clienteLoginModal) {
+      clienteLoginModal.style.display = 'flex';
+      setTimeout(function(){
+        try { var inp = document.getElementById('cliente-login-phone'); if (inp) inp.focus(); } catch(_){}
+      }, 50);
+    } else {
+      if (window.NTNotify) NTNotify.warning('No se pudo abrir el modal de acceso. Recarga la página.');
+      else console.warn('Modal de login cliente no encontrado');
+    }
+  }
+  function cerrarLoginCliente() {
+    if (clienteLoginModal) clienteLoginModal.style.display = 'none';
+  }
+
+  // mostrarCliente(true) => fuerza scroll centrado (solo tras login);
+  // mostrarCliente(event) o sin argumento => no hace scroll automático
+  function mostrarCliente(doScroll) {
+    // Si no autenticado, abrir modal en lugar de mostrar dashboard
+    if (!clienteEstaAutenticado()) {
+      abrirLoginCliente();
+      return;
+    }
     hideSection(welcomeMsg);
     hideSection(nuevoContent);
     showSection(clienteContent);
     resetActive(); if (btnCliente) btnCliente.classList.add('active-menu');
-    // Scroll automático a la sección de clientes
+    renderClienteAuthInfo();
+    // Re-disparar animaciones para elementos que pudieron haberse secuenciado mientras estaban ocultos
     try {
-      if (clienteContent) {
-        requestAnimationFrame(function(){
-          var header = document.getElementById('site-header');
-          var offset = (header && header.offsetHeight) ? header.offsetHeight + 8 : 70;
-          var rect = clienteContent.getBoundingClientRect();
-          var targetY = rect.top + window.pageYOffset - offset;
-          window.scrollTo({ top: targetY, behavior: 'smooth' });
+      var cards = clienteContent ? clienteContent.querySelectorAll('.nt-soft-seq') : [];
+      // Failsafe: pasado un lapso breve, forzar visibilidad si algún elemento sigue oculto
+      setTimeout(function(){
+        cards.forEach(function(card){
+          if (window.getComputedStyle(card).opacity === '0') {
+            card.style.opacity = 1;
+            card.style.transform = 'none';
+          }
         });
+      }, 600);
+      cards.forEach(function(card){
+        var compOpacity = window.getComputedStyle(card).opacity;
+        if (compOpacity === '0') {
+          // Si el gestor global existe, usar su secuenciador sobre el contenedor;
+          // de lo contrario, forzar visible inmediatamente
+          card.classList.remove('nt-anim-soft-in');
+          card.style.animationDelay = '';
+          card.__ntAnimatedInitial = false;
+        }
+      });
+      if (window.NTAnim && typeof window.NTAnim.sequence === 'function') {
+        window.NTAnim.sequence(clienteContent);
+      } else {
+        cards.forEach(function(card){ card.style.opacity = 1; card.style.transform = 'none'; });
       }
     } catch(_) {}
+    if (doScroll === true) {
+      try {
+        setTimeout(function(){
+          var dash = document.querySelector('.cliente-dashboard');
+          if (dash) {
+            if (dash.scrollIntoView) {
+              dash.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              setTimeout(function(){
+                try {
+                  var header = document.getElementById('site-header');
+                  if (header) {
+                    var rect = dash.getBoundingClientRect();
+                    var headerH = header.offsetHeight || 0;
+                    if (rect.top < headerH + 10) {
+                      var y = rect.top + window.pageYOffset - headerH - 10;
+                      window.scrollTo({ top: y, behavior: 'smooth' });
+                    }
+                  }
+                } catch(_) {}
+              }, 380);
+            } else {
+              var header2 = document.getElementById('site-header');
+              var headerH2 = header2 ? header2.offsetHeight : 0;
+              var top = dash.getBoundingClientRect().top + window.pageYOffset - headerH2 - 10;
+              window.scrollTo({ top: top, behavior: 'smooth' });
+            }
+          }
+        }, 60);
+      } catch(_) {}
+    }
   }
 
   if (btnNuevo) btnNuevo.addEventListener('click', mostrarNuevo);
@@ -201,6 +348,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Asegura que las secciones ocultas tengan la clase para transición
   [nuevoContent, clienteContent].forEach(function(el){ if (el && el.style.display === 'none') el.classList.add('section-hidden'); });
   mostrarBienvenida();
+  // Eliminada restauración automática de sección previa para evitar scroll inesperado
+  try { localStorage.removeItem('internetSection'); } catch(_) {}
   // Stagger para tarjetas de planes (usa transitionDelay)
   document.querySelectorAll('.plan-card.animate-card').forEach(function(card, i) {
     card.style.transitionDelay = (i * 0.12) + 's';
@@ -326,6 +475,7 @@ document.addEventListener('DOMContentLoaded', function() {
       cerrarModal();
       // Volver a bienvenida si se cierra con ESC
       mostrarBienvenida();
+      cerrarLoginCliente();
     }
   });
 
@@ -443,6 +593,51 @@ document.addEventListener('DOMContentLoaded', function() {
   // Guardar selección cuando se navega entre pestañas del menú
   if (btnCliente) btnCliente.addEventListener('click', function(){ try { localStorage.setItem('internetSection', 'cliente'); } catch (_) {} });
   if (btnNuevo) btnNuevo.addEventListener('click', function(){ try { localStorage.setItem('internetSection', 'nuevo'); } catch (_) {} });
+
+  // --- Listeners del login cliente ---
+  try {
+    clienteLoginModal = document.getElementById('cliente-login-modal');
+    var loginClose = document.getElementById('cliente-login-close');
+    var loginCancel = document.getElementById('cliente-login-cancel');
+    var loginForm = document.getElementById('cliente-login-form');
+    var loginError = document.getElementById('cliente-login-error');
+    var logoutBtn = document.getElementById('cliente-auth-logout');
+    if (loginClose) loginClose.addEventListener('click', function(){ cerrarLoginCliente(); });
+    if (loginCancel) loginCancel.addEventListener('click', function(){ cerrarLoginCliente(); });
+    if (logoutBtn) logoutBtn.addEventListener('click', function(){ clearAuth(); renderClienteAuthInfo(); mostrarBienvenida(); });
+    if (loginForm) {
+      loginForm.addEventListener('submit', function(ev){
+        ev.preventDefault();
+        if (loginError) loginError.style.display = 'none';
+        var phoneInput = document.getElementById('cliente-login-phone');
+        var phoneVal = normalizePhone((phoneInput && phoneInput.value) || '');
+        if (!phoneVal || phoneVal.length < 8) {
+          if (loginError) { loginError.textContent = 'Ingresa un teléfono válido.'; loginError.style.display='block'; }
+          return;
+        }
+        fetchClientes().then(function(list){
+          var found = findClientByPhone(phoneVal, list);
+          if (!found) {
+            if (loginError) { loginError.textContent = 'Teléfono no encontrado. Verifica tu número.'; loginError.style.display = 'block'; }
+            return;
+          }
+          var authObj = {
+            nombre: found.Nombre || '',
+            usuario: found.Usuario || '',
+            telefonos: Array.isArray(found.Telefonos) ? found.Telefonos : []
+          };
+            // Normalizar nombre a Title Case si viene todo en minúsculas
+          try { if (authObj.nombre && authObj.nombre === authObj.nombre.toLocaleLowerCase('es-MX')) authObj.nombre = toTitleCaseEs(authObj.nombre); } catch(_){}
+          setAuth(authObj);
+          cerrarLoginCliente();
+          mostrarCliente(true); // re-entra ya autenticado y ahora sí hace scroll centrado
+        }).catch(function(){ if (loginError) { loginError.textContent = 'No se pudo validar. Intenta más tarde.'; loginError.style.display='block'; } });
+      });
+    }
+  } catch(_) {}
+
+  // Si ya hay auth almacenada, preparar UI
+  try { if (clienteEstaAutenticado()) renderClienteAuthInfo(); } catch(_) {}
 
   // Smooth scroll to advisor with sticky header offset and highlight
   document.querySelectorAll('a.link-asesor').forEach(function(a){
