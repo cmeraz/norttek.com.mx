@@ -131,18 +131,18 @@ body {
 .nt-heading-hero .nt-sub { margin-top:.55rem; }
 
 /* Subtle animation base (opt-in) */
-.nt-heading-anim { opacity:0; transform: translateY(28px) scale(.965); transition: opacity 1.15s cubic-bezier(.25,.9,.25,1), transform 1.15s cubic-bezier(.25,.9,.25,1); will-change: opacity, transform; }
+.nt-heading-anim { opacity:0; transform: translateY(34px) scale(.955); transition: opacity 1.35s cubic-bezier(.22,.95,.3,1), transform 1.35s cubic-bezier(.22,.95,.3,1); will-change: opacity, transform; }
 .nt-heading-anim.is-visible { opacity:1; transform: translateY(0) scale(1); }
-/* Retardos ampliados para percepción más clara */
-.nt-heading-anim.delay-sm { transition-delay:.25s; }
-.nt-heading-anim.delay-md { transition-delay:.55s; }
-.nt-heading-anim.delay-lg { transition-delay:.85s; }
+/* Retardos ampliados para percepción más clara (versión extendida) */
+.nt-heading-anim.delay-sm { transition-delay:.38s; }
+.nt-heading-anim.delay-md { transition-delay:.78s; }
+.nt-heading-anim.delay-lg { transition-delay:1.18s; }
 
-/* Variante extra (chain) para secuencias largas */
-.nt-heading-anim.delay-chain-1 { transition-delay:.15s; }
-.nt-heading-anim.delay-chain-2 { transition-delay:.35s; }
-.nt-heading-anim.delay-chain-3 { transition-delay:.55s; }
-.nt-heading-anim.delay-chain-4 { transition-delay:.75s; }
+/* Secuencias encadenadas (más espaciadas) */
+.nt-heading-anim.delay-chain-1 { transition-delay:.25s; }
+.nt-heading-anim.delay-chain-2 { transition-delay:.55s; }
+.nt-heading-anim.delay-chain-3 { transition-delay:.85s; }
+.nt-heading-anim.delay-chain-4 { transition-delay:1.15s; }
 
 /* Decorative underline opt-in */
 /* Subrayado decorativo eliminado para un look más limpio (antes: .nt-heading.underline::after) */
