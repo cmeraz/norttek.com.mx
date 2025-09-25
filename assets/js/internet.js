@@ -1,6 +1,11 @@
 // JS para la app móvil de Internet
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Emojis como secuencias Unicode para máxima compatibilidad de renderizado
+  var EMOJI = {
+    wave: "\uD83D\uDC4B", // 👋
+    check: "\u2705"       // ✅
+  };
   // Ajuste por header fijo: desplaza el contenido para no quedar oculto
   function applyHeaderOffset() {
     var header = document.getElementById('site-header');
@@ -88,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   function renderCtaPlan() {
     var cta = document.getElementById('contratar') || document.getElementById('solicitar');
+    var formAlt = document.getElementById('abrir-formulario');
     if (!cta) return;
     var plan = getStoredPlan();
     var labelId = 'cta-plan-suffix';
@@ -106,11 +112,17 @@ document.addEventListener('DOMContentLoaded', function() {
         var baseHref = (cta.getAttribute('data-base-href') || cta.getAttribute('href') || '').split('?')[0];
         cta.setAttribute('data-base-href', baseHref);
         cta.setAttribute('href', baseHref + '?plan=' + encodeURIComponent(plan.megas));
+        if (formAlt) {
+          var base2 = (formAlt.getAttribute('data-base-href') || formAlt.getAttribute('href') || '').split('?')[0];
+          formAlt.setAttribute('data-base-href', base2);
+          formAlt.setAttribute('href', base2 + '?plan=' + encodeURIComponent(plan.megas));
+        }
       } catch(_) {}
     } else if (suffix) {
       suffix.remove();
       var base = cta.getAttribute('data-base-href');
       if (base) cta.setAttribute('href', base);
+      if (formAlt && formAlt.getAttribute('data-base-href')) formAlt.setAttribute('href', formAlt.getAttribute('data-base-href'));
     }
   }
 
@@ -206,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
           var nombreTrim = (nombreRaw || '').trim().replace(/\s+/g, ' ');
           var nombre = nombreTrim;
           try { if (nombreTrim && nombreTrim === nombreTrim.toLocaleLowerCase('es-MX')) nombre = toTitleCaseEs(nombreTrim); } catch(_) {}
-          var saludo = nombre ? ('👋 Hola, mi nombre es ' + nombre + '.') : '👋 Hola.';
+          var saludo = nombre ? (EMOJI.wave + ' Hola, mi nombre es ' + nombre + '.') : (EMOJI.wave + ' Hola.');
           var formLink = 'http://clientes.portalinternet.net/solicitar-instalacion/norttek/';
           var planLinea = planText ? ('Me gustaría contratar el plan de ' + planText + '.') : 'Me gustaría contratar un plan de internet.';
           var copy = saludo + '\n\n' +
@@ -447,12 +459,12 @@ document.addEventListener('DOMContentLoaded', function() {
         } catch(_) {}
         // Mantener sincronizado el nombre almacenado si el usuario lo escribe aquí
         if (nombre) setStoredName(nombre, nombre.split(/\s+/)[0] || '');
-  var saludo = nombre ? ('👋 Hola, mi nombre es ' + nombre + '.') : '👋 Hola.';
+  var saludo = nombre ? (EMOJI.wave + ' Hola, mi nombre es ' + nombre + '.') : (EMOJI.wave + ' Hola.');
   var planSel = '';
   try { planSel = localStorage.getItem('selectedPlan') || ''; } catch(_) {}
   var planLinea = planSel ? ('Me gustaría contratar el plan de ' + planSel + '.') : 'Me gustaría recibir más información sobre el servicio de Internet Norttek, costos de instalación y planes disponibles.';
   var formLink = 'http://clientes.portalinternet.net/solicitar-instalacion/norttek/';
-  var copy = saludo + '\n\n' + planLinea + '\n\n' + '¿Pueden ayudarme a continuar con la solicitud?\n\n' + 'Posteriormente llenaré el formulario para agendar mi instalación:\n' + formLink + '\n\n' + '✅ Quedo pendiente de su apoyo.';
+  var copy = saludo + '\n\n' + planLinea + '\n\n' + '¿Pueden ayudarme a continuar con la solicitud?\n\n' + 'Posteriormente llenaré el formulario para agendar mi instalación:\n' + formLink + '\n\n' + EMOJI.check + ' Quedo pendiente de su apoyo.';
         var phone = '526252690997';
         var url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(copy);
         var msg = document.getElementById('asesor-msg');
@@ -468,52 +480,30 @@ document.addEventListener('DOMContentLoaded', function() {
   try {
     var ctaBtn = document.getElementById('contratar') || document.getElementById('solicitar');
     if (ctaBtn) {
-      ctaBtn.addEventListener('click', function(){
-        // Asegura que el href del CTA incluya el plan seleccionado (para abrir formulario en nueva pestaña)
+      ctaBtn.addEventListener('click', function(ev){
+        // Evitar navegación al enlace: solo enviar WhatsApp
+        if (ev && typeof ev.preventDefault === 'function') ev.preventDefault();
+        if (ev && typeof ev.stopPropagation === 'function') ev.stopPropagation();
+
+        // Construir mensaje solicitado
+  var st = getStoredName();
+  var nombre = (st.full || st.first || '').trim();
+  try { if (nombre && nombre === nombre.toLocaleLowerCase('es-MX')) nombre = toTitleCaseEs(nombre); } catch(_) {}
+  var saludo = nombre ? (EMOJI.wave + ' Hola, mi nombre es ' + nombre + '.') : (EMOJI.wave + ' Hola.');
+
         var plan = getStoredPlan();
-        if (plan.megas) {
-          var baseHref = (ctaBtn.getAttribute('data-base-href') || ctaBtn.getAttribute('href') || 'http://clientes.portalinternet.net/solicitar-instalacion/norttek/').split('?')[0];
-          ctaBtn.setAttribute('data-base-href', baseHref);
-          ctaBtn.setAttribute('href', baseHref + '?plan=' + encodeURIComponent(plan.megas));
-        }
-        // Construir y abrir WhatsApp con el mensaje completo (en paralelo al open del link del CTA)
-        var st = getStoredName();
-        var nombre = (st.full || st.first || '').trim();
-        try { if (nombre && nombre === nombre.toLocaleLowerCase('es-MX')) nombre = toTitleCaseEs(nombre); } catch(_) {}
-        var saludo = nombre ? ('👋 Hola, mi nombre es ' + nombre + '.') : '👋 Hola.';
-        var planTxt = plan.megas ? ('Me gustaría contratar el plan de ' + plan.megas + ' Megas' + (plan.price ? (' (' + plan.price + ')') : '') + '.') : 'Me gustaría contratar un plan de internet.';
-        // Leer costos actuales desde el DOM para incluirlos en el mensaje
-        var upfrontEl = document.getElementById('install-upfront');
-        var totalEl = document.getElementById('install-total');
-        var antennaCard = document.getElementById('card-antena');
-        var upfront = upfrontEl ? (upfrontEl.textContent || '').trim() : '';
-        var total = totalEl ? (totalEl.textContent || '').trim() : '';
-        var incluyeAntena = false;
-        try {
-          // Si la tarjeta de antena está visible, el usuario no tenía antena y aplica costo de antena
-          if (antennaCard) {
-            incluyeAntena = (antennaCard.style.display !== 'none');
-          }
-        } catch(_) {}
-        // Solo incluir costos si el total es válido (evitar placeholders como $Variable$)
-        var totalValido = /\$\s*\d/.test(total);
-        var costosLineas = [];
-        if (totalValido) {
-          if (upfront) costosLineas.push('Anticipo de instalación: ' + upfront);
-          if (incluyeAntena) costosLineas.push('Antena: $1,800 (diferible a 3 meses)');
-          costosLineas.push('Total estimado inicial: ' + total);
-        }
-        var costosBloque = costosLineas.length ? ('Resumen de costos de instalación:\n- ' + costosLineas.join('\n- ')) : '';
-        var formLink = ctaBtn.getAttribute('href') || 'http://clientes.portalinternet.net/solicitar-instalacion/norttek/';
-        var partes = [saludo, planTxt];
-        if (costosBloque) partes.push(costosBloque);
-        partes.push('¿Pueden ayudarme a continuar con la solicitud?');
-        partes.push('Posteriormente llenaré el formulario para agendar mi instalación:\n' + formLink);
-        partes.push('✅ Quedo pendiente de su apoyo.');
-        var copy = partes.join('\n\n');
+        var planLinea = plan.megas ? ('Me gustaría contratar el plan de ' + plan.megas + ' Megas.') : 'Me gustaría contratar un plan de internet.';
+        var formLink = 'http://clientes.portalinternet.net/solicitar-instalacion/norttek/';
+
+  var copy = saludo + '\n\n' +
+                   planLinea + '\n\n' +
+                   '¿Pueden ayudarme a continuar con la solicitud?' + '\n\n' +
+                   'Posteriormente llenaré el formulario para agendar mi instalación:\n' +
+       formLink + '\n\n' +
+       EMOJI.check + ' Quedo pendiente de su apoyo.';
+
         var wa = 'https://wa.me/526252690997?text=' + encodeURIComponent(copy);
         try { window.open(wa, '_blank'); } catch(_) {}
-        // No se previene el default: el link del CTA abrirá el formulario en otra pestaña (target=_blank)
       });
     }
   } catch(_) {}
