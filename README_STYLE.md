@@ -21,6 +21,7 @@ NTTheme.toggle(); // alterna entre light/dark
 NTTheme.set('dark'); // fuerza oscuro
 NTTheme.current(); // devuelve 'light' | 'dark'
 ```
+Botón de UI: integrado en el navbar (desktop y móvil) con IDs `theme-toggle-desktop` y `theme-toggle-mobile`.
 
 ## Headings
 Helper PHP: `nt_heading($text, $icon, $size, $sub, $underline, $attrs)`
