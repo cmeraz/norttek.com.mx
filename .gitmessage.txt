@@ -1,0 +1,10 @@
+# Formato sugerido (en español):
+# tipo(scope): resumen breve en presente e infinitivo (≤ 72 chars)
+#
+# Detalle opcional:
+# - Qué se cambió
+# - Por qué se hizo
+# - Impacto o notas de migración
+#
+# Tipos recomendados:
+# feat, fix, refactor, perf, docs, style, test, build, chore
