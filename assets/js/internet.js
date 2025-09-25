@@ -500,6 +500,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   } catch(_) {}
 
+  // Botón soporte técnico dentro del dashboard cliente
+  try {
+    document.querySelectorAll('.btn-soporte-wa').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var baseMsg = btn.getAttribute('data-wa') || 'Necesito soporte técnico para mi servicio.';
+        var st = getStoredName();
+        var nombre = (st.full || st.first || '').trim();
+        if (nombre && nombre === nombre.toLocaleLowerCase('es-MX')) {
+          try { nombre = toTitleCaseEs(nombre); } catch(_){ }
+        }
+        var saludo = nombre ? (EMOJI.wave + ' Hola, soy ' + nombre + '.') : (EMOJI.wave + ' Hola.');
+        var copy = saludo + '\n\n' + baseMsg + '\n\n' + EMOJI.check + ' Quedo pendiente de su apoyo.';
+        var wa = 'https://wa.me/526252690997?text=' + encodeURIComponent(copy);
+        window.open(wa, '_blank');
+      });
+    });
+  } catch(_) {}
+
   // (Eliminado) Manejador duplicado que abría WhatsApp desde el botón de plan
 
   // Al hacer click en el CTA final, asegurar que el plan elegido esté en el querystring
