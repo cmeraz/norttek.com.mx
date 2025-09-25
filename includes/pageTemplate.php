@@ -58,16 +58,28 @@ if(!empty($scriptFiles) && is_array($scriptFiles)){
     }
 } */
 
-// 5️⃣ Scripts adicionales desde extra/scripts
+// 4️⃣ JS específicos declarados ($jsFiles) + autoload por nombre de página
+if(!isset($jsFiles)) { $jsFiles = []; }
+if(is_array($jsFiles)){
+    foreach($jsFiles as $js){
+        $js = basename($js);
+        $jsServer = __DIR__ . '/../assets/js/' . $js . '.js';
+        $jsBrowser = 'assets/js/' . $js . '.js';
+        if(file_exists($jsServer)) echo "<script src='$jsBrowser' defer></script>\n";
+    }
+}
+// Autoload según pageName si existe un JS homónimo
+$autoJsServer = __DIR__ . '/../assets/js/' . $pageName . '.js';
+if(file_exists($autoJsServer)){
+    $autoJsBrowser = 'assets/js/' . $pageName . '.js';
+    echo "<script src='$autoJsBrowser' defer></script>\n";
+}
+
+// 5️⃣ Scripts adicionales desde extra/scripts (PHP que genera JS inline si aplica)
 $extraScriptFile = __DIR__ . '/../extra/scripts/' . $pageName . '.php';
 if(file_exists($extraScriptFile)){
     include $extraScriptFile;
 }
 
-// Cargar scripts externos en el head
-if (!empty($externalJsHead)): ?>
-    <?php foreach ($externalJsHead as $src): ?>
-        <script src="<?= htmlspecialchars($src) ?>"></script>
-    <?php endforeach; ?>
-<?php endif; ?>
+// 6️⃣ Scripts externos que el desarrollador solicitó para el head (ya impresos allí si existían)
 ?>
