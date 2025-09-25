@@ -120,80 +120,81 @@
           <p class="section-subtitle">
             Como guía: pocos dispositivos y uso básico funcionan bien con planes de menor velocidad; para una familia completa de 4-6 personas y múltiples dispositivos, recomendamos planes de 20 Mbps o más.
           </p>
-          <div class="plan-cards">
-            <!-- Planes renderizados aquí -->
-            <div class="plan-card animate-card" data-megas="10">
-              <div style="display:flex; flex-direction:column; align-items:center; width:100%;">
-                <div class="plan-megas">
-                  <h3>Plan Esencial</h3>
-                  <i class="fa-solid fa-bolt plan-mega-icon" aria-hidden="true"></i>
-                  <span class="plan-mega-value">10</span>
-                  <span class="plan-mega-unit">Megas</span>
-                </div>
-                <p class="price">$299/mes</p>
-                <ul class="plan-info">
-                  <li><i class="fa-solid fa-mobile"></i> Ideal para 1-2 dispositivos</li>
-                  <li><i class="fa-solid fa-video"></i> Streaming HD y redes sociales</li>
-                  <li><i class="fa-solid fa-phone"></i> Videollamadas</li>
-                  <li><i class="fa-solid fa-laptop"></i> Trabajo remoto</li>
-                  <li><i class="fa-solid fa-wrench"></i> Instalación rápida</li>
-                  <li class="ilimitado"><i class="fa-solid fa-circle-right"></i><strong> Internet ilimitado</strong></li>
-                </ul>
+          <div class="plan-cards int-plans">
+            <!-- Plan Esencial -->
+            <article class="int-plan-card animate-card" data-megas="10">
+              <header class="int-plan-header">
+                <div class="int-plan-icon esencial"><i class="fa-solid fa-bolt" aria-hidden="true"></i></div>
+                <h3 class="int-plan-title">Plan Esencial</h3>
+                <p class="int-plan-tagline">Conecta y navega lo básico</p>
+              </header>
+              <ul class="int-plan-features">
+                <li><i class="fa-solid fa-mobile"></i> Ideal 1-2 dispositivos</li>
+                <li><i class="fa-solid fa-video"></i> Streaming HD & redes</li>
+                <li><i class="fa-solid fa-phone"></i> Videollamadas</li>
+                <li><i class="fa-solid fa-laptop"></i> Trabajo remoto ligero</li>
+                <li><i class="fa-solid fa-wrench"></i> Instalación rápida</li>
+                <li class="ilimitado"><i class="fa-solid fa-circle-right"></i><strong> Internet ilimitado</strong></li>
+              </ul>
+              <div class="int-plan-pricewrap">
+                <span class="int-plan-price">$299 <small>/ mes</small></span>
+              </div>
+              <div class="int-plan-cta">
                 <a class="btn-contratar-link" href="#contratar" target="_blank">
                   <i class="fa-solid fa-rocket icon" aria-hidden="true"></i> Obtener Plan
                 </a>
               </div>
-            </div>
-            <!-- Plan 20 Mbps -->
-            <div class="plan-card animate-card" data-megas="20">
-              <span class="plan-badge" aria-hidden="true">Recomendado</span>
-              <div style="display:flex; flex-direction:column; align-items:center; width:100%;">
-                <div class="plan-megas">
-                  <h3>Plan Avanzado</h3>
-                  <i class="fa-solid fa-bolt plan-mega-icon" aria-hidden="true"></i>
-                  <span class="plan-mega-value">20</span>
-                  <span class="plan-mega-unit">Megas</span>
-                </div>
-                <p class="price">$399/mes</p>
-                <ul class="plan-info">
-                  <li><i class="fa-solid fa-mobile"></i> Ideal para 3-8 dispositivos</li>
-                  <li><i class="fa-solid fa-video"></i> Streaming HD y videollamadas estables</li>
-                  <li><i class="fa-solid fa-headset"></i> Juegos en línea</li>
-                  <li><i class="fa-solid fa-arrow-down"></i> Descargas rápidas</li>
-                  <li><i class="fa-solid fa-wrench"></i> Instalación rápida</li>
-                  <li class="ilimitado"><i class="fa-solid fa-circle-right"></i><strong> Internet ilimitado</strong></li>
-                </ul>
+            </article>
+            <!-- Plan Avanzado -->
+            <article class="int-plan-card destacado animate-card" data-megas="20">
+              <div class="int-plan-ribbon" aria-label="Plan Recomendado"><span>Recomendado</span></div>
+              <header class="int-plan-header">
+                <div class="int-plan-icon avanzado"><i class="fa-solid fa-bolt" aria-hidden="true"></i></div>
+                <h3 class="int-plan-title">Plan Avanzado</h3>
+                <p class="int-plan-tagline">Familias y uso concurrente</p>
+              </header>
+              <ul class="int-plan-features">
+                <li><i class="fa-solid fa-mobile"></i> 3-8 dispositivos</li>
+                <li><i class="fa-solid fa-video"></i> Streaming HD estable</li>
+                <li><i class="fa-solid fa-headset"></i> Juegos en línea</li>
+                <li><i class="fa-solid fa-arrow-down"></i> Descargas rápidas</li>
+                <li><i class="fa-solid fa-wrench"></i> Instalación rápida</li>
+                <li class="ilimitado"><i class="fa-solid fa-circle-right"></i><strong> Internet ilimitado</strong></li>
+              </ul>
+              <div class="int-plan-pricewrap">
+                <span class="int-plan-price">$399 <small>/ mes</small></span>
+              </div>
+              <div class="int-plan-cta">
                 <a class="btn-contratar-link" href="#contratar" target="_blank">
                   <i class="fa-solid fa-rocket icon" aria-hidden="true"></i> Obtener Plan
                 </a>
               </div>
-            </div>
-
-            <!-- Plan 30 Mbps -->
-            <div class="plan-card animate-card" data-megas="30">
-              <div style="display:flex; flex-direction:column; align-items:center; width:100%;">
-                <div class="plan-megas">
-                  <h3>Plan Superior</h3>
-                  <i class="fa-solid fa-bolt plan-mega-icon" aria-hidden="true"></i>
-                  <span class="plan-mega-value">30</span>
-                  <span class="plan-mega-unit">Megas</span>
-                </div>
-                <p class="price">$499/mes</p>
-                <ul class="plan-info">
-                    <li><i class="fa-solid fa-mobile"></i> Ideal para 8 dispositivos en adelante</li>
-                  <li><i class="fa-solid fa-video"></i> Streaming Full HD/4K puntual</li>
-                  <li><i class="fa-solid fa-laptop"></i> Home office y clases en línea</li>
-                  <li><i class="fa-solid fa-gamepad"></i> Experiencia de juego fluida</li>
-                  <li><i class="fa-solid fa-wrench"></i> Instalación rápida</li>
-                  <li class="ilimitado"><i class="fa-solid fa-circle-right"></i><strong> Internet ilimitado</strong></li>
-                </ul>
+            </article>
+            <!-- Plan Superior -->
+            <article class="int-plan-card animate-card" data-megas="30">
+              <header class="int-plan-header">
+                <div class="int-plan-icon superior"><i class="fa-solid fa-bolt" aria-hidden="true"></i></div>
+                <h3 class="int-plan-title">Plan Superior</h3>
+                <p class="int-plan-tagline">Multiuso + gaming ocasional</p>
+              </header>
+              <ul class="int-plan-features">
+                <li><i class="fa-solid fa-mobile"></i> 8+ dispositivos</li>
+                <li><i class="fa-solid fa-video"></i> Streaming Full HD / 4K puntual</li>
+                <li><i class="fa-solid fa-laptop"></i> Home office & clases</li>
+                <li><i class="fa-solid fa-gamepad"></i> Juego fluido</li>
+                <li><i class="fa-solid fa-wrench"></i> Instalación rápida</li>
+                <li class="ilimitado"><i class="fa-solid fa-circle-right"></i><strong> Internet ilimitado</strong></li>
+              </ul>
+              <div class="int-plan-pricewrap">
+                <span class="int-plan-price">$499 <small>/ mes</small></span>
+              </div>
+              <div class="int-plan-cta">
                 <a class="btn-contratar-link" href="#contratar" target="_blank">
                   <i class="fa-solid fa-rocket icon" aria-hidden="true"></i> Obtener Plan
                 </a>
               </div>
-              </div>
-
-            </div>
+            </article>
+          </div>
           </section>
 
           <!-- Costos de Instalación (último) -->
