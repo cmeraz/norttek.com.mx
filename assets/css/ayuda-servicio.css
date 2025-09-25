@@ -1,0 +1,82 @@
+.ayuda-servicio-page { max-width:1150px; margin:0 auto 2.8rem; padding:1rem 1rem 2rem; position:relative; }
+.ayuda-servicio-page .ayuda-hero { text-align:center; margin-bottom:2rem; }
+.ayuda-servicio-page .ayuda-hero h1 { font-size:1.9rem; font-weight:900; margin:.4rem 0 .6rem; }
+.ayuda-servicio-page .intro { color: var(--muted); max-width:780px; margin:0 auto .9rem; line-height:1.55; }
+.ayuda-servicio-page .ayuda-btn { display:inline-flex; align-items:center; justify-content:center; padding:.7rem 1rem; font-weight:800; border-radius:8px; text-decoration:none; background: linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg,var(--primary) 0%, var(--primary-600) 100%) border-box; color: var(--primary-600); border:1px solid transparent; box-shadow:0 4px 12px var(--ring); }
+.ayuda-servicio-page .ayuda-btn:hover { transform: translateY(-2px); box-shadow:0 7px 18px var(--ring); }
+.ayuda-servicio-page .ayuda-search-wrap { margin:1.4rem auto 0; max-width:620px; display:flex; flex-direction:column; gap:.45rem; }
+.ayuda-servicio-page #ayuda-search { width:100%; padding:.75rem .9rem; border:1px solid #d9e5f3; border-radius:10px; font-size:.9rem; background:#fff; outline:none; transition:border-color .18s ease, box-shadow .18s ease; }
+.ayuda-servicio-page #ayuda-search:focus { border-color:#4f8cff; box-shadow:0 0 0 4px rgba(79,140,255,.25); }
+.ayuda-servicio-page .ayuda-filter-hint { font-size:.7rem; letter-spacing:.5px; font-weight:600; text-transform:uppercase; color:#6f8094; }
+.ayuda-servicio-page .ayuda-grid { display:grid; gap:1rem; grid-template-columns: repeat(auto-fill,minmax(260px,1fr)); margin-bottom:2.2rem; }
+.ayuda-servicio-page .ayuda-card { background:#fff; border:1px solid #e4ecf6; border-radius:14px; padding:1rem 1rem .9rem; box-shadow:0 2px 6px rgba(15,23,42,.05); display:flex; flex-direction:column; position:relative; overflow:hidden; opacity:0; transform:translateY(16px); will-change:transform, opacity; animation: none; }
+/* Nueva animación de entrada rápida */
+@keyframes ayudaCardIn { 0% { opacity:0; transform:translateY(16px);} 100% { opacity:1; transform:translateY(0);} }
+.ayuda-servicio-page .ayuda-card.is-visible { animation: ayudaCardIn .42s cubic-bezier(.37,.13,.15,.98) forwards; animation-delay: var(--card-delay, 0s); }
+/* Elementos internos se revelan tras el fade-up del card */
+.ayuda-servicio-page .ayuda-card .inner-fade { opacity:0; transform:translateY(6px); transition:opacity .38s ease, transform .38s ease; will-change:transform, opacity; }
+.ayuda-servicio-page .ayuda-card.inner-ready .inner-fade.inner-show { opacity:1; transform:translateY(0); }
+.ayuda-servicio-page .ayuda-card:hover { box-shadow:0 8px 20px -4px rgba(15,23,42,.12); }
+/* Ajuste: efecto loop más sutil y sólo después de visible */
+.ayuda-servicio-page .ayuda-card.eye-loop { animation: none; }
+.ayuda-servicio-page .ayuda-card.is-visible.eye-loop { animation: ayudaBreath 10s ease-in-out .6s infinite; }
+@keyframes ayudaBreath { 0%,100% { transform:translateY(0);} 50% { transform:translateY(-3px);} }
+@keyframes ayudaBlink { 0%,94%,100%{ filter:none; } 95%{ filter:blur(1px); } 96%{ filter:blur(.4px);} }
+.ayuda-servicio-page .ayuda-card.eye-blink { animation: ayudaBlink 8.4s ease-in-out infinite; }
+
+/* Reuso nombres si internet.css ya define, añadimos fallback locales */
+@keyframes ntCardBreath { 0%,100% { transform:translateY(0) scale(1);} 50% { transform:translateY(-3px) scale(1.01);} }
+
+.ayuda-servicio-page .ayuda-card.highlight { animation: ayudaPulse 1.6s ease; }
+@keyframes ayudaPulse { 0%{ box-shadow:0 0 0 0 rgba(79,140,255,.55);} 70%{ box-shadow:0 0 0 18px rgba(79,140,255,0);} 100%{ box-shadow:0 0 0 0 rgba(79,140,255,0);} }
+.ayuda-servicio-page .ayuda-card[data-category] h2:after { content: attr(data-category); margin-left:auto; background:#eef5ff; color:#4f8cff; font-size:.55rem; font-weight:800; letter-spacing:.5px; padding:.25rem .45rem; border-radius:6px; text-transform:uppercase; }
+
+/* FAQ placeholder */
+.ayuda-servicio-page .ayuda-faq-placeholder { background:#fff; border:1px dashed #bcd8ff; padding:1.4rem 1rem; border-radius:14px; text-align:center; font-size:.9rem; color:#6b7a90; animation: fadeBlink 1.8s ease-in-out infinite; }
+@keyframes fadeBlink { 0%,100%{ opacity:1;} 50%{ opacity:.45;} }
+.ayuda-servicio-page .ayuda-card h2 { margin:0 0 .55rem; font-size:1.05rem; font-weight:800; display:flex; gap:.5rem; align-items:center; color:#0f172a; }
+.ayuda-servicio-page .ayuda-card ul { margin:.25rem 0 .5rem; padding-left:1.1rem; color: var(--muted); font-size:.85rem; line-height:1.4; }
+.ayuda-servicio-page .ayuda-card li { margin:.3rem 0; }
+.ayuda-servicio-page .ayuda-card .action { margin:.2rem 0 0; font-size:.75rem; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:#6f8094; }
+.ayuda-servicio-page .ayuda-extra { text-align:center; }
+.ayuda-servicio-page .ayuda-extra h2 { font-size:1.4rem; font-weight:900; margin:0 0 .5rem; }
+.ayuda-servicio-page .soporte-btn { background: linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg,#25D366 0%, #128C7E 100%) border-box; color:#06553e; }
+.ayuda-servicio-page .soporte-btn:hover { background: linear-gradient(180deg,#e9fff3,#d8fbe9) padding-box, linear-gradient(135deg,#25D366 0%, #128C7E 100%) border-box; }
+
+/* FAQ wrapper spacing */
+.ayuda-servicio-page .ayuda-faq-wrapper { margin-top:3rem; }
+.ayuda-servicio-page .faq-lite { background:#fff; border:1px solid #e4ecf6; border-radius:18px; padding:1.4rem 1.2rem 1.6rem; box-shadow:0 4px 18px -4px rgba(15,23,42,.1); }
+.ayuda-servicio-page .faq-lite-title { margin:0 0 1rem; font-size:1.4rem; font-weight:900; text-align:center; background:linear-gradient(90deg,#4f8cff,#6fa4ff); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.ayuda-servicio-page .faq-lite-list { display:flex; flex-direction:column; gap:.6rem; }
+.ayuda-servicio-page .faq-lite-item { background:#f8fbff; border:1px solid #d9e5f3; border-radius:12px; padding:.55rem .8rem .7rem; }
+.ayuda-servicio-page .faq-lite-item[open] { background:#fff; box-shadow:0 4px 14px -4px rgba(15,23,42,.12); }
+.ayuda-servicio-page .faq-lite-item summary { cursor:pointer; font-weight:700; font-size:.9rem; list-style:none; outline:none; display:flex; align-items:center; position:relative; }
+.ayuda-servicio-page .faq-lite-item summary::-webkit-details-marker { display:none; }
+.ayuda-servicio-page .faq-lite-item summary:after { content:'+'; margin-left:auto; font-weight:900; color:#4f8cff; transition: transform .25s ease; }
+.ayuda-servicio-page .faq-lite-item[open] summary:after { transform:rotate(45deg); }
+.ayuda-servicio-page .faq-lite-answer { margin-top:.4rem; font-size:.82rem; line-height:1.45; color:#445164; }
+
+/* Responsive refinements */
+@media (max-width: 780px){
+	.ayuda-servicio-page { padding:1rem 1rem 2.4rem; }
+	.ayuda-servicio-page .ayuda-hero h1 { font-size:1.65rem; }
+	.ayuda-servicio-page .ayuda-grid { grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); }
+}
+@media (max-width:520px){
+	.ayuda-servicio-page .ayuda-hero h1 { font-size:1.45rem; }
+	.ayuda-servicio-page .intro { font-size:.9rem; }
+	.ayuda-servicio-page .ayuda-card h2 { font-size:.95rem; }
+	.ayuda-servicio-page .ayuda-card ul { font-size:.8rem; }
+	.ayuda-servicio-page #ayuda-search { font-size:.85rem; }
+}
+
+/* Preferencias de reducción de movimiento */
+/* FAQ items animación ligera */
+.ayuda-servicio-page .faq-lite-item { position:relative; opacity:0; transform:translateY(10px); transition:opacity .38s ease, transform .38s ease; }
+.ayuda-servicio-page .faq-lite-item.faq-show { opacity:1; transform:translateY(0); }
+
+@media (prefers-reduced-motion: reduce){
+	.ayuda-servicio-page .ayuda-card { animation:none !important; transform:none !important; opacity:1 !important; }
+	.ayuda-servicio-page .ayuda-card .inner-fade { transition:none !important; opacity:1 !important; transform:none !important; }
+	.ayuda-servicio-page .faq-lite-item { transition:none !important; opacity:1 !important; transform:none !important; }
+}
