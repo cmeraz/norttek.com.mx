@@ -137,6 +137,8 @@ if(file_exists($autoJsPathServer)){
 <!-- Toastify JS -->
 <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script src="assets/js/toastify.js"></script>
+<!-- Script global de utilidades y animaciones (headings, tabs, tema) -->
+<script src="assets/js/scripts.js"></script>
 
 </body>
 </html>
