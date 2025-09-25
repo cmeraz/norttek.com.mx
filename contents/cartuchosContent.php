@@ -33,55 +33,26 @@ function impresorasList($impresoras) {
 ?>
 
 <div class="pt-[180px] px-4 max-w-7xl mx-auto">
-    <!-- Botón para volver al inicio -->
-    <a href="index.php" class="text-sm text-blue-600 hover:underline flex items-center gap-1 mb-4">
-        <i class="fas fa-arrow-left"></i> Volver al inicio
-    </a>
+    <a href="index.php" class="nt-btn nt-btn-outline mb-6" style="--_border:linear-gradient(135deg,#c3d9ef,#aac9e6)"><i class="fas fa-arrow-left"></i><span>Volver al inicio</span></a>
 
-    <!-- =========================
-         Sección principal: Título, subtítulo y descripción
-    ========================== -->
-    <section class="p-8 mb-8 max-w-6xl mx-auto">
-        <div class="flex items-center justify-center mb-6 space-x-3">
-            <i class="fas fa-print text-blue-600 text-4xl"></i>
-            <h1 class="text-4xl font-extrabold text-blue-800 text-center">
-                Catálogo de Cartuchos de Toner HP
-            </h1>
+    <section class="nt-section inset mb-10">
+        <div class="text-center mb-10">
+            <?= nt_heading('Catálogo de Cartuchos de Tóner HP', 'fa-solid fa-print', 'lg', 'Encuentra el modelo compatible en segundos', true, ['animate'=>true,'delay'=>'sm']); ?>
+            <p class="nt-lead max-w-3xl mx-auto mt-5">Herramienta interactiva para localizar rápidamente el <strong>cartucho o tambor correcto</strong> según tu impresora. Datos confiables de <strong>modelos, compatibilidad y rendimiento</strong> para que compres sin duda.</p>
         </div>
-        <div class="flex items-center justify-center mb-8">
-            <hr class="border-t-2 border-blue-300 w-16 mr-3">
-            <h2 class="text-2xl font-semibold text-gray-700">
-                Encuentra rápidamente el cartucho compatible con tu impresora
-            </h2>
-            <hr class="border-t-2 border-blue-300 w-16 ml-3">
-        </div>
-        <div class="flex flex-col lg:flex-row items-center gap-8">
+        <div class="flex flex-col lg:flex-row items-center gap-10">
             <div class="flex-shrink-0">
-                <img src="https://images.pexels.com/photos/33475146/pexels-photo-33475146.jpeg?cs=srgb&dl=pexels-zeleboba-33475146.jpg&fm=jpg&w=640&h=480&_gl=1*flopsy*_ga*NTcxNDE2NTY3LjE3NTc2NDgwMDk.*_ga_8JE65Q40S6*czE3NTc5MDkxMjQkbzIkZzEkdDE3NTc5MDkxNjEkajIzJGwwJGgw" 
-                     alt="Cartuchos de Toner HP" 
-                     class="rounded-xl shadow-lg w-80 h-auto object-cover">
+                <div class="rounded-2xl overflow-hidden shadow-lg ring-1 ring-gray-200">
+                    <img src="https://images.pexels.com/photos/33475146/pexels-photo-33475146.jpeg?auto=compress&cs=tinysrgb&w=640" alt="Cartuchos de Tóner HP" class="w-80 h-auto object-cover">
+                </div>
             </div>
-            <div class="flex-1 space-y-4">
-                <p class="text-gray-700 text-lg leading-relaxed">
-                    Sabemos que al momento de comprar un cartucho siempre surge la misma pregunta: 
-                    <em>¿será el adecuado para mi impresora?</em>.  
-                    Por eso creamos esta <strong>herramienta interactiva</strong>, pensada para que encuentres en segundos el 
-                    <strong>cartucho o tambor correcto</strong>, con información confiable sobre <strong>marcas, modelos, compatibilidad y rendimiento</strong>.  
-                    Así podrás elegir tu consumible con total seguridad, evitando errores y ahorrando tiempo.
-                </p>
-                <p class="text-gray-700 text-lg leading-relaxed">
-                    Nuestra <span class="font-semibold text-blue-600">tabla interactiva</span> permite filtrar en tiempo real cualquier cartucho por marca, modelo, impresora o tambor, garantizando eficiencia y evitando errores de compatibilidad.
-                </p>
-                <p class="text-gray-700 text-lg leading-relaxed flex items-center gap-2">
-                    <i class="fas fa-bolt text-orange-500"></i>
-                    <span><strong>Rápido, intuitivo y confiable</strong>: diseñado para ahorrarte tiempo y garantizar compatibilidad total con tu impresora.</span>
-                </p>
-                <p class="text-center mt-4">
-                    <a href="https://tienda.norttek.com.mx" target="_blank" 
-                       class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition duration-300 inline-flex items-center gap-2">
-                        🛒 Comprar mi cartucho de tóner ahora
-                    </a>
-                </p>
+            <div class="flex-1 space-y-5">
+                <p class="text-gray-700 leading-relaxed">Al comprar un consumible siempre aparece la duda:<em> ¿será el adecuado para mi impresora?</em> Con esta <strong>herramienta interactiva</strong> lo resuelves en segundos.</p>
+                <p class="text-gray-700 leading-relaxed">Filtra por <strong>marca</strong>, <strong>modelo</strong>, <strong>impresora</strong> o <strong>tambor</strong> y obtén compatibilidad inmediata.</p>
+                <p class="text-gray-700 leading-relaxed flex items-start gap-2"><i class="fas fa-bolt text-orange-500 mt-1"></i><span><strong>Rápido e intuitivo</strong>: evita errores y ahorra tiempo en tu compra.</span></p>
+                <div>
+                    <a href="https://tienda.norttek.com.mx" target="_blank" class="nt-btn nt-btn-primary"><i class="fa-solid fa-cart-shopping"></i><span>Comprar cartucho ahora</span></a>
+                </div>
             </div>
         </div>
     </section>
@@ -89,27 +60,20 @@ function impresorasList($impresoras) {
     <!-- =========================
          Tabs de navegación (Tabla y FAQ)
     ========================== -->
-    <div class="flex flex-row gap-2 items-start mb-6">
-        <button class="ejemplo-tab-btn active flex items-center gap-2 px-5 py-2 rounded-lg bg-blue-600 text-white shadow text-sm hover:bg-blue-700 transition-all duration-200 focus:outline-none"
-            data-tab="tab1" type="button">
-            <i class="fas fa-table"></i>
-            <span>Tabla de Compatibilidades</span>
-        </button>
-        <button class="ejemplo-tab-btn flex items-center gap-2 px-5 py-2 rounded-lg bg-blue-600 text-white shadow text-sm hover:bg-blue-700 transition-all duration-200 focus:outline-none"
-            data-tab="tab2" type="button">
-            <i class="fas fa-question-circle"></i>
-            <span>Preguntas Frecuentes</span>
-        </button>
+    <div class="nt-btn-group mb-8">
+        <button class="ejemplo-tab-btn nt-btn nt-btn-primary active" data-tab="tab1" type="button"><i class="fas fa-table"></i><span>Compatibilidades</span></button>
+        <button class="ejemplo-tab-btn nt-btn nt-btn-outline" data-tab="tab2" type="button"><i class="fas fa-question-circle"></i><span>FAQ</span></button>
     </div>
-    <!-- Línea divisoria clara debajo de los tabs -->
-    <hr class="border-t-1 border-gray-300 mb-8">
 
     <!-- =========================
          Contenido de la TAB 1: Tabla de compatibilidades
     ========================== -->
-    <section class="tabla-compatibilidades" id="compatibilidades">
+    <section class="tabla-compatibilidades nt-section" id="compatibilidades">
+        <div class="mb-6">
+          <?= nt_heading('Tabla interactiva', 'fa-solid fa-table-list', 'md', 'Filtra por cualquier campo', true, ['animate'=>true]); ?>
+        </div>
         <!-- Buscador interactivo con iconos y botón limpiar -->
-        <div class="relative w-full max-w-xl mx-auto mb-6">
+        <div class="relative w-full max-w-xl mx-auto mb-8">
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
                      viewBox="0 0 24 24">
@@ -121,7 +85,7 @@ function impresorasList($impresoras) {
                 type="text"
                 id="buscador"
                 placeholder="Buscar por marca, modelo, impresora o tambor..."
-                class="w-full pl-10 pr-10 p-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900"
+                class="nt-input pl-10 pr-10"
             >
             <button 
                 id="limpiarBusqueda"
@@ -137,21 +101,18 @@ function impresorasList($impresoras) {
         </div>
 
         <!-- Botón para buscar por foto -->
-        <div class="flex justify-end mb-2">
-            <button id="fotoBtn" type="button"
-                class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow flex items-center gap-2 text-sm">
-                <i class="fas fa-camera"></i> Buscar por foto
-            </button>
+        <div class="flex justify-end mb-4">
+            <button id="fotoBtn" type="button" class="nt-btn nt-btn-outline"><i class="fas fa-camera"></i><span>Buscar por foto</span></button>
             <input type="file" id="fotoInput" accept="image/*" class="hidden">
         </div>
 
         <!-- Contador de resultados dinámico -->
-        <div class="mb-4 text-right text-gray-600 font-semibold" id="resultado-contador">
+        <div class="mb-4 text-right text-gray-600 font-semibold text-sm" id="resultado-contador">
             Mostrando <span id="total-resultados">0</span> cartuchos
         </div>
 
         <!-- Tabla interactiva de cartuchos -->
-        <div class="overflow-x-auto shadow-lg rounded-lg relative mb-20">
+        <div class="overflow-x-auto shadow-lg rounded-lg relative mb-10 border border-gray-100 bg-white">
             <table id="tablaCartuchos" class="min-w-full table-fixed border-collapse">
                 <thead class="text-white sticky top-0 z-10" style="background-color: rgba(22, 119, 166, 0.5);">
                     <tr>
@@ -188,7 +149,8 @@ function impresorasList($impresoras) {
     <!-- =========================
          Contenido de la TAB 2: Preguntas frecuentes
     ========================== -->
-    <section class="preguntas-frecuentes" id="preguntas-frecuentes">
+    <section class="preguntas-frecuentes nt-section" id="preguntas-frecuentes">
+        <?= nt_heading('Preguntas Frecuentes', 'fa-solid fa-circle-question', 'md', 'Dudas comunes sobre cartuchos', true, ['animate'=>true]); ?>
         <!-- Sección de preguntas frecuentes generada dinámicamente -->
         <?php
             if (function_exists('faq')) {
