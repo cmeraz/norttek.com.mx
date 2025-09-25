@@ -134,9 +134,42 @@ if(file_exists($autoJsPathServer)){
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-<!-- Toastify JS -->
-<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-<script src="assets/js/toastify.js"></script>
+<!-- Contenedor de alertas dinámicas -->
+<div id="nt-alert-stack" class="fixed top-[88px] right:0 md:top-5 md:right-5 z-[9999] flex flex-col gap-3 px-3 md:px-0 w-full md:w-auto pointer-events-none"></div>
+
+<script>
+// Sistema ligero de notificaciones (reemplaza Toastify)
+window.NTNotify = (function(){
+  const stack = () => document.getElementById('nt-alert-stack');
+  const variants = {
+    info: 'nt-alert-info', success: 'nt-alert-success', warning: 'nt-alert-warning', danger: 'nt-alert-danger'
+  };
+  function push(type, html, opts={}){
+    const el = document.createElement('div');
+    el.className = `nt-alert shadow-lg pointer-events-auto translate-x-8 opacity-0 transition-all duration-500 ${variants[type]||variants.info}`;
+    el.style.minWidth = '260px'; el.style.maxWidth = '360px';
+    el.innerHTML = `<i class="fa-solid ${icon(type)}"></i><div style="flex:1;">${html}</div><button aria-label="Cerrar" class="nt-close" style="background:none;border:none;font-size:.9rem;opacity:.6;cursor:pointer;">✕</button>`;
+    stack().appendChild(el);
+    requestAnimationFrame(()=>{ el.classList.remove('translate-x-8'); el.style.opacity=1; });
+    const ttl = opts.ttl || 4800;
+    let hid = setTimeout(()=>close(), ttl);
+    function close(){ el.style.opacity=0; el.style.transform='translateX(12px)'; setTimeout(()=>el.remove(),480); }
+    el.querySelector('.nt-close').addEventListener('click',()=>{ clearTimeout(hid); close(); });
+    el.addEventListener('mouseenter',()=>clearTimeout(hid));
+    el.addEventListener('mouseleave',()=>{ hid=setTimeout(()=>close(), 1800); });
+    return {close, el};
+  }
+  function icon(t){ switch(t){ case 'success':return 'fa-circle-check'; case 'warning':return 'fa-triangle-exclamation'; case 'danger':return 'fa-circle-xmark'; default:return 'fa-circle-info'; } }
+  return { info:(m,o)=>push('info',m,o), success:(m,o)=>push('success',m,o), warning:(m,o)=>push('warning',m,o), danger:(m,o)=>push('danger',m,o) };
+})();
+
+// Ejemplo condicional: mostrar aviso de demo sólo una vez por sesión
+if(!sessionStorage.getItem('nt_demo_notice')){
+  sessionStorage.setItem('nt_demo_notice','1');
+  setTimeout(()=>{ NTNotify.info('Interfaz en evolución: seguimos integrando módulos al nuevo diseño.'); }, 900);
+}
+</script>
+
 <!-- Script global de utilidades y animaciones (headings, tabs, tema) -->
 <script src="assets/js/scripts.js"></script>
 
