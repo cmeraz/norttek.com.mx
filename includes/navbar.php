@@ -78,6 +78,9 @@ $google_maps_link = "https://maps.app.goo.gl/Q6XmT59jjiWULAWu5?g_st=aw";
             </svg>
             Tienda en línea
         </a>
+        <button type="button" id="theme-toggle-desktop" class="nt-btn nt-btn-outline" style="font-size:.75rem;" aria-label="Cambiar tema">
+            <i class="fa-solid fa-moon"></i><span class="hidden xl:inline">Tema</span>
+        </button>
     </div>
 
     <!-- Menú Desktop -->
@@ -124,13 +127,18 @@ $google_maps_link = "https://maps.app.goo.gl/Q6XmT59jjiWULAWu5?g_st=aw";
         <img src="https://norttek.com.mx/assets/img/logo-norttek.png" alt="Logo" class="w-12 h-auto">
         <span class="text-lg font-semibold text-gray-900">Norttek Solutions</span>
     </a>
-    <button id="menu-btn" class="focus:outline-none text-gray-900">
+        <div class="flex items-center gap-3">
+            <button type="button" id="theme-toggle-mobile" class="nt-btn nt-btn-outline icon-only" aria-label="Cambiar tema">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button id="menu-btn" class="focus:outline-none text-gray-900">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
             <line x1="3" y1="9" x2="21" y2="9"/>
             <line x1="3" y1="15" x2="21" y2="15"/>
         </svg>
-    </button>
+            </button>
+        </div>
 </div>
 
 <!-- Sidebar Móvil -->
@@ -249,4 +257,22 @@ document.querySelectorAll('.servicios-toggle').forEach(button => {
 document.querySelectorAll('#mobile-sidebar a').forEach(link => {
     link.addEventListener('click', cerrar);
 });
+</script>
+<script>
+// Toggle tema (usa API global NTTheme)
+function updateThemeIcons(){
+    const isDark = document.documentElement.classList.contains('dark');
+    document.querySelectorAll('#theme-toggle-desktop i, #theme-toggle-mobile i').forEach(ic=>{
+        ic.classList.toggle('fa-moon', !isDark);
+        ic.classList.toggle('fa-sun', isDark);
+    });
+}
+['theme-toggle-desktop','theme-toggle-mobile'].forEach(id => {
+    const btn = document.getElementById(id);
+    if(btn){
+        btn.addEventListener('click', ()=>{ if(window.NTTheme){ NTTheme.toggle(); updateThemeIcons(); }});
+    }
+});
+// Inicial
+updateThemeIcons();
 </script>
