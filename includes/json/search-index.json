@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Cámaras de Seguridad y Videovigilancia",
+    "url": "/cctv",
+    "tags": ["cctv","seguridad","video","cámaras","vigilancia","grabación","instalaciones"]
+  },
+  {
+    "title": "Alarmas Inteligentes",
+    "url": "/alarma",
+    "tags": ["alarma","sensores","humo","movimiento","intrusión","app","monitoreo"]
+  },
+  {
+    "title": "Control de Acceso Inteligente",
+    "url": "/control-acceso",
+    "tags": ["control","acceso","biométrico","tarjetas","qr","asistencia"]
+  },
+  {
+    "title": "Telefonía IP en la Nube",
+    "url": "/telefonia",
+    "tags": ["telefonía","ip","pbx","nube","extensiones","voip","comunicaciones"]
+  },
+  {
+    "title": "Cartuchos de Tóner (Herramienta)",
+    "url": "/cartuchos",
+    "tags": ["cartuchos","toner","impresoras","hp","herramienta","consumibles"]
+  },
+  {
+    "title": "Sobre Nosotros",
+    "url": "/about",
+    "tags": ["nosotros","empresa","historia","misión","visión","valores"]
+  },
+  {
+    "title": "Contacto",
+    "url": "/contact",
+    "tags": ["contacto","soporte","formulario","ayuda","cotización"]
+  }
+]
