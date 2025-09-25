@@ -59,8 +59,7 @@ $google_maps_link = "https://maps.app.goo.gl/Q6XmT59jjiWULAWu5?g_st=aw";
                 <i class="fas fa-phone text-blue-600"></i>
                 <span><?= $business_phone ?></span>
             </div>
-            <a href="<?= $google_maps_link ?>" target="_blank"
-               class="bg-blue-600 text-white text-xs px-4 py-1.5 rounded shadow hover:bg-blue-700 transition flex items-center gap-1 font-medium">
+            <a href="<?= $google_maps_link ?>" target="_blank" class="nt-btn" data-variant="outline" style="font-size:.7rem; padding:.45rem .75rem;">
                 <i class="fas fa-map-marked-alt"></i> ¿Cómo llegar?
             </a>
         </div>
@@ -73,8 +72,7 @@ $google_maps_link = "https://maps.app.goo.gl/Q6XmT59jjiWULAWu5?g_st=aw";
             <span class="text-lg font-medium text-gray-900 tracking-tight">Norttek Solutions</span>
         </a>
 
-        <a href="https://tienda.norttek.com.mx" target="_blank"
-           class="bg-blue-600 text-white font-bold px-5 py-2 rounded shadow-lg hover:bg-blue-700 transition flex items-center gap-2 text-sm">
+        <a href="https://tienda.norttek.com.mx" target="_blank" class="nt-btn" data-variant="primary" style="font-size:.8rem;">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l1-5H6.4M7 13l-1 5h12l-1-5M7 13h10m0 0L21 6H5l2 7z" />
             </svg>
@@ -156,14 +154,14 @@ $google_maps_link = "https://maps.app.goo.gl/Q6XmT59jjiWULAWu5?g_st=aw";
             <i class="fas fa-phone text-blue-600"></i>
             <span><?= $business_phone ?></span>
         </div>
-        <a href="<?= $google_maps_link ?>" target="_blank" class="bg-blue-600 text-white text-base px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition flex items-center gap-2 font-medium w-full justify-center">
+        <a href="<?= $google_maps_link ?>" target="_blank" class="nt-btn" data-variant="outline" style="width:100%; justify-content:center; font-size:.8rem;">
             <i class="fas fa-map-marked-alt"></i> ¿Cómo llegar?
         </a>
     </div>
 
     <!-- Botón Tienda -->
     <div class="px-4 py-3 border-b">
-        <a href="https://tienda.norttek.com.mx" target="_blank" class="bg-blue-600 text-white font-bold px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 text-sm transition transform active:scale-95 active:bg-blue-700 active:shadow-inner w-full justify-center">
+        <a href="https://tienda.norttek.com.mx" target="_blank" class="nt-btn" data-variant="primary" style="width:100%; justify-content:center; font-size:.8rem;">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l1-5H6.4M7 13l-1 5h12l-1-5M7 13h10m0 0L21 6H5l2 7z" />
             </svg>
