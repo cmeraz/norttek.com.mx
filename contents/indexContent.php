@@ -70,9 +70,9 @@
             "enlace" => "computo"
         ],
         [
-            "titulo" => "Control de acceso",
-            "icono"  => "https://img.icons8.com/ios-filled/50/ffffff/lock.png",
-      "enlace" => "ControlAcceso" // coincide exactamente con id existente (pendiente normalizar más adelante)
+    "titulo" => "Control de acceso",
+    "icono"  => "https://img.icons8.com/ios-filled/50/ffffff/lock.png",
+  "enlace" => "control-acceso" // normalizado a kebab-case
         ],
         [
             "titulo" => "Consultoría",
