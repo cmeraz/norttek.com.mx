@@ -92,14 +92,21 @@ function nt_is_active($itemUrl, $activePage){
 
         <!-- Acciones derecha -->
         <div class="flex items-center gap-2 md:gap-3">
+            <!-- Buscador compacto -->
+            <form id="nav-search" class="nt-nav-search" role="search" method="get" action="/" aria-label="Buscar en el sitio" data-track="nav-search">
+                <button type="button" class="search-trigger" aria-label="Abrir búsqueda" tabindex="0"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" name="q" placeholder="Buscar..." aria-label="Término de búsqueda" autocomplete="off" />
+            </form>
             <a href="https://tienda.norttek.com.mx" target="_blank" class="nt-btn nt-btn-primary hidden md:inline-flex" style="font-size:.72rem; padding:.55rem .85rem;">
+                data-track="nav" data-item="tienda" data-action="open" data-label="tienda-top">
                 <i class="fa-solid fa-bag-shopping"></i><span>Tienda</span>
             </a>
             <a href="/contact" class="nt-btn nt-btn-outline hidden xl:inline-flex" style="font-size:.7rem;padding:.55rem .85rem;">
+                data-track="nav" data-item="contacto" data-action="navigate" data-label="contacto-top">
                 <i class="fa-solid fa-comments"></i><span>Contacto</span>
             </a>
-            <button id="theme-toggle-desktop-alt" class="nt-btn nt-btn-outline icon-only hidden xl:inline-flex" aria-label="Cambiar tema"><i class="fa-solid fa-moon"></i></button>
-            <button id="mobile-open" class="lg:hidden nt-btn nt-btn-outline icon-only" aria-label="Menú móvil"><i class="fa-solid fa-bars"></i></button>
+            <button id="theme-toggle-desktop-alt" class="nt-btn nt-btn-outline icon-only hidden xl:inline-flex" aria-label="Cambiar tema" data-track="nav" data-item="tema" data-action="toggle"><i class="fa-solid fa-moon"></i></button>
+            <button id="mobile-open" class="lg:hidden nt-btn nt-btn-outline icon-only" aria-label="Menú móvil" data-track="nav" data-item="menu-mobile" data-action="open"><i class="fa-solid fa-bars"></i></button>
         </div>
     </div>
 </header>
@@ -120,6 +127,12 @@ function nt_is_active($itemUrl, $activePage){
         <button id="theme-toggle-mobile" class="nt-btn nt-btn-outline w-full justify-center" style="font-size:.65rem;padding:.45rem .6rem;" aria-label="Cambiar tema">
             <i class="fa-solid fa-moon"></i><span>Tema</span>
         </button>
+        <form id="mobile-search" class="nt-mobile-search" role="search" method="get" action="/" data-track="nav-search-mobile">
+            <div class="field">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" name="q" placeholder="Buscar..." aria-label="Buscar" autocomplete="off" />
+            </div>
+        </form>
     </div>
     <nav class="flex-1 overflow-y-auto py-3" aria-label="Menú móvil">
         <ul class="px-2 space-y-1">
@@ -201,6 +214,36 @@ html.dark .nt-panel-link .d { color:#8eabc2; }
 html.dark .nt-panel-link:hover { background:linear-gradient(#1d3650,#16293a); }
 html.dark .nt-panel-link .arrow { color:#9bc4ff; }
 .nt-panel-link.active .icon { box-shadow:0 0 0 3px var(--nt-ring); }
+
+/* Active icon pulse */
+@keyframes navPulse { 0%{ box-shadow:0 0 0 0 rgba(111,164,255,.55);} 70%{ box-shadow:0 0 0 14px rgba(111,164,255,0);} 100%{ box-shadow:0 0 0 0 rgba(111,164,255,0);} }
+.nt-panel-link.active .icon { animation: navPulse 2.2s ease-in-out infinite; }
+html.dark .nt-panel-link.active .icon { animation: navPulse 2.2s ease-in-out infinite; }
+
+/* Compact search (desktop) */
+.nt-nav-search { position:relative; width:40px; height:34px; display:flex; align-items:center; justify-content:center; border:1px solid #d2e0ec; border-radius:999px; background:linear-gradient(#ffffff,#f4f9fd); box-shadow:0 2px 4px rgba(15,23,42,.08); transition: width .35s cubic-bezier(.4,.8,.4,1), background .35s; overflow:hidden; }
+.nt-nav-search button { background:none; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; color:#1c4d6f; width:34px; height:34px; }
+.nt-nav-search input { border:none; background:transparent; font-size:.7rem; padding:0; margin:0; width:0; opacity:0; transition:.35s; color:#123652; font-weight:600; letter-spacing:.4px; }
+.nt-nav-search.open { width:210px; padding:0 .55rem 0 .4rem; }
+.nt-nav-search.open input { width:100%; opacity:1; padding:.3rem .2rem; }
+.nt-nav-search:hover { background:linear-gradient(#ffffff,#eef5ff); }
+.nt-nav-search:focus-within { background:linear-gradient(#ffffff,#e7f0fa); border-color:#b8d2ea; box-shadow:0 0 0 4px var(--nt-ring); }
+html.dark .nt-nav-search { background:linear-gradient(#132435,#101d2b); border-color:#203349; box-shadow:0 2px 6px rgba(0,0,0,.4); }
+html.dark .nt-nav-search:hover { background:linear-gradient(#162c3e,#132435); }
+html.dark .nt-nav-search:focus-within { border-color:#2c4a63; }
+html.dark .nt-nav-search input { color:#d6e6f2; }
+.nt-nav-search input::placeholder { color:#6d889b; }
+html.dark .nt-nav-search input::placeholder { color:#7d97aa; }
+
+/* Mobile search */
+.nt-mobile-search { margin-top:.35rem; }
+.nt-mobile-search .field { display:flex; align-items:center; gap:.4rem; background:linear-gradient(#fff,#f6f9fc); border:1px solid #d8e4ef; padding:.45rem .65rem; border-radius:12px; }
+.nt-mobile-search i { color:#1c4d6f; font-size:.8rem; }
+.nt-mobile-search input { flex:1; background:transparent; border:none; font:inherit; font-size:.72rem; color:#123652; }
+.nt-mobile-search input:focus { outline:none; }
+html.dark .nt-mobile-search .field { background:linear-gradient(#16293a,#132435); border-color:#203349; }
+html.dark .nt-mobile-search i { color:#9bc4ff; }
+html.dark .nt-mobile-search input { color:#d6e6f2; }
 
 /* Mobile drawer */
 #nt-mobile-drawer { font-size:.82rem; }
@@ -284,5 +327,29 @@ html.dark .nt-mobile-link.active { background:linear-gradient(var(--nt-surface-a
     const btn=document.getElementById(id); if(!btn) return; btn.addEventListener('click',()=>{ if(window.NTTheme){ NTTheme.toggle(); updateThemeIcons(); }});
   });
   updateThemeIcons();
+
+    // ============= Buscador Desktop =============
+    const searchForm = document.getElementById('nav-search');
+    if(searchForm){
+        const trigger = searchForm.querySelector('.search-trigger');
+        const input = searchForm.querySelector('input');
+        function openSearch(){ searchForm.classList.add('open'); setTimeout(()=>input.focus(),50); }
+        function closeSearch(){ if(!input.value){ searchForm.classList.remove('open'); input.blur(); } }
+        trigger.addEventListener('click',(e)=>{ if(!searchForm.classList.contains('open')){ e.preventDefault(); openSearch(); } else if(!input.value){ closeSearch(); } else { searchForm.submit(); }});
+        input.addEventListener('keydown',e=>{ if(e.key==='Escape'){ input.value=''; closeSearch(); }});
+        input.addEventListener('blur',()=>{ setTimeout(closeSearch,120); });
+        searchForm.addEventListener('submit',e=>{ if(!input.value.trim()){ e.preventDefault(); closeSearch(); }});
+    }
+
+    // ============= Tracking básico (console) =============
+    document.querySelectorAll('[data-track]').forEach(el=>{
+        el.addEventListener('click',()=>{
+            if(window.NTAnalytics && typeof NTAnalytics.track==='function'){
+                NTAnalytics.track({cat:el.dataset.track, item:el.dataset.item, action:el.dataset.action, label:el.dataset.label});
+            } else {
+                console.debug('[track]', el.dataset.track, el.dataset.item||'', el.dataset.action||'', el.dataset.label||'');
+            }
+        });
+    });
 })();
 </script>
