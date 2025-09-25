@@ -37,7 +37,7 @@ $seo = $seo ?? [];
 <link rel="canonical" href="https://www.norttek.com.mx/<?= $pageName ?>.php">
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
+<link rel="shortcut icon" href="assets/img/favicon-32x32.png" type="image/png">
 
 <!-- CSS global -->
 <link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
@@ -70,7 +70,7 @@ if(file_exists($autoCssPathServer)){
 <meta property="og:title" content="<?= $seo['og_title'] ?? $seo['title'] ?>">
 <meta property="og:description" content="<?= $seo['og_description'] ?? $seo['description'] ?>">
 <meta property="og:url" content="<?= $seo['og_url'] ?? 'https://www.norttek.com.mx/' ?>">
-<meta property="og:image" content="<?= $seo['og_image'] ?? 'https://www.norttek.com.mx/assets/images/og-image.jpg' ?>">
+<meta property="og:image" content="<?= $seo['og_image'] ?? 'https://www.norttek.com.mx/assets/img/webpage.png' ?>">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Norttek Solutions">
 <meta property="og:locale" content="es_MX">
