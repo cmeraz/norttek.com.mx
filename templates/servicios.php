@@ -243,18 +243,29 @@ document.addEventListener('DOMContentLoaded', () => {
       const wrapper = document.getElementById(targetId);
       if(!wrapper) return;
       const card = wrapper.querySelector('.card-content');
+      const img  = wrapper.querySelector('img');
       if(!card) return;
       e.preventDefault();
 
+      // Limpia highlight previo
       document.querySelectorAll('.card-content').forEach(c => c.classList.remove('highlight'));
 
+      // Calcular rectángulo unión (imagen + contenido) para centrar todo el bloque perceptible
       const cardRect = card.getBoundingClientRect();
-      const absoluteCardTop = window.scrollY + cardRect.top;
+      const imgRect  = img ? img.getBoundingClientRect() : cardRect;
+      const unionTop = Math.min(cardRect.top, imgRect.top);
+      const unionBottom = Math.max(cardRect.bottom, imgRect.bottom);
+      const unionHeight = unionBottom - unionTop;
+      const absoluteUnionTop = window.scrollY + unionTop;
+
       const viewportH = window.innerHeight;
       const headerH = getHeaderHeight();
-      const targetY = absoluteCardTop - headerH - (viewportH * 0.4 - cardRect.height/2);
+      // Centro del bloque ajustado a 45% del viewport para que se vea ligeramente adelantado
+  // Ajuste fino solicitado: subir ~5px (se resta 5 al destino)
+  const targetY = absoluteUnionTop - headerH - (viewportH * 0.45 - unionHeight/2) - 5;
       smoothScrollTo(Math.max(0, targetY));
 
+      // Highlight sobre la parte de contenido para enfoque
       card.classList.add('highlight');
       card.style.transition = 'background-color .3s, box-shadow .6s';
       card.style.boxShadow = '0 0 0 3px rgba(255,180,60,.8),0 8px 24px -6px rgba(0,0,0,.25)';
