@@ -196,45 +196,9 @@
 </div>
 
 <!-- FAQ -->
-<div id="faq">
+<div id="faq" class="mt-24">
   <?= faq('faq-telefonia', ['title' => 'Preguntas Frecuentes']) ?>
 </div>
 
-<!-- Animaciones locales -->
-<style>
-@keyframes fadeInUp { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
-.animate-fade-in { animation: fadeInUp 0.8s ease forwards; }
-</style>
-
-<script src="assets/js/telefonia.js"></script>
-<script>
-// Video Modal y Linkus
-(function(){
-  const videoModal=document.getElementById('videoModal');
-  const youtubeVideo=document.getElementById('youtubeVideo');
-  const closeVideo=document.getElementById('closeVideo');
-  const btnVideo=document.getElementById('openVideo');
-  const btnLinkus=document.getElementById('openLinkus');
-  if(btnVideo){ btnVideo.addEventListener('click',()=>{ youtubeVideo.src=btnVideo.dataset.video; videoModal.classList.remove('hidden'); youtubeVideo.focus(); }); }
-  if(btnLinkus){ btnLinkus.addEventListener('click',()=>{ youtubeVideo.src=btnLinkus.dataset.video; videoModal.classList.remove('hidden'); youtubeVideo.focus(); }); }
-  if(closeVideo){ closeVideo.addEventListener('click',()=>{ youtubeVideo.src=''; videoModal.classList.add('hidden'); }); }
-  if(videoModal){ videoModal.addEventListener('click',(e)=>{ if(e.target===videoModal){ youtubeVideo.src=''; videoModal.classList.add('hidden'); } }); }
-  document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ youtubeVideo.src=''; videoModal.classList.add('hidden'); } });
-})();
-// Modal Demo
-(function(){
-  const modalDemo=document.getElementById('modalDemo');
-  const openModal=document.getElementById('openModal');
-  const closeModal=document.getElementById('closeModal');
-  if(openModal){ openModal.addEventListener('click',()=>{ modalDemo.classList.remove('hidden'); const first=modalDemo.querySelector('input'); if(first) first.focus(); }); }
-  if(closeModal){ closeModal.addEventListener('click',()=> modalDemo.classList.add('hidden')); }
-  document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ modalDemo.classList.add('hidden'); } });
-  if(modalDemo){ modalDemo.addEventListener('click',e=>{ if(e.target===modalDemo){ modalDemo.classList.add('hidden'); } }); }
-})();
-// Animaciones Hero con GSAP
-window.addEventListener('load',()=>{ if(window.gsap){
-  gsap.to('.hero-text #hero-title',{opacity:1,y:0,duration:1,ease:'power3.out'});
-  gsap.to('.hero-text p',{opacity:1,y:0,duration:1,ease:'power3.out',delay:.3});
-  gsap.to('.hero-text .mt-8',{opacity:1,y:0,duration:1,ease:'power3.out',delay:.6});
-  gsap.to('.hero-image-container',{opacity:1,y:0,duration:1,ease:'power3.out',delay:.9}); }});
-</script>
+<!-- JS específico de la página -->
+<?php $jsFiles[] = 'telefonia'; ?>
