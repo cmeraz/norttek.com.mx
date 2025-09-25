@@ -16,7 +16,7 @@
   <?= nt_heading('Protege tu espacio · Potencia tu productividad', 'fa-solid fa-shield-halved', 'lg', 'Soluciones integrales para hogar y empresa', ['animate'=>true,'delay'=>'sm','class'=>'nt-heading-hero nt-heading-invert']); ?>
     </div>
     <div class="max-w-2xl mx-auto mb-8">
-      <?= nt_alert('info', 'Sitio en actualización visual. Algunos módulos están en fase de integración al nuevo sistema.'); ?>
+  <?= nt_alert('accent', 'Sitio en actualización visual. Algunos módulos están en fase de integración al nuevo sistema.'); ?>
     </div>
     <div class="max-w-4xl mx-auto mb-10">
       <p class="text-base md:text-lg leading-relaxed font-light">
