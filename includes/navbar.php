@@ -51,9 +51,10 @@ function nt_is_active($itemUrl, $activePage){
 
     <!-- Línea principal -->
     <div class="nt-nav-main flex items-center justify-between px-4 md:px-8 py-2 gap-6">
-        <!-- Logo -->
+        <!-- Logo + Wordmark -->
     <a href="/" class="flex items-center gap-2 shrink-0 group leading-none" aria-label="Inicio Norttek Solutions">
             <img src="assets/img/logo-norttek.png" alt="Norttek" class="nt-logo w-12 md:w-14 h-auto drop-shadow transition-all duration-300" loading="lazy">
+            <span class="nt-logo-title-mobile sm:hidden">Norttek</span>
             <span class="hidden sm:inline text-base md:text-lg font-semibold tracking-tight text-slate-800 group-hover:text-slate-900 dark:text-slate-100">Norttek Solutions</span>
         </a>
 
@@ -285,6 +286,15 @@ html.dark .nt-mobile-link.active { background:linear-gradient(var(--nt-surface-a
         .nt-nav-shell.scrolled .nt-primary-nav .nt-nav-item.has-panel .nt-nav-link .caret { display:none; }
     .nt-nav-shell.scrolled .nt-primary-nav:hover .nt-nav-link .lbl { width:auto; opacity:1; padding-left:.1rem; }
 }
+</style>
+<style>
+/* Wordmark móvil sutil junto al logo */
+.nt-logo-title-mobile { font-size:.68rem; font-weight:400; letter-spacing:.05em; color:#345267; opacity:.85; line-height:1; margin-top:1px; transition:color .3s, opacity .3s; }
+html.dark .nt-logo-title-mobile { color:#b7cad8; opacity:.8; }
+.group:hover .nt-logo-title-mobile { color:#123652; opacity:.95; }
+html.dark .group:hover .nt-logo-title-mobile { color:#d6e6f2; opacity:.92; }
+/* Al hacer scroll reducimos aún más para mantener protagonismo del isotipo */
+.nt-nav-shell.scrolled .nt-logo-title-mobile { opacity:.55; font-size:.64rem; }
 </style>
 
 <script>
