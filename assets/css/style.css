@@ -321,6 +321,7 @@ header.nt-nav-shell.scrolled + main .nt-hero-wrapper { min-height: calc(100vh - 
   Alertas contextuales
   ============================================= */
 .nt-alert { position:relative; display:flex; align-items:flex-start; gap:.75rem; padding:.85rem 1rem; border:1px solid #e0e8f2; border-radius: var(--nt-radius); background: var(--nt-surface-alt); font-size:.9rem; line-height:1.4; box-shadow: var(--nt-shadow-sm); }
+.nt-alert.nt-alert-emph { border:1px solid transparent; background:linear-gradient(var(--nt-surface),var(--nt-surface)) padding-box, var(--nt-gradient-border) border-box; box-shadow:0 8px 22px -6px rgba(15,23,42,.25),0 2px 6px rgba(15,23,42,.08); }
 .nt-alert i { font-size:1.1rem; margin-top:.15rem; }
 .nt-alert strong { font-weight:700; }
 .nt-alert-info { border-color: rgba(59,130,246,.35); background: rgba(59,130,246,.08); color:#0f3f76; }
