@@ -5,6 +5,253 @@ html {
   scroll-behavior: smooth;
 }
 
+/* =============================================
+   Norttek Global Theme Variables (2025 refresh)
+   Adopt palette & components from Internet page
+   ============================================= */
+:root {
+  --nt-bg: #f8fbff;
+  --nt-surface: #ffffff;
+  --nt-surface-alt: #f1f5fb;
+  --nt-text: #0f172a;
+  --nt-text-muted: #5f6c80;
+  --nt-primary: #9bc4ff;
+  --nt-primary-strong: #6fa4ff;
+  --nt-accent: #ff8a00; /* icon accent (warm) */
+  --nt-ring: rgba(111,164,255,0.25);
+  --nt-danger: #ff3b3b;
+  --nt-danger-strong: #ff1f1f;
+  --nt-hero-overlay: linear-gradient(rgba(10,31,50,.72),rgba(4,12,20,.85));
+  --nt-hero-gradient-text: linear-gradient(90deg,#133a5c,#1d4d78 45%,#297098 80%);
+  --nt-radius-sm: 6px;
+  --nt-radius: 8px;
+  --nt-radius-lg: 14px;
+  --nt-shadow-sm: 0 2px 6px rgba(15,23,42,.05);
+  --nt-shadow: 0 6px 14px rgba(15,23,42,.08);
+  --nt-gradient-border: linear-gradient(135deg, var(--nt-primary) 0%, var(--nt-primary-strong) 100%);
+}
+
+body {
+  background: var(--nt-bg);
+  color: var(--nt-text);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* =============================================
+   Unified Heading System (.nt-heading)
+   Every heading can optionally include an icon
+   Usage: <h2 class="nt-heading nt-heading-lg"><i class="fa-solid fa-wifi"></i>Título</h2>
+   Or via PHP helper nt_heading()
+   ============================================= */
+.nt-heading {
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: .3px;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: .75rem; /* more spacing so icon doesn't collide */
+  color: var(--nt-text);
+  position: relative;
+  flex-wrap: wrap;
+}
+.nt-heading i {
+  color: var(--nt-accent);
+  font-size: 1.15em;
+  line-height: 1;
+  margin-top: .05em;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.08));
+}
+.nt-heading span.nt-sub {
+  flex-basis: 100%;
+  font-weight: 600;
+  font-size: .58em;
+  letter-spacing: .5px;
+  color: var(--nt-text-muted);
+  margin-top: .35rem;
+}
+/* Size variants with deliberate visual hierarchy */
+.nt-heading-xl { font-size: clamp(2.05rem, 3vw, 2.5rem); font-weight: 850; color: #102b46; }
+.nt-heading-lg { font-size: clamp(1.7rem, 2.4vw, 2rem); font-weight: 800; color: #143553; }
+.nt-heading-md { font-size: clamp(1.35rem, 1.9vw, 1.55rem); font-weight: 780; color: #184261; }
+.nt-heading-sm { font-size: 1.08rem; font-weight: 700; color: #1e5375; letter-spacing:.35px; }
+.nt-heading-emphasis.nt-heading-xl { font-size: clamp(2.35rem,3.6vw,3rem); background: var(--nt-hero-gradient-text); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.nt-heading-emphasis .nt-sub { color:#e2edf6; }
+
+/* Subtle animation base (opt-in) */
+.nt-heading-anim { opacity:0; transform: translateY(14px) scale(.985); transition: opacity .6s cubic-bezier(.4,.8,.4,1), transform .6s cubic-bezier(.4,.8,.4,1); }
+.nt-heading-anim.is-visible { opacity:1; transform: translateY(0) scale(1); }
+.nt-heading-anim.delay-sm { transition-delay:.08s; }
+.nt-heading-anim.delay-md { transition-delay:.18s; }
+.nt-heading-anim.delay-lg { transition-delay:.28s; }
+
+/* Decorative underline opt-in */
+.nt-heading.underline::after { 
+  content:''; position:absolute; left:0; bottom:-6px; width:56px; height:4px; border-radius:3px; background: var(--nt-gradient-border);
+}
+
+/* =============================================
+   Unified Button System (.nt-btn)
+   Usage: <a class="nt-btn" data-variant="primary"><i class="fa ..."></i>Texto</a>
+   Variants: primary, outline, subtle, danger
+   ============================================= */
+.nt-btn {
+  --_border: var(--nt-gradient-border);
+  position: relative; 
+  display:inline-flex; 
+  align-items:center; 
+  gap:.55rem; 
+  font-weight:800; 
+  padding:.75rem 1.1rem; 
+  border-radius: var(--nt-radius); 
+  text-decoration:none; 
+  line-height:1.1; 
+  background: linear-gradient(#fff,#fff) padding-box, var(--_border) border-box; 
+  border:1px solid transparent; 
+  color: var(--nt-primary-strong); 
+  box-shadow: var(--nt-shadow-sm); 
+  transition: background .6s ease, transform .18s ease, box-shadow .25s ease, color .2s ease; 
+  font-size:.95rem; 
+  cursor:pointer;
+}
+.nt-btn i { margin-right:.05rem; }
+.nt-btn i { font-size:1.05rem; color: var(--nt-primary-strong); }
+.nt-btn:hover { 
+  transform: translateY(-2px); 
+  background: linear-gradient(180deg,#eef5ff,#e5efff) padding-box, var(--_border) border-box; 
+  box-shadow: var(--nt-shadow);
+}
+.nt-btn:active { transform: translateY(0); }
+.nt-btn[data-variant="subtle"] { 
+  --_border: linear-gradient(135deg,#dbe9ff,#cfe2ff); 
+  background: linear-gradient(var(--nt-surface-alt), var(--nt-surface-alt)) padding-box, var(--_border) border-box; 
+  color: var(--nt-text-muted);
+}
+.nt-btn[data-variant="subtle"] i { color: var(--nt-accent); }
+.nt-btn[data-variant="outline"],
+.nt-btn.nt-btn-outline { 
+  background: linear-gradient(var(--nt-bg), var(--nt-bg)) padding-box, var(--_border) border-box; 
+  color: var(--nt-primary-strong);
+}
+.nt-btn[data-variant="danger"],
+.nt-btn.nt-btn-danger { 
+  --_border: linear-gradient(135deg,var(--nt-danger) 0%, var(--nt-danger-strong) 100%); 
+  color: var(--nt-danger-strong);
+}
+.nt-btn[data-variant="danger"] i, .nt-btn.nt-btn-danger i { color: var(--nt-danger-strong); }
+
+/* Primary alias classes for legacy markup */
+.nt-btn.nt-btn-primary { /* explicit primary accent */ color: var(--nt-primary-strong); }
+.nt-btn.nt-btn-accent { --_border: linear-gradient(135deg,var(--nt-accent) 0%, #ffb347 100%); color: var(--nt-accent); }
+.nt-btn.nt-btn-dark { --_border: linear-gradient(135deg,#0f172a,#1e293b); background: linear-gradient(#0f172a,#1e293b) padding-box, var(--_border) border-box; color:#fff; }
+.nt-btn.nt-btn-dark i { color:#fff; }
+.nt-btn.nt-btn-outline i { color: var(--nt-primary-strong); }
+
+/* Tabs / toggles active state support */
+.nt-tab-active { box-shadow: var(--nt-shadow); transform:translateY(-2px); }
+.nt-tab-active.nt-btn-outline { background: linear-gradient(#fff,#fff) padding-box,var(--nt-gradient-border) border-box; }
+
+/* Table header utility for unified style */
+.nt-table-head { background: linear-gradient(90deg,#1d4b74,#236291); color:#fff; }
+
+/* Hero overlay helper */
+.nt-hero-overlay { background: var(--nt-hero-overlay), repeating-radial-gradient(rgba(255,255,255,.12) 0 1px, transparent 1px 16px); }
+
+/* Increase visual strength for primary on hover */
+.nt-btn.nt-btn-primary:hover { background: linear-gradient(180deg,#eef5ff,#e0edff) padding-box, var(--_border) border-box; }
+.nt-btn:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--nt-ring), var(--nt-shadow); }
+
+/* Icon-only button modifier */
+.nt-btn.icon-only { padding:.65rem .7rem; }
+.nt-btn.icon-only i { font-size:1.15rem; }
+
+/* Button group */
+.nt-btn-group { display:inline-flex; gap:.5rem; flex-wrap:wrap; }
+
+/* =============================================
+   Section Card Wrapper (.nt-section)
+   ============================================= */
+.nt-section { 
+  background: var(--nt-surface); 
+  border:1px solid #e7edf6; 
+  border-radius: var(--nt-radius-lg); 
+  padding:1.6rem 1.6rem 1.4rem; 
+  margin:0 0 2.2rem; 
+  box-shadow: 0 7px 16px rgba(15,23,42,.055); 
+  position:relative;
+}
+.nt-section.inset { background: var(--nt-surface-alt); }
+
+/* =============================================
+   Text utilities
+   ============================================= */
+.nt-text-muted { color: var(--nt-text-muted) !important; }
+.nt-lead { font-size:1.05rem; line-height:1.65; color: var(--nt-text-muted); }
+
+/* Legacy button upgrade helper (apply class nt-btn directly in markup) */
+.btn-primary.nt-upgraded, .btn.nt-upgraded { 
+  display:inline-flex; align-items:center; gap:.5rem; font-weight:800; border-radius: var(--nt-radius); background: linear-gradient(#fff,#fff) padding-box, var(--nt-gradient-border) border-box; border:1px solid transparent; color: var(--nt-primary-strong); padding:.7rem 1rem; text-decoration:none; box-shadow: var(--nt-shadow-sm); }
+
+/* =============================================
+   Heading Auto Icon Utility: add icon via data-icon
+   ============================================= */
+[data-nt-icon]:before { 
+  content: attr(data-nt-icon); /* fallback textual icon if using emoji */
+  display:inline-flex; align-items:center; justify-content:center; margin-right:.55rem; font-weight:700; color: var(--nt-accent);
+}
+
+/* =============================================
+   Smooth fade for any element using .nt-fade-in
+   ============================================= */
+.nt-fade-in { opacity:0; transform: translateY(14px); transition: opacity .55s ease, transform .55s ease; }
+.nt-fade-in.visible { opacity:1; transform: translateY(0); }
+
+/* =============================================
+   Global icon tone override
+   ============================================= */
+.nt-icon-accent { color: var(--nt-accent) !important; }
+
+/* =============================================
+   Table (future standardization placeholder)
+   ============================================= */
+.nt-table { width:100%; border-collapse: collapse; font-size:.9rem; }
+.nt-table th { text-align:left; font-weight:700; padding:.65rem .75rem; background: var(--nt-surface-alt); }
+.nt-table td { padding:.6rem .75rem; border-top:1px solid #e7edf6; }
+.nt-table tbody tr:hover { background: #f4f8ff; }
+
+/* =============================================
+   Badge helper
+   ============================================= */
+.nt-badge { display:inline-flex; align-items:center; gap:.35rem; background: linear-gradient(180deg,var(--nt-primary),var(--nt-primary-strong)); color:#fff; font-size:.65rem; text-transform:uppercase; letter-spacing:.7px; padding:.28rem .55rem; border-radius: var(--nt-radius); font-weight:800; box-shadow:0 4px 10px var(--nt-ring); }
+
+/* =============================================
+   CTA highlight pulse reused globally
+   ============================================= */
+@keyframes ntPulse { 0% { box-shadow:0 0 0 0 rgba(111,164,255,.6);} 70% { box-shadow:0 0 0 16px rgba(111,164,255,0);} 100% { box-shadow:0 0 0 0 rgba(111,164,255,0);} }
+.nt-pulse { animation: ntPulse 1s ease 2; }
+
+/* =============================================
+   Form elements (inputs, textareas, groups)
+   ============================================= */
+.nt-form { display:grid; gap:1.1rem; }
+.nt-form-row { display:flex; flex-wrap:wrap; gap:1rem; }
+.nt-field { width:100%; display:flex; flex-direction:column; gap:.4rem; }
+.nt-field label { font-weight:700; font-size:.85rem; letter-spacing:.4px; color: var(--nt-text); }
+.nt-input, .nt-textarea, .nt-select { 
+  width:100%; border:1px solid #e0e8f2; border-radius:10px; padding:.7rem .85rem; background:#fff; font:inherit; color: var(--nt-text);
+  box-shadow: 0 1px 2px rgba(15,23,42,.04);
+  transition: border-color .18s ease, box-shadow .18s ease, background .3s ease; 
+}
+.nt-input:focus, .nt-textarea:focus, .nt-select:focus { outline:none; border-color: var(--nt-primary-strong); box-shadow: 0 0 0 4px var(--nt-ring); }
+.nt-input.error { border-color: var(--nt-danger-strong); box-shadow: 0 0 0 4px rgba(255,61,61,.25); }
+.nt-input[disabled] { background:#f2f5f9; color:#94a3b8; cursor:not-allowed; }
+.nt-help { font-size:.7rem; color: var(--nt-text-muted); letter-spacing:.4px; }
+.nt-inline { display:flex; align-items:center; gap:.55rem; }
+
+/* Input with leading icon wrapper */
+.nt-input-icon { position:relative; }
+.nt-input-icon i { position:absolute; left:.9rem; top:50%; transform:translateY(-50%); color: var(--nt-text-muted); font-size:.95rem; }
+.nt-input-icon .nt-input { padding-left:2.4rem; }
+
 /* ================================
    Menú principal (links y hover)
 ================================ */
