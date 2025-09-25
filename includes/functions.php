@@ -24,6 +24,61 @@ function includeTemplate($templateName) {
 }
 
 /**
+ * Genera un encabezado estandarizado según el nuevo sistema visual 2025.
+ * Ejemplo:
+ *   echo nt_heading('Instalación Profesional', 'fa-solid fa-plug', 'lg', 'Opcional subtítulo', true);
+ * @param string $text       Texto principal del heading
+ * @param string $icon       Clase(s) del icono FontAwesome (sin <i>)
+ * @param string $size       xl|lg|md|sm (default lg)
+ * @param string|null $sub   Subtítulo opcional (renderizado debajo en menor tamaño)
+ * @param bool $underline    Si true añade una barra decorativa inferior
+ * @param array $attrs       Atributos HTML extra (['id' => 'mi-id'])
+ * @return string            HTML del encabezado
+ */
+function nt_heading($text, $icon = 'fa-solid fa-circle', $size = 'lg', $sub = null, $underline = false, $attrs = []) {
+    $allowedSizes = ['xl','lg','md','sm'];
+    if (!in_array($size, $allowedSizes, true)) { $size = 'lg'; }
+    $cls = 'nt-heading nt-heading-' . $size . ($underline ? ' underline' : '');
+
+    // Soporte de flags especiales dentro de $attrs sin romper firma existente
+    $animate = false;
+    $delay = null;
+    if (isset($attrs['animate'])) {
+        $animate = (bool)$attrs['animate'];
+        unset($attrs['animate']);
+    }
+    if (isset($attrs['delay'])) {
+        $delay = in_array($attrs['delay'], ['sm','md','lg'], true) ? $attrs['delay'] : null;
+        unset($attrs['delay']);
+    }
+    if (isset($attrs['class'])) { // permitir clases extra
+        $cls .= ' ' . trim(preg_replace('/\s+/', ' ', $attrs['class']));
+        unset($attrs['class']);
+    }
+    if ($animate) {
+        $cls .= ' nt-heading-anim';
+        if ($delay) { $cls .= ' delay-' . $delay; }
+    }
+
+    $attrStr = '';
+    if (!empty($attrs) && is_array($attrs)) {
+        foreach ($attrs as $k => $v) {
+            if ($v === null) continue;
+            $k = htmlspecialchars($k, ENT_QUOTES, 'UTF-8');
+            $v = htmlspecialchars($v, ENT_QUOTES, 'UTF-8');
+            $attrStr .= " {$k}='{$v}'";
+        }
+    }
+    $iconHtml = $icon ? '<i class="'.htmlspecialchars($icon, ENT_QUOTES, 'UTF-8').'"></i>' : '';
+    $html  = '<div class="'.$cls.'"'.$attrStr.'>'.$iconHtml.'<span>'.htmlspecialchars($text, ENT_QUOTES, 'UTF-8').'</span>';
+    if ($sub) {
+        $html .= '<span class="nt-sub">'.htmlspecialchars($sub, ENT_QUOTES, 'UTF-8').'</span>';
+    }
+    $html .= '</div>';
+    return $html;
+}
+
+/**
  * Incluye una sección de template pasando variables (con valores por defecto).
  * Uso: includeSection('nombre', ['var1' => 'valor']);
  * 
