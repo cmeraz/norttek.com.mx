@@ -343,6 +343,50 @@
             </a>
           </div>
         </article>
+  <article class="cliente-card cuentas-card wide nt-soft-seq nt-breath" data-nt-anim>
+    <h3><i class="fa-solid fa-building-columns" aria-hidden="true" data-nt-icon-drift></i> Cuentas para Pago</h3>
+    <div style="display:flex; flex-direction:column; gap:.75rem; font-size:.78rem;">
+      <div style="background:#f8fbff; border:1px solid #e2edf9; border-radius:10px; padding:.65rem .7rem; display:flex; flex-direction:column; gap:.35rem;">
+        <strong style="font-size:.72rem; letter-spacing:.5px; text-transform:uppercase; color:#4f5d70; display:flex; align-items:center; gap:.4rem;"><i class="fa-solid fa-piggy-bank" aria-hidden="true" style="color:#4f8cff;"></i> BBVA Bancomer</strong>
+        <div style="display:grid; gap:.45rem; grid-template-columns:repeat(auto-fit,minmax(190px,1fr));">
+          <div style="display:flex; flex-direction:column; gap:.2rem;">
+            <span style="font-weight:600; color:#6b7a90; font-size:.62rem; letter-spacing:.5px; text-transform:uppercase;">Cuenta</span>
+            <code class="clip-src" data-clip="1529734333">152 973 4333 <button type="button" class="clip-btn" data-clip="1529734333" title="Copiar" aria-label="Copiar cuenta"><i class="fa-regular fa-clone"></i></button></code>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:.2rem;">
+            <span style="font-weight:600; color:#6b7a90; font-size:.62rem; letter-spacing:.5px; text-transform:uppercase;">CLABE</span>
+            <code class="clip-src" data-clip="012180015297343334">012 180 01529734333 4 <button type="button" class="clip-btn" data-clip="012180015297343334" title="Copiar" aria-label="Copiar CLABE"><i class="fa-regular fa-clone"></i></button></code>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:.2rem;">
+            <span style="font-weight:600; color:#6b7a90; font-size:.62rem; letter-spacing:.5px; text-transform:uppercase;">Tarjeta</span>
+            <code class="clip-src" data-clip="4152313948990200">4152 3139 4899 0200 <button type="button" class="clip-btn" data-clip="4152313948990200" title="Copiar" aria-label="Copiar tarjeta"><i class="fa-regular fa-clone"></i></button></code>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fff; border:1px solid #e2edf9; border-radius:10px; padding:.65rem .7rem; display:flex; flex-direction:column; gap:.4rem;">
+        <strong style="font-size:.72rem; letter-spacing:.5px; text-transform:uppercase; color:#4f5d70; display:flex; align-items:center; gap:.4rem;"><i class="fa-solid fa-wallet" aria-hidden="true" style="color:#4f8cff;"></i> MercadoPago</strong>
+        <div style="display:flex; flex-direction:column; gap:.25rem;">
+          <span style="font-weight:600; color:#6b7a90; font-size:.62rem; letter-spacing:.5px; text-transform:uppercase;">CLABE</span>
+          <code class="clip-src" data-clip="722969040367244111">722969040367244111 <button type="button" class="clip-btn" data-clip="722969040367244111" title="Copiar" aria-label="Copiar CLABE MercadoPago"><i class="fa-regular fa-clone"></i></button></code>
+        </div>
+      </div>
+      <div style="background:#f8fbff; border:1px solid #e2edf9; border-radius:10px; padding:.65rem .75rem; display:flex; flex-direction:column; gap:.45rem;">
+        <strong style="font-size:.72rem; letter-spacing:.5px; text-transform:uppercase; color:#4f5d70; display:flex; align-items:center; gap:.4rem;"><i class="fa-solid fa-tag" aria-hidden="true" style="color:#4f8cff;"></i> Referencia de Pago</strong>
+        <div style="display:grid; gap:.55rem; grid-template-columns:repeat(auto-fit,minmax(170px,1fr));">
+          <div style="display:flex; flex-direction:column; gap:.25rem;">
+            <span style="font-weight:600; color:#6b7a90; font-size:.62rem; letter-spacing:.5px; text-transform:uppercase;">Nombre</span>
+            <code id="ref-pago-nombre" class="clip-src" data-clip="" style="font-weight:800; color:#1f2937;">-- <button type="button" class="clip-btn" data-clip="" data-ref="nombre" title="Copiar" aria-label="Copiar nombre"><i class="fa-regular fa-clone"></i></button></code>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:.25rem;">
+            <span style="font-weight:600; color:#6b7a90; font-size:.62rem; letter-spacing:.5px; text-transform:uppercase;">Usuario</span>
+            <code id="ref-pago-usuario" class="clip-src" data-clip="" style="font-weight:800; color:#1f2937;">-- <button type="button" class="clip-btn" data-clip="" data-ref="usuario" title="Copiar" aria-label="Copiar usuario"><i class="fa-regular fa-clone"></i></button></code>
+          </div>
+        </div>
+        <small style="font-size:.6rem; font-weight:600; letter-spacing:.5px; color:#6b7a90;">Usa tu nombre o usuario como referencia/concepto para identificar tu pago.</small>
+      </div>
+      <small style="color:#6b7a90; line-height:1.4;">Verifica siempre que los datos coincidan antes de realizar tu pago. Envía tu comprobante por WhatsApp para agilizar la aplicación.</small>
+    </div>
+  </article>
       </div>
     </section>
   </div>
