@@ -27,11 +27,11 @@ $seo = [
     <?php include 'includes/navbar.php'; ?>
 
     <!-- HERO (refactor design system) -->
-    <section class="relative bg-white py-24" id="hero" aria-labelledby="hero-title">
+    <section class="relative py-24 nt-hero-wrapper" id="hero" aria-labelledby="hero-title" style="background:linear-gradient(180deg,#0d2335,#12364f);">
       <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
         <div class="hero-text">
           <div id="hero-title" class="opacity-0 translate-y-10">
-            <?= nt_heading('Telefonía IP en la Nube', 'fa-solid fa-phone-volume', 'xl', 'Norttek PBX', true, ['animate' => true, 'delay' => 'sm','class'=>'nt-heading-emphasis']); ?>
+            <?= nt_heading('Telefonía IP en la Nube', 'fa-solid fa-phone-volume', 'xl', 'Norttek PBX', ['animate' => true, 'delay' => 'sm','class'=>'nt-heading-hero nt-heading-invert']); ?>
           </div>
           <p class="text-gray-700 text-lg leading-relaxed mt-5 opacity-0 translate-y-10 max-w-xl">
             Gestiona todas las comunicaciones de tu empresa de manera <strong>centralizada desde la nube</strong>. Administra <strong>extensiones</strong>, configura <strong>troncales</strong>, IVR personalizado, grabación de llamadas y <strong>reportes detallados</strong>. Accede desde <strong>PC, smartphone o teléfono físico</strong>, sin infraestructura local ni mantenimiento complejo.
@@ -52,7 +52,7 @@ $seo = [
     <section id="dispositivos" class="py-20 bg-gray-100" aria-labelledby="dispositivos-title">
       <div class="max-w-7xl mx-auto px-6 text-center">
         <div id="dispositivos-title" class="mb-14">
-          <?= nt_heading('Accede desde cualquier dispositivo', 'fa-solid fa-display', 'lg', null, true, ['animate' => true]); ?>
+          <?= nt_heading('Accede desde cualquier dispositivo', 'fa-solid fa-display', 'lg', null, ['animate' => true]); ?>
         </div>
         <div class="grid md:grid-cols-1 gap-8">
           <!-- Card 1: PC / Laptop -->
@@ -61,7 +61,7 @@ $seo = [
               <img src="https://4423252.fs1.hubspotusercontent-na1.net/hubfs/4423252/net2phones%20business%20phone%20system%20interface%20on%20a%20laptop.webp" alt="Interfaz PBX en laptop" class="rounded-2xl shadow" loading="lazy">
             </div>
             <div class="md:w-2/3 mt-6 md:mt-0 text-left">
-              <?= nt_heading('PC / Laptop', 'fa-solid fa-computer', 'sm', null, true); ?>
+              <?= nt_heading('PC / Laptop', 'fa-solid fa-computer', 'sm', null); ?>
               <p class="text-gray-700 text-lg leading-relaxed">
                 Accede a tu <span class="font-semibold text-blue-600">central telefónica</span> desde tu computadora.
                 Gestiona <span class="font-semibold">llamadas, videollamadas, mensajes y reportes</span> sin instalar hardware adicional.
@@ -75,7 +75,7 @@ $seo = [
               <img src="https://4423252.fs1.hubspotusercontent-na1.net/hubfs/4423252/net2phone%D1%91s%20business%20phone%20system%20interface%20on%20mobile%20and%20tablet.webp" alt="App Linkus en smartphone" class="rounded-2xl shadow" loading="lazy">
             </div>
             <div class="md:w-2/3 mt-6 md:mt-0 text-left">
-              <?= nt_heading('Smartphone / App Linkus', 'fa-solid fa-mobile-screen-button', 'sm', null, true); ?>
+              <?= nt_heading('Smartphone / App Linkus', 'fa-solid fa-mobile-screen-button', 'sm', null); ?>
               <p class="text-gray-700 text-lg leading-relaxed">
                 Mantente <span class="font-semibold text-blue-600">conectado estés donde estés</span>. Con la app <span class="font-semibold">Linkus</span> para móvil, puedes realizar y recibir llamadas, transferir, grabar y acceder a reportes desde cualquier lugar.
                 Perfecto para empleados remotos o que necesitan movilidad, <span class="text-blue-600 font-semibold">sin perder conexión con tu empresa</span>.
@@ -88,7 +88,7 @@ $seo = [
               <img src="https://4423252.fs1.hubspotusercontent-na1.net/hubfs/4423252/Desk%20Business%20Phone.webp" alt="Teléfono físico SIP" class="rounded-2xl shadow" loading="lazy">
             </div>
             <div class="md:w-2/3 mt-6 md:mt-0 text-left">
-              <?= nt_heading('Teléfono físico SIP', 'fa-solid fa-phone', 'sm', null, true); ?>
+              <?= nt_heading('Teléfono físico SIP', 'fa-solid fa-phone', 'sm', null); ?>
               <p class="text-gray-700 text-lg leading-relaxed">
                 Si prefieres la experiencia tradicional de un teléfono, los <span class="font-semibold text-blue-600">dispositivos SIP físicos</span> se integran perfectamente con tu PBX Norttek.
                 Garantizan <span class="font-semibold text-blue-600">calidad de voz superior, facilidad de uso</span> y compatibilidad con funciones avanzadas como transferencias, colas y buzón de voz.
@@ -103,7 +103,7 @@ $seo = [
 <section id="planes" class="py-24 bg-gray-50" aria-labelledby="planes-title">
   <div class="max-w-7xl mx-auto px-6 text-center">
     <div id="planes-title" class="mb-6">
-  <?= nt_heading('Planes y llamadas ilimitadas', 'fa-solid fa-boxes-stacked', 'lg', null, true, ['animate' => true, 'delay' => 'sm']); ?>
+  <?= nt_heading('Planes y llamadas ilimitadas', 'fa-solid fa-boxes-stacked', 'lg', null, ['animate' => true, 'delay' => 'sm']); ?>
     </div>
     <p class="text-gray-700 mb-6 max-w-2xl mx-auto text-lg">
       Elige el plan que mejor se adapta a tu empresa. Todos incluyen numeración LADA México y soporte técnico.
@@ -112,7 +112,7 @@ $seo = [
       
       <!-- Plan Básico -->
       <div class="bg-white p-8 rounded-3xl shadow-lg flex flex-col justify-between border border-gray-100">
-  <?= nt_heading('Plan Básico', 'fa-solid fa-circle-dot', 'sm', null, true, ['animate' => true, 'delay' => 'sm']); ?>
+  <?= nt_heading('Plan Básico', 'fa-solid fa-circle-dot', 'sm', null, ['animate' => true, 'delay' => 'sm']); ?>
         <ul class="text-gray-700 mb-6 space-y-2 text-left">
           <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>1 extensión</li>
           <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>1 troncal (2 canales)</li>
@@ -134,7 +134,7 @@ $seo = [
       <!-- Plan Premium (destacado) -->
       <div class="bg-white p-8 rounded-3xl shadow-lg border-2 border-blue-600 relative flex flex-col justify-between">
         <span class="absolute top-0 left-0 bg-yellow-400 text-xs font-bold px-3 py-1 rounded-br-2xl">Recomendado</span>
-  <?= nt_heading('Plan Premium', 'fa-solid fa-star', 'sm', null, true, ['animate' => true, 'delay' => 'md']); ?>
+  <?= nt_heading('Plan Premium', 'fa-solid fa-star', 'sm', null, ['animate' => true, 'delay' => 'md']); ?>
         <ul class="text-gray-700 mb-6 space-y-2 text-left">
           <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>3 extensiones</li>
           <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>1 troncal (2 canales)</li>
@@ -155,7 +155,7 @@ $seo = [
 
       <!-- Plan Empresarial -->
       <div class="bg-white p-8 rounded-3xl shadow-lg flex flex-col justify-between border border-gray-100">
-  <?= nt_heading('Plan Empresarial', 'fa-solid fa-building', 'sm', null, true, ['animate' => true, 'delay' => 'lg']); ?>
+  <?= nt_heading('Plan Empresarial', 'fa-solid fa-building', 'sm', null, ['animate' => true, 'delay' => 'lg']); ?>
         <ul class="text-gray-700 mb-6 space-y-2 text-left">
           <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>10 extensiones</li>
           <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>1 troncal (10 canales)</li>
@@ -184,7 +184,7 @@ $seo = [
       <div class="max-w-7xl mx-auto px-6 lg:flex lg:items-center lg:justify-between gap-10">
         <!-- Texto -->
         <div class="flex-1 text-center lg:text-left animate-fadeInSlow">
-          <div id="demo-title" class="mb-4"><?= nt_heading('¿Listo para migrar a la nube?', 'fa-solid fa-cloud-arrow-up', 'lg', 'Solicita tu demo gratuita', true, ['animate' => true, 'delay' => 'sm']); ?></div>
+          <div id="demo-title" class="mb-4"><?= nt_heading('¿Listo para migrar a la nube?', 'fa-solid fa-cloud-arrow-up', 'lg', 'Solicita tu demo gratuita', ['animate' => true, 'delay' => 'sm']); ?></div>
           <p class="text-gray-700 text-lg mb-6">
             Eleva la productividad de tu empresa, reduce costos y olvídate del mantenimiento de sistemas locales. Solicita ahora tu <strong>demo gratuita de 30 días</strong> y prueba todas las funciones avanzadas de Norttek PBX.
           </p>
