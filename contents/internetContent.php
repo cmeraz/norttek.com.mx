@@ -37,11 +37,9 @@
   
 </div>
 <div class="internet-app">
-  <section class="hero-internet">
-    <div class="hero-bg">
-      <img src="assets/img/cctv-hero_img.jpg" alt="Internet Hero" class="hero-img-bg" />
-      <div class="hero-overlay"></div>
-    </div>
+  <section class="hero-internet nt-hero-wrapper" style="min-height:420px;">
+    <img src="assets/img/cctv-hero_img.jpg" alt="Internet Hero" class="nt-hero-bg-img" />
+    <div class="nt-hero-overlay"></div>
     <div class="hero-content">
       <img src="assets/img/logo-norttek.png" alt="Norttek Logo" class="logo-hero" />
       <h1 class="hero-title">Internet para el Hogar y la Oficina</h1>
