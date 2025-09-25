@@ -145,6 +145,27 @@ body {
 .nt-heading-hero { justify-content:center; text-align:center; line-height:1.08; width:100%; }
 .nt-heading-hero i { font-size:1.05em; }
 .nt-heading-hero .nt-sub { margin-top:.55rem; }
+/* Espaciado vertical global refinado para headings y bloques siguientes */
+.nt-stack-tight > * + * { margin-top: .75rem; }
+.nt-stack > * + * { margin-top: 1.15rem; }
+.nt-stack-loose > * + * { margin-top: 1.75rem; }
+/* Headings seguidos de párrafo directo: añadir respiro estándar */
+.nt-heading + p,
+.nt-heading-hero + p,
+.nt-heading-accent-bar + p { margin-top: .9rem; }
+/* Ajustar line-height de headings largos para evitar compresión visual */
+.nt-heading-xl, .nt-heading-hero { line-height:1.12; }
+@media (min-width:900px){
+  .nt-heading-xl, .nt-heading-hero { line-height:1.15; }
+}
+/* Hero wrapper espaciado vertical unificado */
+.nt-hero-wrapper { padding-top: 150px; padding-bottom: 70px; }
+@media (min-width:900px){
+  .nt-hero-wrapper { padding-top: 170px; padding-bottom: 90px; }
+}
+/* Variante compacta opcional */
+.nt-hero-wrapper.is-compact { padding-top:120px; padding-bottom:60px; }
+/* Eliminar inline styles dispersos posteriormente */
 /* Hero subtitle base */
 .nt-hero-sub { color: var(--nt-text-muted); line-height:1.5; font-weight:500; }
 /* Variante invertida para fondos oscuros/mixtos */
