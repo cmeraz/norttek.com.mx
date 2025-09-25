@@ -11,6 +11,16 @@ Ubicados en `assets/css/style.css` bajo `:root`.
 - Acento cálido (iconos): `--nt-accent`
 - Estados: `--nt-danger`, `--nt-danger-strong`
 - Overlay Hero / Gradiente texto: `--nt-hero-overlay`, `--nt-hero-gradient-text`
+ - Estados extendidos: `--nt-success`, `--nt-warning`, `--nt-info`
+
+### Modo Oscuro
+Activación: añadir clase `dark` al `<html>` o `<body>`. Alterna tokens en `:root.dark`.
+API JS disponible (inyectada en `scripts.js`):
+```js
+NTTheme.toggle(); // alterna entre light/dark
+NTTheme.set('dark'); // fuerza oscuro
+NTTheme.current(); // devuelve 'light' | 'dark'
+```
 
 ## Headings
 Helper PHP: `nt_heading($text, $icon, $size, $sub, $underline, $attrs)`
@@ -60,6 +70,8 @@ Placeholder para uniformar tablas: `.nt-table` y cabezal propuesto: `.nt-table-h
 - Ícono acento: `.nt-icon-accent`
 - Fade genérico: `.nt-fade-in`
 - Badges: `.nt-badge`
+ - Variantes de badge: `.nt-badge-success | -warning | -danger | -info`
+ - Alertas: `.nt-alert` + modificadores `.nt-alert-info|success|warning|danger`
 
 ## Patrones Implementados
 - Hero con heading énfasis y gradiente de texto para secciones clave (ej. Telefonía).
@@ -67,11 +79,11 @@ Placeholder para uniformar tablas: `.nt-table` y cabezal propuesto: `.nt-table-h
 - Tabs reactivas (cartuchos) controladas vía JS para alternar secciones y variantes.
 
 ## Extensión Futura Sugerida
-1. Modo oscuro (duplicar tokens con `@media (prefers-color-scheme: dark)` o `body.dark`).
-2. Sistema de utilidades spacing / layout propio para reducir dependencias de clases Tailwind residuales.
-3. Unificación de rutas de imágenes (`/assets/img/` vs `/assets/images/`).
-4. Componente de alertas (`.nt-alert`).
-5. Componente de steps / timeline reutilizable (basado en About timeline).
+1. Limpieza de clases Tailwind residuales (migrar a utilidades propias).
+2. Componente de steps / timeline reutilizable (basado en About timeline).
+3. Toggle UI para modo oscuro (actualmente solo API JS).
+4. Sistema de cards métricas / pricing unificado.
+5. Dark mode refinements (contrastes WCAG AA en todos los estados interactivos).
 
 ## Convenciones PHP
 - Centralizar todas las llamadas de headings mediante helper para cambios globales futuros.
