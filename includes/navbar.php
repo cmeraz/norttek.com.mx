@@ -37,7 +37,7 @@ function nt_is_active($itemUrl, $activePage){
 <header id="site-header" class="nt-nav-shell fixed top-0 left-0 w-full z-50 transition-all duration-300">
     <div class="nt-nav-backdrop absolute inset-0 -z-10"></div>
     <!-- Barra superior compacta (info util + mini CTA) -->
-    <div class="nt-nav-top hidden xl:flex items-center justify-between px-10 gap-6 text-xs tracking-wide">
+    <div class="nt-nav-top hidden xl:flex items-center justify-between px-10 gap-6 text-xs tracking-wide nt-nav-top-anim">
         <div class="flex items-center gap-2 text-[11px] text-gray-500">
             <span class="hidden 2xl:inline">Innovando seguridad y comunicación · 2015—<?= date('Y') ?></span>
         </div>
@@ -182,6 +182,12 @@ function nt_is_active($itemUrl, $activePage){
 html.dark .nt-nav-backdrop { background: linear-gradient(135deg,rgba(16,29,43,.88),rgba(18,38,56,.7)); border-color:#203349; }
 .nt-nav-top { height:32px; font-weight:500; color:#4a5b70; }
 html.dark .nt-nav-top { color:#90a4b8; }
+.nt-nav-top-anim { will-change: transform, opacity; animation: ntTopBarIn .75s cubic-bezier(.4,.8,.4,1); }
+@keyframes ntTopBarIn { 0% { opacity:0; transform: translateY(-14px) scale(.98); filter:blur(4px);} 60% { opacity:1; filter:blur(0);} 100% { transform: translateY(0) scale(1); } }
+/* Cuando se oculta por scroll: transición propia */
+.nt-nav-shell.scrolled .nt-nav-top { transition: transform .55s cubic-bezier(.55,.1,.35,1), opacity .45s ease; }
+.nt-nav-shell.scrolled .nt-nav-top:not(.force-visible){ transform:translateY(-120%); opacity:0; }
+.nt-nav-shell:not(.scrolled) .nt-nav-top { transform:translateY(0); opacity:1; }
 .nt-nav-main { position:relative; }
 .nt-nav-shell.scrolled .nt-nav-main { padding-top:.3rem; padding-bottom:.3rem; }
 .nt-primary-nav { font-size:.78rem; }
@@ -296,7 +302,10 @@ html.dark .nt-mobile-link.active { background:linear-gradient(var(--nt-surface-a
   }
 
   // Scroll shrink
-  function onScroll(){ if(window.scrollY>30) shell.classList.add('scrolled'); else shell.classList.remove('scrolled'); }
+    function onScroll(){
+        if(window.scrollY>30){ shell.classList.add('scrolled'); }
+        else { shell.classList.remove('scrolled'); }
+    }
   window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
 
   // MOBILE drawer
