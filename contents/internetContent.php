@@ -42,12 +42,12 @@
     <div class="nt-hero-overlay"></div>
     <div class="hero-content">
       <img src="assets/img/logo-norttek.png" alt="Norttek Logo" class="logo-hero" />
-      <h1 class="hero-title">Internet para el Hogar y la Oficina</h1>
-      <p class="hero-subtitle">Conéctate a internet en donde otras compañias no llegan.</p>
+  <?= nt_heading('Internet para el Hogar y la Oficina', 'fa-solid fa-wifi', 'xl', null, ['animate'=>true,'delay'=>'sm','class'=>'nt-heading-hero']); ?>
+  <p class="hero-subtitle nt-heading-anim delay-md" style="opacity:0; transform:translateY(34px) scale(.955);">Conéctate a internet en donde otras compañias no llegan.</p>
     </div>
   </section>
     <section id="contacta-un-asesor" class="asesor-section premium-box scroll-anim">
-      <h2>¿Dudas? Contacta a un asesor</h2>
+  <?= nt_heading('¿Dudas? Contacta a un asesor', 'fa-solid fa-comments', 'md', null, ['animate'=>true,'delay'=>'sm']); ?>
       <div class="asesor-row">
         <input id="asesor-nombre" class="asesor-input" type="text" placeholder="Tu nombre" aria-label="Tu nombre" />
         <button type="button" class="btn-asesor">
@@ -74,13 +74,13 @@
       <main class="app-main">
         <!-- Proceso de instalación (primero) -->
         <section class="proceso-instalacion premium-box scroll-anim">
-          <h2 class="section-title"><i class="fa-solid fa-list-check section-icon" aria-hidden="true"></i> ¿Cómo funciona nuestro servicio de internet?</h2>
+          <?= nt_heading('¿Cómo funciona nuestro servicio de internet?', 'fa-solid fa-list-check', 'md', null, ['animate'=>true,'delay'=>'sm','class'=>'section-title']); ?>
           <p class="section-subtitle">
             Nuestro internet llega a tu hogar de forma inalámbrica, a través de una antena exterior que se conecta con nuestros equipos locales en tu zona.
             <strong>No se trata de internet satelital.</strong>
           </p>
           <hr class="section-divider" />
-          <h2 class="section-title"><i class="fa-solid fa-screwdriver-wrench section-icon" aria-hidden="true"></i> ¿Qué necesitas para tu instalación?</h2>
+          <?= nt_heading('¿Qué necesitas para tu instalación?', 'fa-solid fa-screwdriver-wrench', 'md', null, ['animate'=>true,'delay'=>'md','class'=>'section-title']); ?>
           <p class="section-subtitle">Tu costo de instalación depende de si ya cuentas con antena o no. Con la información que nos diste en el formulario, te preparamos un resumen personalizado de costos.</p>
           <ul class="proceso-list equipo-false">
             <li><strong>Costo de instalación:</strong> $850 (único pago)</li>
@@ -96,7 +96,7 @@
           </div>
 
           <hr class="section-divider" />
-          <h2 class="section-title"><i class="fa-solid fa-wifi section-icon" aria-hidden="true"></i> ¿Qué plan debo elegir?</h2>
+          <?= nt_heading('¿Qué plan debo elegir?', 'fa-solid fa-wifi', 'md', null, ['animate'=>true,'delay'=>'lg','class'=>'section-title']); ?>
           <p class="section-subtitle">Todos nuestros planes se adaptan casi a cualquiera de las necesidades de hoy en día como son:</p>
           <ul class="proceso-list">
             <li>Videollamadas</li>
@@ -117,7 +117,7 @@
 
         <!-- Planes (segundo) -->
         <section class="plans scroll-anim">
-          <h2 class="section-title"><i class="fa-solid fa-wifi section-icon" aria-hidden="true"></i> Elige tu velocidad</h2>
+          <?= nt_heading('Elige tu velocidad', 'fa-solid fa-wifi', 'md', null, ['animate'=>true,'delay'=>'sm','class'=>'section-title']); ?>
           <p class="section-subtitle">
             Como guía: pocos dispositivos y uso básico funcionan bien con planes de menor velocidad; para una familia completa de 4-6 personas y múltiples dispositivos, recomendamos planes de 20 Mbps o más.
           </p>
@@ -201,7 +201,7 @@
         <section class="instalacion premium-box scroll-anim">
           <div class="instalacion-header vertical">
             <i class="fa-solid fa-screwdriver-wrench instalacion-icon" aria-hidden="true"></i>
-            <h2 class="section-title" style="margin:0;">Instalación</h2>
+            <?= nt_heading('Instalación', 'fa-solid fa-screwdriver-wrench', 'md', null, ['animate'=>true,'delay'=>'sm','class'=>'section-title','style'=>'margin:0;']); ?>
             <p><strong>Recuerda, es muy importante que realices la solicitud de tu instalación</strong>, ya que necesitamos toda tu información para <b>dar de alta tu cuenta</b>, <b>programar tus equipos</b> y asegurarnos de que <b>el técnico lleve todo lo necesario el día de la instalación</b>. Solo presiona el boton de <em>Solicita tu instalacion</em>, para ser llevado al formulario y puedas proporcionar tu informacion.</p>
           </div>
           <div class="instalacion-cards">
@@ -249,7 +249,7 @@
     </div>
   <div id="cliente-content" class="section-toggle" style="display:none;">
       <div style="text-align:center; margin:3rem 0;">
-        <h2 style="font-size:2rem; font-weight:900; margin-bottom:1rem;">Bienvenido cliente Norttek</h2>
+  <?= nt_heading('Bienvenido cliente Norttek', 'fa-solid fa-user-shield', 'md', null, ['animate'=>true,'delay'=>'sm']); ?>
         <p style="font-size:1.1rem; color:#a7b3cc; margin-bottom:1.5rem;">Consulta tu cuenta, soporte y promociones exclusivas.</p>
         <a href="https://clientes.norttek.com.mx" class="btn-contratar-link">Acceder a mi cuenta</a>
         <div style="margin-top:1rem;">
