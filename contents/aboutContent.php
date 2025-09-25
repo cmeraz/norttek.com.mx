@@ -9,19 +9,17 @@
 <section class="bg-white pb-16" style="padding-top:250px;">
     <div class="max-w-5xl mx-auto px-6 lg:px-8">
         <!-- Hero Nosotros -->
-        <div class="text-center mb-16">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-blue-700 mb-4 drop-shadow-lg about-animate-fade">Sobre Nosotros</h1>
-            <p class="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto about-animate-fade">
-                En <span class="font-semibold text-blue-600">Norttek Solutions</span> combinamos experiencia, innovación y pasión para proteger y transformar hogares y empresas en todo México.
+        <div class="text-center mb-16 nt-fade-in">
+            <?php echo nt_heading('Sobre Nosotros', 'fa-solid fa-users', 'xl', 'Conoce quiénes somos', true, ['id' => 'about-hero-heading','animate'=>true,'delay'=>'sm']); ?>
+            <p class="nt-lead max-w-2xl mx-auto" style="margin-top:1rem;">
+                En <strong class="nt-icon-accent">Norttek Solutions</strong> combinamos experiencia, innovación y pasión para proteger y transformar hogares y empresas en todo México.
             </p>
         </div>
 
         <!-- Historia y valores -->
         <div class="grid md:grid-cols-2 gap-10 items-center mb-20">
             <div class="about-animate-left">
-                <h2 class="text-2xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                    <i class="fas fa-history text-blue-600"></i> Nuestra Historia
-                </h2>
+                <?php echo nt_heading('Nuestra Historia', 'fa-solid fa-hourglass-half', 'md', null, false, ['animate'=>true]); ?>
                 <p class="text-gray-600 mb-4">
                     Desde <span class="font-semibold text-blue-700">2015</span>, Norttek Solutions ha evolucionado de un pequeño emprendimiento familiar a una empresa líder en <span class="font-semibold">seguridad electrónica</span> y <span class="font-semibold">automatización</span>. Nuestro crecimiento se basa en la confianza de nuestros clientes y la mejora continua de nuestro equipo.
                 </p>
@@ -71,7 +69,9 @@
 
         <!-- Línea de tiempo animada -->
         <div class="mb-20">
-            <h2 class="text-2xl font-bold text-blue-700 text-center mb-8 about-animate-fade">Nuestra Trayectoria</h2>
+                <div class="text-center mb-8 nt-fade-in">
+                    <?php echo nt_heading('Nuestra Trayectoria', 'fa-solid fa-route', 'md', 'Evolución y crecimiento', false, ['animate'=>true,'delay'=>'sm']); ?>
+                </div>
             <div class="relative border-l-4 border-blue-200 pl-8">
                 <div class="mb-10 about-animate-timeline" data-year="2015">
                     <span class="absolute -left-5 top-0 bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center shadow-lg font-bold">2015</span>
@@ -98,13 +98,13 @@
 
         <!-- CTA animada -->
         <div class="bg-gradient-to-r from-blue-600 to-blue-400 rounded-lg p-10 text-center shadow-lg about-animate-cta">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">¿Por qué elegir Norttek Solutions?</h2>
+            <?php echo nt_heading('¿Por qué elegir Norttek Solutions?', 'fa-solid fa-shield-halved', 'lg', 'Tecnología, soporte y confianza', false, ['style' => 'color:#fff;','animate'=>true]); ?>
             <p class="text-blue-50 mb-4 text-lg">
                 Atención personalizada, soporte técnico especializado y soluciones a la medida.<br>
                 Nuestro compromiso es tu tranquilidad y satisfacción.
             </p>
-            <a href="/contacto.php" class="inline-block px-8 py-3 bg-white text-blue-700 rounded-full font-semibold shadow hover:bg-blue-50 transition">
-                Contáctanos
+            <a href="/contact.php" class="nt-btn" data-variant="outline" style="background:linear-gradient(#fff,#fff) padding-box,var(--nt-gradient-border) border-box;">
+                <i class="fa-solid fa-envelope-open-text"></i> Contáctanos
             </a>
         </div>
     </div>
