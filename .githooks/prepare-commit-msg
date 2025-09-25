@@ -1,0 +1,44 @@
+#!/bin/sh
+# Hook: prepare-commit-msg
+# Propósito: Asegurar mensajes de commit en español y con plantilla.
+# Uso: Configura git para usar este directorio como hooks:
+#   git config core.hooksPath .githooks
+
+MSG_FILE="$1"
+COMMIT_SOURCE="$2"
+
+# No intervenir en merges o squashes
+case "$COMMIT_SOURCE" in
+  merge|squash) exit 0 ;;
+ esac
+
+# Si ya contiene marcador de idioma, salir
+grep -q '#IDIOMA:ES' "$MSG_FILE" && exit 0
+
+TEMPLATE_MARKER="#IDIOMA:ES"
+
+insert_template() {
+  printf '%s\n' "$TEMPLATE_MARKER" > .git/MSG_TMP_NTK
+  cat <<'EOF' >> .git/MSG_TMP_NTK
+# tipo(scope): resumen imperativo en español (máx ~72 chars)
+# feat|fix|docs|style|refactor|perf|test|build|ci|chore
+# Ej: feat(navegacion): agrega animación de entrada al menú móvil
+# Línea en blanco y luego detalle opcional.
+
+EOF
+  cat "$MSG_FILE" >> .git/MSG_TMP_NTK
+  mv .git/MSG_TMP_NTK "$MSG_FILE"
+}
+
+insert_template
+
+# Traducciones simples de verbos comunes si IA dejó inglés (solo primera línea)
+FIRST_LINE=$(head -n 1 "$MSG_FILE")
+LOWER=$(printf '%s' "$FIRST_LINE" | tr 'A-Z' 'a-z')
+case "$LOWER" in
+  add* )  sed -i '1s/^add/feat/' "$MSG_FILE" ;;
+  update* ) sed -i '1s/^update/feat/' "$MSG_FILE" ;;
+  fix:* ) true ;;
+ esac
+
+exit 0

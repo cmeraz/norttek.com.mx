@@ -1,3 +1,33 @@
+#IDIOMA:ES
+# Plantilla de mensaje de commit (español neutro)
+# Formato recomendado (Conventional Commits en español):
+# tipo(scope): resumen breve en minúsculas y en imperativo
+#
+# Tipos sugeridos:
+# feat     -> nueva funcionalidad
+# fix      -> corrección de error
+# docs     -> solo documentación
+# style    -> cambios de formato (espacios, comas, etc.) sin tocar lógica
+# refactor -> reestructuración interna sin cambiar comportamiento externo
+# perf     -> mejora de rendimiento
+# test     -> añade o corrige tests
+# build    -> cambios en build, dependencias, empaquetado
+# ci       -> cambios en pipelines / integraciones continuas
+# chore    -> tareas menores que no encajan en otros tipos
+#
+# Ejemplos:
+# feat(navbar): agrega animación de entrada al menú móvil
+# fix(telefonia): corrige desbordamiento en tarjeta de plan básico
+# refactor(servicios): extrae lógica de anclas a servicios.js
+#
+# Línea 1: máximo ~72 caracteres.
+# Línea 2: en blanco.
+# Línea(s) siguientes (opcional): detalle, motivación, notas de migración.
+#
+# Notas:
+# - Evita usar tiempos compuestos (usar imperativo: "agrega", "corrige").
+# - Escribe siempre en español neutro.
+# - Si el commit cierra un issue: Closes #123 (en bloque de detalle, no en resumen).
 # Formato sugerido (en español):
 # tipo(scope): resumen breve en presente e infinitivo (≤ 72 chars)
 #
