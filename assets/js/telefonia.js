@@ -44,11 +44,10 @@
 })();
 
 window.addEventListener('load',()=>{ if(window.gsap){
-  gsap.to('.hero-text #hero-title',{opacity:1,y:0,duration:1.1,ease:'power3.out'});
-  gsap.to('.hero-text p',{opacity:1,y:0,duration:1.1,ease:'power3.out',delay:.35});
-  gsap.to('.hero-text .mt-8',{opacity:1,y:0,duration:1.1,ease:'power3.out',delay:.7});
-  gsap.to('.hero-image-container',{opacity:1,y:0,duration:1.1,ease:'power3.out',delay:1.05}); }});
+  const baseEase='power3.out';
+  gsap.to('.hero-text #hero-title',{opacity:1,y:0,duration:1.35,ease:baseEase,delay:.15});
+  gsap.to('.hero-text p',{opacity:1,y:0,duration:1.35,ease:baseEase,delay:.55});
+  gsap.to('.hero-text .mt-8',{opacity:1,y:0,duration:1.35,ease:baseEase,delay:.95});
+  gsap.to('.hero-image-container',{opacity:1,y:0,duration:1.35,ease:baseEase,delay:1.35}); }});
 
-console.info('[telefonia.js] cargado');// Archivo limpiado: la lógica de Telefonía se movió inline en telefoniaContent.php.
-// Se mantiene como placeholder por si en el futuro se separa nuevamente.
-console.info('[telefonia.js] Limpio: lógica trasladada a contenido modular.');
+console.info('[telefonia.js] animaciones hero extendidas sincronizadas con headings');
