@@ -26,39 +26,34 @@ $seo = [
     <?php $activePage = 'telefonia'; ?>
     <?php include 'includes/navbar.php'; ?>
 
-    <!-- HERO -->
-    <section class="relative bg-white py-20" id="hero" aria-labelledby="hero-title">
-      <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-10 items-center">
+    <!-- HERO (refactor design system) -->
+    <section class="relative bg-white py-24" id="hero" aria-labelledby="hero-title">
+      <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
         <div class="hero-text">
-          <h1 id="hero-title" class="text-4xl lg:text-5xl font-bold leading-tight opacity-0 translate-y-10">
-            Telefonía IP en la Nube con <span class="text-blue-600">Norttek PBX</span>
-          </h1>
-          <p class="text-gray-700 text-lg leading-relaxed mt-4 opacity-0 translate-y-10">
-            Gestiona todas las comunicaciones de tu empresa de manera <strong>centralizada desde la nube</strong>.
-            Con nuestro <strong>conmutador en la nube</strong> administra <strong>extensiones</strong>,
-            configura <strong>troncales</strong>, IVR personalizado, grabación de llamadas y <strong>reportes detallados</strong>.
-            Accede desde <strong>PC, smartphone o teléfono físico</strong>, sin infraestructura local ni mantenimiento complejo.
+          <div id="hero-title" class="opacity-0 translate-y-10">
+            <?= nt_heading('Telefonía IP en la Nube', 'fa-solid fa-phone-volume', 'xl', 'Norttek PBX', true, ['animate' => true, 'delay' => 'sm','class'=>'nt-heading-emphasis']); ?>
+          </div>
+          <p class="text-gray-700 text-lg leading-relaxed mt-5 opacity-0 translate-y-10 max-w-xl">
+            Gestiona todas las comunicaciones de tu empresa de manera <strong>centralizada desde la nube</strong>. Administra <strong>extensiones</strong>, configura <strong>troncales</strong>, IVR personalizado, grabación de llamadas y <strong>reportes detallados</strong>. Accede desde <strong>PC, smartphone o teléfono físico</strong>, sin infraestructura local ni mantenimiento complejo.
           </p>
-          <div class="mt-6 flex flex-wrap gap-3 opacity-0 translate-y-10">
-            <a href="#planes" class="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg hover:from-blue-700 hover:to-blue-600 transition" role="button">Cotiza tu plan</a>
-            <a href="#demo" class="px-6 py-3 rounded-xl border border-gray-300 hover:border-blue-500 transition" role="button">Solicitar demo</a>
-            <a href="#faq" class="px-6 py-3 rounded-xl border border-blue-600 text-blue-600 hover:bg-blue-50 transition flex items-center gap-2" role="button">
-              <i class="fas fa-question-circle"></i>
-              Preguntas Frecuentes
-            </a>
+          <div class="mt-8 flex flex-wrap gap-4 opacity-0 translate-y-10">
+            <a href="#planes" class="nt-btn nt-btn-primary" role="button"><i class="fa-solid fa-coins"></i><span>Cotiza tu plan</span></a>
+            <a href="#demo" class="nt-btn nt-btn-outline" role="button"><i class="fa-solid fa-rocket"></i><span>Solicitar demo</span></a>
+            <a href="#faq" class="nt-btn nt-btn-accent" role="button"><i class="fas fa-question-circle"></i><span>Preguntas Frecuentes</span></a>
           </div>
         </div>
         <div class="hero-image-container opacity-0 translate-y-10">
-          <img class="hero-image" width="996" height="749" src="https://www.net2phone.com/hs-fs/hubfs/Business%20phone%20systems%20interface.webp?width=996&height=749&name=Business%20phone%20systems%20interface.webp"
-               alt="Interfaz gráfica de telefonía IP Norttek PBX en laptop">
+          <img class="hero-image rounded-2xl shadow-lg" width="996" height="749" src="https://www.net2phone.com/hs-fs/hubfs/Business%20phone%20systems%20interface.webp?width=996&height=749&name=Business%20phone%20systems%20interface.webp" alt="Interfaz Norttek PBX en laptop">
         </div>
       </div>
     </section>
 
     <!-- DISPOSITIVOS -->
-    <section id="dispositivos" class="py-16 bg-gray-100" aria-labelledby="dispositivos-title">
-      <div class="max-w-7xl mx-auto px-4 text-center">
-        <h2 id="dispositivos-title" class="text-3xl font-bold text-gray-900 mb-12">Accede desde cualquier dispositivo</h2>
+    <section id="dispositivos" class="py-20 bg-gray-100" aria-labelledby="dispositivos-title">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <div id="dispositivos-title" class="mb-14">
+          <?= nt_heading('Accede desde cualquier dispositivo', 'fa-solid fa-display', 'lg', null, true, ['animate' => true]); ?>
+        </div>
         <div class="grid md:grid-cols-1 gap-8">
           <!-- Card 1: PC / Laptop -->
           <div class="md:flex md:items-center md:gap-8 bg-white rounded-2xl shadow-lg p-6 transform transition hover:-translate-y-2 hover:shadow-2xl animate-fade-in">
@@ -66,7 +61,7 @@ $seo = [
               <img src="https://4423252.fs1.hubspotusercontent-na1.net/hubfs/4423252/net2phones%20business%20phone%20system%20interface%20on%20a%20laptop.webp" alt="Interfaz PBX en laptop" class="rounded-2xl shadow" loading="lazy">
             </div>
             <div class="md:w-2/3 mt-6 md:mt-0 text-left">
-              <h3 class="text-2xl font-bold text-blue-700 mb-4">PC / Laptop</h3>
+              <?= nt_heading('PC / Laptop', 'fa-solid fa-computer', 'sm', null, true); ?>
               <p class="text-gray-700 text-lg leading-relaxed">
                 Accede a tu <span class="font-semibold text-blue-600">central telefónica</span> desde tu computadora.
                 Gestiona <span class="font-semibold">llamadas, videollamadas, mensajes y reportes</span> sin instalar hardware adicional.
@@ -80,7 +75,7 @@ $seo = [
               <img src="https://4423252.fs1.hubspotusercontent-na1.net/hubfs/4423252/net2phone%D1%91s%20business%20phone%20system%20interface%20on%20mobile%20and%20tablet.webp" alt="App Linkus en smartphone" class="rounded-2xl shadow" loading="lazy">
             </div>
             <div class="md:w-2/3 mt-6 md:mt-0 text-left">
-              <h3 class="text-2xl font-bold text-blue-700 mb-4">Smartphone / App Linkus</h3>
+              <?= nt_heading('Smartphone / App Linkus', 'fa-solid fa-mobile-screen-button', 'sm', null, true); ?>
               <p class="text-gray-700 text-lg leading-relaxed">
                 Mantente <span class="font-semibold text-blue-600">conectado estés donde estés</span>. Con la app <span class="font-semibold">Linkus</span> para móvil, puedes realizar y recibir llamadas, transferir, grabar y acceder a reportes desde cualquier lugar.
                 Perfecto para empleados remotos o que necesitan movilidad, <span class="text-blue-600 font-semibold">sin perder conexión con tu empresa</span>.
@@ -93,7 +88,7 @@ $seo = [
               <img src="https://4423252.fs1.hubspotusercontent-na1.net/hubfs/4423252/Desk%20Business%20Phone.webp" alt="Teléfono físico SIP" class="rounded-2xl shadow" loading="lazy">
             </div>
             <div class="md:w-2/3 mt-6 md:mt-0 text-left">
-              <h3 class="text-2xl font-bold text-blue-700 mb-4">Teléfono físico SIP</h3>
+              <?= nt_heading('Teléfono físico SIP', 'fa-solid fa-phone', 'sm', null, true); ?>
               <p class="text-gray-700 text-lg leading-relaxed">
                 Si prefieres la experiencia tradicional de un teléfono, los <span class="font-semibold text-blue-600">dispositivos SIP físicos</span> se integran perfectamente con tu PBX Norttek.
                 Garantizan <span class="font-semibold text-blue-600">calidad de voz superior, facilidad de uso</span> y compatibilidad con funciones avanzadas como transferencias, colas y buzón de voz.
@@ -105,75 +100,77 @@ $seo = [
     </section>
 
  <!-- PLANES -->
-<section id="planes" class="py-20 bg-gray-50" aria-labelledby="planes-title">
-  <div class="max-w-7xl mx-auto px-4 text-center">
-    <h2 id="planes-title" class="text-4xl font-bold text-gray-900 mb-4">Planes y llamadas ilimitadas</h2>
-    <p class="text-gray-700 mb-4 max-w-2xl mx-auto text-lg">
+<section id="planes" class="py-24 bg-gray-50" aria-labelledby="planes-title">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <div id="planes-title" class="mb-6">
+  <?= nt_heading('Planes y llamadas ilimitadas', 'fa-solid fa-boxes-stacked', 'lg', null, true, ['animate' => true, 'delay' => 'sm']); ?>
+    </div>
+    <p class="text-gray-700 mb-6 max-w-2xl mx-auto text-lg">
       Elige el plan que mejor se adapta a tu empresa. Todos incluyen numeración LADA México y soporte técnico.
     </p>
-    <div class="mt-12 grid md:grid-cols-3 gap-8">
+    <div class="mt-14 grid md:grid-cols-3 gap-10">
       
       <!-- Plan Básico -->
-      <div class="bg-white p-8 rounded-3xl shadow-lg flex flex-col justify-between">
-        <h3 class="font-bold text-2xl text-blue-600 mb-6">Plan Básico</h3>
+      <div class="bg-white p-8 rounded-3xl shadow-lg flex flex-col justify-between border border-gray-100">
+  <?= nt_heading('Plan Básico', 'fa-solid fa-circle-dot', 'sm', null, true, ['animate' => true, 'delay' => 'sm']); ?>
         <ul class="text-gray-700 mb-6 space-y-2 text-left">
           <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>1 extensión</li>
           <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>1 troncal (2 canales)</li>
           <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>Numeración LADA México</li>
         </ul>
         <p class="font-bold text-blue-600 text-xl mb-6">$379 / mes + IVA</p>
-        <a href="#"
+      <a href="#"
            data-plan="Plan Básico"
            data-precio="$379 / mes + IVA"
            data-ext="1 extensión"
            data-troncal="1 troncal (2 canales)"
            data-numeracion="Numeración LADA México"
-           class="bg-blue-600 text-white py-2 px-6 rounded-full font-semibold hover:bg-blue-700 transition"
+        class="nt-btn nt-btn-primary justify-center w-full mt-auto"
            role="button">
-           Solicitar Plan
+        <i class="fa-solid fa-cart-plus"></i><span>Solicitar Plan</span>
         </a>
       </div>
 
       <!-- Plan Premium (destacado) -->
       <div class="bg-white p-8 rounded-3xl shadow-lg border-2 border-blue-600 relative flex flex-col justify-between">
         <span class="absolute top-0 left-0 bg-yellow-400 text-xs font-bold px-3 py-1 rounded-br-2xl">Recomendado</span>
-        <h3 class="font-bold text-2xl text-blue-600 mb-6">Plan Premium</h3>
+  <?= nt_heading('Plan Premium', 'fa-solid fa-star', 'sm', null, true, ['animate' => true, 'delay' => 'md']); ?>
         <ul class="text-gray-700 mb-6 space-y-2 text-left">
           <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>3 extensiones</li>
           <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>1 troncal (2 canales)</li>
           <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>Numeración LADA México</li>
         </ul>
         <p class="font-bold text-blue-600 text-xl mb-6">$605 / mes + IVA</p>
-        <a href="#"
+      <a href="#"
            data-plan="Plan Premium"
            data-precio="$605 / mes + IVA"
            data-ext="3 extensiones"
            data-troncal="1 troncal (2 canales)"
            data-numeracion="Numeración LADA México"
-           class="bg-blue-600 text-white py-2 px-6 rounded-full font-semibold hover:bg-blue-700 transition"
+        class="nt-btn nt-btn-primary justify-center w-full mt-auto"
            role="button">
-           Solicitar Plan
+        <i class="fa-solid fa-cart-plus"></i><span>Solicitar Plan</span>
         </a>
       </div>
 
       <!-- Plan Empresarial -->
-      <div class="bg-white p-8 rounded-3xl shadow-lg flex flex-col justify-between">
-        <h3 class="font-bold text-2xl text-blue-600 mb-6">Plan Empresarial</h3>
+      <div class="bg-white p-8 rounded-3xl shadow-lg flex flex-col justify-between border border-gray-100">
+  <?= nt_heading('Plan Empresarial', 'fa-solid fa-building', 'sm', null, true, ['animate' => true, 'delay' => 'lg']); ?>
         <ul class="text-gray-700 mb-6 space-y-2 text-left">
           <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>10 extensiones</li>
           <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>1 troncal (10 canales)</li>
           <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span>Numeración LADA México</li>
         </ul>
         <p class="font-bold text-blue-600 text-xl mb-6">$1,490 / mes + IVA</p>
-        <a href="#"
+      <a href="#"
            data-plan="Plan Empresarial"
            data-precio="$1,490 / mes + IVA"
            data-ext="10 extensiones"
            data-troncal="1 troncal (10 canales)"
            data-numeracion="Numeración LADA México"
-           class="bg-blue-600 text-white py-2 px-6 rounded-full font-semibold hover:bg-blue-700 transition"
+        class="nt-btn nt-btn-primary justify-center w-full mt-auto"
            role="button">
-           Solicitar Plan
+        <i class="fa-solid fa-cart-plus"></i><span>Solicitar Plan</span>
         </a>
       </div>
 
@@ -183,29 +180,18 @@ $seo = [
 
 
     <!-- DEMO -->
-    <section id="demo" class="py-20 bg-gray-50" aria-labelledby="demo-title">
+    <section id="demo" class="py-24 bg-gray-50" aria-labelledby="demo-title">
       <div class="max-w-7xl mx-auto px-6 lg:flex lg:items-center lg:justify-between gap-10">
         <!-- Texto -->
         <div class="flex-1 text-center lg:text-left animate-fadeInSlow">
-          <h2 id="demo-title" class="text-4xl md:text-3xl font-extrabold text-blue-600 mb-4">
-            ¿Quieres migrar tus telecomunicaciones a la nube?
-          </h2>
+          <div id="demo-title" class="mb-4"><?= nt_heading('¿Listo para migrar a la nube?', 'fa-solid fa-cloud-arrow-up', 'lg', 'Solicita tu demo gratuita', true, ['animate' => true, 'delay' => 'sm']); ?></div>
           <p class="text-gray-700 text-lg mb-6">
             Eleva la productividad de tu empresa, reduce costos y olvídate del mantenimiento de sistemas locales. Solicita ahora tu <strong>demo gratuita de 30 días</strong> y prueba todas las funciones avanzadas de Norttek PBX.
           </p>
           <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
-            <button id="openModal" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition flex items-center gap-2" type="button" role="button">
-              <i class="fas fa-clipboard-check"></i>
-              Solicitar Demo
-            </button>
-            <button id="openVideo" data-video="https://www.youtube.com/embed/HVc0M7uDKAE?si=IGVoEfbvS5Rl5-tG" class="bg-gray-200 text-blue-600 px-6 py-3 rounded-full hover:bg-gray-300 transition flex items-center gap-2" type="button" role="button">
-              <i class="fas fa-play-circle"></i>
-              Ver Video
-            </button>
-            <button id="openLinkus" data-video="https://www.youtube.com/embed/LVb0_BUqskQ" class="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition flex items-center gap-2" type="button" role="button">
-              <i class="fas fa-mobile-alt"></i>
-              Linkus UC
-            </button>
+            <button id="openModal" class="nt-btn nt-btn-primary" type="button" role="button"><i class="fas fa-clipboard-check"></i><span>Solicitar Demo</span></button>
+            <button id="openVideo" data-video="https://www.youtube.com/embed/HVc0M7uDKAE?si=IGVoEfbvS5Rl5-tG" class="nt-btn nt-btn-outline" type="button" role="button"><i class="fas fa-play-circle"></i><span>Ver Video</span></button>
+            <button id="openLinkus" data-video="https://www.youtube.com/embed/LVb0_BUqskQ" class="nt-btn nt-btn-dark" type="button" role="button"><i class="fas fa-mobile-alt"></i><span>Linkus UC</span></button>
           </div>
         </div>
         <!-- Imagen -->
@@ -335,9 +321,9 @@ $seo = [
     // Animaciones Hero con GSAP (si está disponible)
     window.addEventListener('load', () => {
       if(window.gsap) {
-        gsap.to(".hero-text h1", {opacity:1, y:0, duration:1, ease:"power3.out"});
+        gsap.to(".hero-text #hero-title", {opacity:1, y:0, duration:1, ease:"power3.out"});
         gsap.to(".hero-text p", {opacity:1, y:0, duration:1, ease:"power3.out", delay:0.3});
-        gsap.to(".hero-text div", {opacity:1, y:0, duration:1, ease:"power3.out", delay:0.6});
+        gsap.to(".hero-text .mt-8", {opacity:1, y:0, duration:1, ease:"power3.out", delay:0.6});
         gsap.to(".hero-image-container", {opacity:1, y:0, duration:1, ease:"power3.out", delay:0.9});
       }
     });
