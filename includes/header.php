@@ -105,7 +105,7 @@ if(file_exists($autoCssPathServer)){
 <!-- Loader inicial de la página -->
 <div id="loader">
     <div class="loader-content">
-        <img src="assets/img/logo-norttek.png" alt="Logo Norttek" class="company-logo">
+    <img src="assets/img/logo-norttek.png" alt="Logo Norttek" class="company-logo">
         <div class="spinner"></div>
         <div class="progress-bar">
             <div class="progress-fill"></div>
