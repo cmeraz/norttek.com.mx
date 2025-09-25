@@ -355,6 +355,22 @@
 .internet-app #main-content-container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; text-align: center; }
 .internet-app #main-content-container p { color: var(--muted); line-height: 1.7; }
 .internet-app #main-content-container ul { line-height: 1.6; }
+/* Greeting (saludo personalizado) */
+.internet-app #personal-greeting { position:relative; padding:1.2rem .8rem 1.4rem; border-radius:18px; background:linear-gradient(135deg,rgba(111,164,255,.12),rgba(111,164,255,.04)); border:1px solid rgba(111,164,255,.35); max-width:860px; margin:0 auto 2rem; box-shadow:0 6px 18px -6px rgba(15,23,42,.18), 0 2px 6px rgba(15,23,42,.08); overflow:hidden; }
+.internet-app #personal-greeting:before { content:""; position:absolute; inset:0; background:
+  radial-gradient(circle at 18% 32%, rgba(255,255,255,.20), rgba(255,255,255,0) 60%),
+  radial-gradient(circle at 82% 68%, rgba(255,255,255,.15), rgba(255,255,255,0) 65%);
+  pointer-events:none; mix-blend-mode:overlay; opacity:.9; }
+.internet-app #personal-greeting .greet-line { font-weight:900; letter-spacing:.5px; background:linear-gradient(90deg,#4f8cff,#6fa4ff,#4f8cff); -webkit-background-clip:text; background-clip:text; color:transparent; background-size:180% 100%; animation: greetSheen 5s linear infinite; }
+.internet-app #personal-greeting #greeting-detail { font-size:1rem; line-height:1.55; max-width:720px; margin:.65rem auto 0; }
+@keyframes greetIn { 0%{ opacity:0; transform:translateY(22px) scale(.96); filter:blur(6px);} 55%{ filter:blur(0);} 100%{ opacity:1; transform:translateY(0) scale(1);} }
+@keyframes greetGlow { 0%{ box-shadow:0 0 0 0 rgba(111,164,255,.6);} 70%{ box-shadow:0 0 0 22px rgba(111,164,255,0);} 100%{ box-shadow:0 0 0 0 rgba(111,164,255,0);} }
+@keyframes greetSheen { 0%{ background-position:0% 50%; } 50%{ background-position:100% 50%; } 100%{ background-position:0% 50%; } }
+.internet-app #personal-greeting.greet-anim { animation: greetIn .9s cubic-bezier(.22,.95,.3,1), greetGlow 1.8s ease  .15s 1; }
+@media (prefers-reduced-motion: reduce){
+  .internet-app #personal-greeting.greet-anim { animation:none; }
+  .internet-app #personal-greeting .greet-line { animation:none; }
+}
 /* Keep lists readable even when container is centered */
 .internet-app .proceso-list { text-align:left; margin-left:auto; margin-right:auto; max-width: 820px; }
 .internet-app .plan-info { text-align:left; }
