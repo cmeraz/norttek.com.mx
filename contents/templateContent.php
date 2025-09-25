@@ -102,7 +102,7 @@ $seo = [
     \'keywords\' => \'servicios, seguridad, CCTV, alarmas\',
     \'robots\' => \'index, follow\',
     \'og_url\' => \'https://www.norttek.com.mx/servicios\',
-    \'og_image\' => \'https://www.norttek.com.mx/assets/images/og-image.jpg\'
+    \'og_image\' => \'https://www.norttek.com.mx/assets/img/webpage.png\'
 ];
 // No repitas og_title, og_description, twitter_title, etc. Se heredan automáticamente.
 

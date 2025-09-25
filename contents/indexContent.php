@@ -5,18 +5,10 @@
  */
 ?>
 
-<!-- HERO: Sección principal con fondo, título y lista de servicios (refactor design system) -->
-<section class="relative pt-36 pb-10 overflow-hidden">
-  <!-- Fondo con degradado, patrón de puntos e imagen -->
-  <div class="absolute inset-0 bg-center z-[-1]" style="
-    background-image: 
-      linear-gradient(rgba(0, 50, 80, 0.7), rgba(0, 0, 0, 0.85)), 
-      repeating-radial-gradient(rgba(255,255,255,0.12) 0 1px, transparent 1px 16px), 
-      url('assets/img/cctv-hero_img.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-  "></div>
+<!-- HERO: Sección principal con fondo unificado (.nt-hero-overlay) -->
+<section class="nt-hero-wrapper relative pt-36 pb-10 overflow-hidden">
+  <img src="assets/img/cctv-hero_img.jpg" alt="Fondo CCTV" class="nt-hero-bg-img" loading="lazy">
+  <div class="nt-hero-overlay"></div>
 
   <!-- Contenido del hero -->
   <div class="relative max-w-7xl mx-auto px-6 py-24 text-center text-white">

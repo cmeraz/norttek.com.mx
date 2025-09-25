@@ -3,7 +3,7 @@
  * Contenido principal para la página CCTV
  */
 ?>
-<section class="pb-16" style="padding-top:150px; background:linear-gradient(180deg,#f8fbff,#ffffff);">
+<section class="pb-16 nt-hero-wrapper" style="padding-top:150px; background:linear-gradient(180deg,#f8fbff,#ffffff);">
     <div class="max-w-5xl mx-auto px-6 lg:px-8 nt-fade-in">
         <div class="text-center mb-12">
             <?php echo nt_heading('Cámaras de Seguridad y Videovigilancia', 'fa-solid fa-video', 'lg', 'Protege lo que más importa', true, ['id'=>'cctv-main-heading','animate'=>true,'delay'=>'sm']); ?>
@@ -24,8 +24,9 @@
                     <i class="fa-solid fa-file-signature"></i> Solicita una cotización
                 </a>
             </div>
-            <div class="flex justify-center">
-                <img src="/assets/images/cctv-demo.jpg" alt="Cámaras de seguridad Norttek" class="rounded-lg shadow-md w-full max-w-xs">
+            <div class="flex justify-center relative">
+                <div class="nt-hero-overlay hidden md:block"></div>
+                <img src="/assets/img/cctv-hero_img.jpg" alt="Cámaras de seguridad Norttek" class="rounded-lg shadow-md w-full max-w-xs relative">
             </div>
         </div>
     </div>

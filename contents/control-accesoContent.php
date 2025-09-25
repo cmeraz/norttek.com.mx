@@ -3,7 +3,7 @@
  * Contenido principal para la página Control de Acceso (refactor 2025 design system)
  */
 ?>
-<section class="nt-section pb-16 bg-white" style="padding-top:150px;">
+<section class="nt-section pb-16 bg-white nt-hero-wrapper" style="padding-top:150px;">
     <div class="max-w-6xl mx-auto px-6 lg:px-10">
         <div class="text-center mb-12">
             <?= nt_heading('Control de Acceso Inteligente', 'fa-solid fa-door-open', 'xl', null, true, ['id' => 'control-acceso-hero','animate'=>true,'delay'=>'sm']); ?>

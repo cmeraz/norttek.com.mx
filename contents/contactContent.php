@@ -7,7 +7,7 @@
 
 <section class="relative min-h-screen flex items-center justify-center py-24" style="padding-top:180px; background:linear-gradient(145deg,#f0f7ff,#e4effb);">
     <div class="absolute inset-0 pointer-events-none select-none">
-        <img src="/assets/images/contact-bg.svg" alt="" class="w-full h-full object-cover opacity-10">
+    <img src="/assets/img/webpage.png" alt="" class="w-full h-full object-cover opacity-10">
     </div>
     <div class="relative z-10 max-w-3xl w-full mx-auto bg-white rounded-2xl shadow-xl p-10 nt-fade-in" id="contact-card">
         <div class="text-center mb-8">

@@ -6,7 +6,7 @@
  */
 ?>
 
-<section class="bg-white pb-16" style="padding-top:250px;">
+<section class="bg-white pb-16 nt-hero-wrapper" style="padding-top:250px;">
     <div class="max-w-5xl mx-auto px-6 lg:px-8">
         <!-- Hero Nosotros -->
         <div class="text-center mb-16 nt-fade-in">
@@ -32,8 +32,10 @@
                     Hoy, somos referentes en <span class="font-semibold">CCTV, alarmas inteligentes, control de acceso, redes y telefonía IP</span>, brindando soluciones integrales y soporte personalizado.
                 </p>
             </div>
-            <div class="flex justify-center about-animate-right">
-                <img src="/assets/images/about-team.jpg" alt="Equipo Norttek Solutions" class="rounded-xl shadow-2xl w-full max-w-xs hover:scale-105 transition-transform duration-500">
+            <div class="flex justify-center about-animate-right relative">
+                <img src="/assets/img/cctv-hero_img.jpg" alt="Equipo Norttek Solutions" class="nt-hero-bg-img opacity-30 hidden md:block">
+                <div class="nt-hero-overlay hidden md:block"></div>
+                <img src="/assets/img/logo-norttek.png" alt="Equipo Norttek Solutions" class="rounded-xl shadow-2xl w-full max-w-xs hover:scale-105 transition-transform duration-500 relative">
             </div>
         </div>
 
