@@ -85,4 +85,37 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     activate('tab1');
 })();
 
+// Toggle modo oscuro rápido
+(function(){
+    const root = document.documentElement;
+    const storageKey = 'nt-theme';
+    function applyTheme(val){
+        if(val === 'dark'){ root.classList.add('dark'); document.body.classList.add('dark'); }
+        else { root.classList.remove('dark'); document.body.classList.remove('dark'); }
+    }
+    // Preferencia inicial
+    const stored = localStorage.getItem(storageKey);
+    if(stored){ applyTheme(stored); }
+    else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+        applyTheme('dark');
+    }
+    // Escucha de media query para sincronizar si no hay override
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if(!localStorage.getItem(storageKey)){
+            applyTheme(e.matches ? 'dark' : 'light');
+        }
+    });
+    // API global simple
+    window.NTTheme = {
+        toggle(){
+            const isDark = root.classList.contains('dark');
+            const next = isDark ? 'light' : 'dark';
+            applyTheme(next);
+            localStorage.setItem(storageKey, next);
+        },
+        set(mode){ applyTheme(mode); localStorage.setItem(storageKey, mode); },
+        current(){ return root.classList.contains('dark') ? 'dark' : 'light'; }
+    };
+})();
+
 
