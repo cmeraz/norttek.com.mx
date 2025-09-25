@@ -240,6 +240,11 @@
             <a id="contratar" href="http://clientes.portalinternet.net/solicitar-instalacion/norttek/" target="_blank" class="contrata-ahora-btn">
               <i class="fa-solid fa-pen-to-square contrata-icon" aria-hidden="true"></i> Solicita tu Instalación
             </a>
+            <div style="margin-top:.5rem; text-align:center;">
+              <a id="abrir-formulario" href="http://clientes.portalinternet.net/solicitar-instalacion/norttek/" target="_blank" rel="noopener noreferrer" style="font-size:.95rem; color:#6b7a90; text-decoration:underline;">
+                Abrir formulario sin WhatsApp
+              </a>
+            </div>
           </div>
         </section>
       </main>
