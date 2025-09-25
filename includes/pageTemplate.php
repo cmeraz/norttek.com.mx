@@ -32,7 +32,14 @@ $cssFiles = $cssFiles ?? [];
 includeSection('header', ['seo' => $seo, 'pageName' => $pageName, 'cssFiles' => $cssFiles]);
 includeSection('navbar');
 
-// 2️⃣ Determinar archivo de contenido
+// 2️⃣ Alert de construcción (solo se muestra si la variable está definida)
+if (!empty($showConstructionAlert)) {
+    echo '<div class="w-full bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 px-4 py-3 text-sm mb-4">';
+    echo 'Sitio en construcción';
+    echo '</div>';
+}
+
+// 3️⃣ Determinar archivo de contenido
 $contentFile = __DIR__ . '/../contents/' . $pageName . 'Content.php';
 // Offset superior para no quedar oculto tras navbar fijo
 echo '<main id="main-content" class="nt-main-shell">' . PHP_EOL;
@@ -43,10 +50,10 @@ if(file_exists($contentFile)){
 }
 echo "</main>";
 
-// 3️⃣ Cargar footer
+// 4️⃣ Cargar footer
 includeSection('footer');
 
-/* // 4️⃣ JS extra específico por página
+/* // 5️⃣ JS extra específico por página
 $scriptFiles = $scriptFiles ?? [];
 if(!empty($scriptFiles) && is_array($scriptFiles)){
     foreach($scriptFiles as $js){
@@ -58,7 +65,7 @@ if(!empty($scriptFiles) && is_array($scriptFiles)){
     }
 } */
 
-// 4️⃣ JS específicos declarados ($jsFiles) + autoload por nombre de página
+// 5️⃣ JS específicos declarados ($jsFiles) + autoload por nombre de página
 if(!isset($jsFiles)) { $jsFiles = []; }
 if(is_array($jsFiles)){
     foreach($jsFiles as $js){
@@ -75,11 +82,11 @@ if(file_exists($autoJsServer)){
     echo "<script src='$autoJsBrowser' defer></script>\n";
 }
 
-// 5️⃣ Scripts adicionales desde extra/scripts (PHP que genera JS inline si aplica)
+// 6️⃣ Scripts adicionales desde extra/scripts (PHP que genera JS inline si aplica)
 $extraScriptFile = __DIR__ . '/../extra/scripts/' . $pageName . '.php';
 if(file_exists($extraScriptFile)){
     include $extraScriptFile;
 }
 
-// 6️⃣ Scripts externos que el desarrollador solicitó para el head (ya impresos allí si existían)
+// 7️⃣ Scripts externos que el desarrollador solicitó para el head (ya impresos allí si existían)
 ?>

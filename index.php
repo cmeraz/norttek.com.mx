@@ -26,6 +26,9 @@ $seo['twitter_image']   = $seo['twitter_image']   ?? $seo['og_image'];
 // --------------- NOMBRE DE LA PÁGINA ---------------
 $pageName = basename(__FILE__, ".php");
 
+// --------------- ALERT DE CONSTRUCCIÓN (solo para página index) ---------------
+$showConstructionAlert = true;
+
 // --------------- ASSETS ESPECÍFICOS POR PÁGINA ---------------
 $cssFiles = ['servicios']; // CSS específico para sección servicios/FAQ separado de plantilla
 $jsFiles  = ['home','servicios']; // JS principal + lógica de anclas/FAQ
