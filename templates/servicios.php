@@ -75,7 +75,7 @@ $soluciones = [
     [
         'imagen' => 'https://seguricasa.net/wp-content/uploads/2023/01/control-de-acceso-de-personal.jpg',
         'icono' => 'fas fa-lock',
-        'id' => 'ControlAcceso',
+  'id' => 'control-acceso',
         'titulo' => 'Control de Acceso',
         'descripcion' => 'Gestión eficiente y segura de entradas y accesos a tus instalaciones o espacios privados.',
         'link' => '#',
@@ -147,12 +147,7 @@ $soluciones = [
 ];
 ?>
 
-<style>
-  .highlight {
-    background-color: orange !important;
-    transition: background-color 0.3s;
-  }
-</style>
+<!-- Estilos específicos movidos a assets/css/servicios.css -->
 
 
 <!-- SECCIÓN DE SOLUCIONES -->
@@ -162,8 +157,8 @@ $soluciones = [
   <div class="w-full max-w-8xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-5">
 
     <?php foreach($soluciones as $index => $solucion): ?>
-      <div id="<?php echo $solucion['id']; ?>"
-        class="relative" 
+      <div id="<?php echo $solucion['id']==='ControlAcceso' ? 'control-acceso' : $solucion['id']; ?>"
+        class="relative nt-sol-item" 
            data-aos="fade-up" 
            data-aos-delay="<?php echo ($index % 4) * 300; ?>">
 
@@ -232,51 +227,5 @@ document.addEventListener('DOMContentLoaded', () => {
       window.scrollTo(0, startY + diff*eased);
       if(t < 1) requestAnimationFrame(step);
     }
-    requestAnimationFrame(step);
-  }
-
-  links.forEach(link => {
-    link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href');
-      if(!href || href === '#') return;
-      const targetId = href.substring(1);
-      const wrapper = document.getElementById(targetId);
-      if(!wrapper) return;
-      const card = wrapper.querySelector('.card-content');
-      const img  = wrapper.querySelector('img');
-      if(!card) return;
-      e.preventDefault();
-
-      // Limpia highlight previo
-      document.querySelectorAll('.card-content').forEach(c => c.classList.remove('highlight'));
-
-      // Calcular rectángulo unión (imagen + contenido) para centrar todo el bloque perceptible
-      const cardRect = card.getBoundingClientRect();
-      const imgRect  = img ? img.getBoundingClientRect() : cardRect;
-      const unionTop = Math.min(cardRect.top, imgRect.top);
-      const unionBottom = Math.max(cardRect.bottom, imgRect.bottom);
-      const unionHeight = unionBottom - unionTop;
-      const absoluteUnionTop = window.scrollY + unionTop;
-
-      const viewportH = window.innerHeight;
-      const headerH = getHeaderHeight();
-      // Centro del bloque ajustado a 45% del viewport para que se vea ligeramente adelantado
-  // Ajuste fino solicitado: subir ~5px (se resta 5 al destino)
-  const targetY = absoluteUnionTop - headerH - (viewportH * 0.45 - unionHeight/2) - 5;
-      smoothScrollTo(Math.max(0, targetY));
-
-      // Highlight sobre la parte de contenido para enfoque
-      card.classList.add('highlight');
-      card.style.transition = 'background-color .3s, box-shadow .6s';
-      card.style.boxShadow = '0 0 0 3px rgba(255,180,60,.8),0 8px 24px -6px rgba(0,0,0,.25)';
-      setTimeout(()=>{ card.style.boxShadow=''; }, 1200);
-    });
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.card-content') && !e.target.closest('a[href^="#"]')) {
-      document.querySelectorAll('.card-content').forEach(c => c.classList.remove('highlight'));
-    }
-  });
-});
-</script>
+    <!-- Lógica JS movida a assets/js/servicios.js -->
+      const eased = t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2; // easeInOutCubic
