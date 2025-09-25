@@ -18,10 +18,10 @@ if (!isset($seo)) {
         'og_title' => 'Norttek Solutions',
         'og_description' => 'Seguridad confiable para tu hogar y oficina.',
         'og_url' => 'https://www.norttek.com.mx/',
-        'og_image' => 'https://www.norttek.com.mx/assets/images/og-image.jpg',
+    'og_image' => 'https://www.norttek.com.mx/assets/img/webpage.png',
         'twitter_title' => 'Norttek Solutions',
         'twitter_description' => 'Seguridad confiable para tu hogar y oficina.',
-        'twitter_image' => 'https://www.norttek.com.mx/assets/images/og-image.jpg'
+    'twitter_image' => 'https://www.norttek.com.mx/assets/img/webpage.png'
     ];
 }
 
