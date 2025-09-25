@@ -35,6 +35,16 @@ html {
   --nt-shadow-sm: 0 2px 6px rgba(15,23,42,.05);
   --nt-shadow: 0 6px 14px rgba(15,23,42,.08);
   --nt-gradient-border: linear-gradient(135deg, var(--nt-primary) 0%, var(--nt-primary-strong) 100%);
+
+  /* =============================================
+     Tokens específicos para Plan Cards (Internet / Telefonía)
+     Centraliza gradientes para reutilización cruzada
+     ============================================= */
+  --nt-plan-icon-base: linear-gradient(135deg,#6fa4ff,#4f8cff);
+  --nt-plan-grad-cool: linear-gradient(135deg,#6fa4ff,#336bff);
+  --nt-plan-grad-warm: linear-gradient(135deg,#ffb347,#ff8a2b);
+  --nt-plan-grad-indigo: linear-gradient(135deg,#6366f1,#4338ca);
+  --nt-plan-icon-sheen: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.55) 42%, rgba(255,255,255,0) 70%);
 }
 
 /* =============================================
@@ -55,6 +65,12 @@ html {
   --nt-hero-overlay: linear-gradient(rgba(5,14,22,.82),rgba(4,12,20,.92));
   --nt-hero-gradient-text: linear-gradient(90deg,#78b9ff,#9bc4ff 50%,#c5ddff 90%);
   --nt-gradient-border: linear-gradient(135deg, var(--nt-primary-strong) 0%, var(--nt-primary) 100%);
+  /* Ajustes opcionales (podrían diferir en dark si se requiere más contraste) */
+  --nt-plan-icon-base: linear-gradient(135deg,#6fa4ff,#4f8cff);
+  --nt-plan-grad-cool: linear-gradient(135deg,#78b9ff,#4d7dff);
+  --nt-plan-grad-warm: linear-gradient(135deg,#ffbe63,#ff983d);
+  --nt-plan-grad-indigo: linear-gradient(135deg,#7a7efb,#4a46d2);
+  --nt-plan-icon-sheen: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.65) 42%, rgba(255,255,255,0) 70%);
 }
 
 /* =============================================
@@ -403,6 +419,12 @@ header.nt-nav-shell.scrolled + main .nt-hero-wrapper { min-height: calc(100vh - 
    ============================================= */
 @keyframes ntPulse { 0% { box-shadow:0 0 0 0 rgba(111,164,255,.6);} 70% { box-shadow:0 0 0 16px rgba(111,164,255,0);} 100% { box-shadow:0 0 0 0 rgba(111,164,255,0);} }
 .nt-pulse { animation: ntPulse 1s ease 2; }
+
+/* =============================================
+  Animación global para sheen de íconos de planes
+  (aplicada en archivos específicos usando ntIconSheen)
+  ============================================= */
+@keyframes ntIconSheen { 0%{ transform:translateX(-65%);} 55%{ transform:translateX(65%);} 100%{ transform:translateX(65%);} }
 
 /* =============================================
    Form elements (inputs, textareas, groups)
