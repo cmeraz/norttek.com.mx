@@ -1,31 +1,35 @@
 <?php
 /**
- * Contenido principal para la página Control de Acceso
+ * Contenido principal para la página Control de Acceso (refactor 2025 design system)
  */
 ?>
-<section class="bg-white pb-16" style="padding-top:150px;">
-    <div class="max-w-5xl mx-auto px-6 lg:px-8">
+<section class="nt-section pb-16 bg-white" style="padding-top:150px;">
+    <div class="max-w-6xl mx-auto px-6 lg:px-10">
         <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-blue-700 mb-4">Control de Acceso Inteligente</h1>
-            <p class="text-lg text-gray-700">
-                Gestiona y protege el acceso a tus instalaciones con tecnología biométrica, tarjetas, códigos QR y más. Soluciones para empresas, escuelas y residencias.
+            <?= nt_heading('Control de Acceso Inteligente', 'fa-solid fa-door-open', 'xl', null, true, ['id' => 'control-acceso-hero','animate'=>true,'delay'=>'sm']); ?>
+            <p class="nt-lead max-w-3xl mx-auto mt-4">
+                Gestiona y protege el acceso a tus instalaciones con tecnología biométrica, tarjetas, códigos QR y más.
+                Soluciones para empresas, escuelas y residencias.
             </p>
         </div>
-        <div class="grid md:grid-cols-2 gap-10 items-center mb-16">
-            <div>
-                <h2 class="text-2xl font-semibold text-gray-900 mb-3">Ventajas de nuestro sistema</h2>
-                <ul class="list-disc list-inside text-gray-600 mb-4">
-                    <li>Control horario y reportes de asistencia</li>
-                    <li>Integración con cámaras y alarmas</li>
-                    <li>Acceso remoto y gestión desde app</li>
-                    <li>Instalación profesional y soporte</li>
+
+        <div class="grid md:grid-cols-2 gap-14 items-center">
+            <div class="order-2 md:order-1">
+                <?= nt_heading('Ventajas de nuestro sistema', 'fa-solid fa-shield-halved', 'md', null, true, ['animate'=>true]); ?>
+                <ul class="space-y-3 mt-6 mb-8">
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i><span>Control horario y reportes de asistencia</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i><span>Integración con cámaras y alarmas</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i><span>Acceso remoto y gestión desde app</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i><span>Instalación profesional y soporte</span></li>
                 </ul>
-                <a href="/contact.php" class="inline-block px-6 py-3 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition">
-                    Solicita asesoría
+                <a href="/contact.php" class="nt-btn nt-btn-primary">
+                    <i class="fa-solid fa-comments"></i><span>Solicita asesoría</span>
                 </a>
             </div>
-            <div class="flex justify-center">
-                <img src="/assets/images/control-acceso-demo.jpg" alt="Control de acceso Norttek" class="rounded-lg shadow-md w-full max-w-xs">
+            <div class="flex justify-center order-1 md:order-2">
+                <div class="relative rounded-2xl overflow-hidden shadow-lg max-w-sm w-full bg-gray-50">
+                    <img src="/assets/img/cctv-hero_img.jpg" alt="Dispositivo de control de acceso" class="w-full h-full object-cover">
+                </div>
             </div>
         </div>
     </div>
