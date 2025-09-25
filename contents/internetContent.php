@@ -66,9 +66,9 @@
   <div id="main-content-container">
     <div id="welcome-message" class="section-toggle" style="text-align:center; font-size:2.2rem; color:#a7b3cc; font-weight:800; margin:3rem 0;">Bienvenido a Norttek Internet</div>
     <div id="nuevo-content" class="section-toggle" style="display:none;">
-      <div id="personal-greeting" style="display:none; text-align:center; margin-bottom:1rem; color:#4f8cff; font-weight:800;">
+  <div id="personal-greeting" class="greet-anim" style="display:none; text-align:center; margin-bottom:1rem; color:#4f8cff; font-weight:800;">
         <div class="greet-line" style="font-size:1.6rem;">Hola, <span id="customer-name"></span></div>
-        <div id="greeting-detail" style="font-weight:600; color:#6b7a90; margin-top:.35rem;">Gracias por interesarte en nuestro servicio, aqui podrás encontrar información sobre nuestros planes, y sobre los costos de instalación. Si requieres mas información, puedes contactarnos directamente.</div>
+  <div id="greeting-detail" style="font-weight:600; color:#6b7a90; margin-top:.35rem;">Gracias por interesarte en nuestro servicio. Aquí verás cómo funciona, los costos según tu caso y los planes disponibles. Si tienes dudas puedes escribirnos en cualquier momento o contactar a un asesor.</div>
       </div>
       <main class="app-main">
         <!-- Proceso de instalación (primero) -->
