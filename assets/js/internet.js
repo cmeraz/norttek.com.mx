@@ -6,15 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     wave: "\uD83D\uDC4B", // 👋
     check: "\u2705"       // ✅
   };
-  // Ajuste por header fijo: desplaza el contenido para no quedar oculto
-  function applyHeaderOffset() {
-    var header = document.getElementById('site-header');
-    var container = document.querySelector('.internet-app');
-    if (!header || !container) return;
-    var h = header.offsetHeight || 0;
-    container.style.paddingTop = h + 'px';
-  }
-  applyHeaderOffset();
+  // Eliminado ajuste manual de paddingTop (se unifica con el layout global)
+  // Antes: applyHeaderOffset() añadía padding-top duplicando espacio.
   // Page fade-in
   try {
     var app = document.querySelector('.internet-app');
@@ -22,11 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var menu = document.getElementById('main-menu');
     if (menu) setTimeout(function(){ menu.classList.add('menu-visible'); }, 120);
   } catch(_){}
-  window.addEventListener('resize', function(){
-    // ligero debounce
-    clearTimeout(window.__hdrT);
-    window.__hdrT = setTimeout(applyHeaderOffset, 80);
-  });
+  // Ya no se recalcula padding al redimensionar; el layout global maneja compensaciones.
   // Helper para transiciones: oculta con clase y muestra con forzado de reflow
   function showSection(el) {
     if (!el) return;
