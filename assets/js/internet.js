@@ -266,6 +266,8 @@ document.addEventListener('DOMContentLoaded', function() {
         var usuEl = document.getElementById('cliente-auth-usuario');
         var passEl = document.getElementById('cliente-auth-pass');
         var telEl = document.getElementById('cliente-auth-tels');
+        var refNombre = document.getElementById('ref-pago-nombre');
+        var refUsuario = document.getElementById('ref-pago-usuario');
         if (nomEl) nomEl.textContent = auth.nombre || '';
         if (usuEl) {
           var simpleUser = (auth.usuario||'').replace(/@.*$/,'');
@@ -273,6 +275,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         if (passEl) passEl.textContent = 'norttek123';
         if (telEl) telEl.textContent = (auth.telefonos||[]).join(', ');
+        // Poblar referencias de pago
+        if (refNombre) {
+          var simpleName = auth.nombre || '';
+            refNombre.firstChild && (refNombre.firstChild.textContent = simpleName || '-- ');
+            refNombre.setAttribute('data-clip', simpleName);
+            var btnN = refNombre.querySelector('button.clip-btn'); if(btnN) btnN.setAttribute('data-clip', simpleName);
+        }
+        if (refUsuario) {
+          var simpleUser2 = (auth.usuario||'').replace(/@.*$/,'');
+            refUsuario.firstChild && (refUsuario.firstChild.textContent = simpleUser2 || '-- ');
+            refUsuario.setAttribute('data-clip', simpleUser2);
+            var btnU = refUsuario.querySelector('button.clip-btn'); if(btnU) btnU.setAttribute('data-clip', simpleUser2);
+        }
         box.style.display = 'block';
       } catch(_) {}
     } else {
@@ -738,6 +753,35 @@ document.addEventListener('DOMContentLoaded', function() {
         var wa = 'https://wa.me/526252690997?text=' + encodeURIComponent(copy);
         window.open(wa, '_blank');
       });
+    });
+  } catch(_) {}
+
+  // --- Copiar datos bancarios ---
+  try {
+    function copiarValor(valor){
+      if(!valor) return;
+      var ok = false;
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(valor).then(function(){
+          ok = true; if(window.NTNotify) NTNotify.success('Copiado');
+        }).catch(function(){ fallbackCopy(valor); });
+      } else { fallbackCopy(valor); }
+      function fallbackCopy(text){
+        try {
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position='fixed';
+          ta.style.top='-1000px';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          if(window.NTNotify) NTNotify.success('Copiado');
+        } catch(e){ if(window.NTNotify) NTNotify.warning('No se pudo copiar'); }
+      }
+    }
+    document.querySelectorAll('.cliente-card.cuentas-card .clip-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){ copiarValor(btn.getAttribute('data-clip')); });
     });
   } catch(_) {}
 
