@@ -38,13 +38,13 @@ function nt_is_active($itemUrl, $activePage){
     <div class="nt-nav-backdrop absolute inset-0 -z-10"></div>
     <!-- Barra superior compacta (info util + mini CTA) -->
     <div class="nt-nav-top hidden xl:flex items-center justify-between px-10 gap-6 text-xs tracking-wide">
+        <div class="flex items-center gap-2 text-[11px] text-gray-500">
+            <span class="hidden 2xl:inline">Innovando seguridad y comunicación · 2015—<?= date('Y') ?></span>
+        </div>
         <div class="flex items-center gap-6">
             <span class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-blue-600"></i><?= $business_address ?></span>
             <a href="tel:<?= $business_phone_tel ?>" class="flex items-center gap-2 hover:underline"><i class="fa-solid fa-phone text-blue-600"></i><?= $business_phone_raw ?></a>
             <a href="<?= $google_maps_link ?>" target="_blank" class="nt-btn nt-btn-outline" style="--_border:linear-gradient(135deg,#c8daec,#a7c6e2);font-size:.6rem;padding:.35rem .6rem;"> <i class="fa-solid fa-map"></i><span>Ubicación</span></a>
-        </div>
-        <div class="flex items-center gap-2 text-[11px] text-gray-500">
-            <span class="hidden 2xl:inline">Innovando seguridad y comunicación · 2015—<?= date('Y') ?></span>
             <button id="theme-toggle-desktop" class="nt-btn nt-btn-outline icon-only" aria-label="Cambiar tema" style="padding:.45rem .55rem;"><i class="fa-solid fa-moon"></i></button>
         </div>
     </div>
@@ -53,7 +53,7 @@ function nt_is_active($itemUrl, $activePage){
     <div class="nt-nav-main flex items-center justify-between px-4 md:px-8 py-2 gap-6">
         <!-- Logo -->
         <a href="/" class="flex items-center gap-2 shrink-0 group" aria-label="Inicio Norttek Solutions">
-            <img src="/assets/img/logo-norttek.png" alt="Norttek" class="w-12 md:w-14 h-auto drop-shadow" loading="lazy">
+            <img src="assets/img/logo-norttek.png" alt="Norttek" class="w-12 md:w-14 h-auto drop-shadow" loading="lazy">
             <span class="hidden sm:inline text-base md:text-lg font-semibold tracking-tight text-slate-800 group-hover:text-slate-900 dark:text-slate-100">Norttek Solutions</span>
         </a>
 
@@ -64,7 +64,7 @@ function nt_is_active($itemUrl, $activePage){
                 <?php if(isset($item['children'])): ?>
                     <div class="nt-nav-item has-panel relative">
                         <button class="nt-nav-link <?= $isActive?'is-active':'' ?>" aria-haspopup="true" aria-expanded="false" aria-controls="panel-servicios">
-                            <i class="<?= $item['icon'] ?>"></i><span><?= $item['label'] ?></span><i class="fa-solid fa-chevron-down caret"></i>
+                            <i class="<?= $item['icon'] ?>"></i><span class="lbl"><?= $item['label'] ?></span><i class="fa-solid fa-chevron-down caret"></i>
                         </button>
                         <!-- Mega panel -->
                         <div id="panel-servicios" class="nt-nav-panel" role="menu" aria-label="Servicios">
@@ -84,7 +84,7 @@ function nt_is_active($itemUrl, $activePage){
                     </div>
                 <?php else: ?>
                     <a href="<?= strpos($item['url'],'/')===0? $item['url'] : '/'.$item['url'] ?>" class="nt-nav-link <?= $isActive?'is-active':'' ?>" aria-current="<?= $isActive?'page':'false' ?>">
-                        <i class="<?= $item['icon'] ?>"></i><span><?= $item['label'] ?></span>
+                        <i class="<?= $item['icon'] ?>"></i><span class="lbl"><?= $item['label'] ?></span>
                     </a>
                 <?php endif; ?>
             <?php endforeach; ?>
@@ -93,19 +93,16 @@ function nt_is_active($itemUrl, $activePage){
         <!-- Acciones derecha -->
         <div class="flex items-center gap-2 md:gap-3">
             <!-- Buscador compacto -->
-            <form id="nav-search" class="nt-nav-search" role="search" method="get" action="/" aria-label="Buscar en el sitio" data-track="nav-search">
+            <form id="nav-search" class="nt-nav-search" role="search" method="get" action="/search.php" aria-label="Buscar en el sitio" data-track="nav-search">
                 <button type="button" class="search-trigger" aria-label="Abrir búsqueda" tabindex="0"><i class="fa-solid fa-magnifying-glass"></i></button>
                 <input type="text" name="q" placeholder="Buscar..." aria-label="Término de búsqueda" autocomplete="off" />
             </form>
-            <a href="https://tienda.norttek.com.mx" target="_blank" class="nt-btn nt-btn-primary hidden md:inline-flex" style="font-size:.72rem; padding:.55rem .85rem;">
-                data-track="nav" data-item="tienda" data-action="open" data-label="tienda-top">
+            <a href="https://tienda.norttek.com.mx" target="_blank" class="nt-btn nt-btn-primary hidden md:inline-flex" style="font-size:.72rem; padding:.55rem .85rem;" data-track="nav" data-item="tienda" data-action="open" data-label="tienda-top">
                 <i class="fa-solid fa-bag-shopping"></i><span>Tienda</span>
             </a>
-            <a href="/contact" class="nt-btn nt-btn-outline hidden xl:inline-flex" style="font-size:.7rem;padding:.55rem .85rem;">
-                data-track="nav" data-item="contacto" data-action="navigate" data-label="contacto-top">
+            <a href="/contact" class="nt-btn nt-btn-outline hidden xl:inline-flex" style="font-size:.7rem;padding:.55rem .85rem;" data-track="nav" data-item="contacto" data-action="navigate" data-label="contacto-top">
                 <i class="fa-solid fa-comments"></i><span>Contacto</span>
             </a>
-            <button id="theme-toggle-desktop-alt" class="nt-btn nt-btn-outline icon-only hidden xl:inline-flex" aria-label="Cambiar tema" data-track="nav" data-item="tema" data-action="toggle"><i class="fa-solid fa-moon"></i></button>
             <button id="mobile-open" class="lg:hidden nt-btn nt-btn-outline icon-only" aria-label="Menú móvil" data-track="nav" data-item="menu-mobile" data-action="open"><i class="fa-solid fa-bars"></i></button>
         </div>
     </div>
@@ -127,7 +124,7 @@ function nt_is_active($itemUrl, $activePage){
         <button id="theme-toggle-mobile" class="nt-btn nt-btn-outline w-full justify-center" style="font-size:.65rem;padding:.45rem .6rem;" aria-label="Cambiar tema">
             <i class="fa-solid fa-moon"></i><span>Tema</span>
         </button>
-        <form id="mobile-search" class="nt-mobile-search" role="search" method="get" action="/" data-track="nav-search-mobile">
+        <form id="mobile-search" class="nt-mobile-search" role="search" method="get" action="/search.php" data-track="nav-search-mobile">
             <div class="field">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" name="q" placeholder="Buscar..." aria-label="Buscar" autocomplete="off" />
@@ -173,6 +170,13 @@ function nt_is_active($itemUrl, $activePage){
 
 <style>
 /* ================= NAVBAR REWORK (scoped) ================ */
+.nt-main-shell { padding-top: 150px; }
+@media (max-width:1279px){ .nt-main-shell { padding-top: 108px; } }
+@media (max-width:1023px){ .nt-main-shell { padding-top: 92px; } }
+/* Cuando navbar contraído por scroll reducimos espacio visual extra */
+.nt-nav-shell.scrolled ~ main.nt-main-shell { padding-top: 120px; }
+@media (max-width:1279px){ .nt-nav-shell.scrolled ~ main.nt-main-shell { padding-top: 96px; } }
+@media (max-width:1023px){ .nt-nav-shell.scrolled ~ main.nt-main-shell { padding-top: 86px; } }
 .nt-nav-shell { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
 .nt-nav-backdrop { background: linear-gradient(135deg,rgba(255,255,255,.82),rgba(255,255,255,.65)); border-bottom:1px solid rgba(180,200,220,.4); }
 html.dark .nt-nav-backdrop { background: linear-gradient(135deg,rgba(16,29,43,.88),rgba(18,38,56,.7)); border-color:#203349; }
@@ -184,6 +188,7 @@ html.dark .nt-nav-top { color:#90a4b8; }
 .nt-nav-link { position:relative; display:inline-flex; align-items:center; gap:.55rem; padding:.55rem .95rem; font-weight:700; color:#2a516d; border-radius:8px; line-height:1.1; letter-spacing:.4px; transition:.25s; background:transparent; cursor:pointer; }
 .nt-nav-link i { font-size:.95em; }
 .nt-nav-link .caret { font-size:.6rem; opacity:.6; transition:transform .3s; }
+.nt-nav-link .lbl { display:inline; }
 .nt-nav-link:hover { color:#174261; background:rgba(0,0,0,.04); }
 .nt-nav-link.is-active { color:#0f3f76; background:linear-gradient(#fff,#fff) padding-box,var(--nt-gradient-border) border-box; border:1px solid transparent; box-shadow:0 4px 8px rgba(15,23,42,.06); }
 html.dark .nt-nav-link { color:#b5c8d9; }
@@ -263,6 +268,10 @@ html.dark .nt-mobile-link.active { background:linear-gradient(var(--nt-surface-a
 @media (min-width:1024px){
   .nt-nav-shell.scrolled .nt-nav-top{ transform:translateY(-100%); opacity:0; pointer-events:none; }
   .nt-nav-shell.scrolled .nt-nav-backdrop{ backdrop-filter:blur(18px); }
+    .nt-nav-shell.scrolled .nt-primary-nav .nt-nav-link { padding:.55rem .65rem; }
+        .nt-nav-shell.scrolled .nt-primary-nav .nt-nav-link .lbl { width:0; opacity:0; margin:0; padding:0; overflow:hidden; transition:.3s; }
+        .nt-nav-shell.scrolled .nt-primary-nav .nt-nav-item.has-panel .nt-nav-link .caret { display:none; }
+    .nt-nav-shell.scrolled .nt-primary-nav:hover .nt-nav-link .lbl { width:auto; opacity:1; padding-left:.1rem; }
 }
 </style>
 
@@ -319,11 +328,11 @@ html.dark .nt-mobile-link.active { background:linear-gradient(var(--nt-surface-a
   // Tema (íconos) reutilizando NTTheme
   function updateThemeIcons(){
     const isDark = document.documentElement.classList.contains('dark');
-    document.querySelectorAll('#theme-toggle-desktop i, #theme-toggle-desktop-alt i, #theme-toggle-mobile i').forEach(ic=>{
+        document.querySelectorAll('#theme-toggle-desktop i, #theme-toggle-mobile i').forEach(ic=>{
       ic.classList.toggle('fa-moon', !isDark); ic.classList.toggle('fa-sun', isDark);
     });
   }
-  ['theme-toggle-desktop','theme-toggle-desktop-alt','theme-toggle-mobile'].forEach(id=>{
+    ['theme-toggle-desktop','theme-toggle-mobile'].forEach(id=>{
     const btn=document.getElementById(id); if(!btn) return; btn.addEventListener('click',()=>{ if(window.NTTheme){ NTTheme.toggle(); updateThemeIcons(); }});
   });
   updateThemeIcons();
