@@ -21,7 +21,7 @@ $seo = [
     'keywords'    => 'Nosotros, Norttek, historia, misión, valores, seguridad, automatización, tecnología',
     'robots'      => 'index, follow',
     'og_url'      => 'https://www.norttek.com.mx/about',
-    'og_image'    => 'https://www.norttek.com.mx/assets/images/og-image.jpg'
+    'og_image'    => 'https://www.norttek.com.mx/assets/img/webpage.png'
 ];
 
 // ----------- HERENCIA AUTOMÁTICA PARA OG Y TWITTER (no repitas datos) -----------
