@@ -16,7 +16,7 @@
   <p class="text-slate-200 text-lg leading-relaxed opacity-0 translate-y-10 max-w-xl">
         Gestiona todas las comunicaciones de tu empresa de manera <strong>centralizada desde la nube</strong>. Administra <strong>extensiones</strong>, configura <strong>troncales</strong>, IVR personalizado, grabación de llamadas y <strong>reportes detallados</strong>. Accede desde <strong>PC, smartphone o teléfono físico</strong>, sin infraestructura local ni mantenimiento complejo.
       </p>
-  <div class="flex flex-wrap gap-4 opacity-0 translate-y-10 nt-stack-tight">
+  <div class="flex flex-col sm:flex-row sm:flex-wrap gap-4 opacity-0 translate-y-10 nt-stack-tight">
         <a href="#planes" class="nt-btn nt-btn-primary nt-pulse" role="button"><i class="fa-solid fa-coins"></i><span>Cotiza tu plan</span></a>
         <a href="#demo" class="nt-btn nt-btn-outline" role="button"><i class="fa-solid fa-rocket"></i><span>Solicitar demo</span></a>
         <a href="#faq" class="nt-btn nt-btn-accent" role="button"><i class="fas fa-question-circle"></i><span>Preguntas Frecuentes</span></a>
@@ -37,7 +37,7 @@
     </div>
     <div class="grid md:grid-cols-1 gap-8">
       <!-- Card 1: PC / Laptop -->
-      <div class="md:flex md:items-center md:gap-8 bg-white rounded-2xl shadow-lg p-6 transform transition hover:-translate-y-2 hover:shadow-2xl animate-fade-in">
+      <div class="flex flex-col md:flex-row md:items-center md:gap-8 bg-white rounded-2xl shadow-lg p-6 transform transition hover:-translate-y-2 hover:shadow-2xl animate-fade-in">
         <div class="md:w-1/3 flex justify-center">
           <img src="https://4423252.fs1.hubspotusercontent-na1.net/hubfs/4423252/net2phones%20business%20phone%20system%20interface%20on%20a%20laptop.webp" alt="Interfaz PBX en laptop" class="rounded-2xl shadow" loading="lazy">
         </div>
@@ -51,11 +51,11 @@
         </div>
       </div>
       <!-- Card 2: Smartphone / Linkus -->
-      <div class="md:flex md:items-center md:gap-8 flex-col-reverse md:flex-row-reverse bg-white rounded-2xl shadow-lg p-6 transform transition hover:-translate-y-2 hover:shadow-2xl animate-fade-in">
-        <div class="md:w-1/3 flex justify-center">
+      <div class="flex flex-col md:flex-row-reverse md:items-center md:gap-8 bg-white rounded-2xl shadow-lg p-6 transform transition hover:-translate-y-2 hover:shadow-2xl animate-fade-in">
+        <div class="md:w-1/3 flex justify-center mb-6 md:mb-0">
           <img src="https://4423252.fs1.hubspotusercontent-na1.net/hubfs/4423252/net2phone%D1%91s%20business%20phone%20system%20interface%20on%20mobile%20and%20tablet.webp" alt="App Linkus en smartphone" class="rounded-2xl shadow" loading="lazy">
         </div>
-        <div class="md:w-2/3 mt-6 md:mt-0 text-left">
+        <div class="md:w-2/3 text-left">
           <?= nt_heading('Smartphone / App Linkus', 'fa-solid fa-mobile-screen-button', 'md', null, ['class'=>'nt-heading-accent-bar']); ?>
           <p class="text-gray-700 text-lg leading-relaxed">
             Mantente <span class="font-semibold text-blue-600">conectado estés donde estés</span>. Con la app <span class="font-semibold">Linkus</span> para móvil, puedes realizar y recibir llamadas, transferir, grabar y acceder a reportes desde cualquier lugar.
@@ -64,11 +64,11 @@
         </div>
       </div>
       <!-- Card 3: Teléfono físico SIP -->
-      <div class="md:flex md:items-center md:gap-8 bg-white rounded-2xl shadow-lg p-6 transform transition hover:-translate-y-2 hover:shadow-2xl animate-fade-in">
-        <div class="md:w-1/3 flex justify-center">
+      <div class="flex flex-col md:flex-row md:items-center md:gap-8 bg-white rounded-2xl shadow-lg p-6 transform transition hover:-translate-y-2 hover:shadow-2xl animate-fade-in">
+        <div class="md:w-1/3 flex justify-center mb-6 md:mb-0">
           <img src="https://4423252.fs1.hubspotusercontent-na1.net/hubfs/4423252/Desk%20Business%20Phone.webp" alt="Teléfono físico SIP" class="rounded-2xl shadow" loading="lazy">
         </div>
-        <div class="md:w-2/3 mt-6 md:mt-0 text-left">
+        <div class="md:w-2/3 text-left">
           <?= nt_heading('Teléfono físico SIP', 'fa-solid fa-phone', 'md', null, ['class'=>'nt-heading-accent-bar']); ?>
           <p class="text-gray-700 text-lg leading-relaxed">
             Si prefieres la experiencia tradicional de un teléfono, los <span class="font-semibold text-blue-600">dispositivos SIP físicos</span> se integran perfectamente con tu PBX Norttek.
