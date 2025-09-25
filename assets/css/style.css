@@ -91,7 +91,7 @@ body {
   letter-spacing: .3px;
   display: inline-flex;
   align-items: flex-start;
-  gap: .75rem; /* more spacing so icon doesn't collide */
+  gap: 1.05rem; /* mayor respiro entre icono y texto */
   color: var(--nt-text);
   position: relative;
   flex-wrap: wrap;
@@ -111,13 +111,24 @@ body {
   color: var(--nt-text-muted);
   margin-top: .35rem;
 }
-/* Size variants with deliberate visual hierarchy */
-.nt-heading-xl { font-size: clamp(2.05rem, 3vw, 2.5rem); font-weight: 850; color: #102b46; }
-.nt-heading-lg { font-size: clamp(1.7rem, 2.4vw, 2rem); font-weight: 800; color: #143553; }
-.nt-heading-md { font-size: clamp(1.35rem, 1.9vw, 1.55rem); font-weight: 780; color: #184261; }
-.nt-heading-sm { font-size: 1.08rem; font-weight: 700; color: #1e5375; letter-spacing:.35px; }
-.nt-heading-emphasis.nt-heading-xl { font-size: clamp(2.35rem,3.6vw,3rem); background: var(--nt-hero-gradient-text); -webkit-background-clip:text; background-clip:text; color:transparent; }
-.nt-heading-emphasis .nt-sub { color:#e2edf6; }
+/* Size variants refinados (menor contraste y más consistencia en ritmo vertical) */
+.nt-heading-xl { font-size: clamp(1.95rem, 2.8vw, 2.35rem); font-weight: 820; color: #123652; letter-spacing:.2px; }
+.nt-heading-lg { font-size: clamp(1.55rem, 2.15vw, 1.85rem); font-weight: 780; color: #174261; }
+.nt-heading-md { font-size: clamp(1.28rem, 1.75vw, 1.45rem); font-weight: 760; color: #1c4d6f; }
+.nt-heading-sm { font-size: .98rem; font-weight: 690; color: #225b7d; letter-spacing:.25px; }
+.nt-heading-emphasis.nt-heading-xl { font-size: clamp(2.05rem,3vw,2.5rem); background: var(--nt-hero-gradient-text); -webkit-background-clip:text; background-clip:text; color:transparent; filter: drop-shadow(0 2px 10px rgba(0,0,0,.28)); }
+.nt-heading-emphasis .nt-sub { color:#d9e6ef; }
+
+/* Modo invertido (para fondos oscuros o hero con overlay) */
+.nt-heading-invert { color:#f2f7fa !important; text-shadow:0 2px 6px rgba(0,0,0,.45); }
+.nt-heading-invert i { color: var(--nt-primary-strong); filter:drop-shadow(0 2px 4px rgba(0,0,0,.4)); }
+.nt-heading-invert .nt-sub { color:#c4d6e2 !important; }
+.nt-heading-invert.nt-heading-emphasis { background:none; -webkit-background-clip:initial; background-clip:initial; color:#ffffff !important; }
+
+/* Hero utility para centralizar y balancear */
+.nt-heading-hero { justify-content:center; text-align:center; line-height:1.08; width:100%; }
+.nt-heading-hero i { font-size:1.05em; }
+.nt-heading-hero .nt-sub { margin-top:.55rem; }
 
 /* Subtle animation base (opt-in) */
 .nt-heading-anim { opacity:0; transform: translateY(14px) scale(.985); transition: opacity .6s cubic-bezier(.4,.8,.4,1), transform .6s cubic-bezier(.4,.8,.4,1); }
@@ -127,9 +138,7 @@ body {
 .nt-heading-anim.delay-lg { transition-delay:.28s; }
 
 /* Decorative underline opt-in */
-.nt-heading.underline::after { 
-  content:''; position:absolute; left:0; bottom:-6px; width:56px; height:4px; border-radius:3px; background: var(--nt-gradient-border);
-}
+/* Subrayado decorativo eliminado para un look más limpio (antes: .nt-heading.underline::after) */
 
 /* =============================================
    Unified Button System (.nt-btn)
@@ -291,6 +300,19 @@ body {
 .dark .nt-alert-warning { background: rgba(245,158,11,.25); color:#ffdca7; }
 .dark .nt-alert-danger { background: rgba(255,82,82,.22); color:#ffb9b9; }
 
+/* =============================================
+   Timeline reutilizable (.nt-timeline)
+   ============================================= */
+.nt-timeline { position:relative; }
+.nt-timeline-track { position:relative; margin:2rem 0 0; padding-left:1.75rem; border-left:4px solid #e0e8f2; }
+.nt-timeline-item { position:relative; margin:0 0 2.2rem; display:flex; gap:1.2rem; }
+.nt-timeline-badge { position:absolute; left:-2.25rem; top:.15rem; width:2.6rem; height:2.6rem; background: linear-gradient(180deg,var(--nt-primary),var(--nt-primary-strong)); color:#fff; font-weight:800; font-size:.78rem; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 14px rgba(15,23,42,.15); }
+.nt-timeline-content { background: var(--nt-surface); border:1px solid #e7edf6; border-radius: var(--nt-radius-lg); padding:1rem 1.15rem 1rem; box-shadow: var(--nt-shadow-sm); flex:1; }
+.nt-timeline-title { font-size:1rem; font-weight:700; margin:0 0 .35rem; letter-spacing:.3px; color: var(--nt-text); }
+.nt-timeline-text { font-size:.85rem; line-height:1.5; color: var(--nt-text-muted); margin:0; }
+.dark .nt-timeline-track { border-color:#203349; }
+.dark .nt-timeline-content { background: var(--nt-surface-alt); border-color:#203349; }
+.dark .nt-timeline-badge { box-shadow:0 6px 16px rgba(0,0,0,.4); }
 /* =============================================
    CTA highlight pulse reused globally
    ============================================= */
