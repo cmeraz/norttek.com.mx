@@ -150,12 +150,12 @@
             Como guía: pocos dispositivos y uso básico funcionan bien con planes de menor velocidad; para una familia completa de 4-6 personas y múltiples dispositivos, recomendamos planes de 20 Mbps o más.
           </p>
           <div class="plan-cards int-plans">
-            <!-- Plan Esencial -->
+            <!-- Plan Starter -->
             <article class="int-plan-card animate-card nt-soft-seq" data-nt-anim data-megas="10">
               <header class="int-plan-header">
-                <div class="int-plan-icon esencial" data-nt-icon-drift><i class="fa-solid fa-bolt" aria-hidden="true"></i></div>
-                <h3 class="int-plan-title">Plan Esencial</h3>
-                <p class="int-plan-tagline">Conecta y navega lo básico</p>
+                <div class="int-plan-icon esencial" data-nt-icon-drift><i class="fa-solid fa-seedling" aria-hidden="true"></i></div>
+                <h3 class="int-plan-title">Starter 10 Mbps</h3>
+                <p class="int-plan-tagline">Ideal para comenzar</p>
               </header>
               <ul class="int-plan-features">
                 <li><i class="fa-solid fa-mobile"></i> Ideal 1-2 dispositivos</li>
@@ -170,17 +170,17 @@
               </div>
               <div class="int-plan-cta">
                 <a class="btn-contratar-link" href="#contratar" target="_blank">
-                  <i class="fa-solid fa-rocket icon" aria-hidden="true"></i> Obtener Plan
+                  <i class="fa-solid fa-hand-pointer icon" aria-hidden="true"></i> Elegir este plan
                 </a>
               </div>
             </article>
-            <!-- Plan Avanzado -->
+            <!-- Plan Plus -->
             <article class="int-plan-card destacado animate-card nt-soft-seq" data-nt-anim data-megas="20">
               <div class="int-plan-ribbon" aria-label="Plan Recomendado"><span>Recomendado</span></div>
               <header class="int-plan-header">
-                <div class="int-plan-icon avanzado" data-nt-icon-drift><i class="fa-solid fa-bolt" aria-hidden="true"></i></div>
-                <h3 class="int-plan-title">Plan Avanzado</h3>
-                <p class="int-plan-tagline">Familias y uso concurrente</p>
+                <div class="int-plan-icon avanzado" data-nt-icon-drift><i class="fa-solid fa-layer-group" aria-hidden="true"></i></div>
+                <h3 class="int-plan-title">Plus 20 Mbps</h3>
+                <p class="int-plan-tagline">Más dispositivos en casa</p>
               </header>
               <ul class="int-plan-features">
                 <li><i class="fa-solid fa-mobile"></i> 3-8 dispositivos</li>
@@ -195,16 +195,16 @@
               </div>
               <div class="int-plan-cta">
                 <a class="btn-contratar-link" href="#contratar" target="_blank">
-                  <i class="fa-solid fa-rocket icon" aria-hidden="true"></i> Obtener Plan
+                  <i class="fa-solid fa-hand-pointer icon" aria-hidden="true"></i> Elegir este plan
                 </a>
               </div>
             </article>
-            <!-- Plan Superior -->
+            <!-- Plan Ultra -->
             <article class="int-plan-card animate-card nt-soft-seq" data-nt-anim data-megas="30">
               <header class="int-plan-header">
-                <div class="int-plan-icon superior" data-nt-icon-drift><i class="fa-solid fa-bolt" aria-hidden="true"></i></div>
-                <h3 class="int-plan-title">Plan Superior</h3>
-                <p class="int-plan-tagline">Multiuso + gaming ocasional</p>
+                <div class="int-plan-icon superior" data-nt-icon-drift><i class="fa-solid fa-rocket" aria-hidden="true"></i></div>
+                <h3 class="int-plan-title">Ultra 30 Mbps</h3>
+                <p class="int-plan-tagline">Streaming y gaming fluido</p>
               </header>
               <ul class="int-plan-features">
                 <li><i class="fa-solid fa-mobile"></i> 8+ dispositivos</li>
@@ -219,7 +219,7 @@
               </div>
               <div class="int-plan-cta">
                 <a class="btn-contratar-link" href="#contratar" target="_blank">
-                  <i class="fa-solid fa-rocket icon" aria-hidden="true"></i> Obtener Plan
+                  <i class="fa-solid fa-hand-pointer icon" aria-hidden="true"></i> Elegir este plan
                 </a>
               </div>
             </article>
@@ -227,7 +227,7 @@
           </section>
 
           <!-- Costos de Instalación (refactor) -->
-        <section class="instalacion-costos premium-box scroll-anim" id="instalacion-costos" data-nt-anim>
+  <section class="instalacion-costos premium-box scroll-anim inst-costs-hidden" id="instalacion-costos" data-nt-anim>
           <div class="inst-header">
             <i class="fa-solid fa-screwdriver-wrench instalacion-icon" aria-hidden="true"></i>
             <?= nt_heading('Costos de Instalación', 'fa-solid fa-screwdriver-wrench', 'md', null, ['animate'=>true,'delay'=>'sm','class'=>'section-title','style'=>'margin:0;']); ?>
