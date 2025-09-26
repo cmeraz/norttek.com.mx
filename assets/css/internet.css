@@ -368,13 +368,15 @@
 }
 .internet-app .btn-contratar-link .icon { font-size:1.1rem; }
 /* CTA Instalación refinado */
-.contrata-ahora-btn{display:inline-flex;align-items:center;gap:.55rem;background:linear-gradient(135deg,#1e3a8a,#1d4ed8);color:#fff !important;font-weight:700;padding:.85rem 1.35rem;border-radius:14px;box-shadow:0 4px 14px -4px rgba(30,58,138,.45),0 2px 6px rgba(30,58,138,.35);text-decoration:none;position:relative;overflow:hidden;isolation:isolate;letter-spacing:.5px;font-size:.85rem;}
-.contrata-ahora-btn i{font-size:1rem;opacity:.95;}
-.contrata-ahora-btn:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.35),rgba(255,255,255,0) 60%);opacity:.35;mix-blend-mode:overlay;}
-.contrata-ahora-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px -6px rgba(30,58,138,.55),0 3px 8px rgba(30,58,138,.35);} 
-.contrata-ahora-btn:active{transform:translateY(0);} 
-.cta-install-anim{animation:ctaPulse 4.5s ease-in-out infinite;}
-@keyframes ctaPulse{0%,100%{box-shadow:0 4px 14px -4px rgba(30,58,138,.45),0 2px 6px rgba(30,58,138,.35);}50%{box-shadow:0 6px 22px -6px rgba(30,58,138,.60),0 4px 10px rgba(30,58,138,.40);}}
+.contrata-ahora-btn{display:inline-flex;align-items:center;gap:.55rem;background:linear-gradient(145deg,#0038b8,#005dff);color:#fff !important;font-weight:700;padding:.9rem 1.5rem;border-radius:16px;box-shadow:0 6px 20px -6px rgba(0,70,190,.55),0 3px 10px rgba(0,70,190,.38);text-decoration:none;position:relative;overflow:hidden;isolation:isolate;letter-spacing:.55px;font-size:.86rem;line-height:1;}
+.contrata-ahora-btn i{font-size:1.05rem;opacity:.97;}
+.contrata-ahora-btn:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 32% 18%,rgba(255,255,255,.42),rgba(255,255,255,0) 62%);opacity:.38;mix-blend-mode:overlay;}
+.contrata-ahora-btn:after{content:"";position:absolute;inset:-2px;border:1px solid rgba(255,255,255,.18);border-radius:inherit;pointer-events:none;}
+.contrata-ahora-btn:hover{box-shadow:0 8px 26px -8px rgba(0,68,188,.6),0 4px 12px rgba(0,68,188,.40);} 
+.contrata-ahora-btn:active{transform:translateY(1px);} 
+.cta-install-anim{animation:ctaBreath 5.5s ease-in-out infinite;}
+@keyframes ctaBreath{0%{transform:translateY(0) scale(1);box-shadow:0 6px 20px -6px rgba(0,70,190,.55),0 3px 10px rgba(0,70,190,.38);}35%{transform:translateY(0) scale(1.028);box-shadow:0 10px 26px -8px rgba(0,70,190,.60),0 5px 14px rgba(0,70,190,.42);}70%{transform:translateY(0) scale(1.012);box-shadow:0 7px 22px -7px rgba(0,70,190,.52),0 4px 11px rgba(0,70,190,.38);}100%{transform:translateY(0) scale(1);box-shadow:0 6px 20px -6px rgba(0,70,190,.55),0 3px 10px rgba(0,70,190,.38);}}
+@media (prefers-reduced-motion: reduce){ .cta-install-anim{animation:none !important;} }
 
 /* Install */
 .internet-app .instalacion-header { display:flex; align-items:center; gap:.75rem; margin-bottom:.6rem; }
