@@ -488,5 +488,23 @@
   </div>
 </div>
 
+<!-- Modal Captura de Nombre (para CTA Instalación) -->
+<div id="nombre-modal-backdrop" class="internet-modal" style="display:none;" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Captura de nombre para solicitud de instalación">
+  <div class="internet-modal-dialog" role="document">
+    <button type="button" class="modal-close" data-close-nombre aria-label="Cerrar">&times;</button>
+    <h3 class="modal-title"><i class="fa-solid fa-user" aria-hidden="true"></i> Tu Nombre</h3>
+    <p class="modal-desc">Ingresa tu nombre para personalizar el mensaje de WhatsApp y agilizar tu solicitud.</p>
+    <form id="nombre-modal-form" class="modal-form" autocomplete="off">
+      <label for="nombre-modal-input" class="modal-label">Nombre completo</label>
+      <input id="nombre-modal-input" name="nombre" type="text" class="modal-input" placeholder="Ej. Juan Pérez" maxlength="60" required />
+      <div class="modal-actions">
+        <button type="button" class="btn-secundario" data-close-nombre>Cancelar</button>
+        <button type="submit" class="btn-primario">Continuar</button>
+      </div>
+    </form>
+    <small class="modal-hint">Guardaremos tu nombre localmente para reutilizarlo en futuras consultas.</small>
+  </div>
+</div>
+
 <!-- Script específico de la vista de Internet -->
 <script src="assets/js/internet.js"></script>
