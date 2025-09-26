@@ -145,7 +145,7 @@ $footerVariantClass = $footerStyle === 'light' ? ' nt-footer--light' : '';
     ?>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-Iu7OGb9l8tW0JQIS+Vw8r4aQe6oB6y3n7Vj1E3IKWvQz8Qk+YxXoR37kaG0i9I5YwG4kM8MW0Cwo3uRasJ0V1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <!-- Contenedor de notificaciones -->

@@ -349,59 +349,99 @@ if (!function_exists('faq')) {
 @media (prefers-reduced-motion:reduce){.nt-faq-toggle i{transition:none}.nt-faq-a[aria-hidden="false"],.nt-faq-a:not([hidden]){animation:none}}
 </style>
 <script>
-(function(){
-  const lists=document.querySelectorAll('[data-faq-list]'); if(!lists.length) return;
-  const norm=s=>s.toLowerCase().normalize('NFD').replace(/\\p{Diacritic}/gu,'');
-  const setExpanded=(btn,expand)=>{
-    const id=btn.getAttribute('aria-controls'); const panel=document.getElementById(id);
-    btn.setAttribute('aria-expanded', expand?'true':'false');
-    if(expand){ panel.hidden=false; panel.setAttribute('aria-hidden','false'); }
-    else{ panel.hidden=true; panel.setAttribute('aria-hidden','true'); }
+document.addEventListener('DOMContentLoaded', function(){
+  // Normaliza texto sin diacríticos (compatible)
+  var norm = function(s){ return (s||'').toString().toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,''); };
+
+  var setExpanded = function(btn, expand){
+    if (!btn) return;
+    var id = btn.getAttribute('aria-controls');
+    if (!id) return;
+    var panel = document.getElementById(id);
+    btn.setAttribute('aria-expanded', expand ? 'true' : 'false');
+    if (panel) {
+      panel.hidden = !expand;
+      panel.setAttribute('aria-hidden', expand ? 'false' : 'true');
+    }
   };
-  lists.forEach(list=>{
-    const section=list.closest('.nt-faq');
-    const search=section.querySelector('[data-faq-search]');
-    const btnExpand=section.querySelector('[data-faq-expand]');
-    const btnCollapse=section.querySelector('[data-faq-collapse]');
-    const items=[...list.querySelectorAll('.nt-faq-item')];
-    const toggles=items.map(it=>it.querySelector('[data-faq-toggle]'));
 
-    list.addEventListener('click',ev=>{
-      const btn=ev.target.closest('[data-faq-toggle]'); if(!btn) return;
-      const exp=btn.getAttribute('aria-expanded')==='true'; setExpanded(btn,!exp);
-      const host=btn.closest('.nt-faq-item'); if(host?.id) history.replaceState(null,'','#'+host.id);
+  var lists = document.querySelectorAll('[data-faq-list]');
+  if (!lists.length) return;
+
+  // Delegación global para Expandir/Colapsar — funciona aunque el botón esté fuera del .nt-faq
+  document.addEventListener('click', function(ev){
+    var expandBtn  = ev.target.closest && ev.target.closest('[data-faq-expand]');
+    var collapseBtn= ev.target.closest && ev.target.closest('[data-faq-collapse]');
+    if (!expandBtn && !collapseBtn) return;
+
+    lists.forEach(function(list){
+      var toggles = Array.prototype.slice.call(list.querySelectorAll('[data-faq-toggle]'));
+      var expandAll = !!expandBtn;
+      toggles.forEach(function(b){ setExpanded(b, expandAll); });
     });
-    list.addEventListener('keydown',ev=>{
-      if(!['Enter',' '].includes(ev.key)) return;
-      const btn=ev.target.closest('[data-faq-toggle]'); if(!btn) return; ev.preventDefault(); btn.click();
+  }, false);
+
+  lists.forEach(function(list){
+    var section = list.closest('.nt-faq');
+    var search  = section ? section.querySelector('[data-faq-search]') : null;
+
+    // Toggle individual
+    list.addEventListener('click', function(ev){
+      var btn = ev.target.closest && ev.target.closest('[data-faq-toggle]');
+      if (!btn) return;
+      var expanded = btn.getAttribute('aria-expanded') === 'true';
+      setExpanded(btn, !expanded);
+
+      var host = btn.closest('.nt-faq-item');
+      if (host && host.id) {
+        history.replaceState(null, '', '#' + host.id);
+      }
     });
 
-    if(search){
-      let last=''; const doFilter=()=>{
-        const q=norm(search.value||''); if(q===last) return; last=q;
-        items.forEach(it=>{
-          const txt=norm(it.textContent||''); const match=q.length<2?true:txt.includes(q);
-          it.style.display=match?'':'none';
+    // Accesibilidad teclado
+    list.addEventListener('keydown', function(ev){
+      if (ev.key !== 'Enter' && ev.key !== ' ') return;
+      var btn = ev.target.closest && ev.target.closest('[data-faq-toggle]');
+      if (!btn) return;
+      ev.preventDefault();
+      btn.click();
+    });
+
+    // Búsqueda
+    if (search) {
+      var last = '';
+      var doFilter = function(){
+        var q = norm(search.value);
+        if (q === last) return;
+        last = q;
+        var items = Array.prototype.slice.call(list.querySelectorAll('.nt-faq-item'));
+        items.forEach(function(it){
+          var txt = norm(it.textContent || '');
+          var match = q.length < 2 ? true : txt.includes(q);
+          it.style.display = match ? '' : 'none';
         });
       };
-      search.addEventListener('input',doFilter);
+      search.addEventListener('input', doFilter);
     }
 
-    if(btnExpand) btnExpand.addEventListener('click',()=>toggles.forEach(b=>setExpanded(b,true)));
-    if(btnCollapse) btnCollapse.addEventListener('click',()=>toggles.forEach(b=>setExpanded(b,false)));
-
-    const openByHash=()=>{
-      const id=decodeURIComponent(location.hash||'').replace('#',''); if(!id) return;
-      const target=document.getElementById(id);
-      if(target && target.classList.contains('nt-faq-item')){
-        const btn=target.querySelector('[data-faq-toggle]'); setExpanded(btn,true);
-        target.classList.add('highlight'); setTimeout(()=>target.classList.remove('highlight'),1600);
-        target.scrollIntoView({behavior:'smooth',block:'start'});
+    // Deep-link por hash (#faq-cartuchos-q-3)
+    var openByHash = function(){
+      var raw = (location.hash || '').slice(1);
+      if (!raw) return;
+      var id = decodeURIComponent(raw);
+      var target = document.getElementById(id);
+      if (target && target.classList.contains('nt-faq-item')) {
+        var btn = target.querySelector('[data-faq-toggle]');
+        setExpanded(btn, true);
+        target.classList.add('highlight');
+        setTimeout(function(){ target.classList.remove('highlight'); }, 1600);
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     };
-    window.addEventListener('hashchange',openByHash); setTimeout(openByHash,50);
+    window.addEventListener('hashchange', openByHash);
+    setTimeout(openByHash, 50);
   });
-})();
+});
 </script>
 HTML;
   }
