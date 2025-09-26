@@ -1,5 +1,7 @@
 /* === Instalación Costos Refactor === */
 .instalacion-costos{margin-top:2.5rem;position:relative;display:flex;flex-direction:column;gap:2rem}
+.instalacion-costos.inst-costs-hidden{display:none !important;opacity:0;transform:translateY(20px)}
+.instalacion-costos.inst-costs-visible{display:flex;opacity:1;transform:translateY(0);transition:opacity .45s ease,transform .5s ease}
 .instalacion-costos .inst-header .intro{margin-top:.65rem;color:#475569;font-size:.9rem;line-height:1.4}
 .escenarios-grid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));align-items:stretch}
 .escenario-card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:1.1rem 1.15rem;display:flex;flex-direction:column;gap:.9rem;position:relative;box-shadow:0 4px 14px -4px rgba(15,23,42,.08),0 2px 6px rgba(15,23,42,.04);transition:box-shadow .25s,border-color .25s}
@@ -322,7 +324,12 @@
 .internet-app .int-plan-price { font-size:1.75rem; font-weight:900; letter-spacing:.45px; display:inline-flex; align-items:baseline; gap:.25rem; background:linear-gradient(90deg,#1d4d7a,#153551); -webkit-background-clip:text; background-clip:text; color:transparent; position:relative; }
 .internet-app .int-plan-price small { font-size:.7rem; font-weight:700; color:#4a6a82; letter-spacing:.6px; background:transparent; -webkit-background-clip:initial; background-clip:initial; color:#4a6a82; }
 .internet-app .int-plan-cta { margin-top:auto; text-align:center; }
-.internet-app .int-plan-card .btn-contratar-link { font-size:.68rem; padding:.7rem .95rem; font-weight:800; letter-spacing:.5px; }
+.internet-app .int-plan-card .btn-contratar-link { font-size:.7rem; padding:.75rem 1rem; font-weight:800; letter-spacing:.6px; border-radius:40px; background:linear-gradient(135deg,#2563eb,#4f46e5); color:#fff; position:relative; overflow:hidden; box-shadow:0 4px 14px -4px rgba(37,99,235,.6),0 2px 6px rgba(79,70,229,.45); transition:background .35s, transform .25s, box-shadow .35s; }
+.internet-app .int-plan-card .btn-contratar-link:before { content:""; position:absolute; inset:0; background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.35),transparent 60%); opacity:.25; transition:opacity .4s; }
+.internet-app .int-plan-card .btn-contratar-link:hover { background:linear-gradient(135deg,#1d4ed8,#4338ca); box-shadow:0 6px 22px -6px rgba(30,64,175,.55),0 3px 10px -2px rgba(67,56,202,.5); transform:translateY(-2px); }
+.internet-app .int-plan-card .btn-contratar-link:active { transform:translateY(0); box-shadow:0 3px 10px -4px rgba(30,64,175,.55),0 2px 6px -2px rgba(67,56,202,.5); }
+.internet-app .int-plan-card .btn-contratar-link:focus-visible { outline:2px solid #fff; outline-offset:2px; }
+.internet-app .int-plan-card .btn-contratar-link .icon { font-size:1rem; }
 @media (max-width: 900px){
   .internet-app .int-plan-card { padding:1.3rem 1.05rem 1.4rem; }
   .internet-app .int-plan-price { font-size:1.55rem; }
