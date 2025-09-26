@@ -26,13 +26,17 @@ window.addEventListener('scroll', () => {
 // Smooth scroll para anclas
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href') || '';
+        // Ignorar href="#" (no objetivo específico)
+        if(href === '#' || href.trim() === '#') return;
+        // Evitar interferir si es solo un ancla vacía usada como botón
+        if(href.length < 2){ return; }
+        if(href.indexOf(' ') !== -1){ return; }
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        let target = null;
+        try { target = document.querySelector(href); } catch(_) { target = null; }
         if(target){
-            target.scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-            });
+            target.scrollIntoView({ behavior:'smooth', block:'start' });
         }
     });
 });
