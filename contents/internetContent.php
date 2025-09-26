@@ -226,52 +226,87 @@
           </div>
           </section>
 
-          <!-- Costos de Instalación (último) -->
-        <section class="instalacion premium-box scroll-anim">
-          <div class="instalacion-header vertical">
+          <!-- Costos de Instalación (refactor) -->
+        <section class="instalacion-costos premium-box scroll-anim" id="instalacion-costos" data-nt-anim>
+          <div class="inst-header">
             <i class="fa-solid fa-screwdriver-wrench instalacion-icon" aria-hidden="true"></i>
-            <?= nt_heading('Instalación', 'fa-solid fa-screwdriver-wrench', 'md', null, ['animate'=>true,'delay'=>'sm','class'=>'section-title','style'=>'margin:0;']); ?>
-            <p><strong>Recuerda, es muy importante que realices la solicitud de tu instalación</strong>, ya que necesitamos toda tu información para <b>dar de alta tu cuenta</b>, <b>programar tus equipos</b> y asegurarnos de que <b>el técnico lleve todo lo necesario el día de la instalación</b>. Solo presiona el boton de <em>Solicita tu instalacion</em>, para ser llevado al formulario y puedas proporcionar tu informacion.</p>
+            <?= nt_heading('Costos de Instalación', 'fa-solid fa-screwdriver-wrench', 'md', null, ['animate'=>true,'delay'=>'sm','class'=>'section-title','style'=>'margin:0;']); ?>
+            <p class="intro">
+              Aquí verás el costo inicial según si ya cuentas con antena o necesitas una nueva. También puedes elegir pagar la antena de contado o diferirla a 3 meses.
+            </p>
           </div>
-            <div class="instalacion-cards">
-            <div id="card-antena" class="instalacion-card nt-soft-seq nt-breath" data-nt-anim>
-              <i class="fa-solid fa-satellite-dish card-icon" aria-hidden="true" data-nt-icon-drift></i>
-              <div>
-                <h3>Antena</h3>
-                <p>$1,800 <span class="diferido">(diferible a 3 meses)</span></p>
+          <div class="escenarios-grid">
+            <article class="escenario-card" id="esc-propio" data-esc="propio">
+              <header><h3><i class="fa-solid fa-circle-check"></i> Ya tengo antena</h3><span class="tag">Escenario 1</span></header>
+              <ul class="incluye">
+                <li>Alineación de antena</li>
+                <li>Reprogramación de equipo</li>
+                <li>Configuración del módem WiFi</li>
+              </ul>
+              <div class="monto-principal">
+                <div class="valor" data-monto="propio-total">$500 MXN</div>
+                <div class="detalle">Anticipo único. Cubre todo.</div>
+              </div>
+              <div class="resumen-mini">
+                <strong>Pago inicial:</strong> $500 MXN<br>
+                <strong>Pagos futuros:</strong> solo la mensualidad del plan.
+              </div>
+              <button class="btn-escoger" data-select-esc="propio">Usar este escenario</button>
+            </article>
+            <article class="escenario-card" id="esc-sinequipo" data-esc="sinequipo">
+              <header><h3><i class="fa-solid fa-satellite-dish"></i> Necesito antena</h3><span class="tag alt">Escenario 2</span></header>
+              <ul class="incluye">
+                <li>Antena nueva <strong>$1,800</strong></li>
+                <li>Instalación, cableado y módem WiFi <strong>$850</strong></li>
+              </ul>
+              <div class="monto-principal">
+                <div class="valor" data-monto="sinequipo-total">$2,650 MXN</div>
+                <div class="detalle">Costo total si pagas de contado.</div>
+              </div>
+              <fieldset class="pago-opciones">
+                <legend>Forma de pago de la antena</legend>
+                <label class="radio"><input type="radio" name="pago-antena" value="contado" checked> <span>Pago de contado ($2,650 MXN inicial)</span></label>
+                <label class="radio"><input type="radio" name="pago-antena" value="diferido"> <span>Pago diferido (antena en 3 mensualidades)</span></label>
+                <div class="nota-diferido" data-role="nota-diferido" style="display:none;">Mes 1 pagas anticipo ($850). Meses 2-4: servicio + cuota antena. Después solo servicio.</div>
+              </fieldset>
+              <div class="resumen-mini" data-role="sin-equipo-resumen"></div>
+              <button class="btn-escoger" data-select-esc="sinequipo">Usar este escenario</button>
+            </article>
+          </div>
+          <div class="calendario-costos">
+            <h4><i class="fa-solid fa-calendar-check"></i> Calendario de Pagos (primeros meses)</h4>
+            <div class="tabla-wrap">
+              <table id="tabla-calendario" aria-label="Calendario de pagos instalación">
+                <thead><tr><th>Mes</th><th>Monto</th><th>Detalle</th></tr></thead>
+                <tbody></tbody>
+              </table>
+              <div class="tabla-placeholder" id="tabla-placeholder">Selecciona un escenario y un plan para ver montos.</div>
+            </div>
+          </div>
+          <div class="formas-pago">
+            <h4><i class="fa-solid fa-wallet"></i> Formas de Pago</h4>
+            <div class="formas-grid">
+              <div class="pago-box">
+                <h5><i class="fa-solid fa-building-columns"></i> BBVA</h5>
+                <p>CLABE: <code>012 345 678901234567</code><br>Cuenta: <code>1234567890</code></p>
+              </div>
+              <div class="pago-box">
+                <h5><i class="fa-solid fa-credit-card"></i> Mercado Pago</h5>
+                <p>Alias: <code>norttek.mp</code><br>Ref: <code>INSTALACION</code></p>
+              </div>
+              <div class="pago-box">
+                <h5><i class="fa-solid fa-link"></i> Links de Tarjeta</h5>
+                <p>
+                  <a href="#" class="linkpay" data-link="mp-link">Pagar ahora</a><br>
+                  <a href="#" class="linkpay" data-link="mp-recurrente">Pago recurrente (cargo mensual)</a>
+                </p>
               </div>
             </div>
-            <div class="instalacion-card nt-soft-seq nt-breath" data-nt-anim>
-              <i class="fa-solid fa-plug card-icon" aria-hidden="true" data-nt-icon-drift></i>
-              <div>
-                <h3>Instalación y cableado</h3>
-                <p id="install-cable-cost">$Variable$</p>
-              </div>
-            </div>
           </div>
-          <div class="instalacion-total">
-            <span class="total-label">Total:</span>
-            <span id="install-total" class="total-amount">$Variable$</span>
-          </div>
-          <div id="install-explain" style="text-align:center; margin-top:.5rem;"></div>
-          <!-- Pago anticipado (movido abajo, previo al CTA) -->
-          <div class="proceso-pago-info" style="margin-top: .8rem;">
-            <strong>El pago anticipado es de <span id="install-upfront" style="color:#00c6ff">$850</span>.</strong><br>
-            <span style="color:#6b7a90">Este monto cubre los <strong>costos de instalación y equipo</strong> y puede variar si <strong>ya cuentas o no con antena</strong>.</span>
-          </div>
-          <div id="install-financing" class="instalacion-info premium-info">
-            <i class="fa-regular fa-lightbulb icon" aria-hidden="true"></i>
-            <span class="instalacion-info-text"><strong>¡Facilitamos tu pago!</strong> El costo de la antena (<strong>$1,800</strong>) puedes diferirlo en <strong>3 mensualidades</strong> junto con el pago de tu plan seleccionado.</span>
-          </div>
-          <div class="contrata-ahora-wrap scroll-anim">
-            <a id="contratar" href="http://clientes.portalinternet.net/solicitar-instalacion/norttek/" target="_blank" class="contrata-ahora-btn">
-              <i class="fa-solid fa-pen-to-square contrata-icon" aria-hidden="true"></i> Solicita tu Instalación
-            </a>
-            <div style="margin-top:.5rem; text-align:center;">
-              <a id="abrir-formulario" href="http://clientes.portalinternet.net/solicitar-instalacion/norttek/" target="_blank" rel="noopener noreferrer" style="font-size:.95rem; color:#6b7a90; text-decoration:underline;">
-                Abrir formulario sin WhatsApp
-              </a>
-            </div>
+          <div class="resumen-final">
+            <h4><i class="fa-solid fa-calculator"></i> Resumen Dinámico</h4>
+            <div id="inst-resumen-linea" class="res-line">Selecciona un escenario para ver el detalle de pagos.</div>
+            <div class="nota-mini">La mensualidad mostrada se basa en el plan que selecciones arriba.</div>
           </div>
         </section>
       </main>
