@@ -1,5 +1,44 @@
 // Lenguaje = Español
-// JS para la app móvil de Internet
+// =============================================
+// Archivo: assets/js/internet.js
+// Propósito general:
+//   Controla toda la interacción dinámica de la página de Internet:
+//   - Navegación entre secciones (bienvenida, nuevos clientes, clientes existentes)
+//   - Autenticación ligera de clientes mediante teléfono (lookup en JSON)
+//   - Gestión de selección de planes (tarjetas tipo radio accesibles)
+//   - Cálculo dinámico de costos de instalación y generación de calendario de pagos
+//   - Gating (ocultar sección de costos hasta que el usuario elige un plan activamente)
+//   - Construcción y envío del mensaje de WhatsApp (asesor y CTA final de instalación)
+//   - Persistencia ligera en localStorage/sessionStorage (plan, escenario, nombre, auth cliente)
+//   - Modal de captura de nombre reutilizable
+//   - Animaciones de entrada, desplazamiento suave y pequeños efectos de realce
+//
+// Diseño / Filosofía:
+//   * Cero dependencias externas para la lógica (solo APIs Web nativas)
+//   * Fallbacks silenciosos (try/catch alrededor de llamadas potencialmente frágiles)
+//   * Accesibilidad: uso de aria-label, aria-checked, role=radio, aria-disabled, focus management parcial
+//   * Idempotencia: funciones como calcular() y updateCtaState() pueden invocarse múltiples veces sin efectos adversos
+//   * Resiliencia: si localStorage falla (privacidad / modo incógnito), se degradan ciertas mejoras pero no se rompe el flujo
+//
+// Secciones principales del script (en orden aproximado):
+//   1. Preparación DOM / helpers de UI (showSection/hideSection, Title Case)
+//   2. Persistencia de nombre y plan
+//   3. Menú y navegación entre vistas (bienvenida / nuevo / cliente)
+//   4. Autenticación de cliente por teléfono (lookup + render de credenciales)
+//   5. Lógica de costos de instalación (IIFE initInstalacionCostos)
+//   6. Selección de planes (tarjetas interactivas)
+//   7. Observers de animación y scroll
+//   8. Módulo de login modal y acciones de cliente
+//   9. WhatsApp (asesor, soporte y CTA final)
+//  10. Copiado de datos bancarios
+//  11. Modal de captura de nombre reutilizable
+//
+// Notas de mantenimiento:
+//   - Si agregas un nuevo campo al calendario de pagos, modifica pushRow() y la extracción en enviarWhatsApp().
+//   - Para ampliar el diferido de antena cambia CONST.sinEquipo.diferidoMeses.
+//   - Para internacionalizar, centraliza textos en un objeto y reemplaza literales antes de extender a otro idioma.
+// =============================================
+// JS para la app de Internet
 
 document.addEventListener('DOMContentLoaded', function() {
   // Pre-carga de imagen hero para activar fade-in
@@ -26,6 +65,11 @@ document.addEventListener('DOMContentLoaded', function() {
   } catch(_){}
   // Ya no se recalcula padding al redimensionar; el layout global maneja compensaciones.
   // Helper para transiciones: oculta con clase y muestra con forzado de reflow
+  /**
+   * Muestra una sección aplicando display:block y forzando reflow para permitir
+   * que las transiciones CSS (clase .section-hidden) se animen correctamente.
+   * @param {HTMLElement} el
+   */
   function showSection(el) {
     if (!el) return;
     el.style.display = 'block';
@@ -34,6 +78,11 @@ document.addEventListener('DOMContentLoaded', function() {
     el.classList.remove('section-hidden');
   }
 
+  /**
+   * Oculta una sección añadiendo la clase de transición y luego cambiando display
+   * tras un pequeño timeout (sincrónico con la duración en CSS) para sacarla del flujo.
+   * @param {HTMLElement} el
+   */
   function hideSection(el) {
     if (!el) return;
     el.classList.add('section-hidden');
@@ -42,6 +91,12 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Helper: convierte a Title Case respetando locale ES (para nombres en minúsculas)
+  /**
+   * Convierte una cadena a Title Case tomando en cuenta minúsculas/ mayúsculas
+   * y separadores con guión. Se usa para normalizar nombres ingresados en minúsculas.
+   * @param {string} str
+   * @returns {string}
+   */
   function toTitleCaseEs(str) {
     var locale = 'es-MX';
     return String(str)
@@ -59,12 +114,18 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Helpers para persistir el nombre entre el modal y "Contacta a un asesor"
+  /**
+   * Persiste el nombre completo y el primer nombre para reutilizar en mensajes.
+   */
   function setStoredName(fullName, firstName) {
     try {
       localStorage.setItem('customerNameFull', fullName || '');
       localStorage.setItem('customerNameFirst', firstName || '');
     } catch(_) {}
   }
+  /**
+   * Recupera nombre almacenado; devuelve objeto con propiedades full y first.
+   */
   function getStoredName() {
     try {
       return {
@@ -75,12 +136,18 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Helpers para persistir y usar el plan seleccionado
+  /**
+   * Guarda el plan seleccionado (megas y precio mensual) en localStorage.
+   */
   function setStoredPlan(megas, price) {
     try {
       localStorage.setItem('selectedPlanMegas', megas || '');
       localStorage.setItem('selectedPlanPrice', price || '');
     } catch(_) {}
   }
+  /**
+   * Retorna el plan almacenado; si no existe devuelve campos vacíos.
+   */
   function getStoredPlan() {
     try {
       return {
@@ -89,6 +156,10 @@ document.addEventListener('DOMContentLoaded', function() {
       };
     } catch(_) { return { megas: '', price: '' }; }
   }
+  /**
+   * Ajusta el CTA principal eliminando sufijos dinámicos anteriores
+   * y asegurando un aria-label estable y descriptivo.
+   */
   function renderCtaPlan() {
     var cta = document.getElementById('contratar') || document.getElementById('solicitar');
     var formAlt = document.getElementById('abrir-formulario');
@@ -109,6 +180,9 @@ document.addEventListener('DOMContentLoaded', function() {
   var nuevoContent = document.getElementById('nuevo-content');
   var clienteContent = document.getElementById('cliente-content');
 
+  /**
+   * Limpia estado visual de botones de menú (si se reintroducen estilos activos).
+   */
   function resetActive() {
     // Mantiene la semántica por si se reintroducen estilos de estado; actualmente no hay menú separado.
     if (btnNuevo) btnNuevo.classList.remove('active-menu');
@@ -116,6 +190,9 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Mostrar solo hero y bienvenida por defecto
+  /**
+   * Vista inicial: muestra mensaje de bienvenida y oculta otras secciones.
+   */
   function mostrarBienvenida() {
     showSection(welcomeMsg);
     hideSection(nuevoContent);
@@ -124,6 +201,10 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Mostrar contenido de usuarios nuevos (sin modal de captura)
+  /**
+   * Activa contenido para nuevos clientes: muestra sección principal y hace scroll
+   * automático la primera vez hasta el bloque de proceso de instalación.
+   */
   function mostrarNuevo() {
     hideSection(welcomeMsg);
     hideSection(clienteContent);
@@ -153,6 +234,10 @@ document.addEventListener('DOMContentLoaded', function() {
   var clientesLoading = false;
   var clientesPhoneIndex = null; // Map de telefono normalizado -> registro
 
+  /**
+   * Obtiene objeto de autenticación del cliente (nombre, usuario, teléfonos) desde localStorage.
+   * @returns {object|null}
+   */
   function getAuth() {
     try {
       var raw = localStorage.getItem('clienteAuth');
@@ -160,15 +245,23 @@ document.addEventListener('DOMContentLoaded', function() {
       return JSON.parse(raw);
     } catch(_) { return null; }
   }
+  /** Guarda objeto de autenticación serializado. */
   function setAuth(obj) {
     try { localStorage.setItem('clienteAuth', JSON.stringify(obj || {})); } catch(_) {}
   }
+  /** Elimina credenciales del cliente almacenadas. */
   function clearAuth() {
     try { localStorage.removeItem('clienteAuth'); } catch(_) {}
   }
+  /** Normaliza un teléfono extrayendo solo dígitos. */
   function normalizePhone(p) { return (p||'').replace(/[^0-9]/g,''); }
+  /** Indica si existe sesión de cliente con usuario válido. */
   function clienteEstaAutenticado() { return !!(getAuth() && getAuth().usuario); }
 
+  /**
+   * Carga (una vez) listado de clientes desde json/clientes.json, construye índice de teléfonos.
+   * Devuelve Promesa con array de registros. Implementa cola simple si ya hay fetch en curso.
+   */
   function fetchClientes() {
     return new Promise(function(resolve, reject){
       if (clientesCache) return resolve(clientesCache);
@@ -209,6 +302,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  /**
+   * Busca un cliente por teléfono normalizado (usa índice si disponible, si no hace escaneo lineal).
+   * @param {string} phone
+   * @param {Array} list
+   */
   function findClientByPhone(phone, list) {
     var target = normalizePhone(phone);
     if (!target || target.length < 7) return null;
@@ -228,6 +326,7 @@ document.addEventListener('DOMContentLoaded', function() {
     return null;
   }
 
+  /** Refleja datos de autenticación en el panel de cliente (nombre, usuario, teléfonos). */
   function renderClienteAuthInfo() {
     var box = document.getElementById('cliente-auth-info');
     if (!box) return;
@@ -267,6 +366,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+  /** Muestra modal de login y enfoca input de teléfono. */
   function abrirLoginCliente() {
     if (!clienteLoginModal) clienteLoginModal = document.getElementById('cliente-login-modal');
     if (clienteLoginModal) {
@@ -279,12 +379,17 @@ document.addEventListener('DOMContentLoaded', function() {
       else console.warn('Modal de login cliente no encontrado');
     }
   }
+  /** Oculta modal de login de cliente. */
   function cerrarLoginCliente() {
     if (clienteLoginModal) clienteLoginModal.style.display = 'none';
   }
 
   // mostrarCliente(true) => fuerza scroll centrado (solo tras login);
   // mostrarCliente(event) o sin argumento => no hace scroll automático
+  /**
+   * Muestra dashboard de cliente autenticado o fuerza apertura de modal si no autenticado.
+   * doScroll=true centra visualmente el dashboard tras login.
+   */
   function mostrarCliente(doScroll) {
     // Si no autenticado, abrir modal en lugar de mostrar dashboard
     if (!clienteEstaAutenticado()) {
@@ -371,6 +476,14 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   /* === Lógica Costos de Instalación Refactor === */
+  /**
+   * Módulo autoejecutable para costos de instalación.
+   * Responsabilidades:
+   *  - Mostrar/ocultar sección según gating (plan seleccionado en esta sesión)
+   *  - Gestionar escenario (propio / sin equipo) y forma de pago antena
+   *  - Generar calendario de pagos y resumen dinámico
+   *  - Actualizar estado del CTA final (habilitado/inhabilitado)
+   */
   (function initInstalacionCostos(){
     var rootSec = document.getElementById('instalacion-costos');
     if(!rootSec) return;
@@ -393,10 +506,12 @@ document.addEventListener('DOMContentLoaded', function() {
       sinEquipo:{ antena:1800, instalacion:850, diferidoMeses:3 }
     };
 
-    function getPlan(){
+  /** Obtiene plan actual (megas, price) del almacenamiento. */
+  function getPlan(){
       try { return { megas: localStorage.getItem('selectedPlanMegas')||'', price: parseFloat(localStorage.getItem('selectedPlanPrice')||'')||0 }; } catch(_){ return {megas:'', price:0}; }
     }
-    function revealSection(){
+  /** Anima y revela la sección de costos si no estaba visible. */
+  function revealSection(){
       if(rootSec.classList.contains('inst-costs-visible')) return;
       rootSec.classList.remove('inst-costs-hidden');
       rootSec.classList.add('inst-costs-visible');
@@ -411,11 +526,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 40);
       } catch(_){}
     }
-    function hideSection(){
+  /** Oculta la sección de costos (usado cuando se pierde gating). */
+  function hideSection(){
       rootSec.classList.add('inst-costs-hidden');
       rootSec.classList.remove('inst-costs-visible');
     }
-    function updateVisibility(triggered){
+  /** Controla gating: sólo visible si hay plan y flag de sesión planChosenSession. */
+  function updateVisibility(triggered){
       // La sección sólo se muestra si hay plan elegido en esta sesión (interacción del usuario)
       try {
         var plan = getPlan();
@@ -431,7 +548,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     function fmt(n){ return '$'+n.toLocaleString('es-MX'); }
 
-    function seleccionarEscenario(esc){
+  /** Cambia escenario activo, recalcula y persiste en localStorage. */
+  function seleccionarEscenario(esc){
       STATE.escenario = esc;
       [escPropio, escSin].forEach(function(card){ if(!card) return; card.classList.toggle('active', card.getAttribute('data-esc')===esc); });
       if(placeholder) placeholder.style.display = 'none';
@@ -439,12 +557,19 @@ document.addEventListener('DOMContentLoaded', function() {
       try { localStorage.setItem('installScenario', esc==='propio'?'propio':'sinequipo'); } catch(_) {}
       updateCtaState();
     }
-    function setPagoAntena(mode){ STATE.pagoAntena = mode; if(notaDiferido) notaDiferido.style.display = (mode==='diferido')?'block':'none'; calcular(); }
+  /** Ajusta modo de pago de antena (contado / diferido) y recalcula. */
+  function setPagoAntena(mode){ STATE.pagoAntena = mode; if(notaDiferido) notaDiferido.style.display = (mode==='diferido')?'block':'none'; calcular(); }
 
-    function limpiarTabla(){ if(tbody) tbody.innerHTML=''; }
-    function pushRow(mes, monto, detalle){ if(!tbody) return; var tr=document.createElement('tr'); tr.innerHTML='<td>'+mes+'</td><td class="monto">'+fmt(monto)+'</td><td>'+detalle+'</td>'; tbody.appendChild(tr);}    
+  /** Limpia tbody del calendario de pagos. */
+  function limpiarTabla(){ if(tbody) tbody.innerHTML=''; }
+  /** Agrega fila al calendario (mes, monto, detalle). */
+  function pushRow(mes, monto, detalle){ if(!tbody) return; var tr=document.createElement('tr'); tr.innerHTML='<td>'+mes+'</td><td class="monto">'+fmt(monto)+'</td><td>'+detalle+'</td>'; tbody.appendChild(tr);}    
 
-    function calcular(){
+  /**
+   * Recalcula calendario dependiendo de plan, escenario y forma de pago antena.
+   * Aplica placeholders cuando faltan selecciones.
+   */
+  function calcular(){
       var plan = getPlan();
       updateCtaState(plan);
       if(!plan.price){
@@ -505,7 +630,8 @@ document.addEventListener('DOMContentLoaded', function() {
       } catch(_){ }
     }
 
-    function updateCtaState(planObj){
+  /** Actualiza clases y aria del CTA final según si hay plan + escenario. */
+  function updateCtaState(planObj){
       try {
         var cta = document.getElementById('contratar');
         if(!cta) return;

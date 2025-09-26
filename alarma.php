@@ -1,4 +1,5 @@
 <?php
+// Lenguaje = Español
 /**
  * Página de Alarmas Inteligentes
  */
