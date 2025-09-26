@@ -1,41 +1,3 @@
-<!-- Modal de bienvenida para cliente nuevo -->
-<div id="nuevo-modal" class="internet-modal-backdrop" style="display:none;">
-  <div class="internet-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <button id="close-modal" type="button" class="modal-close" aria-label="Cerrar">&times;</button>
-    <div class="modal-header">
-      <h3 id="modal-title">Empecemos</h3>
-      <p class="modal-subtitle">Cuéntanos un poco para personalizar tu instalación</p>
-    </div>
-    <form id="modal-form" class="modal-body">
-      <div class="form-field">
-        <label for="input-nombre">Nombre</label>
-        <div style="position:relative;">
-          <i class="fa-regular fa-user" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:#6b7a90;"></i>
-          <input id="input-nombre" name="nombre" type="text" maxlength="60" required placeholder="Nombre y apellido (opcional)" autocomplete="name" style="padding-left:2.2rem;" />
-        </div>
-      </div>
-      <div class="form-field">
-        <label>¿Ya cuenta con antena o equipo en tu domicilio?
-        </label>
-        <div class="radio-group" style="background:#f8fbff; border:1px solid #e7edf6; border-radius:10px; padding:.6rem .8rem;">
-          <label class="radio-item"><input type="radio" name="antena" value="si" required> Sí</label>
-          <label class="radio-item"><input type="radio" name="antena" value="no"> No</label>
-        </div>
-      </div>
-        <ul style="list-style:none; padding:0; margin:.4rem 0 0; color:#6b7a90; display:flex; flex-direction:column; gap:.35rem;">
-          <li style="display:flex; align-items:center; gap:.5rem;"><i class="fa-regular fa-circle-check" style="color:#6fa4ff;"></i> Instalación coordinada contigo</li>
-          <li style="display:flex; align-items:center; gap:.5rem;"><i class="fa-regular fa-circle-check" style="color:#6fa4ff;"></i> Equipos nuevos y de ultima generacion</li>
-          <li style="display:flex; align-items:center; gap:.5rem;"><i class="fa-regular fa-circle-check" style="color:#6fa4ff;"></i> App movil para registrar tus pagos</li>
-        </ul>
-      <div class="modal-actions">
-        <button type="submit" id="btn-modal-continuar" class="btn btn-primary">Aceptar</button>
-  <button type="button" id="btn-cancelar" class="btn btn-secondary">Cancelar</button>
-
-      </div>
-    </form>
-  </div>
-  
-</div>
 <div class="internet-app">
   <!-- Modal de login de cliente existente -->
   <div id="cliente-login-modal" class="internet-modal-backdrop" style="display:none;">
@@ -101,26 +63,74 @@
       </div>
       <main class="app-main">
         <!-- Proceso de instalación (primero) -->
-        <section class="proceso-instalacion premium-box scroll-anim">
+        <section id="como-funciona" class="proceso-instalacion premium-box scroll-anim">
           <?= nt_heading('¿Cómo funciona nuestro servicio de internet?', 'fa-solid fa-list-check', 'md', null, ['animate'=>true,'delay'=>'sm','class'=>'section-title']); ?>
           <p class="section-subtitle">
-            Nuestro internet llega a tu hogar de forma inalámbrica, a través de una antena exterior que se conecta con nuestros equipos locales en tu zona.
-            <strong>No se trata de internet satelital.</strong>
+            Brindamos conectividad inalámbrica estable mediante un enlace terrestre (no satelital) usando una antena exterior orientada a nuestra red local. Esto reduce latencia frente a soluciones satelitales y permite un servicio más consistente para videollamadas, streaming, gaming y trabajo remoto.
           </p>
-          <hr class="section-divider" />
-          <?= nt_heading('¿Qué necesitas para tu instalación?', 'fa-solid fa-screwdriver-wrench', 'md', null, ['animate'=>true,'delay'=>'md','class'=>'section-title']); ?>
-          <p class="section-subtitle">Tu costo de instalación depende de si ya cuentas con antena o no. Con la información que nos diste en el formulario, te preparamos un resumen personalizado de costos.</p>
-          <ul class="proceso-list equipo-false">
-            <li><strong>Costo de instalación:</strong> $850 (único pago)</li>
-            <li id="li-antena-financiamiento"><strong>Antena:</strong> $1,800 — puede pagarse de contado o diferirse a 3 meses junto con tu servicio de internet</li>
-          </ul>
-          <ul class="proceso-list equipo-true">
-            <li><strong>Costo de instalación:</strong> $500 (pago único), incluye programación, alineación de antena y ajuste de router WiFi si se requiere.</li>
-          </ul>
-          <div id="process-payment-note" class="process-note">
-            <p><strong>Es muy importante que realices la solicitud de tu instalación</strong>, ya que necesitamos toda tu información para <b>dar de alta tu cuenta</b>, <b>programar tus equipos</b> y asegurarnos de que <b>el técnico lleve todo lo necesario el día de la instalación</b>.</p>
-            <p>Una vez que tengas claro el plan que más se adapte a tus necesidades, <strong>completa el formulario de solicitud</strong>. Con tus datos registrados, podremos <b>agendar la instalación</b> y nos pondremos en contacto contigo para <b>definir la fecha y hora que mejor se acomode a tu rutina</b>.</p>
-            <p>El día de la visita, un técnico se comunicará contigo para <strong>indicar dónde colocar tu router WiFi</strong> y comenzar con la <b>programación del sistema, la alineación de la antena y cualquier ajuste necesario para que todo funcione a la perfección</b>.</p>
+          <div class="inst-flow" style="margin:1.2rem 0 1.4rem; display:grid; gap:1rem;">
+            <div class="flow-steps" style="display:grid; gap:.9rem; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+              <article class="flow-step" style="background:#f8fbff; border:1px solid #e2edf9; border-radius:14px; padding:.9rem .95rem; display:flex; flex-direction:column; gap:.4rem;">
+                <h3 style="margin:0; font-size:.9rem; font-weight:800; display:flex; align-items:center; gap:.45rem; color:#0f172a;"><i class="fa-solid fa-location-crosshairs" style="color:#4f8cff;"></i> 1. Cobertura</h3>
+                <p style="margin:0; font-size:.72rem; line-height:1.35; color:#4a5b6d;">Validamos que tu domicilio tenga línea de vista o señal aceptable hacia nuestros puntos de distribución.</p>
+              </article>
+              <article class="flow-step" style="background:#ffffff; border:1px solid #e2edf9; border-radius:14px; padding:.9rem .95rem; display:flex; flex-direction:column; gap:.4rem;">
+                <h3 style="margin:0; font-size:.9rem; font-weight:800; display:flex; align-items:center; gap:.45rem; color:#0f172a;"><i class="fa-solid fa-wifi" style="color:#4f8cff;"></i> 2. Selección de Plan</h3>
+                <p style="margin:0; font-size:.72rem; line-height:1.35; color:#4a5b6d;">Eliges la velocidad que se adapta a tus dispositivos y hábitos de uso (más abajo verás las opciones).</p>
+              </article>
+              <article class="flow-step" style="background:#f8fbff; border:1px solid #e2edf9; border-radius:14px; padding:.9rem .95rem; display:flex; flex-direction:column; gap:.4rem;">
+                <h3 style="margin:0; font-size:.9rem; font-weight:800; display:flex; align-items:center; gap:.45rem; color:#0f172a;"><i class="fa-solid fa-clipboard-check" style="color:#4f8cff;"></i> 3. Programación</h3>
+                <p style="margin:0; font-size:.72rem; line-height:1.35; color:#4a5b6d;">Agendamos fecha y hora; confirmas con tu pago inicial (ver costos al elegir un plan).</p>
+              </article>
+              <article class="flow-step" style="background:#ffffff; border:1px solid #e2edf9; border-radius:14px; padding:.9rem .95rem; display:flex; flex-direction:column; gap:.4rem;">
+                <h3 style="margin:0; font-size:.9rem; font-weight:800; display:flex; align-items:center; gap:.45rem; color:#0f172a;"><i class="fa-solid fa-screwdriver-wrench" style="color:#4f8cff;"></i> 4. Instalación</h3>
+                <p style="margin:0; font-size:.72rem; line-height:1.35; color:#4a5b6d;">Montaje / alineación de antena (si aplica), cableado limpio y configuración de tu router WiFi.</p>
+              </article>
+              <article class="flow-step" style="background:#f8fbff; border:1px solid #e2edf9; border-radius:14px; padding:.9rem .95rem; display:flex; flex-direction:column; gap:.4rem;">
+                <h3 style="margin:0; font-size:.9rem; font-weight:800; display:flex; align-items:center; gap:.45rem; color:#0f172a;"><i class="fa-solid fa-bolt" style="color:#4f8cff;"></i> 5. Activación</h3>
+                <p style="margin:0; font-size:.72rem; line-height:1.35; color:#4a5b6d;">Probamos estabilidad, velocidad y latencia. Te mostramos cómo reiniciar, consultar pagos y soporte.</p>
+              </article>
+              <article class="flow-step" style="background:#ffffff; border:1px solid #e2edf9; border-radius:14px; padding:.9rem .95rem; display:flex; flex-direction:column; gap:.4rem;">
+                <h3 style="margin:0; font-size:.9rem; font-weight:800; display:flex; align-items:center; gap:.45rem; color:#0f172a;"><i class="fa-solid fa-headset" style="color:#4f8cff;"></i> 6. Soporte & Gestión</h3>
+                <p style="margin:0; font-size:.72rem; line-height:1.35; color:#4a5b6d;">Acceso a panel / app para ver saldo, recibir avisos y contactar soporte técnico.</p>
+              </article>
+            </div>
+          </div>
+
+          <?= nt_heading('Costos base de instalación', 'fa-solid fa-coins', 'sm', null, ['animate'=>true,'delay'=>'md','class'=>'section-title']); ?>
+          <p class="section-subtitle">El monto inicial depende de si ya cuentas con antena propia utilizable o necesitas una nueva. Los detalles dinámicos (calendario de pagos) aparecerán cuando selecciones un plan.</p>
+          <div class="costos-grid" style="display:grid; gap:1rem; margin:1rem 0 1.4rem; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
+            <div class="costo-box" style="background:#ffffff; border:1px solid #e2edf9; border-radius:14px; padding:1rem .95rem; display:flex; flex-direction:column; gap:.5rem;">
+              <h3 style="margin:0; font-size:.85rem; font-weight:800; letter-spacing:.5px; color:#0f172a; display:flex; align-items:center; gap:.4rem;"><i class="fa-solid fa-circle-check" style="color:#4f8cff;"></i> Ya tengo antena</h3>
+              <ul style="margin:0; padding-left:1rem; font-size:.7rem; line-height:1.35; color:#4a5b6d; display:flex; flex-direction:column; gap:.3rem;">
+                <li>Pago único: <strong>$500</strong></li>
+                <li>Incluye reprogramación, alineación y ajuste WiFi</li>
+                <li>Mes 2 en adelante: solo mensualidad del plan</li>
+              </ul>
+            </div>
+            <div class="costo-box" style="background:#f8fbff; border:1px solid #e2edf9; border-radius:14px; padding:1rem .95rem; display:flex; flex-direction:column; gap:.5rem;">
+              <h3 style="margin:0; font-size:.85rem; font-weight:800; letter-spacing:.5px; color:#0f172a; display:flex; align-items:center; gap:.4rem;"><i class="fa-solid fa-satellite-dish" style="color:#4f8cff;"></i> Necesito antena</h3>
+              <ul style="margin:0; padding-left:1rem; font-size:.7rem; line-height:1.35; color:#4a5b6d; display:flex; flex-direction:column; gap:.3rem;">
+                <li>Instalación: <strong>$850</strong></li>
+                <li>Antena nueva: <strong>$1,800</strong> (contado o diferido 3 meses)</li>
+                <li>Opción diferida: 1er mes pagas $850; meses 2–4 cuota antena + servicio</li>
+              </ul>
+            </div>
+            <div class="costo-box" style="background:#ffffff; border:1px solid #e2edf9; border-radius:14px; padding:1rem .95rem; display:flex; flex-direction:column; gap:.55rem;">
+              <h3 style="margin:0; font-size:.85rem; font-weight:800; letter-spacing:.5px; color:#0f172a; display:flex; align-items:center; gap:.4rem;"><i class="fa-solid fa-wallet" style="color:#4f8cff;"></i> Formas de pago</h3>
+              <ul style="margin:0; padding-left:1rem; font-size:.7rem; line-height:1.35; color:#4a5b6d; display:flex; flex-direction:column; gap:.3rem;">
+                <li>Transferencia (BBVA)</li>
+                <li>Mercado Pago / Tarjeta</li>
+                <li>Link de pago recurrente</li>
+                <li>Comprobante por WhatsApp</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout-aviso" style="background:linear-gradient(135deg,rgba(79,140,255,.08),rgba(79,140,255,.02)); border:1px solid #d5e5f9; padding:1rem .95rem; border-radius:14px; display:flex; gap:.9rem; align-items:flex-start; margin-bottom:1.4rem;">
+            <i class="fa-solid fa-circle-info" style="color:#4f8cff; font-size:1.1rem; line-height:1;"></i>
+            <div style="font-size:.72rem; line-height:1.5; color:#425366;">
+              Una vez confirmado tu pago inicial, agendamos la visita. La instalación típica toma entre <strong>60 y 90 minutos</strong> (dependiendo de ruta de cableado). Te mostramos pruebas de desempeño antes de cerrar el servicio.
+            </div>
           </div>
 
           <hr class="section-divider" />
@@ -141,6 +151,19 @@
           <p class="section-subtitle" style="margin-top:.6rem;">
             Teniendo en cuenta toda la información que nos proporcionaste, te presentamos los planes de internet disponibles para nuestros usuarios. A continuación, podrás ver las opciones para elegir el plan que mejor se adapte a tu rutina y disfrutar de un servicio confiable desde el primer día. Si tienes alguna duda, no dudes en contactarnos directamente <a href="#contacta-un-asesor" class="link-asesor">dando click aqui</a>.
           </p>
+          <!-- Guía para obtener costo de instalación (reubicada aquí) -->
+          <section class="instalacion-costo-guia" style="margin-top:1.8rem;">
+            <?= nt_heading('¿Cómo obtener el costo de tu instalación?', 'fa-solid fa-calculator', 'sm', null, ['class'=>'section-title','animate'=>true,'delay'=>'xl']); ?>
+            <p class="section-subtitle" style="margin-top:.4rem;">Sigue estos pasos para ver el detalle personalizado de pagos según tu caso:</p>
+            <ol style="margin: .6rem 0 0; padding-left:1.2rem; line-height:1.55; color:#4a5568;">
+              <li>Elige uno de los planes de velocidad haciendo clic en <strong>"Elegir este plan"</strong>.</li>
+              <li>Se mostrará (o se revelará) la sección <strong>Costos de Instalación</strong> más abajo.</li>
+              <li>Selecciona el escenario que te aplica: <em>Ya tengo antena</em> o <em>Necesito antena</em>.</li>
+              <li>Si necesitas antena, elige si pagarás <strong>de contado</strong> o <strong>diferido</strong> en 3 meses.</li>
+              <li>Revisa el <strong>Calendario de Pagos</strong> y el <strong>Resumen Dinámico</strong> para confirmar montos.</li>
+            </ol>
+            <p style="margin-top:.8rem; color:#4a5568;">Si aún tienes dudas, usa la sección <a href="#contacta-un-asesor" class="link-asesor">Contacta a un asesor</a> y con gusto te apoyamos.</p>
+          </section>
         </section>
 
         <!-- Planes (segundo) -->
