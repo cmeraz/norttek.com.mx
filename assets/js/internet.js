@@ -1,3 +1,4 @@
+// Lenguaje = Español
 // JS para la app móvil de Internet
 
 document.addEventListener('DOMContentLoaded', function() {

@@ -1,4 +1,5 @@
 <?php
+// Lenguaje = Español
 /**
  * index.php
  * Página principal de Norttek Solutions

@@ -1,4 +1,5 @@
 <?php
+// Lenguaje = Español
 // Navbar remasterizado 2025
 $current = basename($_SERVER['PHP_SELF'], '.php');
 $activePage = $current === 'index' ? 'inicio' : $current;

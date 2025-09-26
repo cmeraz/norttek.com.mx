@@ -1,4 +1,4 @@
-<!-- Idioma Español -->
+<!-- Lenguaje = Español -->
 <div class="internet-app">
   <!-- Modal de login de cliente existente -->
   <div id="cliente-login-modal" class="internet-modal-backdrop" style="display:none;">

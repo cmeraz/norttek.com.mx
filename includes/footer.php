@@ -1,4 +1,5 @@
 <?php
+// Lenguaje = Español
 /**
  * footer.php (restaurado / mejorado)
  * Cierra el layout principal, muestra información corporativa y carga scripts.

@@ -42,6 +42,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Intersection Observer para animar encabezados con clase .nt-heading-anim
+// Lenguaje = Español
 (function(){
     const items = document.querySelectorAll('.nt-heading-anim');
     if(!items.length) return;
