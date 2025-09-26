@@ -398,6 +398,100 @@ document.addEventListener('DOMContentLoaded', function() {
     card.style.transitionDelay = (i * 0.12) + 's';
   });
 
+  /* === Lógica Costos de Instalación Refactor === */
+  (function initInstalacionCostos(){
+    var rootSec = document.getElementById('instalacion-costos');
+    if(!rootSec) return;
+    var escPropio = document.getElementById('esc-propio');
+    var escSin = document.getElementById('esc-sinequipo');
+    var radiosPago = rootSec.querySelectorAll('input[name="pago-antena"]');
+    var notaDiferido = rootSec.querySelector('[data-role="nota-diferido"]');
+    var tabla = document.getElementById('tabla-calendario');
+    var tbody = tabla ? tabla.querySelector('tbody') : null;
+    var placeholder = document.getElementById('tabla-placeholder');
+    var resumenLinea = document.getElementById('inst-resumen-linea');
+    var botonesEsc = rootSec.querySelectorAll('[data-select-esc]');
+    var sinEquipoResumen = rootSec.querySelector('[data-role="sin-equipo-resumen"]');
+
+    var STATE = { escenario:null, pagoAntena:'contado' };
+    var CONST = {
+      propio:{ anticipo:500 },
+      sinEquipo:{ antena:1800, instalacion:850, diferidoMeses:3 }
+    };
+
+    function getPlan(){
+      try { return { megas: localStorage.getItem('selectedPlanMegas')||'', price: parseFloat(localStorage.getItem('selectedPlanPrice')||'')||0 }; } catch(_){ return {megas:'', price:0}; }
+    }
+    function fmt(n){ return '$'+n.toLocaleString('es-MX'); }
+
+    function seleccionarEscenario(esc){
+      STATE.escenario = esc;
+      [escPropio, escSin].forEach(function(card){ if(!card) return; card.classList.toggle('active', card.getAttribute('data-esc')===esc); });
+      if(placeholder) placeholder.style.display = 'none';
+      calcular();
+      try { localStorage.setItem('installScenario', esc==='propio'?'propio':'sinequipo'); } catch(_) {}
+    }
+    function setPagoAntena(mode){ STATE.pagoAntena = mode; if(notaDiferido) notaDiferido.style.display = (mode==='diferido')?'block':'none'; calcular(); }
+
+    function limpiarTabla(){ if(tbody) tbody.innerHTML=''; }
+    function pushRow(mes, monto, detalle){ if(!tbody) return; var tr=document.createElement('tr'); tr.innerHTML='<td>'+mes+'</td><td class="monto">'+fmt(monto)+'</td><td>'+detalle+'</td>'; tbody.appendChild(tr);}    
+
+    function calcular(){
+      var plan = getPlan();
+      if(!plan.price || !STATE.escenario){ limpiarTabla(); if(resumenLinea) resumenLinea.textContent='Selecciona un escenario y un plan para ver el detalle de pagos.'; if(placeholder) placeholder.style.display='flex'; return; }
+      limpiarTabla();
+      var servicio = plan.price;
+      if(STATE.escenario==='propio'){
+        // Mes 1 anticipo completo
+        pushRow('Mes 1', CONST.propio.anticipo, 'Anticipo (incluye alineación, reprogramación, configuración)');
+        pushRow('Mes 2', servicio, 'Servicio');
+        pushRow('Mes 3', servicio, 'Servicio');
+        pushRow('Mes 4', servicio, 'Servicio');
+        if(resumenLinea) resumenLinea.innerHTML = '<strong>Escenario Equipo Propio:</strong> Pagas '+fmt(CONST.propio.anticipo)+' el primer mes y a partir del Mes 2 solo el servicio ('+fmt(servicio)+').';
+      } else {
+        var anticipo = CONST.sinEquipo.instalacion; // 850
+        var antena = CONST.sinEquipo.antena; // 1800
+        if(STATE.pagoAntena==='contado'){
+          pushRow('Mes 1', anticipo + antena, 'Instalación + Antena (contado)');
+          pushRow('Mes 2', servicio, 'Servicio');
+          pushRow('Mes 3', servicio, 'Servicio');
+          pushRow('Mes 4', servicio, 'Servicio');
+          if(resumenLinea) resumenLinea.innerHTML = '<strong>Escenario Sin Equipo (Contado):</strong> Pagas '+fmt(anticipo+antena)+' el primer mes; desde Mes 2 solo el servicio ('+fmt(servicio)+').';
+        } else {
+          var cuota = antena / CONST.sinEquipo.diferidoMeses; // 600
+          pushRow('Mes 1', anticipo, 'Anticipo instalación');
+          for(var m=2;m<=4;m++){
+            if(m-1 <= CONST.sinEquipo.diferidoMeses){
+              pushRow('Mes '+m, servicio + cuota, 'Servicio + cuota antena');
+            } else {
+              pushRow('Mes '+m, servicio, 'Servicio');
+            }
+          }
+          if(resumenLinea) resumenLinea.innerHTML = '<strong>Escenario Sin Equipo (Diferido):</strong> Mes 1 pagas anticipo '+fmt(anticipo)+'. Meses 2-'+(CONST.sinEquipo.diferidoMeses+1)+' servicio + cuota ('+fmt(servicio+cuota)+'). Después sólo servicio.';
+        }
+        if(sinEquipoResumen){
+          if(STATE.pagoAntena==='contado') sinEquipoResumen.innerHTML = '<strong>Pago inicial:</strong> '+fmt(anticipo+antena)+'<br><strong>Pagos futuros:</strong> solo servicio ('+fmt(servicio)+')';
+          else sinEquipoResumen.innerHTML = '<strong>Pago inicial:</strong> '+fmt(anticipo)+'<br><strong>Cuota antena:</strong> '+fmt(antena)+' en '+CONST.sinEquipo.diferidoMeses+' meses ('+fmt(antena/CONST.sinEquipo.diferidoMeses)+' c/u)';
+        }
+      }
+    }
+
+    botonesEsc.forEach(function(btn){
+      btn.addEventListener('click', function(){ seleccionarEscenario(btn.getAttribute('data-select-esc')); });
+    });
+    radiosPago.forEach(function(r){ r.addEventListener('change', function(){ setPagoAntena(r.value); }); });
+    // Recalcular cuando se actualiza el plan
+    document.addEventListener('nt-plan-updated', calcular);
+    window.addEventListener('storage', function(e){ if(e.key==='selectedPlanMegas'||e.key==='selectedPlanPrice') calcular(); });
+
+    // Estado inicial desde localStorage si existe selección previa
+    try {
+      var prevEsc = localStorage.getItem('installScenario');
+      if(prevEsc==='propio' || prevEsc==='sinequipo'){ seleccionarEscenario(prevEsc==='propio'?'propio':'sinequipo'); }
+    } catch(_) {}
+    calcular();
+  })();
+
     // Interceptar clic en "Contratar" de cada plan: desplazar al CTA, persistir plan y abrir WhatsApp con el plan seleccionado
     try {
       document.querySelectorAll('.plan-card a.btn-contratar-link').forEach(function(a){
