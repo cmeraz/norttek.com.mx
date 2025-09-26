@@ -1,3 +1,52 @@
+/* === Instalación Costos Refactor === */
+.instalacion-costos{margin-top:2.5rem;position:relative;display:flex;flex-direction:column;gap:2rem}
+.instalacion-costos .inst-header .intro{margin-top:.65rem;color:#475569;font-size:.9rem;line-height:1.4}
+.escenarios-grid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));align-items:stretch}
+.escenario-card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:1.1rem 1.15rem;display:flex;flex-direction:column;gap:.9rem;position:relative;box-shadow:0 4px 14px -4px rgba(15,23,42,.08),0 2px 6px rgba(15,23,42,.04);transition:box-shadow .25s,border-color .25s}
+.escenario-card:hover{box-shadow:0 8px 26px -6px rgba(15,23,42,.18),0 3px 10px rgba(15,23,42,.08);border-color:#cbd5e1}
+.escenario-card header{display:flex;align-items:center;justify-content:space-between;gap:.6rem}
+.escenario-card header h3{font-size:1.05rem;margin:0;font-weight:700;display:flex;align-items:center;gap:.45rem;color:#0f172a}
+.escenario-card .tag{background:#0f172a;color:#fff;font-size:.6rem;padding:.25rem .5rem;border-radius:40px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.escenario-card .tag.alt{background:#475569}
+.escenario-card .incluye{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.35rem;font-size:.8rem;color:#334155}
+.escenario-card .incluye li strong{color:#0f172a}
+.monto-principal{background:linear-gradient(135deg,#eff6ff,#ffffff);border:1px solid #dbeafe;padding:.75rem .85rem;border-radius:14px;display:flex;flex-direction:column;gap:.15rem}
+.monto-principal .valor{font-weight:800;font-size:1.15rem;color:#1e3a8a}
+.monto-principal .detalle{font-size:.7rem;text-transform:uppercase;letter-spacing:.6px;color:#64748b;font-weight:700}
+.resumen-mini{background:#f1f5f9;border:1px solid #e2e8f0;padding:.6rem .7rem;border-radius:12px;font-size:.7rem;line-height:1.25;color:#334155}
+.pago-opciones{display:flex;flex-direction:column;gap:.55rem;border:1px solid #e2e8f0;background:#f8fafc;padding:.8rem .9rem;border-radius:14px}
+.pago-opciones legend{font-size:.7rem;text-transform:uppercase;letter-spacing:.7px;font-weight:800;color:#475569;padding:0;margin:0 0 .2rem}
+.pago-opciones .radio{display:flex;align-items:flex-start;gap:.45rem;font-size:.75rem;line-height:1.25;color:#334155}
+.pago-opciones input[type=radio]{margin-top:.15rem}
+.nota-diferido{font-size:.65rem;line-height:1.3;color:#475569;background:#eef2ff;padding:.45rem .55rem;border-radius:8px;border:1px dashed #c7d2fe}
+.btn-escoger{align-self:flex-start;background:#1e3a8a;color:#fff;font-weight:700;border:none;border-radius:40px;padding:.55rem .95rem;font-size:.75rem;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;box-shadow:0 2px 6px -1px rgba(30,58,138,.4);transition:background .25s,transform .25s}
+.btn-escoger:hover{background:#2549ad}
+.btn-escoger:active{transform:translateY(1px)}
+.escenario-card.active{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(59,130,246,.25)}
+.calendario-costos{margin-top:1.5rem;padding:1rem 1.1rem;border:1px solid #e2e8f0;border-radius:18px;background:#fff;box-shadow:0 4px 14px -4px rgba(15,23,42,.06),0 2px 6px rgba(15,23,42,.04);display:flex;flex-direction:column;gap:.85rem}
+.calendario-costos h4{margin:0;font-size:.95rem;font-weight:800;display:flex;align-items:center;gap:.5rem;color:#0f172a}
+.tabla-wrap{position:relative}
+#tabla-calendario{width:100%;border-collapse:separate;border-spacing:0;font-size:.7rem}
+#tabla-calendario thead th{background:#0f172a;color:#fff;padding:.5rem .6rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;font-size:.6rem}
+#tabla-calendario tbody td{padding:.45rem .55rem;border-bottom:1px solid #e2e8f0;font-size:.7rem;color:#334155}
+#tabla-calendario tbody tr:last-child td{border-bottom:none}
+#tabla-calendario tbody tr td.monto{font-weight:700;color:#1e3a8a}
+.tabla-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#64748b;background:linear-gradient(135deg,#f8fafc,#ffffff);border:1px dashed #cbd5e1;border-radius:12px}
+.formas-pago{margin-top:1.5rem;display:flex;flex-direction:column;gap:.8rem}
+.formas-pago h4{margin:0;font-size:.95rem;font-weight:800;display:flex;align-items:center;gap:.5rem;color:#0f172a}
+.formas-grid{display:grid;gap:.9rem;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.pago-box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:.75rem .8rem;font-size:.65rem;line-height:1.35;position:relative;box-shadow:0 3px 10px -3px rgba(15,23,42,.08),0 2px 4px rgba(15,23,42,.04)}
+.pago-box h5{margin:0 0 .35rem;font-size:.7rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#475569;display:flex;align-items:center;gap:.4rem}
+.resumen-final{margin-top:1.4rem;padding:1rem 1.1rem;border:1px solid #e2e8f0;border-radius:18px;background:#fff;display:flex;flex-direction:column;gap:.6rem;box-shadow:0 4px 14px -4px rgba(15,23,42,.06),0 2px 6px rgba(15,23,42,.04)}
+.resumen-final h4{margin:0;font-size:.95rem;font-weight:800;display:flex;align-items:center;gap:.5rem;color:#0f172a}
+.res-line{font-size:.8rem;line-height:1.3;color:#334155}
+.nota-mini{font-size:.65rem;color:#64748b}
+@media (max-width:680px){
+  .escenarios-grid{grid-template-columns:1fr}
+  .escenario-card{padding:1rem .95rem}
+  .monto-principal .valor{font-size:1.05rem}
+  #tabla-calendario thead th, #tabla-calendario tbody td{font-size:.62rem}
+}
 /* Asesor WhatsApp */
 .asesor-section {
   background: linear-gradient(120deg, #1c3c5a 60%, #295a7a 100%);
