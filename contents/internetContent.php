@@ -19,7 +19,7 @@
             <input id="cliente-login-phone" name="telefono" type="tel" inputmode="numeric" pattern="[0-9]{10}" minlength="10" maxlength="14" required placeholder="Ej. 6251234567" style="padding-left:2.2rem;" />
           </div>
         </div>
-        <div id="cliente-login-error" style="display:none; background:#fff5f5; border:1px solid #f8caca; color:#b54848; padding:.6rem .75rem; border-radius:10px; font-size:.8rem; font-weight:600; line-height:1.4;">
+        <div id="cliente-login-error" role="alert" aria-live="assertive" style="display:none; background:#fff5f5; border:1px solid #f8caca; color:#b54848; padding:.6rem .75rem; border-radius:10px; font-size:.8rem; font-weight:600; line-height:1.4;">
           Teléfono no encontrado. Verifica que sea el número con el que te registraste.
         </div>
         <div class="modal-actions">

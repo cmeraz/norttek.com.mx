@@ -635,24 +635,56 @@ document.addEventListener('DOMContentLoaded', function() {
     var loginCancel = document.getElementById('cliente-login-cancel');
     var loginForm = document.getElementById('cliente-login-form');
     var loginError = document.getElementById('cliente-login-error');
+    var phoneInput = document.getElementById('cliente-login-phone');
+    var loginSubmit = document.getElementById('cliente-login-submit');
     var logoutBtn = document.getElementById('cliente-auth-logout');
     if (loginClose) loginClose.addEventListener('click', function(){ cerrarLoginCliente(); });
     if (loginCancel) loginCancel.addEventListener('click', function(){ cerrarLoginCliente(); });
+    // Cerrar con clic en el fondo y con Escape
+    if (clienteLoginModal) {
+      clienteLoginModal.addEventListener('click', function(e){ if (e.target === clienteLoginModal) cerrarLoginCliente(); });
+      document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && clienteLoginModal && clienteLoginModal.style.display !== 'none') cerrarLoginCliente(); });
+    }
+    // UX: limpiar entrada a dígitos, limitar a 10 y habilitar/deshabilitar submit
+    function updateLoginUI(){
+      try {
+        if (!phoneInput) return;
+        var digits = (phoneInput.value || '').replace(/[^0-9]/g, '').slice(0,10);
+        if (phoneInput.value !== digits) phoneInput.value = digits;
+        var ok = digits.length === 10;
+        if (loginSubmit) loginSubmit.disabled = !ok;
+        if (loginError) loginError.style.display = 'none';
+      } catch(_){}
+    }
+    if (phoneInput) {
+      phoneInput.addEventListener('input', updateLoginUI);
+      phoneInput.addEventListener('keyup', function(e){ if(e.key==='Enter' && loginSubmit && !loginSubmit.disabled){ if (loginForm && loginForm.requestSubmit) loginForm.requestSubmit(); else if (loginForm) loginForm.submit(); }});
+    }
+    function setLoginLoading(loading){
+      try {
+        if (clienteLoginModal) clienteLoginModal.setAttribute('aria-busy', loading ? 'true' : 'false');
+        if (loginSubmit) { loginSubmit.disabled = !!loading; loginSubmit.classList.toggle('is-loading', !!loading); }
+        if (phoneInput) phoneInput.disabled = !!loading;
+        if (loginClose) loginClose.disabled = !!loading;
+        if (loginCancel) loginCancel.disabled = !!loading;
+      } catch(_){}
+    }
     if (logoutBtn) logoutBtn.addEventListener('click', function(){ clearAuth(); renderClienteAuthInfo(); mostrarBienvenida(); });
     if (loginForm) {
       loginForm.addEventListener('submit', function(ev){
         ev.preventDefault();
         if (loginError) loginError.style.display = 'none';
-        var phoneInput = document.getElementById('cliente-login-phone');
-        var phoneVal = normalizePhone((phoneInput && phoneInput.value) || '');
-        if (!phoneVal || phoneVal.length < 8) {
-          if (loginError) { loginError.textContent = 'Ingresa un teléfono válido.'; loginError.style.display='block'; }
+        var phoneVal = normalizePhone((phoneInput && phoneInput.value) || '').slice(0,10);
+        if (!phoneVal || phoneVal.length !== 10) {
+          if (loginError) { loginError.textContent = 'Ingresa un teléfono de 10 dígitos.'; loginError.style.display='block'; }
           return;
         }
+        setLoginLoading(true);
         fetchClientes().then(function(list){
           var found = findClientByPhone(phoneVal, list);
           if (!found) {
             if (loginError) { loginError.textContent = 'Teléfono no encontrado. Verifica tu número.'; loginError.style.display = 'block'; }
+            setLoginLoading(false);
             return;
           }
           var authObj = {
@@ -661,13 +693,16 @@ document.addEventListener('DOMContentLoaded', function() {
             telefonos: Array.isArray(found.Telefonos) ? found.Telefonos : []
           };
             // Normalizar nombre a Title Case si viene todo en minúsculas
-          try { if (authObj.nombre && authObj.nombre === authObj.nombre.toLocaleLowerCase('es-MX')) authObj.nombre = toTitleCaseEs(authObj.nombre); } catch(_){}
+          try { if (authObj.nombre && authObj.nombre === authObj.nombre.toLocaleLowerCase('es-MX')) authObj.nombre = toTitleCaseEs(authObj.nombre); } catch(_){ }
           setAuth(authObj);
           cerrarLoginCliente();
           mostrarCliente(true); // re-entra ya autenticado y ahora sí hace scroll centrado
-        }).catch(function(){ if (loginError) { loginError.textContent = 'No se pudo validar. Intenta más tarde.'; loginError.style.display='block'; } });
+          setLoginLoading(false);
+        }).catch(function(){ if (loginError) { loginError.textContent = 'No se pudo validar. Intenta más tarde.'; loginError.style.display='block'; } setLoginLoading(false); });
       });
     }
+    // Estado inicial del botón
+    updateLoginUI();
   } catch(_) {}
 
   // Si ya hay auth almacenada, preparar UI
