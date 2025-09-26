@@ -767,9 +767,23 @@ document.addEventListener('DOMContentLoaded', function() {
     if (ctaBtn) {
       ctaBtn.addEventListener('click', function(ev){
         if (ev) { if(ev.preventDefault) ev.preventDefault(); if(ev.stopPropagation) ev.stopPropagation(); }
-        // Nombre
+        // Nombre (si no existe pedirlo al usuario)
         var st = getStoredName();
         var nombre = (st.full || st.first || '').trim();
+        if(!nombre){
+          try {
+            var ingresado = window.prompt('Ingresa tu nombre para continuar con la solicitud:', '');
+            if(ingresado){
+              ingresado = ingresado.trim();
+              if(ingresado){
+                // Separar primer nombre simple
+                var first = ingresado.split(/\s+/)[0];
+                setStoredName(ingresado, first);
+                nombre = ingresado;
+              }
+            }
+          } catch(_) {}
+        }
         try { if (nombre && nombre === nombre.toLocaleLowerCase('es-MX')) nombre = toTitleCaseEs(nombre); } catch(_) {}
         var saludo = nombre ? (EMOJI.wave + ' Hola, mi nombre es ' + nombre + '.') : (EMOJI.wave + ' Hola.');
         // Plan
