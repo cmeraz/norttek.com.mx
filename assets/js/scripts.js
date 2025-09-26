@@ -259,7 +259,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         mode = effectiveMode(next);
         localStorage.setItem(STORAGE_KEY, mode);
         applyModeClasses();
-        if(prev !== mode){
+    if(prev !== mode){
             if(mode !== 'off'){
                 animatedCount = 0;
                 // Reaplicar animaciones a elementos que no se habían animado
@@ -273,46 +273,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             }
             notify(`<strong>Modo animaciones:</strong> ${mode}`, 'info');
         }
-        updateToggleUI();
+    updateToggleUI(); // noop (UI eliminada)
     }
 
-    function updateToggleUI(){
-        const menu = document.querySelector('#nt-anim-toggle .nt-anim-menu');
-        if(!menu) return;
-        menu.querySelectorAll('button[data-mode]').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.mode === mode);
-        });
-    }
-
-    function buildToggle(){
-        if(document.getElementById('nt-anim-toggle')) return;
-        const wrap = document.createElement('div');
-        wrap.id = 'nt-anim-toggle';
-        wrap.innerHTML = `
-            <button class="nt-anim-main" aria-haspopup="true" aria-expanded="false" title="Control de animaciones"><i class="fa-solid fa-wand-magic-sparkles"></i>Animaciones</button>
-            <div class="nt-anim-menu" role="menu" aria-label="Seleccionar modo animaciones">
-                <button data-mode="full" role="menuitem"><i class="fa-solid fa-star"></i> Completo</button>
-                <button data-mode="performance" role="menuitem"><i class="fa-solid fa-gauge-high"></i> Performance</button>
-                <button data-mode="off" role="menuitem"><i class="fa-solid fa-ban"></i> Off</button>
-            </div>`;
-        document.body.appendChild(wrap);
-        const mainBtn = wrap.querySelector('.nt-anim-main');
-        const menu = wrap.querySelector('.nt-anim-menu');
-        mainBtn.addEventListener('click', ()=>{
-            wrap.classList.toggle('open');
-            const open = wrap.classList.contains('open');
-            mainBtn.setAttribute('aria-expanded', open?'true':'false');
-        });
-        menu.addEventListener('click', e => {
-            const btn = e.target.closest('button[data-mode]');
-            if(!btn) return;
-            setMode(btn.dataset.mode);
-            wrap.classList.remove('open');
-            mainBtn.setAttribute('aria-expanded','false');
-        });
-        document.addEventListener('click', e => { if(!wrap.contains(e.target)) { wrap.classList.remove('open'); mainBtn.setAttribute('aria-expanded','false'); }});
-        updateToggleUI();
-    }
+    // UI toggle eliminado (refactor): ya no se genera menú interactivo de selección de modo.
+    function updateToggleUI(){ /* noop tras eliminación de UI */ }
+    function buildToggle(){ /* eliminado intencionalmente */ }
 
     function onReducedChange(){
         if(mqReduced.matches){
@@ -332,7 +298,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
     function init(){
         if(initialized) return; initialized = true;
-        buildToggle();
+    // buildToggle() removido: no se crea UI de control de animaciones
         mode = effectiveMode(readStoredMode());
         applyModeClasses();
         // Secuenciar en primer frame

@@ -1,61 +1,114 @@
 <?php
+// Lenguaje = Español
 /**
- * footer.php (restaurado / mejorado)
- * Cierra el layout principal, muestra información corporativa y carga scripts.
+ * Footer unificado (versión remasterizada)
+ * Objetivos de la refactorización:
+ *  - Unificar look & feel con la nueva UI (gradientes suaves, tarjetas, tipografía consistente)
+ *  - Mejorar accesibilidad (roles, labels, foco, contraste)
+ *  - Centralizar listado de enlaces para facilitar mantenimiento
+ *  - Añadir año dinámico y estructuras semánticas limpias
  */
+
+// Definición de bloques para mantener mantenible el footer
+$servicios = [
+  ['/cctv','Seguridad y CCTV','fa-video'],
+  ['/telefonia','Telefonía IP','fa-phone-volume'],
+  ['/control-acceso','Control de Acceso','fa-door-closed'],
+  ['#','Redes y Cableado','fa-network-wired'],
+  ['#','Ciberseguridad','fa-shield-halved'],
+];
+
+$social = [
+  ['#','Facebook','fa-facebook-f'],
+  ['#','Twitter','fa-x-twitter fa-twitter'], // Ajustable a X / Twitter
+  ['#','LinkedIn','fa-linkedin-in'],
+  ['#','GitHub','fa-github'],
+];
+
+$anio = date('Y');
 ?>
 
     </main>
-    <footer class="bg-gray-900 text-gray-300 py-16 font-sans" role="contentinfo">
-      <div class="max-w-7xl mx-auto px-6 lg:px-20 grid grid-cols-1 md:grid-cols-4 gap-10">
-        <div>
-          <img src="assets/img/logo-norttek.png" alt="Logo Norttek Solutions" class="w-32 mb-4">
-          <p class="text-gray-400 text-sm leading-relaxed">
-            <span class="text-white font-semibold">Norttek Solutions</span> integra seguridad, telefonía IP y redes con enfoque en continuidad operativa y soporte profesional.
-          </p>
-        </div>
-        <div>
-          <h3 class="text-white font-bold text-lg mb-4 tracking-wide">Servicios</h3>
-          <ul class="space-y-2 text-gray-300 text-sm">
-            <li class="flex items-center gap-2 hover:text-teal-400 transition"><i class="fas fa-video text-teal-400 w-5"></i> <a href="/cctv">Seguridad y CCTV</a></li>
-            <li class="flex items-center gap-2 hover:text-teal-400 transition"><i class="fas fa-phone-volume text-teal-400 w-5"></i> <a href="/telefonia">Telefonía IP</a></li>
-            <li class="flex items-center gap-2 hover:text-teal-400 transition"><i class="fas fa-door-closed text-teal-400 w-5"></i> <a href="/control-acceso">Control de Acceso</a></li>
-            <li class="flex items-center gap-2 hover:text-teal-400 transition"><i class="fas fa-network-wired text-teal-400 w-5"></i> <a href="#">Redes y Cableado</a></li>
-            <li class="flex items-center gap-2 hover:text-teal-400 transition"><i class="fas fa-shield-halved text-teal-400 w-5"></i> <a href="#">Ciberseguridad</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="text-white font-bold text-lg mb-4 tracking-wide">Contacto</h3>
-          <ul class="space-y-2 text-gray-300 text-sm" aria-label="Datos de contacto">
-            <li class="flex items-center gap-2"><i class="fas fa-phone-alt text-teal-400 w-5"></i> <a href="tel:+526252690997" class="hover:text-teal-400 transition" rel="nofollow">+52 (625) 269 0997</a></li>
-            <li class="flex items-center gap-2"><i class="fas fa-envelope text-teal-400 w-5"></i> <a href="mailto:contacto@norttek.com.mx" class="hover:text-teal-400 transition">contacto@norttek.com.mx</a></li>
-            <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-teal-400 w-5"></i> <span>Rayón y Agustín Melgar #608, Zona Centro</span></li>
-            <li class="flex items-center gap-2"><i class="fab fa-whatsapp text-teal-400 w-5"></i> <a href="https://wa.me/526252690997" class="hover:text-teal-400 transition">WhatsApp</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="text-white font-bold text-lg mb-4 tracking-wide">Síguenos</h3>
-          <div class="flex space-x-4 mb-6 text-2xl">
-            <a href="#" class="text-gray-300 hover:text-teal-400 transition transform hover:scale-110" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="text-gray-300 hover:text-teal-400 transition transform hover:scale-110" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="text-gray-300 hover:text-teal-400 transition transform hover:scale-110" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" class="text-gray-300 hover:text-teal-400 transition transform hover:scale-110" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    <footer class="nt-footer font-sans relative" role="contentinfo" aria-label="Información corporativa y navegación secundaria">
+      <div class="nt-footer-bg absolute inset-0 -z-10"></div>
+      <div class="max-w-[1250px] mx-auto px-6 lg:px-10 xl:px-14 py-14">
+        <div class="grid gap-12 md:gap-10 lg:gap-14 md:grid-cols-3 xl:grid-cols-5 nt-footer-grid">
+          <!-- Marca / Descripción -->
+          <div class="col-span-1 xl:col-span-2 flex flex-col gap-5">
+            <div class="flex items-center gap-3">
+              <img src="assets/img/logo-norttek.png" alt="Logo Norttek Solutions" class="h-14 w-auto drop-shadow" loading="lazy" decoding="async">
+              <div class="text-sm font-semibold tracking-wide uppercase text-slate-600 dark:text-slate-300">Norttek Solutions</div>
+            </div>
+            <p class="text-[.82rem] leading-relaxed text-slate-600 dark:text-slate-300 max-w-md">
+              Integramos <strong class="font-semibold text-slate-800 dark:text-white">seguridad, telefonía IP y redes</strong> con enfoque en continuidad operativa, alta disponibilidad y soporte profesional especializado.
+            </p>
+            <div class="flex gap-3 flex-wrap">
+              <?php foreach($social as [$url,$label,$icon]): ?>
+                <a href="<?= htmlspecialchars($url) ?>" aria-label="<?= htmlspecialchars($label) ?>" class="nt-social-btn group">
+                  <i class="fa-brands <?= htmlspecialchars($icon) ?>" aria-hidden="true"></i>
+                </a>
+              <?php endforeach; ?>
+            </div>
           </div>
-          <h3 class="text-white font-bold text-sm mb-2 tracking-wide">Newsletter</h3>
-          <form class="flex flex-col sm:flex-row gap-2" aria-label="Formulario de suscripción newsletter">
-            <label class="sr-only" for="newsletter-email">Correo</label>
-            <input id="newsletter-email" type="email" placeholder="Tu correo" class="px-4 py-2 rounded-md text-gray-900 flex-1 focus:outline-none text-sm font-medium" required>
-            <button type="submit" class="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-md text-sm font-semibold transition transform hover:scale-105">Suscribirse</button>
-          </form>
+
+          <!-- Servicios -->
+          <nav class="flex flex-col gap-4" aria-label="Servicios">
+            <h3 class="nt-foot-title"><i class="fa-solid fa-layer-group"></i> Servicios</h3>
+            <ul class="flex flex-col gap-2 text-[.78rem] font-medium">
+              <?php foreach($servicios as [$url,$txt,$icon]): ?>
+                <li>
+                  <a href="<?= htmlspecialchars($url) ?>" class="nt-foot-link">
+                    <i class="fa-solid <?= htmlspecialchars($icon) ?>"></i><span><?= htmlspecialchars($txt) ?></span>
+                  </a>
+                </li>
+              <?php endforeach; ?>
+            </ul>
+          </nav>
+
+          <!-- Contacto -->
+            <div class="flex flex-col gap-4">
+              <h3 class="nt-foot-title"><i class="fa-solid fa-headset"></i> Contacto</h3>
+              <ul class="flex flex-col gap-3 text-[.78rem] font-medium" aria-label="Datos de contacto">
+                <li class="nt-foot-contact"><i class="fa-solid fa-phone"></i><a href="tel:+526252690997" rel="nofollow">+52 (625) 269 0997</a></li>
+                <li class="nt-foot-contact"><i class="fa-solid fa-envelope"></i><a href="mailto:contacto@norttek.com.mx">contacto@norttek.com.mx</a></li>
+                <li class="nt-foot-contact"><i class="fa-solid fa-location-dot"></i><span>Rayón y Agustín Melgar #608<br>Zona Centro · Cuauhtémoc</span></li>
+                <li class="nt-foot-contact"><i class="fab fa-whatsapp"></i><a href="https://wa.me/526252690997">WhatsApp Soporte</a></li>
+              </ul>
+            </div>
+
+          <!-- Newsletter / Avisos -->
+          <div class="flex flex-col gap-4 xl:col-span-1">
+            <h3 class="nt-foot-title"><i class="fa-solid fa-paper-plane"></i> Newsletter</h3>
+            <form class="nt-news-form" aria-label="Formulario de suscripción newsletter" onsubmit="event.preventDefault(); if(window.NTNotify){ NTNotify.success('Suscripción enviada (demo)'); }">
+              <label for="newsletter-email" class="sr-only">Correo</label>
+              <input id="newsletter-email" type="email" required placeholder="Tu correo" class="nt-news-input" autocomplete="email" />
+              <button type="submit" class="nt-news-btn">Suscribirse</button>
+            </form>
+            <p class="text-[.65rem] leading-relaxed text-slate-500 dark:text-slate-400 max-w-xs">
+              Recibe avisos técnicos, mejoras de servicio y consejos de optimización de red.
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="mt-12 text-center text-gray-400 text-xs font-medium tracking-wide">
-        © 2025 <span class="text-white font-semibold">Norttek Solutions</span>. Todos los derechos reservados. <a href="#privacidad" class="hover:text-teal-400 transition">Aviso de privacidad</a>
+
+        <div class="nt-foot-divider" aria-hidden="true"></div>
+
+        <div class="flex flex-col md:flex-row gap-4 md:items-center justify-between text-[.66rem] font-semibold tracking-wide text-slate-500 dark:text-slate-400 mt-10">
+          <div class="flex flex-wrap items-center gap-3">
+            <span>© <?= $anio ?> Norttek Solutions</span>
+            <span class="hidden md:inline">•</span>
+            <a href="#privacidad" class="nt-foot-mini-link">Aviso de privacidad</a>
+            <span class="hidden md:inline">•</span>
+            <a href="#" class="nt-foot-mini-link">Términos de uso</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <a href="#top" class="nt-back-top" aria-label="Volver arriba"><i class="fa-solid fa-arrow-up"></i></a>
+          </div>
+        </div>
       </div>
     </footer>
 
     <!-- Datos estructurados LocalBusiness -->
-    <script type="application/ld+json">{
+  <script type="application/ld+json">{
       "@context":"https://schema.org",
       "@type":"LocalBusiness",
       "name":"Norttek Solutions",
@@ -72,24 +125,28 @@
     }</script>
 
     <?php
-    // Carga de JS específicos declarados en la página
-    global $jsFiles; if(!isset($jsFiles) || !is_array($jsFiles)) { $jsFiles = []; }
-    foreach($jsFiles as $js){
-      $jsFile = basename($js).'.js';
-      $server = __DIR__.'/../assets/js/'.$jsFile;
-      $browser = 'assets/js/'.$jsFile;
-      if(file_exists($server)) echo "<script src=\"$browser\"></script>\n"; else echo "<!-- JS $browser no encontrado -->\n";
-    }
+      // Carga automática de scripts específicos declarados en la página
+      global $jsFiles; if(!isset($jsFiles) || !is_array($jsFiles)) { $jsFiles = []; }
+      foreach($jsFiles as $js){
+        $jsFile = basename($js).'.js';
+        $server = __DIR__.'/../assets/js/'.$jsFile;
+        $browser = 'assets/js/'.$jsFile;
+        if(file_exists($server)) {
+          echo "<script src=\"$browser\" defer></script>\n"; // defer para mejor rendimiento percibido
+        } else {
+          echo "<!-- JS $browser no encontrado -->\n";
+        }
+      }
     ?>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-Iu7OGb9l8tW0JQIS+Vw8r4aQe6oB6y3n7Vj1E3IKWvQz8Qk+YxXoR37kaG0i9I5YwG4kM8MW0Cwo3uRasJ0V1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <!-- Contenedor de notificaciones -->
     <div id="nt-alert-stack" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center gap-4 pointer-events-none p-4"></div>
 
-    <script>
+  <script>
     // Sistema de notificaciones unificado
     window.NTNotify=(function(){
       const stack=()=>document.getElementById('nt-alert-stack');
@@ -119,6 +176,6 @@
     <?php endif; ?>
     </script>
 
-    <script src="assets/js/scripts.js"></script>
+    <script src="assets/js/scripts.js" defer></script>
   </body>
 </html>
