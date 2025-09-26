@@ -756,28 +756,70 @@ document.addEventListener('DOMContentLoaded', function() {
     var ctaBtn = document.getElementById('contratar') || document.getElementById('solicitar');
     if (ctaBtn) {
       ctaBtn.addEventListener('click', function(ev){
-        // Evitar navegación al enlace: solo enviar WhatsApp
-        if (ev && typeof ev.preventDefault === 'function') ev.preventDefault();
-        if (ev && typeof ev.stopPropagation === 'function') ev.stopPropagation();
-
-        // Construir mensaje solicitado
-  var st = getStoredName();
-  var nombre = (st.full || st.first || '').trim();
-  try { if (nombre && nombre === nombre.toLocaleLowerCase('es-MX')) nombre = toTitleCaseEs(nombre); } catch(_) {}
-  var saludo = nombre ? (EMOJI.wave + ' Hola, mi nombre es ' + nombre + '.') : (EMOJI.wave + ' Hola.');
-
-        var plan = getStoredPlan();
-        var planLinea = plan.megas ? ('Me gustaría contratar el plan de ' + plan.megas + ' Megas.') : 'Me gustaría contratar un plan de internet.';
+        if (ev) { if(ev.preventDefault) ev.preventDefault(); if(ev.stopPropagation) ev.stopPropagation(); }
+        // Nombre
+        var st = getStoredName();
+        var nombre = (st.full || st.first || '').trim();
+        try { if (nombre && nombre === nombre.toLocaleLowerCase('es-MX')) nombre = toTitleCaseEs(nombre); } catch(_) {}
+        var saludo = nombre ? (EMOJI.wave + ' Hola, mi nombre es ' + nombre + '.') : (EMOJI.wave + ' Hola.');
+        // Plan
+        var plan = (function(){ try { return { megas: localStorage.getItem('selectedPlanMegas')||'', price: localStorage.getItem('selectedPlanPrice')||'' }; } catch(_){ return {megas:'', price:''}; } })();
+        var planLinea = plan.megas ? ('Plan seleccionado: ' + plan.megas + ' Megas (' + (plan.price?('$'+plan.price+'/mes'):'mensualidad pendiente') + ').') : 'Aún no aparece un plan seleccionado.';
+        // Escenario y forma de pago
+        var escenario = (function(){ try { return localStorage.getItem('installScenario')||''; } catch(_){ return ''; } })();
+        var escenarioDesc = '';
+        if(escenario==='propio') escenarioDesc = 'Escenario: Ya cuento con antena.';
+        else if(escenario==='sinequipo') {
+          // Detectar forma de pago
+          var pago = 'contado';
+          try {
+            var radio = document.querySelector('input[name="pago-antena"]:checked');
+            if(radio) pago = radio.value;
+          } catch(_) {}
+            escenarioDesc = 'Escenario: Necesito antena. Forma de pago antena: ' + (pago==='diferido'?'Diferido (3 meses)':'Contado');
+        } else escenarioDesc = 'Escenario aún no seleccionado.';
+        // Calendario (leer filas de tabla si existen)
+        var calendarioLineas = [];
+        try {
+          var filas = document.querySelectorAll('#tabla-calendario tbody tr');
+          if(filas.length){
+            filas.forEach(function(tr){
+              var celdas = tr.querySelectorAll('td');
+              if(celdas.length>=3){
+                var mes = celdas[0].textContent.trim();
+                var monto = celdas[1].textContent.trim();
+                var det = celdas[2].textContent.trim();
+                calendarioLineas.push(mes+': '+monto+' ('+det+')');
+              }
+            });
+          }
+        } catch(_) {}
+        var calendarioTexto = calendarioLineas.length ? ('Calendario de pagos:\n' + calendarioLineas.join('\n')) : 'Calendario de pagos aún no generado (falta plan o escenario).';
+        // Resumen dinámico
+        var resumen = '';
+        try { var rl = document.getElementById('inst-resumen-linea'); if(rl) resumen = rl.textContent.trim() || rl.innerText.trim(); } catch(_) {}
+        if(resumen) resumen = 'Resumen: ' + resumen;
+        // Link formulario
         var formLink = 'http://clientes.portalinternet.net/solicitar-instalacion/norttek/';
-
-  var copy = saludo + '\n\n' +
-                   planLinea + '\n\n' +
-                   '¿Pueden ayudarme a continuar con la solicitud?' + '\n\n' +
-                   'Posteriormente llenaré el formulario para agendar mi instalación:\n' +
-       formLink + '\n\n' +
-       EMOJI.check + ' Quedo pendiente de su apoyo.';
-
-        var wa = 'https://wa.me/526252690997?text=' + encodeURIComponent(copy);
+        // Construcción final
+        var cuerpo = [
+          saludo,
+          '',
+          planLinea,
+          escenarioDesc,
+          '',
+          calendarioTexto,
+          '',
+          resumen || 'Resumen pendiente.',
+          '',
+          'Formulario (lo completaré después):',
+          formLink,
+          '',
+          '¿Pueden ayudarme a continuar con el proceso de instalación?',
+          '',
+          EMOJI.check + ' Quedo atento(a), gracias.'
+        ].join('\n');
+        var wa = 'https://wa.me/526252690997?text=' + encodeURIComponent(cuerpo);
         try { window.open(wa, '_blank'); } catch(_) {}
       });
     }
