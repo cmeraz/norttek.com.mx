@@ -199,88 +199,128 @@ function renderFAQComponent($jsonFile, $options = []) {
  *
  * Estructura JSON esperada: [ { "q": "Pregunta", "a": "Respuesta (HTML permitido)" }, ... ]
  */
-function faq(string $id, array $opts = []): string {
-    $title   = $opts['title'] ?? 'Preguntas frecuentes';
-    $cClass  = $opts['containerClass'] ?? '';
-    $paths   = [];
+if (!function_exists('faq')) {
+  function faq(string $id, array $opts = []): string {
+    $title  = $opts['title'] ?? 'Preguntas frecuentes';
+    $cClass = $opts['containerClass'] ?? '';
 
-    if (!empty($opts['json'])) {
-        $paths[] = $opts['json'];
-    }
-    $base = __DIR__ . '/json/';
-    $paths[] = $base . $id . '.json';
-    $paths[] = $base . 'faq-' . $id . '.json';
-    $paths[] = $base . 'faqs/' . $id . '.json';
-
-    $data = [];
-    $src  = null;
-    foreach ($paths as $p) {
-        if (is_string($p) && is_file($p)) { $src = $p; break; }
-    }
-    if ($src) {
-        $raw  = file_get_contents($src);
-        $data = json_decode($raw, true);
-        if (!is_array($data)) $data = [];
-    }
-
-    if (!$data) {
-        // Mensaje suave si no hay datos
-        $safeId = htmlspecialchars($id, ENT_QUOTES, 'UTF-8');
-        return '<section id="' . $safeId . "\" class=\"nt-faq container {$cClass}\"><div class=\"nt-faq-header\"><h2 class=\"nt-faq-title\"><i class=\"fa-solid fa-circle-question\" aria-hidden=\"true\"></i> " . htmlspecialchars($title) . "</h2><p class=\"nt-faq-sub\">No hay preguntas registradas por el momento.</p></div></section>";
-    }
-
-    // JSON-LD
-    $faqEntities = array_map(function ($it) {
-        return [
-            '@type' => 'Question',
-            'name'  => isset($it['q']) ? strip_tags($it['q']) : '',
-            'acceptedAnswer' => [
-                '@type' => 'Answer',
-                'text'  => isset($it['a']) ? $it['a'] : ''
-            ],
-        ];
-    }, $data);
-
-    $safeId = preg_replace('/[^a-z0-9\-\_]/i', '-', $id);
-    $safeId = trim($safeId, '-');
+    $safeId = preg_replace('/[^a-z0-9\-\_]/i', '-', trim($id)) ?: 'faq';
     $safeTitle = htmlspecialchars($title, ENT_QUOTES, 'UTF-8');
 
-    // Construcción del listado
+    // Resolver archivo JSON
+    $candidates = [];
+    if (!empty($opts['json'])) {
+      $candidates[] = $opts['json'];
+    }
+    $base = __DIR__ . '/json/';
+    $candidates[] = $base . 'faqs/' . $id . '.json';
+    $candidates[] = $base . 'faqs/faq-' . $id . '.json';
+    $candidates[] = $base . $id . '.json';
+    $candidates[] = $base . 'faq-' . $id . '.json';
+
+    $data = [];
+    $srcFound = null;
+    foreach ($candidates as $p) {
+      if (is_string($p) && is_file($p)) {
+        $raw = file_get_contents($p);
+        $arr = json_decode($raw, true);
+        if (is_array($arr)) { $data = $arr; $srcFound = $p; break; }
+      }
+    }
+
+    // Normalizar ícono FA5 -> FA6 simple
+    $normalizeIcon = static function (?string $cls): string {
+      if (!$cls) return 'fa-solid fa-circle-question';
+      $cls = trim($cls);
+      $cls = preg_replace('/\bfas\b/', 'fa-solid', $cls);
+      $cls = preg_replace('/\bfar\b/', 'fa-regular', $cls);
+      $cls = preg_replace('/\bfab\b/', 'fa-brands', $cls);
+      $cls = preg_replace('/\bfal\b/', 'fa-regular', $cls);
+      return $cls;
+    };
+
+    // Construir items HTML + JSON-LD
     $itemsHtml = '';
+    $faqEntities = [];
+
     foreach ($data as $i => $it) {
-        $q = $it['q'] ?? '';
-        $a = $it['a'] ?? '';
-        $qid = $safeId . '-q-' . ($i + 1);
-        $aid = $safeId . '-a-' . ($i + 1);
-        $itemsHtml .= '
-        <article class="nt-faq-item" role="listitem" id="'.htmlspecialchars($qid).'">
-          <h3 class="nt-faq-q">
-            <button type="button" class="nt-faq-toggle" aria-expanded="false" aria-controls="'.htmlspecialchars($aid).'" data-faq-toggle>
-              <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-              <span class="nt-faq-q-text">'. $q .'</span>
-            </button>
-          </h3>
-          <div id="'.htmlspecialchars($aid).'" class="nt-faq-a" role="region" aria-labelledby="'.htmlspecialchars($qid).'" hidden>
-            <div class="nt-faq-a-inner">'. $a .'</div>
-          </div>
-        </article>';
+      // Aceptar ambas nomenclaturas
+      $q = $it['pregunta'] ?? $it['q'] ?? '';
+      $a = $it['respuesta'] ?? $it['a'] ?? '';
+      $ic = $normalizeIcon($it['icono'] ?? $it['icon'] ?? '');
+
+      if ($q === '' && $a === '') continue;
+
+      $qid = $safeId . '-q-' . ($i + 1);
+      $aid = $safeId . '-a-' . ($i + 1);
+
+      $itemsHtml .= '
+      <article class="nt-faq-item" role="listitem" id="'.htmlspecialchars($qid, ENT_QUOTES, 'UTF-8').'">
+        <h3 class="nt-faq-q">
+          <button type="button" class="nt-faq-toggle" aria-expanded="false" aria-controls="'.htmlspecialchars($aid, ENT_QUOTES, 'UTF-8').'" data-faq-toggle>
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            <i class="nt-faq-q-ico '.htmlspecialchars($ic, ENT_QUOTES, 'UTF-8').'" aria-hidden="true"></i>
+            <span class="nt-faq-q-text">'.$q.'</span>
+          </button>
+        </h3>
+        <div id="'.htmlspecialchars($aid, ENT_QUOTES, 'UTF-8').'" class="nt-faq-a" role="region" aria-labelledby="'.htmlspecialchars($qid, ENT_QUOTES, 'UTF-8').'" hidden>
+          <div class="nt-faq-a-inner">'.$a.'</div>
+        </div>
+      </article>';
+
+      $faqEntities[] = [
+        '@type' => 'Question',
+        'name'  => strip_tags($q),
+        'acceptedAnswer' => ['@type' => 'Answer', 'text' => $a]
+      ];
     }
 
     // Encabezado (usa nt_heading si existe)
-    if (function_exists('nt_heading')) {
-        $heading = nt_heading($safeTitle, 'fa-solid fa-circle-question', 'md', '', ['class'=>'nt-heading-accent-bar']);
-    } else {
-        $heading = '<h2 class="nt-faq-title"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> '.$safeTitle.'</h2>';
+    $heading = function_exists('nt_heading')
+      ? nt_heading($safeTitle, 'fa-solid fa-circle-question', 'md', '', ['class'=>'nt-heading-accent-bar'])
+      : '<h2 class="nt-faq-title"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> '.$safeTitle.'</h2>';
+
+    // Herramientas
+    $tools = '
+      <div class="nt-faq-tools" role="toolbar" aria-label="Herramientas de FAQ">
+        <label class="nt-faq-search">
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          <input type="search" placeholder="Buscar en las preguntas..." aria-label="Buscar preguntas" data-faq-search>
+        </label>
+        <div class="nt-faq-actions">
+          <button type="button" class="nt-faq-btn" data-faq-expand><i class="fa-solid fa-square-plus"></i> Expandir</button>
+          <button type="button" class="nt-faq-btn ghost" data-faq-collapse><i class="fa-solid fa-square-minus"></i> Colapsar</button>
+        </div>
+      </div>';
+
+    // Si no hay datos
+    if ($itemsHtml === '') {
+      return '
+      <section id="'.htmlspecialchars($safeId).'" class="nt-faq container '.htmlspecialchars($cClass).'">
+        <header class="nt-faq-header">'.$heading.'<p class="nt-faq-sub">No hay preguntas registradas por el momento.</p></header>
+      </section>'.faq_inline_assets();
     }
 
-    // CSS/JS inline de respaldo (solo una vez por página)
-    static $faqAssetsInjected = false;
-    $inlineAssets = '';
-    if (!$faqAssetsInjected) {
-        $faqAssetsInjected = true;
-        $inlineAssets = <<<HTML
+    // Salida principal
+    $html = '
+    <section id="'.htmlspecialchars($safeId).'" class="nt-faq container '.htmlspecialchars($cClass).'" aria-labelledby="'.htmlspecialchars($safeId).'-title">
+      <header class="nt-faq-header">'.$heading.$tools.'</header>
+      <div class="nt-faq-list" role="list" data-faq-list">'.$itemsHtml.'</div>
+      <script type="application/ld+json">'.json_encode([
+        '@context'=>'https://schema.org',
+        '@type'=>'FAQPage',
+        'mainEntity'=>$faqEntities
+      ], JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES).'</script>
+    </section>'.faq_inline_assets();
+
+    return $html;
+  }
+
+  // CSS/JS inline (fallback, se inyecta 1 vez)
+  function faq_inline_assets(): string {
+    static $done=false; if($done) return ''; $done=true;
+    return <<<HTML
 <style>
-/* FAQ — look & feel moderno (inline fallback) */
 .nt-faq{max-width:1100px;margin-inline:auto;padding:2rem 1rem}
 .nt-faq-header{display:grid;gap:.75rem;margin-bottom:1rem}
 .nt-faq-title{display:flex;align-items:center;gap:.6rem;font-size:clamp(1.25rem,1rem + 1vw,1.8rem);margin:0}
@@ -295,9 +335,10 @@ function faq(string $id, array $opts = []): string {
 .nt-faq-list{display:grid;gap:.75rem}
 .nt-faq-item{background:#fff;border:1px solid #e8ecf3;border-radius:14px;overflow:clip;box-shadow:0 6px 18px rgba(2,24,84,.06)}
 .nt-faq-q{margin:0}
-.nt-faq-toggle{width:100%;text-align:left;display:grid;grid-template-columns:24px 1fr;align-items:center;gap:.6rem;padding:.9rem 1rem;border:0;background:linear-gradient(180deg,#fafdff,#f3f7ff);color:#0b1739;font-weight:700;cursor:pointer}
-.nt-faq-toggle i{color:#5f76ff;transition:transform .25s ease}
-.nt-faq-toggle[aria-expanded="true"] i{transform:rotate(-180deg)}
+.nt-faq-toggle{width:100%;text-align:left;display:grid;grid-template-columns:24px 26px 1fr;align-items:center;gap:.6rem;padding:.9rem 1rem;border:0;background:linear-gradient(180deg,#fafdff,#f3f7ff);color:#0b1739;font-weight:700;cursor:pointer}
+.nt-faq-toggle i.fa-chevron-down{color:#5f76ff;transition:transform .25s ease}
+.nt-faq-toggle[aria-expanded="true"] i.fa-chevron-down{transform:rotate(-180deg)}
+.nt-faq-q-ico{color:#0038b8;opacity:.9}
 .nt-faq-a{border-top:1px solid #eef2fa;background:#fff}
 .nt-faq-a-inner{padding:.9rem 1rem;color:#263043;line-height:1.55}
 .nt-faq-item.highlight{outline:2px solid #9ab6ff;outline-offset:2px;animation:faqPulse 2.2s ease-in-out 1}
@@ -324,7 +365,7 @@ function faq(string $id, array $opts = []): string {
     const btnCollapse=section.querySelector('[data-faq-collapse]');
     const items=[...list.querySelectorAll('.nt-faq-item')];
     const toggles=items.map(it=>it.querySelector('[data-faq-toggle]'));
-    // Click/teclado
+
     list.addEventListener('click',ev=>{
       const btn=ev.target.closest('[data-faq-toggle]'); if(!btn) return;
       const exp=btn.getAttribute('aria-expanded')==='true'; setExpanded(btn,!exp);
@@ -334,10 +375,9 @@ function faq(string $id, array $opts = []): string {
       if(!['Enter',' '].includes(ev.key)) return;
       const btn=ev.target.closest('[data-faq-toggle]'); if(!btn) return; ev.preventDefault(); btn.click();
     });
-    // Buscar
+
     if(search){
-      let last='';
-      const doFilter=()=>{
+      let last=''; const doFilter=()=>{
         const q=norm(search.value||''); if(q===last) return; last=q;
         items.forEach(it=>{
           const txt=norm(it.textContent||''); const match=q.length<2?true:txt.includes(q);
@@ -346,10 +386,10 @@ function faq(string $id, array $opts = []): string {
       };
       search.addEventListener('input',doFilter);
     }
-    // Expand/Collapse
+
     if(btnExpand) btnExpand.addEventListener('click',()=>toggles.forEach(b=>setExpanded(b,true)));
     if(btnCollapse) btnCollapse.addEventListener('click',()=>toggles.forEach(b=>setExpanded(b,false)));
-    // Deep-link por hash
+
     const openByHash=()=>{
       const id=decodeURIComponent(location.hash||'').replace('#',''); if(!id) return;
       const target=document.getElementById(id);
@@ -364,43 +404,7 @@ function faq(string $id, array $opts = []): string {
 })();
 </script>
 HTML;
-    }
-
-    // Herramientas (search + expand/collapse)
-    $tools = '
-      <div class="nt-faq-tools" role="toolbar" aria-label="Herramientas de FAQ">
-        <label class="nt-faq-search">
-          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-          <input type="search" placeholder="Buscar en las preguntas..." aria-label="Buscar preguntas" data-faq-search>
-        </label>
-        <div class="nt-faq-actions">
-          <button type="button" class="nt-faq-btn" data-faq-expand title="Expandir todo" aria-label="Expandir todo">
-            <i class="fa-solid fa-square-plus" aria-hidden="true"></i> Expandir
-          </button>
-          <button type="button" class="nt-faq-btn ghost" data-faq-collapse title="Colapsar todo" aria-label="Colapsar todo">
-            <i class="fa-solid fa-square-minus" aria-hidden="true"></i> Colapsar
-          </button>
-        </div>
-      </div>';
-
-    // Ensamblado final
-    $html = '
-    <section id="'.htmlspecialchars($safeId).'" class="nt-faq container '.htmlspecialchars($cClass).'" aria-labelledby="'.htmlspecialchars($safeId).'-title">
-      <header class="nt-faq-header">
-        '. $heading .'
-        '. $tools .'
-      </header>
-      <div class="nt-faq-list" role="list" data-faq-list>
-        '. $itemsHtml .'
-      </div>
-      <script type="application/ld+json">'. json_encode([
-          '@context' => 'https://schema.org',
-          '@type'    => 'FAQPage',
-          'mainEntity' => $faqEntities
-      ], JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES) .'</script>
-    </section>' . $inlineAssets;
-
-    return $html;
+  }
 }
 
 /**
