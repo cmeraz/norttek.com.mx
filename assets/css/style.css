@@ -305,12 +305,7 @@ body {
 .nt-hero-bg-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2; }
 .nt-hero-overlay { position:absolute; inset:0; z-index:-1; }
 
-/* Ajuste de altura mínima para que el hero respire debajo del navbar fijo */
-.nt-hero-wrapper { min-height: calc(100vh - 180px); }
-@media (max-width:1279px){ .nt-hero-wrapper { min-height: calc(100vh - 140px); } }
-@media (max-width:1023px){ .nt-hero-wrapper { min-height: calc(100vh - 120px); } }
-/* Cuando el navbar está contraído (clase .scrolled en header) podemos usar menor offset vía selector relativo si se desea JS posteriormente */
-header.nt-nav-shell.scrolled + main .nt-hero-wrapper { min-height: calc(100vh - 150px); }
+/* Altura mínima del hero controlada por padding superior/inferior; se elimina forzado global de 100vh para evitar cortes y solapes */
 
 
 /* Increase visual strength for primary on hover */
@@ -657,4 +652,99 @@ body[data-anim-mode="off"] [data-nt-icon-drift] { animation:none !important; }
 
 /* Reduce motion respect */
 @media (prefers-reduced-motion: reduce){ body[data-anim-mode] [data-nt-icon-drift]{ animation:none !important; } }
+
+/* =============================================
+   Modal UI (internet modal + nombre modal)
+   Estilos unificados para backdrops y cajas de diálogo
+   ============================================= */
+.internet-modal-backdrop,
+#nombre-modal-backdrop.internet-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15,23,42,.55);
+  backdrop-filter: saturate(1.2) blur(2px);
+  z-index: 9999;
+}
+
+/* Caja de diálogo (dos variantes en el DOM) */
+.internet-modal,
+.internet-modal-dialog {
+  background: var(--nt-surface);
+  border: 1px solid #e2edf9;
+  border-radius: 14px;
+  box-shadow: 0 18px 40px -10px rgba(15,23,42,.28), 0 4px 12px rgba(15,23,42,.12);
+  width: min(92vw, 520px);
+  max-width: 520px;
+  padding: 1rem 1rem 1.1rem;
+  position: relative;
+}
+
+/* Encabezado y textos del modal */
+.modal-header { margin-bottom: .65rem; }
+.modal-header h3, .modal-title { margin: 0; font-weight: 800; color: var(--nt-text); letter-spacing: .2px; }
+.modal-subtitle, .modal-desc { margin: .35rem 0 0; color: var(--nt-text-muted); font-size: .9rem; line-height: 1.45; }
+
+/* Cuerpo y campos */
+.modal-body { display: grid; gap: .8rem; }
+.form-field { display: grid; gap: .35rem; }
+.form-field label, .modal-label { font-weight: 700; color: var(--nt-text); font-size: .85rem; letter-spacing: .3px; }
+.form-field input[type="text"],
+.form-field input[type="tel"],
+.modal-input {
+  width: 100%;
+  border: 1px solid #e0e8f2;
+  border-radius: 10px;
+  padding: .7rem .85rem;
+  background: #fff;
+  color: var(--nt-text);
+  box-shadow: 0 1px 2px rgba(15,23,42,.04);
+  transition: border-color .18s ease, box-shadow .18s ease, background .3s ease;
+  font: inherit;
+}
+.form-field input:focus,
+.modal-input:focus { outline: none; border-color: var(--nt-primary-strong); box-shadow: 0 0 0 4px var(--nt-ring); }
+
+/* Mensaje de error del modal */
+#cliente-login-error { border-radius: 10px; }
+
+/* Acciones */
+.modal-actions { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: .25rem; }
+
+/* Botón de cierre (esquina) */
+.modal-close {
+  position: absolute; top: .6rem; right: .6rem;
+  width: 2rem; height: 2rem; border-radius: 999px;
+  border: 1px solid #e2edf9; background: #fff; color: #0f172a;
+  display: inline-flex; align-items: center; justify-content: center;
+  box-shadow: 0 1px 2px rgba(15,23,42,.05);
+  cursor: pointer;
+  transition: transform .15s ease, background .2s ease;
+}
+.modal-close:hover { transform: translateY(-2px); background: #f8fafc; }
+.modal-close:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--nt-ring); }
+
+/* Botones primario/secundario del modal (marcado existente) */
+.btn-primario, .btn.btn-primary {
+  background: linear-gradient(#fff,#fff) padding-box, var(--nt-gradient-border) border-box;
+  color: var(--nt-primary-strong);
+  border: 1px solid transparent;
+  font-weight: 800; letter-spacing: .4px;
+  padding: .6rem .9rem; border-radius: 10px; cursor: pointer;
+  box-shadow: var(--nt-shadow-sm);
+}
+.btn-primario:hover, .btn.btn-primary:hover { background: linear-gradient(180deg,#eef5ff,#e5efff) padding-box, var(--nt-gradient-border) border-box; }
+
+.btn-secundario, .btn.btn-secondary {
+  background: linear-gradient(#f8fbff,#f8fbff) padding-box, linear-gradient(135deg,#dbe9ff,#cfe2ff) border-box;
+  color: #0f172a; border: 1px solid transparent;
+  font-weight: 700; letter-spacing: .3px;
+  padding: .6rem .9rem; border-radius: 10px; cursor: pointer;
+}
+.btn-secundario:hover, .btn.btn-secondary:hover { background: linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg,#dbe9ff,#cfe2ff) border-box; }
+
+/* Estado de carga en submit */
+.is-loading { opacity: .75; pointer-events: none; }
 

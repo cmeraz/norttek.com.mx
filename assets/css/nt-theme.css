@@ -3,7 +3,8 @@
  * Estilos complementarios (footer y elementos UI unificados)
  * Objetivos: mayor respiro visual, tipografía consistente, iconos con color semántico, accesibilidad foco.
  */
-:root {
+/* Encapsular variables dentro del footer para no afectar el resto del sitio */
+.nt-footer {
   --nt-accent: #0d9488; /* teal 600 */
   --nt-accent-rgb: 13 148 136;
   --nt-accent-soft: #14b8a6; /* teal 500 */
@@ -22,7 +23,7 @@
   --nt-transition-fast: .18s cubic-bezier(.4,.6,.3,1);
   --nt-transition-smooth: .38s cubic-bezier(.22,.95,.3,1);
 }
-.dark :root {
+.dark .nt-footer {
   --nt-text-base: #94a3b8;
   --nt-text-strong: #f1f5f9;
 }

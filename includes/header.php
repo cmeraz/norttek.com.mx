@@ -39,10 +39,10 @@ $seo = $seo ?? [];
 <!-- Favicon -->
 <link rel="shortcut icon" href="assets/img/favicon-32x32.png" type="image/png">
 
-<!-- CSS global -->
+<!-- CSS global (orden: componentes > layout/base para minimizar colisiones) -->
 <link href="assets/css/loader.css" rel="stylesheet">
-<link href="assets/css/style.css" rel="stylesheet">
 <link href="assets/css/nt-theme.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
 <!-- CSS específicos por página -->
