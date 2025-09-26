@@ -526,50 +526,35 @@ document.addEventListener('DOMContentLoaded', function() {
     calcular();
   })();
 
-    // Interceptar clic en "Contratar" de cada plan: desplazar al CTA, persistir plan y abrir WhatsApp con el plan seleccionado
+    // Nueva lógica: selección directa de tarjetas (rol radio)
     try {
-      document.querySelectorAll('.int-plan-card a.btn-contratar-link').forEach(function(a){
-        a.addEventListener('click', function(ev){
-          ev.preventDefault();
-          var planCard = a.closest('.int-plan-card');
-          var megas = planCard ? (planCard.getAttribute('data-megas') || '').trim() : '';
-          var price = '';
-          try { var priceEl = planCard ? planCard.querySelector('.int-plan-price') : null; price = priceEl ? priceEl.textContent.replace(/[^0-9.,]/g,'').replace(',','').trim() : ''; } catch(_) {}
-          var planText = megas ? (megas + ' Megas') : '';
-          try { localStorage.setItem('selectedPlan', planText); } catch (_) {}
-          try { setStoredPlan(megas, price); renderCtaPlan(); sessionStorage.setItem('planChosenSession','1'); document.dispatchEvent(new CustomEvent('nt-plan-updated',{ detail:{ triggered:true }})); } catch(_) {}
-
-          // Desplazar al botón de "Solicita tu Instalación" y resaltarlo
-          try {
-            var cta = document.getElementById('contratar') || document.getElementById('solicitar');
-            if (cta) {
-              var header = document.getElementById('site-header');
-              var y = cta.getBoundingClientRect().top + window.pageYOffset - ((header && header.offsetHeight) || 0) - 10;
-              window.scrollTo({ top: y, behavior: 'smooth' });
-              cta.classList.remove('highlight-pulse');
-              void cta.offsetWidth; // reflow para reiniciar animación
-              cta.classList.add('highlight-pulse');
-            }
-          } catch(_) {}
-
-          // Construir y abrir WhatsApp con el mensaje solicitado
-          var nombreRaw = '';
-          var asesorInput = document.getElementById('asesor-nombre');
-          if (asesorInput && asesorInput.value) nombreRaw = asesorInput.value;
-          var nombreTrim = (nombreRaw || '').trim().replace(/\s+/g, ' ');
-          var nombre = nombreTrim;
-          try { if (nombreTrim && nombreTrim === nombreTrim.toLocaleLowerCase('es-MX')) nombre = toTitleCaseEs(nombreTrim); } catch(_) {}
-          var saludo = nombre ? (EMOJI.wave + ' Hola, mi nombre es ' + nombre + '.') : (EMOJI.wave + ' Hola.');
-          var formLink = 'http://clientes.portalinternet.net/solicitar-instalacion/norttek/';
-          var planLinea = planText ? ('Me gustaría contratar el plan de ' + planText + '.') : 'Me gustaría contratar un plan de internet.';
-          var copy = saludo + '\n\n' +
-                     planLinea + '\n\n' +
-                     '¿Pueden ayudarme a continuar con la solicitud?\n\n' +
-                     'Posteriormente llenaré el formulario para agendar mi instalación:\n' +
-                     formLink + '\n\n' +
-                     '✅ Quedo pendiente de su apoyo.';
-          // Nota: ya no abrimos WhatsApp en el click del plan, solo guardamos y desplazamos al CTA.
-        });
+      var planCards = Array.prototype.slice.call(document.querySelectorAll('.int-plan-card.selectable'));
+      function clearPlanSelection(){ planCards.forEach(function(c){ c.setAttribute('aria-checked','false'); c.classList.remove('selected'); }); }
+      function choosePlan(card){
+        if(!card) return;
+        var megas = (card.getAttribute('data-megas') || '').trim();
+        var price = (card.getAttribute('data-plan-price') || '').trim();
+        var planText = megas ? (megas + ' Megas') : '';
+        clearPlanSelection();
+        card.setAttribute('aria-checked','true');
+        card.classList.add('selected');
+        try { localStorage.setItem('selectedPlan', planText); } catch(_) {}
+        try { setStoredPlan(megas, price); sessionStorage.setItem('planChosenSession','1'); document.dispatchEvent(new CustomEvent('nt-plan-updated',{ detail:{ triggered:true }})); } catch(_) {}
+        // Enfocar calendario
+        try {
+          var calendario = document.querySelector('.calendario-costos');
+          var header = document.getElementById('site-header');
+          if (calendario) {
+            var y = calendario.getBoundingClientRect().top + window.pageYOffset - ((header && header.offsetHeight) || 0) - 12;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+            calendario.classList.remove('highlight'); void calendario.offsetWidth; calendario.classList.add('highlight');
+            setTimeout(function(){ calendario && calendario.classList.remove('highlight'); }, 2000);
+          }
+        } catch(_) {}
+      }
+      planCards.forEach(function(card){
+        card.addEventListener('click', function(){ choosePlan(card); });
+        card.addEventListener('keydown', function(ev){ if(ev.key==='Enter' || ev.key===' '){ ev.preventDefault(); choosePlan(card); } });
       });
     } catch(_) {}
   // Prefill de nombre si ya fue capturado previamente

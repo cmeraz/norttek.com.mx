@@ -210,14 +210,14 @@
         </section>
 
         <!-- Planes (segundo) -->
-        <section class="plans scroll-anim">
+        <section class="plans scroll-anim" aria-label="Planes de Internet">
           <?= nt_heading('Elige tu velocidad', 'fa-solid fa-wifi', 'md', null, ['animate'=>true,'delay'=>'sm','class'=>'section-title']); ?>
           <p class="section-subtitle">
-            Como guía: pocos dispositivos y uso básico funcionan bien con planes de menor velocidad; para una familia completa de 4-6 personas y múltiples dispositivos, recomendamos planes de 20 Mbps o más.
+            Selecciona un plan para calcular automáticamente tus costos de instalación.
           </p>
-          <div class="plan-cards int-plans">
+          <div class="plan-cards int-plans" role="radiogroup" aria-label="Selecciona un plan de internet">
             <!-- Plan Starter -->
-            <article class="int-plan-card animate-card nt-soft-seq" data-nt-anim data-megas="10">
+            <article class="int-plan-card animate-card nt-soft-seq selectable" role="radio" tabindex="0" aria-checked="false" data-nt-anim data-megas="10" data-plan-label="Starter 10 Mbps" data-plan-price="299">
               <header class="int-plan-header">
                 <div class="int-plan-icon esencial" data-nt-icon-drift><i class="fa-solid fa-seedling" aria-hidden="true"></i></div>
                 <h3 class="int-plan-title">Starter 10 Mbps</h3>
@@ -234,14 +234,10 @@
               <div class="int-plan-pricewrap">
                 <span class="int-plan-price">$299 <small>/ mes</small></span>
               </div>
-              <div class="int-plan-cta">
-                <a class="btn-contratar-link" href="#contratar" target="_blank">
-                  <i class="fa-solid fa-hand-pointer icon" aria-hidden="true"></i> Elegir este plan
-                </a>
-              </div>
+              <div class="plan-select-indicator" aria-hidden="true">Haz clic para seleccionar</div>
             </article>
             <!-- Plan Plus -->
-            <article class="int-plan-card destacado animate-card nt-soft-seq" data-nt-anim data-megas="20">
+            <article class="int-plan-card destacado animate-card nt-soft-seq selectable" role="radio" tabindex="0" aria-checked="false" data-nt-anim data-megas="20" data-plan-label="Plus 20 Mbps" data-plan-price="399">
               <div class="int-plan-ribbon" aria-label="Plan Recomendado"><span>Recomendado</span></div>
               <header class="int-plan-header">
                 <div class="int-plan-icon avanzado" data-nt-icon-drift><i class="fa-solid fa-layer-group" aria-hidden="true"></i></div>
@@ -259,14 +255,10 @@
               <div class="int-plan-pricewrap">
                 <span class="int-plan-price">$399 <small>/ mes</small></span>
               </div>
-              <div class="int-plan-cta">
-                <a class="btn-contratar-link" href="#contratar" target="_blank">
-                  <i class="fa-solid fa-hand-pointer icon" aria-hidden="true"></i> Elegir este plan
-                </a>
-              </div>
+              <div class="plan-select-indicator" aria-hidden="true">Haz clic para seleccionar</div>
             </article>
             <!-- Plan Ultra -->
-            <article class="int-plan-card animate-card nt-soft-seq" data-nt-anim data-megas="30">
+            <article class="int-plan-card animate-card nt-soft-seq selectable" role="radio" tabindex="0" aria-checked="false" data-nt-anim data-megas="30" data-plan-label="Ultra 30 Mbps" data-plan-price="499">
               <header class="int-plan-header">
                 <div class="int-plan-icon superior" data-nt-icon-drift><i class="fa-solid fa-rocket" aria-hidden="true"></i></div>
                 <h3 class="int-plan-title">Ultra 30 Mbps</h3>
@@ -283,11 +275,7 @@
               <div class="int-plan-pricewrap">
                 <span class="int-plan-price">$499 <small>/ mes</small></span>
               </div>
-              <div class="int-plan-cta">
-                <a class="btn-contratar-link" href="#contratar" target="_blank">
-                  <i class="fa-solid fa-hand-pointer icon" aria-hidden="true"></i> Elegir este plan
-                </a>
-              </div>
+              <div class="plan-select-indicator" aria-hidden="true">Haz clic para seleccionar</div>
             </article>
           </div>
           </section>
