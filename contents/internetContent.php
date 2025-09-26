@@ -290,7 +290,7 @@
           </div>
           <div class="escenarios-grid">
             <article class="escenario-card" id="esc-propio" data-esc="propio">
-              <header><h3><i class="fa-solid fa-circle-check"></i> Ya tengo antena</h3><span class="tag">Escenario 1</span></header>
+              <header><h3><i class="fa-solid fa-circle-check"></i> Ya tengo antena</h3></header>
               <ul class="incluye">
                 <li>Alineación de antena</li>
                 <li>Reprogramación de equipo</li>
@@ -300,14 +300,14 @@
                 <div class="valor" data-monto="propio-total">$500 MXN</div>
                 <div class="detalle">Anticipo único. Cubre todo.</div>
               </div>
-              <div class="resumen-mini">
+              <div class="resumen-mini" data-role="propio-resumen">
                 <strong>Pago inicial:</strong> $500 MXN<br>
-                <strong>Pagos futuros:</strong> solo la mensualidad del plan.
+                <strong>Pagos futuros:</strong> servicio (depende del plan).
               </div>
               <button class="btn-escoger" data-select-esc="propio">Usar este escenario</button>
             </article>
             <article class="escenario-card" id="esc-sinequipo" data-esc="sinequipo">
-              <header><h3><i class="fa-solid fa-satellite-dish"></i> Necesito antena</h3><span class="tag alt">Escenario 2</span></header>
+              <header><h3><i class="fa-solid fa-satellite-dish"></i> Necesito antena</h3></header>
               <ul class="incluye">
                 <li>Antena nueva <strong>$1,800</strong></li>
                 <li>Instalación, cableado y módem WiFi <strong>$850</strong></li>
@@ -363,7 +363,8 @@
           </div>
           <!-- CTA principal para avanzar con la contratación (reintroducido tras refactor) -->
           <div class="contrata-ahora-wrap" style="margin-top:1.4rem;">
-            <a id="contratar" href="#" role="button" class="contrata-ahora-btn" aria-label="Solicitar instalación por WhatsApp">
+            <a id="contratar" href="#" role="button" class="contrata-ahora-btn cta-install-anim" aria-label="Solicitar instalación por WhatsApp">
+              <i class="fa-solid fa-plug-circle-check" aria-hidden="true"></i>
               <span>Solicitar Instalación</span>
             </a>
           </div>

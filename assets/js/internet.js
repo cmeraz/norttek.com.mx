@@ -92,35 +92,13 @@ document.addEventListener('DOMContentLoaded', function() {
     var cta = document.getElementById('contratar') || document.getElementById('solicitar');
     var formAlt = document.getElementById('abrir-formulario');
     if (!cta) return;
-    var plan = getStoredPlan();
-    var labelId = 'cta-plan-suffix';
-    var suffix = document.getElementById(labelId);
-    if (plan.megas) {
-      if (!suffix) {
-        suffix = document.createElement('span');
-        suffix.id = labelId;
-        suffix.style.marginLeft = '.5rem';
-        suffix.style.fontWeight = '700';
-        suffix.style.color = '#4f8cff';
-        cta.appendChild(suffix);
-      }
-      suffix.textContent = plan.megas + ' Megas';
-      try {
-        var baseHref = (cta.getAttribute('data-base-href') || cta.getAttribute('href') || '').split('?')[0];
-        cta.setAttribute('data-base-href', baseHref);
-        cta.setAttribute('href', baseHref + '?plan=' + encodeURIComponent(plan.megas));
-        if (formAlt) {
-          var base2 = (formAlt.getAttribute('data-base-href') || formAlt.getAttribute('href') || '').split('?')[0];
-          formAlt.setAttribute('data-base-href', base2);
-          formAlt.setAttribute('href', base2 + '?plan=' + encodeURIComponent(plan.megas));
-        }
-      } catch(_) {}
-    } else if (suffix) {
-      suffix.remove();
-      var base = cta.getAttribute('data-base-href');
-      if (base) cta.setAttribute('href', base);
-      if (formAlt && formAlt.getAttribute('data-base-href')) formAlt.setAttribute('href', formAlt.getAttribute('data-base-href'));
-    }
+    // Texto fijo, sin sufijos dinámicos
+    try {
+      var suffix = document.getElementById('cta-plan-suffix');
+      if (suffix) suffix.remove();
+    } catch(_) {}
+    // Asegurar label accesible estable
+    cta.setAttribute('aria-label', 'Solicitar instalación por WhatsApp');
   }
 
   // Menú principal: lógica de contenido dinámico
@@ -405,7 +383,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var placeholder = document.getElementById('tabla-placeholder');
     var resumenLinea = document.getElementById('inst-resumen-linea');
     var botonesEsc = rootSec.querySelectorAll('[data-select-esc]');
-    var sinEquipoResumen = rootSec.querySelector('[data-role="sin-equipo-resumen"]');
+  var sinEquipoResumen = rootSec.querySelector('[data-role="sin-equipo-resumen"]');
+  var propioResumen = rootSec.querySelector('[data-role="propio-resumen"]');
 
   var STATE = { escenario:null, pagoAntena:'contado' };
     var CONST = {
@@ -486,6 +465,9 @@ document.addEventListener('DOMContentLoaded', function() {
         pushRow('Mes 3', servicio, 'Servicio');
         pushRow('Mes 4', servicio, 'Servicio');
         if(resumenLinea) resumenLinea.innerHTML = '<strong>Escenario Equipo Propio:</strong> Pagas '+fmt(CONST.propio.anticipo)+' el primer mes y a partir del Mes 2 solo el servicio ('+fmt(servicio)+').';
+        if(propioResumen){
+          propioResumen.innerHTML = '<strong>Pago inicial:</strong> '+fmt(CONST.propio.anticipo)+'<br><strong>Pagos futuros:</strong> servicio ('+fmt(servicio)+')';
+        }
       } else {
         var anticipo = CONST.sinEquipo.instalacion; // 850
         var antena = CONST.sinEquipo.antena; // 1800
