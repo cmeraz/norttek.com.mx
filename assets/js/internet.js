@@ -395,8 +395,9 @@ document.addEventListener('DOMContentLoaded', function() {
   (function initInstalacionCostos(){
     var rootSec = document.getElementById('instalacion-costos');
     if(!rootSec) return;
-    // Forzar oculto al iniciar (incluso si quedó algo en localStorage de sesiones previas)
-    rootSec.classList.add('inst-costs-hidden');
+    // Mostrar siempre la sección (gating visual eliminado para que el usuario la vea debajo de los planes)
+    rootSec.classList.remove('inst-costs-hidden');
+    rootSec.classList.add('inst-costs-visible');
     var escPropio = document.getElementById('esc-propio');
     var escSin = document.getElementById('esc-sinequipo');
     var radiosPago = rootSec.querySelectorAll('input[name="pago-antena"]');
@@ -437,15 +438,11 @@ document.addEventListener('DOMContentLoaded', function() {
       rootSec.classList.remove('inst-costs-visible');
     }
     function updateVisibility(triggered){
-      var plan = getPlan();
-      var sessionChosen = false;
-      try { sessionChosen = sessionStorage.getItem('planChosenSession') === '1'; } catch(_){ }
-      if(plan.megas && plan.price && (triggered===true || sessionChosen)){
-        revealSection();
-      } else {
-        // Sólo ocultar si aún no se ha revelado en esta sesión
-        if(!sessionChosen) hideSection();
-      }
+      // Siempre visible; solo auto-selecciona escenario al elegir plan por primera vez
+      try {
+        var plan = getPlan();
+        if(plan.megas && plan.price && !STATE.escenario){ seleccionarEscenario('propio'); }
+      } catch(_){}
     }
     function fmt(n){ return '$'+n.toLocaleString('es-MX'); }
 

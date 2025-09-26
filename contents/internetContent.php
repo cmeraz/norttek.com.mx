@@ -1,3 +1,4 @@
+<!-- Idioma Español -->
 <div class="internet-app">
   <!-- Modal de login de cliente existente -->
   <div id="cliente-login-modal" class="internet-modal-backdrop" style="display:none;">
@@ -133,36 +134,78 @@
             </div>
           </div>
 
-          <hr class="section-divider" />
-          <?= nt_heading('¿Qué plan debo elegir?', 'fa-solid fa-wifi', 'md', null, ['animate'=>true,'delay'=>'lg','class'=>'section-title']); ?>
-          <p class="section-subtitle">Todos nuestros planes se adaptan casi a cualquiera de las necesidades de hoy en día como son:</p>
-          <ul class="proceso-list">
-            <li>Videollamadas</li>
-            <li>Video Streaming (Netflix, YouTube, etc.)</li>
-            <li>Redes sociales (Facebook, Instagram, Twitter, etc.)</li>
-            <li>Mensajería instantánea (WhatsApp, Telegram, etc.)</li>
-            <li>Trabajo remoto (Zoom, Microsoft Teams, Google Meet, etc.)</li>
-            <li>Dispositivos conectados en casa (IoT, asistentes de voz, etc.)</li>
-            <li>Juegos en línea</li>
-            <li>Visualizar cámaras de videovigilancia</li>
-            <li>Descargas y subidas de archivos</li>
-            <li>Trabajos escolares</li>
-          </ul>
-          <p class="section-subtitle" style="margin-top:.6rem;">
-            Teniendo en cuenta toda la información que nos proporcionaste, te presentamos los planes de internet disponibles para nuestros usuarios. A continuación, podrás ver las opciones para elegir el plan que mejor se adapte a tu rutina y disfrutar de un servicio confiable desde el primer día. Si tienes alguna duda, no dudes en contactarnos directamente <a href="#contacta-un-asesor" class="link-asesor">dando click aqui</a>.
-          </p>
-          <!-- Guía para obtener costo de instalación (reubicada aquí) -->
-          <section class="instalacion-costo-guia" style="margin-top:1.8rem;">
-            <?= nt_heading('¿Cómo obtener el costo de tu instalación?', 'fa-solid fa-calculator', 'sm', null, ['class'=>'section-title','animate'=>true,'delay'=>'xl']); ?>
-            <p class="section-subtitle" style="margin-top:.4rem;">Sigue estos pasos para ver el detalle personalizado de pagos según tu caso:</p>
-            <ol style="margin: .6rem 0 0; padding-left:1.2rem; line-height:1.55; color:#4a5568;">
-              <li>Elige uno de los planes de velocidad haciendo clic en <strong>"Elegir este plan"</strong>.</li>
-              <li>Se mostrará (o se revelará) la sección <strong>Costos de Instalación</strong> más abajo.</li>
-              <li>Selecciona el escenario que te aplica: <em>Ya tengo antena</em> o <em>Necesito antena</em>.</li>
-              <li>Si necesitas antena, elige si pagarás <strong>de contado</strong> o <strong>diferido</strong> en 3 meses.</li>
-              <li>Revisa el <strong>Calendario de Pagos</strong> y el <strong>Resumen Dinámico</strong> para confirmar montos.</li>
-            </ol>
-            <p style="margin-top:.8rem; color:#4a5568;">Si aún tienes dudas, usa la sección <a href="#contacta-un-asesor" class="link-asesor">Contacta a un asesor</a> y con gusto te apoyamos.</p>
+          <!-- Guía para obtener costo de instalación -->
+          <section id="costos-instalacion-guia" class="instalacion-costo-guia" style="margin-top:1.2rem;">
+            <?= nt_heading('¿Cómo ver tu costo de instalación?', 'fa-solid fa-calculator', 'sm', null, ['class'=>'section-title','animate'=>true,'delay'=>'xl']); ?>
+            <p class="section-subtitle" style="margin-top:.35rem;">Genera tu calendario de pagos y montos paso a paso:</p>
+            <div class="nt-steps-grid" style="margin:.9rem 0 0; display:grid; gap:.85rem; grid-template-columns:repeat(auto-fit,minmax(210px,1fr));">
+              <div class="nt-step-item scroll-anim" style="background:#ffffff; border:1px solid #e2edf9; border-radius:14px; padding:.75rem .8rem; display:flex; gap:.65rem; align-items:flex-start; position:relative; overflow:hidden;">
+                <div style="width:34px; height:34px; flex:0 0 34px; border-radius:10px; background:linear-gradient(135deg,#eff6ff,#dbeafe); display:flex; align-items:center; justify-content:center; font-size:1rem; color:#2563eb; font-weight:700;">
+                  <i class="fa-solid fa-hand-pointer" aria-hidden="true"></i>
+                </div>
+                <div style="font-size:.7rem; line-height:1.4; color:#455468; font-weight:500;">
+                  <strong style="display:block; font-size:.72rem; letter-spacing:.4px; color:#0f172a;">1. Elige un plan</strong>
+                  Usa “Elegir este plan” en la tarjeta que mejor se adapte a tu uso.
+                </div>
+              </div>
+              <div class="nt-step-item scroll-anim" style="background:#ffffff; border:1px solid #e2edf9; border-radius:14px; padding:.75rem .8rem; display:flex; gap:.65rem; align-items:flex-start; position:relative; overflow:hidden;">
+                <div style="width:34px; height:34px; flex:0 0 34px; border-radius:10px; background:linear-gradient(135deg,#f0f9ff,#e0f2fe); display:flex; align-items:center; justify-content:center; font-size:1rem; color:#0284c7; font-weight:700;">
+                  <i class="fa-solid fa-eye" aria-hidden="true"></i>
+                </div>
+                <div style="font-size:.7rem; line-height:1.4; color:#455468; font-weight:500;">
+                  <strong style="display:block; font-size:.72rem; letter-spacing:.4px; color:#0f172a;">2. Sección de costos</strong>
+                  Se mostrará (o enfocará) automáticamente <em>Costos de Instalación</em>.
+                </div>
+              </div>
+              <div class="nt-step-item scroll-anim" style="background:#ffffff; border:1px solid #e2edf9; border-radius:14px; padding:.75rem .8rem; display:flex; gap:.65rem; align-items:flex-start; position:relative; overflow:hidden;">
+                <div style="width:34px; height:34px; flex:0 0 34px; border-radius:10px; background:linear-gradient(135deg,#f8fafc,#eef2f7); display:flex; align-items:center; justify-content:center; font-size:1rem; color:#475569; font-weight:700;">
+                  <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+                </div>
+                <div style="font-size:.7rem; line-height:1.4; color:#455468; font-weight:500;">
+                  <strong style="display:block; font-size:.72rem; letter-spacing:.4px; color:#0f172a;">3. Escenario</strong>
+                  Selecciona: <em>Ya tengo antena</em> o <em>Necesito antena</em>.
+                </div>
+              </div>
+              <div class="nt-step-item scroll-anim" style="background:#ffffff; border:1px solid #e2edf9; border-radius:14px; padding:.75rem .8rem; display:flex; gap:.65rem; align-items:flex-start; position:relative; overflow:hidden;">
+                <div style="width:34px; height:34px; flex:0 0 34px; border-radius:10px; background:linear-gradient(135deg,#fef9c3,#fde68a); display:flex; align-items:center; justify-content:center; font-size:1rem; color:#b45309; font-weight:700;">
+                  <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>
+                </div>
+                <div style="font-size:.7rem; line-height:1.4; color:#455468; font-weight:500;">
+                  <strong style="display:block; font-size:.72rem; letter-spacing:.4px; color:#0f172a;">4. Forma de pago</strong>
+                  Si necesitas antena: elegir <strong>Contado</strong> o <strong>Diferido</strong> (3 meses).
+                </div>
+              </div>
+              <div class="nt-step-item scroll-anim" style="background:#ffffff; border:1px solid #e2edf9; border-radius:14px; padding:.75rem .8rem; display:flex; gap:.65rem; align-items:flex-start; position:relative; overflow:hidden;">
+                <div style="width:34px; height:34px; flex:0 0 34px; border-radius:10px; background:linear-gradient(135deg,#e0f2fe,#bae6fd); display:flex; align-items:center; justify-content:center; font-size:1rem; color:#0369a1; font-weight:700;">
+                  <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
+                </div>
+                <div style="font-size:.7rem; line-height:1.4; color:#455468; font-weight:500;">
+                  <strong style="display:block; font-size:.72rem; letter-spacing:.4px; color:#0f172a;">5. Calendario</strong>
+                  Revisa Mes 1 a Mes 4 y el resumen dinámico generado.
+                </div>
+              </div>
+              <div class="nt-step-item scroll-anim" style="background:#ffffff; border:1px solid #e2edf9; border-radius:14px; padding:.75rem .8rem; display:flex; gap:.65rem; align-items:flex-start; position:relative; overflow:hidden;">
+                <div style="width:34px; height:34px; flex:0 0 34px; border-radius:10px; background:linear-gradient(135deg,#ecfdf5,#d1fae5); display:flex; align-items:center; justify-content:center; font-size:1rem; color:#047857; font-weight:700;">
+                  <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
+                </div>
+                <div style="font-size:.7rem; line-height:1.4; color:#455468; font-weight:500;">
+                  <strong style="display:block; font-size:.72rem; letter-spacing:.4px; color:#0f172a;">6. Continúa</strong>
+                  Guarda / comparte montos y solicita tu instalación o asesoría.
+                </div>
+              </div>
+            </div>
+            <div style="margin-top:1rem; display:grid; gap:.9rem; grid-template-columns:repeat(auto-fit,minmax(250px,1fr));">
+              <div style="background:#ffffff; border:1px solid #e2edf9; border-radius:12px; padding:.75rem .8rem; font-size:.65rem; line-height:1.45; color:#465362;">
+                <strong>Contado vs Diferido:</strong> Contado pagas más el Mes 1 y desde el Mes 2 solo servicio. Diferido distribuye la antena (600 x 3) y reduce el desembolso inicial.
+              </div>
+              <div style="background:#f8fbff; border:1px solid #e2edf9; border-radius:12px; padding:.75rem .8rem; font-size:.65rem; line-height:1.45; color:#465362;">
+                <strong>¿Cuál me conviene?</strong> Si puedes cubrirlo, contado simplifica. Si prefieres flujo ligero, usa diferido: tu servicio inicia igual sin espera.
+              </div>
+              <div style="background:#ffffff; border:1px solid #e2edf9; border-radius:12px; padding:.75rem .8rem; font-size:.65rem; line-height:1.45; color:#465362;">
+                <strong>Transparencia:</strong> No hay penalización por diferir la antena: solo se divide el costo real en 3 meses.
+              </div>
+            </div>
+            <p style="margin-top:1rem; font-size:.7rem; line-height:1.5; color:#4a5568;">¿Algo no cuadra? Escríbenos directo en <a href="#contacta-un-asesor" class="link-asesor">Contacta a un asesor</a> y revisamos tu caso.</p>
           </section>
         </section>
 
@@ -330,6 +373,13 @@
             <h4><i class="fa-solid fa-calculator"></i> Resumen Dinámico</h4>
             <div id="inst-resumen-linea" class="res-line">Selecciona un escenario para ver el detalle de pagos.</div>
             <div class="nota-mini">La mensualidad mostrada se basa en el plan que selecciones arriba.</div>
+          </div>
+          <!-- CTA principal para avanzar con la contratación (reintroducido tras refactor) -->
+          <div class="contrata-ahora-wrap" style="margin-top:1.4rem;">
+            <a id="contratar" href="#" role="button" class="contrata-ahora-btn" aria-label="Solicitar instalación por WhatsApp">
+              <i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>
+              <span>Solicita tu Instalación</span>
+            </a>
           </div>
         </section>
       </main>
