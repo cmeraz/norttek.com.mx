@@ -190,181 +190,217 @@ function renderFAQComponent($jsonFile, $options = []) {
 }
 
 /**
- * Renderiza un componente FAQ a partir de un archivo JSON ubicado en /json/faq/{archivo}.json.
- * El JSON debe ser un array de objetos con "pregunta", "respuesta", "icono" (opcional), "imagen" (opcional).
- * Uso: echo faq('faq-general', ['title' => 'Preguntas Frecuentes']);
- * 
- * @param string $jsonName Nombre del archivo JSON (sin extensión)
- * @param array $options Opciones como 'title'
- * @return string HTML renderizado del componente FAQ
+ * faq: genera una sección de Preguntas Frecuentes a partir de un JSON.
+ * - $id: slug/identificador del FAQ, se usará también como anchor (id del <section>)
+ * - $opts:
+ *    - title: título visible (por defecto "Preguntas frecuentes")
+ *    - json: ruta JSON alternativa (por defecto busca en includes/json/{id}.json, includes/json/faq-{id}.json o includes/json/faqs/{id}.json)
+ *    - containerClass: clases extra para el <section>
+ *
+ * Estructura JSON esperada: [ { "q": "Pregunta", "a": "Respuesta (HTML permitido)" }, ... ]
  */
-function faq($jsonName, $options = []) {
-    $jsonFile = __DIR__ . '/../json/faq/' . basename($jsonName) . '.json';
-    $title = isset($options['title']) ? htmlspecialchars($options['title']) : 'Preguntas Frecuentes';
-    $iconoGenerico = 'fas fa-question-circle';
+function faq(string $id, array $opts = []): string {
+    $title   = $opts['title'] ?? 'Preguntas frecuentes';
+    $cClass  = $opts['containerClass'] ?? '';
+    $paths   = [];
 
-    if (!file_exists($jsonFile)) {
-        return "<!-- FAQ JSON file not found: {$jsonFile} -->";
+    if (!empty($opts['json'])) {
+        $paths[] = $opts['json'];
+    }
+    $base = __DIR__ . '/json/';
+    $paths[] = $base . $id . '.json';
+    $paths[] = $base . 'faq-' . $id . '.json';
+    $paths[] = $base . 'faqs/' . $id . '.json';
+
+    $data = [];
+    $src  = null;
+    foreach ($paths as $p) {
+        if (is_string($p) && is_file($p)) { $src = $p; break; }
+    }
+    if ($src) {
+        $raw  = file_get_contents($src);
+        $data = json_decode($raw, true);
+        if (!is_array($data)) $data = [];
     }
 
-    $faqs = json_decode(file_get_contents($jsonFile), true);
-    if (!is_array($faqs)) {
-        return "<!-- FAQ JSON invalid format: {$jsonFile} -->";
+    if (!$data) {
+        // Mensaje suave si no hay datos
+        $safeId = htmlspecialchars($id, ENT_QUOTES, 'UTF-8');
+        return '<section id="' . $safeId . "\" class=\"nt-faq container {$cClass}\"><div class=\"nt-faq-header\"><h2 class=\"nt-faq-title\"><i class=\"fa-solid fa-circle-question\" aria-hidden=\"true\"></i> " . htmlspecialchars($title) . "</h2><p class=\"nt-faq-sub\">No hay preguntas registradas por el momento.</p></div></section>";
     }
 
-    ob_start();
-    ?>
-    <section class="faq-falcon max-w-4xl mx-auto my-16 px-4">
-        <h2 class="faq-falcon__title text-3xl md:text-4xl font-extrabold text-center mb-10 text-blue-800"><?= $title ?></h2>
-        <div class="faq-falcon__container">
-            <?php foreach ($faqs as $i => $faq): 
-                $icono = !empty($faq['icono']) ? htmlspecialchars($faq['icono']) : $iconoGenerico;
-                $pregunta = isset($faq['pregunta']) ? htmlspecialchars($faq['pregunta']) : '';
-                $respuesta = isset($faq['respuesta']) ? nl2br(htmlspecialchars($faq['respuesta'])) : '';
-                if (!empty($faq['imagen'])) {
-                    $imgSrc = htmlspecialchars($faq['imagen']);
-                    $respuesta .= '<div class="mt-4"><img src="'.$imgSrc.'" alt="Imagen relacionada" class="rounded-xl shadow-lg max-h-48 mx-auto border border-blue-100"></div>';
-                }
-            ?>
-            <!-- Cada pregunta frecuente es un bloque con animación de aparición y acordeón -->
-            <div class="faq-falcon__item faq-fade" data-faq-index="<?= $i ?>">
-                <div class="faq-falcon__question flex items-center gap-3 cursor-pointer py-4 px-6 rounded-lg transition hover:bg-blue-50" tabindex="0">
-                    <span class="faq-falcon__icon flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-600 text-xl">
-                        <i class="<?= $icono ?>"></i>
-                    </span>
-                    <span class="faq-falcon__qtext flex-1 text-lg font-semibold"><?= $pregunta ?></span>
-                    <span class="faq-falcon__arrow text-2xl text-blue-400 transition-transform duration-300">&#x25BC;</span>
-                </div>
-                <div class="faq-falcon__answer px-8 pb-6 text-gray-700 text-base leading-relaxed" style="<?= $i === 0 ? 'max-height:500px;opacity:1;' : 'max-height:0;opacity:0;' ?>">
-                    <?= $respuesta ?>
-                </div>
-            </div>
-            <?php endforeach; ?>
-        </div>
-    </section>
-    <style>
-        /* Contenedor principal del FAQ */
-        .faq-falcon__container {
-            background: #fff;
-            border-radius: 1.5rem;
-            box-shadow: 0 4px 32px 0 rgba(37,99,235,0.09);
-            padding: 2rem 1rem;
-        }
-        /* Separador entre items */
-        .faq-falcon__item + .faq-falcon__item {
-            border-top: 1px solid #e0e7ef;
-        }
-        /* Accesibilidad: outline al enfocar pregunta */
-        .faq-falcon__question:focus {
-            outline: 2px solid #2563eb;
-            outline-offset: 2px;
-        }
-        /* Flecha animada */
-        .faq-falcon__arrow {
-            transition: transform 0.4s cubic-bezier(.4,0,.2,1);
-        }
-        /* Respuesta con transición de altura y opacidad */
-        .faq-falcon__answer {
-            overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(.4,0,.2,1), opacity 0.5s cubic-bezier(.4,0,.2,1);
-            will-change: max-height, opacity;
-        }
-        /* Icono de pregunta */
-        .faq-falcon__icon {
-            min-width: 2.5rem;
-            min-height: 2.5rem;
-        }
-        /* Hover en icono */
-        .faq-falcon__question:hover .faq-falcon__icon {
-            background: #2563eb;
-            color: #fff;
-            transition: background 0.2s, color 0.2s;
-        }
-        .faq-falcon__answer img { max-width: 100%; height: auto; }
-        /* Animación de aparición al hacer scroll */
-        .faq-fade {
-            opacity: 0;
-            transform: translateY(60px) scale(0.97);
-            transition: opacity 0.6s cubic-bezier(.4,1.4,.6,1), transform 0.6s cubic-bezier(.4,1.4,.6,1);
-        }
-        .faq-fade.faq-visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-    </style>
-    <script>
-    // Animación de aparición con Intersection Observer
-    document.addEventListener('DOMContentLoaded', function() {
-        // Observa cada item FAQ y le agrega la clase de animación cuando entra en pantalla
-        var items = document.querySelectorAll('.faq-fade');
-        if ('IntersectionObserver' in window) {
-            var obs = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('faq-visible');
-                    } else {
-                        entry.target.classList.remove('faq-visible');
-                    }
-                });
-            }, { threshold: 0.15 });
-            items.forEach(function(item) { obs.observe(item); });
-        } else {
-            // Fallback: muestra todos si no hay soporte para IntersectionObserver
-            items.forEach(function(item) { item.classList.add('faq-visible'); });
-        }
+    // JSON-LD
+    $faqEntities = array_map(function ($it) {
+        return [
+            '@type' => 'Question',
+            'name'  => isset($it['q']) ? strip_tags($it['q']) : '',
+            'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text'  => isset($it['a']) ? $it['a'] : ''
+            ],
+        ];
+    }, $data);
 
-        // Lógica de acordeón: abre/cierra respuestas al hacer click o usar teclado
-        document.querySelectorAll('.faq-falcon__question').forEach(function(q, idx) {
-            q.onclick = function() {
-                var item = q.closest('.faq-falcon__item');
-                var answer = item.querySelector('.faq-falcon__answer');
-                var arrow = q.querySelector('.faq-falcon__arrow');
-                var isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px' && answer.style.opacity === '1';
+    $safeId = preg_replace('/[^a-z0-9\-\_]/i', '-', $id);
+    $safeId = trim($safeId, '-');
+    $safeTitle = htmlspecialchars($title, ENT_QUOTES, 'UTF-8');
 
-                // Cierra todos los items
-                document.querySelectorAll('.faq-falcon__item').forEach(function(i) {
-                    var a = i.querySelector('.faq-falcon__answer');
-                    var ar = i.querySelector('.faq-falcon__arrow');
-                    a.style.maxHeight = '0';
-                    a.style.opacity = '0';
-                    if (ar) ar.style.transform = 'rotate(0deg)';
-                    if (ar) ar.style.color = '#60a5fa';
-                });
+    // Construcción del listado
+    $itemsHtml = '';
+    foreach ($data as $i => $it) {
+        $q = $it['q'] ?? '';
+        $a = $it['a'] ?? '';
+        $qid = $safeId . '-q-' . ($i + 1);
+        $aid = $safeId . '-a-' . ($i + 1);
+        $itemsHtml .= '
+        <article class="nt-faq-item" role="listitem" id="'.htmlspecialchars($qid).'">
+          <h3 class="nt-faq-q">
+            <button type="button" class="nt-faq-toggle" aria-expanded="false" aria-controls="'.htmlspecialchars($aid).'" data-faq-toggle>
+              <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+              <span class="nt-faq-q-text">'. $q .'</span>
+            </button>
+          </h3>
+          <div id="'.htmlspecialchars($aid).'" class="nt-faq-a" role="region" aria-labelledby="'.htmlspecialchars($qid).'" hidden>
+            <div class="nt-faq-a-inner">'. $a .'</div>
+          </div>
+        </article>';
+    }
 
-                // Abre el seleccionado si no estaba abierto
-                if (!isOpen) {
-                    answer.style.maxHeight = answer.scrollHeight + 'px';
-                    answer.style.opacity = '1';
-                    if (arrow) {
-                        arrow.style.transform = 'rotate(180deg)';
-                        arrow.style.color = '#2563eb';
-                    }
-                }
-            };
-            // Accesibilidad: permite abrir/cerrar con Enter o Space
-            q.onkeydown = function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    q.click();
-                }
-            };
-        });
+    // Encabezado (usa nt_heading si existe)
+    if (function_exists('nt_heading')) {
+        $heading = nt_heading($safeTitle, 'fa-solid fa-circle-question', 'md', '', ['class'=>'nt-heading-accent-bar']);
+    } else {
+        $heading = '<h2 class="nt-faq-title"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> '.$safeTitle.'</h2>';
+    }
 
-        // Abre el primer item por defecto al cargar la página
-        var first = document.querySelector('.faq-falcon__item .faq-falcon__answer');
-        var firstArrow = document.querySelector('.faq-falcon__item .faq-falcon__arrow');
-        if (first) {
-            first.style.maxHeight = first.scrollHeight + 'px';
-            first.style.opacity = '1';
-            if (firstArrow) {
-                firstArrow.style.transform = 'rotate(180deg)';
-                firstArrow.style.color = '#2563eb';
-            }
-        }
+    // CSS/JS inline de respaldo (solo una vez por página)
+    static $faqAssetsInjected = false;
+    $inlineAssets = '';
+    if (!$faqAssetsInjected) {
+        $faqAssetsInjected = true;
+        $inlineAssets = <<<HTML
+<style>
+/* FAQ — look & feel moderno (inline fallback) */
+.nt-faq{max-width:1100px;margin-inline:auto;padding:2rem 1rem}
+.nt-faq-header{display:grid;gap:.75rem;margin-bottom:1rem}
+.nt-faq-title{display:flex;align-items:center;gap:.6rem;font-size:clamp(1.25rem,1rem + 1vw,1.8rem);margin:0}
+.nt-faq-title i{color:#0a4bff}
+.nt-faq-tools{display:flex;flex-wrap:wrap;gap:.5rem .75rem;align-items:center;justify-content:space-between}
+.nt-faq-search{display:inline-flex;align-items:center;gap:.5rem;background:#f4f7ff;border:1px solid #e3eafe;border-radius:12px;padding:.4rem .6rem;min-width:min(420px,100%);flex:1}
+.nt-faq-search input{border:0;background:transparent;outline:0;width:100%;padding:.25rem;font-size:.98rem;color:#0b1739}
+.nt-faq-actions{display:inline-flex;gap:.5rem}
+.nt-faq-btn{display:inline-flex;align-items:center;gap:.45rem;border-radius:10px;padding:.5rem .8rem;font-weight:600;border:1px solid #dbe6ff;background:#eef3ff;color:#002c99;cursor:pointer;transition:background .2s ease,transform .15s ease}
+.nt-faq-btn:hover{background:#e4eeff;transform:translateY(-1px)}
+.nt-faq-btn.ghost{background:#fff;color:#274472}
+.nt-faq-list{display:grid;gap:.75rem}
+.nt-faq-item{background:#fff;border:1px solid #e8ecf3;border-radius:14px;overflow:clip;box-shadow:0 6px 18px rgba(2,24,84,.06)}
+.nt-faq-q{margin:0}
+.nt-faq-toggle{width:100%;text-align:left;display:grid;grid-template-columns:24px 1fr;align-items:center;gap:.6rem;padding:.9rem 1rem;border:0;background:linear-gradient(180deg,#fafdff,#f3f7ff);color:#0b1739;font-weight:700;cursor:pointer}
+.nt-faq-toggle i{color:#5f76ff;transition:transform .25s ease}
+.nt-faq-toggle[aria-expanded="true"] i{transform:rotate(-180deg)}
+.nt-faq-a{border-top:1px solid #eef2fa;background:#fff}
+.nt-faq-a-inner{padding:.9rem 1rem;color:#263043;line-height:1.55}
+.nt-faq-item.highlight{outline:2px solid #9ab6ff;outline-offset:2px;animation:faqPulse 2.2s ease-in-out 1}
+@keyframes faqPulse{0%{box-shadow:0 0 0 0 rgba(10,75,255,.18)}60%{box-shadow:0 0 0 8px rgba(10,75,255,0)}100%{box-shadow:0 0 0 0 rgba(10,75,255,0)}}
+.nt-faq-a[aria-hidden="false"],.nt-faq-a:not([hidden]){animation:faqReveal .35s ease both}
+@keyframes faqReveal{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.nt-faq-toggle:focus-visible{outline:3px solid #9ab6ff;outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.nt-faq-toggle i{transition:none}.nt-faq-a[aria-hidden="false"],.nt-faq-a:not([hidden]){animation:none}}
+</style>
+<script>
+(function(){
+  const lists=document.querySelectorAll('[data-faq-list]'); if(!lists.length) return;
+  const norm=s=>s.toLowerCase().normalize('NFD').replace(/\\p{Diacritic}/gu,'');
+  const setExpanded=(btn,expand)=>{
+    const id=btn.getAttribute('aria-controls'); const panel=document.getElementById(id);
+    btn.setAttribute('aria-expanded', expand?'true':'false');
+    if(expand){ panel.hidden=false; panel.setAttribute('aria-hidden','false'); }
+    else{ panel.hidden=true; panel.setAttribute('aria-hidden','true'); }
+  };
+  lists.forEach(list=>{
+    const section=list.closest('.nt-faq');
+    const search=section.querySelector('[data-faq-search]');
+    const btnExpand=section.querySelector('[data-faq-expand]');
+    const btnCollapse=section.querySelector('[data-faq-collapse]');
+    const items=[...list.querySelectorAll('.nt-faq-item')];
+    const toggles=items.map(it=>it.querySelector('[data-faq-toggle]'));
+    // Click/teclado
+    list.addEventListener('click',ev=>{
+      const btn=ev.target.closest('[data-faq-toggle]'); if(!btn) return;
+      const exp=btn.getAttribute('aria-expanded')==='true'; setExpanded(btn,!exp);
+      const host=btn.closest('.nt-faq-item'); if(host?.id) history.replaceState(null,'','#'+host.id);
     });
-    </script>
-    <?php
-    return ob_get_clean();
+    list.addEventListener('keydown',ev=>{
+      if(!['Enter',' '].includes(ev.key)) return;
+      const btn=ev.target.closest('[data-faq-toggle]'); if(!btn) return; ev.preventDefault(); btn.click();
+    });
+    // Buscar
+    if(search){
+      let last='';
+      const doFilter=()=>{
+        const q=norm(search.value||''); if(q===last) return; last=q;
+        items.forEach(it=>{
+          const txt=norm(it.textContent||''); const match=q.length<2?true:txt.includes(q);
+          it.style.display=match?'':'none';
+        });
+      };
+      search.addEventListener('input',doFilter);
+    }
+    // Expand/Collapse
+    if(btnExpand) btnExpand.addEventListener('click',()=>toggles.forEach(b=>setExpanded(b,true)));
+    if(btnCollapse) btnCollapse.addEventListener('click',()=>toggles.forEach(b=>setExpanded(b,false)));
+    // Deep-link por hash
+    const openByHash=()=>{
+      const id=decodeURIComponent(location.hash||'').replace('#',''); if(!id) return;
+      const target=document.getElementById(id);
+      if(target && target.classList.contains('nt-faq-item')){
+        const btn=target.querySelector('[data-faq-toggle]'); setExpanded(btn,true);
+        target.classList.add('highlight'); setTimeout(()=>target.classList.remove('highlight'),1600);
+        target.scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    };
+    window.addEventListener('hashchange',openByHash); setTimeout(openByHash,50);
+  });
+})();
+</script>
+HTML;
+    }
+
+    // Herramientas (search + expand/collapse)
+    $tools = '
+      <div class="nt-faq-tools" role="toolbar" aria-label="Herramientas de FAQ">
+        <label class="nt-faq-search">
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          <input type="search" placeholder="Buscar en las preguntas..." aria-label="Buscar preguntas" data-faq-search>
+        </label>
+        <div class="nt-faq-actions">
+          <button type="button" class="nt-faq-btn" data-faq-expand title="Expandir todo" aria-label="Expandir todo">
+            <i class="fa-solid fa-square-plus" aria-hidden="true"></i> Expandir
+          </button>
+          <button type="button" class="nt-faq-btn ghost" data-faq-collapse title="Colapsar todo" aria-label="Colapsar todo">
+            <i class="fa-solid fa-square-minus" aria-hidden="true"></i> Colapsar
+          </button>
+        </div>
+      </div>';
+
+    // Ensamblado final
+    $html = '
+    <section id="'.htmlspecialchars($safeId).'" class="nt-faq container '.htmlspecialchars($cClass).'" aria-labelledby="'.htmlspecialchars($safeId).'-title">
+      <header class="nt-faq-header">
+        '. $heading .'
+        '. $tools .'
+      </header>
+      <div class="nt-faq-list" role="list" data-faq-list>
+        '. $itemsHtml .'
+      </div>
+      <script type="application/ld+json">'. json_encode([
+          '@context' => 'https://schema.org',
+          '@type'    => 'FAQPage',
+          'mainEntity' => $faqEntities
+      ], JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES) .'</script>
+    </section>' . $inlineAssets;
+
+    return $html;
 }
 
 /**
