@@ -512,6 +512,11 @@ document.addEventListener('DOMContentLoaded', function() {
           else sinEquipoResumen.innerHTML = '<strong>Pago inicial:</strong> '+fmt(anticipo)+'<br><strong>Cuota antena:</strong> '+fmt(antena)+' en '+CONST.sinEquipo.diferidoMeses+' meses ('+fmt(antena/CONST.sinEquipo.diferidoMeses)+' c/u)';
         }
       }
+      // Aplicar delays escalonados a las filas recién generadas
+      try {
+        var filas = tbody ? Array.prototype.slice.call(tbody.querySelectorAll('tr')) : [];
+        filas.forEach(function(fr,i){ fr.style.animationDelay = (i*0.12)+'s'; });
+      } catch(_){ }
     }
 
     botonesEsc.forEach(function(btn){

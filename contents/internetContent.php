@@ -364,8 +364,7 @@
           <!-- CTA principal para avanzar con la contratación (reintroducido tras refactor) -->
           <div class="contrata-ahora-wrap" style="margin-top:1.4rem;">
             <a id="contratar" href="#" role="button" class="contrata-ahora-btn" aria-label="Solicitar instalación por WhatsApp">
-              <i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>
-              <span>Solicita tu Instalación</span>
+              <span>Solicitar Instalación</span>
             </a>
           </div>
         </section>
