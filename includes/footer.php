@@ -11,11 +11,11 @@
 
 // Definición de bloques para mantener mantenible el footer
 $servicios = [
-  ['/cctv','Seguridad y CCTV','fa-video'],
-  ['/telefonia','Telefonía IP','fa-phone-volume'],
-  ['/control-acceso','Control de Acceso','fa-door-closed'],
-  ['#','Redes y Cableado','fa-network-wired'],
-  ['#','Ciberseguridad','fa-shield-halved'],
+  ['/cctv','Seguridad y CCTV','fa-video','nt-ico nt-ico-cctv'],
+  ['/telefonia','Telefonía IP','fa-phone-volume','nt-ico nt-ico-telefonia'],
+  ['/control-acceso','Control de Acceso','fa-door-closed','nt-ico nt-ico-acceso'],
+  ['#','Redes y Cableado','fa-network-wired','nt-ico nt-ico-redes'],
+  ['#','Ciberseguridad','fa-shield-halved','nt-ico nt-ico-ciber'],
 ];
 
 $social = [
@@ -55,10 +55,10 @@ $anio = date('Y');
           <nav class="flex flex-col gap-4" aria-label="Servicios">
             <h3 class="nt-foot-title"><i class="fa-solid fa-layer-group"></i> Servicios</h3>
             <ul class="flex flex-col gap-2 text-[.78rem] font-medium">
-              <?php foreach($servicios as [$url,$txt,$icon]): ?>
+              <?php foreach($servicios as [$url,$txt,$icon,$cls]): ?>
                 <li>
                   <a href="<?= htmlspecialchars($url) ?>" class="nt-foot-link">
-                    <i class="fa-solid <?= htmlspecialchars($icon) ?>"></i><span><?= htmlspecialchars($txt) ?></span>
+                    <i class="fa-solid <?= htmlspecialchars($icon) ?> <?= htmlspecialchars($cls) ?>"></i><span><?= htmlspecialchars($txt) ?></span>
                   </a>
                 </li>
               <?php endforeach; ?>
