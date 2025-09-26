@@ -31,6 +31,28 @@
 .nt-footer { position: relative; background: linear-gradient(135deg,var(--nt-bg-footer) 0%, var(--nt-bg-footer-alt) 70%); color: var(--nt-text-base); }
 .nt-footer-bg { background: radial-gradient(circle at 30% 20%, rgba(45 212 191 / .09), transparent 60%), radial-gradient(circle at 80% 70%, rgba(56 189 248 / .09), transparent 65%); }
 
+/* Variante clara */
+.nt-footer--light { background: linear-gradient(135deg,#f1f5f9 0%, #ffffff 70%); color:#475569; }
+.nt-footer--light .nt-footer-bg { background: radial-gradient(circle at 25% 25%, rgba(13 148 136 / .12), transparent 60%), radial-gradient(circle at 80% 70%, rgba(2 132 199 / .12), transparent 65%); }
+.nt-footer--light .nt-foot-title { color:#0f172a; }
+.nt-footer--light .nt-foot-title i { color: var(--nt-accent); }
+.nt-footer--light .nt-foot-link { color:#475569; }
+.nt-footer--light .nt-foot-link:hover { background: rgba(15 23 42 / .06); color:#0f172a; }
+.nt-footer--light .nt-foot-contact a { color:#475569; }
+.nt-footer--light .nt-foot-contact a:hover { color:#0f172a; }
+.nt-footer--light .nt-foot-divider { background:linear-gradient(90deg,transparent,rgba(15 23 42 / .15),transparent); }
+.nt-footer--light .nt-foot-divider::after { background:linear-gradient(90deg,transparent,var(--nt-accent),transparent); }
+.nt-footer--light .nt-foot-mini-link { color:#64748b; }
+.nt-footer--light .nt-foot-mini-link:hover { color:#0f172a; }
+.nt-footer--light .nt-back-top { background:rgba(15 23 42 / .08); color:#0f172a; }
+.nt-footer--light .nt-back-top:hover { background:rgba(var(--nt-accent-rgb) / .25); }
+.nt-footer--light .nt-social-btn { background:linear-gradient(145deg, rgba(var(--nt-accent-rgb) / .25), rgba(15 23 42 / .06)); color:#0f172a; }
+.nt-footer--light .nt-social-btn:hover { box-shadow:0 8px 20px -4px rgba(15 23 42 / .25); }
+.nt-footer--light .nt-news-input { background:#fff; border-color:rgba(0 0 0 / .1); color:#0f172a; }
+.nt-footer--light .nt-news-btn { box-shadow:0 3px 10px -2px rgba(var(--nt-accent-rgb) / .5); }
+.nt-footer--light .nt-news-btn:hover { filter:brightness(1.07); }
+.nt-footer--light .nt-foot-contact i { color: var(--nt-accent); }
+
 .nt-footer-grid { align-items: flex-start; }
 
 .nt-foot-title { font-size: .75rem; letter-spacing: .08em; font-weight: 700; text-transform: uppercase; display:flex; align-items:center; gap:.55rem; color:var(--nt-text-invert); }

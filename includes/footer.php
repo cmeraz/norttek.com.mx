@@ -26,10 +26,15 @@ $social = [
 ];
 
 $anio = date('Y');
+// Variante de estilo del footer: 'dark' (default) o 'light'
+// Para usar la versión clara en una página específica, antes de incluir el template:
+// $footerStyle = 'light';
+$footerStyle = $footerStyle ?? 'light'; // ahora la variante clara es el valor por defecto
+$footerVariantClass = $footerStyle === 'light' ? ' nt-footer--light' : '';
 ?>
 
     </main>
-    <footer class="nt-footer font-sans relative" role="contentinfo" aria-label="Información corporativa y navegación secundaria">
+  <footer class="nt-footer font-sans relative<?= $footerVariantClass ?>" role="contentinfo" aria-label="Información corporativa y navegación secundaria">
       <div class="nt-footer-bg absolute inset-0 -z-10"></div>
       <div class="max-w-[1250px] mx-auto px-6 lg:px-10 xl:px-14 py-14">
         <div class="grid gap-12 md:gap-10 lg:gap-14 md:grid-cols-3 xl:grid-cols-5 nt-footer-grid">
