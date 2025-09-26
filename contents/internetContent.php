@@ -283,7 +283,6 @@
           <!-- Costos de Instalación (refactor) -->
   <section class="instalacion-costos premium-box scroll-anim inst-costs-hidden" id="instalacion-costos" data-nt-anim>
           <div class="inst-header">
-            <i class="fa-solid fa-screwdriver-wrench instalacion-icon" aria-hidden="true"></i>
             <?= nt_heading('Costos de Instalación', 'fa-solid fa-screwdriver-wrench', 'md', null, ['animate'=>true,'delay'=>'sm','class'=>'section-title','style'=>'margin:0;']); ?>
             <p class="intro">
               Aquí verás el costo inicial según si ya cuentas con antena o necesitas una nueva. También puedes elegir pagar la antena de contado o diferirla a 3 meses.

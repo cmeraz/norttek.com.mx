@@ -436,14 +436,16 @@ document.addEventListener('DOMContentLoaded', function() {
       rootSec.classList.remove('inst-costs-visible');
     }
     function updateVisibility(triggered){
-      // Si hay plan seleccionado se muestra la sección; si no, se oculta completamente.
+      // La sección sólo se muestra si hay plan elegido en esta sesión (interacción del usuario)
       try {
         var plan = getPlan();
-        if(plan.megas && plan.price){
+        var sessionChosen = false;
+        try { sessionChosen = sessionStorage.getItem('planChosenSession') === '1'; } catch(_) {}
+        if(plan.megas && plan.price && sessionChosen){
           revealSection();
         } else {
           hideSection();
-          return; // Nada más que hacer hasta que el usuario elija un plan
+          return; // Mantener oculta hasta interacción
         }
       } catch(_){ }
     }
@@ -570,11 +572,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if(storedMegas && storedPrice){
           var match = planCards.find(function(c){ return (c.getAttribute('data-megas')||'').trim() === storedMegas; });
           if(match){
+            // Sólo marcamos visualmente; NO disparamos evento para no mostrar la sección aún.
             clearPlanSelection();
             match.setAttribute('aria-checked','true');
             match.classList.add('selected');
-            // Disparar actualización para mostrar sección y recalcular (sin scroll)
-            document.dispatchEvent(new CustomEvent('nt-plan-updated',{ detail:{ triggered:false }}));
           }
         }
       } catch(_) {}
