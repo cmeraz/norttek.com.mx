@@ -402,6 +402,8 @@ document.addEventListener('DOMContentLoaded', function() {
   (function initInstalacionCostos(){
     var rootSec = document.getElementById('instalacion-costos');
     if(!rootSec) return;
+    // Forzar oculto al iniciar (incluso si quedó algo en localStorage de sesiones previas)
+    rootSec.classList.add('inst-costs-hidden');
     var escPropio = document.getElementById('esc-propio');
     var escSin = document.getElementById('esc-sinequipo');
     var radiosPago = rootSec.querySelectorAll('input[name="pago-antena"]');
@@ -413,7 +415,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var botonesEsc = rootSec.querySelectorAll('[data-select-esc]');
     var sinEquipoResumen = rootSec.querySelector('[data-role="sin-equipo-resumen"]');
 
-    var STATE = { escenario:null, pagoAntena:'contado' };
+  var STATE = { escenario:null, pagoAntena:'contado' };
     var CONST = {
       propio:{ anticipo:500 },
       sinEquipo:{ antena:1800, instalacion:850, diferidoMeses:3 }
@@ -421,6 +423,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function getPlan(){
       try { return { megas: localStorage.getItem('selectedPlanMegas')||'', price: parseFloat(localStorage.getItem('selectedPlanPrice')||'')||0 }; } catch(_){ return {megas:'', price:0}; }
+    }
+    function revealSection(){
+      if(rootSec.classList.contains('inst-costs-visible')) return;
+      rootSec.classList.remove('inst-costs-hidden');
+      rootSec.classList.add('inst-costs-visible');
+      // Scroll al mostrarse
+      try {
+        setTimeout(function(){
+          var header = document.getElementById('site-header');
+          var offset = (header && header.offsetHeight) ? header.offsetHeight + 8 : 70;
+          var rect = rootSec.getBoundingClientRect();
+          var y = rect.top + window.pageYOffset - offset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }, 40);
+      } catch(_){}
+    }
+    function hideSection(){
+      rootSec.classList.add('inst-costs-hidden');
+      rootSec.classList.remove('inst-costs-visible');
+    }
+    function updateVisibility(triggered){
+      var plan = getPlan();
+      var sessionChosen = false;
+      try { sessionChosen = sessionStorage.getItem('planChosenSession') === '1'; } catch(_){ }
+      if(plan.megas && plan.price && (triggered===true || sessionChosen)){
+        revealSection();
+      } else {
+        // Sólo ocultar si aún no se ha revelado en esta sesión
+        if(!sessionChosen) hideSection();
+      }
     }
     function fmt(n){ return '$'+n.toLocaleString('es-MX'); }
 
@@ -438,7 +470,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function calcular(){
       var plan = getPlan();
-      if(!plan.price || !STATE.escenario){ limpiarTabla(); if(resumenLinea) resumenLinea.textContent='Selecciona un escenario y un plan para ver el detalle de pagos.'; if(placeholder) placeholder.style.display='flex'; return; }
+      if(!plan.price){
+        limpiarTabla();
+        if(resumenLinea) resumenLinea.textContent='Selecciona un plan para continuar.';
+        if(placeholder){ placeholder.style.display='flex'; placeholder.textContent='Primero elige un plan.'; }
+        return;
+      }
+      if(!STATE.escenario){
+        limpiarTabla();
+        if(resumenLinea) resumenLinea.textContent='Ahora selecciona un escenario (con o sin antena).';
+        if(placeholder){ placeholder.style.display='flex'; placeholder.textContent='Selecciona un escenario para generar el calendario.'; }
+        return;
+      }
       limpiarTabla();
       var servicio = plan.price;
       if(STATE.escenario==='propio'){
@@ -481,29 +524,30 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     radiosPago.forEach(function(r){ r.addEventListener('change', function(){ setPagoAntena(r.value); }); });
     // Recalcular cuando se actualiza el plan
-    document.addEventListener('nt-plan-updated', calcular);
-    window.addEventListener('storage', function(e){ if(e.key==='selectedPlanMegas'||e.key==='selectedPlanPrice') calcular(); });
+  document.addEventListener('nt-plan-updated', function(e){ updateVisibility(e && e.detail && e.detail.triggered===true); calcular(); });
+  window.addEventListener('storage', function(ev){ if(ev.key==='selectedPlanMegas'||ev.key==='selectedPlanPrice'){ updateVisibility(false); calcular(); } });
 
     // Estado inicial desde localStorage si existe selección previa
     try {
       var prevEsc = localStorage.getItem('installScenario');
       if(prevEsc==='propio' || prevEsc==='sinequipo'){ seleccionarEscenario(prevEsc==='propio'?'propio':'sinequipo'); }
     } catch(_) {}
+    updateVisibility(false);
     calcular();
   })();
 
     // Interceptar clic en "Contratar" de cada plan: desplazar al CTA, persistir plan y abrir WhatsApp con el plan seleccionado
     try {
-      document.querySelectorAll('.plan-card a.btn-contratar-link').forEach(function(a){
+      document.querySelectorAll('.int-plan-card a.btn-contratar-link').forEach(function(a){
         a.addEventListener('click', function(ev){
           ev.preventDefault();
-          var planCard = a.closest('.plan-card');
+          var planCard = a.closest('.int-plan-card');
           var megas = planCard ? (planCard.getAttribute('data-megas') || '').trim() : '';
           var price = '';
-          try { var priceEl = planCard ? planCard.querySelector('.price') : null; price = priceEl ? priceEl.textContent.trim() : ''; } catch(_) {}
+          try { var priceEl = planCard ? planCard.querySelector('.int-plan-price') : null; price = priceEl ? priceEl.textContent.replace(/[^0-9.,]/g,'').replace(',','').trim() : ''; } catch(_) {}
           var planText = megas ? (megas + ' Megas') : '';
           try { localStorage.setItem('selectedPlan', planText); } catch (_) {}
-          try { setStoredPlan(megas, price); renderCtaPlan(); } catch(_) {}
+          try { setStoredPlan(megas, price); renderCtaPlan(); sessionStorage.setItem('planChosenSession','1'); document.dispatchEvent(new CustomEvent('nt-plan-updated',{ detail:{ triggered:true }})); } catch(_) {}
 
           // Desplazar al botón de "Solicita tu Instalación" y resaltarlo
           try {
