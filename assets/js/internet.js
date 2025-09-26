@@ -395,9 +395,7 @@ document.addEventListener('DOMContentLoaded', function() {
   (function initInstalacionCostos(){
     var rootSec = document.getElementById('instalacion-costos');
     if(!rootSec) return;
-    // Mostrar siempre la sección (gating visual eliminado para que el usuario la vea debajo de los planes)
-    rootSec.classList.remove('inst-costs-hidden');
-    rootSec.classList.add('inst-costs-visible');
+    // Gating activado: la sección permanece oculta hasta que se elige un plan.
     var escPropio = document.getElementById('esc-propio');
     var escSin = document.getElementById('esc-sinequipo');
     var radiosPago = rootSec.querySelectorAll('input[name="pago-antena"]');
@@ -438,11 +436,16 @@ document.addEventListener('DOMContentLoaded', function() {
       rootSec.classList.remove('inst-costs-visible');
     }
     function updateVisibility(triggered){
-      // Siempre visible; solo auto-selecciona escenario al elegir plan por primera vez
+      // Si hay plan seleccionado se muestra la sección; si no, se oculta completamente.
       try {
         var plan = getPlan();
-        if(plan.megas && plan.price && !STATE.escenario){ seleccionarEscenario('propio'); }
-      } catch(_){}
+        if(plan.megas && plan.price){
+          revealSection();
+        } else {
+          hideSection();
+          return; // Nada más que hacer hasta que el usuario elija un plan
+        }
+      } catch(_){ }
     }
     function fmt(n){ return '$'+n.toLocaleString('es-MX'); }
 
@@ -520,18 +523,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Estado inicial desde localStorage si existe selección previa
     try {
       var prevEsc = localStorage.getItem('installScenario');
-      if(prevEsc==='propio' || prevEsc==='sinequipo'){ seleccionarEscenario(prevEsc==='propio'?'propio':'sinequipo'); }
+      // La selección de escenario se aplicará después de que exista plan; si no hay plan todavía, se ignorará.
+      if(prevEsc==='propio' || prevEsc==='sinequipo'){ STATE.escenario = prevEsc==='propio'?'propio':'sinequipo'; }
     } catch(_) {}
-    updateVisibility(false);
-    calcular();
+    updateVisibility(false); // Mostrará u ocultará según exista plan previo
+    calcular(); // Generará mensajes placeholder apropiados
   })();
 
     // Nueva lógica: selección directa de tarjetas (rol radio)
     try {
       var planCards = Array.prototype.slice.call(document.querySelectorAll('.int-plan-card.selectable'));
       function clearPlanSelection(){ planCards.forEach(function(c){ c.setAttribute('aria-checked','false'); c.classList.remove('selected'); }); }
-      function choosePlan(card){
+      function choosePlan(card, opts){
         if(!card) return;
+        var doScroll = !opts || opts.scroll !== false;
         var megas = (card.getAttribute('data-megas') || '').trim();
         var price = (card.getAttribute('data-plan-price') || '').trim();
         var planText = megas ? (megas + ' Megas') : '';
@@ -540,22 +545,39 @@ document.addEventListener('DOMContentLoaded', function() {
         card.classList.add('selected');
         try { localStorage.setItem('selectedPlan', planText); } catch(_) {}
         try { setStoredPlan(megas, price); sessionStorage.setItem('planChosenSession','1'); document.dispatchEvent(new CustomEvent('nt-plan-updated',{ detail:{ triggered:true }})); } catch(_) {}
-        // Enfocar calendario
-        try {
-          var calendario = document.querySelector('.calendario-costos');
-          var header = document.getElementById('site-header');
-          if (calendario) {
-            var y = calendario.getBoundingClientRect().top + window.pageYOffset - ((header && header.offsetHeight) || 0) - 12;
-            window.scrollTo({ top: y, behavior: 'smooth' });
-            calendario.classList.remove('highlight'); void calendario.offsetWidth; calendario.classList.add('highlight');
-            setTimeout(function(){ calendario && calendario.classList.remove('highlight'); }, 2000);
-          }
-        } catch(_) {}
+        if(doScroll){
+          // Enfocar calendario sólo en selección activa del usuario
+          try {
+            var calendario = document.querySelector('.calendario-costos');
+            var header = document.getElementById('site-header');
+            if (calendario) {
+              var y = calendario.getBoundingClientRect().top + window.pageYOffset - ((header && header.offsetHeight) || 0) - 12;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+              calendario.classList.remove('highlight'); void calendario.offsetWidth; calendario.classList.add('highlight');
+              setTimeout(function(){ calendario && calendario.classList.remove('highlight'); }, 2000);
+            }
+          } catch(_) {}
+        }
       }
       planCards.forEach(function(card){
         card.addEventListener('click', function(){ choosePlan(card); });
         card.addEventListener('keydown', function(ev){ if(ev.key==='Enter' || ev.key===' '){ ev.preventDefault(); choosePlan(card); } });
       });
+      // Restaurar selección previa de plan sin hacer scroll
+      try {
+        var storedMegas = localStorage.getItem('selectedPlanMegas');
+        var storedPrice = localStorage.getItem('selectedPlanPrice');
+        if(storedMegas && storedPrice){
+          var match = planCards.find(function(c){ return (c.getAttribute('data-megas')||'').trim() === storedMegas; });
+          if(match){
+            clearPlanSelection();
+            match.setAttribute('aria-checked','true');
+            match.classList.add('selected');
+            // Disparar actualización para mostrar sección y recalcular (sin scroll)
+            document.dispatchEvent(new CustomEvent('nt-plan-updated',{ detail:{ triggered:false }}));
+          }
+        }
+      } catch(_) {}
     } catch(_) {}
   // Prefill de nombre si ya fue capturado previamente
   try {
