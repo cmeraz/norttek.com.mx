@@ -767,85 +767,63 @@ document.addEventListener('DOMContentLoaded', function() {
     if (ctaBtn) {
       ctaBtn.addEventListener('click', function(ev){
         if (ev) { if(ev.preventDefault) ev.preventDefault(); if(ev.stopPropagation) ev.stopPropagation(); }
-        // Nombre (si no existe pedirlo al usuario)
         var st = getStoredName();
         var nombre = (st.full || st.first || '').trim();
-        if(!nombre){
-          try {
-            var ingresado = window.prompt('Ingresa tu nombre para continuar con la solicitud:', '');
-            if(ingresado){
-              ingresado = ingresado.trim();
-              if(ingresado){
-                // Separar primer nombre simple
-                var first = ingresado.split(/\s+/)[0];
-                setStoredName(ingresado, first);
-                nombre = ingresado;
-              }
-            }
-          } catch(_) {}
-        }
-        try { if (nombre && nombre === nombre.toLocaleLowerCase('es-MX')) nombre = toTitleCaseEs(nombre); } catch(_) {}
-        var saludo = nombre ? (EMOJI.wave + ' Hola, mi nombre es ' + nombre + '.') : (EMOJI.wave + ' Hola.');
-        // Plan
-        var plan = (function(){ try { return { megas: localStorage.getItem('selectedPlanMegas')||'', price: localStorage.getItem('selectedPlanPrice')||'' }; } catch(_){ return {megas:'', price:''}; } })();
-        var planLinea = plan.megas ? ('Plan seleccionado: ' + plan.megas + ' Megas (' + (plan.price?('$'+plan.price+'/mes'):'mensualidad pendiente') + ').') : 'Aún no aparece un plan seleccionado.';
-        // Escenario y forma de pago
-        var escenario = (function(){ try { return localStorage.getItem('installScenario')||''; } catch(_){ return ''; } })();
-        var escenarioDesc = '';
-        if(escenario==='propio') escenarioDesc = 'Escenario: Ya cuento con antena.';
-        else if(escenario==='sinequipo') {
-          // Detectar forma de pago
-          var pago = 'contado';
-          try {
-            var radio = document.querySelector('input[name="pago-antena"]:checked');
-            if(radio) pago = radio.value;
-          } catch(_) {}
-            escenarioDesc = 'Escenario: Necesito antena. Forma de pago antena: ' + (pago==='diferido'?'Diferido (3 meses)':'Contado');
-        } else escenarioDesc = 'Escenario aún no seleccionado.';
-        // Calendario (leer filas de tabla si existen)
-        var calendarioLineas = [];
-        try {
-          var filas = document.querySelectorAll('#tabla-calendario tbody tr');
-          if(filas.length){
-            filas.forEach(function(tr){
-              var celdas = tr.querySelectorAll('td');
-              if(celdas.length>=3){
-                var mes = celdas[0].textContent.trim();
-                var monto = celdas[1].textContent.trim();
-                var det = celdas[2].textContent.trim();
-                calendarioLineas.push(mes+': '+monto+' ('+det+')');
-              }
-            });
-          }
-        } catch(_) {}
-        var calendarioTexto = calendarioLineas.length ? ('Calendario de pagos:\n' + calendarioLineas.join('\n')) : 'Calendario de pagos aún no generado (falta plan o escenario).';
-        // Resumen dinámico
-        var resumen = '';
-        try { var rl = document.getElementById('inst-resumen-linea'); if(rl) resumen = rl.textContent.trim() || rl.innerText.trim(); } catch(_) {}
-        if(resumen) resumen = 'Resumen: ' + resumen;
-        // Link formulario
-        var formLink = 'http://clientes.portalinternet.net/solicitar-instalacion/norttek/';
-        // Construcción final
-        var cuerpo = [
-          saludo,
-          '',
-          planLinea,
-          escenarioDesc,
-          '',
-          calendarioTexto,
-          '',
-          resumen || 'Resumen pendiente.',
-          '',
-          'Formulario (lo completaré después):',
-          formLink,
-          '',
-          '¿Pueden ayudarme a continuar con el proceso de instalación?',
-          '',
-          EMOJI.check + ' Quedo atento(a), gracias.'
-        ].join('\n');
-        var wa = 'https://wa.me/526252690997?text=' + encodeURIComponent(cuerpo);
-        try { window.open(wa, '_blank'); } catch(_) {}
+        if(!nombre){ return abrirModalNombre(function(capt){ if(capt){ enviarWhatsApp(capt); } }); }
+        enviarWhatsApp(nombre);
       });
     }
+    function enviarWhatsApp(nombre){
+      try { if (nombre && nombre === nombre.toLocaleLowerCase('es-MX')) nombre = toTitleCaseEs(nombre); } catch(_) {}
+      var saludo = nombre ? (EMOJI.wave + ' Hola, mi nombre es ' + nombre + '.') : (EMOJI.wave + ' Hola.');
+      var plan = (function(){ try { return { megas: localStorage.getItem('selectedPlanMegas')||'', price: localStorage.getItem('selectedPlanPrice')||'' }; } catch(_){ return {megas:'', price:''}; } })();
+      var planLinea = plan.megas ? ('Plan seleccionado: ' + plan.megas + ' Megas (' + (plan.price?('$'+plan.price+'/mes'):'mensualidad pendiente') + ').') : 'Aún no aparece un plan seleccionado.';
+      var escenario = (function(){ try { return localStorage.getItem('installScenario')||''; } catch(_){ return ''; } })();
+      var escenarioDesc = '';
+      if(escenario==='propio') escenarioDesc = 'Escenario: Ya cuento con antena.';
+      else if(escenario==='sinequipo') { var pago='contado'; try { var radio=document.querySelector('input[name="pago-antena"]:checked'); if(radio) pago=radio.value; } catch(_) {} escenarioDesc='Escenario: Necesito antena. Forma de pago antena: '+(pago==='diferido'?'Diferido (3 meses)':'Contado'); }
+      else escenarioDesc = 'Escenario aún no seleccionado.';
+      var calendarioLineas=[]; try { var filas=document.querySelectorAll('#tabla-calendario tbody tr'); if(filas.length){ filas.forEach(function(tr){ var c=tr.querySelectorAll('td'); if(c.length>=3){ calendarioLineas.push(c[0].textContent.trim()+': '+c[1].textContent.trim()+' ('+c[2].textContent.trim()+')'); } }); } } catch(_) {}
+      var calendarioTexto = calendarioLineas.length ? ('Calendario de pagos:\n'+calendarioLineas.join('\n')) : 'Calendario de pagos aún no generado (falta plan o escenario).';
+      var resumen=''; try { var rl=document.getElementById('inst-resumen-linea'); if(rl) resumen = rl.textContent.trim() || rl.innerText.trim(); } catch(_) {}
+      resumen = resumen ? 'Resumen: '+resumen : 'Resumen pendiente.';
+      var formLink='http://clientes.portalinternet.net/solicitar-instalacion/norttek/';
+      var cuerpo=[saludo,'',planLinea,escenarioDesc,'',calendarioTexto,'',resumen,'','Formulario:',formLink,'',EMOJI.check+' Quedo atento(a), gracias.'].join('\n');
+      var wa='https://wa.me/526252690997?text='+encodeURIComponent(cuerpo);
+      try { window.open(wa,'_blank'); } catch(_) {}
+    }
   } catch(_) {}
+
+  // Modal captura de nombre (implementación si no existe aún)
+  if(typeof window.abrirModalNombre !== 'function'){
+    window.abrirModalNombre = function(onDone){
+      try {
+        var backdrop = document.getElementById('nombre-modal-backdrop');
+        var input = document.getElementById('nombre-modal-input');
+        var form = document.getElementById('nombre-modal-form');
+        if(!backdrop || !input || !form){ if(onDone) onDone(null); return; }
+        function cerrar(resultado){
+          backdrop.style.display='none';
+          backdrop.setAttribute('aria-hidden','true');
+          document.body.style.overflow='';
+          document.removeEventListener('keydown', escL);
+          if(resultado && resultado.trim()){
+            var full = resultado.trim();
+            var first = full.split(/\s+/)[0];
+            setStoredName(full, first);
+            if(onDone) onDone(full);
+          } else { if(onDone) onDone(null); }
+        }
+        function escL(e){ if(e.key==='Escape'){ cerrar(null); } }
+        document.addEventListener('keydown', escL);
+        backdrop.style.display='flex';
+        backdrop.setAttribute('aria-hidden','false');
+        document.body.style.overflow='hidden';
+        setTimeout(function(){ try { input.focus(); } catch(_) {} }, 40);
+        form.addEventListener('submit', function(ev){ ev.preventDefault(); cerrar(input.value); }, { once:true });
+        backdrop.querySelectorAll('[data-close-nombre]').forEach(function(btn){ btn.addEventListener('click', function(){ cerrar(null); }, { once:true }); });
+      } catch(err){ if(onDone) onDone(null); }
+    };
+  }
+
 });
