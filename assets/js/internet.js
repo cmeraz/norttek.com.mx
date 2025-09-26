@@ -436,6 +436,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if(placeholder) placeholder.style.display = 'none';
       calcular();
       try { localStorage.setItem('installScenario', esc==='propio'?'propio':'sinequipo'); } catch(_) {}
+      updateCtaState();
     }
     function setPagoAntena(mode){ STATE.pagoAntena = mode; if(notaDiferido) notaDiferido.style.display = (mode==='diferido')?'block':'none'; calcular(); }
 
@@ -444,6 +445,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function calcular(){
       var plan = getPlan();
+      updateCtaState(plan);
       if(!plan.price){
         limpiarTabla();
         if(resumenLinea) resumenLinea.textContent='Selecciona un plan para continuar.';
@@ -494,10 +496,25 @@ document.addEventListener('DOMContentLoaded', function() {
           else sinEquipoResumen.innerHTML = '<strong>Pago inicial:</strong> '+fmt(anticipo)+'<br><strong>Cuota antena:</strong> '+fmt(antena)+' en '+CONST.sinEquipo.diferidoMeses+' meses ('+fmt(antena/CONST.sinEquipo.diferidoMeses)+' c/u)';
         }
       }
+      updateCtaState(plan);
       // Aplicar delays escalonados a las filas recién generadas
       try {
         var filas = tbody ? Array.prototype.slice.call(tbody.querySelectorAll('tr')) : [];
         filas.forEach(function(fr,i){ fr.style.animationDelay = (i*0.12)+'s'; });
+      } catch(_){ }
+    }
+
+    function updateCtaState(planObj){
+      try {
+        var cta = document.getElementById('contratar');
+        if(!cta) return;
+        var plan = planObj || getPlan();
+        var escenario = STATE.escenario;
+        var habilitado = !!(plan && plan.price && escenario);
+        cta.classList.toggle('cta-disabled', !habilitado);
+        cta.setAttribute('aria-disabled', habilitado ? 'false':'true');
+        if(!habilitado){ cta.title = 'Selecciona un plan y un escenario para continuar'; }
+        else { cta.title = 'Enviar solicitud de instalación por WhatsApp'; }
       } catch(_){ }
     }
 
@@ -767,11 +784,36 @@ document.addEventListener('DOMContentLoaded', function() {
     if (ctaBtn) {
       ctaBtn.addEventListener('click', function(ev){
         if (ev) { if(ev.preventDefault) ev.preventDefault(); if(ev.stopPropagation) ev.stopPropagation(); }
+        var debugInfo = { stage:'pre-validate', plan:null, scen:null, hasName:false };
+        var planVal = null, scenVal = null;
+        try { planVal = localStorage.getItem('selectedPlanPrice'); debugInfo.plan = planVal; } catch(_){ }
+        try { scenVal = localStorage.getItem('installScenario'); debugInfo.scen = scenVal; } catch(_){ }
+        // Validación gating
+        if(!planVal || !scenVal){
+          console.warn('[CTA Instalación] Bloqueado por falta de selección', debugInfo);
+          if(window.NTNotify){ NTNotify.warning('Selecciona un plan y un escenario antes de continuar.'); }
+          if(ctaBtn){ ctaBtn.classList.add('cta-disabled-ping'); setTimeout(function(){ ctaBtn.classList.remove('cta-disabled-ping'); }, 1200); }
+          return;
+        }
         var st = getStoredName();
         var nombre = (st.full || st.first || '').trim();
-        if(!nombre){ return abrirModalNombre(function(capt){ if(capt){ enviarWhatsApp(capt); } }); }
+        debugInfo.hasName = !!nombre;
+        if(!nombre){
+          console.log('[CTA Instalación] Abriendo modal para capturar nombre', debugInfo);
+          return abrirModalNombre(function(capt){ if(capt){ enviarWhatsApp(capt); } else { console.log('[CTA Instalación] Usuario cerró modal sin nombre'); } });
+        }
+        console.log('[CTA Instalación] Enviando WhatsApp con nombre almacenado', debugInfo);
         enviarWhatsApp(nombre);
       });
+      // Exponer función de prueba en consola
+      try {
+        window.__debugCtaInstalacion = function(){
+          var planVal = localStorage.getItem('selectedPlanPrice');
+          var scenVal = localStorage.getItem('installScenario');
+          var name = (localStorage.getItem('customerNameFull')||'').trim();
+          return { planVal:planVal, scenVal:scenVal, name:name, disabled: ctaBtn.classList.contains('cta-disabled') };
+        };
+      } catch(_) {}
     }
     function enviarWhatsApp(nombre){
       try { if (nombre && nombre === nombre.toLocaleLowerCase('es-MX')) nombre = toTitleCaseEs(nombre); } catch(_) {}
