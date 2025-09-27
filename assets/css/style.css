@@ -668,6 +668,22 @@ body[data-anim-mode="off"] [data-nt-icon-drift] { animation:none !important; }
   backdrop-filter: saturate(1.2) blur(2px);
   z-index: 9999;
 }
+.nt-modal-backdrop {
+  position: fixed; inset: 0; display: none; align-items: center; justify-content: center;
+  background: rgba(15,23,42,.55); backdrop-filter: saturate(1.2) blur(3px); z-index: 9999;
+}
+.nt-modal-backdrop.is-open { display: flex; }
+.nt-modal {
+  background: #fff; border: 1px solid #e2edf9; border-radius: 14px;
+  width: min(92vw, 560px); max-width: 560px; padding: 1rem 1rem 1.1rem; position: relative;
+  box-shadow: 0 18px 40px -10px rgba(15,23,42,.28), 0 4px 12px rgba(15,23,42,.12);
+}
+.nt-modal-title { margin: 0; font-weight: 800; color: var(--nt-text); letter-spacing: .2px; }
+.nt-modal-sub { margin: .35rem 0 0; color: var(--nt-text-muted); font-size: .9rem; line-height: 1.45; }
+.nt-modal-actions { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: .25rem; }
+.nt-modal-close { position: absolute; top: .6rem; right: .6rem; width: 2rem; height: 2rem; border-radius: 999px; border: 1px solid #e2edf9; background: #fff; color: #0f172a; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 1px 2px rgba(15,23,42,.05); cursor: pointer; transition: transform .15s ease, background .2s ease; }
+.nt-modal-close:hover { transform: translateY(-2px); background: #f8fafc; }
+.nt-modal-close:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--nt-ring); }
 
 /* Caja de diálogo (dos variantes en el DOM) */
 .internet-modal,
@@ -747,4 +763,6 @@ body[data-anim-mode="off"] [data-nt-icon-drift] { animation:none !important; }
 
 /* Estado de carga en submit */
 .is-loading { opacity: .75; pointer-events: none; }
+/* Blur del sitio cuando un modal común está abierto */
+body.nt-modal-open main, body.nt-modal-open header, body.nt-modal-open footer { filter: blur(2px) saturate(1.1); transition: filter .2s ease; }
 
