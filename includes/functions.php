@@ -197,7 +197,9 @@ function renderFAQComponent($jsonFile, $options = []) {
  *    - json: ruta JSON alternativa (por defecto busca en includes/json/{id}.json, includes/json/faq-{id}.json o includes/json/faqs/{id}.json)
  *    - containerClass: clases extra para el <section>
  *
- * Estructura JSON esperada: [ { "q": "Pregunta", "a": "Respuesta (HTML permitido)" }, ... ]
+ * Formato JSON aceptado (ambos esquemas son válidos):
+ *   - [{ "pregunta": "...", "respuesta": "...", "icono": "fa-solid fa-..." }]
+ *   - [{ "q": "...", "a": "...", "icon": "fa-solid fa-..." }]
  */
 if (!function_exists('faq')) {
   function faq(string $id, array $opts = []): string {
@@ -251,6 +253,8 @@ if (!function_exists('faq')) {
 
       if ($q === '' && $a === '') continue;
 
+      $qEsc = htmlspecialchars((string)$q, ENT_QUOTES, 'UTF-8');
+
       $qid = $safeId . '-q-' . ($i + 1);
       $aid = $safeId . '-a-' . ($i + 1);
 
@@ -260,10 +264,10 @@ if (!function_exists('faq')) {
           <button type="button" class="nt-faq-toggle" aria-expanded="false" aria-controls="'.htmlspecialchars($aid, ENT_QUOTES, 'UTF-8').'" data-faq-toggle>
             <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
             <i class="nt-faq-q-ico '.htmlspecialchars($ic, ENT_QUOTES, 'UTF-8').'" aria-hidden="true"></i>
-            <span class="nt-faq-q-text">'.$q.'</span>
+            <span class="nt-faq-q-text">'.$qEsc.'</span>
           </button>
         </h3>
-        <div id="'.htmlspecialchars($aid, ENT_QUOTES, 'UTF-8').'" class="nt-faq-a" role="region" aria-labelledby="'.htmlspecialchars($qid, ENT_QUOTES, 'UTF-8').'" hidden>
+        <div id="'.htmlspecialchars($aid, ENT_QUOTES, 'UTF-8').'" class="nt-faq-a" role="region" aria-labelledby="'.htmlspecialchars($qid, ENT_QUOTES, 'UTF-8').'" aria-hidden="true" hidden>
           <div class="nt-faq-a-inner">'.$a.'</div>
         </div>
       </article>';
@@ -277,15 +281,15 @@ if (!function_exists('faq')) {
 
     // Encabezado (usa nt_heading si existe)
     $heading = function_exists('nt_heading')
-      ? nt_heading($safeTitle, 'fa-solid fa-circle-question', 'md', '', ['class'=>'nt-heading-accent-bar'])
-      : '<h2 class="nt-faq-title"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> '.$safeTitle.'</h2>';
+      ? nt_heading($title, 'fa-solid fa-circle-question', 'md', '', ['class'=>'nt-heading-accent-bar','id'=>$safeId.'-title'])
+      : '<h2 id="'.htmlspecialchars($safeId, ENT_QUOTES, 'UTF-8').'-title" class="nt-faq-title"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> '.$safeTitle.'</h2>';
 
     // Herramientas
     $tools = '
       <div class="nt-faq-tools" role="toolbar" aria-label="Herramientas de FAQ">
         <label class="nt-faq-search">
           <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-          <input type="search" placeholder="Buscar en las preguntas..." aria-label="Buscar preguntas" data-faq-search>
+          <input type="search" placeholder="Buscar en las preguntas..." aria-label="Buscar preguntas" data-faq-search oninput="window.NTFaqApply&&window.NTFaqApply(this)" onkeyup="window.NTFaqApply&&window.NTFaqApply(this)">
         </label>
         <div class="nt-faq-actions">
           <button type="button" class="nt-faq-btn" data-faq-expand><i class="fa-solid fa-square-plus"></i> Expandir</button>
@@ -349,9 +353,37 @@ if (!function_exists('faq')) {
 @media (prefers-reduced-motion:reduce){.nt-faq-toggle i{transition:none}.nt-faq-a[aria-hidden="false"],.nt-faq-a:not([hidden]){animation:none}}
 </style>
 <script>
-document.addEventListener('DOMContentLoaded', function(){
-  // Normaliza texto sin diacríticos (compatible)
-  var norm = function(s){ return (s||'').toString().toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,''); };
+(function(){
+  // Polyfills básicos de compatibilidad
+  try{
+    if (!Element.prototype.matches) {
+      Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector || function(s){
+        var matches = (this.document || this.ownerDocument).querySelectorAll(s), i = matches.length;
+        while (--i >= 0 && matches.item(i) !== this) {}
+        return i > -1;
+      };
+    }
+    if (!Element.prototype.closest) {
+      Element.prototype.closest = function(s) {
+        var el = this;
+        do { if (el.matches(s)) return el; el = el.parentElement || el.parentNode; } while (el !== null && el.nodeType === 1);
+        return null;
+      };
+    }
+  }catch(e){}
+  // Debug opcional: define window.NTFAQ_DEBUG = true para ver logs
+  var DBG = !!(window && window.NTFAQ_DEBUG);
+  // Normaliza texto sin diacríticos (compatible, con fallback)
+  var norm = function(s){
+    s = (s||'').toString();
+    var low = s.toLowerCase();
+    try {
+      if (String.prototype.normalize) {
+        return low.normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+      }
+    } catch(e){}
+    return low;
+  };
 
   var setExpanded = function(btn, expand){
     if (!btn) return;
@@ -365,83 +397,164 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   };
 
-  var lists = document.querySelectorAll('[data-faq-list]');
-  if (!lists.length) return;
+  // Temporizador para auto-scroll al primer resultado tras filtrar
+  var faqScrollTimer = null;
+  // Temporizador para remover highlight del primer match
+  var faqHighlightTimer = null;
 
-  // Delegación global para Expandir/Colapsar — funciona aunque el botón esté fuera del .nt-faq
-  document.addEventListener('click', function(ev){
-    var expandBtn  = ev.target.closest && ev.target.closest('[data-faq-expand]');
-    var collapseBtn= ev.target.closest && ev.target.closest('[data-faq-collapse]');
-    if (!expandBtn && !collapseBtn) return;
+  function openByHash(){
+    var raw = (location.hash || '').slice(1);
+    if (!raw) return;
+    var id = decodeURIComponent(raw);
+    var target = document.getElementById(id);
+    if (target && target.classList && target.classList.contains('nt-faq-item')) {
+      var btn = target.querySelector('[data-faq-toggle]');
+      setExpanded(btn, true);
+      target.classList.add('highlight');
+      setTimeout(function(){ try{ target.classList.remove('highlight'); }catch(e){} }, 1600);
+      try{ target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }catch(e){}
+    }
+  }
 
-    lists.forEach(function(list){
-      var toggles = Array.prototype.slice.call(list.querySelectorAll('[data-faq-toggle]'));
+  function bindGlobalHandlers(){
+    // Expandir/Colapsar todos
+    document.addEventListener('click', function(ev){
+      var expandBtn  = ev.target.closest && ev.target.closest('[data-faq-expand]');
+      var collapseBtn= ev.target.closest && ev.target.closest('[data-faq-collapse]');
+      if (!expandBtn && !collapseBtn) return;
+      var lists = document.querySelectorAll('[data-faq-list]');
       var expandAll = !!expandBtn;
-      toggles.forEach(function(b){ setExpanded(b, expandAll); });
-    });
-  }, false);
+      lists.forEach(function(list){
+        var toggles = Array.prototype.slice.call(list.querySelectorAll('[data-faq-toggle]'));
+        toggles.forEach(function(b){ setExpanded(b, expandAll); });
+      });
+    }, false);
 
-  lists.forEach(function(list){
-    var section = list.closest('.nt-faq');
-    var search  = section ? section.querySelector('[data-faq-search]') : null;
-
-    // Toggle individual
-    list.addEventListener('click', function(ev){
+    // Toggle individual (click)
+    document.addEventListener('click', function(ev){
       var btn = ev.target.closest && ev.target.closest('[data-faq-toggle]');
       if (!btn) return;
       var expanded = btn.getAttribute('aria-expanded') === 'true';
       setExpanded(btn, !expanded);
-
       var host = btn.closest('.nt-faq-item');
-      if (host && host.id) {
-        history.replaceState(null, '', '#' + host.id);
-      }
-    });
+      if (host && host.id) { try{ history.replaceState(null, '', '#' + host.id); }catch(e){} }
+    }, false);
 
-    // Accesibilidad teclado
-    list.addEventListener('keydown', function(ev){
+    // Toggle individual (teclado)
+    document.addEventListener('keydown', function(ev){
       if (ev.key !== 'Enter' && ev.key !== ' ') return;
       var btn = ev.target.closest && ev.target.closest('[data-faq-toggle]');
       if (!btn) return;
       ev.preventDefault();
       btn.click();
-    });
+    }, false);
 
-    // Búsqueda
-    if (search) {
-      var last = '';
-      var doFilter = function(){
-        var q = norm(search.value);
-        if (q === last) return;
-        last = q;
-        var items = Array.prototype.slice.call(list.querySelectorAll('.nt-faq-item'));
+    // Búsqueda delegada por sección (input/keyup/change)
+  var applyFilter = function(searchEl){
+      var section = searchEl.closest && searchEl.closest('.nt-faq');
+      if (!section) return;
+      var list = section.querySelector('[data-faq-list]');
+      if (!list) return;
+      var q = norm(searchEl.value || '');
+      var tokens = q.trim().split(/\s+/).filter(Boolean);
+      var items = Array.prototype.slice.call(list.querySelectorAll('.nt-faq-item'));
+      // Si no hay tokens, mostrar todo y colapsar todo (reset)
+      if (tokens.length === 0) {
         items.forEach(function(it){
-          var txt = norm(it.textContent || '');
-          var match = q.length < 2 ? true : txt.includes(q);
-          it.style.display = match ? '' : 'none';
+          it.style.display = '';
+          var btn = it.querySelector('[data-faq-toggle]');
+          if (btn) setExpanded(btn, false);
+          try { it.classList.remove('highlight'); } catch(e){}
         });
-      };
-      search.addEventListener('input', doFilter);
-    }
+        try { clearTimeout(faqScrollTimer); } catch(e){}
+        try { clearTimeout(faqHighlightTimer); } catch(e){}
+        return;
+      }
+      // Con tokens: expandir coincidencias y colapsar no coincidentes
+      var firstMatch = null;
+      items.forEach(function(it){
+        var qNode = it.querySelector('.nt-faq-q-text');
+        var aNode = it.querySelector('.nt-faq-a-inner');
+        var qTxt = norm(qNode ? (qNode.textContent || '') : '');
+        var aTxt = norm(aNode ? (aNode.textContent || '') : '');
+        var combined = qTxt + ' ' + aTxt;
+        var match = tokens.every(function(t){ return combined.indexOf(t) !== -1; });
+        it.style.display = match ? '' : 'none';
+        var btn = it.querySelector('[data-faq-toggle]');
+        if (btn) setExpanded(btn, !!match);
+        if (match && !firstMatch) firstMatch = it;
+      });
 
-    // Deep-link por hash (#faq-cartuchos-q-3)
-    var openByHash = function(){
-      var raw = (location.hash || '').slice(1);
-      if (!raw) return;
-      var id = decodeURIComponent(raw);
-      var target = document.getElementById(id);
-      if (target && target.classList.contains('nt-faq-item')) {
-        var btn = target.querySelector('[data-faq-toggle]');
-        setExpanded(btn, true);
-        target.classList.add('highlight');
-        setTimeout(function(){ target.classList.remove('highlight'); }, 1600);
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Auto-scroll al primer resultado visible (debounce para evitar saltos en cada tecla)
+      if (firstMatch) {
+        try { clearTimeout(faqScrollTimer); } catch(e) {}
+        faqScrollTimer = setTimeout(function(){
+          try { firstMatch.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch(e) {}
+        }, 180);
+
+        // Limpiar highlight previo y aplicar highlight temporal al primer match
+        try { clearTimeout(faqHighlightTimer); } catch(e){}
+        try { items.forEach(function(it){ it.classList.remove('highlight'); }); } catch(e){}
+        try { firstMatch.classList.add('highlight'); } catch(e){}
+        faqHighlightTimer = setTimeout(function(){
+          try { firstMatch.classList.remove('highlight'); } catch(e){}
+        }, 1400);
       }
     };
-    window.addEventListener('hashchange', openByHash);
+  // Exponer helper global para invocar desde oninput/keyup
+  try { window.NTFaqApply = applyFilter; } catch(e){}
+    ['input','keyup','change'].forEach(function(type){
+      document.addEventListener(type, function(ev){
+        var search = ev.target && ev.target.matches && ev.target.matches('[data-faq-search]') ? ev.target : null;
+        if (!search) return;
+        if (DBG) try{ console.debug('[FAQ] Delegado', type, search.value); }catch(e){}
+        applyFilter(search);
+      }, false);
+    });
+
+    // Binding directo a cada input de búsqueda (refuerzo por compatibilidad)
+    try {
+      var inputs = document.querySelectorAll('[data-faq-search]');
+      inputs.forEach(function(inp){
+        if (inp.dataset.faqBound === '1') return;
+        ['input','keyup','change'].forEach(function(t){
+          inp.addEventListener(t, function(){ if (DBG) try{ console.debug('[FAQ] Directo', t, inp.value); }catch(e){} applyFilter(inp); }, false);
+        });
+        inp.dataset.faqBound = '1';
+      });
+    } catch(e){}
+
+    // Observador para re-enlazar en contenido dinámico
+    try {
+      var mo = new MutationObserver(function(muts){
+        var needsBind = false;
+        muts.forEach(function(m){ if (m.addedNodes && m.addedNodes.length) needsBind = true; });
+        if (!needsBind) return;
+        var inputs = document.querySelectorAll('[data-faq-search]');
+        inputs.forEach(function(inp){
+          if (inp.dataset.faqBound === '1') return;
+          ['input','keyup','change'].forEach(function(t){
+            inp.addEventListener(t, function(){ if (DBG) try{ console.debug('[FAQ] MO Directo', t, inp.value); }catch(e){} applyFilter(inp); }, false);
+          });
+          inp.dataset.faqBound = '1';
+        });
+      });
+      mo.observe(document.body || document.documentElement, { childList:true, subtree:true });
+    } catch(e){}
+
+    // Deep-link
+    window.addEventListener('hashchange', openByHash, false);
     setTimeout(openByHash, 50);
-  });
-});
+  }
+
+  function init(){ bindGlobalHandlers(); }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+})();
 </script>
 HTML;
   }

@@ -112,7 +112,7 @@ $footerVariantClass = $footerStyle === 'light' ? ' nt-footer--light' : '';
       </div>
     </footer>
 
-    <!-- Datos estructurados LocalBusiness -->
+    <!-- Datos estructurados Schema.org: describe el negocio local para SEO y buscadores -->
   <script type="application/ld+json">{
       "@context":"https://schema.org",
       "@type":"LocalBusiness",
@@ -145,7 +145,7 @@ $footerVariantClass = $footerStyle === 'light' ? ' nt-footer--light' : '';
     ?>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <!-- Contenedor de notificaciones -->
