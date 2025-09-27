@@ -635,6 +635,13 @@ body.nt-anim-prep * { transition:none !important; }
 body.nt-anim-prep { filter:blur(3px); opacity:.85; }
 @media (prefers-reduced-motion: reduce){ body.nt-anim-prep { filter:none; opacity:1; } }
 
+/* Cuando un modal está abierto, no aplicar blur global al body */
+body.nt-modal-open { filter: none !important; opacity: 1 !important; }
+/* Asegurar nitidez del contenido del modal ante filtros heredados del body */
+body.nt-modal-open .nt-modal,
+body.nt-modal-open .internet-modal,
+body.nt-modal-open .internet-modal-dialog { filter: none !important; }
+
 /* Estado inicial para elementos animables (se aplicará vía data-nt-anim o clases existentes) */
 [data-nt-anim], .nt-soft-seq { opacity:0; transform: translateY(26px) scale(.985); }
 body[data-anim-mode="off"] [data-nt-anim], body[data-anim-mode="off"] .nt-soft-seq { opacity:1 !important; transform:none !important; animation:none !important; transition:none !important; }
@@ -665,12 +672,13 @@ body[data-anim-mode="off"] [data-nt-icon-drift] { animation:none !important; }
   align-items: center;
   justify-content: center;
   background: rgba(15,23,42,.55);
-  backdrop-filter: saturate(1.2) blur(2px);
+  /* Fondo plano, sin blur */
+  backdrop-filter: none;
   z-index: 9999;
 }
 .nt-modal-backdrop {
   position: fixed; inset: 0; display: none; align-items: center; justify-content: center;
-  background: rgba(15,23,42,.55); backdrop-filter: saturate(1.2) blur(3px); z-index: 9999;
+  background: rgba(15,23,42,.55); /* Fondo plano, sin blur */ backdrop-filter: none; z-index: 9999;
 }
 .nt-modal-backdrop.is-open { display: flex; }
 .nt-modal {
@@ -763,6 +771,6 @@ body[data-anim-mode="off"] [data-nt-icon-drift] { animation:none !important; }
 
 /* Estado de carga en submit */
 .is-loading { opacity: .75; pointer-events: none; }
-/* Blur del sitio cuando un modal común está abierto */
-body.nt-modal-open main, body.nt-modal-open header, body.nt-modal-open footer { filter: blur(2px) saturate(1.1); transition: filter .2s ease; }
+/* Modal abierto: sin blur en el sitio para evitar que el contenido del modal (si está dentro de main) se vea afectado */
+body.nt-modal-open main, body.nt-modal-open header, body.nt-modal-open footer { filter: none !important; }
 
