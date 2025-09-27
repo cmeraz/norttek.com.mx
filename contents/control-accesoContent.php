@@ -16,6 +16,25 @@
   </div>
 </section>
 
+<section id="introduccion" class="py-20 bg-slate-50">
+  <div class="max-w-4xl mx-auto px-6 lg:px-12">
+    <div class="flex flex-col md:flex-row items-start gap-6">
+      <img 
+        src="assets/img/control-acceso-intro.jpg" 
+        alt="Control de Acceso Norttek" 
+        class="w-40 h-40 object-cover rounded-lg shadow-md flex-shrink-0 mx-auto md:mx-0"
+      >
+      <div class="text-left">
+        <?php echo nt_heading('¿Qué es el Control de Acceso?','fa-solid fa-lock','md',null,['class'=>'nt-heading-accent-bar']); ?>
+        <p class="mt-2 text-slate-600 leading-relaxed max-w-xl">
+          El control de acceso es un sistema que regula y monitorea la entrada y salida de personas en áreas restringidas, utilizando tecnologías como biometría, tarjetas RFID, códigos PIN y más. Estos sistemas no solo mejoran la seguridad física, sino que también optimizan la gestión del personal y proporcionan auditorías detalladas para cumplir con normativas.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <section id="modulos" class="py-20 bg-white">
   <div class="max-w-6xl mx-auto px-6 lg:px-12">
     <?php echo nt_heading('Módulos disponibles','fa-solid fa-cubes','md',null,['class'=>'nt-heading-accent-bar']); ?>
