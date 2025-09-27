@@ -3,14 +3,15 @@
  * Contenido modular: Página Control de Acceso
  */
 ?>
-<section class="nt-hero-wrapper relative">
-  <div class="absolute inset-0 -z-[1]" style="background:radial-gradient(circle at 30% 40%,rgba(13,148,136,.4),transparent 65%),radial-gradient(circle at 80% 70%,rgba(8,145,178,.35),transparent 60%),linear-gradient(180deg,#0f172a,#082f49 70%);"></div>
-  <div class="max-w-6xl mx-auto px-6 lg:px-12 text-slate-100">
-    <?php echo nt_heading('Control de Acceso','fa-solid fa-door-closed','lg','Gestión y trazabilidad de entradas', ['animate'=>true,'class'=>'nt-heading-accent-bar']); ?>
-    <p class="nt-lead max-w-3xl text-slate-300 mt-4">Soluciones biométricas, tarjetas, PIN y credenciales móviles para proteger activos y optimizar flujos de personal.</p>
-    <div class="mt-8 flex flex-wrap gap-4">
-      <a href="/contact" class="nt-btn" data-variant="primary"><i class="fa-solid fa-file-pen"></i> Solicitar evaluación</a>
-      <a href="#modulos" class="nt-btn" data-variant="outline"><i class="fa-solid fa-layer-group"></i> Módulos</a>
+<section class="ca-hero nt-hero-wrapper">
+  <div class="ca-hero__content">
+    <div class="max-w-6xl mx-auto px-6 lg:px-12">
+      <?php echo nt_heading('Control de Acceso','fa-solid fa-door-closed','xl', 'Gestión y trazabilidad de entradas', ['animate'=>true,'class'=>'nt-heading-hero nt-heading-invert nt-heading-accent-bar']); ?>
+      <p class="nt-lead ca-hero__lead max-w-3xl mt-4">Soluciones biométricas, tarjetas, PIN y credenciales móviles para proteger activos y optimizar flujos de personal.</p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="/contact" class="nt-btn" data-variant="primary"><i class="fa-solid fa-file-pen"></i> Solicitar evaluación</a>
+        <a href="#modulos" class="nt-btn" data-variant="subtle"><i class="fa-solid fa-layer-group"></i> Módulos</a>
+      </div>
     </div>
   </div>
 </section>
