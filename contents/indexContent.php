@@ -112,18 +112,20 @@
     ];
     ?>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 max-w-4xl mx-auto">
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-5 max-w-4xl mx-auto">
       <?php foreach ($itemsHero as $i => $item): ?>
-        <a href="#<?= $item['enlace']; ?>" class="group block">
-          <div class="relative overflow-hidden rounded-xl bg-white/10 backdrop-blur-sm p-4 flex flex-col items-center gap-3 border border-white/10 hover:border-white/30 transition shadow-sm hover:shadow">
-            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-white/15 group-hover:bg-white/25 transition">
+        <a href="#<?= $item['enlace']; ?>" aria-label="Abrir sección <?= htmlspecialchars($item['titulo'], ENT_QUOTES, 'UTF-8'); ?>" class="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/70 rounded-2xl">
+          <div class="relative overflow-hidden rounded-2xl p-4 flex flex-col items-center gap-3 bg-white/95 text-slate-900 ring-1 ring-slate-200/70 shadow-sm transition will-change-transform group-hover:shadow-md group-active:scale-[0.98]">
+            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-sm">
               <?php if(isset($item['tipo']) && $item['tipo']=='fa'): ?>
-                <i class="<?= $item['icono']; ?> text-xl text-white"></i>
+                <i class="<?= $item['icono']; ?> text-lg"></i>
               <?php else: ?>
-                <img src="<?= $item['icono']; ?>" alt="<?= $item['titulo']; ?>" class="w-8 h-8 object-contain"/>
+                <img src="<?= $item['icono']; ?>" alt="<?= $item['titulo']; ?>" class="w-7 h-7 object-contain filter invert-0"/>
               <?php endif; ?>
             </div>
-            <span class="text-sm font-medium tracking-wide group-hover:text-white/90"><?= $item['titulo']; ?></span>
+            <span class="text-[13px] sm:text-sm font-semibold tracking-wide text-slate-800/90 group-hover:text-slate-900 text-center">
+              <?= $item['titulo']; ?>
+            </span>
           </div>
         </a>
       <?php endforeach; ?>
@@ -131,41 +133,46 @@
   </div>
 </section>
 
-<!-- SECCIÓN DE TIENDA: Botones con iconos y modal para compartir por WhatsApp -->
+<!-- SECCIÓN DE TIENDA: estilo app-like en tarjeta -->
 <section class="py-20 bg-gray-50">
-  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-14">
-    <div class="md:w-1/2 text-left">
-  <?= nt_heading('Explora nuestra tienda en línea', 'fa-solid fa-store', 'md', 'Compra fácil y segura', ['animate'=>true,'class'=>'nt-heading-accent-bar']); ?>
-      <p class="nt-lead mt-6">
-        Catálogo amplio en <strong>seguridad</strong>, <strong>control de acceso</strong>, <strong>redes</strong>, <strong>cableado</strong>, <strong>automatización</strong>, <strong>audio ambiental</strong> y más. Compra desde cualquier dispositivo con envíos locales.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 mt-8">
-        <a href="https://tienda.norttek.com.mx" class="nt-btn nt-btn-primary"><i class="fas fa-store"></i><span>Visitar Tienda</span></a>
-        <button id="btnWhatsapp" class="nt-btn nt-btn-outline"><i class="fab fa-whatsapp"></i><span>Compartir</span></button>
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="rounded-3xl bg-white/95 ring-1 ring-slate-200/70 shadow-sm p-6 md:p-10 grid md:grid-cols-2 items-center gap-8 md:gap-12">
+      <div class="text-left">
+        <?= nt_heading('Explora nuestra tienda en línea', 'fa-solid fa-store', 'md', 'Compra fácil y segura', ['animate'=>true,'class'=>'nt-heading-accent-bar']); ?>
+        <p class="nt-lead mt-6 text-slate-700">
+          Catálogo amplio en <strong>seguridad</strong>, <strong>control de acceso</strong>, <strong>redes</strong>, <strong>cableado</strong>, <strong>automatización</strong>, <strong>audio ambiental</strong> y más. Compra desde cualquier dispositivo con envíos locales.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-7">
+          <a href="https://tienda.norttek.com.mx" class="nt-btn nt-btn-primary"><i class="fas fa-store"></i><span>Visitar Tienda</span></a>
+          <button id="btnWhatsapp" class="nt-btn nt-btn-outline" data-nt-modal-open="#modalWhatsapp"><i class="fab fa-whatsapp"></i><span>Compartir</span></button>
+        </div>
       </div>
-    </div>
-    <div class="md:w-1/2 flex justify-center">
-      <div class="rounded-2xl overflow-hidden shadow-lg ring-1 ring-gray-200 bg-white">
-        <img src="https://www.sicarx.com/images/new/analyze-data-03.webp" alt="Tienda en línea Norttek" class="w-full max-w-sm">
+      <div class="flex justify-center">
+        <div class="rounded-2xl overflow-hidden ring-1 ring-slate-200 bg-white shadow-sm">
+          <img src="https://www.sicarx.com/images/new/analyze-data-03.webp" alt="Tienda en línea Norttek" class="w-full max-w-sm">
+        </div>
       </div>
     </div>
   </div>
-</section>
+  </section>
 
-<!-- Modal WhatsApp para compartir enlace de la tienda -->
-<div id="modalWhatsapp" class="fixed inset-0 bg-black/60 hidden justify-center items-center z-50">
-  <div class="bg-white rounded-2xl p-6 w-80 relative shadow-xl nt-fade-in">
-  <?= nt_heading('Compartir tienda', 'fa-brands fa-whatsapp', 'sm', 'Envia el enlace por WhatsApp', ['class'=>'nt-heading-accent-hairline']); ?>
-    <label class="nt-field mt-4">
-      <span class="text-xs font-semibold tracking-wide text-gray-600">Número destinatario</span>
-      <input type="text" id="numeroWhatsapp" placeholder="Ej: 6251234455" class="nt-input" />
-    </label>
-    <div class="mt-5 flex flex-col gap-3">
-      <button id="enviarWhatsapp" class="nt-btn nt-btn-primary w-full"><i class="fa-solid fa-paper-plane"></i><span>Enviar</span></button>
-      <button id="cerrarModal" class="nt-btn nt-btn-outline w-full"><i class="fa-solid fa-xmark"></i><span>Cerrar</span></button>
+<!-- Modal WhatsApp (sistema unificado .nt-modal) -->
+<div id="modalWhatsapp" class="nt-modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalwhats-title">
+  <div class="nt-modal" role="document">
+    <button type="button" class="nt-modal-close" data-nt-modal-close aria-label="Cerrar">&times;</button>
+    <?= nt_heading('Compartir tienda', 'fa-brands fa-whatsapp', 'sm', 'Envia el enlace por WhatsApp', ['class'=>'nt-heading-accent-hairline','id'=>'modalwhats-title']); ?>
+    <div class="modal-body" style="margin-top:.6rem;">
+      <label class="nt-field">
+        <span class="text-xs font-semibold tracking-wide text-gray-600">Número destinatario</span>
+        <input type="text" id="numeroWhatsapp" placeholder="Ej: 6251234455" class="nt-input" inputmode="numeric" />
+      </label>
+    </div>
+    <div class="nt-modal-actions">
+      <button id="enviarWhatsapp" class="nt-btn nt-btn-primary"><i class="fa-solid fa-paper-plane"></i><span>Enviar</span></button>
+      <button class="nt-btn nt-btn-outline" data-nt-modal-close><i class="fa-solid fa-xmark"></i><span>Cerrar</span></button>
     </div>
   </div>
-</div>
+  </div>
 
 <?php
 // Incluir sección de servicios adicional
