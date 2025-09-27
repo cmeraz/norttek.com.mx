@@ -115,7 +115,7 @@
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-5 max-w-4xl mx-auto">
       <?php foreach ($itemsHero as $i => $item): ?>
         <a href="#<?= $item['enlace']; ?>" aria-label="Abrir sección <?= htmlspecialchars($item['titulo'], ENT_QUOTES, 'UTF-8'); ?>" class="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/70 rounded-2xl">
-          <div class="relative overflow-hidden rounded-2xl p-4 flex flex-col items-center gap-3 bg-white/95 text-slate-900 ring-1 ring-slate-200/70 shadow-sm transition will-change-transform group-hover:shadow-md group-active:scale-[0.98]">
+          <div class="nt-hero-card relative overflow-hidden rounded-2xl p-4 flex flex-col items-center gap-3 bg-white/20 backdrop-blur-md text-white border border-white/20 ring-1 ring-white/20 shadow-sm transition will-change-transform group-hover:shadow-lg group-hover:ring-orange-500/60 group-active:scale-[0.98]">
             <div class="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-sm">
               <?php if(isset($item['tipo']) && $item['tipo']=='fa'): ?>
                 <i class="<?= $item['icono']; ?> text-lg"></i>
@@ -123,7 +123,7 @@
                 <img src="<?= $item['icono']; ?>" alt="<?= $item['titulo']; ?>" class="w-7 h-7 object-contain filter invert-0"/>
               <?php endif; ?>
             </div>
-            <span class="text-[13px] sm:text-sm font-semibold tracking-wide text-slate-800/90 group-hover:text-slate-900 text-center">
+            <span class="text-[13px] sm:text-sm font-semibold tracking-wide text-white/95 group-hover:text-orange-300 text-center">
               <?= $item['titulo']; ?>
             </span>
           </div>
@@ -199,4 +199,22 @@ includeTemplate("servicios");
 @media (prefers-reduced-motion:reduce){
   .site-status-wrap .nt-alert {box-shadow:none !important;}
 }
+
+/* Hero cards: efecto glass + textos blancos + hover naranja */
+.nt-hero-card{
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.22);
+  box-shadow: 0 12px 28px -16px rgba(2,6,23,.35), inset 0 0 0 1px rgba(255,255,255,.14);
+}
+.group:hover .nt-hero-card{
+  /* Halo naranja sutil */
+  box-shadow: 0 0 0 6px rgba(249,113,22,.16), 0 20px 42px -18px rgba(2,6,23,.55), inset 0 0 0 1px rgba(255,255,255,.2);
+}
+@keyframes ntPulseHaloOrange{
+  0%,100%{ box-shadow: 0 0 0 0 rgba(249,113,22,.26), 0 16px 36px -18px rgba(2,6,23,.45), inset 0 0 0 1px rgba(255,255,255,.22); }
+  50%{ box-shadow: 0 0 0 10px rgba(249,113,22,.12), 0 28px 46px -20px rgba(2,6,23,.6), inset 0 0 0 1px rgba(255,255,255,.26); }
+}
+.group:hover .nt-hero-card{ animation: ntPulseHaloOrange 1.6s ease-in-out infinite; }
 </style>
