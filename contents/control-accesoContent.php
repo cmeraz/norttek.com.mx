@@ -3,14 +3,33 @@
  * Contenido modular: Página Control de Acceso
  */
 ?>
-<section class="nt-hero-wrapper relative">
-  <div class="absolute inset-0 -z-[1]" style="background:radial-gradient(circle at 30% 40%,rgba(13,148,136,.4),transparent 65%),radial-gradient(circle at 80% 70%,rgba(8,145,178,.35),transparent 60%),linear-gradient(180deg,#0f172a,#082f49 70%);"></div>
-  <div class="max-w-6xl mx-auto px-6 lg:px-12 text-slate-100">
-    <?php echo nt_heading('Control de Acceso','fa-solid fa-door-closed','lg','Gestión y trazabilidad de entradas', ['animate'=>true,'class'=>'nt-heading-accent-bar']); ?>
-    <p class="nt-lead max-w-3xl text-slate-300 mt-4">Soluciones biométricas, tarjetas, PIN y credenciales móviles para proteger activos y optimizar flujos de personal.</p>
-    <div class="mt-8 flex flex-wrap gap-4">
-      <a href="/contact" class="nt-btn" data-variant="primary"><i class="fa-solid fa-file-pen"></i> Solicitar evaluación</a>
-      <a href="#modulos" class="nt-btn" data-variant="outline"><i class="fa-solid fa-layer-group"></i> Módulos</a>
+<!-- HERO: Sección principal con imagen de fondo oscura -->
+<section class="control-acceso-hero relative min-h-screen flex items-center">
+  <!-- Fondo con imagen y overlay oscuro -->
+  <div class="absolute inset-0 -z-[1]" style="
+    background-image: 
+      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.75)), 
+      url('assets/img/accessControl-herobg.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  "></div>
+  
+  <!-- Contenido del hero adaptado al fondo oscuro -->
+  <div class="max-w-6xl mx-auto px-6 lg:px-12 text-white relative z-10">
+    <div class="max-w-4xl">
+      <?php echo nt_heading('Control de Acceso Inteligente','fa-solid fa-door-closed','xl','Gestión y trazabilidad de entradas con tecnología avanzada', ['animate'=>true,'class'=>'nt-heading-accent-bar text-white']); ?>
+      <p class="text-xl leading-relaxed text-gray-200 mt-6 max-w-3xl">
+        Soluciones biométricas, tarjetas RFID, códigos PIN y credenciales móviles para proteger tus activos y optimizar los flujos de personal en tiempo real.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href="/contact" class="bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl hover:scale-105">
+          <i class="fa-solid fa-file-pen"></i> Solicitar evaluación gratuita
+        </a>
+        <a href="#modulos" class="border-2 border-white/30 hover:border-white/60 text-white hover:bg-white/10 px-8 py-4 rounded-lg font-semibold transition-all duration-300 flex items-center gap-3">
+          <i class="fa-solid fa-layer-group"></i> Ver módulos
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -29,8 +48,11 @@
           ['icon'=>'fa-cloud-arrow-up','t'=>'Monitoreo central','d'=>'Plataforma en la nube con reportes, bitácoras y auditoría granular.'],
         ];
         foreach($mods as $m): ?>
-        <div class="p-6 bg-white border border-slate-200 rounded-xl shadow-sm flex flex-col">
-          <h3 class="font-semibold text-slate-800 mb-2 flex items-center gap-2"><i class="fa-solid <?= $m['icon']; ?> text-teal-600"></i> <?= htmlspecialchars($m['t']); ?></h3>
+        <div class="control-acceso-module p-6 bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col">
+          <h3 class="font-semibold text-slate-800 mb-2 flex items-center gap-2">
+            <i class="fa-solid <?= $m['icon']; ?> text-teal-600 text-lg"></i> 
+            <?= htmlspecialchars($m['t']); ?>
+          </h3>
           <p class="text-sm text-slate-600 leading-relaxed flex-1"><?= htmlspecialchars($m['d']); ?></p>
         </div>
       <?php endforeach; ?>
@@ -68,39 +90,4 @@
     </div>
   </div>
 </section>
-<?php
-/**
- * Contenido principal para la página Control de Acceso (refactor 2025 design system)
- */
-?>
-<section class="nt-section pb-16 bg-white nt-hero-wrapper">
-    <div class="max-w-6xl mx-auto px-6 lg:px-10">
-        <div class="text-center mb-12">
-            <?= nt_heading('Control de Acceso Inteligente', 'fa-solid fa-door-open', 'xl', null, ['id' => 'control-acceso-hero','animate'=>true,'delay'=>'sm','class'=>'nt-heading-accent-bar']); ?>
-            <p class="nt-lead max-w-3xl mx-auto mt-4">
-                Gestiona y protege el acceso a tus instalaciones con tecnología biométrica, tarjetas, códigos QR y más.
-                Soluciones para empresas, escuelas y residencias.
-            </p>
-        </div>
 
-        <div class="grid md:grid-cols-2 gap-14 items-center">
-            <div class="order-2 md:order-1">
-                <?= nt_heading('Ventajas de nuestro sistema', 'fa-solid fa-shield-halved', 'md', null, ['animate'=>true,'class'=>'nt-heading-accent-bar']); ?>
-                <ul class="space-y-3 mt-6 mb-8">
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i><span>Control horario y reportes de asistencia</span></li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i><span>Integración con cámaras y alarmas</span></li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i><span>Acceso remoto y gestión desde app</span></li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i><span>Instalación profesional y soporte</span></li>
-                </ul>
-                <a href="/contact.php" class="nt-btn nt-btn-primary">
-                    <i class="fa-solid fa-comments"></i><span>Solicita asesoría</span>
-                </a>
-            </div>
-            <div class="flex justify-center order-1 md:order-2">
-                <div class="relative rounded-2xl overflow-hidden shadow-lg max-w-sm w-full bg-gray-50">
-                    <img src="/assets/img/cctv-hero_img.jpg" alt="Dispositivo de control de acceso" class="w-full h-full object-cover">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>

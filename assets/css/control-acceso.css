@@ -1,0 +1,266 @@
+/**
+ * Control de Acceso - Estilos específicos
+ * Diseño adaptado para imagen de fondo oscura accessControl-herobg.jpg
+ */
+
+/* =====================================
+   SECCIÓN HERO - FONDO OSCURO
+===================================== */
+.control-acceso-hero {
+  position: relative;
+  background-attachment: fixed; /* Parallax effect */
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+/* Ajustes responsive del hero */
+@media (max-width: 1024px) {
+  .control-acceso-hero {
+    background-attachment: scroll; /* Mejor performance en móvil */
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .control-acceso-hero {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  
+  .control-acceso-hero .max-w-4xl h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+  
+  .control-acceso-hero p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Mejora de contraste para textos sobre fondo oscuro */
+.control-acceso-hero .nt-heading {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.control-acceso-hero p {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Botones optimizados para fondo oscuro */
+.control-acceso-hero a {
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.control-acceso-hero a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Botón primario (teal) */
+.control-acceso-hero a:first-child {
+  background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+}
+
+.control-acceso-hero a:first-child:hover {
+  background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+}
+
+/* Botón secundario (outline) */
+.control-acceso-hero a:last-child {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+}
+
+.control-acceso-hero a:last-child:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* =====================================
+   MÓDULOS - TARJETAS MEJORADAS
+===================================== */
+.control-acceso-module {
+  position: relative;
+  overflow: hidden;
+  border-left: 4px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.control-acceso-module::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.02) 0%, rgba(20, 184, 166, 0.02) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.control-acceso-module:hover {
+  border-left-color: #14b8a6;
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(13, 148, 136, 0.1);
+  transform: translateY(-2px);
+}
+
+.control-acceso-module:hover::before {
+  opacity: 1;
+}
+
+.control-acceso-module > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Iconos de módulos con efecto hover */
+.control-acceso-module i {
+  transition: all 0.3s ease;
+}
+
+.control-acceso-module:hover i {
+  transform: scale(1.1);
+  color: #0d9488;
+}
+
+/* =====================================
+   ANIMACIONES SCROLL REVEAL
+===================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Clases para animaciones que se aplicarán con JavaScript */
+.control-acceso-animate {
+  opacity: 0;
+  animation-duration: 0.8s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.control-acceso-animate.animate-in {
+  animation-name: fadeInUp;
+}
+
+.control-acceso-animate.animate-left {
+  animation-name: fadeInLeft;
+}
+
+.control-acceso-animate.animate-right {
+  animation-name: fadeInRight;
+}
+
+/* Delays escalonados para efecto cascada */
+.control-acceso-animate:nth-child(1) { animation-delay: 0.1s; }
+.control-acceso-animate:nth-child(2) { animation-delay: 0.2s; }
+.control-acceso-animate:nth-child(3) { animation-delay: 0.3s; }
+.control-acceso-animate:nth-child(4) { animation-delay: 0.4s; }
+.control-acceso-animate:nth-child(5) { animation-delay: 0.5s; }
+.control-acceso-animate:nth-child(6) { animation-delay: 0.6s; }
+
+/* =====================================
+   MEJORAS RESPONSIVE
+===================================== */
+
+/* Tabletas */
+@media (max-width: 1024px) {
+  #modulos .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Móviles */
+@media (max-width: 640px) {
+  .control-acceso-hero .flex {
+    flex-direction: column;
+  }
+  
+  .control-acceso-hero a {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  #modulos .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =====================================
+   ACCESIBILIDAD Y FOCUS STATES
+===================================== */
+.control-acceso-hero a:focus,
+.control-acceso-module:focus {
+  outline: 2px solid #14b8a6;
+  outline-offset: 2px;
+}
+
+/* Reducir movimiento para usuarios con vestibular sensitivity */
+@media (prefers-reduced-motion: reduce) {
+  .control-acceso-hero {
+    background-attachment: scroll;
+  }
+  
+  .control-acceso-module,
+  .control-acceso-hero a,
+  .control-acceso-module i {
+    transition: none;
+  }
+  
+  .control-acceso-animate {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* =====================================
+   MODO OSCURO (OPCIONAL)
+===================================== */
+@media (prefers-color-scheme: dark) {
+  .control-acceso-module {
+    background-color: #1e293b;
+    border-color: #334155;
+  }
+  
+  .control-acceso-module h3 {
+    color: #f1f5f9;
+  }
+  
+  .control-acceso-module p {
+    color: #cbd5e1;
+  }
+}
