@@ -21,14 +21,17 @@
     <?php echo nt_heading('Módulos disponibles','fa-solid fa-cubes','md',null,['class'=>'nt-heading-accent-bar']); ?>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
       <?php
-        $mods = [
-          ['icon'=>'fa-fingerprint','t'=>'Biometría','d'=>'Lectores de huella y reconocimiento facial con algoritmos rápidos y baja tasa de fallo.'],
-          ['icon'=>'fa-id-card','t'=>'Tarjetas / RFID','d'=>'Credenciales de proximidad, MIFARE, control multi-sitio y zonas seguras.'],
-          ['icon'=>'fa-mobile-screen','t'=>'Credencial móvil','d'=>'Autenticación vía app segura y códigos dinámicos temporales (OTP).'],
-          ['icon'=>'fa-turn-up','t'=>'Torniquetes','d'=>'Integración con torniquetes ópticos y de acero para alto flujo.'],
-          ['icon'=>'fa-truck-ramp-box','t'=>'Control vehicular','d'=>'Lectura de placas, tags UHF y automatización de barreras.'],
-          ['icon'=>'fa-cloud-arrow-up','t'=>'Monitoreo central','d'=>'Plataforma en la nube con reportes, bitácoras y auditoría granular.'],
-        ];
+$mods = [
+  ['icon'=>'fa-fingerprint', 't'=>'Biometría', 'd'=>'Lectores de huella, rostro e iris con algoritmos rápidos y baja tasa de error.'],
+  ['icon'=>'fa-id-card', 't'=>'Tarjetas / RFID', 'd'=>'Credenciales de proximidad como MIFARE o HID para acceso seguro y controlado.'],
+  ['icon'=>'fa-keyboard', 't'=>'Teclado / PIN', 'd'=>'Ingreso mediante códigos numéricos o alfanuméricos configurables.'],
+  ['icon'=>'fa-qrcode', 't'=>'Código QR', 'd'=>'Generación y escaneo de códigos QR dinámicos para accesos temporales o programados.'],
+  ['icon'=>'fa-door-closed', 't'=>'Chapas electrónicas', 'd'=>'Cerraduras inteligentes que se controlan con tarjeta, PIN, huella o app móvil.'],
+  ['icon'=>'fa-person-walking-arrow-right', 't'=>'Torniquetes', 'd'=>'Sistemas de acceso peatonal con torniquetes ópticos o de acero.'],
+  ['icon'=>'fa-car', 't'=>'Barreras vehiculares', 'd'=>'Plumas automáticas, bolardos y semáforos para el control de vehículos.'],
+  ['icon'=>'fa-camera', 't'=>'Reconocimiento de placas (LPR)', 'd'=>'Lectura automática de matrículas para apertura de portones o barreras.'],
+  ['icon'=>'fa-video', 't'=>'Videoportero / Intercom', 'd'=>'Validación de identidad con video y audio en tiempo real desde un panel remoto.'],
+];
         foreach($mods as $m): ?>
         <div class="p-6 bg-white border border-slate-200 rounded-xl shadow-sm flex flex-col">
           <h3 class="font-semibold text-slate-800 mb-2 flex items-center gap-2"><i class="fa-solid <?= $m['icon']; ?> text-teal-600"></i> <?= htmlspecialchars($m['t']); ?></h3>
@@ -68,40 +71,4 @@
       <a href="/alarma" class="nt-btn" data-variant="secondary"><i class="fa-solid fa-bell"></i> Ver Alarmas</a>
     </div>
   </div>
-</section>
-<?php
-/**
- * Contenido principal para la página Control de Acceso (refactor 2025 design system)
- */
-?>
-<section class="nt-section pb-16 bg-white nt-hero-wrapper">
-    <div class="max-w-6xl mx-auto px-6 lg:px-10">
-        <div class="text-center mb-12">
-            <?= nt_heading('Control de Acceso Inteligente', 'fa-solid fa-door-open', 'xl', null, ['id' => 'control-acceso-hero','animate'=>true,'delay'=>'sm','class'=>'nt-heading-accent-bar']); ?>
-            <p class="nt-lead max-w-3xl mx-auto mt-4">
-                Gestiona y protege el acceso a tus instalaciones con tecnología biométrica, tarjetas, códigos QR y más.
-                Soluciones para empresas, escuelas y residencias.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-14 items-center">
-            <div class="order-2 md:order-1">
-                <?= nt_heading('Ventajas de nuestro sistema', 'fa-solid fa-shield-halved', 'md', null, ['animate'=>true,'class'=>'nt-heading-accent-bar']); ?>
-                <ul class="space-y-3 mt-6 mb-8">
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i><span>Control horario y reportes de asistencia</span></li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i><span>Integración con cámaras y alarmas</span></li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i><span>Acceso remoto y gestión desde app</span></li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i><span>Instalación profesional y soporte</span></li>
-                </ul>
-                <a href="/contact.php" class="nt-btn nt-btn-primary">
-                    <i class="fa-solid fa-comments"></i><span>Solicita asesoría</span>
-                </a>
-            </div>
-            <div class="flex justify-center order-1 md:order-2">
-                <div class="relative rounded-2xl overflow-hidden shadow-lg max-w-sm w-full bg-gray-50">
-                    <img src="/assets/img/cctv-hero_img.jpg" alt="Dispositivo de control de acceso" class="w-full h-full object-cover">
-                </div>
-            </div>
-        </div>
-    </div>
 </section>

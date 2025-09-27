@@ -1,12 +1,29 @@
 /* Control de Acceso - Hero oscuro con imagen de fondo */
-.ca-hero { position: relative; min-height: 460px; color: #e6eef9; background: #0b1220; overflow: hidden; }
-.ca-hero::before { content:""; position:absolute; inset:0; background: url('../img/accessControl-herobg.jpg') center/cover no-repeat; filter: brightness(.62) saturate(1.02) contrast(1.02); opacity:.0; transition: opacity .9s ease; }
+.ca-hero { position: relative; min-height: 460px; color: #e6eef9; background: #0b1220; overflow: hidden; 
+  /* Parallax */
+  --parallax: 0px;
+  display:flex; align-items:center; /* centra verticalmente */
+}
+.ca-hero::before { content:""; position:absolute; inset:0; background: url('../img/accessControl-herobg.jpg') center/cover no-repeat; filter: brightness(.62) saturate(1.02) contrast(1.02); opacity:.0; transition: opacity .9s ease; 
+  /* Parallax mediante translateY controlado por variable */
+  transform: translateY(var(--parallax)) scale(1.14);
+  transform-origin: center;
+  will-change: transform;
+}
 .ca-hero.hero-loaded::before { opacity:1; }
-.ca-hero .ca-hero__content { position:relative; z-index:2; padding: 3.6rem 0; }
+.ca-hero .ca-hero__content { position:relative; z-index:2; padding: 3.6rem 0; width:100%; display:flex; align-items:center; justify-content:center; }
+/* Centrar texto y acciones dentro del contenedor */
+.ca-hero .ca-hero__content > .max-w-6xl { text-align:center; margin-left:auto; margin-right:auto; }
+.ca-hero .mt-8.flex { justify-content:center; }
 .ca-hero .nt-heading-hero { color:#fff; }
 .ca-hero .ca-hero__lead { color: #c7d4e6; }
 .ca-hero .nt-btn[data-variant="subtle"] { color:#dbeafe; border-color: rgba(255,255,255,.25); }
 .ca-hero .nt-btn[data-variant="subtle"]:hover { color:#fff; }
+
+/* Respeto a usuarios con reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .ca-hero::before { transform:none; }
+}
 
 @media (max-width: 640px){
   .ca-hero { min-height: 400px; }
