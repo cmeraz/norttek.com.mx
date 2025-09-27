@@ -1,30 +1,23 @@
 <!-- Idioma Español -->
 <div class="internet-app">
-  <!-- Modal de login de cliente existente -->
-  <div id="cliente-login-modal" class="internet-modal-backdrop" style="display:none;">
-    <div class="internet-modal" role="dialog" aria-modal="true" aria-labelledby="cliente-login-title">
-      <button type="button" class="modal-close" id="cliente-login-close" aria-label="Cerrar">&times;</button>
-      <div class="modal-header">
-        <h3 id="cliente-login-title" style="display:flex; align-items:center; gap:.5rem;">
-          <i class="fa-solid fa-user-shield" aria-hidden="true"></i>
-          Acceso Cliente
-        </h3>
-        <p class="modal-subtitle">Ingresa tu número de teléfono registrado para mostrar tus credenciales.</p>
-      </div>
+  <!-- Modal de login de cliente (refactorizado a modal común) -->
+  <div id="cliente-login-modal" class="nt-modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="cliente-login-title">
+    <div class="nt-modal" role="document">
+      <button type="button" class="nt-modal-close" id="cliente-login-close" data-nt-modal-close aria-label="Cerrar">&times;</button>
+      <h3 id="cliente-login-title" class="nt-modal-title" style="display:flex; align-items:center; gap:.5rem;">
+        <i class="fa-solid fa-user-shield" aria-hidden="true"></i>
+        Acceso Cliente
+      </h3>
+      <p class="nt-modal-sub">Ingresa tu número de teléfono registrado para mostrar tus credenciales.</p>
       <form id="cliente-login-form" class="modal-body" autocomplete="off">
-        <div class="form-field">
-          <label for="cliente-login-phone">Teléfono (10 dígitos)</label>
-          <div style="position:relative;">
-            <i class="fa-solid fa-phone" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:#6b7a90;"></i>
-            <input id="cliente-login-phone" name="telefono" type="tel" inputmode="numeric" pattern="[0-9]{10}" minlength="10" maxlength="14" required placeholder="Ej. 6251234567" style="padding-left:2.2rem;" />
-          </div>
-        </div>
+        <label for="cliente-login-phone" class="modal-label">Teléfono (10 dígitos)</label>
+        <input id="cliente-login-phone" name="telefono" class="modal-input" type="tel" inputmode="numeric" pattern="[0-9]{10}" minlength="10" maxlength="14" required placeholder="Ej. 6251234567" aria-describedby="cliente-login-error" />
         <div id="cliente-login-error" role="alert" aria-live="assertive" style="display:none; background:#fff5f5; border:1px solid #f8caca; color:#b54848; padding:.6rem .75rem; border-radius:10px; font-size:.8rem; font-weight:600; line-height:1.4;">
           Teléfono no encontrado. Verifica que sea el número con el que te registraste.
         </div>
-        <div class="modal-actions">
-          <button type="submit" class="btn btn-primary" id="cliente-login-submit">Continuar</button>
-          <button type="button" class="btn btn-secondary" id="cliente-login-cancel">Cancelar</button>
+        <div class="nt-modal-actions modal-actions">
+          <button type="submit" class="btn-primario btn btn-primary" id="cliente-login-submit">Continuar</button>
+          <button type="button" class="btn-secundario btn btn-secondary" id="cliente-login-cancel" data-nt-modal-close>Cancelar</button>
         </div>
       </form>
     </div>

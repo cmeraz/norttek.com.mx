@@ -268,18 +268,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function abrirLoginCliente() {
     if (!clienteLoginModal) clienteLoginModal = document.getElementById('cliente-login-modal');
-    if (clienteLoginModal) {
+    if (clienteLoginModal && window.NTModal) {
+      window.NTModal.open(clienteLoginModal);
+      setTimeout(function(){ try { var inp = document.getElementById('cliente-login-phone'); if (inp) inp.focus(); } catch(_){}}
+      , 60);
+    } else if (clienteLoginModal) {
+      // Fallback mínimo
       clienteLoginModal.style.display = 'flex';
-      setTimeout(function(){
-        try { var inp = document.getElementById('cliente-login-phone'); if (inp) inp.focus(); } catch(_){}
-      }, 50);
     } else {
       if (window.NTNotify) NTNotify.warning('No se pudo abrir el modal de acceso. Recarga la página.');
       else console.warn('Modal de login cliente no encontrado');
     }
   }
   function cerrarLoginCliente() {
-    if (clienteLoginModal) clienteLoginModal.style.display = 'none';
+    if (clienteLoginModal && window.NTModal) { window.NTModal.close(clienteLoginModal); }
+    else if (clienteLoginModal) { clienteLoginModal.style.display = 'none'; }
   }
 
   // mostrarCliente(true) => fuerza scroll centrado (solo tras login);
@@ -638,13 +641,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var phoneInput = document.getElementById('cliente-login-phone');
     var loginSubmit = document.getElementById('cliente-login-submit');
     var logoutBtn = document.getElementById('cliente-auth-logout');
-    if (loginClose) loginClose.addEventListener('click', function(){ cerrarLoginCliente(); });
-    if (loginCancel) loginCancel.addEventListener('click', function(){ cerrarLoginCliente(); });
-    // Cerrar con clic en el fondo y con Escape
-    if (clienteLoginModal) {
-      clienteLoginModal.addEventListener('click', function(e){ if (e.target === clienteLoginModal) cerrarLoginCliente(); });
-      document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && clienteLoginModal && clienteLoginModal.style.display !== 'none') cerrarLoginCliente(); });
-    }
+    // Botones ya traen data-nt-modal-close; no requieren listeners adicionales
     // UX: limpiar entrada a dígitos, limitar a 10 y habilitar/deshabilitar submit
     function updateLoginUI(){
       try {

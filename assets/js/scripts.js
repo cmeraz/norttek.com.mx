@@ -57,6 +57,45 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 })();
 
+// Gestor de modal común (.nt-modal / .nt-modal-backdrop)
+(function(){
+    function openModal(sel){
+        var backdrop = typeof sel === 'string' ? document.querySelector(sel) : sel;
+        if(!backdrop) return;
+        // Soporta dos variantes: .nt-modal-backdrop o .internet-modal-backdrop
+        var isGeneric = backdrop.classList.contains('nt-modal-backdrop');
+        if(isGeneric) backdrop.classList.add('is-open');
+        else backdrop.style.display = 'flex';
+        try { backdrop.setAttribute('aria-hidden','false'); } catch(_){}
+        document.body.classList.add('nt-modal-open');
+        var panel = backdrop.querySelector('.nt-modal, .internet-modal, .internet-modal-dialog') || backdrop.firstElementChild;
+        if(panel){ setTimeout(function(){ try { panel.querySelector('input,button,[tabindex]')?.focus(); } catch(_){} }, 30); }
+        function onKey(e){ if(e.key==='Escape'){ closeModal(backdrop); }}
+        function onClick(e){ if(e.target === backdrop){ closeModal(backdrop); }}
+        backdrop.__ntEsc = onKey; backdrop.__ntClick = onClick;
+        document.addEventListener('keydown', onKey);
+        backdrop.addEventListener('click', onClick);
+    }
+    function closeModal(backdrop){
+        if(!backdrop) return;
+        if(backdrop.classList && backdrop.classList.contains('nt-modal-backdrop')) backdrop.classList.remove('is-open');
+        else backdrop.style.display = 'none';
+        try { backdrop.setAttribute('aria-hidden','true'); } catch(_){}
+        document.body.classList.remove('nt-modal-open');
+        if(backdrop.__ntEsc){ document.removeEventListener('keydown', backdrop.__ntEsc); backdrop.__ntEsc = null; }
+        if(backdrop.__ntClick){ backdrop.removeEventListener('click', backdrop.__ntClick); backdrop.__ntClick = null; }
+    }
+    // Delegación por data-attrs
+    document.addEventListener('click', function(e){
+        var openSel = e.target.closest('[data-nt-modal-open]');
+        if(openSel){ e.preventDefault(); var sel = openSel.getAttribute('data-nt-modal-open'); if(sel) openModal(sel); return; }
+        var closeSel = e.target.closest('[data-nt-modal-close]');
+        if(closeSel){ e.preventDefault(); var selc = closeSel.getAttribute('data-nt-modal-close'); var node = selc?document.querySelector(selc):e.target.closest('.nt-modal-backdrop, .internet-modal-backdrop'); closeModal(node); }
+    });
+    // Exponer API mínima
+    window.NTModal = { open: openModal, close: closeModal };
+})();
+
 // Tabs en página de cartuchos (Compatibilidades / FAQ)
 (function(){
     const tabButtons = document.querySelectorAll('.ejemplo-tab-btn');
