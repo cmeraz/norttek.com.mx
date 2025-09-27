@@ -1,46 +1,40 @@
 // Lógica modular de la página Telefonía
 // (antes en telefonia-inline.js y previamente inline en telefoniaContent.php)
 (function(){
-  const videoModal=document.getElementById('videoModal');
   const youtubeVideo=document.getElementById('youtubeVideo');
-  const closeVideo=document.getElementById('closeVideo');
+  const modalSel = '#modalVideo';
   const btnVideo=document.getElementById('openVideo');
   const btnLinkus=document.getElementById('openLinkus');
-  function openVideo(src){ if(!youtubeVideo||!videoModal)return; let url=src||''; if(!url.includes('autoplay=1')) url+=(url.includes('?')?'&':'?')+'autoplay=1'; youtubeVideo.src=url; videoModal.classList.remove('hidden'); youtubeVideo.focus(); }
+  function openVideo(src){
+    if(!youtubeVideo) return;
+    let url=src||'';
+    if(!url.includes('autoplay=1')) url+=(url.includes('?')?'&':'?')+'autoplay=1';
+    youtubeVideo.src=url;
+    if(window.NTModal){ NTModal.open(modalSel); }
+  }
+  function clearVideo(){ if(youtubeVideo){ youtubeVideo.src=''; } }
   if(btnVideo) btnVideo.addEventListener('click',()=>openVideo(btnVideo.dataset.video));
   if(btnLinkus) btnLinkus.addEventListener('click',()=>openVideo(btnLinkus.dataset.video));
-  function close(){ if(!videoModal)return; youtubeVideo.src=''; videoModal.classList.add('hidden'); }
-  if(closeVideo) closeVideo.addEventListener('click',close);
-  if(videoModal) videoModal.addEventListener('click',e=>{ if(e.target===videoModal) close(); });
-  document.addEventListener('keydown',e=>{ if(e.key==='Escape') close(); });
+  // Limpia el iframe al cerrar el modal (delegado por eventos del sistema unificado si existen)
+  document.addEventListener('nt-modal:closed', (e)=>{ if(e.detail && e.detail.selector===modalSel) clearVideo(); });
 })();
 
 (function(){
-  const modal=document.getElementById('modalDemo');
-  if(!modal) return;
-  const openBtn=document.getElementById('openModal');
-  const closeBtn=document.getElementById('closeModal');
-  function open(){ modal.classList.remove('hidden'); const first=modal.querySelector('input'); if(first) first.focus(); requestAnimationFrame(()=>{ const box=modal.querySelector('.bg-white'); if(box){ box.classList.remove('scale-90','opacity-0'); }}); }
-  function close(){ const box=modal.querySelector('.bg-white'); if(box){ box.classList.add('scale-90','opacity-0'); } setTimeout(()=>modal.classList.add('hidden'),280); }
-  if(openBtn) openBtn.addEventListener('click',open);
-  if(closeBtn) closeBtn.addEventListener('click',close);
-  modal.addEventListener('click',e=>{ if(e.target===modal) close(); });
-  document.addEventListener('keydown',e=>{ if(e.key==='Escape') close(); });
   const form=document.getElementById('demoForm');
-  if(form){
-    form.addEventListener('submit',e=>{
-      e.preventDefault();
-      const nombre=form.nombre.value.trim();
-      const email=form.email.value.trim();
-      const telefono=form.telefono.value.trim();
-      const emailOk=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-      const telOk=/^[0-9]{10,15}$/.test(telefono);
-      if(nombre.length<2||!emailOk||!telOk){ if(window.NTNotify){ NTNotify.warning('Revisa los datos del formulario',{ttl:3000}); } return; }
-      const msg=encodeURIComponent(`¡Hola!%0AQuiero solicitar la demo PBX.%0A%0ANombre: ${nombre}%0ACorreo: ${email}%0ATeléfono: ${telefono}`);
-      window.open(`https://wa.me/526252690997?text=${msg}`,'_blank');
-      form.reset(); close();
-    });
-  }
+  if(!form) return;
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const nombre=form.nombre.value.trim();
+    const email=form.email.value.trim();
+    const telefono=(form.telefono.value||'').replace(/\D+/g,'').trim();
+    const emailOk=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const telOk=/^[0-9]{10,15}$/.test(telefono);
+    if(nombre.length<2||!emailOk||!telOk){ if(window.NTNotify){ NTNotify.warning('Revisa los datos del formulario',{ttl:3000}); } return; }
+    const msg=encodeURIComponent(`¡Hola!%0AQuiero solicitar la demo PBX.%0A%0ANombre: ${nombre}%0ACorreo: ${email}%0ATeléfono: ${telefono}`);
+    window.open(`https://wa.me/526252690997?text=${msg}`,'_blank');
+    form.reset();
+    if(window.NTModal){ NTModal.close('#modalDemo'); }
+  });
 })();
 
 window.addEventListener('load',()=>{
