@@ -16,7 +16,7 @@
   "></div>
   
   <!-- Contenido del hero adaptado al fondo oscuro -->
-  <div class="max-w-6xl mx-auto px-6 lg:px-12 text-white relative z-10">
+  <div class="max-w-6xl mx-auto px-6 lg:px-12 text-white relative z-20">
     <div class="max-w-4xl">
       <?php echo nt_heading('Control de Acceso Inteligente','fa-solid fa-door-closed','xl','Gestión y trazabilidad de entradas con tecnología avanzada', ['animate'=>true,'class'=>'nt-heading-accent-bar text-white']); ?>
       <p class="text-xl leading-relaxed text-gray-200 mt-6 max-w-3xl">
