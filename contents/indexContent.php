@@ -11,8 +11,8 @@
   <div class="nt-hero-overlay"></div>
 
   <!-- Contenido del hero -->
-  <div class="relative max-w-7xl mx-auto px-6 py-24 text-center text-white">
-    <div class="mb-6">
+  <div class="relative max-w-7xl mx-auto px-6 pt-2 md:pt-2 lg:pt-2 pb-16 md:pb-20 text-center text-white">
+    <div class="mb-4">
   <?= nt_heading('Protege tu espacio · Potencia tu productividad', 'fa-solid fa-shield-halved', 'lg', 'Soluciones integrales para hogar y empresa', ['animate'=>true,'delay'=>'sm','class'=>'nt-heading-hero nt-heading-invert']); ?>
     </div>
     <div class="max-w-2xl mx-auto mb-8 site-status-wrap">
