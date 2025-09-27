@@ -217,4 +217,12 @@ includeTemplate("servicios");
   50%{ box-shadow: 0 0 0 10px rgba(249,113,22,.12), 0 28px 46px -20px rgba(2,6,23,.6), inset 0 0 0 1px rgba(255,255,255,.26); }
 }
 .group:hover .nt-hero-card{ animation: ntPulseHaloOrange 1.6s ease-in-out infinite; }
+
+/* Pulsado al click: pop rápido que no interfiere con la navegación */
+@keyframes ntClickPulse{
+  0%   { transform: scale(1); box-shadow: 0 0 0 0 rgba(249,115,22,.0), 0 14px 28px -16px rgba(2,6,23,.35); }
+  45%  { transform: scale(.965); box-shadow: 0 0 0 10px rgba(249,115,22,.18), 0 20px 34px -16px rgba(2,6,23,.5); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(249,115,22,.0), 0 14px 28px -16px rgba(2,6,23,.35); }
+}
+.nt-hero-card.nt-clickpulse{ animation: ntClickPulse .42s ease-out both !important; }
 </style>
