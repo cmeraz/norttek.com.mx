@@ -1,33 +1,45 @@
 <?php
 /**
- * Contenido principal para la página CCTV
+ * Contenido modular: Página CCTV
  */
 ?>
-<section class="pb-16 nt-hero-wrapper" style="background:linear-gradient(180deg,#f8fbff,#ffffff);">
-    <div class="max-w-5xl mx-auto px-6 lg:px-8 nt-fade-in">
-        <div class="text-center mb-12">
-            <?php echo nt_heading('Cámaras de Seguridad y Videovigilancia', 'fa-solid fa-video', 'lg', 'Protege lo que más importa', ['id'=>'cctv-main-heading','animate'=>true,'delay'=>'sm','class'=>'nt-heading-accent-bar']); ?>
-            <p class="nt-lead max-w-2xl mx-auto" style="margin-top:.9rem;">
-                Protege lo que más importa con tecnología de punta en CCTV. Instalamos, configuramos y damos soporte a sistemas de videovigilancia para empresas, comercios y hogares.
-            </p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-10 items-center mb-16">
-            <div>
-                <?php echo nt_heading('¿Por qué elegir Norttek?', 'fa-solid fa-shield-halved', 'md', null, ['animate'=>true,'class'=>'nt-heading-accent-bar']); ?>
-                <ul class="list-disc list-inside text-gray-600 mb-4">
-                    <li>Monitoreo remoto desde tu celular o PC</li>
-                    <li>Grabación 24/7 y alertas inteligentes</li>
-                    <li>Integración con alarmas y control de acceso</li>
-                    <li>Soporte técnico y garantía</li>
-                </ul>
-                <a href="/contact.php" class="nt-btn" data-variant="primary">
-                    <i class="fa-solid fa-file-signature"></i> Solicita una cotización
-                </a>
-            </div>
-            <div class="flex justify-center relative">
-                <div class="nt-hero-overlay hidden md:block"></div>
-                <img src="/assets/img/cctv-hero_img.jpg" alt="Cámaras de seguridad Norttek" class="rounded-lg shadow-md w-full max-w-xs relative">
-            </div>
-        </div>
+<section class="cctv-hero nt-hero-wrapper">
+  <div class="cctv-hero__content">
+    <div class="max-w-6xl mx-auto px-6 lg:px-12">
+      <?php echo nt_heading('Videovigilancia CCTV','fa-solid fa-video', 'xl', 'Monitoreo visual para seguridad integral', ['animate'=>true,'class'=>'nt-heading-hero nt-heading-invert nt-heading-accent-bar']); ?>
+      <p class="nt-lead cctv-hero__lead max-w-3xl mt-4">Cámaras de alta definición, grabación continua y análisis inteligente para proteger tus instalaciones 24/7.</p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="/contact" class="nt-btn" data-variant="primary"><i class="fa-solid fa-file-pen"></i> Solicitar evaluación</a>
+        <a href="#modulos" class="nt-btn" data-variant="subtle"><i class="fa-solid fa-layer-group"></i> Módulos</a>
+      </div>
     </div>
+  </div>
+</section>
+
+<section id="modulos" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-6 lg:px-12">
+    <?php echo nt_heading('Módulos disponibles','fa-solid fa-cubes','md',null,['class'=>'nt-heading-accent-bar']); ?>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+      <?php
+      $mods = [
+        ['icon'=>'fa-video', 't'=>'Cámaras IP', 'd'=>'Cámaras de alta definición con conexión a red para monitoreo remoto.'],
+        ['icon'=>'fa-cctv', 't'=>'Cámaras PTZ', 'd'=>'Cámaras motorizadas con control de paneo, tilt y zoom para cobertura dinámica.'],
+        ['icon'=>'fa-hdd', 't'=>'Grabadores NVR/DVR', 'd'=>'Dispositivos para almacenamiento local y gestión de video en tiempo real.'],
+        ['icon'=>'fa-cloud', 't'=>'Grabación en la nube', 'd'=>'Almacenamiento seguro y acceso remoto a grabaciones desde cualquier dispositivo.'],
+        ['icon'=>'fa-bell', 't'=>'Detección de movimiento', 'd'=>'Alertas automáticas activadas por movimientos en zonas configurables.'],
+        ['icon'=>'fa-user-shield', 't'=>'Análisis de video', 'd'=>'Funciones inteligentes como reconocimiento facial y conteo de personas.'],
+        ['icon'=>'fa-wifi', 't'=>'Cámaras inalámbricas', 'd'=>'Instalación sencilla sin cableado, ideal para espacios temporales o difíciles.'],
+        ['icon'=>'fa-monitor-heart-rate', 't'=>'Monitoreo en tiempo real', 'd'=>'Visualización simultánea de múltiples cámaras con interfaz intuitiva.'],
+        ['icon'=>'fa-shield-alt', 't'=>'Ciberseguridad', 'd'=>'Protección avanzada para evitar accesos no autorizados y garantizar integridad de datos.'],
+      ];
+      foreach($mods as $m): ?>
+      <div class="p-6 bg-white border border-slate-200 rounded-xl shadow-sm flex flex-col">
+        <h3 class="font-semibold text-slate-800 mb-2 flex items-center gap-2">
+          <i class="fa-solid <?= $m['icon']; ?> text-teal-600"></i> <?= htmlspecialchars($m['t']); ?>
+        </h3>
+        <p class="text-sm text-slate-600 leading-relaxed flex-1"><?= htmlspecialchars($m['d']); ?></p>
+      </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
 </section>
