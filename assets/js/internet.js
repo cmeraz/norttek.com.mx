@@ -752,7 +752,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Contacta a un asesor (WhatsApp)
   try {
-    var btnAsesor = document.querySelector('.btn-asesor');
+    var btnAsesor = document.querySelector('.btn-asesor-modern');
     if (btnAsesor) {
       btnAsesor.addEventListener('click', function() {
         var nombreRaw = (document.getElementById('asesor-nombre') || {}).value || '';

@@ -35,17 +35,38 @@
       </div>
     </div>
   </section>
-    <section id="contacta-un-asesor" class="asesor-section premium-box scroll-anim">
-  <?= nt_heading('¿Dudas? Contacta a un asesor', 'fa-solid fa-comments', 'md', null, ['animate'=>true,'delay'=>'sm']); ?>
-      <div class="asesor-row">
-        <input id="asesor-nombre" class="asesor-input" type="text" placeholder="Tu nombre" aria-label="Tu nombre" />
-        <button type="button" class="btn-asesor">
-          <span class="icon-whatsapp">📲</span>
-          Contacta a un asesor
-        </button>
+    <section id="contacta-un-asesor" class="premium-box scroll-anim">
+      <?= nt_heading('¿Dudas? Contacta a un asesor', 'fa-solid fa-comments', 'md', null, ['animate'=>true,'delay'=>'sm','class'=>'section-title']); ?>
+      <p class="section-subtitle">
+        Nuestros asesores están disponibles para resolver cualquier pregunta sobre planes, instalación, costos o cobertura en tu zona.
+      </p>
+      <div class="asesor-form-container">
+        <div class="asesor-input-group">
+          <div class="input-wrapper">
+            <i class="fa-solid fa-user input-icon" aria-hidden="true"></i>
+            <input id="asesor-nombre" class="asesor-input-modern" type="text" placeholder="Tu nombre completo" aria-label="Tu nombre completo" />
+          </div>
+          <button type="button" class="btn-asesor-modern">
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+            <span>Contactar Asesor</span>
+          </button>
+        </div>
+        <div class="asesor-features">
+          <div class="asesor-feature">
+            <i class="fa-solid fa-clock" aria-hidden="true"></i>
+            <span>Respuesta inmediata</span>
+          </div>
+          <div class="asesor-feature">
+            <i class="fa-solid fa-shield-check" aria-hidden="true"></i>
+            <span>Información confiable</span>
+          </div>
+          <div class="asesor-feature">
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            <span>Soporte personalizado</span>
+          </div>
+        </div>
       </div>
-      <p class="asesor-hint">Se abrirá WhatsApp con un mensaje prellenado.</p>
-      <div id="asesor-msg" class="asesor-msg" aria-live="polite"></div>
+      <div id="asesor-msg" class="asesor-msg-modern" aria-live="polite"></div>
     </section>
   <!-- Contenedor principal dinámico -->
   <div id="main-content-container">
