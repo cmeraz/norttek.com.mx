@@ -168,23 +168,125 @@
             </div>
             <div class="fiscal-info">
               <h4>Constancia de Situación Fiscal</h4>
-              <p class="fiscal-date">Actualizada: 28 de Septiembre de 2025</p>
+              <p class="fiscal-date">Cuauhtémoc, Chihuahua - 28 de Septiembre de 2025</p>
             </div>
           </div>
 
           <div class="fiscal-grid">
             <div class="fiscal-item-modern">
-              <span class="fiscal-label">Estado en el Padrón</span>
-              <code class="clip-src status-active" data-clip="ACTIVO">
-                ACTIVO
-                <button type="button" class="clip-btn" data-clip="ACTIVO" title="Copiar" aria-label="Copiar estado">
+              <span class="fiscal-label">Nombre Completo</span>
+              <code class="clip-src" data-clip="Carlos Prisciliano Meraz Marioni">
+                Carlos Prisciliano Meraz Marioni
+                <button type="button" class="clip-btn" data-clip="Carlos Prisciliano Meraz Marioni" title="Copiar" aria-label="Copiar nombre">
                   <i class="fa-regular fa-clone"></i>
                 </button>
               </code>
             </div>
-            
+
             <div class="fiscal-item-modern">
-              <span class="fiscal-label">Fecha Inicio de Operaciones</span>
+              <span class="fiscal-label">RFC</span>
+              <code class="clip-src rfc-badge" data-clip="MEMC82010646A">
+                MEMC82010646A
+                <button type="button" class="clip-btn" data-clip="MEMC82010646A" title="Copiar" aria-label="Copiar RFC">
+                  <i class="fa-regular fa-clone"></i>
+                </button>
+              </code>
+            </div>
+
+            <div class="fiscal-item-modern">
+              <span class="fiscal-label">CURP</span>
+              <code class="clip-src curp-badge" data-clip="MEMC820106HCHRRR03">
+                MEMC820106HCHRRR03
+                <button type="button" class="clip-btn" data-clip="MEMC820106HCHRRR03" title="Copiar" aria-label="Copiar CURP">
+                  <i class="fa-regular fa-clone"></i>
+                </button>
+              </code>
+            </div>
+
+            <div class="fiscal-item-modern">
+              <span class="fiscal-label">ID CIF</span>
+              <code class="clip-src cif-badge" data-clip="15010076730">
+                15010076730
+                <button type="button" class="clip-btn" data-clip="15010076730" title="Copiar" aria-label="Copiar ID CIF">
+                  <i class="fa-regular fa-clone"></i>
+                </button>
+              </code>
+            </div>
+
+            <div class="fiscal-item-modern">
+              <span class="fiscal-label">Calle y Número</span>
+              <code class="clip-src" data-clip="Av. Rayón y Agustín Melgar #608">
+                Av. Rayón y Agustín Melgar #608
+                <button type="button" class="clip-btn" data-clip="Av. Rayón y Agustín Melgar #608" title="Copiar" aria-label="Copiar calle y número">
+                  <i class="fa-regular fa-clone"></i>
+                </button>
+              </code>
+            </div>
+
+            <div class="fiscal-item-modern">
+              <span class="fiscal-label">Colonia</span>
+              <code class="clip-src" data-clip="Ciudad Cuauhtémoc Centro">
+                Ciudad Cuauhtémoc Centro
+                <button type="button" class="clip-btn" data-clip="Ciudad Cuauhtémoc Centro" title="Copiar" aria-label="Copiar colonia">
+                  <i class="fa-regular fa-clone"></i>
+                </button>
+              </code>
+            </div>
+
+            <div class="fiscal-item-modern">
+              <span class="fiscal-label">Ciudad</span>
+              <code class="clip-src" data-clip="Cuauhtémoc">
+                Cuauhtémoc
+                <button type="button" class="clip-btn" data-clip="Cuauhtémoc" title="Copiar" aria-label="Copiar ciudad">
+                  <i class="fa-regular fa-clone"></i>
+                </button>
+              </code>
+            </div>
+
+            <div class="fiscal-item-modern">
+              <span class="fiscal-label">Estado</span>
+              <code class="clip-src" data-clip="Chihuahua">
+                Chihuahua
+                <button type="button" class="clip-btn" data-clip="Chihuahua" title="Copiar" aria-label="Copiar estado">
+                  <i class="fa-regular fa-clone"></i>
+                </button>
+              </code>
+            </div>
+
+            <div class="fiscal-item-modern">
+              <span class="fiscal-label">Código Postal</span>
+              <code class="clip-src" data-clip="31500">
+                31500
+                <button type="button" class="clip-btn" data-clip="31500" title="Copiar" aria-label="Copiar código postal">
+                  <i class="fa-regular fa-clone"></i>
+                </button>
+              </code>
+            </div>
+
+            <div class="fiscal-item-modern wide">
+              <span class="fiscal-label">Domicilio Fiscal Completo</span>
+              <code class="clip-src" data-clip="Av. Rayón y Agustín Melgar #608, Col. Ciudad Cuauhtémoc Centro, 31500, Cuauhtémoc, Chihuahua">
+                Av. Rayón y Agustín Melgar #608<br>
+                Col. Ciudad Cuauhtémoc Centro<br>
+                31500, Cuauhtémoc, Chihuahua
+                <button type="button" class="clip-btn" data-clip="Av. Rayón y Agustín Melgar #608, Col. Ciudad Cuauhtémoc Centro, 31500, Cuauhtémoc, Chihuahua" title="Copiar" aria-label="Copiar domicilio completo">
+                  <i class="fa-regular fa-clone"></i>
+                </button>
+              </code>
+            </div>
+
+            <div class="fiscal-item-modern">
+              <span class="fiscal-label">Estado en el Padrón</span>
+              <code class="clip-src status-active" data-clip="ACTIVO">
+                ACTIVO
+                <button type="button" class="clip-btn" data-clip="ACTIVO" title="Copiar" aria-label="Copiar estado padrón">
+                  <i class="fa-regular fa-clone"></i>
+                </button>
+              </code>
+            </div>
+
+            <div class="fiscal-item-modern">
+              <span class="fiscal-label">Fecha Inicio Operaciones</span>
               <code class="clip-src" data-clip="20 de Septiembre de 2010">
                 20 de Septiembre de 2010
                 <button type="button" class="clip-btn" data-clip="20 de Septiembre de 2010" title="Copiar" aria-label="Copiar fecha inicio">
@@ -193,30 +295,18 @@
               </code>
             </div>
 
-            <div class="fiscal-item-modern wide">
-              <span class="fiscal-label">Actividades Económicas Principales</span>
-              <div class="activities-list">
-                <div class="activity-item">
-                  <span class="activity-percentage">50%</span>
-                  <span class="activity-desc">Comercio al por menor de artículos de papelería</span>
-                </div>
-                <div class="activity-item">
-                  <span class="activity-percentage">30%</span>
-                  <span class="activity-desc">Comercio al por menor de computadoras y sus accesorios</span>
-                </div>
-                <div class="activity-item">
-                  <span class="activity-percentage">10%</span>
-                  <span class="activity-desc">Comercio de teléfonos, aparatos de comunicación y accesorios</span>
-                </div>
-                <div class="activity-item">
-                  <span class="activity-percentage">10%</span>
-                  <span class="activity-desc">Comercio al por mayor de equipo de telecomunicaciones</span>
-                </div>
-              </div>
+            <div class="fiscal-item-modern">
+              <span class="fiscal-label">Último Cambio de Estado</span>
+              <code class="clip-src" data-clip="08 de Mayo de 2013">
+                08 de Mayo de 2013
+                <button type="button" class="clip-btn" data-clip="08 de Mayo de 2013" title="Copiar" aria-label="Copiar último cambio">
+                  <i class="fa-regular fa-clone"></i>
+                </button>
+              </code>
             </div>
           </div>
         </div>
-        <small class="hint-url">Información oficial del SAT</small>
+        <small class="hint-url">Información oficial del SAT • <i class="fa-solid fa-shield-check"></i> Certificado</small>
       </article>
 
       <!-- Card de Cuenta Santander -->
@@ -225,6 +315,8 @@
           <i class="fa-solid fa-university" aria-hidden="true" data-nt-icon-drift></i> 
           Cuenta Santander
         </h3>
+        <p>Información completa para transferencias bancarias y pagos</p>
+        
         <div class="bank-content">
           <div class="bank-grid">
             <div class="bank-item-modern">
@@ -263,6 +355,62 @@
                 </button>
               </code>
             </div>
+            <div class="bank-item-modern">
+              <span class="bank-label">Titular de la Cuenta</span>
+              <code class="clip-src" data-clip="Carlos Prisciliano Meraz Marioni">
+                Carlos Prisciliano Meraz Marioni
+                <button type="button" class="clip-btn" data-clip="Carlos Prisciliano Meraz Marioni" title="Copiar" aria-label="Copiar titular">
+                  <i class="fa-regular fa-clone"></i>
+                </button>
+              </code>
+            </div>
+            <div class="bank-item-modern">
+              <span class="bank-label">Banco</span>
+              <code class="clip-src" data-clip="Banco Santander México">
+                Banco Santander México
+                <button type="button" class="clip-btn" data-clip="Banco Santander México" title="Copiar" aria-label="Copiar banco">
+                  <i class="fa-regular fa-clone"></i>
+                </button>
+              </code>
+            </div>
+          </div>
+
+          <!-- Información para Transferencias -->
+          <div class="transfer-info">
+            <h4><i class="fa-solid fa-exchange-alt"></i> Información para Transferencias</h4>
+            <div class="transfer-grid">
+              <div class="transfer-item-modern wide">
+                <span class="transfer-label">Concepto de Pago Recomendado</span>
+                <code class="clip-src concept-template" data-clip="Norttek Solutions - Factura(s): [Número de Factura]">
+                  Norttek Solutions - Factura(s): <span class="template-placeholder">[Número de Factura]</span>
+                  <button type="button" class="clip-btn" data-clip="Norttek Solutions - Factura(s): [Número de Factura]" title="Copiar" aria-label="Copiar concepto template">
+                    <i class="fa-regular fa-clone"></i>
+                  </button>
+                </code>
+              </div>
+              <div class="transfer-item-modern">
+                <span class="transfer-label">Razón Social</span>
+                <code class="clip-src" data-clip="Norttek Solutions">
+                  Norttek Solutions
+                  <button type="button" class="clip-btn" data-clip="Norttek Solutions" title="Copiar" aria-label="Copiar razón social">
+                    <i class="fa-regular fa-clone"></i>
+                  </button>
+                </code>
+              </div>
+              <div class="transfer-item-modern">
+                <span class="transfer-label">RFC Empresa</span>
+                <code class="clip-src rfc-badge" data-clip="MEMC82010646A">
+                  MEMC82010646A
+                  <button type="button" class="clip-btn" data-clip="MEMC82010646A" title="Copiar" aria-label="Copiar RFC empresa">
+                    <i class="fa-regular fa-clone"></i>
+                  </button>
+                </code>
+              </div>
+            </div>
+            <div class="transfer-note">
+              <i class="fa-solid fa-info-circle"></i>
+              <span>Para facilitar la identificación de tu pago, incluye en el concepto la razón social "Norttek Solutions" seguido del número de factura(s) a liquidar.</span>
+            </div>
           </div>
           
           <button type="button" class="cuentas-btn btn-select-account" data-account="santander">
@@ -270,7 +418,7 @@
             Seleccionar Cuenta
           </button>
         </div>
-        <small class="hint-url">Cuenta principal para pagos</small>
+        <small class="hint-url">Cuenta principal para pagos y transferencias bancarias</small>
       </article>
 
       <!-- Card de Solicitud de Link de Pago -->

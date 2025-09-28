@@ -23,11 +23,22 @@
 
 /* Hero Section - estilo idéntico a internet-hero */
 .cuentas-hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: 
+        linear-gradient(rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.75)),
+        radial-gradient(circle at 25% 25%, rgba(79, 140, 255, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 75% 75%, rgba(147, 51, 234, 0.08) 0%, transparent 50%),
+        url('../img/cuentas-herobg.jpg');
+    background-size: cover, 600px 600px, 800px 800px, cover;
+    background-position: center, 0 0, 100% 100%, center;
+    background-attachment: fixed, scroll, scroll, fixed;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
     position: relative;
     overflow: hidden;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
+/* Pattern overlay for enhanced visual depth */
 .cuentas-hero::before {
     content: '';
     position: absolute;
@@ -35,13 +46,101 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.1);
+    background-image: 
+        radial-gradient(circle at 2px 2px, rgba(255,255,255,0.04) 1px, transparent 0);
+    background-size: 30px 30px;
+    pointer-events: none;
     z-index: 1;
+    animation: patternFloat 20s ease-in-out infinite;
+}
+
+/* Geometric pattern overlay */
+.cuentas-hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(45deg, transparent 48%, rgba(79, 140, 255, 0.03) 49%, rgba(79, 140, 255, 0.03) 51%, transparent 52%),
+        linear-gradient(-45deg, transparent 48%, rgba(147, 51, 234, 0.02) 49%, rgba(147, 51, 234, 0.02) 51%, transparent 52%);
+    background-size: 80px 80px, 120px 120px;
+    pointer-events: none;
+    z-index: 2;
+    animation: patternShift 25s linear infinite;
+}
+
+/* Pattern animations for crispy movement */
+@keyframes patternFloat {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(-10px, -5px) rotate(1deg); }
+    50% { transform: translate(10px, -10px) rotate(-1deg); }
+    75% { transform: translate(-5px, 10px) rotate(0.5deg); }
+}
+
+@keyframes patternShift {
+    0% { background-position: 0 0, 0 0; }
+    50% { background-position: 40px 40px, -60px 60px; }
+    100% { background-position: 80px 80px, -120px 120px; }
 }
 
 .cuentas-hero .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
+}
+
+/* Responsive optimizations for crispy display */
+@media screen and (-webkit-min-device-pixel-ratio: 2), 
+       screen and (min-resolution: 192dpi),
+       screen and (min-resolution: 2dppx) {
+    .cuentas-hero {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+    }
+    
+    .cuentas-hero::before {
+        background-size: 60px 60px; /* Double size for retina */
+    }
+    
+    .cuentas-hero::after {
+        background-size: 160px 160px, 240px 240px; /* Double size for retina */
+    }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .cuentas-hero {
+        background-attachment: scroll, scroll, scroll, scroll; /* Fix parallax on mobile */
+        background-size: cover, 400px 400px, 500px 500px, cover;
+    }
+    
+    .cuentas-hero::before {
+        background-size: 20px 20px;
+        animation-duration: 15s; /* Faster on mobile for better performance */
+    }
+    
+    .cuentas-hero::after {
+        background-size: 60px 60px, 90px 90px;
+        animation-duration: 20s;
+    }
+}
+
+/* 4K and high-resolution displays */
+@media screen and (min-width: 2560px) {
+    .cuentas-hero {
+        background-size: cover, 1200px 1200px, 1600px 1600px, cover;
+    }
+    
+    .cuentas-hero::before {
+        background-size: 40px 40px;
+    }
+    
+    .cuentas-hero::after {
+        background-size: 120px 120px, 180px 180px;
+    }
 }
 
 /* Dashboard Principal - idéntico a cliente-dashboard */
@@ -211,15 +310,24 @@
 }
 
 .curp-badge {
-    background: #fef3c7;
+    background: #fef3c7 !important;
     border: 1px solid #f59e0b;
-    color: #92400e;
-    font-size: .75rem;
-    font-weight: 700;
-    padding: .25rem .5rem;
-    border-radius: 6px;
-    display: inline-block;
-    margin-top: .25rem;
+    color: #92400e !important;
+    font-weight: 800 !important;
+}
+
+.cif-badge {
+    background: #e0e7ff !important;
+    color: #3730a3 !important;
+    font-weight: 800 !important;
+    border: 1px solid #6366f1;
+}
+
+.regimen-badge {
+    background: #f3e8ff !important;
+    color: #6b21a8 !important;
+    font-weight: 800 !important;
+    border: 1px solid #8b5cf6;
 }
 
 /* Company Card Styling */
@@ -347,6 +455,88 @@
     font-size: .62rem;
     letter-spacing: .5px;
     text-transform: uppercase;
+}
+
+/* Transfer Information Styling */
+.transfer-info {
+    margin-top: 1.5rem;
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.transfer-info h4 {
+    margin: 0 0 1rem 0;
+    color: #0369a1;
+    font-size: .9rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.transfer-grid {
+    display: grid;
+    gap: .75rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-bottom: 1rem;
+}
+
+.transfer-item-modern {
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+    background: white;
+    border: 1px solid #e0f2fe;
+    border-radius: 8px;
+    padding: .65rem .7rem;
+}
+
+.transfer-item-modern.wide {
+    grid-column: 1 / -1;
+}
+
+.transfer-label {
+    font-weight: 600;
+    color: #0369a1;
+    font-size: .62rem;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+}
+
+.concept-template {
+    background: #ecfdf5 !important;
+    border: 1px solid #10b981 !important;
+    color: #065f46 !important;
+}
+
+.template-placeholder {
+    background: #fef3c7;
+    color: #92400e;
+    padding: .1rem .3rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: .85em;
+}
+
+.transfer-note {
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    background: #fffbeb;
+    border: 1px solid #fbbf24;
+    border-radius: 8px;
+    padding: .75rem;
+    font-size: .85rem;
+    color: #92400e;
+    line-height: 1.4;
+}
+
+.transfer-note i {
+    color: #f59e0b;
+    margin-top: .1rem;
+    flex-shrink: 0;
 }
 
 /* Payment Form Modern */
@@ -514,6 +704,12 @@
 
 .fiscal-item-modern.wide {
     grid-column: 1 / -1;
+}
+
+.fiscal-item-modern.wide .clip-src {
+    line-height: 1.4;
+    padding: .75rem;
+    white-space: pre-line;
 }
 
 .fiscal-label {
