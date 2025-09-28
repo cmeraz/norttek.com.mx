@@ -1,0 +1,685 @@
+/**
+ * cuentas.js
+ * Dashboard privado de cuentas de pago - Funcionalidades JavaScript
+ * Carlos Prisciliano Meraz Marioni - Norttek Solutions
+ * Estilo: Dashboard de clientes (internetContent.php)
+ */
+
+document.addEventListener('DOMContentLoaded', function() {
+    initCuentasDashboard();
+});
+
+function initCuentasDashboard() {
+    console.log('🏦 Inicializando Dashboard de Cuentas...');
+    
+    // Inicializar componentes
+    initCopyButtons();
+    initContactButtons();
+    initShareButton();
+    initPaymentForm();
+    initAccountSelection();
+    initScrollAnimations();
+    
+    // Inicializar animaciones de entrada
+    initHeroAnimations();
+}
+
+// ==========================================================================
+// Animaciones de entrada estilo Internet
+// ==========================================================================
+function initHeroAnimations() {
+    // Animar elementos del hero con delays
+    setTimeout(() => {
+        const elementsToAnimate = document.querySelectorAll('.nt-heading-anim');
+        elementsToAnimate.forEach((element, index) => {
+            setTimeout(() => {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0) scale(1)';
+            }, index * 150);
+        });
+    }, 100);
+}
+
+function initScrollAnimations() {
+    // Intersection Observer para scroll animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '-50px'
+    });
+    
+    document.querySelectorAll('.scroll-anim').forEach(element => {
+        observer.observe(element);
+    });
+}
+
+// ==========================================================================
+// Funcionalidad de copiado - estilo Internet
+// ==========================================================================
+function initCopyButtons() {
+    document.querySelectorAll('.clip-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const textToCopy = this.dataset.copy;
+            
+            if (textToCopy) {
+                copyToClipboard(textToCopy).then(() => {
+                    showToastModern('✅ Copiado', textToCopy, 'success');
+                    
+                    // Animación de confirmación estilo Internet
+                    this.style.transform = 'scale(0.9)';
+                    this.style.color = '#4f8cff';
+                    this.style.background = '#eef5ff';
+                    
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                        this.style.color = '';
+                        this.style.background = '';
+                    }, 200);
+                }).catch(() => {
+                    showToastModern('❌ Error', 'No se pudo copiar', 'error');
+                });
+            }
+        });
+    });
+}
+
+async function copyToClipboard(text) {
+    try {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+        } else {
+            // Fallback para navegadores antiguos
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.opacity = '0';
+            textArea.style.left = '-9999px';
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+        }
+    } catch (error) {
+        throw new Error('Error al copiar');
+    }
+}
+
+// ==========================================================================
+// Funcionalidad de vCards - estilo Internet
+// ==========================================================================
+function initContactButtons() {
+    document.querySelectorAll('.btn-contact').forEach(button => {
+        button.addEventListener('click', function() {
+            const contactType = this.dataset.contact;
+            
+            // Animación de botón estilo Internet
+            this.style.transform = 'translateY(-4px)';
+            this.style.boxShadow = '0 12px 20px rgba(79, 140, 255, 0.3)';
+            
+            setTimeout(() => {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            }, 300);
+            
+            if (contactType === 'personal') {
+                downloadPersonalVCard();
+            } else if (contactType === 'empresa') {
+                downloadCompanyVCard();
+            }
+        });
+    });
+    
+    // Botón especial para descargar ambos vCards
+    const btnDescargarContactos = document.getElementById('btn-descargar-contactos');
+    if (btnDescargarContactos) {
+        btnDescargarContactos.addEventListener('click', function() {
+            downloadPersonalVCard();
+            setTimeout(() => downloadCompanyVCard(), 1000);
+            showToastModern('📱 vCards', 'Descargando contactos...', 'info');
+        });
+    }
+}
+
+function downloadPersonalVCard() {
+    const vCard = `BEGIN:VCARD
+VERSION:3.0
+FN:Óscar Mauricio Ramos Aragón
+N:Ramos Aragón;Óscar Mauricio;;;
+ORG:Norttek Solutions
+TITLE:Director General
+EMAIL;TYPE=INTERNET:omar@norttek.com.mx
+TEL;TYPE=WORK:+52 625 583 4600
+TEL;TYPE=CELL:+52 625 123 4567
+ADR;TYPE=WORK:;;Av. Rayón y Agustín Melgar #608, Col. Ciudad Cuauhtémoc Centro;Cuauhtémoc;Chihuahua;31500;México
+URL:https://www.norttek.com.mx
+NOTE:RFC: RAAO791226M69\\nCURP: RAAO791226HCHMSC03\\nRégimen: Simplificado de Confianza\\n\\nActividades: Papelería (50%), Computadoras (30%), Telefonía (10%), Telecomunicaciones (10%)
+CATEGORIES:Empresario,Tecnología,Seguridad,Telecomunicaciones
+END:VCARD`;
+
+    downloadVCard(vCard, 'Oscar_Mauricio_Ramos_Norttek.vcf');
+    showToastModern('📱 vCard Personal', 'Descarga completada', 'success');
+}
+
+function downloadCompanyVCard() {
+    const vCard = `BEGIN:VCARD
+VERSION:3.0
+FN:Norttek Solutions
+N:Solutions;Norttek;;;
+ORG:Norttek Solutions
+EMAIL;TYPE=INTERNET:contacto@norttek.com.mx
+TEL;TYPE=WORK:+52 625 269 0997
+ADR;TYPE=WORK:;;Rayón y Agustín Melgar #608;Cuauhtémoc;Chihuahua;31500;México
+URL:https://www.norttek.com.mx
+NOTE:Empresa especializada en soluciones de seguridad integral\\nCCTV, Alarmas, Control de Acceso, Telefonía IP, Internet\\nRFC: MEMC82010646A
+CATEGORIES:Seguridad,Tecnología,Telecomunicaciones,CCTV,Alarmas
+END:VCARD`;
+
+    downloadVCard(vCard, 'Norttek_Solutions.vcf');
+    showToastModern('🏢 vCard Empresa', 'Descarga completada', 'success');
+}
+
+function downloadVCard(vCardData, fileName) {
+    const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = fileName;
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+}
+
+// ==========================================================================
+// Funcionalidad de compartir - estilo Internet
+// ==========================================================================
+function initShareButton() {
+    const shareBtn = document.getElementById('btn-compartir');
+    
+    if (shareBtn) {
+        shareBtn.addEventListener('click', async function() {
+            // Animación de botón
+            this.style.transform = 'translateY(-2px)';
+            this.style.boxShadow = '0 8px 16px rgba(79, 140, 255, 0.3)';
+            
+            setTimeout(() => {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            }, 200);
+            
+            await sharePage();
+        });
+    }
+}
+
+async function sharePage() {
+    const shareData = {
+        title: 'Cuentas de Pago - Norttek Solutions',
+        text: 'Información de cuentas bancarias y datos empresariales de Norttek Solutions',
+        url: window.location.href
+    };
+    
+    try {
+        if (navigator.share && /android|iphone|ipad|mobile/i.test(navigator.userAgent)) {
+            await navigator.share(shareData);
+            showToastModern('📤 Compartido', 'Página compartida exitosamente', 'success');
+        } else {
+            // Fallback: Copiar URL
+            await copyToClipboard(window.location.href);
+            showToastModern('🔗 URL Copiada', 'Link copiado al portapapeles', 'success');
+        }
+    } catch (error) {
+        if (error.name !== 'AbortError') {
+            showToastModern('❌ Error', 'No se pudo compartir la página', 'error');
+        }
+    }
+}
+
+// ==========================================================================
+// Selección de cuentas - estilo Internet
+// ==========================================================================
+function initAccountSelection() {
+    document.querySelectorAll('.btn-select-account').forEach(button => {
+        button.addEventListener('click', function() {
+            const accountType = this.dataset.account;
+            
+            // Animación del botón
+            this.style.transform = 'translateY(-4px)';
+            this.style.boxShadow = '0 12px 20px rgba(16, 185, 129, 0.3)';
+            
+            setTimeout(() => {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            }, 300);
+            
+            selectAccount(accountType);
+        });
+    });
+}
+
+function selectAccount(accountType) {
+    // Remover selección previa
+    document.querySelectorAll('.cuentas-card').forEach(card => {
+        card.classList.remove('selected');
+    });
+    
+    // Marcar como seleccionada
+    const selectedCard = document.querySelector(`[data-account="${accountType}"]`).closest('.cuentas-card');
+    if (selectedCard) {
+        selectedCard.classList.add('selected');
+        
+        // Animación de selección
+        selectedCard.style.transform = 'translateY(-6px) scale(1.02)';
+        setTimeout(() => {
+            selectedCard.style.transform = '';
+        }, 500);
+    }
+    
+    // Guardar selección
+    try {
+        localStorage.setItem('selectedAccount', accountType);
+    } catch (error) {
+        console.warn('No se pudo guardar la selección de cuenta');
+    }
+    
+    // Notificación
+    const accountNames = {
+        'santander': 'Santander'
+    };
+    
+    showToastModern('✅ Cuenta Seleccionada', `${accountNames[accountType]} - Lista para usar`, 'success');
+}
+
+// ==========================================================================
+// Formulario de solicitud de pago - estilo Internet
+// ==========================================================================
+function initPaymentForm() {
+    const form = document.getElementById('payment-request-form');
+    
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handlePaymentRequest();
+        });
+        
+        // Mejorar UX de inputs
+        const inputs = form.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.borderColor = '#4f8cff';
+                this.parentElement.style.boxShadow = '0 0 0 3px rgba(79, 140, 255, 0.1)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.borderColor = '';
+                this.parentElement.style.boxShadow = '';
+            });
+        });
+    }
+}
+
+function handlePaymentRequest() {
+    const amount = document.getElementById('payment-amount').value;
+    const concept = document.getElementById('payment-concept').value;
+    const client = document.getElementById('client-name').value;
+    
+    // Validaciones con toasts estilo Internet
+    if (!amount || parseFloat(amount) <= 0) {
+        showToastModern('⚠️ Monto Inválido', 'Ingresa un monto válido', 'error');
+        document.getElementById('payment-amount').focus();
+        return;
+    }
+    
+    if (!concept.trim()) {
+        showToastModern('⚠️ Concepto Requerido', 'Ingresa el concepto del pago', 'error');
+        document.getElementById('payment-concept').focus();
+        return;
+    }
+    
+    if (!client.trim()) {
+        showToastModern('⚠️ Cliente Requerido', 'Ingresa el nombre del cliente', 'error');
+        document.getElementById('client-name').focus();
+        return;
+    }
+    
+    // Generar solicitud de pago
+    generatePaymentRequest(amount, concept, client);
+}
+
+function generatePaymentRequest(amount, concept, client) {
+    // Mostrar modal de confirmación estilo Internet
+    showModalModern(
+        'Solicitud de Link de Pago',
+        `<div class="payment-summary-modern">
+            <div class="summary-item-modern">
+                <span class="summary-label">Cliente:</span>
+                <strong>${escapeHtml(client)}</strong>
+            </div>
+            <div class="summary-item-modern">
+                <span class="summary-label">Concepto:</span>
+                <strong>${escapeHtml(concept)}</strong>
+            </div>
+            <div class="summary-item-modern">
+                <span class="summary-label">Monto:</span>
+                <strong>$${parseFloat(amount).toLocaleString('es-MX', {minimumFractionDigits: 2})}</strong>
+            </div>
+            <div class="summary-note-modern">
+                <i class="fa-solid fa-info-circle"></i>
+                <p>Esta funcionalidad generará un link de pago seguro con Clip. El cliente recibirá un enlace para completar el pago de forma segura.</p>
+            </div>
+        </div>`
+    );
+    
+    // Configurar acción del modal
+    document.getElementById('modal-confirm').onclick = function() {
+        // Simular procesamiento
+        showToastModern('⏳ Procesando', 'Generando link de pago...', 'info');
+        
+        setTimeout(() => {
+            closeModal();
+            showToastModern('🔗 Link Generado', 'Solicitud enviada exitosamente', 'success');
+            
+            // Limpiar formulario
+            document.getElementById('payment-request-form').reset();
+            
+            // Simular integración con Clip
+            const message = `🏦 *Solicitud de Pago - Norttek Solutions*\n\n` +
+                          `👤 *Cliente:* ${client}\n` +
+                          `💰 *Monto:* $${parseFloat(amount).toLocaleString('es-MX', {minimumFractionDigits: 2})}\n` +
+                          `📋 *Concepto:* ${concept}\n\n` +
+                          `Se generará un link de pago seguro para completar la transacción.`;
+            
+            console.log('Mensaje para integración Clip:', message);
+        }, 2000);
+    };
+}
+
+// ==========================================================================
+// Sistema de Toast/Notificaciones - estilo Internet
+// ==========================================================================
+function showToastModern(title, message, type = 'info') {
+    // Crear contenedor si no existe
+    let toastContainer = document.getElementById('toast-container-modern');
+    if (!toastContainer) {
+        toastContainer = document.createElement('div');
+        toastContainer.id = 'toast-container-modern';
+        toastContainer.className = 'toast-container-modern';
+        document.body.appendChild(toastContainer);
+    }
+    
+    const toast = document.createElement('div');
+    toast.className = `toast-modern toast-${type}`;
+    
+    const icons = {
+        success: '✅',
+        error: '❌',
+        info: 'ℹ️',
+        warning: '⚠️'
+    };
+    
+    toast.innerHTML = `
+        <div class="toast-icon-modern">${icons[type] || icons.info}</div>
+        <div class="toast-content-modern">
+            <div class="toast-title-modern">${escapeHtml(title)}</div>
+            <div class="toast-message-modern">${escapeHtml(message)}</div>
+        </div>
+        <button class="toast-close-modern" onclick="this.parentElement.remove()">
+            <i class="fa-solid fa-times"></i>
+        </button>
+    `;
+    
+    // Animación de entrada
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateX(100%)';
+    toastContainer.appendChild(toast);
+    
+    // Trigger animation
+    requestAnimationFrame(() => {
+        toast.style.opacity = '1';
+        toast.style.transform = 'translateX(0)';
+    });
+    
+    // Auto-remove después de 5 segundos
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            if (toast.parentNode) {
+                toast.parentNode.removeChild(toast);
+            }
+        }, 300);
+    }, 5000);
+}
+
+// ==========================================================================
+// Sistema de Modal - estilo Internet
+// ==========================================================================
+function showModalModern(title, content) {
+    const modal = document.getElementById('modal-confirmacion');
+    const modalTitle = document.getElementById('modal-title');
+    const modalContent = document.querySelector('#modal-confirmacion .modal-body');
+    
+    if (modal && modalTitle && modalContent) {
+        modalTitle.innerHTML = `<i class="fa-solid fa-link"></i> ${title}`;
+        modalContent.innerHTML = content;
+        modal.style.display = 'flex';
+        
+        // Bloquear scroll del body
+        document.body.style.overflow = 'hidden';
+        
+        // Animación de entrada
+        modal.style.opacity = '0';
+        requestAnimationFrame(() => {
+            modal.style.opacity = '1';
+        });
+        
+        // Focus en botón confirmar
+        const confirmBtn = document.getElementById('modal-confirm');
+        if (confirmBtn) {
+            setTimeout(() => confirmBtn.focus(), 100);
+        }
+    }
+}
+
+function closeModal() {
+    const modal = document.getElementById('modal-confirmacion');
+    if (modal) {
+        modal.style.opacity = '0';
+        setTimeout(() => {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }, 200);
+    }
+}
+
+// Event listeners para cerrar modal
+document.addEventListener('DOMContentLoaded', function() {
+    // Cerrar con botones
+    document.querySelectorAll('[data-nt-modal-close]').forEach(btn => {
+        btn.addEventListener('click', closeModal);
+    });
+    
+    // Cerrar con ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+    
+    // Cerrar con click en backdrop
+    document.getElementById('modal-confirmacion')?.addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeModal();
+        }
+    });
+});
+
+// ==========================================================================
+// Utilidades
+// ==========================================================================
+function escapeHtml(text) {
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
+
+// CSS dinámico para toasts y elementos adicionales
+const additionalStyles = document.createElement('style');
+additionalStyles.textContent = `
+/* Toast Container Modern */
+.toast-container-modern {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    pointer-events: none;
+}
+
+.toast-modern {
+    background: white;
+    border: 1px solid #e4ecf6;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 8px 25px rgba(15,23,42,.1);
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    max-width: 380px;
+    pointer-events: all;
+    transition: all .3s ease;
+    border-left: 4px solid var(--primary);
+}
+
+.toast-modern.toast-success { border-left-color: #10b981; }
+.toast-modern.toast-error { border-left-color: #ef4444; }
+.toast-modern.toast-warning { border-left-color: #f59e0b; }
+
+.toast-icon-modern {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.toast-content-modern {
+    flex: 1;
+    min-width: 0;
+}
+
+.toast-title-modern {
+    font-weight: 800;
+    color: #0f172a;
+    font-size: .9rem;
+    margin-bottom: .25rem;
+}
+
+.toast-message-modern {
+    font-size: .8rem;
+    color: var(--muted);
+    line-height: 1.4;
+}
+
+.toast-close-modern {
+    background: none;
+    border: none;
+    color: #9aa8bb;
+    cursor: pointer;
+    padding: .25rem;
+    border-radius: 4px;
+    font-size: .8rem;
+    flex-shrink: 0;
+    transition: all .2s ease;
+}
+
+.toast-close-modern:hover {
+    color: #6b7a90;
+    background: #f1f5f9;
+}
+
+/* Payment Summary Modern */
+.payment-summary-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.summary-item-modern {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .75rem;
+    background: #f8fbff;
+    border: 1px solid #e2edf9;
+    border-radius: 8px;
+}
+
+.summary-label {
+    color: var(--muted);
+    font-size: .85rem;
+}
+
+.summary-note-modern {
+    background: #fef3c7;
+    border: 1px solid #f59e0b;
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    gap: .75rem;
+    align-items: flex-start;
+    margin-top: .5rem;
+}
+
+.summary-note-modern i {
+    color: #d97706;
+    margin-top: .1rem;
+    flex-shrink: 0;
+}
+
+.summary-note-modern p {
+    margin: 0;
+    color: #92400e;
+    font-size: .85rem;
+    line-height: 1.4;
+}
+
+/* Selected Account Styling */
+.cuentas-card.selected {
+    border-color: #4f8cff;
+    box-shadow: 0 8px 25px rgba(79, 140, 255, 0.15);
+    background: linear-gradient(180deg, #fefefe, #f8fbff);
+}
+
+.cuentas-card.selected h3 {
+    color: #4f8cff;
+}
+
+/* Responsive Toast */
+@media (max-width: 768px) {
+    .toast-container-modern {
+        top: 1rem;
+        right: 1rem;
+        left: 1rem;
+    }
+    
+    .toast-modern {
+        max-width: none;
+    }
+}
+`;
+
+document.head.appendChild(additionalStyles);
