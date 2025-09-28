@@ -22,16 +22,17 @@
 }
 
 /* Hero Section - estilo idéntico a internet-hero */
-.cuentas-hero {
+.cuentas-hero,
+.nt-hero-wrapper.cuentas-hero {
     background: 
         linear-gradient(rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.75)),
         radial-gradient(circle at 25% 25%, rgba(79, 140, 255, 0.12) 0%, transparent 60%),
         radial-gradient(circle at 75% 75%, rgba(147, 51, 234, 0.08) 0%, transparent 50%),
-        url('../img/cuentas-herobg.jpg');
-    background-size: cover, 600px 600px, 800px 800px, cover;
-    background-position: center, 0 0, 100% 100%, center;
-    background-attachment: fixed, scroll, scroll, fixed;
-    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+        url('../img/cuentas-herobg.jpg') !important;
+    background-size: cover, 600px 600px, 800px 800px, cover !important;
+    background-position: center, 0 0, 100% 100%, center !important;
+    background-attachment: fixed, scroll, scroll, fixed !important;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat !important;
     position: relative;
     overflow: hidden;
     image-rendering: -webkit-optimize-contrast;
@@ -39,7 +40,8 @@
 }
 
 /* Pattern overlay for enhanced visual depth */
-.cuentas-hero::before {
+.cuentas-hero::before,
+.nt-hero-wrapper.cuentas-hero::before {
     content: '';
     position: absolute;
     top: 0;
@@ -55,7 +57,8 @@
 }
 
 /* Geometric pattern overlay */
-.cuentas-hero::after {
+.cuentas-hero::after,
+.nt-hero-wrapper.cuentas-hero::after {
     content: '';
     position: absolute;
     top: 0;
@@ -85,7 +88,8 @@
     100% { background-position: 80px 80px, -120px 120px; }
 }
 
-.cuentas-hero .hero-content {
+.cuentas-hero .hero-content,
+.nt-hero-wrapper.cuentas-hero .hero-content {
     position: relative;
     z-index: 3;
 }
@@ -328,6 +332,18 @@
     color: #6b21a8 !important;
     font-weight: 800 !important;
     border: 1px solid #8b5cf6;
+}
+
+.title-badge {
+    background: #dcfce7 !important;
+    color: #166534 !important;
+    font-weight: 700 !important;
+    border: 1px solid #22c55e;
+    font-size: .75rem;
+    padding: .25rem .5rem;
+    border-radius: 6px;
+    display: inline-block;
+    margin-top: .25rem;
 }
 
 /* Company Card Styling */
@@ -662,14 +678,21 @@
 .sat-logo {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
-    border-radius: 50%;
+    background: white;
+    border: 2px solid #e2edf9;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 1.2rem;
+    padding: 4px;
     flex-shrink: 0;
+}
+
+.sat-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
 }
 
 .fiscal-info h4 {

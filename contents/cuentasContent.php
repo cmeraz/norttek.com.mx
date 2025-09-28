@@ -11,7 +11,7 @@
 <div class="cuentas-app">
   
   <!-- Hero Section con estilo Norttek -->
-  <section class="nt-hero-wrapper is-soft cuentas-hero" style="min-height:360px;" aria-label="Panel de Cuentas Norttek">
+  <section class="nt-hero-wrapper is-soft cuentas-hero" style="min-height:360px; background-image: url('assets/img/cuentas-herobg.jpg') !important;" aria-label="Panel de Cuentas Norttek">
     <div class="hero-content max-w-6xl mx-auto px-6 py-12 text-center flex flex-col items-center">
       <div class="opacity-0 nt-heading-anim delay-sm" style="transform:translateY(34px) scale(.955);">
         <?= nt_heading('Panel de Cuentas', 'fa-solid fa-credit-card', 'xl', null, ['animate'=>false,'class'=>'nt-heading-hero nt-heading-invert nt-heading-accent-bar']); ?>
@@ -53,6 +53,7 @@
             </div>
             <div class="profile-info">
               <h4>Carlos Prisciliano Meraz Marioni</h4>
+              <p class="title-badge">Arq. - Propietario</p>
               <p class="rfc-badge">RFC: MEMC82010646A</p>
               <p class="curp-badge">CURP: MEMC820106HCHRRR03</p>
             </div>
@@ -79,9 +80,20 @@
             </div>
             <div class="contact-item-modern">
               <span class="contact-label">Teléfono Móvil</span>
-              <code class="clip-src" data-clip="6258374179">
-                625-837-4179
-                <button type="button" class="clip-btn" data-clip="6258374179" title="Copiar" aria-label="Copiar teléfono">
+              <code class="clip-src" data-clip="+52-625-837-4179">
+                +52 (625) 837-4179
+                <button type="button" class="clip-btn" data-clip="+52-625-837-4179" title="Copiar" aria-label="Copiar teléfono">
+                  <i class="fa-regular fa-clone"></i>
+                </button>
+              </code>
+            </div>
+            <div class="contact-item-modern">
+              <span class="contact-label">Dirección</span>
+              <code class="clip-src" data-clip="Calle Rayón y Agustín Melgar #608 Col Centro, Cd. Cuauhtémoc, Chihuahua, 31500">
+                Calle Rayón y Agustín Melgar #608<br>
+                Col Centro, Cd. Cuauhtémoc<br>
+                Chihuahua, 31500
+                <button type="button" class="clip-btn" data-clip="Calle Rayón y Agustín Melgar #608 Col Centro, Cd. Cuauhtémoc, Chihuahua, 31500" title="Copiar" aria-label="Copiar dirección">
                   <i class="fa-regular fa-clone"></i>
                 </button>
               </code>
@@ -135,6 +147,24 @@
               </code>
             </div>
             <div class="contact-item-modern">
+              <span class="contact-label">Teléfono Cuauhtémoc</span>
+              <code class="clip-src" data-clip="6252690997">
+                (625) 269-0997
+                <button type="button" class="clip-btn" data-clip="6252690997" title="Copiar" aria-label="Copiar teléfono Cuauhtémoc">
+                  <i class="fa-regular fa-clone"></i>
+                </button>
+              </code>
+            </div>
+            <div class="contact-item-modern">
+              <span class="contact-label">Teléfono Chihuahua</span>
+              <code class="clip-src" data-clip="6146180778">
+                (614) 618-0778
+                <button type="button" class="clip-btn" data-clip="6146180778" title="Copiar" aria-label="Copiar teléfono Chihuahua">
+                  <i class="fa-regular fa-clone"></i>
+                </button>
+              </code>
+            </div>
+            <div class="contact-item-modern">
               <span class="contact-label">Régimen Fiscal</span>
               <code class="clip-src" data-clip="Régimen Simplificado de Confianza">
                 Régimen Simplificado de Confianza
@@ -164,7 +194,7 @@
         <div class="fiscal-content">
           <div class="fiscal-header">
             <div class="sat-logo">
-              <i class="fa-solid fa-certificate"></i>
+              <img src="assets/img/SAT-logo.png" alt="Logo SAT" class="sat-logo-img">
             </div>
             <div class="fiscal-info">
               <h4>Constancia de Situación Fiscal</h4>
@@ -381,27 +411,9 @@
             <div class="transfer-grid">
               <div class="transfer-item-modern wide">
                 <span class="transfer-label">Concepto de Pago Recomendado</span>
-                <code class="clip-src concept-template" data-clip="Norttek Solutions - Factura(s): [Número de Factura]">
-                  Norttek Solutions - Factura(s): <span class="template-placeholder">[Número de Factura]</span>
-                  <button type="button" class="clip-btn" data-clip="Norttek Solutions - Factura(s): [Número de Factura]" title="Copiar" aria-label="Copiar concepto template">
-                    <i class="fa-regular fa-clone"></i>
-                  </button>
-                </code>
-              </div>
-              <div class="transfer-item-modern">
-                <span class="transfer-label">Razón Social</span>
-                <code class="clip-src" data-clip="Norttek Solutions">
-                  Norttek Solutions
-                  <button type="button" class="clip-btn" data-clip="Norttek Solutions" title="Copiar" aria-label="Copiar razón social">
-                    <i class="fa-regular fa-clone"></i>
-                  </button>
-                </code>
-              </div>
-              <div class="transfer-item-modern">
-                <span class="transfer-label">RFC Empresa</span>
-                <code class="clip-src rfc-badge" data-clip="MEMC82010646A">
-                  MEMC82010646A
-                  <button type="button" class="clip-btn" data-clip="MEMC82010646A" title="Copiar" aria-label="Copiar RFC empresa">
+                <code class="clip-src concept-template" data-clip="[Tu Razón Social] - Factura(s): [Folios a liquidar]">
+                  <span class="template-placeholder">[Tu Razón Social]</span> - Factura(s): <span class="template-placeholder">[Folios a liquidar]</span>
+                  <button type="button" class="clip-btn" data-clip="[Tu Razón Social] - Factura(s): [Folios a liquidar]" title="Copiar" aria-label="Copiar concepto template">
                     <i class="fa-regular fa-clone"></i>
                   </button>
                 </code>
@@ -409,7 +421,7 @@
             </div>
             <div class="transfer-note">
               <i class="fa-solid fa-info-circle"></i>
-              <span>Para facilitar la identificación de tu pago, incluye en el concepto la razón social "Norttek Solutions" seguido del número de factura(s) a liquidar.</span>
+              <span>Para facilitar la identificación de tu pago, incluye en el concepto tu razón social o nombre completo, seguido de los folios de las facturas que estás liquidando.</span>
             </div>
           </div>
           
@@ -419,74 +431,6 @@
           </button>
         </div>
         <small class="hint-url">Cuenta principal para pagos y transferencias bancarias</small>
-      </article>
-
-      <!-- Card de Solicitud de Link de Pago -->
-      <article class="cuentas-card payment-card nt-soft-seq nt-delay-5" data-nt-anim>
-        <h3>
-          <i class="fa-solid fa-link" aria-hidden="true" data-nt-icon-drift></i> 
-          Solicitar Link de Pago
-        </h3>
-        <p>Genera un link de pago seguro con Clip para facilitar las transacciones.</p>
-        
-        <div class="clip-info-modern">
-          <div class="clip-icon">
-            <i class="fa-solid fa-mobile-alt"></i>
-          </div>
-          <p>Integración con plataforma Clip</p>
-        </div>
-
-        <form class="payment-form-modern" id="payment-request-form">
-          <div class="form-group-modern">
-            <label for="payment-amount">Monto</label>
-            <div class="input-wrapper-modern">
-              <span class="currency-symbol">$</span>
-              <input type="number" id="payment-amount" name="amount" placeholder="0.00" step="0.01" min="1">
-            </div>
-          </div>
-          
-          <div class="form-group-modern">
-            <label for="payment-concept">Concepto</label>
-            <input type="text" id="payment-concept" name="concept" placeholder="Servicio de instalación CCTV">
-          </div>
-          
-          <div class="form-group-modern">
-            <label for="client-name">Cliente</label>
-            <input type="text" id="client-name" name="client" placeholder="Nombre del cliente">
-          </div>
-          
-          <button type="submit" class="cuentas-btn">
-            <i class="fa-solid fa-paper-plane"></i>
-            Generar Link de Pago
-          </button>
-        </form>
-        
-        <small class="hint-url">Integración con Clip</small>
-      </article>
-
-      <!-- Card de Ayuda y Soporte -->
-      <article class="cuentas-card help-card nt-soft-seq nt-delay-6" data-nt-anim>
-        <h3>
-          <i class="fa-solid fa-headset" aria-hidden="true" data-nt-icon-drift></i> 
-          Soporte y Ayuda
-        </h3>
-        <p>¿Necesitas ayuda con alguna funcionalidad? Contáctanos directamente.</p>
-        
-        <div class="support-options">
-          <button type="button" class="cuentas-btn btn-soporte-wa" data-wa="Necesito ayuda con el panel de cuentas.">
-            <i class="fa-brands fa-whatsapp"></i>
-            WhatsApp Soporte
-          </button>
-          
-          <div class="contact-quick">
-            <div class="quick-contact">
-              <i class="fa-solid fa-phone"></i>
-              <span>625-269-0997</span>
-            </div>
-          </div>
-        </div>
-        
-        <small class="hint-url">Soporte técnico disponible</small>
       </article>
 
     </div>
