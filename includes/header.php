@@ -53,7 +53,9 @@ foreach($cssFiles as $css){
     $cssPathServer = __DIR__ . "/../assets/css/$cssFile"; // Ruta del servidor
     $cssPathBrowser = "assets/css/$cssFile";             // Ruta para el navegador
     if(file_exists($cssPathServer)){
-        echo "<link rel='stylesheet' href='$cssPathBrowser'>\n";
+        // Agregar cache busting con timestamp del archivo
+        $fileTime = filemtime($cssPathServer);
+        echo "<link rel='stylesheet' href='$cssPathBrowser?v=$fileTime'>\n";
     }
 }
 
@@ -62,7 +64,9 @@ $autoCssFile = "$pageName.css";
 $autoCssPathServer = __DIR__ . "/../assets/css/$autoCssFile";
 $autoCssPathBrowser = "assets/css/$autoCssFile";
 if(file_exists($autoCssPathServer)){
-    echo "<link rel='stylesheet' href='$autoCssPathBrowser'>\n";
+    // Agregar cache busting con timestamp del archivo
+    $fileTime = filemtime($autoCssPathServer);
+    echo "<link rel='stylesheet' href='$autoCssPathBrowser?v=$fileTime'>\n";
 }
 ?>
 

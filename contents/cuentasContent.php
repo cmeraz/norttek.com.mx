@@ -11,13 +11,14 @@
 <div class="cuentas-app">
   
   <!-- Hero Section con estilo Norttek -->
-  <section class="nt-hero-wrapper is-soft cuentas-hero" style="min-height:360px; background-image: url('assets/img/cuentas-herobg.jpg') !important;" aria-label="Panel de Cuentas Norttek">
+  <section class="nt-hero-wrapper is-soft cuentas-hero" style="min-height:360px;" aria-label="Panel de Cuentas Norttek">
     <div class="hero-content max-w-6xl mx-auto px-6 py-12 text-center flex flex-col items-center">
       <div class="opacity-0 nt-heading-anim delay-sm" style="transform:translateY(34px) scale(.955);">
         <?= nt_heading('Panel de Cuentas', 'fa-solid fa-credit-card', 'xl', null, ['animate'=>false,'class'=>'nt-heading-hero nt-heading-invert nt-heading-accent-bar']); ?>
       </div>
       <p class="nt-hero-sub nt-hero-sub-invert nt-heading-anim delay-md" style="opacity:0; transform:translateY(34px) scale(.955); max-width:720px;">
         Información empresarial, datos de contacto y cuentas de pago de Norttek Solutions
+      </p>
       </p>
       <div class="flex flex-wrap justify-center gap-4 mt-8 opacity-0 nt-heading-anim delay-lg" style="transform:translateY(34px) scale(.955);">
         <button id="btn-compartir" class="nt-btn" data-variant="primary">
