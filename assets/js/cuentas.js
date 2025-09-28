@@ -151,20 +151,19 @@ function initContactButtons() {
 function downloadPersonalVCard() {
     const vCard = `BEGIN:VCARD
 VERSION:3.0
-FN:Óscar Mauricio Ramos Aragón
-N:Ramos Aragón;Óscar Mauricio;;;
+N:Meraz Marioni;Carlos Prisciliano;;Arq;
+FN:Carlos Prisciliano Meraz Marioni
 ORG:Norttek Solutions
-TITLE:Director General
-EMAIL;TYPE=INTERNET:omar@norttek.com.mx
-TEL;TYPE=WORK:+52 625 583 4600
-TEL;TYPE=CELL:+52 625 123 4567
-ADR;TYPE=WORK:;;Av. Rayón y Agustín Melgar #608, Col. Ciudad Cuauhtémoc Centro;Cuauhtémoc;Chihuahua;31500;México
-URL:https://www.norttek.com.mx
-NOTE:RFC: RAAO791226M69\\nCURP: RAAO791226HCHMSC03\\nRégimen: Simplificado de Confianza\\n\\nActividades: Papelería (50%), Computadoras (30%), Telefonía (10%), Telecomunicaciones (10%)
+TITLE:Propietario
+TEL;TYPE=CELL,VOICE:+52-625-837-4179
+EMAIL;TYPE=WORK:cmeraz3944@gmail.com
+ADR;TYPE=WORK:;;Calle Rayon y Agustin Melgar #608 Col Centro;Cd. Cuauhtémoc;Chihuahua;31500;México
+URL:https://norttek.com.mx
+NOTE:RFC: MEMC82010646A\\nCURP: MEMC820106HCHRRR03\\nID CIF: 15010076730\\nArquitecto - Propietario de Norttek Solutions
 CATEGORIES:Empresario,Tecnología,Seguridad,Telecomunicaciones
 END:VCARD`;
 
-    downloadVCard(vCard, 'Oscar_Mauricio_Ramos_Norttek.vcf');
+    downloadVCard(vCard, 'Carlos_Prisciliano_Meraz_Norttek.vcf');
     showToastModern('📱 vCard Personal', 'Descarga completada', 'success');
 }
 
@@ -176,9 +175,10 @@ N:Solutions;Norttek;;;
 ORG:Norttek Solutions
 EMAIL;TYPE=INTERNET:contacto@norttek.com.mx
 TEL;TYPE=WORK:+52 625 269 0997
-ADR;TYPE=WORK:;;Rayón y Agustín Melgar #608;Cuauhtémoc;Chihuahua;31500;México
-URL:https://www.norttek.com.mx
-NOTE:Empresa especializada en soluciones de seguridad integral\\nCCTV, Alarmas, Control de Acceso, Telefonía IP, Internet\\nRFC: MEMC82010646A
+TEL;TYPE=WORK:+52 614 618 0778
+ADR;TYPE=WORK:;;Calle Rayón y Agustín Melgar #608 Col Centro;Cd. Cuauhtémoc;Chihuahua;31500;México
+URL:https://norttek.com.mx
+NOTE:Empresa especializada en soluciones de seguridad integral\\nCCTV, Alarmas, Control de Acceso, Telefonía IP, Internet\\nRFC: MEMC82010646A\\nTel Cuauhtémoc: (625) 269-0997\\nTel Chihuahua: (614) 618-0778
 CATEGORIES:Seguridad,Tecnología,Telecomunicaciones,CCTV,Alarmas
 END:VCARD`;
 

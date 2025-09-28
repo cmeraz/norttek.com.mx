@@ -32,22 +32,44 @@ function impresorasList($impresoras) {
 }
 ?>
 
-<div class="pt-[180px] px-4 max-w-7xl mx-auto">
+<!-- Hero Section with Enhanced Background -->
+<section class="cartuchos-hero nt-hero-wrapper is-soft" style="min-height:400px;" aria-label="Catálogo de Cartuchos Norttek">
+    <div class="hero-content max-w-6xl mx-auto px-6 py-16 text-center flex flex-col items-center">
+        <div class="opacity-0 nt-heading-anim delay-sm" style="transform:translateY(34px) scale(.955);">
+            <?= nt_heading('Catálogo de Cartuchos de Tóner', 'fa-solid fa-print', 'xl', null, ['animate'=>false,'class'=>'nt-heading-hero nt-heading-invert nt-heading-accent-bar']); ?>
+        </div>
+        <p class="nt-hero-sub nt-hero-sub-invert nt-heading-anim delay-md" style="opacity:0; transform:translateY(34px) scale(.955); max-width:720px;">
+            Encuentra el cartucho o tambor correcto para tu impresora HP, Brother, Samsung y más marcas. Información confiable sobre compatibilidad y rendimiento.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 mt-8 opacity-0 nt-heading-anim delay-lg" style="transform:translateY(34px) scale(.955);">
+            <a href="#catalogo" class="nt-btn" data-variant="primary">
+                <i class="fa-solid fa-search" aria-hidden="true"></i>
+                <span>Buscar Cartuchos</span>
+            </a>
+            <a href="#herramientas" class="nt-btn" data-variant="accent">
+                <i class="fa-solid fa-camera" aria-hidden="true"></i>
+                <span>Identificar por Foto</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<div class="pt-8 px-4 max-w-7xl mx-auto">
     <a href="index.php" class="nt-btn nt-btn-outline mb-6" style="--_border:linear-gradient(135deg,#c3d9ef,#aac9e6)"><i class="fas fa-arrow-left"></i><span>Volver al inicio</span></a>
 
-    <section class="nt-section inset mb-10">
+    <section class="nt-section inset mb-10" id="catalogo">
         <div class="text-center mb-10">
-            <?= nt_heading('Catálogo de Cartuchos de Tóner HP', 'fa-solid fa-print', 'lg', 'Encuentra el modelo compatible en segundos', ['animate'=>true,'delay'=>'sm','class'=>'nt-heading-accent-bar']); ?>
-            <p class="nt-lead max-w-3xl mx-auto mt-5">Herramienta interactiva para localizar rápidamente el <strong>cartucho o tambor correcto</strong> según tu impresora. Datos confiables de <strong>modelos, compatibilidad y rendimiento</strong> para que compres sin duda.</p>
+            <?= nt_heading('Herramienta Interactiva de Búsqueda', 'fa-solid fa-wrench', 'lg', 'Localiza tu modelo en segundos', ['animate'=>true,'delay'=>'sm','class'=>'nt-heading-accent-bar']); ?>
+            <p class="nt-lead max-w-3xl mx-auto mt-5">Resuelve la duda: <em>¿será el cartucho adecuado para mi impresora?</em> Con esta <strong>herramienta interactiva</strong> lo sabrás en segundos.</p>
         </div>
         <div class="flex flex-col lg:flex-row items-center gap-10">
             <div class="flex-shrink-0">
                 <div class="rounded-2xl overflow-hidden shadow-lg ring-1 ring-gray-200">
-                    <img src="https://images.pexels.com/photos/33475146/pexels-photo-33475146.jpeg?auto=compress&cs=tinysrgb&w=640" alt="Cartuchos de Tóner HP" class="w-80 h-auto object-cover">
+                    <img src="assets/img/ejemplo-modelo-impresora.jpg" alt="Ejemplo modelo de impresora HP" class="w-80 h-auto object-cover">
                 </div>
             </div>
             <div class="flex-1 space-y-5">
-                <p class="text-gray-700 leading-relaxed">Al comprar un consumible siempre aparece la duda:<em> ¿será el adecuado para mi impresora?</em> Con esta <strong>herramienta interactiva</strong> lo resuelves en segundos.</p>
+                <p class="text-gray-700 leading-relaxed">Con esta <strong>herramienta interactiva</strong> resuelves la compatibilidad en segundos, sin dudas ni devoluciones.</p>
                 <p class="text-gray-700 leading-relaxed">Filtra por <strong>marca</strong>, <strong>modelo</strong>, <strong>impresora</strong> o <strong>tambor</strong> y obtén compatibilidad inmediata.</p>
                 <p class="text-gray-700 leading-relaxed flex items-start gap-2"><i class="fas fa-bolt text-orange-500 mt-1"></i><span><strong>Rápido e intuitivo</strong>: evita errores y ahorra tiempo en tu compra.</span></p>
                 <div>
