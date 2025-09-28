@@ -1,6 +1,30 @@
 // JS para la app móvil de Internet
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Debug inicial
+  console.log('[Internet.js] DOM cargado, iniciando...');
+  
+  // Verificar que el modal existe antes de inicializar
+  var modalExists = document.getElementById('modal-datos-usuario');
+  console.log('[Internet.js] Modal existe:', !!modalExists);
+  
+  // Inicializar modal unificado
+  if (modalExists) {
+    initModalUnificado();
+  } else {
+    console.warn('[Internet.js] Modal no encontrado, esperando...');
+    // Intentar después de un breve delay
+    setTimeout(function() {
+      var modalRetry = document.getElementById('modal-datos-usuario');
+      if (modalRetry) {
+        console.log('[Internet.js] Modal encontrado en retry');
+        initModalUnificado();
+      } else {
+        console.error('[Internet.js] Modal no encontrado después del retry');
+      }
+    }, 100);
+  }
+  
   // Pre-carga de imagen hero para activar fade-in
   try {
     var hero = document.querySelector('.internet-hero');
@@ -832,10 +856,10 @@ document.addEventListener('DOMContentLoaded', function() {
         debugInfo.hasName = !!nombre;
         if(!nombre){
           console.log('[CTA Instalación] Abriendo modal para capturar nombre', debugInfo);
-          return abrirModalNombre(function(capt){ if(capt){ enviarWhatsApp(capt); } else { console.log('[CTA Instalación] Usuario cerró modal sin nombre'); } });
+          return abrirModalDatos('instalacion'); // Usar modal unificado
         }
         console.log('[CTA Instalación] Enviando WhatsApp con nombre almacenado', debugInfo);
-        enviarWhatsApp(nombre);
+        enviarWhatsAppInstalacion(nombre); // Usar función unificada
       });
       // Exponer función de prueba en consola
       try {
@@ -898,6 +922,397 @@ document.addEventListener('DOMContentLoaded', function() {
         backdrop.querySelectorAll('[data-close-nombre]').forEach(function(btn){ btn.addEventListener('click', function(){ cerrar(null); }, { once:true }); });
       } catch(err){ if(onDone) onDone(null); }
     };
+  }
+
+  // === MODAL UNIFICADO ESTILO ACCESO CLIENTE ===
+  var modalDatosUsuario = null;
+  var modalDatosTitulo = null;
+  var modalDatosIcon = null;
+  var modalDatosSub = null;
+  var modalDatosForm = null;
+  var modalDatosError = null;
+  var campoNombre = null;
+  var campoTelefono = null;
+  var inputNombre = null;
+  var inputTelefono = null;
+  var modalDatosSubmit = null;
+  var modalContexto = null; // 'cliente' o 'instalacion'
+
+  function initModalUnificado() {
+    console.log('[Modal Unificado] Inicializando...');
+    
+    modalDatosUsuario = document.getElementById('modal-datos-usuario');
+    modalDatosTitulo = document.getElementById('modal-datos-title-text'); // Nuevo selector
+    modalDatosIcon = document.getElementById('modal-datos-icon'); // Nuevo elemento
+    modalDatosSub = document.getElementById('modal-datos-sub'); // Nuevo elemento
+    modalDatosForm = document.getElementById('modal-datos-form');
+    modalDatosError = document.getElementById('modal-datos-error');
+    campoNombre = document.getElementById('campo-nombre');
+    campoTelefono = document.getElementById('campo-telefono');
+    inputNombre = document.getElementById('input-nombre');
+    inputTelefono = document.getElementById('input-telefono');
+    modalDatosSubmit = document.getElementById('modal-datos-submit');
+
+    // Debug logging
+    console.log('[Modal Unificado] Elementos encontrados:', {
+      modalDatosUsuario: !!modalDatosUsuario,
+      modalDatosForm: !!modalDatosForm,
+      campoNombre: !!campoNombre,
+      campoTelefono: !!campoTelefono,
+      inputNombre: !!inputNombre,
+      inputTelefono: !!inputTelefono
+    });
+
+    if (!modalDatosUsuario) {
+      console.error('[Modal Unificado] No se encontró el modal #modal-datos-usuario');
+      return;
+    }
+    
+    if (!modalDatosForm) {
+      console.error('[Modal Unificado] No se encontró el formulario #modal-datos-form');
+      return;
+    }
+
+    // Listeners para botones que abren el modal
+    var modalTriggers = document.querySelectorAll('[data-nt-modal-open="#modal-datos-usuario"]');
+    console.log('[Modal Unificado] Botones encontrados:', modalTriggers.length);
+    
+    modalTriggers.forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('[Modal Unificado] Botón clickeado:', btn.id);
+        var tipo = btn.getAttribute('data-modal-tipo') || 'instalacion';
+        abrirModalDatos(tipo);
+      });
+    });
+
+    // Submit del formulario
+    if (modalDatosForm) {
+      modalDatosForm.addEventListener('submit', function(ev) {
+        ev.preventDefault();
+        procesarFormularioDatos();
+      });
+    }
+
+    // Limpiar error al escribir
+    if (inputNombre) inputNombre.addEventListener('input', function() {
+      if (modalDatosError) modalDatosError.style.display = 'none';
+    });
+    
+    if (inputTelefono) {
+      inputTelefono.addEventListener('input', function() {
+        var digits = (inputTelefono.value || '').replace(/[^0-9]/g, '').slice(0,10);
+        if (inputTelefono.value !== digits) inputTelefono.value = digits;
+        if (modalDatosError) modalDatosError.style.display = 'none';
+        if (modalDatosSubmit) modalDatosSubmit.disabled = modalContexto === 'cliente' && digits.length !== 10;
+      });
+      inputTelefono.addEventListener('keyup', function(e) {
+        if (e.key === 'Enter' && modalDatosSubmit && !modalDatosSubmit.disabled) {
+          modalDatosForm.dispatchEvent(new Event('submit'));
+        }
+      });
+    }
+
+    // Listeners para cerrar modal
+    document.addEventListener('click', function(e) {
+      if (e.target.matches('[data-nt-modal-close]') && modalDatosUsuario && modalDatosUsuario.style.display !== 'none') {
+        console.log('[Modal Unificado] Cerrando modal por click en botón close');
+        cerrarModalDatos();
+      }
+      
+      // Cerrar al hacer click en el backdrop
+      if (e.target === modalDatosUsuario && modalDatosUsuario.style.display !== 'none') {
+        console.log('[Modal Unificado] Cerrando modal por click en backdrop');
+        cerrarModalDatos();
+      }
+    });
+
+    // Cerrar con Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modalDatosUsuario && modalDatosUsuario.style.display !== 'none') {
+        console.log('[Modal Unificado] Cerrando modal por Escape');
+        cerrarModalDatos();
+      }
+    });
+
+    console.log('[Modal Unificado] Inicialización completa');
+  }
+
+  function abrirModalDatos(tipo) {
+    console.log('[Modal Unificado] Abriendo modal con tipo:', tipo);
+    
+    if (!modalDatosUsuario) {
+      console.error('[Modal Unificado] Modal no inicializado correctamente');
+      // Intentar re-inicializar
+      initModalUnificado();
+      if (!modalDatosUsuario) {
+        console.error('[Modal Unificado] No se pudo encontrar el modal después de re-inicialización');
+        return;
+      }
+    }
+    
+    modalContexto = tipo;
+    limpiarModalDatos();
+    
+    if (tipo === 'cliente') {
+      // Configurar para login de cliente
+      if (modalDatosTitulo) modalDatosTitulo.textContent = 'Acceso Cliente';
+      if (modalDatosIcon) modalDatosIcon.className = 'fa-solid fa-user-shield';
+      if (modalDatosSub) modalDatosSub.textContent = 'Ingresa tu número de teléfono registrado para mostrar tus credenciales.';
+      if (campoNombre) campoNombre.style.display = 'none';
+      if (campoTelefono) campoTelefono.style.display = 'block';
+      if (modalDatosSubmit) modalDatosSubmit.textContent = 'Continuar';
+      
+      setTimeout(function() {
+        if (inputTelefono) inputTelefono.focus();
+      }, 300);
+      
+    } else if (tipo === 'instalacion') {
+      // Configurar para captura de nombre
+      if (modalDatosTitulo) modalDatosTitulo.textContent = 'Tu Nombre';
+      if (modalDatosIcon) modalDatosIcon.className = 'fa-solid fa-user';
+      if (modalDatosSub) modalDatosSub.textContent = 'Ingresa tu nombre para personalizar el mensaje de WhatsApp y agilizar tu solicitud.';
+      if (campoNombre) campoNombre.style.display = 'block';
+      if (campoTelefono) campoTelefono.style.display = 'none';
+      if (modalDatosSubmit) modalDatosSubmit.textContent = 'Continuar';
+      
+      // Pre-llenar con nombre guardado si existe
+      var stored = getStoredName();
+      if (inputNombre && stored.full) inputNombre.value = stored.full;
+      
+      setTimeout(function() {
+        if (inputNombre) inputNombre.focus();
+      }, 300);
+    }
+
+    // Abrir modal con estilo nt-modal
+    console.log('[Modal Unificado] Abriendo modal DOM...');
+    if (modalDatosUsuario) {
+      modalDatosUsuario.style.display = 'flex';
+      modalDatosUsuario.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      
+      // Intentar con NTModal si está disponible
+      if (window.NTModal) {
+        console.log('[Modal Unificado] Usando NTModal para abrir');
+        try {
+          window.NTModal.open('#modal-datos-usuario');
+        } catch(e) {
+          console.warn('[Modal Unificado] Error al usar NTModal:', e);
+        }
+      }
+      
+      console.log('[Modal Unificado] Modal abierto');
+    }
+  }
+
+  function limpiarModalDatos() {
+    if (inputNombre) inputNombre.value = '';
+    if (inputTelefono) inputTelefono.value = '';
+    if (modalDatosError) modalDatosError.style.display = 'none';
+    if (modalDatosSubmit) modalDatosSubmit.disabled = false;
+  }
+
+  function cerrarModalDatos() {
+    console.log('[Modal Unificado] Cerrando modal...');
+    if (modalDatosUsuario) {
+      // Usar método manual directo para mayor compatibilidad
+      modalDatosUsuario.style.display = 'none';
+      modalDatosUsuario.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      
+      // También intentar con NTModal si está disponible
+      if (window.NTModal) {
+        console.log('[Modal Unificado] Usando NTModal para cerrar');
+        try {
+          window.NTModal.close('#modal-datos-usuario');
+        } catch(e) {
+          console.warn('[Modal Unificado] Error al usar NTModal:', e);
+        }
+      }
+    }
+  }
+
+  function procesarFormularioDatos() {
+    if (modalContexto === 'cliente') {
+      procesarLoginCliente();
+    } else if (modalContexto === 'instalacion') {
+      procesarCapturaNombre();
+    }
+  }
+
+  function procesarLoginCliente() {
+    var phoneVal = normalizePhone((inputTelefono && inputTelefono.value) || '').slice(0,10);
+    if (!phoneVal || phoneVal.length !== 10) {
+      mostrarErrorModal('Ingresa un teléfono de 10 dígitos.');
+      return;
+    }
+
+    setModalLoading(true);
+    fetchClientes().then(function(list) {
+      var found = findClientByPhone(phoneVal, list);
+      if (!found) {
+        mostrarErrorModal('Teléfono no encontrado. Verifica tu número.');
+        setModalLoading(false);
+        return;
+      }
+
+      var authObj = {
+        nombre: found.Nombre || '',
+        usuario: found.Usuario || '',
+        telefonos: Array.isArray(found.Telefonos) ? found.Telefonos : []
+      };
+
+      // Normalizar nombre a Title Case si viene todo en minúsculas
+      try { 
+        if (authObj.nombre && authObj.nombre === authObj.nombre.toLocaleLowerCase('es-MX')) {
+          authObj.nombre = toTitleCaseEs(authObj.nombre); 
+        }
+      } catch(_) {}
+
+      setAuth(authObj);
+      cerrarModalDatos();
+      mostrarCliente(true);
+      setModalLoading(false);
+    }).catch(function() {
+      mostrarErrorModal('No se pudo validar. Intenta más tarde.');
+      setModalLoading(false);
+    });
+  }
+
+  function procesarCapturaNombre() {
+    var nombreVal = (inputNombre && inputNombre.value || '').trim();
+    if (!nombreVal || nombreVal.length < 2) {
+      mostrarErrorModal('Ingresa tu nombre completo.');
+      return;
+    }
+
+    // Normalizar nombre y guardar
+    var nombreNormalizado = nombreVal;
+    try {
+      if (nombreVal === nombreVal.toLocaleLowerCase('es-MX')) {
+        nombreNormalizado = toTitleCaseEs(nombreVal);
+      }
+    } catch(_) {}
+
+    var firstName = nombreNormalizado.split(/\s+/)[0] || '';
+    setStoredName(nombreNormalizado, firstName);
+
+    cerrarModalDatos();
+    
+    // Continuar con el flujo de WhatsApp
+    setTimeout(function() {
+      enviarWhatsAppInstalacion(nombreNormalizado);
+    }, 300);
+  }
+
+  function mostrarErrorModal(mensaje) {
+    if (modalDatosError) {
+      modalDatosError.textContent = mensaje;
+      modalDatosError.style.display = 'block';
+    }
+  }
+
+  function setModalLoading(loading) {
+    if (modalDatosUsuario) modalDatosUsuario.setAttribute('aria-busy', loading ? 'true' : 'false');
+    if (modalDatosSubmit) {
+      modalDatosSubmit.disabled = loading;
+      modalDatosSubmit.classList.toggle('is-loading', loading);
+    }
+    if (inputNombre) inputNombre.disabled = loading;
+    if (inputTelefono) inputTelefono.disabled = loading;
+  }
+
+  function enviarWhatsAppInstalacion(nombre) {
+    try { 
+      if (nombre && nombre === nombre.toLocaleLowerCase('es-MX')) {
+        nombre = toTitleCaseEs(nombre); 
+      }
+    } catch(_) {}
+
+    var saludo = nombre ? (EMOJI.wave + ' Hola, mi nombre es ' + nombre + '.') : (EMOJI.wave + ' Hola.');
+    var plan = (function(){
+      try { 
+        return { 
+          megas: localStorage.getItem('selectedPlanMegas') || '', 
+          price: localStorage.getItem('selectedPlanPrice') || '' 
+        }; 
+      } catch(_) { 
+        return {megas: '', price: ''}; 
+      }
+    })();
+
+    var planLinea = plan.megas ? 
+      ('Plan seleccionado: ' + plan.megas + ' Megas (' + (plan.price ? ('$' + plan.price + '/mes') : 'mensualidad pendiente') + ').') : 
+      'Aún no aparece un plan seleccionado.';
+
+    var escenario = (function(){ 
+      try { 
+        return localStorage.getItem('installScenario') || ''; 
+      } catch(_) { 
+        return ''; 
+      } 
+    })();
+
+    var escenarioDesc = '';
+    if (escenario === 'propio') {
+      escenarioDesc = 'Escenario: Ya cuento con antena.';
+    } else if (escenario === 'sinequipo') { 
+      var pago = 'contado'; 
+      try { 
+        var radio = document.querySelector('input[name="pago-antena"]:checked'); 
+        if (radio) pago = radio.value; 
+      } catch(_) {}
+      escenarioDesc = 'Escenario: Necesito antena. Forma de pago antena: ' + (pago === 'diferido' ? 'Diferido (3 meses)' : 'Contado');
+    } else {
+      escenarioDesc = 'Escenario aún no seleccionado.';
+    }
+
+    var calendarioLineas = []; 
+    try { 
+      var filas = document.querySelectorAll('#tabla-calendario tbody tr'); 
+      if (filas.length) { 
+        filas.forEach(function(tr) { 
+          var c = tr.querySelectorAll('td'); 
+          if (c.length >= 3) { 
+            calendarioLineas.push(c[0].textContent.trim() + ': ' + c[1].textContent.trim() + ' (' + c[2].textContent.trim() + ')'); 
+          } 
+        }); 
+      } 
+    } catch(_) {}
+
+    var calendarioTexto = calendarioLineas.length ? 
+      ('Calendario de pagos:\n' + calendarioLineas.join('\n')) : 
+      'Calendario de pagos aún no generado (falta plan o escenario).';
+
+    var resumen = ''; 
+    try { 
+      var rl = document.getElementById('inst-resumen-linea'); 
+      if (rl) resumen = rl.textContent.trim() || rl.innerText.trim(); 
+    } catch(_) {}
+    resumen = resumen ? 'Resumen: ' + resumen : 'Resumen pendiente.';
+
+    var formLink = 'http://clientes.portalinternet.net/solicitar-instalacion/norttek/';
+    var cuerpo = [
+      saludo, 
+      '', 
+      planLinea, 
+      escenarioDesc, 
+      '', 
+      calendarioTexto, 
+      '', 
+      resumen, 
+      '', 
+      'Formulario:', 
+      formLink, 
+      '', 
+      EMOJI.check + ' Quedo atento(a), gracias.'
+    ].join('\n');
+
+    var wa = 'https://wa.me/526252690997?text=' + encodeURIComponent(cuerpo);
+    try { 
+      window.open(wa, '_blank'); 
+    } catch(_) {}
   }
 
 });

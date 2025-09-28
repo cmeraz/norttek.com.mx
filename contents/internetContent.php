@@ -356,7 +356,8 @@
           </div>
           <!-- CTA principal para avanzar con la contratación (reintroducido tras refactor) -->
           <div class="contrata-ahora-wrap" style="margin-top:1.4rem;">
-            <a id="contratar" href="#" role="button" class="contrata-ahora-btn cta-install-anim" aria-label="Solicitar instalación por WhatsApp">
+            <a id="contratar" href="#" role="button" class="contrata-ahora-btn cta-install-anim" aria-label="Solicitar instalación por WhatsApp" 
+               data-nt-modal-open="#modal-datos-usuario" data-modal-tipo="instalacion">
               <i class="fa-solid fa-wifi" aria-hidden="true"></i>
               <span>Solicitar Instalación</span>
             </a>
@@ -481,21 +482,40 @@
   </div>
 </div>
 
-<!-- Modal Captura de Nombre (para CTA Instalación) -->
-<div id="nombre-modal-backdrop" class="internet-modal" style="display:none;" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Captura de nombre para solicitud de instalación">
-  <div class="internet-modal-dialog" role="document">
-    <button type="button" class="modal-close" data-close-nombre aria-label="Cerrar">&times;</button>
-    <h3 class="modal-title"><i class="fa-solid fa-user" aria-hidden="true"></i> Tu Nombre</h3>
-    <p class="modal-desc">Ingresa tu nombre para personalizar el mensaje de WhatsApp y agilizar tu solicitud.</p>
-    <form id="nombre-modal-form" class="modal-form" autocomplete="off">
-      <label for="nombre-modal-input" class="modal-label">Nombre completo</label>
-      <input id="nombre-modal-input" name="nombre" type="text" class="modal-input" placeholder="Ej. Juan Pérez" maxlength="60" required />
-      <div class="modal-actions">
-        <button type="button" class="btn-secundario" data-close-nombre>Cancelar</button>
-        <button type="submit" class="btn-primario">Continuar</button>
+<!-- Modal Unificado para Datos de Usuario (Estilo Acceso Cliente) -->
+<div id="modal-datos-usuario" class="nt-modal-backdrop" style="display: none;" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-datos-title">
+  <div class="nt-modal" role="document">
+    <button type="button" class="nt-modal-close" data-nt-modal-close aria-label="Cerrar">&times;</button>
+    <h3 id="modal-datos-title" class="nt-modal-title" style="display:flex; align-items:center; gap:.5rem;">
+      <i id="modal-datos-icon" class="fa-solid fa-user" aria-hidden="true"></i>
+      <span id="modal-datos-title-text">Tu Nombre</span>
+    </h3>
+    <p id="modal-datos-sub" class="nt-modal-sub">Ingresa tu nombre para personalizar el mensaje de WhatsApp y agilizar tu solicitud.</p>
+    <form id="modal-datos-form" class="modal-body" autocomplete="off">
+      <!-- Campo de nombre (solo para instalación) -->
+      <div id="campo-nombre" class="form-field">
+        <label for="input-nombre" class="modal-label">Nombre completo</label>
+        <input id="input-nombre" name="nombre" type="text" class="modal-input" 
+               placeholder="Ej. Juan Pérez" maxlength="60" required />
+      </div>
+      
+      <!-- Campo de teléfono (solo para cliente) -->
+      <div id="campo-telefono" class="form-field" style="display: none;">
+        <label for="input-telefono" class="modal-label">Teléfono (10 dígitos)</label>
+        <input id="input-telefono" name="telefono" class="modal-input" type="tel" inputmode="numeric" 
+               pattern="[0-9]{10}" minlength="10" maxlength="14" required 
+               placeholder="Ej. 6251234567" aria-describedby="modal-datos-error" />
+      </div>
+      
+      <div id="modal-datos-error" role="alert" aria-live="assertive" style="display:none; background:#fff5f5; border:1px solid #f8caca; color:#b54848; padding:.6rem .75rem; border-radius:10px; font-size:.8rem; font-weight:600; line-height:1.4;">
+        Error en la validación
+      </div>
+      
+      <div class="nt-modal-actions modal-actions">
+        <button type="submit" id="modal-datos-submit" class="btn-primario btn btn-primary">Continuar</button>
+        <button type="button" class="btn-secundario btn btn-secondary" data-nt-modal-close>Cancelar</button>
       </div>
     </form>
-    <small class="modal-hint">Guardaremos tu nombre localmente para reutilizarlo en futuras consultas.</small>
   </div>
 </div>
 
