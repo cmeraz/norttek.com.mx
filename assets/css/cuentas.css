@@ -21,25 +21,26 @@
     background: #f8fafc;
 }
 
-/* Hero Section - estilo idéntico a internet-hero */
+/* Hero Section - Enhanced Visual Treatment */
 .cuentas-hero,
 .nt-hero-wrapper.cuentas-hero {
     background: 
-        linear-gradient(rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.75)),
-        radial-gradient(circle at 25% 25%, rgba(79, 140, 255, 0.12) 0%, transparent 60%),
-        radial-gradient(circle at 75% 75%, rgba(147, 51, 234, 0.08) 0%, transparent 50%),
+        linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 41, 59, 0.88) 50%, rgba(15, 23, 42, 0.90) 100%),
+        radial-gradient(circle at 20% 30%, rgba(79, 140, 255, 0.18) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 60% 10%, rgba(147, 51, 234, 0.12) 0%, transparent 40%),
         url('../img/cuentas-herobg.jpg') !important;
-    background-size: cover, 600px 600px, 800px 800px, cover !important;
-    background-position: center, 0 0, 100% 100%, center !important;
-    background-attachment: fixed, scroll, scroll, fixed !important;
-    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat !important;
+    background-size: cover, 800px 800px, 900px 900px, 600px 600px, cover !important;
+    background-position: center, -50px -50px, calc(100% + 50px) calc(100% + 50px), 60% 10%, center !important;
+    background-attachment: fixed, scroll, scroll, scroll, fixed !important;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat !important;
     position: relative;
     overflow: hidden;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
 }
 
-/* Pattern overlay for enhanced visual depth */
+/* Enhanced Dot Pattern with Financial Theme */
 .cuentas-hero::before,
 .nt-hero-wrapper.cuentas-hero::before {
     content: '';
@@ -49,14 +50,16 @@
     right: 0;
     bottom: 0;
     background-image: 
-        radial-gradient(circle at 2px 2px, rgba(255,255,255,0.04) 1px, transparent 0);
-    background-size: 30px 30px;
+        radial-gradient(circle at 2px 2px, rgba(255,255,255,0.08) 1px, transparent 0),
+        radial-gradient(circle at 1px 1px, rgba(79, 140, 255, 0.06) 0.5px, transparent 0);
+    background-size: 35px 35px, 70px 70px;
+    background-position: 0 0, 17px 17px;
     pointer-events: none;
     z-index: 1;
-    animation: patternFloat 20s ease-in-out infinite;
+    animation: financialDots 22s ease-in-out infinite;
 }
 
-/* Geometric pattern overlay */
+/* Sophisticated Diagonal Lines Pattern */
 .cuentas-hero::after,
 .nt-hero-wrapper.cuentas-hero::after {
     content: '';
@@ -66,84 +69,207 @@
     right: 0;
     bottom: 0;
     background: 
-        linear-gradient(45deg, transparent 48%, rgba(79, 140, 255, 0.03) 49%, rgba(79, 140, 255, 0.03) 51%, transparent 52%),
-        linear-gradient(-45deg, transparent 48%, rgba(147, 51, 234, 0.02) 49%, rgba(147, 51, 234, 0.02) 51%, transparent 52%);
-    background-size: 80px 80px, 120px 120px;
+        linear-gradient(45deg, transparent 48%, rgba(79, 140, 255, 0.04) 48.5%, rgba(79, 140, 255, 0.04) 51.5%, transparent 52%),
+        linear-gradient(-45deg, transparent 49%, rgba(147, 51, 234, 0.03) 49.5%, rgba(147, 51, 234, 0.03) 50.5%, transparent 51%),
+        linear-gradient(135deg, transparent 47%, rgba(59, 130, 246, 0.02) 48%, rgba(59, 130, 246, 0.02) 52%, transparent 53%);
+    background-size: 90px 90px, 120px 120px, 60px 60px;
+    background-position: 0 0, 45px 45px, 30px 30px;
     pointer-events: none;
     z-index: 2;
-    animation: patternShift 25s linear infinite;
+    animation: diagonalFlow 28s linear infinite;
 }
 
-/* Pattern animations for crispy movement */
-@keyframes patternFloat {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(-10px, -5px) rotate(1deg); }
-    50% { transform: translate(10px, -10px) rotate(-1deg); }
-    75% { transform: translate(-5px, 10px) rotate(0.5deg); }
+/* Additional texture overlay for depth */
+.cuentas-hero .hero-content::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: 
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            transparent 2px,
+            rgba(255, 255, 255, 0.01) 2px,
+            rgba(255, 255, 255, 0.01) 4px
+        );
+    pointer-events: none;
+    z-index: -1;
+    animation: textureShift 35s ease-in-out infinite;
 }
 
-@keyframes patternShift {
-    0% { background-position: 0 0, 0 0; }
-    50% { background-position: 40px 40px, -60px 60px; }
-    100% { background-position: 80px 80px, -120px 120px; }
-}
-
+/* Hero Content Enhanced Layering */
 .cuentas-hero .hero-content,
 .nt-hero-wrapper.cuentas-hero .hero-content {
     position: relative;
     z-index: 3;
+    backdrop-filter: blur(0.5px);
 }
 
-/* Responsive optimizations for crispy display */
+/* Advanced Pattern Animations */
+@keyframes financialDots {
+    0%, 100% { 
+        background-position: 0 0, 17px 17px; 
+        opacity: 1;
+        transform: scale(1);
+    }
+    25% { 
+        background-position: 8px 8px, 25px 25px; 
+        opacity: 0.8;
+        transform: scale(1.02);
+    }
+    50% { 
+        background-position: 15px 15px, 32px 32px; 
+        opacity: 1;
+        transform: scale(1);
+    }
+    75% { 
+        background-position: 22px 8px, 40px 25px; 
+        opacity: 0.9;
+        transform: scale(0.98);
+    }
+}
+
+@keyframes diagonalFlow {
+    0% { 
+        background-position: 0 0, 45px 45px, 30px 30px; 
+        opacity: 1;
+    }
+    20% { 
+        background-position: 18px 18px, 63px 63px, 48px 48px; 
+        opacity: 0.8;
+    }
+    40% { 
+        background-position: 36px 36px, 81px 81px, 66px 66px; 
+        opacity: 1;
+    }
+    60% { 
+        background-position: 54px 54px, 99px 99px, 84px 84px; 
+        opacity: 0.9;
+    }
+    80% { 
+        background-position: 72px 72px, 117px 117px, 102px 102px; 
+        opacity: 0.7;
+    }
+    100% { 
+        background-position: 90px 90px, 135px 135px, 120px 120px; 
+        opacity: 1;
+    }
+}
+
+@keyframes textureShift {
+    0%, 100% { 
+        transform: translateX(0) translateY(0);
+        opacity: 0.5;
+    }
+    33% { 
+        transform: translateX(2px) translateY(-1px);
+        opacity: 0.3;
+    }
+    66% { 
+        transform: translateX(-1px) translateY(2px);
+        opacity: 0.4;
+    }
+}
+
+/* Enhanced Responsive optimizations for crispy display */
 @media screen and (-webkit-min-device-pixel-ratio: 2), 
        screen and (min-resolution: 192dpi),
        screen and (min-resolution: 2dppx) {
-    .cuentas-hero {
+    .cuentas-hero,
+    .nt-hero-wrapper.cuentas-hero {
         image-rendering: -webkit-optimize-contrast;
         image-rendering: -moz-crisp-edges;
         image-rendering: crisp-edges;
         image-rendering: pixelated;
     }
     
-    .cuentas-hero::before {
-        background-size: 60px 60px; /* Double size for retina */
+    .cuentas-hero::before,
+    .nt-hero-wrapper.cuentas-hero::before {
+        background-size: 70px 70px, 140px 140px;
     }
     
-    .cuentas-hero::after {
-        background-size: 160px 160px, 240px 240px; /* Double size for retina */
+    .cuentas-hero::after,
+    .nt-hero-wrapper.cuentas-hero::after {
+        background-size: 180px 180px, 240px 240px, 120px 120px;
     }
 }
 
-/* Mobile optimizations */
+/* Mobile optimizations with enhanced patterns */
 @media (max-width: 768px) {
-    .cuentas-hero {
-        background-attachment: scroll, scroll, scroll, scroll; /* Fix parallax on mobile */
-        background-size: cover, 400px 400px, 500px 500px, cover;
+    .cuentas-hero,
+    .nt-hero-wrapper.cuentas-hero {
+        background-attachment: scroll, scroll, scroll, scroll, scroll;
+        background-size: cover, 500px 500px, 600px 600px, 400px 400px, cover;
     }
     
-    .cuentas-hero::before {
-        background-size: 20px 20px;
-        animation-duration: 15s; /* Faster on mobile for better performance */
+    .cuentas-hero::before,
+    .nt-hero-wrapper.cuentas-hero::before {
+        background-size: 25px 25px, 50px 50px;
+        animation-duration: 18s;
     }
     
-    .cuentas-hero::after {
-        background-size: 60px 60px, 90px 90px;
-        animation-duration: 20s;
+    .cuentas-hero::after,
+    .nt-hero-wrapper.cuentas-hero::after {
+        background-size: 60px 60px, 80px 80px, 40px 40px;
+        animation-duration: 22s;
+    }
+    
+    .cuentas-hero .hero-content::before {
+        animation-duration: 28s;
     }
 }
 
-/* 4K and high-resolution displays */
+/* Tablet optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .cuentas-hero,
+    .nt-hero-wrapper.cuentas-hero {
+        background-size: cover, 700px 700px, 800px 800px, 500px 500px, cover;
+    }
+    
+    .cuentas-hero::before,
+    .nt-hero-wrapper.cuentas-hero::before {
+        background-size: 30px 30px, 60px 60px;
+    }
+    
+    .cuentas-hero::after,
+    .nt-hero-wrapper.cuentas-hero::after {
+        background-size: 75px 75px, 100px 100px, 50px 50px;
+    }
+}
+
+/* 4K and ultra-high-resolution displays */
 @media screen and (min-width: 2560px) {
-    .cuentas-hero {
-        background-size: cover, 1200px 1200px, 1600px 1600px, cover;
+    .cuentas-hero,
+    .nt-hero-wrapper.cuentas-hero {
+        background-size: cover, 1600px 1600px, 1800px 1800px, 1200px 1200px, cover;
     }
     
-    .cuentas-hero::before {
-        background-size: 40px 40px;
+    .cuentas-hero::before,
+    .nt-hero-wrapper.cuentas-hero::before {
+        background-size: 50px 50px, 100px 100px;
     }
     
-    .cuentas-hero::after {
-        background-size: 120px 120px, 180px 180px;
+    .cuentas-hero::after,
+    .nt-hero-wrapper.cuentas-hero::after {
+        background-size: 130px 130px, 170px 170px, 90px 90px;
+    }
+    
+    .cuentas-hero .hero-content::before {
+        background-size: 6px 6px;
+    }
+}
+
+/* Performance optimizations for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .cuentas-hero::before,
+    .nt-hero-wrapper.cuentas-hero::before,
+    .cuentas-hero::after,
+    .nt-hero-wrapper.cuentas-hero::after,
+    .cuentas-hero .hero-content::before {
+        animation: none;
     }
 }
 
