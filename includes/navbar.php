@@ -24,6 +24,7 @@ $menu = [
         ]
     ],
     [ 'label'=>'Herramientas','icon'=>'fa-solid fa-screwdriver-wrench','url'=>'cartuchos' ],
+    [ 'label'=>'Ayuda','icon'=>'fa-solid fa-life-ring','url'=>'ayuda' ],
     [ 'label'=>'Contacto','icon'=>'fa-solid fa-envelope','url'=>'contact' ],
 ];
 
