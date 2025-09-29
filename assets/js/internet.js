@@ -1315,4 +1315,209 @@ document.addEventListener('DOMContentLoaded', function() {
     } catch(_) {}
   }
 
+  // Funcionalidad para botones de selección de escenario
+  function initEscenarioSelector() {
+    const btnYaTengo = document.getElementById('btn-ya-tengo');
+    const btnNecesito = document.getElementById('btn-necesito');
+    const cardPropio = document.getElementById('esc-propio');
+    const cardSinequipo = document.getElementById('esc-sinequipo');
+
+    if (!btnYaTengo || !btnNecesito || !cardPropio || !cardSinequipo) {
+      console.warn('[Internet.js] Botones o cards de escenario no encontrados');
+      return;
+    }
+
+    // Estilos para botones activos/inactivos
+    const activeStyle = {
+      background: '#edf2ff',
+      borderColor: '#4f8cff',
+      color: '#1e40af',
+      transform: 'scale(1.02)'
+    };
+
+    const inactiveStyle = {
+      background: '#f8fafc',
+      borderColor: '#e2e8f0',
+      color: '#4a5568',
+      transform: 'scale(1)'
+    };
+
+    function applyStyle(button, styles) {
+      Object.assign(button.style, styles);
+    }
+
+    function resetButtons() {
+      applyStyle(btnYaTengo, inactiveStyle);
+      applyStyle(btnNecesito, inactiveStyle);
+    }
+
+    function hideAllCards() {
+      cardPropio.style.display = 'none';
+      cardSinequipo.style.display = 'none';
+    }
+
+    function showCard(card, button) {
+      hideAllCards();
+      resetButtons();
+      card.style.display = 'block';
+      applyStyle(button, activeStyle);
+      
+      // Animación suave de entrada
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'all 0.3s ease';
+      
+      setTimeout(() => {
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, 10);
+
+      // Actualizar calendario si hay plan seleccionado
+      setTimeout(() => {
+        if (typeof updateInstalacionCalculo === 'function') {
+          updateInstalacionCalculo();
+        }
+      }, 100);
+    }
+
+    // Event listeners
+    btnYaTengo.addEventListener('click', function() {
+      console.log('[Escenario] Seleccionado: Ya tengo antena');
+      showCard(cardPropio, btnYaTengo);
+      // Guardar selección en localStorage
+      try {
+        localStorage.setItem('installScenario', 'propio');
+      } catch(_) {}
+    });
+
+    btnNecesito.addEventListener('click', function() {
+      console.log('[Escenario] Seleccionado: Necesito antena');
+      showCard(cardSinequipo, btnNecesito);
+      // Guardar selección en localStorage
+      try {
+        localStorage.setItem('installScenario', 'sinequipo');
+      } catch(_) {}
+    });
+
+    console.log('[Internet.js] Selector de escenario inicializado');
+  }
+
+  // Mejorar función de WhatsApp para incluir más detalles
+  function enviarWhatsAppInstalacion(nombre) {
+    try { 
+      if (nombre && nombre === nombre.toLocaleLowerCase('es-MX')) {
+        nombre = toTitleCaseEs(nombre); 
+      }
+    } catch(_) {}
+
+    var saludo = nombre ? (EMOJI.wave + ' Hola, mi nombre es ' + nombre + '.') : (EMOJI.wave + ' Hola.');
+    
+    // Obtener información del plan seleccionado
+    var plan = (function(){
+      try { 
+        return { 
+          megas: localStorage.getItem('selectedPlanMegas') || '', 
+          price: localStorage.getItem('selectedPlanPrice') || '',
+          label: localStorage.getItem('selectedPlanLabel') || ''
+        }; 
+      } catch(_) { 
+        return {megas: '', price: '', label: ''}; 
+      }
+    })();
+
+    var planLinea = plan.label ? 
+      ('Plan seleccionado: ' + plan.label + (plan.price ? (' - $' + plan.price + '/mes') : '')) : 
+      'Plan: Por definir en consulta';
+
+    // Obtener escenario de instalación
+    var escenario = (function(){ 
+      try { 
+        return localStorage.getItem('installScenario') || ''; 
+      } catch(_) { 
+        return ''; 
+      } 
+    })();
+
+    var escenarioDesc = '';
+    var costoInicial = '';
+    
+    if (escenario === 'propio') {
+      escenarioDesc = 'Situación: Ya cuento con antena utilizable';
+      costoInicial = 'Costo inicial: $500 MXN (pago único)';
+    } else if (escenario === 'sinequipo') { 
+      var pago = 'contado'; 
+      try { 
+        var radio = document.querySelector('input[name="pago-antena"]:checked'); 
+        if (radio) pago = radio.value; 
+      } catch(_) {}
+      escenarioDesc = 'Situación: Necesito antena nueva';
+      costoInicial = pago === 'diferido' ? 
+        'Costo inicial: $850 MXN + antena diferida (3 meses)' : 
+        'Costo inicial: $2,650 MXN (contado completo)';
+    } else {
+      escenarioDesc = 'Situación: A evaluar en consulta';
+      costoInicial = 'Costo inicial: Por determinar';
+    }
+
+    // Obtener información del calendario si existe
+    var calendarioLineas = []; 
+    try { 
+      var filas = document.querySelectorAll('#tabla-calendario tbody tr'); 
+      if (filas.length > 0) { 
+        filas.forEach(function(tr, index) { 
+          if (index < 3) { // Solo primeros 3 meses
+            var c = tr.querySelectorAll('td'); 
+            if (c.length >= 3) { 
+              calendarioLineas.push('• ' + c[0].textContent.trim() + ': ' + c[1].textContent.trim()); 
+            } 
+          }
+        }); 
+      } 
+    } catch(_) {}
+
+    var calendarioTexto = calendarioLineas.length ? 
+      ('Proyección de pagos (primeros meses):\n' + calendarioLineas.join('\n')) : 
+      'Calendario: Se genera al confirmar plan y escenario';
+
+    // Información de contacto y formulario
+    var formLink = 'http://clientes.portalinternet.net/solicitar-instalacion/norttek/';
+    
+    var cuerpo = [
+      saludo, 
+      '', 
+      '📶 SOLICITUD DE INSTALACIÓN DE INTERNET',
+      '',
+      planLinea, 
+      escenarioDesc, 
+      costoInicial,
+      '', 
+      calendarioTexto, 
+      '', 
+      '📋 Formulario de registro:',
+      formLink, 
+      '', 
+      'Quedo atento(a) para coordinar la visita técnica.',
+      EMOJI.check + ' Gracias por su tiempo.'
+    ].join('\n');
+
+    var wa = 'https://wa.me/526252690997?text=' + encodeURIComponent(cuerpo);
+    
+    console.log('[WhatsApp] Enviando mensaje con información completa:', {
+      plan: plan,
+      escenario: escenario,
+      nombre: nombre
+    });
+    
+    try { 
+      window.open(wa, '_blank'); 
+    } catch(error) {
+      console.error('[WhatsApp] Error al abrir enlace:', error);
+    }
+  }
+
+  // Inicializar selector de escenario cuando el DOM esté listo
+  setTimeout(() => {
+    initEscenarioSelector();
+  }, 500);
+
 });

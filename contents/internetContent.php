@@ -301,9 +301,21 @@
             <p class="intro">
               Aquí verás el costo inicial según si ya cuentas con antena o necesitas una nueva. También puedes elegir pagar la antena de contado o diferirla a 3 meses.
             </p>
+            
+            <!-- Botones de selección de escenario -->
+            <div class="escenario-selector" style="display: flex; gap: 1rem; justify-content: center; margin: 2rem 0;">
+              <button id="btn-ya-tengo" class="btn-escenario" data-escenario="propio" style="background: #f8fafc; border: 2px solid #e2e8f0; color: #4a5568; padding: 1rem 1.5rem; border-radius: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">
+                <i class="fa-solid fa-circle-check" style="margin-right: 0.5rem; color: #4f8cff;"></i>
+                Ya tengo antena
+              </button>
+              <button id="btn-necesito" class="btn-escenario" data-escenario="sinequipo" style="background: #f8fafc; border: 2px solid #e2e8f0; color: #4a5568; padding: 1rem 1.5rem; border-radius: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">
+                <i class="fa-solid fa-satellite-dish" style="margin-right: 0.5rem; color: #4f8cff;"></i>
+                Necesito antena
+              </button>
+            </div>
           </div>
           <div class="escenarios-grid">
-            <article class="escenario-card" id="esc-propio" data-esc="propio">
+            <article class="escenario-card" id="esc-propio" data-esc="propio" style="display: none;">
               <header><h3><i class="fa-solid fa-circle-check"></i> Ya tengo antena</h3></header>
               <ul class="incluye">
                 <li>Alineación de antena</li>
@@ -320,7 +332,7 @@
               </div>
               <button class="btn-escoger" data-select-esc="propio">Usar este escenario</button>
             </article>
-            <article class="escenario-card" id="esc-sinequipo" data-esc="sinequipo">
+            <article class="escenario-card" id="esc-sinequipo" data-esc="sinequipo" style="display: none;">
               <header><h3><i class="fa-solid fa-satellite-dish"></i> Necesito antena</h3></header>
               <ul class="incluye">
                 <li>Antena nueva <strong>$1,800</strong></li>
@@ -359,13 +371,15 @@
               </div>
               <div class="pago-box">
                 <h5><i class="fa-solid fa-credit-card"></i> Mercado Pago</h5>
-                <p>Alias: <code>norttek.mp</code><br>Ref: <code>INSTALACION</code></p>
+                <p>CLABE: <code>722969040367244111</code><br>Ref: <code>INSTALACION</code></p>
               </div>
               <div class="pago-box">
-                <h5><i class="fa-solid fa-link"></i> Links de Tarjeta</h5>
+                <h5><i class="fa-solid fa-link"></i> Pago con Tarjeta</h5>
                 <p>
-                  <a href="#" class="linkpay" data-link="mp-link">Pagar ahora</a><br>
-                  <a href="#" class="linkpay" data-link="mp-recurrente">Pago recurrente (cargo mensual)</a>
+                  <a href="https://biolibre.mx/norttek" target="_blank" rel="noopener noreferrer" class="linkpay" style="color: #0ea5e9; font-weight: 600;">
+                    <i class="fa-solid fa-external-link-alt"></i> Pagar con Tarjeta MercadoPago
+                  </a><br>
+                  <small style="color: #6b7280; font-size: 0.8rem;">Pagos seguros con tarjeta de crédito/débito</small>
                 </p>
               </div>
             </div>
