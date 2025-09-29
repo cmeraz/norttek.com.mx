@@ -10,7 +10,7 @@
         radial-gradient(circle at 20% 30%, rgba(79, 140, 255, 0.18) 0%, transparent 50%),
         radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.15) 0%, transparent 60%),
         radial-gradient(circle at 60% 20%, rgba(147, 51, 234, 0.12) 0%, transparent 40%),
-        url('https://images.unsplash.com/photo-1586281010595-c7beb68af0ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') !important;
+        url('../img/cartuchos-hero-bg.jpg') !important;
     background-size: cover, 800px 800px, 1000px 1000px, 600px 600px, cover !important;
     background-position: center, -100px -100px, calc(100% + 100px) calc(100% + 100px), 60% 20%, center !important;
     background-attachment: fixed, scroll, scroll, scroll, fixed !important;
