@@ -33,41 +33,34 @@
     </div>
   </section>
 
-  <!-- Menú de Navegación Rápida -->
-  <section class="cuentas-nav-menu">
-    <div class="nav-menu-container">
-      <div class="nav-menu-header">
-        <h3>
-          <i class="fa-solid fa-compass" aria-hidden="true"></i>
-          Navegación Rápida
-        </h3>
-        <p>Ir directamente a la información que necesitas</p>
-      </div>
-      <nav class="quick-nav">
-        <a href="#info-personal" class="nav-item" data-section="profile-card">
-          <div class="nav-icon">
+  <!-- Menú de Tabs Horizontales -->
+  <section class="cuentas-tabs-menu">
+    <div class="tabs-container">
+      <nav class="tabs-nav">
+        <button class="tab-button active" data-tab="info-personal">
+          <div class="tab-icon">
             <i class="fa-solid fa-user-circle"></i>
           </div>
           <span>Información Personal</span>
-        </a>
-        <a href="#info-empresarial" class="nav-item" data-section="company-card">
-          <div class="nav-icon">
+        </button>
+        <button class="tab-button" data-tab="info-empresarial">
+          <div class="tab-icon">
             <i class="fa-solid fa-building"></i>
           </div>
           <span>Datos Empresariales</span>
-        </a>
-        <a href="#info-fiscal" class="nav-item" data-section="fiscal-card">
-          <div class="nav-icon">
+        </button>
+        <button class="tab-button" data-tab="info-fiscal">
+          <div class="tab-icon">
             <i class="fa-solid fa-file-invoice"></i>
           </div>
           <span>Información Fiscal</span>
-        </a>
-        <a href="#cuenta-santander" class="nav-item" data-section="santander-card">
-          <div class="nav-icon">
+        </button>
+        <button class="tab-button" data-tab="cuenta-santander">
+          <div class="tab-icon">
             <i class="fa-solid fa-university"></i>
           </div>
           <span>Cuenta Bancaria</span>
-        </a>
+        </button>
       </nav>
     </div>
   </section>
@@ -81,7 +74,7 @@
     <div class="cuentas-grid">
       
       <!-- Card de Información Personal -->
-      <article id="info-personal" class="cuentas-card profile-card wide nt-soft-seq nt-delay-1" data-nt-anim>
+      <article id="info-personal" class="cuentas-card profile-card wide nt-soft-seq nt-delay-1 tab-content active" data-nt-anim>
         <h3>
           <i class="fa-solid fa-user-circle" aria-hidden="true" data-nt-icon-drift></i> 
           Información Personal
@@ -149,7 +142,7 @@
       </article>
 
       <!-- Card de Información Empresarial -->
-      <article id="info-empresarial" class="cuentas-card company-card wide nt-soft-seq nt-delay-2" data-nt-anim>
+      <article id="info-empresarial" class="cuentas-card company-card wide nt-soft-seq nt-delay-2 tab-content" data-nt-anim>
         <h3>
           <i class="fa-solid fa-building" aria-hidden="true" data-nt-icon-drift></i> 
           Norttek Solutions
@@ -224,7 +217,7 @@
       </article>
 
       <!-- Card de Información Fiscal SAT -->
-      <article id="info-fiscal" class="cuentas-card fiscal-card wide nt-soft-seq nt-delay-3" data-nt-anim>
+      <article id="info-fiscal" class="cuentas-card fiscal-card wide nt-soft-seq nt-delay-3 tab-content" data-nt-anim>
         <h3>
           <i class="fa-solid fa-file-invoice" aria-hidden="true" data-nt-icon-drift></i> 
           Información Fiscal SAT
@@ -384,7 +377,7 @@
       </article>
 
       <!-- Card de Cuenta Santander -->
-      <article id="cuenta-santander" class="cuentas-card bank-card santander-card wide nt-soft-seq nt-delay-4" data-nt-anim>
+      <article id="cuenta-santander" class="cuentas-card bank-card santander-card wide nt-soft-seq nt-delay-4 tab-content" data-nt-anim>
         <h3>
           <i class="fa-solid fa-university" aria-hidden="true" data-nt-icon-drift></i> 
           Cuenta Santander

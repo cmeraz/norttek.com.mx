@@ -19,7 +19,7 @@ function initCuentasDashboard() {
     initPaymentForm();
     initAccountSelection();
     initScrollAnimations();
-    initQuickNavigation();
+    initTabsSystem();
     
     // Inicializar animaciones de entrada
     initHeroAnimations();
@@ -539,81 +539,59 @@ function escapeHtml(text) {
 }
 
 // ==========================================================================
-// Navegación Rápida con Highlighting
+// Sistema de Tabs Horizontales
 // ==========================================================================
-function initQuickNavigation() {
-    const navItems = document.querySelectorAll('.nav-item');
-    const sections = document.querySelectorAll('.cuentas-card');
+function initTabsSystem() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
     
-    // Configurar clicks en los elementos de navegación
-    navItems.forEach(navItem => {
-        navItem.addEventListener('click', function(e) {
-            e.preventDefault();
+    // Configurar clicks en los botones de tabs
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetTab = this.getAttribute('data-tab');
             
-            const targetId = this.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
+            // Remover clases activas de todos los botones y contenidos
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
             
-            if (targetSection) {
-                // Remover clases activas de otros elementos
-                navItems.forEach(item => item.classList.remove('active'));
-                sections.forEach(section => section.classList.remove('highlight-active'));
+            // Activar el botón actual
+            this.classList.add('active');
+            
+            // Mostrar el contenido correspondiente
+            const targetContent = document.getElementById(targetTab);
+            if (targetContent) {
+                targetContent.classList.add('active');
                 
-                // Activar el elemento de navegación actual
-                this.classList.add('active');
-                
-                // Scroll suave hacia la sección
-                const targetPosition = targetSection.offsetTop - 100;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-                
-                // Highlight la sección después del scroll
+                // Scroll suave hacia la sección de contenido
                 setTimeout(() => {
-                    targetSection.classList.add('highlight-active');
+                    const tabsMenuHeight = document.querySelector('.cuentas-tabs-menu').offsetHeight;
+                    const dashboardTop = document.querySelector('.cuentas-dashboard').offsetTop;
+                    const targetPosition = dashboardTop - tabsMenuHeight - 20;
                     
-                    // Remover highlight después de 2 segundos (más rápido y sutil)
-                    setTimeout(() => {
-                        targetSection.classList.remove('highlight-active');
-                    }, 2000);
-                }, 300);
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }, 50);
             }
         });
     });
     
-    // Observador para activar elementos de navegación automáticamente durante scroll
-    const observerOptions = {
-        root: null,
-        rootMargin: '-20% 0px -70% 0px',
-        threshold: 0.1
-    };
+    // Asegurar que solo la primera tab esté activa al cargar
+    const firstTab = document.querySelector('.tab-button[data-tab="info-personal"]');
+    const firstContent = document.getElementById('info-personal');
     
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const sectionId = entry.target.id;
-                const correspondingNavItem = document.querySelector(`[href="#${sectionId}"]`);
-                
-                if (correspondingNavItem) {
-                    // Remover clase active de otros elementos
-                    navItems.forEach(item => item.classList.remove('active'));
-                    
-                    // Activar el elemento correspondiente
-                    correspondingNavItem.classList.add('active');
-                }
-            }
-        });
-    }, observerOptions);
+    if (firstTab && firstContent) {
+        // Remover todas las clases activas
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+        
+        // Activar la primera
+        firstTab.classList.add('active');
+        firstContent.classList.add('active');
+    }
     
-    // Observar todas las secciones
-    sections.forEach(section => {
-        if (section.id) {
-            sectionObserver.observe(section);
-        }
-    });
-    
-    console.log('🧭 Navegación rápida inicializada');
+    console.log('📑 Sistema de tabs inicializado');
 }
 
 // CSS dinámico para toasts y elementos adicionales
