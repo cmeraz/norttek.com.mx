@@ -990,7 +990,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (modalDatosForm) {
       modalDatosForm.addEventListener('submit', function(ev) {
         ev.preventDefault();
-        procesarFormularioDatos();
+        // Forzar blur para evitar doble envío en móviles
+        if (document.activeElement) document.activeElement.blur();
+        setTimeout(function(){
+          procesarFormularioDatos();
+        }, 50);
       });
     }
 
