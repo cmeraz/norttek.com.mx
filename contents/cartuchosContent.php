@@ -387,7 +387,7 @@ foreach ($cartuchos as $marca => $listaCartuchos) {
             </div>
         </section>
 
-        <!-- Contenido de la TAB 2: FAQ modernizada -->
+        <!-- Contenido de la TAB 2: FAQ modernizada con datos JSON -->
         <section class="preguntas-frecuentes nt-section hidden" id="preguntas-frecuentes">
             <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-white/20 overflow-hidden">
                 <div class="p-8">
@@ -404,57 +404,47 @@ foreach ($cartuchos as $marca => $listaCartuchos) {
                     </div>
 
                     <div class="max-w-4xl mx-auto">
-                        <!-- Sección de preguntas frecuentes -->
-                        <div class="space-y-6">
-                            <div class="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-2xl p-6">
-                                <h3 class="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
-                                    <i class="fa-solid fa-lightbulb text-yellow-500"></i>
-                                    ¿Cómo saber qué cartucho necesita mi impresora?
-                                </h3>
-                                <p class="text-gray-700 leading-relaxed">
-                                    La forma más fácil es utilizar nuestra herramienta de búsqueda. Solo ingresa el modelo de tu impresora y automáticamente te mostraremos todos los cartuchos compatibles con su rendimiento y especificaciones técnicas.
-                                </p>
-                            </div>
-
-                            <div class="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-6">
-                                <h3 class="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
-                                    <i class="fa-solid fa-shield-check text-green-500"></i>
-                                    ¿Los cartuchos compatibles afectan la garantía?
-                                </h3>
-                                <p class="text-gray-700 leading-relaxed">
-                                    No, usar cartuchos compatibles no anula la garantía de tu impresora. Todos nuestros cartuchos cumplen con estándares de calidad y son completamente seguros para tu equipo.
-                                </p>
-                            </div>
-
-                            <div class="bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200 rounded-2xl p-6">
-                                <h3 class="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
-                                    <i class="fa-solid fa-recycle text-purple-500"></i>
-                                    ¿Qué hago con los cartuchos vacíos?
-                                </h3>
-                                <p class="text-gray-700 leading-relaxed">
-                                    Ofrecemos un programa de reciclaje gratuito. Trae tus cartuchos vacíos a nuestras oficinas y nosotros nos encargamos de su disposición ecológica. Además, obtienes descuentos en tu próxima compra.
-                                </p>
-                            </div>
-
-                            <div class="bg-gradient-to-r from-orange-50 to-red-50 border border-orange-200 rounded-2xl p-6">
-                                <h3 class="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
-                                    <i class="fa-solid fa-chart-bar text-orange-500"></i>
-                                    ¿Cuánto dura un cartucho de tóner?
-                                </h3>
-                                <p class="text-gray-700 leading-relaxed">
-                                    El rendimiento varía según el modelo, pero generalmente oscila entre 1,500 y 15,000 páginas. En nuestra tabla puedes ver el rendimiento específico de cada cartucho para calcular el costo por página.
-                                </p>
-                            </div>
-
-                            <div class="bg-gradient-to-r from-teal-50 to-cyan-50 border border-teal-200 rounded-2xl p-6">
-                                <h3 class="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
-                                    <i class="fa-solid fa-truck text-teal-500"></i>
-                                    ¿Hacen entregas a domicilio?
-                                </h3>
-                                <p class="text-gray-700 leading-relaxed">
-                                    Sí, realizamos entregas sin costo adicional en la zona metropolitana. Para pedidos fuera de la ciudad, aplicamos tarifas preferenciales de envío. ¡Contacta para más información!
-                                </p>
-                            </div>
+                        <!-- FAQ usando datos JSON -->
+                        <div class="nt-faq-container">
+                            <?php
+                            $faqFile = __DIR__ . '/../includes/json/faqs/faq-cartuchos.json';
+                            if (file_exists($faqFile)) {
+                                $faqs = json_decode(file_get_contents($faqFile), true);
+                                if (is_array($faqs)) {
+                                    foreach ($faqs as $index => $faq) {
+                                        $icono = !empty($faq['icono']) ? htmlspecialchars($faq['icono']) : 'fas fa-question-circle';
+                                        $pregunta = isset($faq['pregunta']) ? htmlspecialchars($faq['pregunta']) : '';
+                                        $respuesta = isset($faq['respuesta']) ? htmlspecialchars($faq['respuesta']) : '';
+                            ?>
+                                <div class="nt-faq-item" data-expanded="false">
+                                    <h3 class="nt-faq-q">
+                                        <button 
+                                            class="nt-faq-toggle" 
+                                            type="button" 
+                                            aria-expanded="false" 
+                                            aria-controls="faq-answer-<?= $index ?>"
+                                        >
+                                            <i class="nt-faq-q-ico <?= $icono ?>"></i>
+                                            <span class="nt-faq-q-text"><?= $pregunta ?></span>
+                                            <i class="fas fa-chevron-down"></i>
+                                        </button>
+                                    </h3>
+                                    <div 
+                                        class="nt-faq-a" 
+                                        id="faq-answer-<?= $index ?>" 
+                                        aria-hidden="true" 
+                                        hidden
+                                    >
+                                        <div class="nt-faq-a-inner">
+                                            <p><?= $respuesta ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php
+                                    }
+                                }
+                            }
+                            ?>
                         </div>
 
                         <!-- Llamada a la acción -->

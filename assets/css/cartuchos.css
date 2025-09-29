@@ -421,13 +421,14 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 18px 20px;
+    padding: 20px 24px;
     border: none;
     background: transparent;
     text-align: left;
     cursor: pointer;
     transition: all 0.2s ease;
     font-family: inherit;
+    font-size: 16px;
 }
 
 .nt-faq-toggle:hover {
@@ -462,11 +463,14 @@
 }
 
 .nt-faq-q-text {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     color: #1f2937;
-    line-height: 1.4;
+    line-height: 1.5;
     flex: 1;
+    text-align: left;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .nt-faq-a {
@@ -490,10 +494,10 @@
 }
 
 .nt-faq-a-inner {
-    padding: 0 20px 20px;
+    padding: 0 24px 24px;
     color: #4b5563;
-    line-height: 1.6;
-    font-size: 14px;
+    line-height: 1.7;
+    font-size: 15px;
 }
 
 .nt-faq-a-inner p {

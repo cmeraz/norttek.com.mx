@@ -635,7 +635,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Tabs funcionalidad (ejemplo horizontal)
     // ==========================
     // Controla los tabs principales (compatibilidades y preguntas frecuentes)
-    const tabBtns = document.querySelectorAll('.ejemplo-tab-btn');
     const tabContents = {
         tab1: document.getElementById('compatibilidades'),
         tab2: document.getElementById('preguntas-frecuentes')
@@ -655,11 +654,51 @@ document.addEventListener('DOMContentLoaded', function() {
             // Actualiza estilos de los botones
             tabBtns.forEach(b => b.classList.remove('active', 'text-gray-700', 'border-blue-400'));
             tabBtns.forEach(b => b.classList.add('text-gray-500'));
+            
+            // Aquí iría más lógica de tabs si se necesitara
+            // Por ahora delegamos a initModernTabs()
+        });
+    });
+
+    // ==========================
+    // Funcionalidad FAQ Interactivo
+    // ==========================
+    function initFAQInteractivity() {
+        const faqToggles = document.querySelectorAll('.nt-faq-toggle');
+        
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const faqItem = this.closest('.nt-faq-item');
+                const faqAnswer = this.getAttribute('aria-controls') ? 
+                    document.getElementById(this.getAttribute('aria-controls')) : 
+                    faqItem.querySelector('.nt-faq-a');
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                
+                // Toggle del estado
+                this.setAttribute('aria-expanded', !isExpanded);
+                faqAnswer.setAttribute('aria-hidden', isExpanded);
+                faqItem.setAttribute('data-expanded', !isExpanded);
+                
+                if (!isExpanded) {
+                    // Mostrar respuesta
+                    faqAnswer.removeAttribute('hidden');
+                    faqAnswer.style.maxHeight = faqAnswer.scrollHeight + 'px';
+                } else {
+                    // Ocultar respuesta
+                    faqAnswer.style.maxHeight = '0px';
+                    setTimeout(() => {
+                        faqAnswer.setAttribute('hidden', '');
+                    }, 400);
+                }
+            });
+        });
+    }
 
     // ==========================
     // Inicialización de todas las funcionalidades
     // ==========================
     initModernTabs();
+    initFAQInteractivity();
     contarResultados(); // Contar resultados iniciales
     configurarBusqueda();
     configurarFotoBtn();
