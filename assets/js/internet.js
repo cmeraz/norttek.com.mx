@@ -1138,10 +1138,11 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function procesarFormularioDatos() {
-    if (modalContexto === 'cliente') {
-      procesarLoginCliente();
-    } else if (modalContexto === 'instalacion') {
+    // Forzar contexto por seguridad
+    if (modalContexto === 'instalacion' || (campoNombre && campoNombre.style.display !== 'none')) {
       procesarCapturaNombre();
+    } else {
+      procesarLoginCliente();
     }
   }
 
@@ -1202,12 +1203,13 @@ document.addEventListener('DOMContentLoaded', function() {
     var firstName = nombreNormalizado.split(/\s+/)[0] || '';
     setStoredName(nombreNormalizado, firstName);
 
+    // Cerrar el modal y esperar a que termine la animación antes de abrir WhatsApp
     cerrarModalDatos();
-    
-    // Continuar con el flujo de WhatsApp
     setTimeout(function() {
+      // Forzar blur para evitar conflictos de foco en móviles
+      if (document.activeElement) document.activeElement.blur();
       enviarWhatsAppInstalacion(nombreNormalizado);
-    }, 300);
+    }, 350);
   }
 
   function mostrarErrorModal(mensaje) {
