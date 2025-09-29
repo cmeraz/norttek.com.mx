@@ -37,29 +37,29 @@
   <section class="cuentas-tabs-menu">
     <div class="tabs-container">
       <nav class="tabs-nav">
-        <button class="tab-button active" data-tab="info-personal">
+        <button class="tab-button active" data-tab="info-personal" title="Información Personal" data-tooltip="Información Personal">
           <div class="tab-icon">
             <i class="fa-solid fa-user-circle"></i>
           </div>
-          <span>Información Personal</span>
+          <span class="tab-text">Información Personal</span>
         </button>
-        <button class="tab-button" data-tab="info-empresarial">
+        <button class="tab-button" data-tab="info-empresarial" title="Datos Empresariales" data-tooltip="Datos Empresariales">
           <div class="tab-icon">
             <i class="fa-solid fa-building"></i>
           </div>
-          <span>Datos Empresariales</span>
+          <span class="tab-text">Datos Empresariales</span>
         </button>
-        <button class="tab-button" data-tab="info-fiscal">
+        <button class="tab-button" data-tab="info-fiscal" title="Información Fiscal" data-tooltip="Información Fiscal">
           <div class="tab-icon">
             <i class="fa-solid fa-file-invoice"></i>
           </div>
-          <span>Información Fiscal</span>
+          <span class="tab-text">Información Fiscal</span>
         </button>
-        <button class="tab-button" data-tab="cuenta-santander">
+        <button class="tab-button" data-tab="cuenta-santander" title="Cuenta Bancaria" data-tooltip="Cuenta Bancaria">
           <div class="tab-icon">
             <i class="fa-solid fa-university"></i>
           </div>
-          <span>Cuenta Bancaria</span>
+          <span class="tab-text">Cuenta Bancaria</span>
         </button>
       </nav>
     </div>

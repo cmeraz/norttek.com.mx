@@ -575,6 +575,34 @@ function initTabsSystem() {
                 }, 50);
             }
         });
+        
+        // Manejo de tooltips táctiles para móviles
+        if (window.innerWidth <= 768) {
+            let tooltipTimeout;
+            
+            // Mostrar tooltip en touch/tap prolongado
+            button.addEventListener('touchstart', function(e) {
+                if (!this.classList.contains('active')) {
+                    tooltipTimeout = setTimeout(() => {
+                        showMobileTooltip(this);
+                    }, 500); // Mostrar después de 500ms
+                }
+            });
+            
+            // Cancelar tooltip si se suelta rápido
+            button.addEventListener('touchend', function(e) {
+                clearTimeout(tooltipTimeout);
+                // Ocultar tooltip después de 2 segundos
+                setTimeout(() => {
+                    hideMobileTooltip();
+                }, 2000);
+            });
+            
+            // Cancelar si se mueve el dedo
+            button.addEventListener('touchmove', function(e) {
+                clearTimeout(tooltipTimeout);
+            });
+        }
     });
     
     // Asegurar que solo la primera tab esté activa al cargar
@@ -592,6 +620,47 @@ function initTabsSystem() {
     }
     
     console.log('📑 Sistema de tabs inicializado');
+}
+
+// Funciones para tooltips móviles
+function showMobileTooltip(button) {
+    // Remover tooltip existente
+    hideMobileTooltip();
+    
+    const tooltip = document.createElement('div');
+    tooltip.className = 'mobile-tooltip';
+    tooltip.textContent = button.getAttribute('data-tooltip');
+    tooltip.id = 'mobile-tooltip-active';
+    
+    // Posicionar el tooltip
+    const rect = button.getBoundingClientRect();
+    tooltip.style.position = 'fixed';
+    tooltip.style.bottom = (window.innerHeight - rect.top + 10) + 'px';
+    tooltip.style.left = (rect.left + rect.width / 2) + 'px';
+    tooltip.style.transform = 'translateX(-50%)';
+    tooltip.style.background = 'rgba(0, 0, 0, 0.9)';
+    tooltip.style.color = 'white';
+    tooltip.style.padding = '8px 12px';
+    tooltip.style.borderRadius = '6px';
+    tooltip.style.fontSize = '12px';
+    tooltip.style.zIndex = '10000';
+    tooltip.style.pointerEvents = 'none';
+    tooltip.style.whiteSpace = 'nowrap';
+    tooltip.style.animation = 'tooltipFadeIn 0.2s ease-in-out';
+    
+    document.body.appendChild(tooltip);
+}
+
+function hideMobileTooltip() {
+    const existingTooltip = document.getElementById('mobile-tooltip-active');
+    if (existingTooltip) {
+        existingTooltip.style.animation = 'tooltipFadeOut 0.2s ease-in-out';
+        setTimeout(() => {
+            if (existingTooltip.parentNode) {
+                existingTooltip.parentNode.removeChild(existingTooltip);
+            }
+        }, 200);
+    }
 }
 
 // CSS dinámico para toasts y elementos adicionales
