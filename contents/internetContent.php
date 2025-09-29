@@ -480,6 +480,14 @@
           <code class="clip-src" data-clip="722969040367244111">722969040367244111 <button type="button" class="clip-btn" data-clip="722969040367244111" title="Copiar" aria-label="Copiar CLABE MercadoPago"><i class="fa-regular fa-clone"></i></button></code>
         </div>
       </div>
+      <div style="background:#e3f2fd; border:1px solid #4fc3f7; border-radius:10px; padding:.65rem .7rem; display:flex; flex-direction:column; gap:.4rem;">
+        <strong style="font-size:.72rem; letter-spacing:.5px; text-transform:uppercase; color:#01579b; display:flex; align-items:center; gap:.4rem;"><i class="fa-solid fa-credit-card" aria-hidden="true" style="color:#0288d1;"></i> Pago con Tarjeta Crédito/Débito</strong>
+        <p style="font-size:.65rem; color:#0277bd; margin:.25rem 0;">Paga directamente con tu tarjeta de crédito o débito a través de MercadoPago</p>
+        <a href="https://biolibre.mx/norttek" target="_blank" rel="noopener noreferrer" style="background:linear-gradient(135deg,#0288d1,#0277bd); color:white; text-decoration:none; font-weight:700; font-size:.7rem; letter-spacing:.5px; text-transform:uppercase; padding:.5rem .75rem; border-radius:8px; text-align:center; transition:all 0.2s; display:inline-flex; align-items:center; gap:.4rem; align-self:flex-start;">
+          <i class="fa-solid fa-external-link-alt" aria-hidden="true"></i>
+          Pagar Ahora
+        </a>
+      </div>
       <div style="background:#f8fbff; border:1px solid #e2edf9; border-radius:10px; padding:.65rem .75rem; display:flex; flex-direction:column; gap:.45rem;">
         <strong style="font-size:.72rem; letter-spacing:.5px; text-transform:uppercase; color:#4f5d70; display:flex; align-items:center; gap:.4rem;"><i class="fa-solid fa-tag" aria-hidden="true" style="color:#4f8cff;"></i> Referencia de Pago</strong>
         <div style="display:grid; gap:.55rem; grid-template-columns:repeat(auto-fit,minmax(170px,1fr));">

@@ -442,6 +442,26 @@
             </div>
           </div>
 
+          <!-- Pago de Facturas con Tarjeta Clip.mx -->
+          <div class="clip-payment-section" style="background:linear-gradient(135deg,#e8f5e8,#f1f9f1); border:1px solid #4caf50; border-radius:12px; padding:1rem .9rem; margin-bottom:1.2rem;">
+            <h4 style="color:#2e7d32; font-size:.85rem; font-weight:800; letter-spacing:.5px; text-transform:uppercase; margin:0 0 .6rem 0; display:flex; align-items:center; gap:.5rem;">
+              <i class="fa-solid fa-credit-card" aria-hidden="true" style="color:#4caf50;"></i> 
+              Pago de Facturas con Tarjeta
+            </h4>
+            <p style="font-size:.7rem; color:#2e7d32; margin:0 0 .8rem 0; line-height:1.4;">
+              Paga tus facturas directamente con tarjeta de crédito o débito a través de Clip México
+            </p>
+            <a href="https://clip.mx/@NorttekSolutions" target="_blank" rel="noopener noreferrer" 
+               style="background:linear-gradient(135deg,#4caf50,#388e3c); color:white; text-decoration:none; font-weight:700; font-size:.72rem; letter-spacing:.5px; text-transform:uppercase; padding:.65rem .85rem; border-radius:8px; display:inline-flex; align-items:center; gap:.5rem; box-shadow:0 2px 8px rgba(76,175,80,0.3); transition:all 0.2s;">
+              <i class="fa-solid fa-external-link-alt" aria-hidden="true"></i>
+              Pagar Factura con Clip
+            </a>
+            <div style="margin-top:.6rem; font-size:.6rem; color:#4caf50; display:flex; align-items:center; gap:.4rem;">
+              <i class="fa-solid fa-shield-check" aria-hidden="true"></i>
+              <span>Procesado de forma segura por Clip México</span>
+            </div>
+          </div>
+
           <!-- Información para Transferencias -->
           <div class="transfer-info">
             <h4><i class="fa-solid fa-exchange-alt"></i> Información para Transferencias</h4>
