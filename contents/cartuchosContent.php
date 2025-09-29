@@ -345,7 +345,7 @@ foreach ($cartuchos as $marca => $listaCartuchos) {
                                                         <?= htmlspecialchars($cartucho['modelo']) ?>
                                                     </div>
                                                 </td>
-                                                <td class="px-6 py-4 last:border-r-0">
+                                                <td class="px-6 py-4 border-r border-gray-100 last:border-r-0">
                                                     <?= impresorasList($cartucho['impresoras_compatibles']) ?>
                                                 </td>
                                                 <td class="px-6 py-4 border-r border-gray-100 last:border-r-0">
@@ -354,18 +354,18 @@ foreach ($cartuchos as $marca => $listaCartuchos) {
                                                         <?= htmlspecialchars($cartucho['toner_rendimiento']) ?>
                                                     </div>
                                                 </td>
-                                                <td class="px-6 py-4">
+                                                <td class="px-6 py-4 border-r border-gray-100 last:border-r-0">
                                                     <?php if (!empty($cartucho['tambor']['modelo'])): ?>
-                                                        <div class="font-mono font-semibold px-3 py-1 inline-block">
+                                                        <div class="font-mono font-semibold text-gray-900 px-3 py-1 inline-block">
                                                             <?= htmlspecialchars($cartucho['tambor']['modelo']) ?>
                                                         </div>
                                                     <?php else: ?>
                                                         <span class="text-gray-400 italic">No aplica</span>
                                                     <?php endif; ?>
                                                 </td>
-                                                <td class="px-6 py-4">
+                                                <td class="px-6 py-4 border-r border-gray-100 last:border-r-0">
                                                     <?php if (!empty($cartucho['tambor']['rendimiento'])): ?>
-                                                        <div class="inline-flex items-center gap-2 text-cyan-800 px-3 py-2 font-semibold">
+                                                        <div class="font-mono font-semibold text-gray-900 px-3 py-1 inline-block">
                                                             <?= htmlspecialchars($cartucho['tambor']['rendimiento']) ?>
                                                         </div>
                                                     <?php else: ?>
