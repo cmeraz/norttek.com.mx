@@ -337,29 +337,26 @@ foreach ($cartuchos as $marca => $listaCartuchos) {
                                             <tr class="cartucho-row hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-300 group">
                                                 <td class="px-6 py-4 border-r border-gray-100 last:border-r-0">
                                                     <div class="flex items-center gap-3">
-                                                        <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-sm">
-                                                            <?= strtoupper(substr($marca, 0, 2)) ?>
-                                                        </div>
                                                         <span class="font-semibold text-gray-900"><?= htmlspecialchars($marca) ?></span>
                                                     </div>
                                                 </td>
                                                 <td class="px-6 py-4 border-r border-gray-100 last:border-r-0">
-                                                    <div class="font-mono font-semibold text-gray-900 bg-gray-100 px-3 py-1 rounded-lg inline-block">
+                                                    <div class="font-mono font-semibold text-gray-900 px-3 py-1 inline-block">
                                                         <?= htmlspecialchars($cartucho['modelo']) ?>
                                                     </div>
                                                 </td>
-                                                <td class="px-6 py-4 border-r border-gray-100 last:border-r-0">
+                                                <td class="px-6 py-4 last:border-r-0">
                                                     <?= impresorasList($cartucho['impresoras_compatibles']) ?>
                                                 </td>
                                                 <td class="px-6 py-4 border-r border-gray-100 last:border-r-0">
-                                                    <div class="inline-flex items-center gap-2 bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 px-3 py-2 rounded-xl font-semibold">
+                                                    <div class="inline-flex items-center gap-2 from-orange-100 to-red-100 text-orange-800 px-3 py-2 font-semibold">
                                                         <i class="fa-solid fa-fill-drip text-orange-600"></i>
                                                         <?= htmlspecialchars($cartucho['toner_rendimiento']) ?>
                                                     </div>
                                                 </td>
-                                                <td class="px-6 py-4 border-r border-gray-100 last:border-r-0">
+                                                <td class="px-6 py-4">
                                                     <?php if (!empty($cartucho['tambor']['modelo'])): ?>
-                                                        <div class="font-mono font-semibold text-pink-800 bg-pink-100 px-3 py-1 rounded-lg inline-block">
+                                                        <div class="font-mono font-semibold px-3 py-1 inline-block">
                                                             <?= htmlspecialchars($cartucho['tambor']['modelo']) ?>
                                                         </div>
                                                     <?php else: ?>
@@ -368,8 +365,7 @@ foreach ($cartuchos as $marca => $listaCartuchos) {
                                                 </td>
                                                 <td class="px-6 py-4">
                                                     <?php if (!empty($cartucho['tambor']['rendimiento'])): ?>
-                                                        <div class="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-100 to-blue-100 text-cyan-800 px-3 py-2 rounded-xl font-semibold">
-                                                            <i class="fa-solid fa-chart-bar text-cyan-600"></i>
+                                                        <div class="inline-flex items-center gap-2 text-cyan-800 px-3 py-2 font-semibold">
                                                             <?= htmlspecialchars($cartucho['tambor']['rendimiento']) ?>
                                                         </div>
                                                     <?php else: ?>
