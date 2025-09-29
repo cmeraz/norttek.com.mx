@@ -193,15 +193,19 @@
         <p>Datos oficiales registrados ante el Servicio de Administración Tributaria</p>
         
         <div class="fiscal-content">
-          <div class="fiscal-header">
+          <a href="assets/documents/SAT.pdf" download="Constancia_Situacion_Fiscal_Norttek.pdf" class="fiscal-header fiscal-download-btn" title="Descargar Constancia de Situación Fiscal">
             <div class="sat-logo">
               <img src="assets/img/SAT-logo.png" alt="Logo SAT" class="sat-logo-img">
             </div>
             <div class="fiscal-info">
               <h4>Constancia de Situación Fiscal</h4>
               <p class="fiscal-date">Cuauhtémoc, Chihuahua - 28 de Septiembre de 2025</p>
+              <div class="download-indicator">
+                <i class="fa-solid fa-download" aria-hidden="true"></i>
+                <span>Hacer clic para descargar</span>
+              </div>
             </div>
-          </div>
+          </a>
 
           <div class="fiscal-grid">
             <div class="fiscal-item-modern">

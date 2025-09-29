@@ -813,6 +813,64 @@ body section.nt-hero-wrapper.cuentas-hero {
     border: 1px solid #bae6fd;
     border-radius: 10px;
     padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Estilos para el botón descargable */
+.fiscal-header.fiscal-download-btn {
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border: 2px solid #bae6fd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.fiscal-header.fiscal-download-btn:hover {
+    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+    border-color: #0ea5e9;
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
+    transform: translateY(-2px);
+}
+
+.fiscal-header.fiscal-download-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(14, 165, 233, 0.3);
+}
+
+/* Indicador de descarga */
+.download-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    color: #0369a1;
+    font-size: 0.75rem;
+    font-weight: 600;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.fiscal-header.fiscal-download-btn:hover .download-indicator {
+    opacity: 1;
+}
+
+.download-indicator i {
+    animation: bounce-download 1.5s infinite;
+}
+
+/* Animación del icono de descarga */
+@keyframes bounce-download {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-3px);
+    }
+    60% {
+        transform: translateY(-1.5px);
+    }
 }
 
 .sat-logo {
