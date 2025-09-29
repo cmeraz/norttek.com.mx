@@ -442,6 +442,38 @@
             </div>
           </div>
 
+          <!-- Pago de Facturas con Tarjeta Clip.mx -->
+          <div class="clip-payment-info" style="margin-bottom: 1.5rem;">
+            <h4><i class="fa-solid fa-credit-card"></i> Pago de Facturas con Tarjeta</h4>
+            <div class="clip-payment-grid" style="background:#f8fbff; border:1px solid #e2edf9; border-radius:12px; padding:1rem .95rem; display:flex; flex-direction:column; gap:.8rem;">
+              <div style="display:flex; align-items:center; gap:.6rem;">
+                <div style="width:40px; height:40px; background:linear-gradient(135deg,#4f8cff,#0369a1); border-radius:10px; display:flex; align-items:center; justify-content:center;">
+                  <i class="fa-solid fa-credit-card" style="color:#ffffff; font-size:1.1rem;"></i>
+                </div>
+                <div style="flex:1;">
+                  <h5 style="margin:0; font-size:.85rem; font-weight:800; color:#0f172a;">Clip.mx - Pago con Tarjeta de Crédito/Débito</h5>
+                  <p style="margin:0; font-size:.7rem; color:#6b7a90; line-height:1.4;">Paga tus facturas de forma segura con cualquier tarjeta</p>
+                </div>
+              </div>
+              <div style="display:flex; flex-wrap:wrap; gap:.8rem; align-items:center;">
+                <a href="https://clip.mx/@NorttekSolutions" target="_blank" rel="noopener noreferrer" class="clip-payment-btn" style="background:linear-gradient(135deg,#6366f1,#4f46e5); color:#ffffff; text-decoration:none; font-weight:800; font-size:.75rem; letter-spacing:.5px; text-transform:uppercase; padding:.7rem 1rem; border-radius:10px; text-align:center; transition:all .2s ease; display:inline-flex; align-items:center; justify-content:center; gap:.5rem; box-shadow:0 4px 12px rgba(79,70,229,.25);">
+                  <i class="fa-solid fa-external-link-alt" aria-hidden="true"></i>
+                  Pagar Factura
+                </a>
+                <div style="display:flex; flex-direction:column; gap:.2rem; font-size:.65rem; color:#6b7a90;">
+                  <div style="display:flex; align-items:center; gap:.3rem;">
+                    <i class="fa-solid fa-shield-check" style="color:#10b981;"></i>
+                    <span>Pagos seguros</span>
+                  </div>
+                  <div style="display:flex; align-items:center; gap:.3rem;">
+                    <i class="fa-solid fa-clock" style="color:#3b82f6;"></i>
+                    <span>Procesamiento inmediato</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Información para Transferencias -->
           <div class="transfer-info">
             <h4><i class="fa-solid fa-exchange-alt"></i> Información para Transferencias</h4>
