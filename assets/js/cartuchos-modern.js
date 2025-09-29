@@ -205,6 +205,146 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ==========================
+    // FAQ Functionality - Mejorada
+    // ==========================
+    function initFAQFunctionality() {
+        // Esperar un poco para que el DOM se cargue completamente
+        setTimeout(() => {
+            // Inicializar FAQ toggles
+            const faqToggles = document.querySelectorAll('[data-faq-toggle]');
+            const faqSearch = document.querySelector('[data-faq-search]');
+            const faqExpand = document.querySelector('[data-faq-expand]');
+            const faqCollapse = document.querySelector('[data-faq-collapse]');
+
+            // Toggle individual FAQ items
+            faqToggles.forEach((toggle, index) => {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const expanded = this.getAttribute('aria-expanded') === 'true';
+                    const targetId = this.getAttribute('aria-controls');
+                    const target = targetId ? document.getElementById(targetId) : null;
+                    const item = this.closest('.nt-faq-item');
+
+                    if (target && item) {
+                        if (expanded) {
+                            // Cerrar
+                            this.setAttribute('aria-expanded', 'false');
+                            target.setAttribute('aria-hidden', 'true');
+                            target.setAttribute('hidden', '');
+                            item.setAttribute('data-expanded', 'false');
+                            
+                            // Animación de cierre
+                            target.style.maxHeight = '0px';
+                            target.style.opacity = '0';
+                            target.style.paddingTop = '0px';
+                        } else {
+                            // Abrir
+                            this.setAttribute('aria-expanded', 'true');
+                            target.setAttribute('aria-hidden', 'false');
+                            target.removeAttribute('hidden');
+                            item.setAttribute('data-expanded', 'true');
+                            
+                            // Animación de apertura
+                            target.style.maxHeight = '800px';
+                            target.style.opacity = '1';
+                            target.style.paddingTop = '8px';
+                        }
+                    }
+                });
+            });
+
+            // Búsqueda en FAQ
+            if (faqSearch) {
+                faqSearch.addEventListener('input', function() {
+                    const query = this.value.toLowerCase().trim();
+                    const items = document.querySelectorAll('.nt-faq-item');
+
+                    items.forEach(item => {
+                        const text = item.textContent.toLowerCase();
+                        const matches = query === '' || text.includes(query);
+                        
+                        if (matches) {
+                            item.classList.remove('nt-faq-hidden');
+                            item.style.display = '';
+                        } else {
+                            item.classList.add('nt-faq-hidden');
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            }
+
+            // Expandir todos
+            if (faqExpand) {
+                faqExpand.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    faqToggles.forEach(toggle => {
+                        const targetId = toggle.getAttribute('aria-controls');
+                        const target = document.getElementById(targetId);
+                        const item = toggle.closest('.nt-faq-item');
+
+                        if (target && item && !item.classList.contains('nt-faq-hidden')) {
+                            toggle.setAttribute('aria-expanded', 'true');
+                            target.setAttribute('aria-hidden', 'false');
+                            target.removeAttribute('hidden');
+                            item.setAttribute('data-expanded', 'true');
+                            
+                            target.style.maxHeight = '800px';
+                            target.style.opacity = '1';
+                            target.style.paddingTop = '8px';
+                        }
+                    });
+                });
+            }
+
+            // Colapsar todos
+            if (faqCollapse) {
+                faqCollapse.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    faqToggles.forEach(toggle => {
+                        const targetId = toggle.getAttribute('aria-controls');
+                        const target = document.getElementById(targetId);
+                        const item = toggle.closest('.nt-faq-item');
+
+                        if (target && item) {
+                            toggle.setAttribute('aria-expanded', 'false');
+                            target.setAttribute('aria-hidden', 'true');
+                            target.setAttribute('hidden', '');
+                            item.setAttribute('data-expanded', 'false');
+                            
+                            target.style.maxHeight = '0px';
+                            target.style.opacity = '0';
+                            target.style.paddingTop = '0px';
+                        }
+                    });
+                });
+            }
+        }, 300);
+    }
+
+    // Hacer disponible globalmente para compatibilidad
+    window.NTFaqApply = function(searchInput) {
+        if (!searchInput) return;
+        
+        const query = searchInput.value.toLowerCase().trim();
+        const items = document.querySelectorAll('.nt-faq-item');
+
+        items.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            const matches = query === '' || text.includes(query);
+            
+            if (matches) {
+                item.classList.remove('nt-faq-hidden');
+                item.style.display = '';
+            } else {
+                item.classList.add('nt-faq-hidden');
+                item.style.display = 'none';
+            }
+        });
+    };
+
+    // ==========================
     // Inicialización de todas las funcionalidades
     // ==========================
     initModernTabs();
@@ -212,6 +352,7 @@ document.addEventListener('DOMContentLoaded', function() {
     configurarFotoBtn();
     contarResultados();
     initVisualEffects();
+    initFAQFunctionality();
 
     // Mostrar primera pestaña por defecto
     if (tabBtns.length > 0) {
