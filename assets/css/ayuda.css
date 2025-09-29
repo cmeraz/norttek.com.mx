@@ -24,6 +24,7 @@
     --docs-sidebar-width: 280px;
     --docs-sidebar-bg: #fafbfc;
     --docs-content-max-width: 800px;
+    --docs-navbar-height: 90px; /* Altura del navbar principal */
     
     --docs-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     --docs-shadow-lg: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -50,7 +51,8 @@ body {
 /* Container principal */
 .docs-container {
     display: flex;
-    min-height: 100vh;
+    min-height: calc(100vh - var(--docs-navbar-height));
+    margin-top: var(--docs-navbar-height);
     position: relative;
 }
 
@@ -62,11 +64,11 @@ body {
     background-color: var(--docs-sidebar-bg);
     border-right: 1px solid var(--docs-border);
     position: fixed;
-    top: 0;
+    top: var(--docs-navbar-height);
     left: 0;
-    height: 100vh;
+    height: calc(100vh - var(--docs-navbar-height));
     overflow-y: auto;
-    z-index: 100;
+    z-index: 40;
 }
 
 .sidebar-header {
