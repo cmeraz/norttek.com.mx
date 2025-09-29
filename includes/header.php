@@ -100,20 +100,64 @@ if(file_exists($autoCssPathServer)){
         <script src="<?= htmlspecialchars($src) ?>"></script>
     <?php endforeach; ?>
 <?php endif; ?>
+
+<!-- Script inline para mostrar loader inmediatamente -->
+<script>
+    // Garantizar que el loader sea visible antes de cualquier renderizado
+    document.documentElement.style.overflow = 'hidden';
+    document.addEventListener('DOMContentLoaded', function() {
+        const loader = document.getElementById('loader');
+        if (loader) {
+            loader.style.display = 'flex';
+            loader.style.opacity = '1';
+        }
+    });
+</script>
 </head>
 <body>
 
 <!-- Preload de imagen de fondo (oculto inicialmente) -->
 <img id="preload-bg" src="assets/img/loader.jpg" style="display:none;">
 
-<!-- Loader inicial de la página -->
-<div id="loader">
+<!-- Loader inicial de la página - Remasterizado -->
+<div id="loader" style="display: flex !important; opacity: 1 !important;">
     <div class="loader-content">
-    <img src="assets/img/logo-norttek.png" alt="Logo Norttek" class="company-logo">
-        <div class="spinner"></div>
-        <div class="progress-bar">
-            <div class="progress-fill"></div>
+        <!-- Logo con animación de entrada -->
+        <div class="logo-container">
+            <img src="assets/img/logo-norttek.png" alt="Logo Norttek" class="company-logo">
+            <div class="logo-glow"></div>
         </div>
-        <div class="progress-text">0%</div>
+        
+        <!-- Spinner moderno con múltiples elementos -->
+        <div class="modern-spinner">
+            <div class="spinner-ring primary"></div>
+            <div class="spinner-ring secondary"></div>
+            <div class="spinner-dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+        
+        <!-- Barra de progreso modernizada -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+                <div class="progress-shine"></div>
+            </div>
+            <div class="progress-text">
+                <span class="percentage">0%</span>
+                <span class="loading-text">Cargando...</span>
+            </div>
+        </div>
+        
+        <!-- Elementos decorativos flotantes -->
+        <div class="floating-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
     </div>  
 </div>

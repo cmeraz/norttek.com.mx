@@ -1,78 +1,415 @@
-/* Loader full screen */
-#loader {
-    display: none; /* oculto por defecto */
-    /* resto del CSS */
-}
+/* ===============================
+   LOADER REMASTERIZADO - NORTTEK
+   =============================== */
 
 #loader {
     position: fixed;
-    top: 0; 
+    top: 0;
     left: 0;
-    width: 100%; 
+    width: 100%;
     height: 100%;
     z-index: 9999;
+    display: flex; /* Visible por defecto para evitar FOUC */
 
-    /* Imagen de fondo con degradado superpuesto */
+    /* Imagen de fondo con degradado moderno */
     background-image: 
-        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), /* degradado semitransparente negro */
-        url('../img/loader.jpg'); /* tu imagen de fondo */
+        linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,40,70,0.6) 50%, rgba(0,0,0,0.8) 100%),
+        url('../img/loader.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
 
+    /* Flexbox para centrar contenido */
+    justify-content: center;
+    align-items: center;
+    
+    /* Mostrar inmediatamente */
+    opacity: 1;
+}
+
+/* Ocultar contenido principal hasta que termine el loader */
+body {
+    overflow: hidden; /* Evitar scroll durante la carga */
+}
+
+body.loaded {
+    overflow: auto; /* Restaurar scroll después de cargar */
+}
+
+#main-content {
+    display: none; /* Oculto por defecto hasta que termine el loader */
+}
+
+/* Animaciones del loader */
+@keyframes loaderFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Contenedor principal del loader */
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* ==============================
+   LOGO CON EFECTOS MODERNOS
+   ============================== */
+
+.logo-container {
+    position: relative;
+    margin-bottom: 40px;
+    animation: logoEntrance 1s ease-out 0.2s both;
+}
+
+.company-logo {
+    width: 180px;
+    height: auto;
+    filter: drop-shadow(0 10px 30px rgba(0,188,212,0.3));
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.logo-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(0,188,212,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: logoGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes logoEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes logoGlow {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.3;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.1;
+    }
+}
+
+/* ==============================
+   SPINNER MODERNO MULTI-LAYER
+   ============================== */
+
+.modern-spinner {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 50px;
+    animation: spinnerEntrance 0.8s ease-out 0.5s both;
+}
+
+.spinner-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid transparent;
+}
+
+.spinner-ring.primary {
+    width: 100px;
+    height: 100px;
+    top: 0;
+    left: 0;
+    border-top: 3px solid #00bcd4;
+    border-right: 3px solid #00bcd4;
+    animation: spinPrimary 2s linear infinite;
+}
+
+.spinner-ring.secondary {
+    width: 70px;
+    height: 70px;
+    top: 15px;
+    left: 15px;
+    border-top: 2px solid #4fc3f7;
+    border-left: 2px solid #4fc3f7;
+    animation: spinSecondary 1.5s linear infinite reverse;
+}
+
+.spinner-dots {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.loader-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* centra logo, spinner y barra */
-}
-
-/* Logo más pequeño */
-.company-logo {
-    width: 150px; /* ajusta según prefieras */
-    margin-bottom: 30px;
-}
-
-/* Spinner giratorio */
-.spinner {
-    border: 5px solid rgba(255,255,255,0.1);
-    border-top: 5px solid #00bcd4;
+.dot {
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(45deg, #00bcd4, #4fc3f7);
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-    margin-bottom: 20px; /* separa del progress bar */
+    position: absolute;
+    animation: dotPulse 1.5s ease-in-out infinite;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg);}
-    100% { transform: rotate(360deg);}
+.dot:nth-child(1) {
+    animation-delay: 0s;
+    transform: translateY(-35px);
 }
 
-/* Barra de progreso */
+.dot:nth-child(2) {
+    animation-delay: 0.3s;
+    transform: rotate(120deg) translateY(-35px);
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.6s;
+    transform: rotate(240deg) translateY(-35px);
+}
+
+@keyframes spinnerEntrance {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(-180deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes spinPrimary {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes spinSecondary {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+}
+
+@keyframes dotPulse {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* ==============================
+   BARRA DE PROGRESO MODERNIZADA
+   ============================== */
+
+.progress-container {
+    width: 320px;
+    animation: progressEntrance 0.8s ease-out 0.8s both;
+}
+
 .progress-bar {
-    width: 250px;
-    height: 10px;
-    background: rgba(255,255,255,0.2);
-    border-radius: 5px;
+    width: 100%;
+    height: 6px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
     overflow: hidden;
-    margin-bottom: 10px;
+    position: relative;
+    margin-bottom: 20px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 .progress-fill {
     width: 0%;
     height: 100%;
-    background: #00bcd4;
-    transition: width 0.3s ease;
+    background: linear-gradient(90deg, #00bcd4 0%, #4fc3f7 50%, #81d4fa 100%);
+    border-radius: 10px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
 }
 
-/* Texto porcentaje */
+.progress-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+    animation: shine 2s ease-in-out infinite;
+}
+
 .progress-text {
-    font-size: 16px;
-    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     color: #fff;
+}
+
+.percentage {
+    font-size: 18px;
+    font-weight: 700;
+    color: #00bcd4;
+    text-shadow: 0 2px 10px rgba(0,188,212,0.5);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.loading-text {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    animation: textPulse 2s ease-in-out infinite;
+}
+
+@keyframes progressEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes textPulse {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* ==============================
+   PARTÍCULAS FLOTANTES DECORATIVAS
+   ============================== */
+
+.floating-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(79,195,247,0.6);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.particle:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 6s;
+}
+
+.particle:nth-child(2) {
+    top: 60%;
+    left: 80%;
+    animation-delay: 1s;
+    animation-duration: 8s;
+}
+
+.particle:nth-child(3) {
+    top: 80%;
+    left: 20%;
+    animation-delay: 2s;
+    animation-duration: 7s;
+}
+
+.particle:nth-child(4) {
+    top: 30%;
+    left: 90%;
+    animation-delay: 3s;
+    animation-duration: 5s;
+}
+
+.particle:nth-child(5) {
+    top: 70%;
+    left: 5%;
+    animation-delay: 4s;
+    animation-duration: 6s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(-20px) scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+/* ==============================
+   RESPONSIVIDAD
+   ============================== */
+
+@media (max-width: 480px) {
+    .company-logo {
+        width: 140px;
+    }
+    
+    .modern-spinner {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .spinner-ring.primary {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .spinner-ring.secondary {
+        width: 56px;
+        height: 56px;
+        top: 12px;
+        left: 12px;
+    }
+    
+    .progress-container {
+        width: 280px;
+    }
+    
+    .percentage {
+        font-size: 16px;
+    }
+    
+    .loading-text {
+        font-size: 12px;
+    }
 }
