@@ -14,11 +14,117 @@ document.addEventListener('DOMContentLoaded', function() {
     // ==========================
     // Variables globales y referencias DOM
     // ==========================
-    const buscador = document.getElementById('buscador'); // Input de búsqueda de cartuchos
-    const fotoBtn = document.getElementById('fotoBtn'); // Botón para abrir modal de foto
-    const btnBorrar = document.getElementById('limpiarBusqueda'); // Botón para limpiar búsqueda
-    const contador = document.getElementById('total-resultados'); // Elemento que muestra el total de resultados
-    const filas = document.querySelectorAll(".cartucho-row"); // Filas de la tabla de cartuchos
+    const buscador = document.getElementById('buscador');
+    const fotoBtn = document.getElementById('fotoBtn');
+    const btnBorrar = document.getElementById('limpiarBusqueda');
+    const contador = document.getElementById('total-resultados');
+    const filas = document.querySelectorAll(".cartucho-row");
+
+    // Referencias para las pestañas modernizadas
+    const tabBtns = document.querySelectorAll('.ejemplo-tab-btn');
+    const tablaSection = document.querySelector('#compatibilidades');
+    const faqSection = document.querySelector('#preguntas-frecuentes');
+
+    // ==========================
+    // Sistema de pestañas modernizado
+    // ==========================
+    function initModernTabs() {
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tabId = this.dataset.tab;
+                
+                // Actualizar botones
+                tabBtns.forEach(b => {
+                    const icon = b.querySelector('div');
+                    const text = b.querySelector('span');
+                    
+                    b.classList.remove('active');
+                    b.classList.add('text-gray-600', 'hover:text-gray-900');
+                    icon.classList.remove('bg-gradient-to-r', 'from-blue-500', 'to-purple-600');
+                    icon.classList.add('bg-gray-200');
+                    icon.querySelector('i').classList.remove('text-white');
+                    icon.querySelector('i').classList.add('text-gray-600');
+                });
+                
+                // Activar botón seleccionado
+                this.classList.add('active');
+                this.classList.remove('text-gray-600', 'hover:text-gray-900');
+                const activeIcon = this.querySelector('div');
+                const activeIconI = activeIcon.querySelector('i');
+                activeIcon.classList.add('bg-gradient-to-r', 'from-blue-500', 'to-purple-600');
+                activeIcon.classList.remove('bg-gray-200');
+                activeIconI.classList.add('text-white');
+                activeIconI.classList.remove('text-gray-600');
+                
+                // Mostrar/ocultar secciones
+                if (tabId === 'tab1') {
+                    tablaSection.classList.remove('hidden');
+                    faqSection.classList.add('hidden');
+                } else if (tabId === 'tab2') {
+                    tablaSection.classList.add('hidden');
+                    faqSection.classList.remove('hidden');
+                }
+            });
+        });
+    }
+
+    // ==========================
+    // Función de búsqueda mejorada
+    // ==========================
+    function configurarBusqueda() {
+        if (!buscador) return;
+        
+        buscador.addEventListener('input', function() {
+            const query = this.value.toLowerCase().trim();
+            filtrarTabla(query);
+        });
+
+        if (btnBorrar) {
+            btnBorrar.addEventListener('click', function() {
+                buscador.value = '';
+                filtrarTabla('');
+                buscador.focus();
+            });
+        }
+    }
+
+    function filtrarTabla(query) {
+        let visibles = 0;
+        
+        filas.forEach(fila => {
+            const texto = fila.textContent.toLowerCase();
+            const coincide = query === '' || texto.includes(query);
+            
+            fila.style.display = coincide ? '' : 'none';
+            if (coincide) visibles++;
+        });
+        
+        actualizarContador(visibles);
+    }
+
+    function actualizarContador(visible) {
+        if (contador) {
+            contador.textContent = visible;
+        }
+    }
+
+    function contarResultados() {
+        if (contador) {
+            contador.textContent = filas.length;
+        }
+    }
+
+    // ==========================
+    // Función de foto simplificada
+    // ==========================
+    function configurarFotoBtn() {
+        if (!fotoBtn) return;
+        
+        fotoBtn.addEventListener('click', function() {
+            // Por ahora, mostrar mensaje de funcionalidad futura
+            alert('Funcionalidad de búsqueda por foto próximamente. ¡Usa el buscador de texto mientras tanto!');
+        });
+    }
 
     // ==========================
     // Cargar dinámicamente Cropper.js si es necesario
@@ -550,62 +656,11 @@ document.addEventListener('DOMContentLoaded', function() {
             tabBtns.forEach(b => b.classList.remove('active', 'text-gray-700', 'border-blue-400'));
             tabBtns.forEach(b => b.classList.add('text-gray-500'));
 
-            btn.classList.add('active', 'text-gray-700', 'border-blue-400');
-            btn.classList.remove('text-gray-500');
-
-            // Muestra el contenido del tab seleccionado
-            hideAllTabs();
-            const tabId = btn.getAttribute('data-tab');
-            const content = tabContents[tabId];
-            if (content) {
-                content.classList.remove('hidden');
-                // Forzar reflow para reiniciar animación
-                void content.offsetWidth;
-                content.classList.add('tab-animate-in');
-                // Si es el tab de preguntas frecuentes, reinicializa la animación FAQ (solo CSS/JS)
-                if (tabId === 'tab2' && typeof window.faqFalconInit === 'function') {
-                    setTimeout(() => {
-                        window.faqFalconInit();
-                    }, 50); // Pequeño delay para asegurar visibilidad
-                }
-            }
-        });
-    });
-
-    // Mostrar por defecto el primer tab con animación
-    hideAllTabs();
-    if (tabBtns.length && tabContents.tab1) {
-        tabBtns[0].classList.add('active', 'text-gray-700', 'border-blue-400');
-        tabBtns[0].classList.remove('text-gray-500');
-        tabContents.tab1.classList.remove('hidden');
-        tabContents.tab1.classList.add('tab-animate-in');
-    }
-
     // ==========================
-    // Tabs funcionalidad para cartuchos-tab/cartuchos-tab-content (vertical)
+    // Inicialización de todas las funcionalidades
     // ==========================
-    // Controla los tabs secundarios (verticales) para otras secciones de cartuchos
-    const cartuchosTabBtns = document.querySelectorAll('.cartuchos-tab');
-    const cartuchosTabContents = document.querySelectorAll('.cartuchos-tab-content');
-
-    cartuchosTabBtns.forEach(btn => {
-        btn.addEventListener('click', function () {
-            cartuchosTabBtns.forEach(b => b.classList.remove('active'));
-            cartuchosTabContents.forEach(tc => tc.classList.add('hidden'));
-
-            btn.classList.add('active');
-            const tabId = btn.getAttribute('data-tab');
-            const content = document.getElementById('tab-' + tabId);
-            if (content) content.classList.remove('hidden');
-        });
-    });
-
-    // Muestra por defecto el primer tab vertical
-    if (cartuchosTabBtns.length && cartuchosTabContents.length) {
-        cartuchosTabBtns[0].classList.add('active');
-        cartuchosTabContents[0].classList.remove('hidden');
-        for (let i = 1; i < cartuchosTabContents.length; i++) {
-            cartuchosTabContents[i].classList.add('hidden');
-        }
-    }
+    initModernTabs();
+    contarResultados(); // Contar resultados iniciales
+    configurarBusqueda();
+    configurarFotoBtn();
 });

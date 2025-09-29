@@ -31,7 +31,7 @@ $seo = [
 
 // Archivos CSS y JS específicos para esta página
 $cssFiles = ['cartuchos'];
-$jsFiles  = ['cartuchos'];
+$jsFiles  = ['cartuchos-modern'];
 
 // Mueve esto ANTES del include:
 $externalJsHead = [

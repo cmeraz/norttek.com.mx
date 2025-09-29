@@ -6,10 +6,10 @@
 .cartuchos-hero,
 .nt-hero-wrapper.cartuchos-hero {
     background: 
-        linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(30, 41, 59, 0.82) 100%),
-        radial-gradient(circle at 20% 30%, rgba(79, 140, 255, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.12) 0%, transparent 60%),
-        radial-gradient(circle at 60% 20%, rgba(147, 51, 234, 0.1) 0%, transparent 40%),
+        linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 41, 59, 0.88) 100%),
+        radial-gradient(circle at 20% 30%, rgba(79, 140, 255, 0.18) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 60% 20%, rgba(147, 51, 234, 0.12) 0%, transparent 40%),
         url('https://images.unsplash.com/photo-1586281010595-c7beb68af0ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') !important;
     background-size: cover, 800px 800px, 1000px 1000px, 600px 600px, cover !important;
     background-position: center, -100px -100px, calc(100% + 100px) calc(100% + 100px), 60% 20%, center !important;
@@ -191,4 +191,197 @@
 
 .tab-animate-in {
     animation: tab-sweep-down 0.5s cubic-bezier(.4,0,.2,1);
+}
+
+/* ==========================================================================
+   Estilos Modernos para la Nueva Interfaz
+   ========================================================================== */
+
+/* Efectos de hover mejorados para tarjetas */
+.card-modern {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center;
+}
+
+.card-modern:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos para badges de impresoras */
+.printer-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 8px;
+    margin: 2px;
+    transition: all 0.2s ease;
+}
+
+.printer-badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Efectos de gradiente para botones modernos */
+.btn-gradient-modern {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-gradient-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-gradient-modern:hover::before {
+    left: 100%;
+}
+
+.btn-gradient-modern:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(102, 126, 234, 0.3);
+}
+
+/* Estilos para tabla modernizada */
+.table-modern {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.table-modern thead {
+    background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+}
+
+.table-modern th {
+    position: relative;
+    padding: 20px 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.table-modern th:last-child {
+    border-right: none;
+}
+
+.table-modern tbody tr {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.table-modern tbody tr:hover {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    transform: scale(1.01);
+    z-index: 10;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Efectos de loading para búsqueda */
+.search-loading {
+    position: relative;
+}
+
+.search-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e5e7eb;
+    border-top: 2px solid #3b82f6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transform: translateY(-50%);
+}
+
+@keyframes spin {
+    0% { transform: translateY(-50%) rotate(0deg); }
+    100% { transform: translateY(-50%) rotate(360deg); }
+}
+
+/* Estilos para pestañas modernizadas */
+.tabs-modern {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tab-button-modern {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 12px;
+}
+
+.tab-button-modern.active {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Animaciones mejoradas */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .card-modern {
+        margin-bottom: 16px;
+    }
+    
+    .table-modern {
+        font-size: 14px;
+    }
+    
+    .table-modern th,
+    .table-modern td {
+        padding: 12px 8px;
+    }
+    
+    .btn-gradient-modern {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+/* Estilos para elementos glassmorphism */
+.glass-card {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
