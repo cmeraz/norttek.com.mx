@@ -10,7 +10,7 @@ $seo = [
     'og_title' => 'Cuentas de Pago - Norttek Solutions',
     'og_description' => 'Panel privado de información empresarial',
     'og_url' => 'https://www.norttek.com.mx/cuentas.php',
-    'og_image' => 'https://www.norttek.com.mx/assets/img/logo-norttek.png'
+    'og_image' => 'https://www.norttek.com.mx/assets/img/norttek-acounts.jpg'
 ];
 
 // CSS específicos
