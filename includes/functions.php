@@ -350,7 +350,10 @@ if (!function_exists('faq')) {
 .nt-faq-a[aria-hidden="false"],.nt-faq-a:not([hidden]){animation:faqReveal .35s ease both}
 @keyframes faqReveal{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 .nt-faq-toggle:focus-visible{outline:3px solid #9ab6ff;outline-offset:2px}
-@media (prefers-reduced-motion:reduce){.nt-faq-toggle i{transition:none}.nt-faq-a[aria-hidden="false"],.nt-faq-a:not([hidden]){animation:none}}
+.nt-faq-search-active .nt-faq-item{opacity:0.5;transition:opacity 0.3s ease}
+.nt-faq-search-active .nt-faq-item[style*="display: none"]{opacity:0.2}
+.nt-faq-search-active .nt-faq-item:not([style*="display: none"]){opacity:1;box-shadow:0 0 10px rgba(79,140,255,0.2)}
+@media (prefers-reduced-motion:reduce){.nt-faq-toggle i{transition:none}.nt-faq-a[aria-hidden="false"],.nt-faq-a:not([hidden]){animation:none}.nt-faq-search-active .nt-faq-item{transition:none}}
 </style>
 <script>
 (function(){
@@ -439,20 +442,22 @@ if (!function_exists('faq')) {
     
     if (DBG) console.log('[FAQ] Query:', q, 'Tokens:', tokens, 'Items:', items.length);
     
-    // Si no hay tokens, mostrar todo y colapsar todo (reset)
-    if (tokens.length === 0) {
-      items.forEach(function(it){
-        it.style.display = '';
-        var btn = it.querySelector('[data-faq-toggle]');
-        if (btn) setExpanded(btn, false);
-        try { it.classList.remove('highlight'); } catch(e){}
-      });
-      try { clearTimeout(faqScrollTimer); } catch(e){}
-      try { clearTimeout(faqHighlightTimer); } catch(e){}
-      return;
-    }
-    
-    // Con tokens: expandir coincidencias y ocultar no coincidentes
+      // Si no hay tokens, mostrar todo y colapsar todo (reset)
+      if (tokens.length === 0) {
+        section.classList.remove('nt-faq-search-active');
+        items.forEach(function(it){
+          it.style.display = '';
+          var btn = it.querySelector('[data-faq-toggle]');
+          if (btn) setExpanded(btn, false);
+          try { it.classList.remove('highlight'); } catch(e){}
+        });
+        try { clearTimeout(faqScrollTimer); } catch(e){}
+        try { clearTimeout(faqHighlightTimer); } catch(e){}
+        return;
+      }
+      
+      // Activar modo de búsqueda para efectos visuales
+      section.classList.add('nt-faq-search-active');    // Con tokens: expandir coincidencias y ocultar no coincidentes
     var firstMatch = null;
     var matchCount = 0;
     items.forEach(function(it, index){
