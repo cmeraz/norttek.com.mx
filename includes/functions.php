@@ -309,7 +309,7 @@ if (!function_exists('faq')) {
     $html = '
     <section id="'.htmlspecialchars($safeId).'" class="nt-faq container '.htmlspecialchars($cClass).'" aria-labelledby="'.htmlspecialchars($safeId).'-title">
       <header class="nt-faq-header">'.$heading.$tools.'</header>
-      <div class="nt-faq-list" role="list" data-faq-list">'.$itemsHtml.'</div>
+      <div class="nt-faq-list" role="list" data-faq-list>'.$itemsHtml.'</div>
       <script type="application/ld+json">'.json_encode([
         '@context'=>'https://schema.org',
         '@type'=>'FAQPage',
@@ -354,6 +354,8 @@ if (!function_exists('faq')) {
 </style>
 <script>
 (function(){
+  'use strict';
+  
   // Polyfills básicos de compatibilidad
   try{
     if (!Element.prototype.matches) {
@@ -371,9 +373,12 @@ if (!function_exists('faq')) {
       };
     }
   }catch(e){}
-  // Debug opcional: define window.NTFAQ_DEBUG = true para ver logs
-  var DBG = !!(window && window.NTFAQ_DEBUG);
-  // Normaliza texto sin diacríticos (compatible, con fallback)
+
+  // Debug opcional
+  var DBG = !!(window && (window.NTFAQ_DEBUG || window.location.hash.indexOf('faq-debug') !== -1));
+  if (DBG) console.log('[FAQ] Debug mode activado');
+
+  // Normaliza texto sin diacríticos
   var norm = function(s){
     s = (s||'').toString();
     var low = s.toLowerCase();
@@ -397,9 +402,8 @@ if (!function_exists('faq')) {
     }
   };
 
-  // Temporizador para auto-scroll al primer resultado tras filtrar
+  // Temporizadores para efectos
   var faqScrollTimer = null;
-  // Temporizador para remover highlight del primer match
   var faqHighlightTimer = null;
 
   function openByHash(){
@@ -416,31 +420,109 @@ if (!function_exists('faq')) {
     }
   }
 
+  // Función de filtrado
+  var applyFilter = function(searchEl){
+    if (DBG) console.log('[FAQ] applyFilter iniciado');
+    var section = searchEl.closest && searchEl.closest('.nt-faq');
+    if (!section) {
+      if (DBG) console.error('[FAQ] No se encontró sección .nt-faq');
+      return;
+    }
+    var list = section.querySelector('[data-faq-list]');
+    if (!list) {
+      if (DBG) console.error('[FAQ] No se encontró lista [data-faq-list]');
+      return;
+    }
+    var q = norm(searchEl.value || '');
+    var tokens = q.trim().split(/\s+/).filter(Boolean);
+    var items = Array.prototype.slice.call(list.querySelectorAll('.nt-faq-item'));
+    
+    if (DBG) console.log('[FAQ] Query:', q, 'Tokens:', tokens, 'Items:', items.length);
+    
+    // Si no hay tokens, mostrar todo y colapsar todo (reset)
+    if (tokens.length === 0) {
+      items.forEach(function(it){
+        it.style.display = '';
+        var btn = it.querySelector('[data-faq-toggle]');
+        if (btn) setExpanded(btn, false);
+        try { it.classList.remove('highlight'); } catch(e){}
+      });
+      try { clearTimeout(faqScrollTimer); } catch(e){}
+      try { clearTimeout(faqHighlightTimer); } catch(e){}
+      return;
+    }
+    
+    // Con tokens: expandir coincidencias y ocultar no coincidentes
+    var firstMatch = null;
+    var matchCount = 0;
+    items.forEach(function(it, index){
+      var qNode = it.querySelector('.nt-faq-q-text');
+      var aNode = it.querySelector('.nt-faq-a-inner');
+      var qTxt = norm(qNode ? (qNode.textContent || qNode.innerText || '') : '');
+      var aTxt = norm(aNode ? (aNode.textContent || aNode.innerText || '') : '');
+      var combined = qTxt + ' ' + aTxt;
+      var match = tokens.every(function(t){ return combined.indexOf(t) !== -1; });
+      
+      if (DBG && index < 3) console.log('[FAQ] Item', index, 'match:', match);
+      
+      it.style.display = match ? '' : 'none';
+      var btn = it.querySelector('[data-faq-toggle]');
+      if (btn) setExpanded(btn, !!match);
+      if (match) {
+        matchCount++;
+        if (!firstMatch) firstMatch = it;
+      }
+    });
+
+    if (DBG) console.log('[FAQ] Matches encontrados:', matchCount);
+
+    // Auto-scroll al primer resultado
+    if (firstMatch) {
+      try { clearTimeout(faqScrollTimer); } catch(e) {}
+      faqScrollTimer = setTimeout(function(){
+        try { firstMatch.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch(e) {}
+      }, 180);
+
+      // Highlight temporal
+      try { clearTimeout(faqHighlightTimer); } catch(e){}
+      try { items.forEach(function(it){ it.classList.remove('highlight'); }); } catch(e){}
+      try { firstMatch.classList.add('highlight'); } catch(e){}
+      faqHighlightTimer = setTimeout(function(){
+        try { firstMatch.classList.remove('highlight'); } catch(e){}
+      }, 1400);
+    }
+  };
+
   function bindGlobalHandlers(){
+    if (DBG) console.log('[FAQ] Enlazando eventos globales');
+    
     // Expandir/Colapsar todos
     document.addEventListener('click', function(ev){
       var expandBtn  = ev.target.closest && ev.target.closest('[data-faq-expand]');
       var collapseBtn= ev.target.closest && ev.target.closest('[data-faq-collapse]');
-      if (!expandBtn && !collapseBtn) return;
-      var lists = document.querySelectorAll('[data-faq-list]');
-      var expandAll = !!expandBtn;
-      lists.forEach(function(list){
-        var toggles = Array.prototype.slice.call(list.querySelectorAll('[data-faq-toggle]'));
-        toggles.forEach(function(b){ setExpanded(b, expandAll); });
-      });
+      var toggleBtn  = ev.target.closest && ev.target.closest('[data-faq-toggle]');
+      
+      if (expandBtn || collapseBtn) {
+        var lists = document.querySelectorAll('[data-faq-list]');
+        var expandAll = !!expandBtn;
+        lists.forEach(function(list){
+          var toggles = Array.prototype.slice.call(list.querySelectorAll('[data-faq-toggle]'));
+          toggles.forEach(function(b){ setExpanded(b, expandAll); });
+        });
+        return;
+      }
+      
+      if (toggleBtn) {
+        var expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+        setExpanded(toggleBtn, !expanded);
+        var host = toggleBtn.closest && toggleBtn.closest('.nt-faq-item');
+        if (host && host.id) { 
+          try{ history.replaceState(null, '', '#' + host.id); }catch(e){} 
+        }
+      }
     }, false);
 
-    // Toggle individual (click)
-    document.addEventListener('click', function(ev){
-      var btn = ev.target.closest && ev.target.closest('[data-faq-toggle]');
-      if (!btn) return;
-      var expanded = btn.getAttribute('aria-expanded') === 'true';
-      setExpanded(btn, !expanded);
-      var host = btn.closest('.nt-faq-item');
-      if (host && host.id) { try{ history.replaceState(null, '', '#' + host.id); }catch(e){} }
-    }, false);
-
-    // Toggle individual (teclado)
+    // Toggle por teclado
     document.addEventListener('keydown', function(ev){
       if (ev.key !== 'Enter' && ev.key !== ' ') return;
       var btn = ev.target.closest && ev.target.closest('[data-faq-toggle]');
@@ -449,105 +531,29 @@ if (!function_exists('faq')) {
       btn.click();
     }, false);
 
-    // Búsqueda delegada por sección (input/keyup/change)
-  var applyFilter = function(searchEl){
-      var section = searchEl.closest && searchEl.closest('.nt-faq');
-      if (!section) return;
-      var list = section.querySelector('[data-faq-list]');
-      if (!list) return;
-      var q = norm(searchEl.value || '');
-      var tokens = q.trim().split(/\s+/).filter(Boolean);
-      var items = Array.prototype.slice.call(list.querySelectorAll('.nt-faq-item'));
-      // Si no hay tokens, mostrar todo y colapsar todo (reset)
-      if (tokens.length === 0) {
-        items.forEach(function(it){
-          it.style.display = '';
-          var btn = it.querySelector('[data-faq-toggle]');
-          if (btn) setExpanded(btn, false);
-          try { it.classList.remove('highlight'); } catch(e){}
-        });
-        try { clearTimeout(faqScrollTimer); } catch(e){}
-        try { clearTimeout(faqHighlightTimer); } catch(e){}
-        return;
-      }
-      // Con tokens: expandir coincidencias y colapsar no coincidentes
-      var firstMatch = null;
-      items.forEach(function(it){
-        var qNode = it.querySelector('.nt-faq-q-text');
-        var aNode = it.querySelector('.nt-faq-a-inner');
-        var qTxt = norm(qNode ? (qNode.textContent || '') : '');
-        var aTxt = norm(aNode ? (aNode.textContent || '') : '');
-        var combined = qTxt + ' ' + aTxt;
-        var match = tokens.every(function(t){ return combined.indexOf(t) !== -1; });
-        it.style.display = match ? '' : 'none';
-        var btn = it.querySelector('[data-faq-toggle]');
-        if (btn) setExpanded(btn, !!match);
-        if (match && !firstMatch) firstMatch = it;
-      });
-
-      // Auto-scroll al primer resultado visible (debounce para evitar saltos en cada tecla)
-      if (firstMatch) {
-        try { clearTimeout(faqScrollTimer); } catch(e) {}
-        faqScrollTimer = setTimeout(function(){
-          try { firstMatch.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch(e) {}
-        }, 180);
-
-        // Limpiar highlight previo y aplicar highlight temporal al primer match
-        try { clearTimeout(faqHighlightTimer); } catch(e){}
-        try { items.forEach(function(it){ it.classList.remove('highlight'); }); } catch(e){}
-        try { firstMatch.classList.add('highlight'); } catch(e){}
-        faqHighlightTimer = setTimeout(function(){
-          try { firstMatch.classList.remove('highlight'); } catch(e){}
-        }, 1400);
-      }
-    };
-  // Exponer helper global para invocar desde oninput/keyup
-  try { window.NTFaqApply = applyFilter; } catch(e){}
+    // Búsqueda delegada
     ['input','keyup','change'].forEach(function(type){
       document.addEventListener(type, function(ev){
         var search = ev.target && ev.target.matches && ev.target.matches('[data-faq-search]') ? ev.target : null;
         if (!search) return;
-        if (DBG) try{ console.debug('[FAQ] Delegado', type, search.value); }catch(e){}
+        if (DBG) console.debug('[FAQ] Evento', type, 'valor:', search.value);
         applyFilter(search);
       }, false);
     });
-
-    // Binding directo a cada input de búsqueda (refuerzo por compatibilidad)
-    try {
-      var inputs = document.querySelectorAll('[data-faq-search]');
-      inputs.forEach(function(inp){
-        if (inp.dataset.faqBound === '1') return;
-        ['input','keyup','change'].forEach(function(t){
-          inp.addEventListener(t, function(){ if (DBG) try{ console.debug('[FAQ] Directo', t, inp.value); }catch(e){} applyFilter(inp); }, false);
-        });
-        inp.dataset.faqBound = '1';
-      });
-    } catch(e){}
-
-    // Observador para re-enlazar en contenido dinámico
-    try {
-      var mo = new MutationObserver(function(muts){
-        var needsBind = false;
-        muts.forEach(function(m){ if (m.addedNodes && m.addedNodes.length) needsBind = true; });
-        if (!needsBind) return;
-        var inputs = document.querySelectorAll('[data-faq-search]');
-        inputs.forEach(function(inp){
-          if (inp.dataset.faqBound === '1') return;
-          ['input','keyup','change'].forEach(function(t){
-            inp.addEventListener(t, function(){ if (DBG) try{ console.debug('[FAQ] MO Directo', t, inp.value); }catch(e){} applyFilter(inp); }, false);
-          });
-          inp.dataset.faqBound = '1';
-        });
-      });
-      mo.observe(document.body || document.documentElement, { childList:true, subtree:true });
-    } catch(e){}
 
     // Deep-link
     window.addEventListener('hashchange', openByHash, false);
     setTimeout(openByHash, 50);
   }
 
-  function init(){ bindGlobalHandlers(); }
+  // Exponer helper global
+  try { window.NTFaqApply = applyFilter; } catch(e){}
+
+  // Inicialización única
+  function init(){
+    if (DBG) console.log('[FAQ] Inicializando sistema FAQ');
+    bindGlobalHandlers();
+  }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init, { once: true });
