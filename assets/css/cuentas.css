@@ -873,6 +873,190 @@ body section.nt-hero-wrapper.cuentas-hero {
     }
 }
 
+/* ==========================================================================
+   Menú de Navegación Rápida
+   ========================================================================== */
+
+.cuentas-nav-menu {
+    background: rgba(248, 250, 252, 0.8);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+    padding: 1.5rem 0;
+    margin-bottom: 1rem;
+}
+
+.nav-menu-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.nav-menu-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.nav-menu-header h3 {
+    color: #64748b;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+}
+
+.nav-menu-header i {
+    color: #94a3b8;
+    font-size: 1rem;
+}
+
+.nav-menu-header p {
+    color: #94a3b8;
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+.quick-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: 8px;
+    text-decoration: none;
+    color: #64748b;
+    font-weight: 500;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.nav-item:hover {
+    background: rgba(79, 140, 255, 0.1);
+    color: var(--primary);
+    border-color: rgba(79, 140, 255, 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(79, 140, 255, 0.15);
+}
+
+.nav-item:active {
+    transform: translateY(-1px);
+}
+
+.nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(248, 250, 252, 0.8);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.nav-item:hover .nav-icon {
+    background: rgba(79, 140, 255, 0.15);
+}
+
+.nav-icon i {
+    font-size: 1rem;
+    color: #94a3b8;
+    transition: color 0.2s ease;
+}
+
+.nav-item:hover .nav-icon i {
+    color: var(--primary);
+}
+
+/* Estado activo más sutil */
+.nav-item.active {
+    background: rgba(79, 140, 255, 0.15);
+    color: var(--primary);
+    border-color: rgba(79, 140, 255, 0.4);
+}
+
+.nav-item.active .nav-icon {
+    background: rgba(79, 140, 255, 0.2);
+}
+
+.nav-item.active .nav-icon i {
+    color: var(--primary);
+}
+
+/* Highlight sutil para secciones activas */
+.cuentas-card.highlight-active {
+    border: 2px solid rgba(79, 140, 255, 0.4) !important;
+    box-shadow: 0 0 15px rgba(79, 140, 255, 0.15) !important;
+    animation: subtle-glow 0.8s ease-in-out;
+}
+
+@keyframes subtle-glow {
+    0% {
+        box-shadow: 0 0 15px rgba(79, 140, 255, 0.15);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(79, 140, 255, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(79, 140, 255, 0.15);
+    }
+}
+
+/* Responsive para el menú de navegación */
+@media (max-width: 768px) {
+    .quick-nav {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+    
+    .nav-item {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    
+    .nav-icon {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .nav-icon i {
+        font-size: 0.9rem;
+    }
+    
+    .cuentas-nav-menu {
+        padding: 1rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .quick-nav {
+        grid-template-columns: 1fr;
+    }
+    
+    .cuentas-nav-menu {
+        padding: 1rem 0;
+    }
+    
+    .nav-menu-container {
+        padding: 0 1rem;
+    }
+}
+
+/* ==========================================================================
+   Fin Menú de Navegación Rápida
+   ========================================================================== */
+
 .sat-logo {
     width: 50px;
     height: 50px;

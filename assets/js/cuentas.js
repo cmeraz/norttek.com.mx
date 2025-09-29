@@ -19,6 +19,7 @@ function initCuentasDashboard() {
     initPaymentForm();
     initAccountSelection();
     initScrollAnimations();
+    initQuickNavigation();
     
     // Inicializar animaciones de entrada
     initHeroAnimations();
@@ -535,6 +536,84 @@ function escapeHtml(text) {
         "'": '&#039;'
     };
     return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
+
+// ==========================================================================
+// Navegación Rápida con Highlighting
+// ==========================================================================
+function initQuickNavigation() {
+    const navItems = document.querySelectorAll('.nav-item');
+    const sections = document.querySelectorAll('.cuentas-card');
+    
+    // Configurar clicks en los elementos de navegación
+    navItems.forEach(navItem => {
+        navItem.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection) {
+                // Remover clases activas de otros elementos
+                navItems.forEach(item => item.classList.remove('active'));
+                sections.forEach(section => section.classList.remove('highlight-active'));
+                
+                // Activar el elemento de navegación actual
+                this.classList.add('active');
+                
+                // Scroll suave hacia la sección
+                const targetPosition = targetSection.offsetTop - 100;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Highlight la sección después del scroll
+                setTimeout(() => {
+                    targetSection.classList.add('highlight-active');
+                    
+                    // Remover highlight después de 2 segundos (más rápido y sutil)
+                    setTimeout(() => {
+                        targetSection.classList.remove('highlight-active');
+                    }, 2000);
+                }, 300);
+            }
+        });
+    });
+    
+    // Observador para activar elementos de navegación automáticamente durante scroll
+    const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -70% 0px',
+        threshold: 0.1
+    };
+    
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const sectionId = entry.target.id;
+                const correspondingNavItem = document.querySelector(`[href="#${sectionId}"]`);
+                
+                if (correspondingNavItem) {
+                    // Remover clase active de otros elementos
+                    navItems.forEach(item => item.classList.remove('active'));
+                    
+                    // Activar el elemento correspondiente
+                    correspondingNavItem.classList.add('active');
+                }
+            }
+        });
+    }, observerOptions);
+    
+    // Observar todas las secciones
+    sections.forEach(section => {
+        if (section.id) {
+            sectionObserver.observe(section);
+        }
+    });
+    
+    console.log('🧭 Navegación rápida inicializada');
 }
 
 // CSS dinámico para toasts y elementos adicionales
