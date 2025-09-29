@@ -480,6 +480,24 @@
           <code class="clip-src" data-clip="722969040367244111">722969040367244111 <button type="button" class="clip-btn" data-clip="722969040367244111" title="Copiar" aria-label="Copiar CLABE MercadoPago"><i class="fa-regular fa-clone"></i></button></code>
         </div>
       </div>
+
+      <!-- Pago con Tarjeta MercadoPago -->
+      <div style="background:#f0f9ff; border:1px solid #0ea5e9; border-radius:10px; padding:.65rem .75rem; display:flex; flex-direction:column; gap:.45rem;">
+        <strong style="font-size:.72rem; letter-spacing:.5px; text-transform:uppercase; color:#0369a1; display:flex; align-items:center; gap:.4rem;">
+          <i class="fa-solid fa-credit-card" aria-hidden="true" style="color:#0ea5e9;"></i> 
+          Pago con Tarjeta Crédito/Débito
+        </strong>
+        <div style="display:flex; flex-direction:column; gap:.3rem;">
+          <p style="font-size:.65rem; color:#475569; margin:0; line-height:1.4;">
+            Realiza pagos seguros con tu tarjeta de crédito o débito a través de MercadoPago
+          </p>
+          <a href="https://biolibre.mx/norttek" target="_blank" rel="noopener noreferrer" 
+             style="display:inline-flex; align-items:center; gap:.4rem; background:#0ea5e9; color:white; padding:.5rem .75rem; border-radius:6px; text-decoration:none; font-size:.68rem; font-weight:600; letter-spacing:.3px; text-transform:uppercase; transition:all 0.2s ease;">
+            <i class="fa-solid fa-external-link-alt"></i>
+            Pagar con Tarjeta
+          </a>
+        </div>
+      </div>
       <div style="background:#f8fbff; border:1px solid #e2edf9; border-radius:10px; padding:.65rem .75rem; display:flex; flex-direction:column; gap:.45rem;">
         <strong style="font-size:.72rem; letter-spacing:.5px; text-transform:uppercase; color:#4f5d70; display:flex; align-items:center; gap:.4rem;"><i class="fa-solid fa-tag" aria-hidden="true" style="color:#4f8cff;"></i> Referencia de Pago</strong>
         <div style="display:grid; gap:.55rem; grid-template-columns:repeat(auto-fit,minmax(170px,1fr));">
