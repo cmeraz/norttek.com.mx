@@ -442,6 +442,31 @@
             </div>
           </div>
 
+          <!-- Pago de facturas con tarjeta Clip.mx -->
+          <div class="clip-payment-info" style="margin-top:1.2rem; margin-bottom:1.2rem;">
+            <h4 style="display:flex; align-items:center; gap:.5rem; margin-bottom:.8rem; font-size:.9rem; font-weight:700; color:#0f172a;">
+              <i class="fa-solid fa-credit-card" style="color:#4f8cff;" aria-hidden="true"></i> 
+              Pago de Facturas con Tarjeta
+            </h4>
+            <div style="background:#f8fbff; border:1px solid #e2edf9; border-radius:12px; padding:.9rem 1rem; display:flex; flex-direction:column; gap:.6rem;">
+              <p style="margin:0; font-size:.75rem; line-height:1.4; color:#4a5568;">
+                Paga tus facturas de forma segura y rápida con tarjeta de crédito o débito a través de Clip.mx:
+              </p>
+              <a href="https://clip.mx/@NorttekSolutions" target="_blank" rel="noopener noreferrer" 
+                 style="display:inline-flex; align-items:center; justify-content:center; gap:.5rem; background:#00d4ff; color:white; padding:.7rem 1rem; border-radius:10px; text-decoration:none; font-size:.75rem; font-weight:700; transition:all 0.2s; cursor:pointer; box-shadow:0 3px 8px rgba(0,212,255,0.3); align-self:flex-start;" 
+                 onmouseover="this.style.background='#00bfe6'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,212,255,0.4)'" 
+                 onmouseout="this.style.background='#00d4ff'; this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 8px rgba(0,212,255,0.3)'">
+                <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
+                Pagar Facturas con Clip.mx
+                <i class="fa-solid fa-external-link-alt" style="font-size:.65rem;" aria-hidden="true"></i>
+              </a>
+              <small style="font-size:.65rem; color:#6b7a90; line-height:1.3;">
+                <i class="fa-solid fa-shield-check" style="color:#10b981;" aria-hidden="true"></i>
+                Pago seguro procesado por Clip • Acepta Visa, MasterCard y American Express
+              </small>
+            </div>
+          </div>
+
           <!-- Información para Transferencias -->
           <div class="transfer-info">
             <h4><i class="fa-solid fa-exchange-alt"></i> Información para Transferencias</h4>
