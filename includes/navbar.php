@@ -257,7 +257,28 @@ html.dark .nt-panel-link.active .icon { animation: navPulse 2.2s ease-in-out inf
 .nt-mobile-parent .caret { font-size:.65rem; opacity:.6; transition:transform .35s cubic-bezier(.4,.8,.4,1); }
 .nt-mobile-parent.open .caret { transform:rotate(180deg); }
 html.dark .nt-mobile-parent { color:#d1e2ef; }
-.nt-mobile-sub { padding:.25rem .25rem .6rem 1.2rem; display:flex; flex-direction:column; gap:.2rem; }
+.nt-mobile-sub { 
+    display: flex;
+    flex-direction:column; 
+    gap:.2rem; 
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0 .25rem 0 1.2rem;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.25s ease-in-out,
+                padding 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nt-mobile-sub:not([hidden]) {
+    max-height: 300px;
+    opacity: 1;
+    padding: .25rem .25rem .6rem 1.2rem;
+}
+.nt-mobile-sub[style*="display: block"] {
+    max-height: 300px;
+    opacity: 1;
+    padding: .25rem .25rem .6rem 1.2rem;
+}
 .nt-mobile-link { display:flex; align-items:center; gap:.55rem; padding:.55rem .9rem; text-decoration:none; font-weight:600; border-radius:10px; color:#325067; position:relative; }
 .nt-mobile-link:hover { background:rgba(0,0,0,.05); color:#123652; }
 .nt-mobile-link.active { background:linear-gradient(#fff,#fff) padding-box,var(--nt-gradient-border) border-box; border:1px solid transparent; }
@@ -287,7 +308,7 @@ html.dark .group:hover .nt-logo-title-mobile { color:#d6e6f2; opacity:.92; }
 
 <script>
 // =================== NAVBAR INTERACTIVO ===================
-(function(){
+document.addEventListener('DOMContentLoaded', function(){
   const shell = document.getElementById('site-header');
   const navItem = shell.querySelector('.nt-nav-item');
   const navLink = navItem ? navItem.querySelector('.nt-nav-link') : null;
@@ -320,49 +341,91 @@ html.dark .group:hover .nt-logo-title-mobile { color:#d6e6f2; opacity:.92; }
   const focusableSelector = 'a,button';
   let lastFocus = null;
 
-  function openDrawer(){ lastFocus=document.activeElement; drawer.classList.remove('-translate-x-full'); overlay.classList.remove('opacity-0','invisible'); drawer.setAttribute('aria-hidden','false'); overlay.setAttribute('aria-hidden','false'); setTimeout(()=>{ const first=drawer.querySelector(focusableSelector); if(first) first.focus(); },80); }
-  function closeDrawer(){ drawer.classList.add('-translate-x-full'); overlay.classList.add('opacity-0','invisible'); drawer.setAttribute('aria-hidden','true'); overlay.setAttribute('aria-hidden','true'); if(lastFocus) lastFocus.focus(); }
-  if(openBtn) openBtn.addEventListener('click', openDrawer);
+  function openDrawer(){ 
+    lastFocus=document.activeElement; 
+    drawer.classList.remove('-translate-x-full'); 
+    overlay.classList.remove('opacity-0','invisible'); 
+    drawer.setAttribute('aria-hidden','false'); 
+    overlay.setAttribute('aria-hidden','false'); 
+    document.body.style.overflow = 'hidden'; // Prevenir scroll del body
+    setTimeout(()=>{ 
+      const first=drawer.querySelector(focusableSelector); 
+      if(first) first.focus(); 
+    },80); 
+  }
+  
+  function closeDrawer(){ 
+    drawer.classList.add('-translate-x-full'); 
+    overlay.classList.add('opacity-0','invisible'); 
+    drawer.setAttribute('aria-hidden','true'); 
+    overlay.setAttribute('aria-hidden','true'); 
+    document.body.style.overflow = ''; // Restaurar scroll del body
+    if(lastFocus) lastFocus.focus(); 
+    
+    // Cerrar todos los submenús al cerrar el drawer
+    drawer.querySelectorAll('[data-mobile-panel]').forEach(btn=>{
+      const subId = btn.getAttribute('aria-controls');
+      const sub = subId ? document.getElementById(subId) : null;
+      if(sub){
+        sub.style.display = 'none';
+        sub.setAttribute('hidden','');
+        btn.setAttribute('aria-expanded','false');
+        btn.classList.remove('open');
+      }
+    });
+  }
+  if(openBtn) {
+    openBtn.addEventListener('click', openDrawer);
+  }
   if(closeBtn) closeBtn.addEventListener('click', closeDrawer);
-  overlay.addEventListener('click', closeDrawer);
+  if(overlay) overlay.addEventListener('click', closeDrawer);
   document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeDrawer(); });
 
   // Submenús móviles
-    // Submenús móviles accesibles (solo uno abierto)
-    drawer.querySelectorAll('[data-mobile-panel]').forEach(btn=>{
-        btn.addEventListener('click',(e)=>{
-            e.preventDefault();
-            const subId = btn.getAttribute('aria-controls');
-            const sub = subId ? document.getElementById(subId) : null;
-            if(!sub) return;
-            
-            const isCurrentlyOpen = btn.classList.contains('open');
-            
-            // Cierra todos los otros submenús
-            drawer.querySelectorAll('[data-mobile-panel]').forEach(otherBtn=>{
-                if(otherBtn !== btn){
-                    const otherSubId = otherBtn.getAttribute('aria-controls');
-                    const otherSub = otherSubId ? document.getElementById(otherSubId) : null;
-                    if(otherSub){
-                        otherSub.setAttribute('hidden','');
-                        otherBtn.setAttribute('aria-expanded','false');
-                        otherBtn.classList.remove('open');
+  // Submenús móviles accesibles (solo uno abierto)
+    if(drawer) {
+        const mobileSubButtons = drawer.querySelectorAll('[data-mobile-panel]');
+        
+        mobileSubButtons.forEach(btn=>{
+            btn.addEventListener('click',(e)=>{
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const subId = btn.getAttribute('aria-controls');
+                const sub = subId ? document.getElementById(subId) : null;
+                if(!sub) return;
+                
+                const isCurrentlyOpen = btn.classList.contains('open');
+                
+                // Cierra todos los otros submenús
+                drawer.querySelectorAll('[data-mobile-panel]').forEach(otherBtn=>{
+                    if(otherBtn !== btn){
+                        const otherSubId = otherBtn.getAttribute('aria-controls');
+                        const otherSub = otherSubId ? document.getElementById(otherSubId) : null;
+                        if(otherSub){
+                            otherSub.style.display = 'none';
+                            otherSub.setAttribute('hidden','');
+                            otherBtn.setAttribute('aria-expanded','false');
+                            otherBtn.classList.remove('open');
+                        }
                     }
+                });
+                
+                // Toggle el submenú actual
+                if(isCurrentlyOpen){
+                    sub.style.display = 'none';
+                    sub.setAttribute('hidden','');
+                    btn.setAttribute('aria-expanded','false');
+                    btn.classList.remove('open');
+                } else {
+                    sub.style.display = 'block';
+                    sub.removeAttribute('hidden');
+                    btn.setAttribute('aria-expanded','true');
+                    btn.classList.add('open');
                 }
             });
-            
-            // Toggle el submenú actual
-            if(isCurrentlyOpen){
-                sub.setAttribute('hidden','');
-                btn.setAttribute('aria-expanded','false');
-                btn.classList.remove('open');
-            } else {
-                sub.removeAttribute('hidden');
-                btn.setAttribute('aria-expanded','true');
-                btn.classList.add('open');
-            }
         });
-    });
+    }
 
   // Tema (simplificado - dark mode desactivado)
     // === Dark Mode desactivado ===
@@ -381,5 +444,5 @@ html.dark .group:hover .nt-logo-title-mobile { color:#d6e6f2; opacity:.92; }
             }
         });
     });
-})();
+});
 </script>
