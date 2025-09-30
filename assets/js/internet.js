@@ -359,41 +359,38 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('[Cliente] Modal encontrado, intentando abrirlo');
     
-    if (window.NTModal && typeof window.NTModal.open === 'function') {
-      try {
-        window.NTModal.open(clienteLoginModal);
-        console.log('[Cliente] Modal abierto con NTModal');
-        setTimeout(function(){ 
-          try { 
-            var inp = document.getElementById('cliente-login-phone'); 
-            if (inp) inp.focus(); 
-          } catch(_){}
-        }, 60);
+    // Usar siempre el fallback directo para garantizar que funcione
+    console.log('[Cliente] Usando método directo para abrir modal');
+    clienteLoginModal.style.display = 'flex';
+    clienteLoginModal.classList.add('is-open');
+    clienteLoginModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    document.body.classList.add('nt-modal-open');
+    
+    console.log('[Cliente] Modal abierto con método directo');
+    
+    setTimeout(function(){ 
+      try { 
+        var inp = document.getElementById('cliente-login-phone'); 
+        if (inp) {
+          inp.focus(); 
+          console.log('[Cliente] Foco aplicado al input');
+        }
       } catch(e) {
-        console.error('[Cliente] Error con NTModal:', e);
-        // Fallback si NTModal falla
-        clienteLoginModal.style.display = 'flex';
-        clienteLoginModal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
+        console.error('[Cliente] Error aplicando foco:', e);
       }
-    } else {
-      // Fallback directo
-      console.log('[Cliente] Usando fallback directo');
-      clienteLoginModal.style.display = 'flex';
-      clienteLoginModal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      
-      setTimeout(function(){ 
-        try { 
-          var inp = document.getElementById('cliente-login-phone'); 
-          if (inp) inp.focus(); 
-        } catch(_){}
-      }, 60);
-    }
+    }, 60);
   }
   function cerrarLoginCliente() {
-    if (clienteLoginModal && window.NTModal) { window.NTModal.close(clienteLoginModal); }
-    else if (clienteLoginModal) { clienteLoginModal.style.display = 'none'; }
+    console.log('[Cliente] Cerrando modal de login');
+    if (clienteLoginModal) {
+      clienteLoginModal.style.display = 'none';
+      clienteLoginModal.classList.remove('is-open');
+      clienteLoginModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      document.body.classList.remove('nt-modal-open');
+      console.log('[Cliente] Modal cerrado');
+    }
   }
 
   // mostrarCliente(true) => fuerza scroll centrado (solo tras login);
@@ -474,6 +471,46 @@ document.addEventListener('DOMContentLoaded', function() {
   } else {
     console.warn('[Cliente] btn-cliente no encontrado');
   }
+
+  // Event listeners para cerrar el modal de cliente
+  var clienteCloseBtn = document.getElementById('cliente-login-close');
+  var clienteCancelBtn = document.getElementById('cliente-login-cancel');
+  
+  if (clienteCloseBtn) {
+    console.log('[Cliente] Configurando listener para botón cerrar (X)');
+    clienteCloseBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      console.log('[Cliente] Click en botón cerrar');
+      cerrarLoginCliente();
+    });
+  }
+  
+  if (clienteCancelBtn) {
+    console.log('[Cliente] Configurando listener para botón cancelar');
+    clienteCancelBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      console.log('[Cliente] Click en botón cancelar');
+      cerrarLoginCliente();
+    });
+  }
+  
+  // Event listener para cerrar modal haciendo click en el backdrop
+  if (clienteLoginModal) {
+    clienteLoginModal.addEventListener('click', function(e) {
+      if (e.target === clienteLoginModal) {
+        console.log('[Cliente] Click en backdrop, cerrando modal');
+        cerrarLoginCliente();
+      }
+    });
+  }
+  
+  // Event listener para cerrar modal con Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && clienteLoginModal && clienteLoginModal.style.display === 'flex') {
+      console.log('[Cliente] Tecla Escape presionada, cerrando modal');
+      cerrarLoginCliente();
+    }
+  });
 
   // Estado inicial
   // Asegura que las secciones ocultas tengan la clase para transición
@@ -1689,5 +1726,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Llamar la función de inicialización
   initEscenarioSelector();
+
+  // Hacer funciones accesibles globalmente
+  window.mostrarCliente = mostrarCliente;
+  window.abrirLoginCliente = abrirLoginCliente;
+  window.cerrarLoginCliente = cerrarLoginCliente;
+  window.clienteEstaAutenticado = clienteEstaAutenticado;
+  
+  console.log('[Internet.js] Funciones exportadas globalmente');
 
 });
