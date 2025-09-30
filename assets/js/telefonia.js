@@ -2,19 +2,21 @@
 // (antes en telefonia-inline.js y previamente inline en telefoniaContent.php)
 
 // Prevenir inicialización múltiple del script
-if (window.telefoniaJSLoaded) {
-  console.log('[Telefonia.js] Script ya cargado, evitando re-inicialización');
-  // Solo exportar las funciones si no existen
-  if (!window.telefoniaButtonsInitialized) {
-    console.log('[Telefonia.js] Re-inicializando solo botones...');
+(function() {
+  if (window.telefoniaJSLoaded) {
+    console.log('[Telefonia.js] Script ya cargado, evitando re-inicialización');
+    // Solo exportar las funciones si no existen
+    if (!window.telefoniaButtonsInitialized) {
+      console.log('[Telefonia.js] Re-inicializando solo botones...');
+    } else {
+      console.log('[Telefonia.js] Todo ya inicializado, saliendo');
+      return;
+    }
   } else {
-    console.log('[Telefonia.js] Todo ya inicializado, saliendo');
-    return;
+    window.telefoniaJSLoaded = true;
+    console.log('[Telefonia.js] Iniciando carga del script');
   }
-} else {
-  window.telefoniaJSLoaded = true;
-  console.log('[Telefonia.js] Iniciando carga del script');
-}
+})();
 
 // Implementar sistema de notificaciones simple si no existe NTNotify
 if (!window.NTNotify) {
@@ -106,20 +108,67 @@ if (!window.NTNotify) {
   });
 })();
 
-// Funcionalidad para botones de planes de telefonía
-// Inicialización simplificada de botones de planes
+// Inicialización consolidada de todos los elementos de la página
 document.addEventListener('DOMContentLoaded', function() {
+  // Verificar si ya se inicializó para evitar duplicados
+  if (window.telefoniaInitialized) {
+    console.log('[Telefonia.js] Ya inicializado, evitando duplicación');
+    return;
+  }
+  
+  console.log('[Telefonia.js] === INICIO INICIALIZACIÓN ===');
+  
+  // === HERO VISIBILITY ===
+  console.log('[Telefonia.js] Configurando visibilidad del hero...');
+  const heroTitle = document.querySelector('#hero #hero-title');
+  const heroSub = document.querySelector('.telefonia-hero-sub');
+  const heroActions = document.querySelector('.telefonia-hero-actions');
+  const elems = [heroTitle, heroSub, heroActions];
+  
+  // Mostrar elementos del hero inmediatamente
+  elems.forEach(el => {
+    if (el) {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.classList.remove('opacity-0', 'translate-y-10');
+    }
+  });
+  console.log('[Telefonia.js] Hero elements made visible');
+  
+  // === PLAN BUTTONS ===
   console.log('[Telefonia.js] Inicializando botones de planes...');
   
   const planButtons = document.querySelectorAll('.tel-plan__btn');
-  console.log('[Telefonia.js] Botones encontrados:', planButtons.length);
+  console.log(`[Telefonia.js] Botones de planes encontrados: ${planButtons.length}`);
+  
+  if (planButtons.length === 0) {
+    console.error('[Telefonia.js] ¡NO SE ENCONTRARON BOTONES DE PLANES!');
+    return;
+  }
   
   planButtons.forEach((button, index) => {
-    console.log(`[Telefonia.js] Configurando botón ${index + 1}`);
+    console.log(`[Telefonia.js] Configurando botón ${index + 1}:`, button);
+    
+    // Verificar si el botón ya tiene el listener para evitar duplicados
+    if (button.dataset.listenerAdded === 'true') {
+      console.log(`[Telefonia.js] Botón ${index + 1} ya tiene listener, saltando...`);
+      return;
+    }
+    
+    // Log de atributos del botón
+    console.log(`[Telefonia.js] Botón ${index + 1} datos:`, {
+      plan: button.getAttribute('data-plan'),
+      precio: button.getAttribute('data-precio'),
+      ext: button.getAttribute('data-ext'),
+      troncal: button.getAttribute('data-troncal')
+    });
     
     button.addEventListener('click', function(e) {
       e.preventDefault();
-      console.log('[Telefonia.js] Click en botón de plan detectado');
+      e.stopPropagation();
+      
+      console.log('[Telefonia.js] ¡¡¡ CLICK DETECTADO EN BOTÓN DE PLAN !!!');
+      console.log('[Telefonia.js] Botón clickeado:', this);
       
       // Obtener datos del plan
       const plan = this.getAttribute('data-plan') || 'Plan no especificado';
@@ -128,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const troncal = this.getAttribute('data-troncal') || 'Troncal no especificado';
       const numeracion = this.getAttribute('data-numeracion') || 'Numeración LADA México';
       
-      console.log('[Telefonia.js] Datos del plan:', { plan, precio, extensiones, troncal });
+      console.log('[Telefonia.js] Datos extraídos del plan:', { plan, precio, extensiones, troncal, numeracion });
       
       // Crear mensaje para WhatsApp
       const mensaje = `🏢 *SOLICITUD DE PLAN TELEFONÍA IP*
@@ -150,38 +199,29 @@ Quedo pendiente de su apoyo. ¡Gracias! 🚀`;
       
       // Crear URL de WhatsApp
       const whatsappURL = `https://wa.me/526252690997?text=${mensajeCodificado}`;
-      console.log('[Telefonia.js] Abriendo WhatsApp...');
+      console.log('[Telefonia.js] URL de WhatsApp generada:', whatsappURL);
       
       // Abrir WhatsApp en nueva pestaña
+      console.log('[Telefonia.js] Abriendo WhatsApp...');
       window.open(whatsappURL, '_blank');
       
       // Mostrar notificación si está disponible
       if (window.NTNotify) {
         NTNotify.success(`Solicitud enviada: ${plan}`);
       }
+      
+      console.log('[Telefonia.js] Proceso de WhatsApp completado');
     });
+    
+    // Marcar que el botón ya tiene listener
+    button.dataset.listenerAdded = 'true';
+    console.log(`[Telefonia.js] Botón ${index + 1} marcado como inicializado`);
   });
   
-  console.log('[Telefonia.js] Botones de planes inicializados correctamente');
-});
-
-// Asegurar que el hero sea visible inmediatamente
-document.addEventListener('DOMContentLoaded', function() {
-  const heroTitle = document.querySelector('#hero #hero-title');
-  const heroSub = document.querySelector('.telefonia-hero-sub');
-  const heroActions = document.querySelector('.telefonia-hero-actions');
-  const elems = [heroTitle, heroSub, heroActions];
+  console.log('[Telefonia.js] === INICIALIZACIÓN COMPLETADA ===');
   
-  // Mostrar elementos inmediatamente
-  elems.forEach(el => {
-    if (el) {
-      el.style.opacity = '1';
-      el.style.transform = 'none';
-      el.classList.remove('opacity-0', 'translate-y-10');
-    }
-  });
-  
-  console.log('[telefonia.js] Hero elements made visible immediately');
+  // Marcar como inicializado para evitar duplicaciones
+  window.telefoniaInitialized = true;
 });
 
 console.info('[telefonia.js] animaciones hero extendidas sincronizadas con headings');
