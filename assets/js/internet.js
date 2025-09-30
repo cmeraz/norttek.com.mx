@@ -548,6 +548,15 @@ document.addEventListener('DOMContentLoaded', function() {
     botonesEsc.forEach(function(btn){
       btn.addEventListener('click', function(){ seleccionarEscenario(btn.getAttribute('data-select-esc')); });
     });
+    
+    // Escuchar evento de escenario actualizado desde los nuevos botones
+    document.addEventListener('nt-escenario-updated', function(e) {
+      if (e && e.detail && e.detail.escenario) {
+        console.log('[Instalación] Evento nt-escenario-updated recibido:', e.detail.escenario);
+        seleccionarEscenario(e.detail.escenario);
+      }
+    });
+    
     radiosPago.forEach(function(r){ r.addEventListener('change', function(){ setPagoAntena(r.value); }); });
     // Recalcular cuando se actualiza el plan
   document.addEventListener('nt-plan-updated', function(e){ updateVisibility(e && e.detail && e.detail.triggered===true); calcular(); });
@@ -1350,12 +1359,16 @@ document.addEventListener('DOMContentLoaded', function() {
     function hideAllCards() {
       cardPropio.style.display = 'none';
       cardSinequipo.style.display = 'none';
+      // Remover clase active de ambas tarjetas
+      cardPropio.classList.remove('active');
+      cardSinequipo.classList.remove('active');
     }
 
     function showCard(card, button, scenario) {
       hideAllCards();
       resetButtons();
       card.style.display = 'block';
+      card.classList.add('active');
       applyStyle(button, activeStyle);
       
       // Animación suave de entrada
@@ -1372,6 +1385,15 @@ document.addEventListener('DOMContentLoaded', function() {
       try {
         localStorage.setItem('installScenario', scenario);
         console.log('[Escenario] Guardado en localStorage:', scenario);
+      } catch(_) {}
+
+      // Disparar evento para que el sistema de cálculo se actualice
+      try {
+        var event = new CustomEvent('nt-escenario-updated', { 
+          detail: { escenario: scenario }
+        });
+        document.dispatchEvent(event);
+        console.log('[Escenario] Evento disparado:', event);
       } catch(_) {}
 
       // Actualizar calendario si hay plan seleccionado
