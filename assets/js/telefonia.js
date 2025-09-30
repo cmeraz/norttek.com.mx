@@ -1,20 +1,22 @@
 // Lógica modular de la página Telefonía
 // (antes en telefonia-inline.js y previamente inline en telefoniaContent.php)
 
-// Prevenir inicialización múltiple del script
-if (window.telefoniaJSLoaded) {
-  console.log('[Telefonia.js] Script ya cargado, evitando re-inicialización');
-  // Solo exportar las funciones si no existen
-  if (!window.telefoniaButtonsInitialized) {
-    console.log('[Telefonia.js] Re-inicializando solo botones...');
+// Envolver todo en una función autoejecutable para poder usar return
+(function() {
+  // Prevenir inicialización múltiple del script
+  if (window.telefoniaJSLoaded) {
+    console.log('[Telefonia.js] Script ya cargado, evitando re-inicialización');
+    // Solo exportar las funciones si no existen
+    if (!window.telefoniaButtonsInitialized) {
+      console.log('[Telefonia.js] Re-inicializando solo botones...');
+    } else {
+      console.log('[Telefonia.js] Todo ya inicializado, saliendo');
+      return;
+    }
   } else {
-    console.log('[Telefonia.js] Todo ya inicializado, saliendo');
-    return;
+    window.telefoniaJSLoaded = true;
+    console.log('[Telefonia.js] Iniciando carga del script');
   }
-} else {
-  window.telefoniaJSLoaded = true;
-  console.log('[Telefonia.js] Iniciando carga del script');
-}
 
 // Implementar sistema de notificaciones simple si no existe NTNotify
 if (!window.NTNotify) {
@@ -229,3 +231,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 console.info('[telefonia.js] animaciones hero extendidas sincronizadas con headings');
+
+})(); // Fin de la función autoejecutable principal
