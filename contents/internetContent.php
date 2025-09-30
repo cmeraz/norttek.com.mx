@@ -389,8 +389,7 @@
           </div>
           <!-- CTA principal para avanzar con la contratación (reintroducido tras refactor) -->
           <div class="contrata-ahora-wrap" style="margin-top:1.4rem;">
-            <a id="contratar" href="#" role="button" class="contrata-ahora-btn cta-install-anim" aria-label="Solicitar instalación por WhatsApp" 
-               data-nt-modal-open="#modal-datos-usuario" data-modal-tipo="instalacion">
+            <a id="contratar" href="#" role="button" class="contrata-ahora-btn cta-install-anim" aria-label="Solicitar instalación por WhatsApp">
               <i class="fa-solid fa-wifi" aria-hidden="true"></i>
               <span>Solicitar Instalación</span>
             </a>

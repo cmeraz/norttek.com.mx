@@ -856,14 +856,32 @@ document.addEventListener('DOMContentLoaded', function() {
     var ctaBtn = document.getElementById('contratar') || document.getElementById('solicitar');
     if (ctaBtn) {
       var enviandoWhatsApp = false; // Flag para prevenir múltiples envíos
+      var ultimoClick = 0; // Timestamp del último click
+      
+      // Remover cualquier listener previo para evitar duplicados
+      ctaBtn.replaceWith(ctaBtn.cloneNode(true));
+      ctaBtn = document.getElementById('contratar') || document.getElementById('solicitar');
       
       ctaBtn.addEventListener('click', function(ev){
-        if (ev) { if(ev.preventDefault) ev.preventDefault(); if(ev.stopPropagation) ev.stopPropagation(); }
+        // Prevenir comportamiento por defecto y propagación
+        if (ev) { 
+          ev.preventDefault(); 
+          ev.stopPropagation();
+          ev.stopImmediatePropagation(); // Detener otros listeners
+        }
+        
+        // Throttling: Prevenir clicks muy rápidos (menos de 2 segundos)
+        var ahora = Date.now();
+        if (ahora - ultimoClick < 2000) {
+          console.log('[CTA Instalación] Click demasiado rápido, ignorando');
+          return false;
+        }
+        ultimoClick = ahora;
         
         // Prevenir múltiples clicks
         if (enviandoWhatsApp) {
           console.log('[CTA Instalación] Envío en progreso, ignorando click');
-          return;
+          return false;
         }
         
         console.log('[CTA Instalación] Click en botón contratar');
@@ -876,7 +894,7 @@ document.addEventListener('DOMContentLoaded', function() {
           console.warn('[CTA Instalación] Sin plan seleccionado', debugInfo);
           if(window.NTNotify){ NTNotify.warning('Primero selecciona un plan de internet.'); }
           if(ctaBtn){ ctaBtn.classList.add('cta-disabled-ping'); setTimeout(function(){ ctaBtn.classList.remove('cta-disabled-ping'); }, 1200); }
-          return;
+          return false;
         }
         
         // Verificar que hay escenario seleccionado
@@ -886,7 +904,7 @@ document.addEventListener('DOMContentLoaded', function() {
           console.warn('[CTA Instalación] Sin escenario seleccionado', debugInfo);
           if(window.NTNotify){ NTNotify.warning('Selecciona si ya tienes antena o necesitas una nueva.'); }
           if(ctaBtn){ ctaBtn.classList.add('cta-disabled-ping'); setTimeout(function(){ ctaBtn.classList.remove('cta-disabled-ping'); }, 1200); }
-          return;
+          return false;
         }
         
         // Verificar que hay nombre capturado
@@ -896,21 +914,34 @@ document.addEventListener('DOMContentLoaded', function() {
         if(!nombre){
           console.warn('[CTA Instalación] Sin nombre capturado', debugInfo);
           if(window.NTNotify){ NTNotify.warning('Necesitas proporcionar tu nombre primero. Haz clic en "Ver Planes" para comenzar.'); }
-          return;
+          return false;
         }
         
-        // Todo listo - enviar WhatsApp con protección
+        // Todo listo - enviar WhatsApp con protección máxima
         enviandoWhatsApp = true;
         ctaBtn.disabled = true;
-        console.log('[CTA Instalación] Enviando WhatsApp directamente', debugInfo);
-        enviarWhatsAppInstalacion(nombre);
+        ctaBtn.style.pointerEvents = 'none'; // Prevenir cualquier interacción
         
-        // Resetear después de un momento
+        console.log('[CTA Instalación] Enviando WhatsApp directamente', debugInfo);
+        
+        // Enviar con delay para evitar problemas de sincronización
         setTimeout(function() {
-          enviandoWhatsApp = false;
-          ctaBtn.disabled = false;
-        }, 2000);
-      });
+          try {
+            enviarWhatsAppInstalacion(nombre);
+          } catch(e) {
+            console.error('[CTA Instalación] Error al enviar WhatsApp:', e);
+          }
+          
+          // Resetear después de un momento más largo
+          setTimeout(function() {
+            enviandoWhatsApp = false;
+            ctaBtn.disabled = false;
+            ctaBtn.style.pointerEvents = '';
+          }, 3000);
+        }, 100);
+        
+        return false; // Prevenir cualquier comportamiento adicional
+      }, { capture: true }); // Usar capture para ser el primer listener
       // Exponer función de prueba en consola
       try {
         window.__debugCtaInstalacion = function(){
