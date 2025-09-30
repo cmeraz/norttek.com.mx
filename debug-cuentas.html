@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Cuentas - Botones de Copiar</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .clip-btn {
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            margin-left: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .clip-btn:hover {
+            background: #e0e0e0;
+        }
+        code {
+            background: #f8f8f8;
+            padding: 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .toast-container-modern {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+        }
+        .toast-modern {
+            background: white;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 300px;
+            transition: all 0.3s ease;
+        }
+        .toast-success {
+            border-left: 4px solid #22c55e;
+        }
+        .toast-error {
+            border-left: 4px solid #ef4444;
+        }
+        .toast-content-modern {
+            flex: 1;
+        }
+        .toast-title-modern {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .toast-message-modern {
+            font-size: 14px;
+            color: #666;
+        }
+        .toast-close-modern {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Debug: Botones de Copiar - Cuentas</h1>
+    
+    <div class="test-container">
+        <h2>Test 1: RFC</h2>
+        <code>
+            MEMC82010646A
+            <button type="button" class="clip-btn" data-clip="MEMC82010646A" title="Copiar RFC">
+                <i class="fa-regular fa-clone"></i> Copiar RFC
+            </button>
+        </code>
+    </div>
+
+    <div class="test-container">
+        <h2>Test 2: Email</h2>
+        <code>
+            contacto@norttek.com.mx
+            <button type="button" class="clip-btn" data-clip="contacto@norttek.com.mx" title="Copiar Email">
+                <i class="fa-regular fa-clone"></i> Copiar Email
+            </button>
+        </code>
+    </div>
+
+    <div class="test-container">
+        <h2>Test 3: Cuenta Bancaria</h2>
+        <code>
+            60-58246039-4
+            <button type="button" class="clip-btn" data-clip="60-58246039-4" title="Copiar Cuenta">
+                <i class="fa-regular fa-clone"></i> Copiar Cuenta
+            </button>
+        </code>
+    </div>
+
+    <div class="test-container">
+        <h2>Test 4: CLABE</h2>
+        <code>
+            014094605824603941
+            <button type="button" class="clip-btn" data-clip="014094605824603941" title="Copiar CLABE">
+                <i class="fa-regular fa-clone"></i> Copiar CLABE
+            </button>
+        </code>
+    </div>
+
+    <div id="debug-info" style="margin-top: 20px; padding: 20px; background: #fff3cd; border-radius: 8px;">
+        <h3>Debug Info:</h3>
+        <div id="clipboard-support"></div>
+        <div id="secure-context"></div>
+        <div id="buttons-found"></div>
+    </div>
+
+    <script>
+        // Debug: Mostrar información del entorno
+        document.getElementById('clipboard-support').innerHTML = 
+            `<strong>Clipboard API:</strong> ${navigator.clipboard ? '✅ Disponible' : '❌ No disponible'}`;
+        
+        document.getElementById('secure-context').innerHTML = 
+            `<strong>Contexto Seguro:</strong> ${window.isSecureContext ? '✅ HTTPS/localhost' : '❌ HTTP inseguro'}`;
+
+        // Funciones copiadas del archivo cuentas.js
+        function initCopyButtons() {
+            const buttons = document.querySelectorAll('.clip-btn');
+            document.getElementById('buttons-found').innerHTML = 
+                `<strong>Botones encontrados:</strong> ${buttons.length}`;
+
+            buttons.forEach((button, index) => {
+                console.log(`Botón ${index + 1}:`, button.dataset.clip);
+                
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const textToCopy = this.dataset.clip;
+                    console.log('Intentando copiar:', textToCopy);
+                    
+                    if (textToCopy) {
+                        copyToClipboard(textToCopy).then(() => {
+                            showToastModern('✅ Copiado', textToCopy, 'success');
+                            console.log('✅ Copiado exitosamente:', textToCopy);
+                        }).catch((error) => {
+                            showToastModern('❌ Error', 'No se pudo copiar', 'error');
+                            console.error('❌ Error al copiar:', error);
+                        });
+                    } else {
+                        console.error('❌ No hay texto para copiar');
+                    }
+                });
+            });
+        }
+
+        async function copyToClipboard(text) {
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    console.log('Usando Clipboard API');
+                    await navigator.clipboard.writeText(text);
+                } else {
+                    console.log('Usando fallback method');
+                    // Fallback para navegadores antiguos
+                    const textArea = document.createElement('textarea');
+                    textArea.value = text;
+                    textArea.style.position = 'fixed';
+                    textArea.style.opacity = '0';
+                    textArea.style.left = '-9999px';
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    const successful = document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    
+                    if (!successful) {
+                        throw new Error('execCommand falló');
+                    }
+                }
+            } catch (error) {
+                console.error('Error en copyToClipboard:', error);
+                throw new Error('Error al copiar');
+            }
+        }
+
+        function showToastModern(title, message, type = 'info') {
+            // Crear contenedor si no existe
+            let toastContainer = document.getElementById('toast-container-modern');
+            if (!toastContainer) {
+                toastContainer = document.createElement('div');
+                toastContainer.id = 'toast-container-modern';
+                toastContainer.className = 'toast-container-modern';
+                document.body.appendChild(toastContainer);
+            }
+            
+            const toast = document.createElement('div');
+            toast.className = `toast-modern toast-${type}`;
+            
+            const icons = {
+                success: '✅',
+                error: '❌',
+                info: 'ℹ️',
+                warning: '⚠️'
+            };
+            
+            toast.innerHTML = `
+                <div class="toast-icon-modern">${icons[type] || icons.info}</div>
+                <div class="toast-content-modern">
+                    <div class="toast-title-modern">${escapeHtml(title)}</div>
+                    <div class="toast-message-modern">${escapeHtml(message)}</div>
+                </div>
+                <button class="toast-close-modern" onclick="this.parentElement.remove()">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            `;
+            
+            // Animación de entrada
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateX(100%)';
+            toastContainer.appendChild(toast);
+            
+            // Trigger animation
+            requestAnimationFrame(() => {
+                toast.style.opacity = '1';
+                toast.style.transform = 'translateX(0)';
+            });
+            
+            // Auto-remove después de 4 segundos
+            setTimeout(() => {
+                if (toast.parentElement) {
+                    toast.style.opacity = '0';
+                    toast.style.transform = 'translateX(100%)';
+                    setTimeout(() => {
+                        if (toast.parentElement) {
+                            toast.remove();
+                        }
+                    }, 300);
+                }
+            }, 4000);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Inicializar cuando la página carga
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🧪 Inicializando debug de botones de copiar...');
+            initCopyButtons();
+        });
+    </script>
+</body>
+</html>

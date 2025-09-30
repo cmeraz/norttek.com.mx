@@ -95,8 +95,17 @@
           <div class="contact-grid">
             <div class="contact-item-modern">
               <span class="contact-label">RFC</span>
-              <code class="clip-src" data-clip="MEMC820106HCHRRR03">
+              <code class="clip-src" data-clip="MEMC82010646A">
                 MEMC82010646A
+                <button type="button" class="clip-btn" data-clip="MEMC82010646A" title="Copiar" aria-label="Copiar RFC">
+                  <i class="fa-regular fa-clone"></i>
+                </button>
+              </code>
+            </div>
+            <div class="contact-item-modern">
+              <span class="contact-label">CURP</span>
+              <code class="clip-src" data-clip="MEMC820106HCHRRR03">
+                MEMC820106HCHRRR03
                 <button type="button" class="clip-btn" data-clip="MEMC820106HCHRRR03" title="Copiar" aria-label="Copiar CURP">
                   <i class="fa-regular fa-clone"></i>
                 </button>

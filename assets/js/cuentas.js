@@ -6,11 +6,16 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('🏦 DOM cargado, inicializando Dashboard de Cuentas...');
     initCuentasDashboard();
 });
 
 function initCuentasDashboard() {
     console.log('🏦 Inicializando Dashboard de Cuentas...');
+    
+    // Verificar si los elementos existen
+    const copyButtons = document.querySelectorAll('.clip-btn');
+    console.log(`📋 Botones de copiar encontrados: ${copyButtons.length}`);
     
     // Inicializar componentes
     initCopyButtons();
@@ -23,6 +28,8 @@ function initCuentasDashboard() {
     
     // Inicializar animaciones de entrada
     initHeroAnimations();
+    
+    console.log('✅ Dashboard de Cuentas inicializado correctamente');
 }
 
 // ==========================================================================
@@ -63,12 +70,19 @@ function initScrollAnimations() {
 // Funcionalidad de copiado - estilo Internet
 // ==========================================================================
 function initCopyButtons() {
-    document.querySelectorAll('.clip-btn').forEach(button => {
+    const copyButtons = document.querySelectorAll('.clip-btn');
+    console.log(`📋 Inicializando ${copyButtons.length} botones de copiar...`);
+    
+    copyButtons.forEach((button, index) => {
+        const dataClip = button.dataset.clip;
+        console.log(`📋 Botón ${index + 1}: data-clip="${dataClip}"`);
+        
         button.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
+            console.log(`📋 Click en botón con data-clip: "${this.dataset.clip}"`);
             
-            const textToCopy = this.dataset.copy;
+            const textToCopy = this.dataset.clip;
             
             if (textToCopy) {
                 copyToClipboard(textToCopy).then(() => {
@@ -87,9 +101,13 @@ function initCopyButtons() {
                 }).catch(() => {
                     showToastModern('❌ Error', 'No se pudo copiar', 'error');
                 });
+            } else {
+                console.log('❌ No hay texto para copiar en data-clip');
             }
         });
     });
+    
+    console.log('✅ Botones de copiar inicializados correctamente');
 }
 
 async function copyToClipboard(text) {
