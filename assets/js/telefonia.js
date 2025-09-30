@@ -1,8 +1,24 @@
 // Lógica modular de la página Telefonía
 // (antes en telefonia-inline.js y previamente inline en telefoniaContent.php)
 
+// Prevenir inicialización múltiple del script
+if (window.telefoniaJSLoaded) {
+  console.log('[Telefonia.js] Script ya cargado, evitando re-inicialización');
+  // Solo exportar las funciones si no existen
+  if (!window.telefoniaButtonsInitialized) {
+    console.log('[Telefonia.js] Re-inicializando solo botones...');
+  } else {
+    console.log('[Telefonia.js] Todo ya inicializado, saliendo');
+    return;
+  }
+} else {
+  window.telefoniaJSLoaded = true;
+  console.log('[Telefonia.js] Iniciando carga del script');
+}
+
 // Implementar sistema de notificaciones simple si no existe NTNotify
 if (!window.NTNotify) {
+  console.log('[Telefonia.js] Inicializando sistema de notificaciones');
   window.NTNotify = {
     success: function(msg) { showSimpleNotification(msg, 'success'); },
     warning: function(msg) { showSimpleNotification(msg, 'warning'); },
@@ -92,10 +108,27 @@ if (!window.NTNotify) {
 
 // Funcionalidad para botones de planes de telefonía
 (function(){
+  // Verificar si ya se inicializaron los botones para evitar múltiples listeners
+  if (window.telefoniaButtonsInitialized) {
+    console.log('[Telefonia.js] Botones ya inicializados, evitando duplicados');
+    return;
+  }
+  
   const planButtons = document.querySelectorAll('.tel-plan__btn');
   console.log('[Telefonia.js] Botones de planes encontrados:', planButtons.length);
   
+  if (planButtons.length === 0) {
+    console.warn('[Telefonia.js] No se encontraron botones de planes');
+    return;
+  }
+  
   planButtons.forEach((button, index) => {
+    // Verificar si el botón ya tiene el listener para evitar duplicados
+    if (button.dataset.listenerAdded === 'true') {
+      console.log(`[Telefonia.js] Botón ${index + 1} ya tiene listener, saltando`);
+      return;
+    }
+    
     console.log(`[Telefonia.js] Inicializando botón de plan ${index + 1}:`, {
       plan: button.getAttribute('data-plan'),
       precio: button.getAttribute('data-precio'),
@@ -103,8 +136,21 @@ if (!window.NTNotify) {
       troncal: button.getAttribute('data-troncal')
     });
     
-    button.addEventListener('click', function(e) {
+    // Variable para prevenir múltiples clicks rápidos
+    let isProcessing = false;
+    
+    const handlePlanClick = function(e) {
       e.preventDefault();
+      e.stopPropagation();
+      
+      // Prevenir múltiples ejecuciones si ya se está procesando
+      if (isProcessing) {
+        console.log('[Telefonia.js] Click ignorado, ya procesando solicitud anterior');
+        return;
+      }
+      
+      isProcessing = true;
+      console.log('[Telefonia.js] Procesando solicitud de plan...');
       
       // Obtener datos del plan
       const plan = this.getAttribute('data-plan') || 'Plan no especificado';
@@ -143,9 +189,23 @@ Quedo pendiente de su apoyo. ¡Gracias! 🚀`;
       if (window.NTNotify) {
         NTNotify.success(`Solicitud enviada: ${plan}`);
       }
-    });
+      
+      // Resetear el flag después de un delay para permitir nuevos clicks
+      setTimeout(() => {
+        isProcessing = false;
+        console.log('[Telefonia.js] Listo para nueva solicitud');
+      }, 2000);
+    };
+    
+    // Agregar el event listener
+    button.addEventListener('click', handlePlanClick);
+    
+    // Marcar que el botón ya tiene listener
+    button.dataset.listenerAdded = 'true';
   });
   
+  // Marcar que los botones ya fueron inicializados globalmente
+  window.telefoniaButtonsInitialized = true;
   console.log('[Telefonia.js] Botones de planes inicializados correctamente');
 })();
 

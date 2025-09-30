@@ -1,19 +1,34 @@
 /**
  * Test de botones de planes - Telefonía Page
- * Este archivo verifica que todos los botones tel-plan__btn en telefonia.php funcionen correctamente
+ * Este archivo verifica que los botones tel-plan__btn no se ejecuten múltiples veces
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🧪 [Test Telefonía] Iniciando pruebas de botones de planes...');
+    console.log('🧪 [Test Telefonía] Iniciando pruebas de ejecución única...');
+    
+    // Contador para verificar ejecuciones múltiples
+    window.telefoniaTestExecutions = (window.telefoniaTestExecutions || 0) + 1;
+    console.log(`🔢 [Test Telefonía] Ejecución número: ${window.telefoniaTestExecutions}`);
+    
+    if (window.telefoniaTestExecutions > 1) {
+        console.warn(`⚠️ [Test Telefonía] ADVERTENCIA: Script ejecutándose múltiples veces (${window.telefoniaTestExecutions})`);
+    }
     
     // Esperar un poco para que la página cargue completamente
     setTimeout(function() {
         testPlanButtons();
+        monitorClickEvents();
     }, 1000);
 });
 
 function testPlanButtons() {
-    console.log('🔍 [Test Telefonía] Buscando botones de planes...');
+    console.log('🔍 [Test Telefonía] Verificando inicialización única...');
+    
+    // Verificar flags globales
+    console.log('📊 [Test Telefonía] Estado de flags:');
+    console.log(`   - telefoniaJSLoaded: ${window.telefoniaJSLoaded}`);
+    console.log(`   - telefoniaButtonsInitialized: ${window.telefoniaButtonsInitialized}`);
+    console.log(`   - Test executions: ${window.telefoniaTestExecutions}`);
     
     // Buscar todos los botones de planes
     const planButtons = document.querySelectorAll('.tel-plan__btn');
@@ -26,116 +41,48 @@ function testPlanButtons() {
     
     // Verificar cada botón
     planButtons.forEach((button, index) => {
+        const listenerAdded = button.dataset.listenerAdded;
         const dataPlan = button.getAttribute('data-plan');
-        const dataPrecio = button.getAttribute('data-precio');
-        const dataExt = button.getAttribute('data-ext');
-        const dataTroncal = button.getAttribute('data-troncal');
-        const dataNumeracion = button.getAttribute('data-numeracion');
         
         console.log(`📋 [Test Telefonía] Botón ${index + 1}:`);
         console.log(`   - data-plan: "${dataPlan}"`);
-        console.log(`   - data-precio: "${dataPrecio}"`);
-        console.log(`   - data-ext: "${dataExt}"`);
-        console.log(`   - data-troncal: "${dataTroncal}"`);
-        console.log(`   - data-numeracion: "${dataNumeracion}"`);
+        console.log(`   - listenerAdded: "${listenerAdded}"`);
         
-        // Verificar que el botón tenga todos los datos necesarios
-        if (!dataPlan || dataPlan.trim() === '') {
-            console.error(`❌ [Test Telefonía] Botón ${index + 1} no tiene data-plan válido`);
-        }
-        if (!dataPrecio || dataPrecio.trim() === '') {
-            console.error(`❌ [Test Telefonía] Botón ${index + 1} no tiene data-precio válido`);
-        }
-        if (!dataExt || dataExt.trim() === '') {
-            console.error(`❌ [Test Telefonía] Botón ${index + 1} no tiene data-ext válido`);
-        }
-        if (!dataTroncal || dataTroncal.trim() === '') {
-            console.error(`❌ [Test Telefonía] Botón ${index + 1} no tiene data-troncal válido`);
-        }
-        
-        if (dataPlan && dataPrecio && dataExt && dataTroncal) {
-            console.log(`✅ [Test Telefonía] Botón ${index + 1} configurado correctamente`);
+        if (listenerAdded === 'true') {
+            console.log(`✅ [Test Telefonía] Botón ${index + 1} correctamente marcado como inicializado`);
+        } else {
+            console.warn(`⚠️ [Test Telefonía] Botón ${index + 1} no está marcado como inicializado`);
         }
     });
-    
-    // Verificar si NTNotify existe
-    if (window.NTNotify) {
-        console.log('✅ [Test Telefonía] Sistema de notificaciones NTNotify disponible');
-        
-        // Probar notificación
-        setTimeout(() => {
-            window.NTNotify.success('Test de notificación de telefonía exitoso');
-        }, 2000);
-    } else {
-        console.warn('⚠️ [Test Telefonía] Sistema de notificaciones NTNotify no disponible');
-    }
-    
-    // Probar manualmente el primer botón si existe
-    if (planButtons.length > 0) {
-        const firstButton = planButtons[0];
-        const testPlan = firstButton.getAttribute('data-plan');
-        
-        if (testPlan && testPlan.trim() !== '') {
-            console.log(`🧪 [Test Telefonía] Probando envío automático del primer plan: "${testPlan}"`);
-            
-            setTimeout(() => {
-                // Simular click en el primer botón
-                try {
-                    // No ejecutar el click real para evitar abrir WhatsApp, solo verificar que el evento esté registrado
-                    const events = getEventListeners ? getEventListeners(firstButton) : null;
-                    console.log('✅ [Test Telefonía] Event listeners en primer botón:', events ? Object.keys(events) : 'No disponible en esta consola');
-                } catch (error) {
-                    console.error('❌ [Test Telefonía] Error al verificar event listeners:', error);
-                }
-            }, 3000);
-        }
-    }
-    
-    // Resumen final
-    setTimeout(() => {
-        console.log('📊 [Test Telefonía] Resumen de pruebas:');
-        console.log(`   - Botones encontrados: ${planButtons.length}`);
-        console.log(`   - Sistema de notificaciones: ${window.NTNotify ? 'Disponible' : 'No disponible'}`);
-        console.log(`   - Clases esperadas: .tel-plan__btn`);
-        console.log(`   - Datos requeridos: data-plan, data-precio, data-ext, data-troncal`);
-    }, 5000);
 }
 
-// Función para probar manualmente un plan específico
-window.testPlanMessage = function(planName, precio, extensiones, troncal) {
-    console.log(`🧪 [Test Manual] Generando mensaje para plan: "${planName}"`);
+function monitorClickEvents() {
+    console.log('👁️ [Test Telefonía] Configurando monitoreo de clicks...');
     
-    const mensaje = `🏢 *SOLICITUD DE PLAN TELEFONÍA IP*
-
-📋 *Plan seleccionado:* ${planName || 'Plan no especificado'}
-💰 *Precio:* ${precio || 'Precio no especificado'}
-📞 *Extensiones:* ${extensiones || 'Extensiones no especificadas'}
-🔗 *Troncal:* ${troncal || 'Troncal no especificado'}
-📱 *Numeración:* Numeración LADA México
-
----
-
-¡Hola! Estoy interesado en contratar el ${planName || 'plan'} de Norttek PBX. ¿Podrían proporcionarme más información sobre la instalación, configuración y pasos para comenzar?
-
-Quedo pendiente de su apoyo. ¡Gracias! 🚀`;
-
-    console.log('📱 [Test Manual] Mensaje generado:');
-    console.log(mensaje);
+    const planButtons = document.querySelectorAll('.tel-plan__btn');
     
-    const mensajeCodificado = encodeURIComponent(mensaje);
-    const whatsappURL = `https://wa.me/526252690997?text=${mensajeCodificado}`;
-    
-    console.log('🔗 [Test Manual] URL de WhatsApp generada:');
-    console.log(whatsappURL);
-    
-    return {
-        mensaje: mensaje,
-        url: whatsappURL
-    };
-};
+    planButtons.forEach((button, index) => {
+        // Contador de clicks por botón
+        if (!button.dataset.clickCount) {
+            button.dataset.clickCount = '0';
+        }
+        
+        // Interceptar clicks para conteo (sin interferir con la funcionalidad real)
+        button.addEventListener('click', function(e) {
+            const currentCount = parseInt(button.dataset.clickCount) + 1;
+            button.dataset.clickCount = currentCount.toString();
+            
+            console.log(`🖱️ [Test Telefonía] Click ${currentCount} en botón ${index + 1}: ${this.getAttribute('data-plan')}`);
+            
+            if (currentCount > 1) {
+                console.log(`ℹ️ [Test Telefonía] Múltiples clicks detectados en botón ${index + 1} (${currentCount} veces)`);
+            }
+        }, true); // Usar capture para ejecutar antes que el listener principal
+    });
+}
 
-// Función para simular click en un botón específico (sin abrir WhatsApp)
-window.simulatePlanClick = function(buttonIndex) {
+// Función para simular y verificar comportamiento
+window.testSingleExecution = function(buttonIndex = 0) {
     const planButtons = document.querySelectorAll('.tel-plan__btn');
     
     if (!planButtons[buttonIndex]) {
@@ -144,17 +91,50 @@ window.simulatePlanClick = function(buttonIndex) {
     }
     
     const button = planButtons[buttonIndex];
-    const plan = button.getAttribute('data-plan');
-    const precio = button.getAttribute('data-precio');
-    const ext = button.getAttribute('data-ext');
-    const troncal = button.getAttribute('data-troncal');
+    console.log(`🧪 [Test Manual] Simulando click único en botón ${buttonIndex + 1}`);
     
-    console.log(`🎯 [Test Manual] Simulando click en botón ${buttonIndex + 1}: ${plan}`);
+    // Resetear contador para esta prueba
+    button.dataset.clickCount = '0';
     
-    // Ejecutar la lógica sin abrir WhatsApp
-    return testPlanMessage(plan, precio, ext, troncal);
+    // Simular click
+    button.click();
+    
+    // Verificar resultado después de un momento
+    setTimeout(() => {
+        const clickCount = button.dataset.clickCount;
+        const plan = button.getAttribute('data-plan');
+        
+        console.log(`📊 [Test Manual] Resultado para "${plan}":`);
+        console.log(`   - Clicks registrados: ${clickCount}`);
+        console.log(`   - Estado esperado: 1 click`);
+        
+        if (clickCount === '1') {
+            console.log(`✅ [Test Manual] Comportamiento correcto: ejecución única`);
+        } else {
+            console.error(`❌ [Test Manual] Problema detectado: ${clickCount} ejecuciones`);
+        }
+    }, 500);
+};
+
+// Función para verificar estado global
+window.checkTelefoniaState = function() {
+    console.log('� [Debug] Estado actual del sistema:');
+    console.log('   Global flags:');
+    console.log(`     - telefoniaJSLoaded: ${window.telefoniaJSLoaded}`);
+    console.log(`     - telefoniaButtonsInitialized: ${window.telefoniaButtonsInitialized}`);
+    console.log(`     - Test executions: ${window.telefoniaTestExecutions}`);
+    
+    const buttons = document.querySelectorAll('.tel-plan__btn');
+    console.log(`   Botones (${buttons.length}):`);
+    
+    buttons.forEach((button, index) => {
+        console.log(`     Botón ${index + 1}:`);
+        console.log(`       - listenerAdded: ${button.dataset.listenerAdded}`);
+        console.log(`       - clickCount: ${button.dataset.clickCount || '0'}`);
+        console.log(`       - data-plan: ${button.getAttribute('data-plan')}`);
+    });
 };
 
 console.log('🧪 [Test Telefonía] Script de pruebas cargado.');
-console.log('   - Usa testPlanMessage(plan, precio, ext, troncal) para probar mensajes');
-console.log('   - Usa simulatePlanClick(0) para simular click en primer botón');
+console.log('   - Usa testSingleExecution(0) para probar botón específico');
+console.log('   - Usa checkTelefoniaState() para ver estado completo');

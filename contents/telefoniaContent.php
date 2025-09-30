@@ -229,6 +229,3 @@
 <div id="faq" class="mt-24">
   <?= faq('faq-telefonia', ['title' => 'Preguntas Frecuentes']) ?>
 </div>
-
-<!-- JS específico de la página -->
-<?php $jsFiles[] = 'telefonia'; ?>
