@@ -1050,6 +1050,48 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // --- Copiar datos bancarios ---
   try {
+    // Implementar sistema de notificaciones simple si no existe NTNotify
+    if (!window.NTNotify) {
+      window.NTNotify = {
+        success: function(msg) { showSimpleNotification(msg, 'success'); },
+        warning: function(msg) { showSimpleNotification(msg, 'warning'); },
+        error: function(msg) { showSimpleNotification(msg, 'error'); }
+      };
+      
+      function showSimpleNotification(message, type) {
+        var notification = document.createElement('div');
+        notification.style.cssText = 'position:fixed;top:20px;right:20px;z-index:10000;padding:12px 16px;border-radius:8px;color:white;font-weight:600;font-size:14px;max-width:300px;box-shadow:0 4px 12px rgba(0,0,0,0.15);';
+        
+        switch(type) {
+          case 'success':
+            notification.style.background = '#10b981';
+            notification.innerHTML = '✅ ' + message;
+            break;
+          case 'warning':
+            notification.style.background = '#f59e0b';
+            notification.innerHTML = '⚠️ ' + message;
+            break;
+          case 'error':
+            notification.style.background = '#ef4444';
+            notification.innerHTML = '❌ ' + message;
+            break;
+        }
+        
+        document.body.appendChild(notification);
+        setTimeout(function() {
+          if (notification.parentElement) {
+            notification.style.opacity = '0';
+            notification.style.transform = 'translateX(100%)';
+            setTimeout(function() {
+              if (notification.parentElement) {
+                notification.remove();
+              }
+            }, 300);
+          }
+        }, 3000);
+      }
+    }
+    
     function copiarValor(valor){
       if(!valor) return;
       var ok = false;
@@ -1072,10 +1114,21 @@ document.addEventListener('DOMContentLoaded', function() {
         } catch(e){ if(window.NTNotify) NTNotify.warning('No se pudo copiar'); }
       }
     }
-    document.querySelectorAll('.cliente-card.cuentas-card .clip-btn').forEach(function(btn){
-      btn.addEventListener('click', function(){ copiarValor(btn.getAttribute('data-clip')); });
+    
+    // Inicializar todos los botones de copiar en la página
+    document.querySelectorAll('.clip-btn').forEach(function(btn){
+      console.log('[Internet.js] Inicializando botón de copiar:', btn.getAttribute('data-clip'));
+      btn.addEventListener('click', function(){ 
+        var valorACopiar = btn.getAttribute('data-clip');
+        console.log('[Internet.js] Copiando valor:', valorACopiar);
+        copiarValor(valorACopiar);
+      });
     });
-  } catch(_) {}
+    
+    console.log('[Internet.js] Botones de copiar inicializados: ' + document.querySelectorAll('.clip-btn').length);
+  } catch(e) {
+    console.error('[Internet.js] Error inicializando botones de copiar:', e);
+  }
 
   // (Eliminado) Manejador duplicado que abría WhatsApp desde el botón de plan
 
