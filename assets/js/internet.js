@@ -16,12 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('[Internet.js] Cache completo limpiado al cargar página');
   } catch(_) {}
 
-  // Asegurar que todos los modales estén ocultos al inicio (excepto modal-datos-usuario que se usa para captura)
+  // Asegurar que todos los modales estén ocultos al inicio (excepto modal-datos-usuario y cliente-login-modal)
   try {
     var modalsToHide = [
       'modal-aviso-pago',
-      'modal-aviso-whatsapp',
-      'cliente-login-modal'
+      'modal-aviso-whatsapp'
     ];
     
     modalsToHide.forEach(function(modalId) {
@@ -35,6 +34,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Restaurar scroll del body
     document.body.style.overflow = '';
     console.log('[Internet.js] Modales específicos inicializados como ocultos');
+  } catch(_) {}
+
+  // Verificar que el modal de cliente login esté disponible
+  try {
+    var clienteLoginModalCheck = document.getElementById('cliente-login-modal');
+    if (clienteLoginModalCheck) {
+      console.log('[Internet.js] Modal cliente-login-modal encontrado y disponible');
+      // Asegurar que esté oculto inicialmente pero disponible
+      clienteLoginModalCheck.style.display = 'none';
+      clienteLoginModalCheck.setAttribute('aria-hidden', 'true');
+    } else {
+      console.warn('[Internet.js] Modal cliente-login-modal NO encontrado');
+    }
   } catch(_) {}
   
   // Verificar que el modal existe antes de inicializar
@@ -335,17 +347,48 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function abrirLoginCliente() {
+    console.log('[Cliente] Intentando abrir modal de login');
+    
     if (!clienteLoginModal) clienteLoginModal = document.getElementById('cliente-login-modal');
-    if (clienteLoginModal && window.NTModal) {
-      window.NTModal.open(clienteLoginModal);
-      setTimeout(function(){ try { var inp = document.getElementById('cliente-login-phone'); if (inp) inp.focus(); } catch(_){}}
-      , 60);
-    } else if (clienteLoginModal) {
-      // Fallback mínimo
-      clienteLoginModal.style.display = 'flex';
-    } else {
+    
+    if (!clienteLoginModal) {
+      console.error('[Cliente] Modal cliente-login-modal no encontrado en el DOM');
       if (window.NTNotify) NTNotify.warning('No se pudo abrir el modal de acceso. Recarga la página.');
-      else console.warn('Modal de login cliente no encontrado');
+      return;
+    }
+    
+    console.log('[Cliente] Modal encontrado, intentando abrirlo');
+    
+    if (window.NTModal && typeof window.NTModal.open === 'function') {
+      try {
+        window.NTModal.open(clienteLoginModal);
+        console.log('[Cliente] Modal abierto con NTModal');
+        setTimeout(function(){ 
+          try { 
+            var inp = document.getElementById('cliente-login-phone'); 
+            if (inp) inp.focus(); 
+          } catch(_){}
+        }, 60);
+      } catch(e) {
+        console.error('[Cliente] Error con NTModal:', e);
+        // Fallback si NTModal falla
+        clienteLoginModal.style.display = 'flex';
+        clienteLoginModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+    } else {
+      // Fallback directo
+      console.log('[Cliente] Usando fallback directo');
+      clienteLoginModal.style.display = 'flex';
+      clienteLoginModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      
+      setTimeout(function(){ 
+        try { 
+          var inp = document.getElementById('cliente-login-phone'); 
+          if (inp) inp.focus(); 
+        } catch(_){}
+      }, 60);
     }
   }
   function cerrarLoginCliente() {
@@ -356,11 +399,16 @@ document.addEventListener('DOMContentLoaded', function() {
   // mostrarCliente(true) => fuerza scroll centrado (solo tras login);
   // mostrarCliente(event) o sin argumento => no hace scroll automático
   function mostrarCliente(doScroll) {
+    console.log('[Cliente] mostrarCliente ejecutada, doScroll:', doScroll);
+    
     // Si no autenticado, abrir modal en lugar de mostrar dashboard
     if (!clienteEstaAutenticado()) {
+      console.log('[Cliente] Usuario no autenticado, abriendo modal de login');
       abrirLoginCliente();
       return;
     }
+    
+    console.log('[Cliente] Usuario autenticado, mostrando dashboard');
     hideSection(welcomeMsg);
     hideSection(nuevoContent);
     showSection(clienteContent);
@@ -417,7 +465,15 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   if (btnNuevo) btnNuevo.addEventListener('click', mostrarNuevo);
-  if (btnCliente) btnCliente.addEventListener('click', mostrarCliente);
+  if (btnCliente) {
+    console.log('[Cliente] Configurando listener para btn-cliente');
+    btnCliente.addEventListener('click', function(e) {
+      console.log('[Cliente] Click detectado en btn-cliente');
+      mostrarCliente(e);
+    });
+  } else {
+    console.warn('[Cliente] btn-cliente no encontrado');
+  }
 
   // Estado inicial
   // Asegura que las secciones ocultas tengan la clase para transición
