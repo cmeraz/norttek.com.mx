@@ -374,7 +374,7 @@
               <div class="pago-box">
                 <h5><i class="fa-solid fa-link"></i> Pago con Tarjeta</h5>
                 <p>
-                  <a href="https://biolibre.mx/norttek" target="_blank" rel="noopener noreferrer" class="linkpay" style="color: #0ea5e9; font-weight: 600;">
+                  <a id="btn-pagar-tarjeta-1" href="https://biolibre.mx/norttek" target="_blank" rel="noopener noreferrer" class="linkpay" style="color: #0ea5e9; font-weight: 600;">
                     <i class="fa-solid fa-external-link-alt"></i> Pagar con Tarjeta MercadoPago
                   </a><br>
                   <small style="color: #6b7280; font-size: 0.8rem;">Pagos seguros con tarjeta de crédito/débito</small>
@@ -502,7 +502,7 @@
           <p style="font-size:.65rem; color:#475569; margin:0; line-height:1.4;">
             Realiza pagos seguros con tu tarjeta de crédito o débito a través de MercadoPago
           </p>
-          <a href="https://biolibre.mx/norttek" target="_blank" rel="noopener noreferrer" 
+          <a id="btn-pagar-tarjeta-2" href="https://biolibre.mx/norttek" target="_blank" rel="noopener noreferrer" 
              style="display:inline-flex; align-items:center; gap:.4rem; background:#0ea5e9; color:white; padding:.5rem .75rem; border-radius:6px; text-decoration:none; font-size:.68rem; font-weight:600; letter-spacing:.3px; text-transform:uppercase; transition:all 0.2s ease;">
             <i class="fa-solid fa-external-link-alt"></i>
             Pagar con Tarjeta
@@ -566,6 +566,88 @@
         <button type="button" class="btn-secundario btn btn-secondary" data-nt-modal-close>Cancelar</button>
       </div>
     </form>
+  </div>
+</div>
+
+<!-- Modal de Aviso: Pago con Tarjeta -->
+<div id="modal-aviso-pago" class="nt-modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-aviso-pago-title">
+  <div class="nt-modal" role="document" style="max-width: 500px;">
+    <button type="button" class="nt-modal-close" data-nt-modal-close aria-label="Cerrar">&times;</button>
+    <div class="modal-body text-center" style="padding: 2rem;">
+      <div class="mb-4">
+        <i class="fa-solid fa-credit-card" style="font-size: 3rem; color: #0ea5e9; margin-bottom: 1rem;"></i>
+        <h3 id="modal-aviso-pago-title" class="nt-modal-title" style="color: #1e293b; margin-bottom: 1rem;">
+          ¡Importante! Después de tu Pago
+        </h3>
+      </div>
+      <div class="alert-content" style="background: #f0f9ff; border: 1px solid #0ea5e9; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; text-align: left;">
+        <p style="margin: 0 0 1rem 0; font-weight: 600; color: #0c4a6e;">
+          <i class="fa-solid fa-info-circle" style="color: #0ea5e9; margin-right: 0.5rem;"></i>
+          No olvides reportar tu pago:
+        </p>
+        <ul style="margin: 0; padding-left: 1.2rem; color: #374151; line-height: 1.6;">
+          <li><strong>Opción 1:</strong> Reporta tu pago directamente en la aplicación web de clientes</li>
+          <li><strong>Opción 2:</strong> Envía tu comprobante de pago por WhatsApp para que sea aplicado a tu cuenta</li>
+        </ul>
+        <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 0.75rem; margin-top: 1rem; border-radius: 0 8px 8px 0;">
+          <p style="margin: 0; font-size: 0.9rem; color: #92400e;">
+            <i class="fa-solid fa-exclamation-triangle" style="color: #f59e0b; margin-right: 0.5rem;"></i>
+            <strong>Recuerda:</strong> Tu pago se reflejará una vez que sea reportado y validado.
+          </p>
+        </div>
+      </div>
+      <div class="modal-actions" style="display: flex; gap: 0.75rem; justify-content: center;">
+        <button type="button" class="btn-primario" id="btn-entendido-pago" data-nt-modal-close style="min-width: 120px;">
+          <i class="fa-solid fa-check"></i>
+          Entendido
+        </button>
+        <a href="https://biolibre.mx/norttek" target="_blank" rel="noopener noreferrer" class="btn-secundario" style="display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; min-width: 120px; justify-content: center;">
+          <i class="fa-solid fa-external-link-alt"></i>
+          Ir a Pagar
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Aviso: Después de WhatsApp -->
+<div id="modal-aviso-whatsapp" class="nt-modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-aviso-whatsapp-title">
+  <div class="nt-modal" role="document" style="max-width: 500px;">
+    <button type="button" class="nt-modal-close" data-nt-modal-close aria-label="Cerrar">&times;</button>
+    <div class="modal-body text-center" style="padding: 2rem;">
+      <div class="mb-4">
+        <i class="fa-brands fa-whatsapp" style="font-size: 3rem; color: #25d366; margin-bottom: 1rem;"></i>
+        <h3 id="modal-aviso-whatsapp-title" class="nt-modal-title" style="color: #1e293b; margin-bottom: 1rem;">
+          ¡Último Paso Importante!
+        </h3>
+      </div>
+      <div class="alert-content" style="background: #f0fdf4; border: 1px solid #25d366; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; text-align: left;">
+        <p style="margin: 0 0 1rem 0; font-weight: 600; color: #14532d;">
+          <i class="fa-solid fa-info-circle" style="color: #25d366; margin-right: 0.5rem;"></i>
+          Después de enviar tu mensaje por WhatsApp:
+        </p>
+        <div style="background: #dcfce7; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+          <p style="margin: 0; color: #166534; font-weight: 600;">
+            <i class="fa-solid fa-mouse-pointer" style="color: #25d366; margin-right: 0.5rem;"></i>
+            No olvides hacer clic en el enlace del formulario que aparece en tu mensaje
+          </p>
+        </div>
+        <p style="margin: 0; color: #374151; line-height: 1.6;">
+          Es <strong>necesario</strong> que completes el formulario de instalación para que podamos:
+        </p>
+        <ul style="margin: 0.5rem 0 0 0; padding-left: 1.2rem; color: #374151; line-height: 1.6;">
+          <li>Procesar tu solicitud correctamente</li>
+          <li>Agendar tu instalación</li>
+          <li>Contactarte para coordinar la visita técnica</li>
+        </ul>
+      </div>
+      <div class="modal-actions" style="display: flex; gap: 0.75rem; justify-content: center;">
+        <button type="button" class="btn-primario" id="btn-entendido-whatsapp" data-nt-modal-close style="min-width: 140px;">
+          <i class="fa-solid fa-check"></i>
+          ¡Entendido!
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 

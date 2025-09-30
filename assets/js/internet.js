@@ -954,6 +954,117 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   } catch(_) {}
 
+  // --- Listeners para Modales de Aviso ---
+  try {
+    // Modal de aviso para botones "Pagar con Tarjeta"
+    var btnsPagarTarjeta = document.querySelectorAll('#btn-pagar-tarjeta-1, #btn-pagar-tarjeta-2');
+    btnsPagarTarjeta.forEach(function(btn) {
+      if (btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          console.log('[Modal Aviso] Abriendo modal de aviso para pago con tarjeta');
+          
+          // Abrir modal de aviso
+          var modalAvisoPago = document.getElementById('modal-aviso-pago');
+          if (modalAvisoPago) {
+            modalAvisoPago.style.display = 'flex';
+            modalAvisoPago.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            
+            // Usar NTModal si está disponible
+            if (window.NTModal) {
+              try {
+                window.NTModal.open(modalAvisoPago);
+              } catch(e) {
+                console.warn('[Modal Aviso] Error con NTModal:', e);
+              }
+            }
+          }
+          
+          return false;
+        });
+      }
+    });
+
+    // Modificar el envío de WhatsApp para mostrar modal de aviso después
+    var originalEnviarWhatsApp = enviarWhatsAppInstalacion;
+    enviarWhatsAppInstalacion = function(nombre) {
+      // Llamar función original
+      originalEnviarWhatsApp(nombre);
+      
+      // Mostrar modal de aviso después de un breve delay
+      setTimeout(function() {
+        console.log('[Modal Aviso] Abriendo modal de aviso después de WhatsApp');
+        
+        var modalAvisoWhatsApp = document.getElementById('modal-aviso-whatsapp');
+        if (modalAvisoWhatsApp) {
+          modalAvisoWhatsApp.style.display = 'flex';
+          modalAvisoWhatsApp.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+          
+          // Usar NTModal si está disponible
+          if (window.NTModal) {
+            try {
+              window.NTModal.open(modalAvisoWhatsApp);
+            } catch(e) {
+              console.warn('[Modal Aviso] Error con NTModal:', e);
+            }
+          }
+        }
+      }, 1000); // 1 segundo después del envío
+    };
+
+    // Listeners para cerrar modales de aviso
+    document.addEventListener('click', function(e) {
+      if (e.target.matches('[data-nt-modal-close]')) {
+        var modals = document.querySelectorAll('#modal-aviso-pago, #modal-aviso-whatsapp');
+        modals.forEach(function(modal) {
+          if (modal && modal.style.display !== 'none') {
+            modal.style.display = 'none';
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            
+            if (window.NTModal) {
+              try {
+                window.NTModal.close(modal);
+              } catch(e) {
+                console.warn('[Modal Aviso] Error cerrando con NTModal:', e);
+              }
+            }
+          }
+        });
+      }
+    });
+
+    // Cerrar modales con Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        var modals = document.querySelectorAll('#modal-aviso-pago, #modal-aviso-whatsapp');
+        modals.forEach(function(modal) {
+          if (modal && modal.style.display !== 'none') {
+            modal.style.display = 'none';
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            
+            if (window.NTModal) {
+              try {
+                window.NTModal.close(modal);
+              } catch(e) {
+                console.warn('[Modal Aviso] Error cerrando con NTModal:', e);
+              }
+            }
+          }
+        });
+      }
+    });
+
+    console.log('[Modal Aviso] Listeners de aviso configurados');
+  } catch(e) {
+    console.error('[Modal Aviso] Error configurando listeners:', e);
+  }
+
   // Modal captura de nombre (implementación si no existe aún)
   if(typeof window.abrirModalNombre !== 'function'){
     window.abrirModalNombre = function(onDone){
