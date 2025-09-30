@@ -369,7 +369,7 @@
               </div>
               <div class="pago-box">
                 <h5><i class="fa-solid fa-credit-card"></i> Mercado Pago</h5>
-                <p>CLABE: <code>722969040367244111</code><br>Ref: <code>INSTALACION</code></p>
+                <p>CLABE: <code>722969040367244111</code><br>Ref: <code>INSTALACION</code></p>t
               </div>
               <div class="pago-box">
                 <h5><i class="fa-solid fa-link"></i> Pago con Tarjeta</h5>

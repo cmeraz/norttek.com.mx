@@ -4,6 +4,17 @@ document.addEventListener('DOMContentLoaded', function() {
   // Debug inicial
   console.log('[Internet.js] DOM cargado, iniciando...');
   
+  // Limpiar todo el cache al cargar la página para evitar persistencia no deseada
+  try {
+    localStorage.removeItem('customerNameFull');
+    localStorage.removeItem('customerNameFirst');
+    localStorage.removeItem('selectedPlanMegas');
+    localStorage.removeItem('selectedPlanPrice');
+    localStorage.removeItem('installScenario');
+    localStorage.removeItem('internetSection');
+    console.log('[Internet.js] Cache limpiado al cargar página');
+  } catch(_) {}
+  
   // Verificar que el modal existe antes de inicializar
   var modalExists = document.getElementById('modal-datos-usuario');
   console.log('[Internet.js] Modal existe:', !!modalExists);
@@ -146,8 +157,19 @@ document.addEventListener('DOMContentLoaded', function() {
     resetActive();
   }
 
-  // Mostrar contenido de usuarios nuevos (sin modal de captura)
+  // Mostrar contenido de usuarios nuevos (con modal de captura)
   function mostrarNuevo() {
+    console.log('[Internet.js] Iniciando flujo para usuarios nuevos');
+    
+    // Verificar si ya tenemos el nombre del usuario
+    var stored = getStoredName();
+    if (!stored.full) {
+      console.log('[Internet.js] Abriendo modal para capturar nombre del usuario nuevo');
+      return abrirModalDatos('instalacion');
+    }
+    
+    // Si ya tenemos el nombre, continuar con el contenido
+    console.log('[Internet.js] Usuario ya identificado:', stored.first);
     hideSection(welcomeMsg);
     hideSection(clienteContent);
     showSection(nuevoContent);
@@ -389,8 +411,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Asegura que las secciones ocultas tengan la clase para transición
   [nuevoContent, clienteContent].forEach(function(el){ if (el && el.style.display === 'none') el.classList.add('section-hidden'); });
   mostrarBienvenida();
-  // Eliminada restauración automática de sección previa para evitar scroll inesperado
-  try { localStorage.removeItem('internetSection'); } catch(_) {}
   // Stagger para tarjetas de planes (usa transitionDelay)
   document.querySelectorAll('.plan-card.animate-card').forEach(function(card, i) {
     card.style.transitionDelay = (i * 0.12) + 's';
@@ -834,32 +854,49 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // (Eliminado) Manejador duplicado que abría WhatsApp desde el botón de plan
 
-  // Al hacer click en el CTA final, asegurar que el plan elegido esté en el querystring
+  // Al hacer click en el CTA final - solo envía WhatsApp (sin modal)
   try {
     var ctaBtn = document.getElementById('contratar') || document.getElementById('solicitar');
     if (ctaBtn) {
       ctaBtn.addEventListener('click', function(ev){
         if (ev) { if(ev.preventDefault) ev.preventDefault(); if(ev.stopPropagation) ev.stopPropagation(); }
-        var debugInfo = { stage:'pre-validate', plan:null, scen:null, hasName:false };
-        var planVal = null, scenVal = null;
-        try { planVal = localStorage.getItem('selectedPlanPrice'); debugInfo.plan = planVal; } catch(_){ }
-        try { scenVal = localStorage.getItem('installScenario'); debugInfo.scen = scenVal; } catch(_){ }
-        // Validación gating
-        if(!planVal || !scenVal){
-          console.warn('[CTA Instalación] Bloqueado por falta de selección', debugInfo);
-          if(window.NTNotify){ NTNotify.warning('Selecciona un plan y un escenario antes de continuar.'); }
+        
+        console.log('[CTA Instalación] Click en botón contratar');
+        var debugInfo = { stage:'validating', plan:null, scen:null, hasName:false };
+        
+        // Verificar que hay plan seleccionado
+        var planData = getStoredPlan();
+        debugInfo.plan = planData.price;
+        if (!planData.price || !planData.megas) {
+          console.warn('[CTA Instalación] Sin plan seleccionado', debugInfo);
+          if(window.NTNotify){ NTNotify.warning('Primero selecciona un plan de internet.'); }
           if(ctaBtn){ ctaBtn.classList.add('cta-disabled-ping'); setTimeout(function(){ ctaBtn.classList.remove('cta-disabled-ping'); }, 1200); }
           return;
         }
+        
+        // Verificar que hay escenario seleccionado
+        var escenario = STATE ? STATE.escenario : null;
+        debugInfo.scen = escenario;
+        if (!escenario) {
+          console.warn('[CTA Instalación] Sin escenario seleccionado', debugInfo);
+          if(window.NTNotify){ NTNotify.warning('Selecciona si ya tienes antena o necesitas una nueva.'); }
+          if(ctaBtn){ ctaBtn.classList.add('cta-disabled-ping'); setTimeout(function(){ ctaBtn.classList.remove('cta-disabled-ping'); }, 1200); }
+          return;
+        }
+        
+        // Verificar que hay nombre capturado
         var st = getStoredName();
         var nombre = (st.full || st.first || '').trim();
         debugInfo.hasName = !!nombre;
         if(!nombre){
-          console.log('[CTA Instalación] Abriendo modal para capturar nombre', debugInfo);
-          return abrirModalDatos('instalacion'); // Modal se encarga del envío
+          console.warn('[CTA Instalación] Sin nombre capturado', debugInfo);
+          if(window.NTNotify){ NTNotify.warning('Necesitas proporcionar tu nombre primero. Haz clic en "Ver Planes" para comenzar.'); }
+          return;
         }
-        console.log('[CTA Instalación] Enviando WhatsApp con nombre almacenado', debugInfo);
-        enviarWhatsAppInstalacion(nombre); // Solo si ya hay nombre
+        
+        // Todo listo - enviar WhatsApp
+        console.log('[CTA Instalación] Enviando WhatsApp directamente', debugInfo);
+        enviarWhatsAppInstalacion(nombre);
       });
       // Exponer función de prueba en consola
       try {
@@ -1184,12 +1221,21 @@ document.addEventListener('DOMContentLoaded', function() {
     var firstName = nombreNormalizado.split(/\s+/)[0] || '';
     setStoredName(nombreNormalizado, firstName);
 
-    // Cerrar el modal y esperar a que termine la animación antes de abrir WhatsApp
+    // Cerrar el modal y mostrar el contenido nuevo (sin envío automático de WhatsApp)
     cerrarModalDatos();
     setTimeout(function() {
       // Forzar blur para evitar conflictos de foco en móviles
       if (document.activeElement) document.activeElement.blur();
-      enviarWhatsAppInstalacion(nombreNormalizado);
+      
+      // Mostrar contenido de usuarios nuevos después de captura
+      hideSection(welcomeMsg);
+      hideSection(clienteContent);
+      showSection(nuevoContent);
+      resetActive(); 
+      if (btnNuevo) btnNuevo.classList.add('active-menu');
+      try { nuevoContent.classList.add('visited'); } catch(_) {}
+      
+      console.log('[Internet.js] Nombre capturado, mostrando contenido nuevo para:', firstName);
     }, 350);
   }
 
