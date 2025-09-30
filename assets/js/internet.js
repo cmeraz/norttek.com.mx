@@ -671,10 +671,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Formulario (eliminado)
 
   // Eliminado: modal de bienvenida y formulario de captura (flujo ahora directo)
-  // Guardar selección cuando se navega entre pestañas del menú
-  if (btnCliente) btnCliente.addEventListener('click', function(){ try { localStorage.setItem('internetSection', 'cliente'); } catch (_) {} });
-  if (btnNuevo) btnNuevo.addEventListener('click', function(){ try { localStorage.setItem('internetSection', 'nuevo'); } catch (_) {} });
-
+  
   // --- Listeners del login cliente ---
   try {
     clienteLoginModal = document.getElementById('cliente-login-modal');
@@ -854,12 +851,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // (Eliminado) Manejador duplicado que abría WhatsApp desde el botón de plan
 
-  // Al hacer click en el CTA final - solo envía WhatsApp (sin modal)
+  // Al hacer click en el CTA final - solo envía WhatsApp (sin modal) con protección anti-múltiples clicks
   try {
     var ctaBtn = document.getElementById('contratar') || document.getElementById('solicitar');
     if (ctaBtn) {
+      var enviandoWhatsApp = false; // Flag para prevenir múltiples envíos
+      
       ctaBtn.addEventListener('click', function(ev){
         if (ev) { if(ev.preventDefault) ev.preventDefault(); if(ev.stopPropagation) ev.stopPropagation(); }
+        
+        // Prevenir múltiples clicks
+        if (enviandoWhatsApp) {
+          console.log('[CTA Instalación] Envío en progreso, ignorando click');
+          return;
+        }
         
         console.log('[CTA Instalación] Click en botón contratar');
         var debugInfo = { stage:'validating', plan:null, scen:null, hasName:false };
@@ -894,9 +899,17 @@ document.addEventListener('DOMContentLoaded', function() {
           return;
         }
         
-        // Todo listo - enviar WhatsApp
+        // Todo listo - enviar WhatsApp con protección
+        enviandoWhatsApp = true;
+        ctaBtn.disabled = true;
         console.log('[CTA Instalación] Enviando WhatsApp directamente', debugInfo);
         enviarWhatsAppInstalacion(nombre);
+        
+        // Resetear después de un momento
+        setTimeout(function() {
+          enviandoWhatsApp = false;
+          ctaBtn.disabled = false;
+        }, 2000);
       });
       // Exponer función de prueba en consola
       try {
@@ -1221,7 +1234,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var firstName = nombreNormalizado.split(/\s+/)[0] || '';
     setStoredName(nombreNormalizado, firstName);
 
-    // Cerrar el modal y mostrar el contenido nuevo (sin envío automático de WhatsApp)
+    // Cerrar el modal y mostrar el contenido nuevo con scroll a #como-funciona
     cerrarModalDatos();
     setTimeout(function() {
       // Forzar blur para evitar conflictos de foco en móviles
@@ -1236,6 +1249,25 @@ document.addEventListener('DOMContentLoaded', function() {
       try { nuevoContent.classList.add('visited'); } catch(_) {}
       
       console.log('[Internet.js] Nombre capturado, mostrando contenido nuevo para:', firstName);
+      
+      // Scroll a la sección #como-funciona después de mostrar el contenido
+      setTimeout(function() {
+        try {
+          var comoFunciona = document.getElementById('como-funciona');
+          if (comoFunciona) {
+            var header = document.getElementById('site-header');
+            var offset = (header && header.offsetHeight) ? header.offsetHeight + 16 : 80;
+            var rect = comoFunciona.getBoundingClientRect();
+            var y = rect.top + window.pageYOffset - offset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+            console.log('[Internet.js] Scroll a #como-funciona realizado');
+          } else {
+            console.warn('[Internet.js] Elemento #como-funciona no encontrado');
+          }
+        } catch(e) {
+          console.error('[Internet.js] Error en scroll a #como-funciona:', e);
+        }
+      }, 300);
     }, 350);
   }
 
