@@ -570,9 +570,9 @@
 </div>
 
 <!-- Modal de Aviso: Pago con Tarjeta -->
-<div id="modal-aviso-pago" class="nt-modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-aviso-pago-title">
-  <div class="nt-modal" role="document" style="max-width: 500px;">
-    <button type="button" class="nt-modal-close" data-nt-modal-close aria-label="Cerrar">&times;</button>
+<div id="modal-aviso-pago" class="nt-modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-aviso-pago-title" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); display: none; justify-content: center; align-items: center; z-index: 9999;">
+  <div class="nt-modal" role="document" style="max-width: 500px; width: 90%; max-height: 90vh; overflow-y: auto; background: white; border-radius: 12px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); position: relative;">
+    <button type="button" class="nt-modal-close" data-nt-modal-close aria-label="Cerrar" style="position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 24px; cursor: pointer; color: #6b7280; z-index: 10;">&times;</button>
     <div class="modal-body text-center" style="padding: 2rem;">
       <div class="mb-4">
         <i class="fa-solid fa-credit-card" style="font-size: 3rem; color: #0ea5e9; margin-bottom: 1rem;"></i>
@@ -611,40 +611,41 @@
 </div>
 
 <!-- Modal de Aviso: Después de WhatsApp -->
-<div id="modal-aviso-whatsapp" class="nt-modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-aviso-whatsapp-title">
-  <div class="nt-modal" role="document" style="max-width: 500px;">
-    <button type="button" class="nt-modal-close" data-nt-modal-close aria-label="Cerrar">&times;</button>
-    <div class="modal-body text-center" style="padding: 2rem;">
-      <div class="mb-4">
+<div id="modal-aviso-whatsapp" class="nt-modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-aviso-whatsapp-title" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); display: none; justify-content: center; align-items: center; z-index: 9999;">
+  <div class="nt-modal" role="document" style="max-width: 450px; width: 90%; background: white; border-radius: 12px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25); position: relative;">
+    <button type="button" class="nt-modal-close" data-nt-modal-close aria-label="Cerrar" style="position: absolute; top: 12px; right: 12px; background: #f3f4f6; border: none; width: 28px; height: 28px; border-radius: 50%; font-size: 16px; cursor: pointer; color: #6b7280; display: flex; align-items: center; justify-content: center; transition: all 0.2s;">&times;</button>
+    
+    <!-- Contenido simple -->
+    <div class="modal-body" style="padding: 2rem; text-align: center;">
+      <!-- Icono y título -->
+      <div style="margin-bottom: 1.5rem;">
         <i class="fa-brands fa-whatsapp" style="font-size: 3rem; color: #25d366; margin-bottom: 1rem;"></i>
-        <h3 id="modal-aviso-whatsapp-title" class="nt-modal-title" style="color: #1e293b; margin-bottom: 1rem;">
-          ¡Último Paso Importante!
+        <h3 id="modal-aviso-whatsapp-title" style="color: #1f2937; margin: 0; font-size: 1.25rem; font-weight: 600;">
+          ¡Paso Importante!
         </h3>
       </div>
-      <div class="alert-content" style="background: #f0fdf4; border: 1px solid #25d366; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; text-align: left;">
-        <p style="margin: 0 0 1rem 0; font-weight: 600; color: #14532d;">
-          <i class="fa-solid fa-info-circle" style="color: #25d366; margin-right: 0.5rem;"></i>
+      
+      <!-- Mensaje principal -->
+      <div style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; text-align: left;">
+        <p style="margin: 0 0 1rem 0; color: #374151; line-height: 1.6;">
           Después de enviar tu mensaje por WhatsApp:
         </p>
-        <div style="background: #dcfce7; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+        <div style="background: #dcfce7; border-left: 3px solid #25d366; padding: 1rem; border-radius: 4px;">
           <p style="margin: 0; color: #166534; font-weight: 600;">
-            <i class="fa-solid fa-mouse-pointer" style="color: #25d366; margin-right: 0.5rem;"></i>
-            No olvides hacer clic en el enlace del formulario que aparece en tu mensaje
+            <i class="fa-solid fa-exclamation-circle" style="color: #25d366; margin-right: 0.5rem;"></i>
+            Deberás llenar el formulario de instalación para proceder con tu solicitud y agendar tu instalación.
           </p>
         </div>
-        <p style="margin: 0; color: #374151; line-height: 1.6;">
-          Es <strong>necesario</strong> que completes el formulario de instalación para que podamos:
-        </p>
-        <ul style="margin: 0.5rem 0 0 0; padding-left: 1.2rem; color: #374151; line-height: 1.6;">
-          <li>Procesar tu solicitud correctamente</li>
-          <li>Agendar tu instalación</li>
-          <li>Contactarte para coordinar la visita técnica</li>
-        </ul>
       </div>
-      <div class="modal-actions" style="display: flex; gap: 0.75rem; justify-content: center;">
-        <button type="button" class="btn-primario" id="btn-entendido-whatsapp" data-nt-modal-close style="min-width: 140px;">
-          <i class="fa-solid fa-check"></i>
-          ¡Entendido!
+      
+      <!-- Botones de acción -->
+      <div style="display: flex; gap: 1rem; justify-content: center;">
+        <button type="button" class="btn-secundario" data-nt-modal-close style="min-width: 100px; padding: 10px 16px; background: #f9fafb; color: #6b7280; border: 1px solid #d1d5db; border-radius: 6px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
+          Cancelar
+        </button>
+        <button type="button" class="btn-primario" id="btn-enviar-whatsapp-final" style="min-width: 140px; padding: 10px 20px; background: #25d366; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);">
+          <i class="fa-brands fa-whatsapp" style="margin-right: 0.5rem;"></i>
+          Enviar
         </button>
       </div>
     </div>
@@ -653,3 +654,78 @@
 
 <!-- Script específico de la vista de Internet -->
 <script src="assets/js/internet.js"></script>
+
+<!-- Estilos adicionales para modales mejorados -->
+<style>
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.nt-modal-backdrop {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.nt-modal {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Hover effects simples */
+.nt-modal-close:hover {
+  background: #e5e7eb !important;
+  color: #374151 !important;
+}
+
+.btn-primario:hover {
+  background: #16a34a !important;
+  transform: translateY(-1px);
+}
+
+.btn-secundario:hover {
+  background: #f3f4f6 !important;
+  border-color: #9ca3af !important;
+}
+
+/* Responsive simple */
+@media (max-width: 640px) {
+  .nt-modal {
+    margin: 1rem;
+    max-width: calc(100% - 2rem);
+  }
+  
+  .modal-body {
+    padding: 1.5rem !important;
+  }
+  
+  .modal-actions {
+    flex-direction: column;
+    gap: 0.75rem !important;
+  }
+  
+  .modal-actions button {
+    width: 100% !important;
+    min-width: unset !important;
+  }
+}
+
+/* Focus simple */
+.btn-primario:focus,
+.btn-secundario:focus,
+.nt-modal-close:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Centrado perfecto */
+.nt-modal-backdrop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+</style>

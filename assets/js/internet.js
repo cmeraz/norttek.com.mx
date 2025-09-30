@@ -12,7 +12,29 @@ document.addEventListener('DOMContentLoaded', function() {
     localStorage.removeItem('selectedPlanPrice');
     localStorage.removeItem('installScenario');
     localStorage.removeItem('internetSection');
-    console.log('[Internet.js] Cache limpiado al cargar página');
+    localStorage.removeItem('clienteAuth'); // Limpiar autenticación de cliente
+    console.log('[Internet.js] Cache completo limpiado al cargar página');
+  } catch(_) {}
+
+  // Asegurar que todos los modales estén ocultos al inicio (excepto modal-datos-usuario que se usa para captura)
+  try {
+    var modalsToHide = [
+      'modal-aviso-pago',
+      'modal-aviso-whatsapp',
+      'cliente-login-modal'
+    ];
+    
+    modalsToHide.forEach(function(modalId) {
+      var modal = document.getElementById(modalId);
+      if (modal) {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+      }
+    });
+    
+    // Restaurar scroll del body
+    document.body.style.overflow = '';
+    console.log('[Internet.js] Modales específicos inicializados como ocultos');
   } catch(_) {}
   
   // Verificar que el modal existe antes de inicializar
@@ -375,32 +397,22 @@ document.addEventListener('DOMContentLoaded', function() {
     if (doScroll === true) {
       try {
         setTimeout(function(){
-          var dash = document.querySelector('.cliente-dashboard');
-          if (dash) {
-            if (dash.scrollIntoView) {
-              dash.scrollIntoView({ behavior: 'smooth', block: 'center' });
-              setTimeout(function(){
-                try {
-                  var header = document.getElementById('site-header');
-                  if (header) {
-                    var rect = dash.getBoundingClientRect();
-                    var headerH = header.offsetHeight || 0;
-                    if (rect.top < headerH + 10) {
-                      var y = rect.top + window.pageYOffset - headerH - 10;
-                      window.scrollTo({ top: y, behavior: 'smooth' });
-                    }
-                  }
-                } catch(_) {}
-              }, 380);
-            } else {
-              var header2 = document.getElementById('site-header');
-              var headerH2 = header2 ? header2.offsetHeight : 0;
-              var top = dash.getBoundingClientRect().top + window.pageYOffset - headerH2 - 10;
-              window.scrollTo({ top: top, behavior: 'smooth' });
-            }
+          var clienteContentEl = document.getElementById('cliente-content');
+          if (clienteContentEl) {
+            var headerHeight = 80; // Altura aproximada del header
+            var elementPosition = clienteContentEl.getBoundingClientRect().top + window.pageYOffset;
+            var offsetPosition = elementPosition - headerHeight;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+            console.log('[Cliente] Scroll realizado a cliente-content con offset mejorado');
           }
         }, 60);
-      } catch(_) {}
+      } catch(e) {
+        console.error('[Cliente] Error en scroll:', e);
+      }
     }
   }
 
@@ -917,19 +929,37 @@ document.addEventListener('DOMContentLoaded', function() {
           return false;
         }
         
-        // Todo listo - enviar WhatsApp con protección máxima
+        // Todo listo - mostrar modal de aviso en lugar de enviar WhatsApp directamente
         enviandoWhatsApp = true;
         ctaBtn.disabled = true;
         ctaBtn.style.pointerEvents = 'none'; // Prevenir cualquier interacción
         
-        console.log('[CTA Instalación] Enviando WhatsApp directamente', debugInfo);
+        console.log('[CTA Instalación] Mostrando modal de aviso WhatsApp', debugInfo);
         
-        // Enviar con delay para evitar problemas de sincronización
+        // Mostrar modal de aviso con delay para evitar problemas de sincronización
         setTimeout(function() {
           try {
-            enviarWhatsAppInstalacion(nombre);
+            var modalAvisoWhatsApp = document.getElementById('modal-aviso-whatsapp');
+            if (modalAvisoWhatsApp) {
+              modalAvisoWhatsApp.style.display = 'flex';
+              modalAvisoWhatsApp.setAttribute('aria-hidden', 'false');
+              document.body.style.overflow = 'hidden';
+              
+              // Usar NTModal si está disponible
+              if (window.NTModal) {
+                try {
+                  window.NTModal.open(modalAvisoWhatsApp);
+                } catch(e) {
+                  console.warn('[CTA Instalación] Error con NTModal:', e);
+                }
+              }
+              
+              console.log('[CTA Instalación] Modal de aviso WhatsApp mostrado');
+            } else {
+              console.error('[CTA Instalación] Modal de aviso WhatsApp no encontrado');
+            }
           } catch(e) {
-            console.error('[CTA Instalación] Error al enviar WhatsApp:', e);
+            console.error('[CTA Instalación] Error al mostrar modal de aviso:', e);
           }
           
           // Resetear después de un momento más largo
@@ -937,7 +967,7 @@ document.addEventListener('DOMContentLoaded', function() {
             enviandoWhatsApp = false;
             ctaBtn.disabled = false;
             ctaBtn.style.pointerEvents = '';
-          }, 3000);
+          }, 1000);
         }, 100);
         
         return false; // Prevenir cualquier comportamiento adicional
@@ -994,27 +1024,54 @@ document.addEventListener('DOMContentLoaded', function() {
       // Llamar función original
       originalEnviarWhatsApp(nombre);
       
-      // Mostrar modal de aviso después de un breve delay
-      setTimeout(function() {
-        console.log('[Modal Aviso] Abriendo modal de aviso después de WhatsApp');
+      console.log('[Modal Aviso] WhatsApp enviado desde modal');
+    };
+
+    // Listener para el botón de envío final dentro del modal
+    document.addEventListener('click', function(e) {
+      if (e.target && e.target.id === 'btn-enviar-whatsapp-final') {
+        e.preventDefault();
+        e.stopPropagation();
         
-        var modalAvisoWhatsApp = document.getElementById('modal-aviso-whatsapp');
-        if (modalAvisoWhatsApp) {
-          modalAvisoWhatsApp.style.display = 'flex';
-          modalAvisoWhatsApp.setAttribute('aria-hidden', 'false');
-          document.body.style.overflow = 'hidden';
-          
-          // Usar NTModal si está disponible
-          if (window.NTModal) {
-            try {
-              window.NTModal.open(modalAvisoWhatsApp);
-            } catch(e) {
-              console.warn('[Modal Aviso] Error con NTModal:', e);
+        console.log('[Modal Aviso] Click en botón enviar WhatsApp final');
+        
+        // Obtener nombre guardado
+        var st = getStoredName();
+        var nombre = (st.full || st.first || '').trim();
+        
+        if (!nombre) {
+          console.error('[Modal Aviso] No hay nombre guardado');
+          if (window.NTNotify) {
+            NTNotify.error('Error: No se encontró el nombre. Intenta de nuevo.');
+          }
+          return false;
+        }
+        
+        // Enviar WhatsApp
+        console.log('[Modal Aviso] Enviando WhatsApp con nombre:', nombre);
+        enviarWhatsAppInstalacion(nombre);
+        
+        // Cerrar modal después del envío
+        setTimeout(function() {
+          var modalAvisoWhatsApp = document.getElementById('modal-aviso-whatsapp');
+          if (modalAvisoWhatsApp) {
+            modalAvisoWhatsApp.style.display = 'none';
+            modalAvisoWhatsApp.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            
+            if (window.NTModal) {
+              try {
+                window.NTModal.close(modalAvisoWhatsApp);
+              } catch(e) {
+                console.warn('[Modal Aviso] Error cerrando con NTModal:', e);
+              }
             }
           }
-        }
-      }, 1000); // 1 segundo después del envío
-    };
+        }, 500);
+        
+        return false;
+      }
+    });
 
     // Listeners para cerrar modales de aviso
     document.addEventListener('click', function(e) {
