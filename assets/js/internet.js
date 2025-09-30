@@ -1239,58 +1239,46 @@ document.addEventListener('DOMContentLoaded', function() {
     var saludo = nombre ? (EMOJI.wave + ' Hola, mi nombre es ' + nombre + '.') : (EMOJI.wave + ' Hola.');
     var plan = (function(){
       try {
-        return {
-          megas: localStorage.getItem('selectedPlanMegas') || '',
-          price: localStorage.getItem('selectedPlanPrice') || '',
-          label: localStorage.getItem('selectedPlan') || ''
-        };
+        var megas = localStorage.getItem('selectedPlanMegas') || '';
+        var label = localStorage.getItem('selectedPlan') || '';
+        if (!megas || !label) {
+          var selectedCard = document.querySelector('.int-plan-card.selectable.selected');
+          if (selectedCard) {
+            megas = selectedCard.getAttribute('data-megas') || megas;
+            label = selectedCard.getAttribute('data-plan-label') || label;
+          }
+        }
+        return {megas, label};
       } catch(_) {
-        return {megas: '', price: '', label: ''};
+        return {megas: '', label: ''};
       }
     })();
 
-    var planLinea = (plan.megas && plan.price) ?
-      ('Plan seleccionado: ' + (plan.label ? plan.label : (plan.megas + ' Megas')) + ' ($' + plan.price + '/mes).') :
-      (plan.label ? ('Plan seleccionado: ' + plan.label + '.') : 'Aún no aparece un plan seleccionado.');
+    var planLinea = (plan.label && plan.megas) ? ('Plan seleccionado: ' + plan.label + ' (' + plan.megas + ' Mbps).') : (plan.megas ? ('Plan seleccionado: ' + plan.megas + ' Mbps.') : 'No se ha seleccionado un plan.');
 
-    var escenario = (function(){ 
-      try { 
-        return localStorage.getItem('installScenario') || ''; 
-      } catch(_) { 
-        return ''; 
-      } 
+    var escenario = (function(){
+      try {
+        return localStorage.getItem('installScenario') || '';
+      } catch(_) {
+        return '';
+      }
     })();
 
     var escenarioDesc = '';
     if (escenario === 'propio') {
-      escenarioDesc = 'Escenario: Ya cuento con antena.';
-    } else if (escenario === 'sinequipo') { 
-      var pago = 'contado'; 
-      try { 
-        var radio = document.querySelector('input[name="pago-antena"]:checked'); 
-        if (radio) pago = radio.value; 
+      escenarioDesc = 'Escenario seleccionado: Ya cuento con antena propia utilizable. Solo se requiere reprogramación y ajuste WiFi.';
+    } else if (escenario === 'sinequipo') {
+      var pago = 'contado';
+      try {
+        var radio = document.querySelector('input[name="pago-antena"]:checked');
+        if (radio) pago = radio.value;
       } catch(_) {}
-      escenarioDesc = 'Escenario: Necesito antena. Forma de pago antena: ' + (pago === 'diferido' ? 'Diferido (3 meses)' : 'Contado');
+      escenarioDesc = 'Escenario seleccionado: Necesito antena nueva. Forma de pago de antena: ' + (pago === 'diferido' ? 'Diferido (3 meses)' : 'Contado') + '. Incluye instalación y configuración.';
     } else {
       escenarioDesc = 'Escenario aún no seleccionado.';
     }
 
-    var calendarioLineas = []; 
-    try { 
-      var filas = document.querySelectorAll('#tabla-calendario tbody tr'); 
-      if (filas.length) { 
-        filas.forEach(function(tr) { 
-          var c = tr.querySelectorAll('td'); 
-          if (c.length >= 3) { 
-            calendarioLineas.push(c[0].textContent.trim() + ': ' + c[1].textContent.trim() + ' (' + c[2].textContent.trim() + ')'); 
-          } 
-        }); 
-      } 
-    } catch(_) {}
-
-    var calendarioTexto = calendarioLineas.length ? 
-      ('Calendario de pagos:\n' + calendarioLineas.join('\n')) : 
-      'Calendario de pagos aún no generado (falta plan o escenario).';
+    // Eliminar calendario de pagos del mensaje
 
     var resumen = ''; 
     try { 
@@ -1301,19 +1289,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var formLink = 'http://clientes.portalinternet.net/solicitar-instalacion/norttek/';
     var cuerpo = [
-      saludo, 
-      '', 
-      planLinea, 
-      escenarioDesc, 
-      '', 
-      calendarioTexto, 
-      '', 
-      resumen, 
-      '', 
-      'Formulario:', 
-      formLink, 
-      '', 
-      EMOJI.check + ' Quedo atento(a), gracias.'
+      saludo,
+      '',
+      'SOLICITUD DE INSTALACIÓN DE INTERNET',
+      planLinea,
+      escenarioDesc,
+      '',
+      'Formulario de registro:',
+      formLink,
+      '',
+      EMOJI.check + ' Quedo atento(a) para coordinar la visita técnica.',
+      '',
+      'Gracias por su tiempo.'
     ].join('\n');
 
     var wa = 'https://wa.me/526252690997?text=' + encodeURIComponent(cuerpo);
