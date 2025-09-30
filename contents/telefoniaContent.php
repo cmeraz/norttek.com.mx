@@ -108,7 +108,7 @@
           </div>
         </div>
         <footer class="tel-plan__ftr">
-          <a href="#" class="nt-btn tel-plan__btn" role="button" data-plan="Plan Básico" data-precio="$379 / mes + IVA" data-ext="1 extensión" data-troncal="1 troncal (2 canales)" data-numeracion="Numeración LADA México"><i class="fa-solid fa-cart-plus"></i><span>Solicitar Plan</span></a>
+          <button type="button" class="nt-btn tel-plan__btn" data-plan="Plan Básico" data-precio="$379 / mes + IVA" data-ext="1 extensión" data-troncal="1 troncal (2 canales)" data-numeracion="Numeración LADA México"><i class="fa-solid fa-cart-plus"></i><span>Solicitar Plan</span></button>
         </footer>
       </article>
       <!-- Nuevo Plan Premium -->
@@ -132,7 +132,7 @@
           </div>
         </div>
         <footer class="tel-plan__ftr">
-          <a href="#" class="nt-btn tel-plan__btn" role="button" data-plan="Plan Premium" data-precio="$605 / mes + IVA" data-ext="3 extensiones" data-troncal="1 troncal (2 canales)" data-numeracion="Numeración LADA México"><i class="fa-solid fa-cart-plus"></i><span>Solicitar Plan</span></a>
+          <button type="button" class="nt-btn tel-plan__btn" data-plan="Plan Premium" data-precio="$605 / mes + IVA" data-ext="3 extensiones" data-troncal="1 troncal (2 canales)" data-numeracion="Numeración LADA México"><i class="fa-solid fa-cart-plus"></i><span>Solicitar Plan</span></button>
         </footer>
       </article>
       <!-- Nuevo Plan Empresarial -->
@@ -155,7 +155,7 @@
           </div>
         </div>
         <footer class="tel-plan__ftr">
-          <a href="#" class="nt-btn tel-plan__btn" role="button" data-plan="Plan Empresarial" data-precio="$1,490 / mes + IVA" data-ext="10 extensiones" data-troncal="1 troncal (10 canales)" data-numeracion="Numeración LADA México"><i class="fa-solid fa-cart-plus"></i><span>Solicitar Plan</span></a>
+          <button type="button" class="nt-btn tel-plan__btn" data-plan="Plan Empresarial" data-precio="$1,490 / mes + IVA" data-ext="10 extensiones" data-troncal="1 troncal (10 canales)" data-numeracion="Numeración LADA México"><i class="fa-solid fa-cart-plus"></i><span>Solicitar Plan</span></button>
         </footer>
       </article>
     </div>

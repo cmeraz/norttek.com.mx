@@ -107,50 +107,19 @@ if (!window.NTNotify) {
 })();
 
 // Funcionalidad para botones de planes de telefonía
-(function(){
-  // Verificar si ya se inicializaron los botones para evitar múltiples listeners
-  if (window.telefoniaButtonsInitialized) {
-    console.log('[Telefonia.js] Botones ya inicializados, evitando duplicados');
-    return;
-  }
+// Inicialización simplificada de botones de planes
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('[Telefonia.js] Inicializando botones de planes...');
   
   const planButtons = document.querySelectorAll('.tel-plan__btn');
-  console.log('[Telefonia.js] Botones de planes encontrados:', planButtons.length);
-  
-  if (planButtons.length === 0) {
-    console.warn('[Telefonia.js] No se encontraron botones de planes');
-    return;
-  }
+  console.log('[Telefonia.js] Botones encontrados:', planButtons.length);
   
   planButtons.forEach((button, index) => {
-    // Verificar si el botón ya tiene el listener para evitar duplicados
-    if (button.dataset.listenerAdded === 'true') {
-      console.log(`[Telefonia.js] Botón ${index + 1} ya tiene listener, saltando`);
-      return;
-    }
+    console.log(`[Telefonia.js] Configurando botón ${index + 1}`);
     
-    console.log(`[Telefonia.js] Inicializando botón de plan ${index + 1}:`, {
-      plan: button.getAttribute('data-plan'),
-      precio: button.getAttribute('data-precio'),
-      ext: button.getAttribute('data-ext'),
-      troncal: button.getAttribute('data-troncal')
-    });
-    
-    // Variable para prevenir múltiples clicks rápidos
-    let isProcessing = false;
-    
-    const handlePlanClick = function(e) {
+    button.addEventListener('click', function(e) {
       e.preventDefault();
-      e.stopPropagation();
-      
-      // Prevenir múltiples ejecuciones si ya se está procesando
-      if (isProcessing) {
-        console.log('[Telefonia.js] Click ignorado, ya procesando solicitud anterior');
-        return;
-      }
-      
-      isProcessing = true;
-      console.log('[Telefonia.js] Procesando solicitud de plan...');
+      console.log('[Telefonia.js] Click en botón de plan detectado');
       
       // Obtener datos del plan
       const plan = this.getAttribute('data-plan') || 'Plan no especificado';
@@ -159,7 +128,7 @@ if (!window.NTNotify) {
       const troncal = this.getAttribute('data-troncal') || 'Troncal no especificado';
       const numeracion = this.getAttribute('data-numeracion') || 'Numeración LADA México';
       
-      console.log('[Telefonia.js] Enviando solicitud de plan:', plan);
+      console.log('[Telefonia.js] Datos del plan:', { plan, precio, extensiones, troncal });
       
       // Crear mensaje para WhatsApp
       const mensaje = `🏢 *SOLICITUD DE PLAN TELEFONÍA IP*
@@ -181,33 +150,20 @@ Quedo pendiente de su apoyo. ¡Gracias! 🚀`;
       
       // Crear URL de WhatsApp
       const whatsappURL = `https://wa.me/526252690997?text=${mensajeCodificado}`;
+      console.log('[Telefonia.js] Abriendo WhatsApp...');
       
       // Abrir WhatsApp en nueva pestaña
       window.open(whatsappURL, '_blank');
       
-      // Opcional: mostrar notificación de éxito si NTNotify está disponible
+      // Mostrar notificación si está disponible
       if (window.NTNotify) {
         NTNotify.success(`Solicitud enviada: ${plan}`);
       }
-      
-      // Resetear el flag después de un delay para permitir nuevos clicks
-      setTimeout(() => {
-        isProcessing = false;
-        console.log('[Telefonia.js] Listo para nueva solicitud');
-      }, 2000);
-    };
-    
-    // Agregar el event listener
-    button.addEventListener('click', handlePlanClick);
-    
-    // Marcar que el botón ya tiene listener
-    button.dataset.listenerAdded = 'true';
+    });
   });
   
-  // Marcar que los botones ya fueron inicializados globalmente
-  window.telefoniaButtonsInitialized = true;
   console.log('[Telefonia.js] Botones de planes inicializados correctamente');
-})();
+});
 
 // Asegurar que el hero sea visible inmediatamente
 document.addEventListener('DOMContentLoaded', function() {
