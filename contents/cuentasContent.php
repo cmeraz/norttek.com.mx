@@ -37,17 +37,11 @@
   <section class="cuentas-tabs-menu">
     <div class="tabs-container">
       <nav class="tabs-nav">
-        <button class="tab-button active" data-tab="info-personal" title="Información Personal" data-tooltip="Información Personal">
+        <button class="tab-button active" data-tab="cuenta-santander" title="Cuenta Bancaria" data-tooltip="Cuenta Bancaria">
           <div class="tab-icon">
-            <i class="fa-solid fa-user-circle"></i>
+            <i class="fa-solid fa-university"></i>
           </div>
-          <span class="tab-text">Información Personal</span>
-        </button>
-        <button class="tab-button" data-tab="info-empresarial" title="Datos Empresariales" data-tooltip="Datos Empresariales">
-          <div class="tab-icon">
-            <i class="fa-solid fa-building"></i>
-          </div>
-          <span class="tab-text">Datos Empresariales</span>
+          <span class="tab-text">Cuenta Bancaria</span>
         </button>
         <button class="tab-button" data-tab="info-fiscal" title="Información Fiscal" data-tooltip="Información Fiscal">
           <div class="tab-icon">
@@ -55,11 +49,17 @@
           </div>
           <span class="tab-text">Información Fiscal</span>
         </button>
-        <button class="tab-button" data-tab="cuenta-santander" title="Cuenta Bancaria" data-tooltip="Cuenta Bancaria">
+        <button class="tab-button" data-tab="info-empresarial" title="Datos Empresariales" data-tooltip="Datos Empresariales">
           <div class="tab-icon">
-            <i class="fa-solid fa-university"></i>
+            <i class="fa-solid fa-building"></i>
           </div>
-          <span class="tab-text">Cuenta Bancaria</span>
+          <span class="tab-text">Datos de la Empresa</span>
+        </button>
+        <button class="tab-button" data-tab="info-personal" title="Información Personal" data-tooltip="Información Personal">
+          <div class="tab-icon">
+            <i class="fa-solid fa-user-circle"></i>
+          </div>
+          <span class="tab-text">Información Personal</span>
         </button>
       </nav>
     </div>
@@ -67,14 +67,14 @@
 
   <!-- Dashboard Principal -->
   <section class="cuentas-dashboard scroll-anim">
-    <?= nt_heading('Información de Contacto y Cuentas', 'fa-solid fa-building-columns', 'md', null, ['animate'=>true,'delay'=>'sm']); ?>
-    <p class="cuentas-dashboard-sub">Accede rápidamente a todos los datos empresariales y cuentas de pago de Norttek Solutions.</p>
+    <?= nt_heading('Información de Cuentas Bancarias y Datos de Contacto', 'fa-solid fa-building-columns', 'md', null, ['animate'=>true,'delay'=>'sm']); ?>
+    <p class="cuentas-dashboard-sub">Accede rápidamente a todos los datos bancarios y cuentas de pago de Norttek Solutions.</p>
 
     <!-- Grid de Cards -->
     <div class="cuentas-grid">
       
       <!-- Card de Información Personal -->
-      <article id="info-personal" class="cuentas-card profile-card wide nt-soft-seq nt-delay-1 tab-content active" data-nt-anim>
+      <article id="info-personal" class="cuentas-card profile-card wide nt-soft-seq nt-delay-1 tab-content" data-nt-anim>
         <h3>
           <i class="fa-solid fa-user-circle" aria-hidden="true" data-nt-icon-drift></i> 
           Información Personal
@@ -94,9 +94,9 @@
           
           <div class="contact-grid">
             <div class="contact-item-modern">
-              <span class="contact-label">CURP</span>
+              <span class="contact-label">RFC</span>
               <code class="clip-src" data-clip="MEMC820106HCHRRR03">
-                MEMC820106HCHRRR03
+                MEMC82010646A
                 <button type="button" class="clip-btn" data-clip="MEMC820106HCHRRR03" title="Copiar" aria-label="Copiar CURP">
                   <i class="fa-regular fa-clone"></i>
                 </button>
@@ -114,7 +114,7 @@
             <div class="contact-item-modern">
               <span class="contact-label">Teléfono Móvil</span>
               <code class="clip-src" data-clip="+52-625-837-4179">
-                +52 (625) 837-4179
+                (625) 837-4179
                 <button type="button" class="clip-btn" data-clip="+52-625-837-4179" title="Copiar" aria-label="Copiar teléfono">
                   <i class="fa-regular fa-clone"></i>
                 </button>
@@ -377,7 +377,7 @@
       </article>
 
       <!-- Card de Cuenta Santander -->
-      <article id="cuenta-santander" class="cuentas-card bank-card santander-card wide nt-soft-seq nt-delay-4 tab-content" data-nt-anim>
+      <article id="cuenta-santander" class="cuentas-card bank-card santander-card wide nt-soft-seq nt-delay-4 tab-content active" data-nt-anim>
         <h3>
           <i class="fa-solid fa-university" aria-hidden="true" data-nt-icon-drift></i> 
           Cuenta Santander
@@ -387,10 +387,10 @@
         <div class="bank-content">
           <div class="bank-grid">
             <div class="bank-item-modern">
-              <span class="bank-label">Sucursal</span>
-              <code class="clip-src" data-clip="3792">
-                3792
-                <button type="button" class="clip-btn" data-clip="3792" title="Copiar" aria-label="Copiar sucursal">
+              <span class="bank-label">Titular de la Cuenta</span>
+              <code class="clip-src" data-clip="Carlos Prisciliano Meraz Marioni">
+                Carlos Prisciliano Meraz Marioni
+                <button type="button" class="clip-btn" data-clip="Carlos Prisciliano Meraz Marioni" title="Copiar" aria-label="Copiar titular">
                   <i class="fa-regular fa-clone"></i>
                 </button>
               </code>
@@ -415,27 +415,9 @@
             </div>
             <div class="bank-item-modern">
               <span class="bank-label">Tarjeta</span>
-              <code class="clip-src" data-clip="5579-0701-1270-7628">
-                5579-0701-1270-7628
-                <button type="button" class="clip-btn" data-clip="5579-0701-1270-7628" title="Copiar" aria-label="Copiar tarjeta">
-                  <i class="fa-regular fa-clone"></i>
-                </button>
-              </code>
-            </div>
-            <div class="bank-item-modern">
-              <span class="bank-label">Titular de la Cuenta</span>
-              <code class="clip-src" data-clip="Carlos Prisciliano Meraz Marioni">
-                Carlos Prisciliano Meraz Marioni
-                <button type="button" class="clip-btn" data-clip="Carlos Prisciliano Meraz Marioni" title="Copiar" aria-label="Copiar titular">
-                  <i class="fa-regular fa-clone"></i>
-                </button>
-              </code>
-            </div>
-            <div class="bank-item-modern">
-              <span class="bank-label">Banco</span>
-              <code class="clip-src" data-clip="Banco Santander México">
-                Banco Santander México
-                <button type="button" class="clip-btn" data-clip="Banco Santander México" title="Copiar" aria-label="Copiar banco">
+              <code class="clip-src" data-clip="5579-0701-6225-6427">
+                5579-0701-6225-6427
+                <button type="button" class="clip-btn" data-clip="5579-0701-6225-6427" title="Copiar" aria-label="Copiar tarjeta">
                   <i class="fa-regular fa-clone"></i>
                 </button>
               </code>

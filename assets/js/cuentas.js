@@ -606,8 +606,8 @@ function initTabsSystem() {
     });
     
     // Asegurar que solo la primera tab esté activa al cargar
-    const firstTab = document.querySelector('.tab-button[data-tab="info-personal"]');
-    const firstContent = document.getElementById('info-personal');
+    const firstTab = document.querySelector('.tab-button[data-tab="cuenta-santander"]');
+    const firstContent = document.getElementById('cuenta-santander');
     
     if (firstTab && firstContent) {
         // Remover todas las clases activas
