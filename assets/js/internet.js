@@ -665,6 +665,115 @@ document.addEventListener('DOMContentLoaded', function() {
       } catch(_){ }
     }
 
+    // Función para llenar el modal de confirmación con los datos
+    function llenarModalConfirmacion() {
+      try {
+        console.log('[Modal Confirmación] Iniciando llenado de datos...');
+        
+        // Obtener datos del usuario
+        var st = getStoredName();
+        var nombre = (st.full || st.first || '').trim();
+        
+        // Obtener plan seleccionado
+        var plan = getPlan();
+        
+        // Obtener escenario
+        var escenario = STATE ? STATE.escenario : '';
+        var escenarioTexto = '';
+        if (escenario === 'propio') {
+          escenarioTexto = 'Ya cuento con antena propia';
+        } else if (escenario === 'sinequipo') {
+          escenarioTexto = 'Necesito antena nueva';
+        } else {
+          escenarioTexto = 'Por definir';
+        }
+        
+        console.log('[Modal Confirmación] Datos obtenidos:', {
+          nombre: nombre,
+          plan: plan,
+          escenario: escenario,
+          escenarioTexto: escenarioTexto
+        });
+        
+        // Llenar elementos del modal
+        var confirmNombre = document.getElementById('confirm-nombre');
+        var confirmPlan = document.getElementById('confirm-plan');
+        var confirmEscenario = document.getElementById('confirm-escenario');
+        var confirmCostos = document.getElementById('confirm-costos');
+        
+        if (confirmNombre) {
+          confirmNombre.textContent = nombre || 'No especificado';
+          console.log('[Modal Confirmación] Nombre llenado:', confirmNombre.textContent);
+        }
+        if (confirmPlan) {
+          confirmPlan.textContent = plan.megas ? (plan.megas + ' Mbps - $' + plan.price.toLocaleString()) : 'No seleccionado';
+          console.log('[Modal Confirmación] Plan llenado:', confirmPlan.textContent);
+        }
+        if (confirmEscenario) {
+          confirmEscenario.textContent = escenarioTexto;
+          console.log('[Modal Confirmación] Escenario llenado:', confirmEscenario.textContent);
+        }
+        
+        // Calcular y mostrar costos
+        if (confirmCostos) {
+          var costosHTML = '';
+          var servicio = plan.price || 0;
+          
+          if (escenario === 'propio') {
+            costosHTML += '<div style="display: flex; justify-content: space-between; align-items: center;">';
+            costosHTML += '<span style="color: #6b7280;">Pago inicial:</span>';
+            costosHTML += '<span style="color: #374151; font-weight: 600;">$' + CONST.propio.anticipo.toLocaleString() + '</span>';
+            costosHTML += '</div>';
+            costosHTML += '<div style="display: flex; justify-content: space-between; align-items: center;">';
+            costosHTML += '<span style="color: #6b7280;">Mensualidad:</span>';
+            costosHTML += '<span style="color: #374151; font-weight: 600;">$' + servicio.toLocaleString() + '</span>';
+            costosHTML += '</div>';
+          } else if (escenario === 'sinequipo') {
+            var anticipo = CONST.sinEquipo.instalacion;
+            var antena = CONST.sinEquipo.antena;
+            var pagoAntena = STATE ? STATE.pagoAntena : 'contado';
+            
+            if (pagoAntena === 'contado') {
+              costosHTML += '<div style="display: flex; justify-content: space-between; align-items: center;">';
+              costosHTML += '<span style="color: #6b7280;">Pago inicial:</span>';
+              costosHTML += '<span style="color: #374151; font-weight: 600;">$' + (anticipo + antena).toLocaleString() + '</span>';
+              costosHTML += '</div>';
+              costosHTML += '<div style="color: #6b7280; font-size: 0.75rem; margin: 0.25rem 0;">';
+              costosHTML += '• Instalación: $' + anticipo.toLocaleString() + ' • Antena: $' + antena.toLocaleString();
+              costosHTML += '</div>';
+              costosHTML += '<div style="display: flex; justify-content: space-between; align-items: center;">';
+              costosHTML += '<span style="color: #6b7280;">Mensualidad:</span>';
+              costosHTML += '<span style="color: #374151; font-weight: 600;">$' + servicio.toLocaleString() + '</span>';
+              costosHTML += '</div>';
+            } else {
+              var cuotaAntena = antena / CONST.sinEquipo.diferidoMeses;
+              costosHTML += '<div style="display: flex; justify-content: space-between; align-items: center;">';
+              costosHTML += '<span style="color: #6b7280;">Pago inicial:</span>';
+              costosHTML += '<span style="color: #374151; font-weight: 600;">$' + anticipo.toLocaleString() + '</span>';
+              costosHTML += '</div>';
+              costosHTML += '<div style="display: flex; justify-content: space-between; align-items: center;">';
+              costosHTML += '<span style="color: #6b7280;">Costo de antena diferido en ' + CONST.sinEquipo.diferidoMeses + ' meses:</span>';
+              costosHTML += '<span style="color: #374151; font-weight: 600;">$' + cuotaAntena.toLocaleString() + '</span>';
+              costosHTML += '</div>';
+              costosHTML += '<div style="display: flex; justify-content: space-between; align-items: center;">';
+              costosHTML += '<span style="color: #6b7280;">Total mensual:</span>';
+              costosHTML += '<span style="color: #374151; font-weight: 600;">$' + (servicio + cuotaAntena).toLocaleString() + '</span>';
+              costosHTML += '</div>';
+            }
+          } else {
+            costosHTML = '<div style="color: #6b7280; font-style: italic;">Selecciona un escenario</div>';
+          }
+          
+          confirmCostos.innerHTML = costosHTML;
+          console.log('[Modal Confirmación] Costos llenados:', costosHTML);
+        }
+        
+        console.log('[Modal Confirmación] Datos llenados correctamente');
+      } catch(e) {
+        console.error('[Modal Confirmación] Error llenando datos:', e);
+      }
+    }
+
     function updateCtaState(planObj){
       try {
         var cta = document.getElementById('contratar');
@@ -690,6 +799,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Estado inicial - no leer desde localStorage para evitar persistencia no deseada
     updateVisibility(false); // Mostrará u ocultará según exista plan previo
     calcular(); // Generará mensajes placeholder apropiados
+    
+    // Hacer función accesible globalmente
+    window.llenarModalConfirmacion = llenarModalConfirmacion;
   })();
 
     // Nueva lógica: selección directa de tarjetas (rol radio)
@@ -1038,6 +1150,13 @@ document.addEventListener('DOMContentLoaded', function() {
           try {
             var modalAvisoWhatsApp = document.getElementById('modal-aviso-whatsapp');
             if (modalAvisoWhatsApp) {
+              // Llenar datos del modal antes de mostrarlo
+              if (typeof window.llenarModalConfirmacion === 'function') {
+                window.llenarModalConfirmacion();
+              } else {
+                console.warn('[CTA Instalación] Función llenarModalConfirmacion no disponible');
+              }
+              
               modalAvisoWhatsApp.style.display = 'flex';
               modalAvisoWhatsApp.setAttribute('aria-hidden', 'false');
               document.body.style.overflow = 'hidden';
@@ -1616,8 +1735,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (inputTelefono) inputTelefono.disabled = loading;
   }
 
-  // Reemplaza la función enviarWhatsAppInstalacion para solo enviar megas y escenario
-
   // ÚNICA DEFINICIÓN: enviarWhatsAppInstalacion
   function enviarWhatsAppInstalacion(nombre) {
     // Protección contra ejecución múltiple con debounce
@@ -1645,33 +1762,56 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var saludo = nombre ? ("\uD83D\uDC4B Hola, mi nombre es " + nombre + ".") : ("\uD83D\uDC4B Hola.");
 
-    // Obtener solo los megas del plan seleccionado
-    var megas = '';
-    try {
-      megas = localStorage.getItem('selectedPlanMegas') || '';
-      if (!megas) {
-        var selectedCard = document.querySelector('.int-plan-card.selectable.selected');
-        if (selectedCard) {
-          megas = selectedCard.getAttribute('data-megas') || '';
-        }
-      }
-    } catch(_) {}
+    // Obtener datos del plan seleccionado
+    var plan = getPlan();
+    var megas = plan.megas || '';
+    var precio = plan.price || 0;
+    
+    var planLinea = megas ? ('Plan seleccionado: ' + megas + ' Mbps - $' + precio.toLocaleString() + '/mes') : 'Plan seleccionado: Por definir.';
 
-    var planLinea = megas ? ('Plan seleccionado: ' + megas + ' Mbps.') : 'Plan seleccionado: Por definir.';
-
-    // Obtener escenario directamente del STATE actual (no localStorage)
+    // Obtener escenario directamente del STATE actual
     var escenario = '';
     try {
       escenario = STATE ? STATE.escenario : '';
     } catch(_) {}
 
     var escenarioDesc = '';
+    var costosDetalle = '';
+    
     if (escenario === 'propio') {
       escenarioDesc = 'Escenario seleccionado: Ya cuento con antena propia utilizable.';
+      costosDetalle = [
+        '💰 COSTOS DE INSTALACIÓN:',
+        '• Pago inicial: $' + CONST.propio.anticipo.toLocaleString() + ' (incluye alineación, reprogramación, configuración)',
+        '• Mensualidad: $' + precio.toLocaleString() + ' (solo servicio)'
+      ].join('\n');
     } else if (escenario === 'sinequipo') {
       escenarioDesc = 'Escenario seleccionado: Necesito antena nueva.';
+      var anticipo = CONST.sinEquipo.instalacion;
+      var antena = CONST.sinEquipo.antena;
+      var pagoAntena = STATE ? STATE.pagoAntena : 'contado';
+      
+      if (pagoAntena === 'contado') {
+        costosDetalle = [
+          '💰 COSTOS DE INSTALACIÓN:',
+          '• Pago inicial: $' + (anticipo + antena).toLocaleString() + ' (instalación + antena)',
+          '  - Instalación: $' + anticipo.toLocaleString(),
+          '  - Antena: $' + antena.toLocaleString(),
+          '• Mensualidad: $' + precio.toLocaleString() + ' (solo servicio)'
+        ].join('\n');
+      } else {
+        var cuotaAntena = antena / CONST.sinEquipo.diferidoMeses;
+        costosDetalle = [
+          '💰 COSTOS DE INSTALACIÓN (DIFERIDO):',
+          '• Pago inicial: $' + anticipo.toLocaleString() + ' (instalación)',
+          '• Costo de antena diferido en ' + CONST.sinEquipo.diferidoMeses + ' meses: $' + cuotaAntena.toLocaleString() + ' c/mes',
+          '• Mensualidad con cuota: $' + (precio + cuotaAntena).toLocaleString() + ' (primeros ' + CONST.sinEquipo.diferidoMeses + ' meses)',
+          '• Mensualidad después: $' + precio.toLocaleString() + ' (solo servicio)'
+        ].join('\n');
+      }
     } else {
       escenarioDesc = 'Escenario seleccionado: Por definir.';
+      costosDetalle = '💰 COSTOS: Por definir según escenario seleccionado.';
     }
 
     var formLink = 'http://clientes.portalinternet.net/solicitar-instalacion/norttek/';
@@ -1679,11 +1819,14 @@ document.addEventListener('DOMContentLoaded', function() {
     var cuerpo = [
       saludo,
       '',
-      'SOLICITUD DE INSTALACIÓN DE INTERNET',
+      '📡 SOLICITUD DE INSTALACIÓN DE INTERNET',
+      '',
       planLinea,
       escenarioDesc,
       '',
-      'Formulario de registro:',
+      costosDetalle,
+      '',
+      '📋 Formulario de registro:',
       formLink,
       '',
       '\u2705 Quedo atento(a) para coordinar la visita técnica.',
@@ -1785,6 +1928,7 @@ document.addEventListener('DOMContentLoaded', function() {
   window.abrirLoginCliente = abrirLoginCliente;
   window.cerrarLoginCliente = cerrarLoginCliente;
   window.clienteEstaAutenticado = clienteEstaAutenticado;
+  window.llenarModalConfirmacion = llenarModalConfirmacion; // Hacer disponible globalmente
   
   console.log('[Internet.js] Funciones exportadas globalmente');
 

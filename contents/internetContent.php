@@ -612,40 +612,78 @@
 
 <!-- Modal de Aviso: Después de WhatsApp -->
 <div id="modal-aviso-whatsapp" class="nt-modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-aviso-whatsapp-title" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); display: none; justify-content: center; align-items: center; z-index: 9999;">
-  <div class="nt-modal" role="document" style="max-width: 450px; width: 90%; background: white; border-radius: 12px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25); position: relative;">
+  <div class="nt-modal" role="document" style="max-width: 520px; width: 90%; max-height: 85vh; overflow-y: auto; background: white; border-radius: 12px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25); position: relative;">
     <button type="button" class="nt-modal-close" data-nt-modal-close aria-label="Cerrar" style="position: absolute; top: 12px; right: 12px; background: #f3f4f6; border: none; width: 28px; height: 28px; border-radius: 50%; font-size: 16px; cursor: pointer; color: #6b7280; display: flex; align-items: center; justify-content: center; transition: all 0.2s;">&times;</button>
     
-    <!-- Contenido simple -->
-    <div class="modal-body" style="padding: 2rem; text-align: center;">
-      <!-- Icono y título -->
-      <div style="margin-bottom: 1.5rem;">
-        <i class="fa-brands fa-whatsapp" style="font-size: 3rem; color: #25d366; margin-bottom: 1rem;"></i>
-        <h3 id="modal-aviso-whatsapp-title" style="color: #1f2937; margin: 0; font-size: 1.25rem; font-weight: 600;">
-          ¡Paso Importante!
+    <!-- Contenido de confirmación compactado -->
+    <div class="modal-body" style="padding: 1.5rem 1.5rem 1.25rem;">
+      <!-- Encabezado compacto -->
+      <div style="text-align: center; margin-bottom: 1rem;">
+        <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #4f8cff 0%, #3b82f6 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.75rem;">
+          <i class="fa-solid fa-check" style="font-size: 1.2rem; color: white;"></i>
+        </div>
+        <h3 id="modal-aviso-whatsapp-title" style="color: #1f2937; margin: 0; font-size: 1.25rem; font-weight: 700;">
+          Confirmar Solicitud
         </h3>
+        <p style="color: #6b7280; margin: 0.25rem 0 0; font-size: 0.85rem;">
+          Revisa los detalles antes de enviar
+        </p>
       </div>
       
-      <!-- Mensaje principal -->
-      <div style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; text-align: left;">
-        <p style="margin: 0 0 1rem 0; color: #374151; line-height: 1.6;">
-          Después de enviar tu mensaje por WhatsApp:
-        </p>
-        <div style="background: #dcfce7; border-left: 3px solid #25d366; padding: 1rem; border-radius: 4px;">
-          <p style="margin: 0; color: #166534; font-weight: 600;">
-            <i class="fa-solid fa-exclamation-circle" style="color: #25d366; margin-right: 0.5rem;"></i>
-            Deberás llenar el formulario de instalación para proceder con tu solicitud y agendar tu instalación.
-          </p>
+      <!-- Datos en grid compacto -->
+      <div style="display: grid; gap: 0.75rem; margin-bottom: 1rem;">
+        <!-- Información Personal -->
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 0.75rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <i class="fa-solid fa-user" style="color: #4f8cff; font-size: 0.9rem;"></i>
+            <span style="color: #374151; font-size: 0.85rem; font-weight: 600;">Cliente</span>
+          </div>
+          <span id="confirm-nombre" style="color: #1f2937; font-weight: 600; font-size: 0.9rem;">-</span>
+        </div>
+
+        <!-- Plan seleccionado -->
+        <div style="background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; padding: 0.75rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <i class="fa-solid fa-wifi" style="color: #0ea5e9; font-size: 0.9rem;"></i>
+            <span style="color: #374151; font-size: 0.85rem; font-weight: 600;">Plan</span>
+          </div>
+          <div style="display: grid; gap: 0.25rem;">
+            <span id="confirm-plan" style="color: #1f2937; font-weight: 600; font-size: 0.9rem;">-</span>
+            <span id="confirm-escenario" style="color: #6b7280; font-size: 0.8rem;">-</span>
+          </div>
+        </div>
+
+        <!-- Costos -->
+        <div style="background: #fefce8; border: 1px solid #fde047; border-radius: 8px; padding: 0.75rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <i class="fa-solid fa-calculator" style="color: #eab308; font-size: 0.9rem;"></i>
+            <span style="color: #374151; font-size: 0.85rem; font-weight: 600;">Costos</span>
+          </div>
+          <div id="confirm-costos" style="display: grid; gap: 0.25rem; font-size: 0.8rem;">
+            <!-- Se llenarán dinámicamente -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Aviso compacto -->
+      <div style="background: #eff6ff; border: 1px solid #dbeafe; border-radius: 6px; padding: 0.6rem; margin-bottom: 1rem; font-size: 0.8rem;">
+        <div style="display: flex; align-items: start; gap: 0.5rem;">
+          <i class="fa-solid fa-info-circle" style="color: #3b82f6; margin-top: 0.1rem; font-size: 0.9rem;"></i>
+          <span style="color: #374151; line-height: 1.4;">
+            <strong style="color: #1e40af;">Próximo paso:</strong> Tu solicitud se enviará por WhatsApp. Después deberás llenar el formulario de instalación.
+          </span>
         </div>
       </div>
       
-      <!-- Botones de acción -->
-      <div style="display: flex; gap: 1rem; justify-content: center;">
-        <button type="button" class="btn-secundario" data-nt-modal-close style="min-width: 100px; padding: 10px 16px; background: #f9fafb; color: #6b7280; border: 1px solid #d1d5db; border-radius: 6px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
-          Cancelar
+      <!-- Botones compactos -->
+      <div style="display: flex; gap: 0.75rem; justify-content: center;">
+        <button type="button" class="btn-secundario" data-nt-modal-close style="min-width: 100px; padding: 10px 16px; background: #f9fafb; color: #6b7280; border: 1px solid #d1d5db; border-radius: 6px; font-weight: 500; cursor: pointer; transition: all 0.2s; font-size: 0.85rem;">
+          <i class="fa-solid fa-arrow-left" style="margin-right: 0.4rem;"></i>
+          Volver
         </button>
-        <button type="button" class="btn-primario" id="btn-enviar-whatsapp-final" style="min-width: 140px; padding: 10px 20px; background: #25d366; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);">
-          <i class="fa-brands fa-whatsapp" style="margin-right: 0.5rem;"></i>
-          Enviar
+        <button type="button" class="btn-primario" id="btn-enviar-whatsapp-final" style="min-width: 140px; padding: 10px 18px; background: #3b82f6; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2); font-size: 0.85rem;">
+          <i class="fa-solid fa-paper-plane" style="margin-right: 0.4rem;"></i>
+          Proceder con Solicitud
         </button>
       </div>
     </div>
