@@ -33,11 +33,18 @@ $seo = [
 $cssFiles = ['cartuchos'];
 $jsFiles  = ['cartuchos-optimized'];
 
-// Mueve esto ANTES del include:
-// OCR deshabilitado temporalmente para mejorar performance
-// $externalJsHead = [
-//     'https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'
-// ];
+// Librerías externas para OCR y recorte de imagen
+$externalJsHead = [
+    'https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'
+];
+
+$externalCssHead = [
+    'https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css'
+];
+
+$externalJsFooter = [
+    'https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js'
+];
 
 // Incluir plantilla base (header, navbar, contenido, footer)
 include __DIR__ . '/includes/pageTemplate.php';

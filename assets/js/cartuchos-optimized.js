@@ -3,6 +3,427 @@
  * Búsqueda híbrida: Local primero, luego servidor
  */
 
+// ==========================
+// FUNCIONALIDAD DE BÚSQUEDA POR FOTO - GLOBAL
+// ==========================
+
+// Modal para tomar o cargar foto (disponible globalmente)
+window.showFotoModal = function() {
+    // Eliminar modal anterior
+    let oldModal = document.getElementById('foto-modal');
+    if (oldModal) oldModal.remove();
+
+    // Crear modal
+    const modal = document.createElement('div');
+    modal.id = 'foto-modal';
+    modal.className = 'fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50';
+
+    const box = document.createElement('div');
+    box.className = 'bg-white p-6 rounded-xl max-w-md mx-4 text-center transform transition-all duration-300 opacity-0 scale-95';
+
+    // Botón cerrar
+    const closeBtn = document.createElement('button');
+    closeBtn.innerHTML = '×';
+    closeBtn.className = 'absolute top-2 right-4 text-gray-400 text-3xl hover:text-gray-600 bg-transparent border-none cursor-pointer';
+    closeBtn.addEventListener('click', () => modal.remove());
+    box.style.position = 'relative';
+    box.appendChild(closeBtn);
+
+    // Imagen de ejemplo
+    const ejemploImg = document.createElement('img');
+    ejemploImg.src = 'assets/img/ejemplo-modelo-impresora.jpg';
+    ejemploImg.alt = 'Ejemplo de foto de modelo de impresora';
+    ejemploImg.className = 'w-full max-w-sm rounded-lg shadow-sm mb-4 mx-auto';
+    box.appendChild(ejemploImg);
+
+    // Instrucciones
+    const instrucciones = document.createElement('div');
+    instrucciones.innerHTML = `
+        <h3 class="font-semibold text-blue-700 mb-3 text-lg">
+            <i class="fas fa-info-circle mr-2"></i>¿Cómo tomar la foto?
+        </h3>
+        <ul class="text-left text-sm text-gray-700 space-y-2 mb-4">
+            <li>• Enfoca solo la zona donde aparece el <strong>modelo exacto</strong></li>
+            <li>• Evita reflejos, sombras o desenfoque</li>
+            <li>• El modelo debe estar <strong>derecho y legible</strong></li>
+            <li>• Ejemplo: <code class="bg-gray-100 px-2 py-1 rounded">LaserJet Pro M404dn</code></li>
+        </ul>
+    `;
+    box.appendChild(instrucciones);
+
+    // Input file oculto
+    const fotoInput = document.createElement('input');
+    fotoInput.type = 'file';
+    fotoInput.accept = 'image/*';
+    fotoInput.className = 'hidden';
+    box.appendChild(fotoInput);
+
+    // Botón para seleccionar foto
+    const tomarBtn = document.createElement('button');
+    tomarBtn.innerHTML = `
+        <i class="fas fa-camera mr-2"></i>
+        Seleccionar Foto
+    `;
+    tomarBtn.className = 'bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200';
+    tomarBtn.addEventListener('click', () => fotoInput.click());
+    box.appendChild(tomarBtn);
+
+    // Evento para manejar imagen seleccionada
+    fotoInput.addEventListener('change', function() {
+        if (!this.files || !this.files[0]) return;
+        modal.remove();
+        const file = this.files[0];
+        
+        // Verificar si Cropper está disponible
+        if (typeof Cropper !== 'undefined') {
+            window.showCropperModal(URL.createObjectURL(file));
+        } else {
+            // Si no hay Cropper, analizar directamente
+            window.analizarImagen(file);
+        }
+    });
+
+    modal.appendChild(box);
+    document.body.appendChild(modal);
+
+    // Animación de aparición
+    setTimeout(() => {
+        box.classList.remove('opacity-0', 'scale-95');
+        box.classList.add('opacity-100', 'scale-100');
+    }, 10);
+};
+
+// Modal de recorte con Cropper.js (disponible globalmente)
+window.showCropperModal = function(imageSrc) {
+    let oldModal = document.getElementById('cropper-modal');
+    if (oldModal) oldModal.remove();
+
+    const modal = document.createElement('div');
+    modal.id = 'cropper-modal';
+    modal.className = 'fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50';
+
+    const box = document.createElement('div');
+    box.className = 'bg-white p-4 rounded-xl max-w-4xl max-h-[90vh] overflow-auto text-center transform transition-all duration-300 opacity-0 scale-95';
+
+    const title = document.createElement('h2');
+    title.textContent = 'Recorta la zona del modelo de la impresora';
+    title.className = 'text-lg font-semibold mb-4';
+    box.appendChild(title);
+
+    const img = document.createElement('img');
+    img.src = imageSrc;
+    img.className = 'max-w-full max-h-96 mx-auto block mb-4';
+    box.appendChild(img);
+
+    // Botones
+    const buttonContainer = document.createElement('div');
+    buttonContainer.className = 'flex gap-2 justify-center flex-wrap';
+
+    const rotateBtn = document.createElement('button');
+    rotateBtn.textContent = 'Rotar 90°';
+    rotateBtn.className = 'bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg';
+
+    const cropBtn = document.createElement('button');
+    cropBtn.textContent = 'Usar recorte';
+    cropBtn.className = 'bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg';
+
+    const cancelBtn = document.createElement('button');
+    cancelBtn.textContent = 'Cancelar';
+    cancelBtn.className = 'bg-gray-300 hover:bg-gray-400 text-gray-700 px-4 py-2 rounded-lg';
+
+    buttonContainer.appendChild(rotateBtn);
+    buttonContainer.appendChild(cropBtn);
+    buttonContainer.appendChild(cancelBtn);
+    box.appendChild(buttonContainer);
+
+    modal.appendChild(box);
+    document.body.appendChild(modal);
+
+    // Inicializar Cropper
+    let cropper = new Cropper(img, {
+        viewMode: 1,
+        aspectRatio: NaN,
+        autoCropArea: 0.7,
+        movable: true,
+        zoomable: true,
+        scalable: true,
+        rotatable: true,
+        responsive: true,
+        background: false
+    });
+
+    // Eventos de botones
+    rotateBtn.addEventListener('click', () => cropper.rotate(90));
+    
+    cropBtn.addEventListener('click', async () => {
+        const canvas = cropper.getCroppedCanvas({
+            imageSmoothingEnabled: true,
+            imageSmoothingQuality: 'high'
+        });
+        modal.remove();
+        canvas.toBlob(async (blob) => {
+            await window.analizarImagen(blob);
+        }, 'image/png');
+    });
+
+    cancelBtn.addEventListener('click', () => modal.remove());
+
+    // Animación de aparición
+    setTimeout(() => {
+        box.classList.remove('opacity-0', 'scale-95');
+        box.classList.add('opacity-100', 'scale-100');
+    }, 10);
+};
+
+// Analizar imagen con OCR (disponible globalmente)
+window.analizarImagen = async function(fileOrBlob) {
+    // Mostrar estado de carga
+    const buscador = document.getElementById('buscador');
+    if (!buscador) return;
+
+    const valorOriginal = buscador.value;
+    buscador.value = "🔍 Analizando imagen...";
+    buscador.disabled = true;
+
+    try {
+        // Usar Tesseract.js para OCR
+        if (typeof Tesseract === 'undefined') {
+            throw new Error('Tesseract.js no está disponible');
+        }
+
+        const { data: { text } } = await Tesseract.recognize(
+            fileOrBlob,
+            'eng',
+            {
+                logger: m => console.log('OCR:', m),
+                preserve_interword_spaces: 1
+            }
+        );
+
+        console.log('Texto detectado:', text);
+
+        // Buscar patrones de modelos de impresora mejorados
+        const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+        
+        // Patrones comunes de modelos de impresora
+        const patterns = [
+            // HP LaserJet, OfficeJet, DeskJet, etc.
+            /\b(LaserJet|OfficeJet|DeskJet|Envy|PhotoSmart)\s+(Pro\s+)?([A-Z]*\d+[A-Z0-9]*)\b/gi,
+            // Samsung ML, SCX, SL, etc.
+            /\b(ML|SCX|SL|CLX|CLP)-?(\d+[A-Z0-9]*)\b/gi,
+            // Brother HL, DCP, MFC, etc.
+            /\b(HL|DCP|MFC|FAX)-?(\d+[A-Z0-9]*)\b/gi,
+            // Canon i-SENSYS, PIXMA, etc.
+            /\b(i-SENSYS|PIXMA|imageCLASS)\s+([A-Z]*\d+[A-Z0-9]*)\b/gi,
+            // Epson WorkForce, Expression, etc.
+            /\b(WorkForce|Expression|EcoTank)\s+([A-Z]*\d+[A-Z0-9]*)\b/gi,
+            // Xerox Phaser, WorkCentre, etc.
+            /\b(Phaser|WorkCentre)\s+(\d+[A-Z0-9]*)\b/gi,
+            // Kyocera TASKalfa, ECOSYS, etc.
+            /\b(TASKalfa|ECOSYS|FS)\s*-?(\d+[A-Z0-9]*)\b/gi,
+            // Patrón genérico para modelos alfanuméricos
+            /\b([A-Z]{1,4}\d{2,5}[A-Z0-9]{0,6})\b/gi
+        ];
+        
+        let modelos = [];
+        
+        lines.forEach(line => {
+            patterns.forEach(pattern => {
+                const matches = [...line.matchAll(pattern)];
+                matches.forEach(match => {
+                    if (match.length >= 3) {
+                        // Para patrones con marca y modelo
+                        const marca = match[1];
+                        const modelo = match[match.length - 1]; // Último grupo capturado
+                        modelos.push(`${marca} ${modelo}`.trim());
+                    } else if (match.length === 2) {
+                        // Para patrón genérico
+                        modelos.push(match[1].trim());
+                    }
+                });
+            });
+        });
+
+        // Filtrar y limpiar modelos únicos
+        modelos = [...new Set(modelos)]
+            .filter(m => {
+                const cleaned = m.trim();
+                // Filtrar modelos muy cortos o que sean solo números
+                return cleaned.length >= 3 && 
+                       !/^\d+$/.test(cleaned) && 
+                       !/^[A-Z]+$/.test(cleaned);
+            })
+            .map(m => m.trim())
+            .sort((a, b) => {
+                // Priorizar modelos con marcas conocidas
+                const marcasConocidas = ['LaserJet', 'OfficeJet', 'DeskJet', 'Envy', 'ML', 'SCX', 'HL', 'DCP', 'MFC'];
+                const aHasMarca = marcasConocidas.some(marca => a.includes(marca));
+                const bHasMarca = marcasConocidas.some(marca => b.includes(marca));
+                if (aHasMarca && !bHasMarca) return -1;
+                if (!aHasMarca && bHasMarca) return 1;
+                return a.length - b.length; // Modelos más cortos primero
+            })
+            .slice(0, 5); // Máximo 5 modelos
+
+        console.log('Modelos detectados:', modelos);
+
+        buscador.disabled = false;
+
+        if (modelos.length > 0) {
+            window.showModelModal(modelos, (selectedModel) => {
+                buscador.value = selectedModel;
+                // Disparar búsqueda
+                const inputEvent = new Event('input', { bubbles: true });
+                buscador.dispatchEvent(inputEvent);
+            });
+        } else {
+            // Si no se detectaron modelos, usar primera línea de texto
+            const firstLine = lines[0] || text.substring(0, 50);
+            buscador.value = firstLine.trim();
+            
+            // Mostrar mensaje informativo
+            window.mostrarMensaje('No se detectaron modelos específicos. Se usó el texto: "' + firstLine + '"', 'warning');
+            
+            // Disparar búsqueda
+            const inputEvent = new Event('input', { bubbles: true });
+            buscador.dispatchEvent(inputEvent);
+        }
+
+    } catch (error) {
+        console.error('Error en OCR:', error);
+        buscador.value = valorOriginal;
+        buscador.disabled = false;
+        window.mostrarMensaje('Error al analizar la imagen. Intenta con una foto más clara.', 'error');
+    }
+};
+
+// Modal para seleccionar modelo detectado (disponible globalmente)
+window.showModelModal = function(modelos, onSelect) {
+    let oldModal = document.getElementById('modelo-modal');
+    if (oldModal) oldModal.remove();
+
+    const modal = document.createElement('div');
+    modal.id = 'modelo-modal';
+    modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+
+    const box = document.createElement('div');
+    box.className = 'bg-white p-6 rounded-xl max-w-md mx-4 text-center transform transition-all duration-300 opacity-0 scale-95';
+
+    const title = document.createElement('h2');
+    title.innerHTML = '<i class="fas fa-search mr-2 text-blue-600"></i>Modelos detectados';
+    title.className = 'text-xl font-semibold mb-4 text-gray-800';
+    box.appendChild(title);
+
+    const subtitle = document.createElement('p');
+    subtitle.textContent = 'Selecciona el modelo de tu impresora:';
+    subtitle.className = 'text-gray-600 mb-4';
+    box.appendChild(subtitle);
+
+    // Botones para cada modelo detectado
+    modelos.forEach((modelo, index) => {
+        const btn = document.createElement('button');
+        btn.textContent = modelo;
+        btn.className = 'block w-full mb-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg font-medium transition-colors duration-200';
+        btn.addEventListener('click', () => {
+            modal.remove();
+            onSelect(modelo);
+        });
+        box.appendChild(btn);
+    });
+
+    // Input manual
+    const manualContainer = document.createElement('div');
+    manualContainer.className = 'mt-4 pt-4 border-t border-gray-200';
+    
+    const manualLabel = document.createElement('p');
+    manualLabel.textContent = '¿No aparece tu modelo?';
+    manualLabel.className = 'text-sm text-gray-600 mb-2';
+    manualContainer.appendChild(manualLabel);
+
+    const manualInput = document.createElement('input');
+    manualInput.type = 'text';
+    manualInput.placeholder = 'Escribe el modelo aquí';
+    manualInput.className = 'w-full px-3 py-2 border border-gray-300 rounded-lg mb-2 focus:outline-none focus:border-blue-500';
+    manualContainer.appendChild(manualInput);
+
+    const manualBtn = document.createElement('button');
+    manualBtn.textContent = 'Usar este modelo';
+    manualBtn.className = 'w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg';
+    manualBtn.addEventListener('click', () => {
+        const valor = manualInput.value.trim();
+        if (valor) {
+            modal.remove();
+            onSelect(valor);
+        }
+    });
+    manualContainer.appendChild(manualBtn);
+
+    box.appendChild(manualContainer);
+
+    // Botón cerrar
+    const closeBtn = document.createElement('button');
+    closeBtn.textContent = 'Cancelar';
+    closeBtn.className = 'mt-4 text-gray-500 hover:text-gray-700 bg-transparent border-none cursor-pointer';
+    closeBtn.addEventListener('click', () => modal.remove());
+    box.appendChild(closeBtn);
+
+    modal.appendChild(box);
+    document.body.appendChild(modal);
+
+    // Animación de aparición
+    setTimeout(() => {
+        box.classList.remove('opacity-0', 'scale-95');
+        box.classList.add('opacity-100', 'scale-100');
+    }, 10);
+
+    // Focus en primer botón o input manual
+    setTimeout(() => {
+        if (modelos.length > 0) {
+            box.querySelector('button').focus();
+        } else {
+            manualInput.focus();
+        }
+    }, 100);
+};
+
+// Función para mostrar mensajes (disponible globalmente)
+window.mostrarMensaje = function(texto, tipo = 'info') {
+    // Crear elemento de mensaje
+    const mensaje = document.createElement('div');
+    const iconos = {
+        'info': 'fas fa-info-circle',
+        'success': 'fas fa-check-circle',
+        'warning': 'fas fa-exclamation-triangle',
+        'error': 'fas fa-times-circle'
+    };
+    
+    const colores = {
+        'info': 'bg-blue-100 border-blue-400 text-blue-700',
+        'success': 'bg-green-100 border-green-400 text-green-700',
+        'warning': 'bg-yellow-100 border-yellow-400 text-yellow-700',
+        'error': 'bg-red-100 border-red-400 text-red-700'
+    };
+
+    mensaje.innerHTML = `
+        <i class="${iconos[tipo]} mr-2"></i>
+        ${texto}
+    `;
+    mensaje.className = `fixed top-4 right-4 z-50 ${colores[tipo]} border px-4 py-3 rounded-lg shadow-lg max-w-sm transform transition-all duration-300 translate-x-full opacity-0`;
+
+    document.body.appendChild(mensaje);
+
+    // Animación de entrada
+    setTimeout(() => {
+        mensaje.classList.remove('translate-x-full', 'opacity-0');
+    }, 10);
+
+    // Auto-remover después de 5 segundos
+    setTimeout(() => {
+        mensaje.classList.add('translate-x-full', 'opacity-0');
+        setTimeout(() => mensaje.remove(), 300);
+    }, 5000);
+};
+
 document.addEventListener('DOMContentLoaded', function() {
     // Referencias DOM básicas
     const tabBtns = document.querySelectorAll('.ejemplo-tab-btn');
@@ -350,4 +771,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Inicializar
     init();
+
+    // Configurar botón de foto
+    function configurarFotoBtn() {
+        const fotoBtn = document.getElementById('fotoBtn');
+        if (!fotoBtn) return;
+        
+        fotoBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.showFotoModal();
+        });
+    }
+
+    // Inicializar funcionalidad de foto
+    configurarFotoBtn();
 });

@@ -135,12 +135,12 @@ function impresorasList($impresoras, $limite = 5) {
                 </div>
                 <span>Buscar Cartuchos</span>
             </a>
-            <a href="#herramientas" class="group bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-3">
+            <button onclick="showFotoModal()" class="group bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-3">
                 <div class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <i class="fa-solid fa-camera text-sm"></i>
                 </div>
                 <span>Identificar por Foto</span>
-            </a>
+            </button>
         </div>
     </div>
 </section>
