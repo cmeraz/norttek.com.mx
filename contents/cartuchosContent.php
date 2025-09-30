@@ -366,12 +366,12 @@ function impresorasList($impresoras, $limite = 5) {
                     <!-- Herramientas adicionales -->
                     <div class="flex flex-wrap justify-between items-center gap-4 mb-6">
                         <div class="flex items-center gap-4">
-                            <button id="fotoBtn" type="button" 
-                                    class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
-                                <i class="fa-solid fa-camera"></i>
-                                <span>Buscar por Foto</span>
+                            <button onclick="showFotoModal()" class="group bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-3">
+                                <div class="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fa-solid fa-camera text-sm"></i>
+                                </div>
+                                <span>Identificar por Foto</span>
                             </button>
-                            <input type="file" id="fotoInput" accept="image/*" class="hidden">
                         </div>
                         <div class="bg-gradient-to-r from-gray-50 to-gray-100 px-4 py-2 rounded-xl border border-gray-200">
                             <span class="text-gray-600 font-medium text-sm">

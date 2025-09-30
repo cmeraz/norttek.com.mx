@@ -751,6 +751,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function init() {
         initTabs();
         initBusquedaHibrida();
+        // configurarFotoBtn(); // Ya no necesario - botones usan onclick="showFotoModal()"
         
         // Mostrar info de datos cargados
         if (datosCartuchos.cartuchosPagina) {
@@ -772,17 +773,4 @@ document.addEventListener('DOMContentLoaded', function() {
     // Inicializar
     init();
 
-    // Configurar botón de foto
-    function configurarFotoBtn() {
-        const fotoBtn = document.getElementById('fotoBtn');
-        if (!fotoBtn) return;
-        
-        fotoBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.showFotoModal();
-        });
-    }
-
-    // Inicializar funcionalidad de foto
-    configurarFotoBtn();
 });
