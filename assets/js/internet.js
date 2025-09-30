@@ -1157,6 +1157,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.warn('[CTA Instalación] Función llenarModalConfirmacion no disponible');
               }
               
+              // Configurar event listener para el botón de WhatsApp cada vez que se abre el modal
+              configurarEventListenerWhatsApp();
+              
               modalAvisoWhatsApp.style.display = 'flex';
               modalAvisoWhatsApp.setAttribute('aria-hidden', 'false');
               document.body.style.overflow = 'hidden';
@@ -1200,6 +1203,105 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   } catch(_) {}
 
+  // --- Función para configurar event listener del botón WhatsApp ---
+  function configurarEventListenerWhatsApp() {
+    try {
+      var btnEnviarWhatsappFinal = document.getElementById('btn-enviar-whatsapp-final');
+      if (btnEnviarWhatsappFinal && !btnEnviarWhatsappFinal.hasAttribute('data-listener-added')) {
+        console.log('[Modal Aviso] Configurando listener para btn-enviar-whatsapp-final');
+        
+        // Marcar que ya se agregó el listener
+        btnEnviarWhatsappFinal.setAttribute('data-listener-added', 'true');
+        
+        // Flag para evitar múltiples clicks
+        var isProcessingWhatsapp = false;
+        
+        function handleWhatsappFinal(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          // Evitar múltiples clicks
+          if (isProcessingWhatsapp) {
+            console.log('[Modal Aviso] Click ignorado - ya procesando');
+            return false;
+          }
+          
+          isProcessingWhatsapp = true;
+          console.log('[Modal Aviso] Click en botón enviar WhatsApp final');
+          
+          // Deshabilitar botón temporalmente
+          btnEnviarWhatsappFinal.disabled = true;
+          btnEnviarWhatsappFinal.style.opacity = '0.6';
+          btnEnviarWhatsappFinal.style.pointerEvents = 'none';
+          
+          // Obtener nombre guardado
+          var st = getStoredName();
+          var nombre = (st.full || st.first || '').trim();
+          
+          if (!nombre) {
+            console.error('[Modal Aviso] No hay nombre guardado');
+            if (window.NTNotify) {
+              NTNotify.error('Error: No se encontró el nombre. Intenta de nuevo.');
+            }
+            
+            // Rehabilitar botón
+            isProcessingWhatsapp = false;
+            btnEnviarWhatsappFinal.disabled = false;
+            btnEnviarWhatsappFinal.style.opacity = '1';
+            btnEnviarWhatsappFinal.style.pointerEvents = 'auto';
+            return false;
+          }
+          
+          // Enviar WhatsApp
+          console.log('[Modal Aviso] Enviando WhatsApp con nombre:', nombre);
+          enviarWhatsAppInstalacion(nombre);
+          
+          console.log('[Modal Aviso] WhatsApp enviado desde modal');
+          
+          // Cerrar modal después del envío
+          setTimeout(function() {
+            var modalAvisoWhatsApp = document.getElementById('modal-aviso-whatsapp');
+            if (modalAvisoWhatsApp) {
+              modalAvisoWhatsApp.style.display = 'none';
+              modalAvisoWhatsApp.setAttribute('aria-hidden', 'true');
+              document.body.style.overflow = '';
+              
+              if (window.NTModal) {
+                try {
+                  window.NTModal.close(modalAvisoWhatsApp);
+                } catch(e) {
+                  console.warn('[Modal Aviso] Error cerrando con NTModal:', e);
+                }
+              }
+            }
+            
+            // Rehabilitar botón después de cerrar modal
+            setTimeout(function() {
+              isProcessingWhatsapp = false;
+              btnEnviarWhatsappFinal.disabled = false;
+              btnEnviarWhatsappFinal.style.opacity = '1';
+              btnEnviarWhatsappFinal.style.pointerEvents = 'auto';
+              console.log('[Modal Aviso] Botón rehabilitado');
+            }, 100);
+          }, 500);
+          
+          return false;
+        }
+        
+        // Agregar el listener
+        btnEnviarWhatsappFinal.addEventListener('click', handleWhatsappFinal);
+        
+        console.log('[Modal Aviso] Event listener configurado exitosamente');
+      } else if (!btnEnviarWhatsappFinal) {
+        console.warn('[Modal Aviso] Botón btn-enviar-whatsapp-final no encontrado');
+      } else {
+        console.log('[Modal Aviso] Event listener ya configurado anteriormente');
+      }
+    } catch(e) {
+      console.error('[Modal Aviso] Error configurando event listener:', e);
+    }
+  }
+
   // --- Listeners para Modales de Aviso ---
   try {
     // Modal de aviso para botones "Pagar con Tarjeta"
@@ -1234,92 +1336,8 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
-    // Configurar listener directo para el botón de envío final del modal
-    var btnEnviarWhatsappFinal = document.getElementById('btn-enviar-whatsapp-final');
-    if (btnEnviarWhatsappFinal && !btnEnviarWhatsappFinal.hasAttribute('data-listener-added')) {
-      console.log('[Modal Aviso] Configurando listener para btn-enviar-whatsapp-final');
-      
-      // Marcar que ya se agregó el listener
-      btnEnviarWhatsappFinal.setAttribute('data-listener-added', 'true');
-      
-      // Flag para evitar múltiples clicks
-      var isProcessingWhatsapp = false;
-      
-      function handleWhatsappFinal(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        // Evitar múltiples clicks
-        if (isProcessingWhatsapp) {
-          console.log('[Modal Aviso] Click ignorado - ya procesando');
-          return false;
-        }
-        
-        isProcessingWhatsapp = true;
-        console.log('[Modal Aviso] Click en botón enviar WhatsApp final');
-        
-        // Deshabilitar botón temporalmente
-        btnEnviarWhatsappFinal.disabled = true;
-        btnEnviarWhatsappFinal.style.opacity = '0.6';
-        btnEnviarWhatsappFinal.style.pointerEvents = 'none';
-        
-        // Obtener nombre guardado
-        var st = getStoredName();
-        var nombre = (st.full || st.first || '').trim();
-        
-        if (!nombre) {
-          console.error('[Modal Aviso] No hay nombre guardado');
-          if (window.NTNotify) {
-            NTNotify.error('Error: No se encontró el nombre. Intenta de nuevo.');
-          }
-          
-          // Rehabilitar botón
-          isProcessingWhatsapp = false;
-          btnEnviarWhatsappFinal.disabled = false;
-          btnEnviarWhatsappFinal.style.opacity = '1';
-          btnEnviarWhatsappFinal.style.pointerEvents = 'auto';
-          return false;
-        }
-        
-        // Enviar WhatsApp
-        console.log('[Modal Aviso] Enviando WhatsApp con nombre:', nombre);
-        enviarWhatsAppInstalacion(nombre);
-        
-        console.log('[Modal Aviso] WhatsApp enviado desde modal');
-        
-        // Cerrar modal después del envío
-        setTimeout(function() {
-          var modalAvisoWhatsApp = document.getElementById('modal-aviso-whatsapp');
-          if (modalAvisoWhatsApp) {
-            modalAvisoWhatsApp.style.display = 'none';
-            modalAvisoWhatsApp.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-            
-            if (window.NTModal) {
-              try {
-                window.NTModal.close(modalAvisoWhatsApp);
-              } catch(e) {
-                console.warn('[Modal Aviso] Error cerrando con NTModal:', e);
-              }
-            }
-          }
-          
-          // Rehabilitar botón después de cerrar modal
-          setTimeout(function() {
-            isProcessingWhatsapp = false;
-            btnEnviarWhatsappFinal.disabled = false;
-            btnEnviarWhatsappFinal.style.opacity = '1';
-            btnEnviarWhatsappFinal.style.pointerEvents = 'auto';
-            console.log('[Modal Aviso] Botón rehabilitado');
-          }, 100);
-        }, 500);
-        
-        return false;
-      }
-      
-      // Agregar el listener
-      btnEnviarWhatsappFinal.addEventListener('click', handleWhatsappFinal);
-    }
+    // Configurar event listener inicial (por si el modal ya existe)
+    configurarEventListenerWhatsApp();
 
     // Listeners para cerrar modales de aviso
     document.addEventListener('click', function(e) {
@@ -1929,6 +1947,7 @@ document.addEventListener('DOMContentLoaded', function() {
   window.cerrarLoginCliente = cerrarLoginCliente;
   window.clienteEstaAutenticado = clienteEstaAutenticado;
   window.llenarModalConfirmacion = llenarModalConfirmacion; // Hacer disponible globalmente
+  window.configurarEventListenerWhatsApp = configurarEventListenerWhatsApp; // Hacer disponible globalmente
   
   console.log('[Internet.js] Funciones exportadas globalmente');
 
