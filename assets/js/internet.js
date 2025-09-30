@@ -1066,11 +1066,11 @@ document.addEventListener('DOMContentLoaded', function() {
       if (campoNombre) campoNombre.style.display = 'none';
       if (campoTelefono) campoTelefono.style.display = 'block';
       if (modalDatosSubmit) modalDatosSubmit.textContent = 'Continuar';
-      
+      // Hacer el campo requerido solo si está visible
+      if (inputTelefono) inputTelefono.required = true;
       setTimeout(function() {
         if (inputTelefono) inputTelefono.focus();
       }, 300);
-      
     } else if (tipo === 'instalacion') {
       // Configurar para captura de nombre
       if (modalDatosTitulo) modalDatosTitulo.textContent = 'Tu Nombre';
@@ -1079,11 +1079,11 @@ document.addEventListener('DOMContentLoaded', function() {
       if (campoNombre) campoNombre.style.display = 'block';
       if (campoTelefono) campoTelefono.style.display = 'none';
       if (modalDatosSubmit) modalDatosSubmit.textContent = 'Continuar';
-      
+      // Eliminar el atributo requerido si el campo está oculto
+      if (inputTelefono) inputTelefono.required = false;
       // Pre-llenar con nombre guardado si existe
       var stored = getStoredName();
       if (inputNombre && stored.full) inputNombre.value = stored.full;
-      
       setTimeout(function() {
         if (inputNombre) inputNombre.focus();
       }, 300);
@@ -1238,19 +1238,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var saludo = nombre ? (EMOJI.wave + ' Hola, mi nombre es ' + nombre + '.') : (EMOJI.wave + ' Hola.');
     var plan = (function(){
-      try { 
-        return { 
-          megas: localStorage.getItem('selectedPlanMegas') || '', 
-          price: localStorage.getItem('selectedPlanPrice') || '' 
-        }; 
-      } catch(_) { 
-        return {megas: '', price: ''}; 
+      try {
+        return {
+          megas: localStorage.getItem('selectedPlanMegas') || '',
+          price: localStorage.getItem('selectedPlanPrice') || '',
+          label: localStorage.getItem('selectedPlan') || ''
+        };
+      } catch(_) {
+        return {megas: '', price: '', label: ''};
       }
     })();
 
-    var planLinea = plan.megas ? 
-      ('Plan seleccionado: ' + plan.megas + ' Megas (' + (plan.price ? ('$' + plan.price + '/mes') : 'mensualidad pendiente') + ').') : 
-      'Aún no aparece un plan seleccionado.';
+    var planLinea = (plan.megas && plan.price) ?
+      ('Plan seleccionado: ' + (plan.label ? plan.label : (plan.megas + ' Megas')) + ' ($' + plan.price + '/mes).') :
+      (plan.label ? ('Plan seleccionado: ' + plan.label + '.') : 'Aún no aparece un plan seleccionado.');
 
     var escenario = (function(){ 
       try { 
