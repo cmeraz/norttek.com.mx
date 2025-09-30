@@ -1229,6 +1229,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (inputTelefono) inputTelefono.disabled = loading;
   }
 
+  // Reemplaza la función enviarWhatsAppInstalacion para solo enviar megas y escenario
+
+  // ÚNICA DEFINICIÓN: enviarWhatsAppInstalacion
   function enviarWhatsAppInstalacion(nombre) {
     try { 
       if (nombre && nombre === nombre.toLocaleLowerCase('es-MX')) {
@@ -1236,58 +1239,39 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     } catch(_) {}
 
-    var saludo = nombre ? (EMOJI.wave + ' Hola, mi nombre es ' + nombre + '.') : (EMOJI.wave + ' Hola.');
-    var plan = (function(){
-      try {
-        var megas = localStorage.getItem('selectedPlanMegas') || '';
-        var label = localStorage.getItem('selectedPlan') || '';
-        if (!megas || !label) {
-          var selectedCard = document.querySelector('.int-plan-card.selectable.selected');
-          if (selectedCard) {
-            megas = selectedCard.getAttribute('data-megas') || megas;
-            label = selectedCard.getAttribute('data-plan-label') || label;
-          }
+    var saludo = nombre ? ("\uD83D\uDC4B Hola, mi nombre es " + nombre + ".") : ("\uD83D\uDC4B Hola.");
+
+    // Obtener solo los megas del plan seleccionado
+    var megas = '';
+    try {
+      megas = localStorage.getItem('selectedPlanMegas') || '';
+      if (!megas) {
+        var selectedCard = document.querySelector('.int-plan-card.selectable.selected');
+        if (selectedCard) {
+          megas = selectedCard.getAttribute('data-megas') || '';
         }
-        return {megas, label};
-      } catch(_) {
-        return {megas: '', label: ''};
       }
-    })();
+    } catch(_) {}
 
-    var planLinea = (plan.label && plan.megas) ? ('Plan seleccionado: ' + plan.label + ' (' + plan.megas + ' Mbps).') : (plan.megas ? ('Plan seleccionado: ' + plan.megas + ' Mbps.') : 'No se ha seleccionado un plan.');
+    var planLinea = megas ? ('Plan seleccionado: ' + megas + ' Mbps.') : 'Plan seleccionado: Por definir.';
 
-    var escenario = (function(){
-      try {
-        return localStorage.getItem('installScenario') || '';
-      } catch(_) {
-        return '';
-      }
-    })();
+    // Obtener escenario de instalación
+    var escenario = '';
+    try {
+      escenario = localStorage.getItem('installScenario') || '';
+    } catch(_) {}
 
     var escenarioDesc = '';
     if (escenario === 'propio') {
-      escenarioDesc = 'Escenario seleccionado: Ya cuento con antena propia utilizable. Solo se requiere reprogramación y ajuste WiFi.';
+      escenarioDesc = 'Escenario seleccionado: Ya cuento con antena propia utilizable.';
     } else if (escenario === 'sinequipo') {
-      var pago = 'contado';
-      try {
-        var radio = document.querySelector('input[name="pago-antena"]:checked');
-        if (radio) pago = radio.value;
-      } catch(_) {}
-      escenarioDesc = 'Escenario seleccionado: Necesito antena nueva. Forma de pago de antena: ' + (pago === 'diferido' ? 'Diferido (3 meses)' : 'Contado') + '. Incluye instalación y configuración.';
+      escenarioDesc = 'Escenario seleccionado: Necesito antena nueva.';
     } else {
-      escenarioDesc = 'Escenario aún no seleccionado.';
+      escenarioDesc = 'Escenario seleccionado: Por definir.';
     }
 
-    // Eliminar calendario de pagos del mensaje
-
-    var resumen = ''; 
-    try { 
-      var rl = document.getElementById('inst-resumen-linea'); 
-      if (rl) resumen = rl.textContent.trim() || rl.innerText.trim(); 
-    } catch(_) {}
-    resumen = resumen ? 'Resumen: ' + resumen : 'Resumen pendiente.';
-
     var formLink = 'http://clientes.portalinternet.net/solicitar-instalacion/norttek/';
+
     var cuerpo = [
       saludo,
       '',
@@ -1298,12 +1282,13 @@ document.addEventListener('DOMContentLoaded', function() {
       'Formulario de registro:',
       formLink,
       '',
-      EMOJI.check + ' Quedo atento(a) para coordinar la visita técnica.',
+      '\u2705 Quedo atento(a) para coordinar la visita técnica.',
       '',
       'Gracias por su tiempo.'
     ].join('\n');
 
     var wa = 'https://wa.me/526252690997?text=' + encodeURIComponent(cuerpo);
+
     try { 
       window.open(wa, '_blank'); 
     } catch(_) {}
@@ -1404,7 +1389,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     } catch(_) {}
 
-    var saludo = nombre ? (EMOJI.wave + ' Hola, mi nombre es ' + nombre + '.') : (EMOJI.wave + ' Hola.');
+    var saludo = nombre ? ("\uD83D\uDC4B Hola, mi nombre es " + nombre + ".") : ("\uD83D\uDC4B Hola.");
     
     // Obtener información del plan seleccionado
     var plan = (function(){
@@ -1460,58 +1445,58 @@ document.addEventListener('DOMContentLoaded', function() {
       if (filas.length > 0) { 
         filas.forEach(function(tr, index) { 
           if (index < 3) { // Solo primeros 3 meses
-            var c = tr.querySelectorAll('td'); 
-            if (c.length >= 3) { 
-              calendarioLineas.push('• ' + c[0].textContent.trim() + ': ' + c[1].textContent.trim()); 
-            } 
-          }
-        }); 
+              calendarioLineas.push('• ' + c[0].textContent.trim() + ': ' + c[1].textContent.trim()); r c = tr.querySelectorAll('td'); 
+            }  if (c.length >= 3) { 
+          }} 
+        });   }
       } 
-    } catch(_) {}
+    } catch(_) {}      } 
 
     var calendarioTexto = calendarioLineas.length ? 
       ('Proyección de pagos (primeros meses):\n' + calendarioLineas.join('\n')) : 
-      'Calendario: Se genera al confirmar plan y escenario';
-
+      'Calendario: Se genera al confirmar plan y escenario';      ('Proyección de pagos (primeros meses):\n' + calendarioLineas.join('\n')) : 
+lan y escenario';
     // Información de contacto y formulario
-    var formLink = 'http://clientes.portalinternet.net/solicitar-instalacion/norttek/';
-    
+    var formLink = 'http://clientes.portalinternet.net/solicitar-instalacion/norttek/';// Información de contacto y formulario
+     'http://clientes.portalinternet.net/solicitar-instalacion/norttek/';
     var cuerpo = [
-      saludo, 
+      saludo, erpo = [
       '', 
-      '📶 SOLICITUD DE INSTALACIÓN DE INTERNET',
-      '',
+      '📶 SOLICITUD DE INSTALACIÓN DE INTERNET', 
+      '',UD DE INSTALACIÓN DE INTERNET',
       planLinea, 
       escenarioDesc, 
-      costoInicial,
+      costoInicial,narioDesc, 
       '', 
       calendarioTexto, 
       '', 
       '📋 Formulario de registro:',
-      formLink, 
+      formLink, Formulario de registro:',
       '', 
       'Quedo atento(a) para coordinar la visita técnica.',
-      EMOJI.check + ' Gracias por su tiempo.'
-    ].join('\n');
+      EMOJI.check + ' Gracias por su tiempo.'to(a) para coordinar la visita técnica.',
+    ].join('\n');      EMOJI.check + ' Gracias por su tiempo.'
 
     var wa = 'https://wa.me/526252690997?text=' + encodeURIComponent(cuerpo);
-    
+    o);
     console.log('[WhatsApp] Enviando mensaje con información completa:', {
-      plan: plan,
+      plan: plan, Enviando mensaje con información completa:', {
       escenario: escenario,
-      nombre: nombre
-    });
+      nombre: nombrescenario: escenario,
+    });  nombre: nombre
     
     try { 
       window.open(wa, '_blank'); 
     } catch(error) {
-      console.error('[WhatsApp] Error al abrir enlace:', error);
-    }
-  }
+      console.error('[WhatsApp] Error al abrir enlace:', error); catch(error) {
+    }   console.error('[WhatsApp] Error al abrir enlace:', error);
+  }    }
 
   // Inicializar selector de escenario cuando el DOM esté listo
-  setTimeout(() => {
-    initEscenarioSelector();
-  }, 500);
+  setTimeout(() => { escenario cuando el DOM esté listo
+    initEscenarioSelector();ut(() => {
+  }, 500);    initEscenarioSelector();
+, 500);
+});
 
 });
