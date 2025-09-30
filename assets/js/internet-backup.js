@@ -1,0 +1,2058 @@
+// JS para la app móvil de Internet
+
+// Flag global para evitar inicialización múltiple
+if (!window.internetJSInitialized) {
+  window.internetJSInitialized = true;
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Debug inicial
+  console.log('[Internet.js] DOM cargado, iniciando...');
+  
+  // Limpiar todo el cache al cargar la página para evitar persistencia no deseada
+  try {
+    localStorage.removeItem('customerNameFull');
+    localStorage.removeItem('customerNameFirst');
+    localStorage.removeItem('selectedPlanMegas');
+    localStorage.removeItem('selectedPlanPrice');
+    localStorage.removeItem('installScenario');
+    localStorage.removeItem('internetSection');
+    localStorage.removeItem('clienteAuth'); // Limpiar autenticación de cliente
+    console.log('[Internet.js] Cache completo limpiado al cargar página');
+  } catch(_) {}
+
+  // Asegurar que todos los modales estén ocultos al inicio (excepto modal-datos-usuario y cliente-login-modal)
+  try {
+    var modalsToHide = [
+      'modal-aviso-pago',
+      'modal-aviso-whatsapp'
+    ];
+    
+    modalsToHide.forEach(function(modalId) {
+      var modal = document.getElementById(modalId);
+      if (modal) {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+      }
+    });
+    
+    // Restaurar scroll del body
+    document.body.style.overflow = '';
+    console.log('[Internet.js] Modales específicos inicializados como ocultos');
+  } catch(_) {}
+
+  // Verificar que el modal de cliente login esté disponible
+  try {
+    var clienteLoginModalCheck = document.getElementById('cliente-login-modal');
+    if (clienteLoginModalCheck) {
+      console.log('[Internet.js] Modal cliente-login-modal encontrado y disponible');
+      // Asegurar que esté oculto inicialmente pero disponible
+      clienteLoginModalCheck.style.display = 'none';
+      clienteLoginModalCheck.setAttribute('aria-hidden', 'true');
+    } else {
+      console.warn('[Internet.js] Modal cliente-login-modal NO encontrado');
+    }
+  } catch(_) {}
+  
+  // Verificar que el modal existe antes de inicializar
+  var modalExists = document.getElementById('modal-datos-usuario');
+  console.log('[Internet.js] Modal existe:', !!modalExists);
+  
+  // Inicializar modal unificado
+  if (modalExists) {
+    initModalUnificado();
+  } else {
+    console.warn('[Internet.js] Modal no encontrado, esperando...');
+    // Intentar después de un breve delay
+    setTimeout(function() {
+      var modalRetry = document.getElementById('modal-datos-usuario');
+      if (modalRetry) {
+        console.log('[Internet.js] Modal encontrado en retry');
+        initModalUnificado();
+      } else {
+        console.error('[Internet.js] Modal no encontrado después del retry');
+      }
+    }, 100);
+  }
+  
+  // Pre-carga de imagen hero para activar fade-in
+  try {
+    var hero = document.querySelector('.internet-hero');
+    if (hero) {
+      var bg = new Image();
+      bg.onload = function(){ hero.classList.add('hero-loaded'); };
+      bg.src = 'assets/img/internet-hero.jpg';
+    }
+  } catch(_) {}
+  // Emojis como secuencias Unicode para máxima compatibilidad de renderizado
+  var EMOJI = {
+    wave: "\uD83D\uDC4B", // 👋
+    check: "\u2705"       // ✅
+  };
+  // Eliminado ajuste manual de paddingTop (se unifica con el layout global)
+  // Antes: applyHeaderOffset() añadía padding-top duplicando espacio.
+  // Page fade-in
+  try {
+    var app = document.querySelector('.internet-app');
+    if (app) requestAnimationFrame(function(){ app.classList.add('page-ready'); });
+  // Menú inferior eliminado; los botones viven ahora en el hero (IDs conservados)
+  } catch(_){}
+  // Ya no se recalcula padding al redimensionar; el layout global maneja compensaciones.
+  // Helper para transiciones: oculta con clase y muestra con forzado de reflow
+  function showSection(el) {
+    if (!el) return;
+    el.style.display = 'block';
+    // Forzar reflow para que la transición ocurra al quitar la clase
+    void el.offsetWidth;
+    el.classList.remove('section-hidden');
+  }
+
+  function hideSection(el) {
+    if (!el) return;
+    el.classList.add('section-hidden');
+    // Ocultar del flujo tras la transición
+    setTimeout(function() { el.style.display = 'none'; }, 230);
+  }
+
+  // Helper: convierte a Title Case respetando locale ES (para nombres en minúsculas)
+  function toTitleCaseEs(str) {
+    var locale = 'es-MX';
+    return String(str)
+      .split(/\s+/)
+      .map(function(word){
+        // Maneja compuestos con guión: "juan-pablo" -> "Juan-Pablo"
+        return word.split('-').map(function(seg){
+          if (!seg) return seg;
+          var first = seg.charAt(0).toLocaleUpperCase(locale);
+          var rest = seg.slice(1).toLocaleLowerCase(locale);
+          return first + rest;
+        }).join('-');
+      })
+      .join(' ');
+  }
+
+  // Helpers para persistir el nombre entre el modal y "Contacta a un asesor"
+  function setStoredName(fullName, firstName) {
+    try {
+      localStorage.setItem('customerNameFull', fullName || '');
+      localStorage.setItem('customerNameFirst', firstName || '');
+    } catch(_) {}
+  }
+  function getStoredName() {
+    try {
+      return {
+        full: localStorage.getItem('customerNameFull') || '',
+        first: localStorage.getItem('customerNameFirst') || ''
+      };
+    } catch(_) { return { full: '', first: '' }; }
+  }
+
+  // Helpers para persistir y usar el plan seleccionado
+  function setStoredPlan(megas, price) {
+    try {
+      localStorage.setItem('selectedPlanMegas', megas || '');
+      localStorage.setItem('selectedPlanPrice', price || '');
+    } catch(_) {}
+  }
+  function getStoredPlan() {
+    try {
+      return {
+        megas: localStorage.getItem('selectedPlanMegas') || '',
+        price: localStorage.getItem('selectedPlanPrice') || ''
+      };
+    } catch(_) { return { megas: '', price: '' }; }
+  }
+  
+  // Constantes globales para costos de instalación
+  var CONST = {
+    propio: { anticipo: 500 },
+    sinEquipo: { antena: 1800, instalacion: 850, diferidoMeses: 3 }
+  };
+  
+  // Estado global para escenario de instalación
+  var STATE = { escenario: null, pagoAntena: 'contado' };
+  
+  function renderCtaPlan() {
+    var cta = document.getElementById('contratar') || document.getElementById('solicitar');
+    var formAlt = document.getElementById('abrir-formulario');
+    if (!cta) return;
+    // Texto fijo, sin sufijos dinámicos
+    try {
+      var suffix = document.getElementById('cta-plan-suffix');
+      if (suffix) suffix.remove();
+    } catch(_) {}
+    // Asegurar label accesible estable
+    cta.setAttribute('aria-label', 'Solicitar instalación por WhatsApp');
+  }
+
+  // Menú principal: lógica de contenido dinámico
+  var btnNuevo = document.getElementById('btn-nuevo');
+  var btnCliente = document.getElementById('btn-cliente');
+  var welcomeMsg = document.getElementById('welcome-message');
+  var nuevoContent = document.getElementById('nuevo-content');
+  var clienteContent = document.getElementById('cliente-content');
+
+  function resetActive() {
+    // Mantiene la semántica por si se reintroducen estilos de estado; actualmente no hay menú separado.
+    if (btnNuevo) btnNuevo.classList.remove('active-menu');
+    if (btnCliente) btnCliente.classList.remove('active-menu');
+  }
+
+  // Mostrar solo hero y bienvenida por defecto
+  function mostrarBienvenida() {
+    showSection(welcomeMsg);
+    hideSection(nuevoContent);
+    hideSection(clienteContent);
+    resetActive();
+  }
+
+  // Mostrar contenido de usuarios nuevos (con modal de captura)
+  function mostrarNuevo() {
+    console.log('[Internet.js] Iniciando flujo para usuarios nuevos');
+    
+    // Verificar si ya tenemos el nombre del usuario
+    var stored = getStoredName();
+    if (!stored.full) {
+      console.log('[Internet.js] Abriendo modal para capturar nombre del usuario nuevo');
+      return abrirModalDatos('instalacion');
+    }
+    
+    // Si ya tenemos el nombre, continuar con el contenido
+    console.log('[Internet.js] Usuario ya identificado:', stored.first);
+    hideSection(welcomeMsg);
+    hideSection(clienteContent);
+    showSection(nuevoContent);
+    resetActive(); if (btnNuevo) btnNuevo.classList.add('active-menu');
+    try { nuevoContent.classList.add('visited'); } catch(_) {}
+    // Scroll inicial a sección "¿Cómo funciona" la primera vez
+    try {
+      var target = document.querySelector('.proceso-instalacion') || nuevoContent;
+      if (target) {
+        var header = document.getElementById('site-header');
+        var offset = (header && header.offsetHeight) ? header.offsetHeight + 8 : 70;
+        var rect = target.getBoundingClientRect();
+        if (!nuevoContent.__scrolledOnce) {
+          var y = rect.top + window.pageYOffset - offset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+          nuevoContent.__scrolledOnce = true;
+        }
+      }
+    } catch(_) {}
+  }
+
+  // Mostrar contenido de clientes existentes
+  // --- Autenticación básica de cliente (por teléfono) ---
+  var clienteLoginModal = null;
+  var clientesCache = null; // se carga bajo demanda
+  var clientesLoading = false;
+  var clientesPhoneIndex = null; // Map de telefono normalizado -> registro
+
+  function getAuth() {
+    try {
+      var raw = localStorage.getItem('clienteAuth');
+      if (!raw) return null;
+      return JSON.parse(raw);
+    } catch(_) { return null; }
+  }
+  function setAuth(obj) {
+    try { localStorage.setItem('clienteAuth', JSON.stringify(obj || {})); } catch(_) {}
+  }
+  function clearAuth() {
+    try { localStorage.removeItem('clienteAuth'); } catch(_) {}
+  }
+  function normalizePhone(p) { return (p||'').replace(/[^0-9]/g,''); }
+  function clienteEstaAutenticado() { return !!(getAuth() && getAuth().usuario); }
+
+  function fetchClientes() {
+    return new Promise(function(resolve, reject){
+      if (clientesCache) return resolve(clientesCache);
+      if (clientesLoading) {
+        var int = setInterval(function(){ if(!clientesLoading){ clearInterval(int); resolve(clientesCache||[]); } }, 80);
+        return;
+      }
+      clientesLoading = true;
+      fetch('json/clientes.json', { cache:'no-cache' })
+        .then(function(r){ if(!r.ok) throw new Error('Carga fallida'); return r.json(); })
+        .then(function(data){
+          clientesCache = Array.isArray(data)?data:[];
+          // Construir índice de teléfonos y validar duplicados
+          try {
+            clientesPhoneIndex = Object.create(null);
+            var dupes = [];
+            clientesCache.forEach(function(item, idx){
+              var tels = Array.isArray(item.Telefonos)?item.Telefonos:[];
+              if(!tels.length){ /* se puede loggear si se requiere */ }
+              tels.forEach(function(tRaw){
+                var t = normalizePhone(tRaw);
+                if(!t) return;
+                if(clientesPhoneIndex[t]) {
+                  dupes.push({ telefono:t, existente: clientesPhoneIndex[t].Usuario, duplicado: item.Usuario });
+                } else {
+                  clientesPhoneIndex[t] = item;
+                }
+              });
+            });
+            if(dupes.length && window.console){
+              console.warn('[Clientes] Teléfonos duplicados detectados:', dupes.slice(0,10));
+            }
+          } catch(errIdx){ console.error('Error construyendo índice de clientes', errIdx); }
+          resolve(clientesCache);
+        })
+        .catch(function(err){ console.error('Error cargando clientes.json', err); reject(err); })
+        .finally(function(){ clientesLoading = false; });
+    });
+  }
+
+  function findClientByPhone(phone, list) {
+    var target = normalizePhone(phone);
+    if (!target || target.length < 7) return null;
+    // Usar índice si está disponible
+    if (clientesPhoneIndex && clientesPhoneIndex[target]) return clientesPhoneIndex[target];
+    // Fallback escaneo lineal (si índice no construido aún)
+    list = list || clientesCache || [];
+    for (var i=0;i<list.length;i++) {
+      var item = list[i];
+      var tels = Array.isArray(item.Telefonos)?item.Telefonos:[];
+      for (var j=0;j<tels.length;j++) {
+        if (normalizePhone(tels[j]) === target) {
+          return item;
+        }
+      }
+    }
+    return null;
+  }
+
+  function renderClienteAuthInfo() {
+    var box = document.getElementById('cliente-auth-info');
+    if (!box) return;
+    var auth = getAuth();
+    if (auth && auth.usuario) {
+      try {
+        var nomEl = document.getElementById('cliente-auth-nombre');
+        var usuEl = document.getElementById('cliente-auth-usuario');
+        var passEl = document.getElementById('cliente-auth-pass');
+        var telEl = document.getElementById('cliente-auth-tels');
+        var refNombre = document.getElementById('ref-pago-nombre');
+        var refUsuario = document.getElementById('ref-pago-usuario');
+        if (nomEl) nomEl.textContent = auth.nombre || '';
+        if (usuEl) {
+          var simpleUser = (auth.usuario||'').replace(/@.*$/,'');
+          usuEl.textContent = simpleUser;
+        }
+        if (passEl) passEl.textContent = 'norttek123';
+        if (telEl) telEl.textContent = (auth.telefonos||[]).join(', ');
+        // Poblar referencias de pago
+        if (refNombre) {
+          var simpleName = auth.nombre || '';
+            refNombre.firstChild && (refNombre.firstChild.textContent = simpleName || '-- ');
+            refNombre.setAttribute('data-clip', simpleName);
+            var btnN = refNombre.querySelector('button.clip-btn'); if(btnN) btnN.setAttribute('data-clip', simpleName);
+        }
+        if (refUsuario) {
+          var simpleUser2 = (auth.usuario||'').replace(/@.*$/,'');
+            refUsuario.firstChild && (refUsuario.firstChild.textContent = simpleUser2 || '-- ');
+            refUsuario.setAttribute('data-clip', simpleUser2);
+            var btnU = refUsuario.querySelector('button.clip-btn'); if(btnU) btnU.setAttribute('data-clip', simpleUser2);
+        }
+        box.style.display = 'block';
+      } catch(_) {}
+    } else {
+      box.style.display = 'none';
+    }
+  }
+
+  function abrirLoginCliente() {
+    console.log('[Cliente] Intentando abrir modal de login');
+    
+    if (!clienteLoginModal) clienteLoginModal = document.getElementById('cliente-login-modal');
+    
+    if (!clienteLoginModal) {
+      console.error('[Cliente] Modal cliente-login-modal no encontrado en el DOM');
+      if (window.NTNotify) NTNotify.warning('No se pudo abrir el modal de acceso. Recarga la página.');
+      return;
+    }
+    
+    console.log('[Cliente] Modal encontrado, intentando abrirlo');
+    
+    // Usar siempre el fallback directo para garantizar que funcione
+    console.log('[Cliente] Usando método directo para abrir modal');
+    clienteLoginModal.style.display = 'flex';
+    clienteLoginModal.classList.add('is-open');
+    clienteLoginModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    document.body.classList.add('nt-modal-open');
+    
+    console.log('[Cliente] Modal abierto con método directo');
+    
+    setTimeout(function(){ 
+      try { 
+        var inp = document.getElementById('cliente-login-phone'); 
+        if (inp) {
+          inp.focus(); 
+          console.log('[Cliente] Foco aplicado al input');
+        }
+      } catch(e) {
+        console.error('[Cliente] Error aplicando foco:', e);
+      }
+    }, 60);
+  }
+  function cerrarLoginCliente() {
+    console.log('[Cliente] Cerrando modal de login');
+    if (clienteLoginModal) {
+      clienteLoginModal.style.display = 'none';
+      clienteLoginModal.classList.remove('is-open');
+      clienteLoginModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      document.body.classList.remove('nt-modal-open');
+      console.log('[Cliente] Modal cerrado');
+    }
+  }
+
+  // mostrarCliente(true) => fuerza scroll centrado (solo tras login);
+  // mostrarCliente(event) o sin argumento => no hace scroll automático
+  function mostrarCliente(doScroll) {
+    console.log('[Cliente] mostrarCliente ejecutada, doScroll:', doScroll);
+    
+    // Si no autenticado, abrir modal en lugar de mostrar dashboard
+    if (!clienteEstaAutenticado()) {
+      console.log('[Cliente] Usuario no autenticado, abriendo modal de login');
+      abrirLoginCliente();
+      return;
+    }
+    
+    console.log('[Cliente] Usuario autenticado, mostrando dashboard');
+    hideSection(welcomeMsg);
+    hideSection(nuevoContent);
+    showSection(clienteContent);
+    resetActive(); if (btnCliente) btnCliente.classList.add('active-menu');
+    renderClienteAuthInfo();
+    // Re-disparar animaciones para elementos que pudieron haberse secuenciado mientras estaban ocultos
+    try {
+      var cards = clienteContent ? clienteContent.querySelectorAll('.nt-soft-seq') : [];
+      // Failsafe: pasado un lapso breve, forzar visibilidad si algún elemento sigue oculto
+      setTimeout(function(){
+        cards.forEach(function(card){
+          if (window.getComputedStyle(card).opacity === '0') {
+            card.style.opacity = 1;
+            card.style.transform = 'none';
+          }
+        });
+      }, 600);
+      cards.forEach(function(card){
+        var compOpacity = window.getComputedStyle(card).opacity;
+        if (compOpacity === '0') {
+          // Si el gestor global existe, usar su secuenciador sobre el contenedor;
+          // de lo contrario, forzar visible inmediatamente
+          card.classList.remove('nt-anim-soft-in');
+          card.style.animationDelay = '';
+          card.__ntAnimatedInitial = false;
+        }
+      });
+      if (window.NTAnim && typeof window.NTAnim.sequence === 'function') {
+        window.NTAnim.sequence(clienteContent);
+      } else {
+        cards.forEach(function(card){ card.style.opacity = 1; card.style.transform = 'none'; });
+      }
+    } catch(_) {}
+    if (doScroll === true) {
+      try {
+        setTimeout(function(){
+          var clienteContentEl = document.getElementById('cliente-content');
+          if (clienteContentEl) {
+            var headerHeight = 80; // Altura aproximada del header
+            var elementPosition = clienteContentEl.getBoundingClientRect().top + window.pageYOffset;
+            var offsetPosition = elementPosition - headerHeight;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+            console.log('[Cliente] Scroll realizado a cliente-content con offset mejorado');
+          }
+        }, 60);
+      } catch(e) {
+        console.error('[Cliente] Error en scroll:', e);
+      }
+    }
+  }
+
+  if (btnNuevo) btnNuevo.addEventListener('click', mostrarNuevo);
+  if (btnCliente) {
+    console.log('[Cliente] Configurando listener para btn-cliente');
+    btnCliente.addEventListener('click', function(e) {
+      console.log('[Cliente] Click detectado en btn-cliente');
+      mostrarCliente(e);
+    });
+  } else {
+    console.warn('[Cliente] btn-cliente no encontrado');
+  }
+
+  // Event listeners para cerrar el modal de cliente
+  var clienteCloseBtn = document.getElementById('cliente-login-close');
+  var clienteCancelBtn = document.getElementById('cliente-login-cancel');
+  
+  if (clienteCloseBtn) {
+    console.log('[Cliente] Configurando listener para botón cerrar (X)');
+    clienteCloseBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      console.log('[Cliente] Click en botón cerrar');
+      cerrarLoginCliente();
+    });
+  }
+  
+  if (clienteCancelBtn) {
+    console.log('[Cliente] Configurando listener para botón cancelar');
+    clienteCancelBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      console.log('[Cliente] Click en botón cancelar');
+      cerrarLoginCliente();
+    });
+  }
+  
+  // Event listener para cerrar modal haciendo click en el backdrop
+  if (clienteLoginModal) {
+    clienteLoginModal.addEventListener('click', function(e) {
+      if (e.target === clienteLoginModal) {
+        console.log('[Cliente] Click en backdrop, cerrando modal');
+        cerrarLoginCliente();
+      }
+    });
+  }
+  
+  // Event listener para cerrar modal con Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && clienteLoginModal && clienteLoginModal.style.display === 'flex') {
+      console.log('[Cliente] Tecla Escape presionada, cerrando modal');
+      cerrarLoginCliente();
+    }
+  });
+
+  // Estado inicial
+  // Asegura que las secciones ocultas tengan la clase para transición
+  [nuevoContent, clienteContent].forEach(function(el){ if (el && el.style.display === 'none') el.classList.add('section-hidden'); });
+  mostrarBienvenida();
+  // Stagger para tarjetas de planes (usa transitionDelay)
+  document.querySelectorAll('.plan-card.animate-card').forEach(function(card, i) {
+    card.style.transitionDelay = (i * 0.12) + 's';
+  });
+
+  /* === Lógica Costos de Instalación Refactor === */
+  
+  // Variables globales del STATE para acceso desde initEscenarioSelector
+  // STATE ya está definido globalmente arriba
+  var seleccionarEscenario; // Declaración global
+  
+  (function initInstalacionCostos(){
+    var rootSec = document.getElementById('instalacion-costos');
+    if(!rootSec) return;
+    // Gating activado: la sección permanece oculta hasta que se elige un plan.
+    var escPropio = document.getElementById('esc-propio');
+    var escSin = document.getElementById('esc-sinequipo');
+    var radiosPago = rootSec.querySelectorAll('input[name="pago-antena"]');
+    var notaDiferido = rootSec.querySelector('[data-role="nota-diferido"]');
+    var tabla = document.getElementById('tabla-calendario');
+    var tbody = tabla ? tabla.querySelector('tbody') : null;
+    var placeholder = document.getElementById('tabla-placeholder');
+    var resumenLinea = document.getElementById('inst-resumen-linea');
+    var botonesEsc = rootSec.querySelectorAll('[data-select-esc]');
+  var sinEquipoResumen = rootSec.querySelector('[data-role="sin-equipo-resumen"]');
+  var propioResumen = rootSec.querySelector('[data-role="propio-resumen"]');
+
+    // CONST ya está definido globalmente arriba
+
+    function getPlan(){
+      try { return { megas: localStorage.getItem('selectedPlanMegas')||'', price: parseFloat(localStorage.getItem('selectedPlanPrice')||'')||0 }; } catch(_){ return {megas:'', price:0}; }
+    }
+    function revealSection(){
+      if(rootSec.classList.contains('inst-costs-visible')) return;
+      rootSec.classList.remove('inst-costs-hidden');
+      rootSec.classList.add('inst-costs-visible');
+      // Scroll al mostrarse
+      try {
+        setTimeout(function(){
+          var header = document.getElementById('site-header');
+          var offset = (header && header.offsetHeight) ? header.offsetHeight + 8 : 70;
+          var rect = rootSec.getBoundingClientRect();
+          var y = rect.top + window.pageYOffset - offset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }, 40);
+      } catch(_){}
+    }
+    function hideSection(){
+      rootSec.classList.add('inst-costs-hidden');
+      rootSec.classList.remove('inst-costs-visible');
+    }
+    function updateVisibility(triggered){
+      // La sección sólo se muestra si hay plan elegido en esta sesión (interacción del usuario)
+      try {
+        var plan = getPlan();
+        var sessionChosen = false;
+        try { sessionChosen = sessionStorage.getItem('planChosenSession') === '1'; } catch(_) {}
+        if(plan.megas && plan.price && sessionChosen){
+          revealSection();
+        } else {
+          hideSection();
+          return; // Mantener oculta hasta interacción
+        }
+      } catch(_){ }
+    }
+    function fmt(n){ return '$'+n.toLocaleString('es-MX'); }
+
+    // Asignar función a variable global para acceso desde initEscenarioSelector
+    seleccionarEscenario = function(esc){
+      STATE.escenario = esc;
+      [escPropio, escSin].forEach(function(card){ if(!card) return; card.classList.toggle('active', card.getAttribute('data-esc')===esc); });
+      if(placeholder) placeholder.style.display = 'none';
+      calcular();
+      updateCtaState();
+    };
+    function setPagoAntena(mode){ STATE.pagoAntena = mode; if(notaDiferido) notaDiferido.style.display = (mode==='diferido')?'block':'none'; calcular(); }
+
+    function limpiarTabla(){ if(tbody) tbody.innerHTML=''; }
+    function pushRow(mes, monto, detalle){ if(!tbody) return; var tr=document.createElement('tr'); tr.innerHTML='<td>'+mes+'</td><td class="monto">'+fmt(monto)+'</td><td>'+detalle+'</td>'; tbody.appendChild(tr);}    
+
+    function calcular(){
+      var plan = getPlan();
+      updateCtaState(plan);
+      
+      if(!plan.price){
+        limpiarTabla();
+        if(resumenLinea) resumenLinea.textContent='Selecciona un plan para continuar.';
+        if(placeholder){ placeholder.style.display='flex'; placeholder.textContent='Primero elige un plan.'; }
+        return;
+      }
+      if(!STATE.escenario){
+        limpiarTabla();
+        if(resumenLinea) resumenLinea.textContent='Ahora selecciona un escenario (con o sin antena).';
+        if(placeholder){ placeholder.style.display='flex'; placeholder.textContent='Selecciona un escenario para generar el calendario.'; }
+        return;
+      }
+      limpiarTabla();
+      var servicio = plan.price;
+      if(STATE.escenario==='propio'){
+        // Mes 1 anticipo completo
+        pushRow('Mes 1', CONST.propio.anticipo, 'Anticipo (incluye alineación, reprogramación, configuración)');
+        pushRow('Mes 2', servicio, 'Servicio');
+        pushRow('Mes 3', servicio, 'Servicio');
+        pushRow('Mes 4', servicio, 'Servicio');
+        if(resumenLinea) resumenLinea.innerHTML = '<strong>Escenario Equipo Propio:</strong> Pagas '+fmt(CONST.propio.anticipo)+' el primer mes y a partir del Mes 2 solo el servicio ('+fmt(servicio)+').';
+        if(propioResumen){
+          propioResumen.innerHTML = '<strong>Pago inicial:</strong> '+fmt(CONST.propio.anticipo)+'<br><strong>Pagos futuros:</strong> servicio ('+fmt(servicio)+')';
+        }
+      } else {
+        var anticipo = CONST.sinEquipo.instalacion; // 850
+        var antena = CONST.sinEquipo.antena; // 1800
+        if(STATE.pagoAntena==='contado'){
+          pushRow('Mes 1', anticipo + antena, 'Instalación + Antena (contado)');
+          pushRow('Mes 2', servicio, 'Servicio');
+          pushRow('Mes 3', servicio, 'Servicio');
+          pushRow('Mes 4', servicio, 'Servicio');
+          if(resumenLinea) resumenLinea.innerHTML = '<strong>Escenario Sin Equipo (Contado):</strong> Pagas '+fmt(anticipo+antena)+' el primer mes; desde Mes 2 solo el servicio ('+fmt(servicio)+').';
+        } else {
+          var cuota = antena / CONST.sinEquipo.diferidoMeses; // 600
+          pushRow('Mes 1', anticipo, 'Anticipo instalación');
+          for(var m=2;m<=4;m++){
+            if(m-1 <= CONST.sinEquipo.diferidoMeses){
+              pushRow('Mes '+m, servicio + cuota, 'Servicio + cuota antena');
+            } else {
+              pushRow('Mes '+m, servicio, 'Servicio');
+            }
+          }
+          if(resumenLinea) resumenLinea.innerHTML = '<strong>Escenario Sin Equipo (Diferido):</strong> Mes 1 pagas anticipo '+fmt(anticipo)+'. Meses 2-'+(CONST.sinEquipo.diferidoMeses+1)+' servicio + cuota ('+fmt(servicio+cuota)+'). Después sólo servicio.';
+        }
+        if(sinEquipoResumen){
+          if(STATE.pagoAntena==='contado') sinEquipoResumen.innerHTML = '<strong>Pago inicial:</strong> '+fmt(anticipo+antena)+'<br><strong>Pagos futuros:</strong> solo servicio ('+fmt(servicio)+')';
+          else sinEquipoResumen.innerHTML = '<strong>Pago inicial:</strong> '+fmt(anticipo)+'<br><strong>Cuota antena:</strong> '+fmt(antena)+' en '+CONST.sinEquipo.diferidoMeses+' meses ('+fmt(antena/CONST.sinEquipo.diferidoMeses)+' c/u)';
+        }
+      }
+      updateCtaState(plan);
+      // Aplicar delays escalonados a las filas recién generadas
+      try {
+        var filas = tbody ? Array.prototype.slice.call(tbody.querySelectorAll('tr')) : [];
+        filas.forEach(function(fr,i){ fr.style.animationDelay = (i*0.12)+'s'; });
+      } catch(_){ }
+    }
+
+    // Función para llenar el modal de confirmación con los datos
+    function llenarModalConfirmacion() {
+      try {
+        console.log('[Modal Confirmación] Iniciando llenado de datos...');
+        
+        // Obtener datos del usuario
+        var st = getStoredName();
+        var nombre = (st.full || st.first || '').trim();
+        
+        // Obtener plan seleccionado
+        var plan = getPlan();
+        
+        // Obtener escenario
+        var escenario = STATE ? STATE.escenario : '';
+        var escenarioTexto = '';
+        if (escenario === 'propio') {
+          escenarioTexto = 'Ya cuento con antena propia';
+        } else if (escenario === 'sinequipo') {
+          escenarioTexto = 'Necesito antena nueva';
+        } else {
+          escenarioTexto = 'Por definir';
+        }
+        
+        console.log('[Modal Confirmación] Datos obtenidos:', {
+          nombre: nombre,
+          plan: plan,
+          escenario: escenario,
+          escenarioTexto: escenarioTexto
+        });
+        
+        // Llenar elementos del modal
+        var confirmNombre = document.getElementById('confirm-nombre');
+        var confirmPlan = document.getElementById('confirm-plan');
+        var confirmEscenario = document.getElementById('confirm-escenario');
+        var confirmCostos = document.getElementById('confirm-costos');
+        
+        if (confirmNombre) {
+          confirmNombre.textContent = nombre || 'No especificado';
+          console.log('[Modal Confirmación] Nombre llenado:', confirmNombre.textContent);
+        }
+        if (confirmPlan) {
+          confirmPlan.textContent = plan.megas ? (plan.megas + ' Mbps - $' + plan.price.toLocaleString()) : 'No seleccionado';
+          console.log('[Modal Confirmación] Plan llenado:', confirmPlan.textContent);
+        }
+        if (confirmEscenario) {
+          confirmEscenario.textContent = escenarioTexto;
+          console.log('[Modal Confirmación] Escenario llenado:', confirmEscenario.textContent);
+        }
+        
+        // Calcular y mostrar costos
+        if (confirmCostos) {
+          var costosHTML = '';
+          var servicio = plan.price || 0;
+          
+          if (escenario === 'propio') {
+            costosHTML += '<div style="display: flex; justify-content: space-between; align-items: center;">';
+            costosHTML += '<span style="color: #6b7280;">Pago inicial:</span>';
+            costosHTML += '<span style="color: #374151; font-weight: 600;">$' + CONST.propio.anticipo.toLocaleString() + '</span>';
+            costosHTML += '</div>';
+            costosHTML += '<div style="display: flex; justify-content: space-between; align-items: center;">';
+            costosHTML += '<span style="color: #6b7280;">Mensualidad:</span>';
+            costosHTML += '<span style="color: #374151; font-weight: 600;">$' + servicio.toLocaleString() + '</span>';
+            costosHTML += '</div>';
+          } else if (escenario === 'sinequipo') {
+            var anticipo = CONST.sinEquipo.instalacion;
+            var antena = CONST.sinEquipo.antena;
+            var pagoAntena = STATE ? STATE.pagoAntena : 'contado';
+            
+            if (pagoAntena === 'contado') {
+              costosHTML += '<div style="display: flex; justify-content: space-between; align-items: center;">';
+              costosHTML += '<span style="color: #6b7280;">Pago inicial:</span>';
+              costosHTML += '<span style="color: #374151; font-weight: 600;">$' + (anticipo + antena).toLocaleString() + '</span>';
+              costosHTML += '</div>';
+              costosHTML += '<div style="color: #6b7280; font-size: 0.75rem; margin: 0.25rem 0;">';
+              costosHTML += '• Instalación: $' + anticipo.toLocaleString() + ' • Antena: $' + antena.toLocaleString();
+              costosHTML += '</div>';
+              costosHTML += '<div style="display: flex; justify-content: space-between; align-items: center;">';
+              costosHTML += '<span style="color: #6b7280;">Mensualidad:</span>';
+              costosHTML += '<span style="color: #374151; font-weight: 600;">$' + servicio.toLocaleString() + '</span>';
+              costosHTML += '</div>';
+            } else {
+              var cuotaAntena = antena / CONST.sinEquipo.diferidoMeses;
+              costosHTML += '<div style="display: flex; justify-content: space-between; align-items: center;">';
+              costosHTML += '<span style="color: #6b7280;">Pago inicial:</span>';
+              costosHTML += '<span style="color: #374151; font-weight: 600;">$' + anticipo.toLocaleString() + '</span>';
+              costosHTML += '</div>';
+              costosHTML += '<div style="display: flex; justify-content: space-between; align-items: center;">';
+              costosHTML += '<span style="color: #6b7280;">Costo de antena diferido en ' + CONST.sinEquipo.diferidoMeses + ' meses:</span>';
+              costosHTML += '<span style="color: #374151; font-weight: 600;">$' + cuotaAntena.toLocaleString() + '</span>';
+              costosHTML += '</div>';
+              costosHTML += '<div style="display: flex; justify-content: space-between; align-items: center;">';
+              costosHTML += '<span style="color: #6b7280;">Total mensual:</span>';
+              costosHTML += '<span style="color: #374151; font-weight: 600;">$' + (servicio + cuotaAntena).toLocaleString() + '</span>';
+              costosHTML += '</div>';
+            }
+          } else {
+            costosHTML = '<div style="color: #6b7280; font-style: italic;">Selecciona un escenario</div>';
+          }
+          
+          confirmCostos.innerHTML = costosHTML;
+          console.log('[Modal Confirmación] Costos llenados:', costosHTML);
+        }
+        
+        console.log('[Modal Confirmación] Datos llenados correctamente');
+      } catch(e) {
+        console.error('[Modal Confirmación] Error llenando datos:', e);
+      }
+    }
+
+    function updateCtaState(planObj){
+      try {
+        var cta = document.getElementById('contratar');
+        if(!cta) return;
+        var plan = planObj || getPlan();
+        var escenario = STATE.escenario;
+        var habilitado = !!(plan && plan.price && escenario);
+        cta.classList.toggle('cta-disabled', !habilitado);
+        cta.setAttribute('aria-disabled', habilitado ? 'false':'true');
+        if(!habilitado){ cta.title = 'Selecciona un plan y un escenario para continuar'; }
+        else { cta.title = 'Enviar solicitud de instalación por WhatsApp'; }
+      } catch(_){ }
+    }
+
+    botonesEsc.forEach(function(btn){
+      btn.addEventListener('click', function(){ seleccionarEscenario(btn.getAttribute('data-select-esc')); });
+    });
+    radiosPago.forEach(function(r){ r.addEventListener('change', function(){ setPagoAntena(r.value); }); });
+    // Recalcular cuando se actualiza el plan
+  document.addEventListener('nt-plan-updated', function(e){ updateVisibility(e && e.detail && e.detail.triggered===true); calcular(); });
+  window.addEventListener('storage', function(ev){ if(ev.key==='selectedPlanMegas'||ev.key==='selectedPlanPrice'){ updateVisibility(false); calcular(); } });
+
+    // Estado inicial - no leer desde localStorage para evitar persistencia no deseada
+    updateVisibility(false); // Mostrará u ocultará según exista plan previo
+    calcular(); // Generará mensajes placeholder apropiados
+    
+    // Hacer función accesible globalmente
+    window.llenarModalConfirmacion = llenarModalConfirmacion;
+  })();
+
+    // Nueva lógica: selección directa de tarjetas (rol radio)
+    try {
+      var planCards = Array.prototype.slice.call(document.querySelectorAll('.int-plan-card.selectable'));
+      function clearPlanSelection(){ planCards.forEach(function(c){ c.setAttribute('aria-checked','false'); c.classList.remove('selected'); }); }
+      function choosePlan(card, opts){
+        if(!card) return;
+        var doScroll = !opts || opts.scroll !== false;
+        var megas = (card.getAttribute('data-megas') || '').trim();
+        var price = (card.getAttribute('data-plan-price') || '').trim();
+        var planText = megas ? (megas + ' Megas') : '';
+        clearPlanSelection();
+        card.setAttribute('aria-checked','true');
+        card.classList.add('selected');
+        try { localStorage.setItem('selectedPlan', planText); } catch(_) {}
+        try { setStoredPlan(megas, price); sessionStorage.setItem('planChosenSession','1'); document.dispatchEvent(new CustomEvent('nt-plan-updated',{ detail:{ triggered:true }})); } catch(_) {}
+        if(doScroll){
+          // Enfocar calendario sólo en selección activa del usuario
+          try {
+            var calendario = document.querySelector('.calendario-costos');
+            var header = document.getElementById('site-header');
+            if (calendario) {
+              var y = calendario.getBoundingClientRect().top + window.pageYOffset - ((header && header.offsetHeight) || 0) - 12;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+              calendario.classList.remove('highlight'); void calendario.offsetWidth; calendario.classList.add('highlight');
+              setTimeout(function(){ calendario && calendario.classList.remove('highlight'); }, 2000);
+            }
+          } catch(_) {}
+        }
+      }
+      planCards.forEach(function(card){
+        card.addEventListener('click', function(){ choosePlan(card); });
+        card.addEventListener('keydown', function(ev){ if(ev.key==='Enter' || ev.key===' '){ ev.preventDefault(); choosePlan(card); } });
+      });
+      // Restaurar selección previa de plan sin hacer scroll
+      try {
+        var storedMegas = localStorage.getItem('selectedPlanMegas');
+        var storedPrice = localStorage.getItem('selectedPlanPrice');
+        if(storedMegas && storedPrice){
+          var match = planCards.find(function(c){ return (c.getAttribute('data-megas')||'').trim() === storedMegas; });
+          if(match){
+            // Sólo marcamos visualmente; NO disparamos evento para no mostrar la sección aún.
+            clearPlanSelection();
+            match.setAttribute('aria-checked','true');
+            match.classList.add('selected');
+          }
+        }
+      } catch(_) {}
+    } catch(_) {}
+  // Prefill de nombre si ya fue capturado previamente
+  try {
+    var stored = getStoredName();
+    if (stored.full) {
+      var asesorInput = document.getElementById('asesor-nombre');
+      if (asesorInput && !asesorInput.value) asesorInput.value = stored.full;
+    }
+  } catch(_) {}
+
+  // Inicializa CTA con plan seleccionado previo (si existe)
+  try { renderCtaPlan(); } catch(_) {}
+
+  // Animación scroll para secciones (IntersectionObserver)
+  var revealTargets = document.querySelectorAll('.scroll-anim');
+  try {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -80px 0px', threshold: 0.1 });
+    revealTargets.forEach(function(el) { io.observe(el); });
+  } catch (_) {
+    // Fallback simple
+    function scrollAnim() {
+      var winH = window.innerHeight;
+      revealTargets.forEach(function(el) {
+        var rect = el.getBoundingClientRect();
+        if (rect.top < winH - 60) el.classList.add('visible');
+      });
+    }
+    window.addEventListener('scroll', scrollAnim);
+    scrollAnim();
+  }
+
+  // Formulario (eliminado)
+
+  // Eliminado: modal de bienvenida y formulario de captura (flujo ahora directo)
+  
+  // --- Listeners del login cliente ---
+  try {
+    clienteLoginModal = document.getElementById('cliente-login-modal');
+    var loginClose = document.getElementById('cliente-login-close');
+    var loginCancel = document.getElementById('cliente-login-cancel');
+    var loginForm = document.getElementById('cliente-login-form');
+    var loginError = document.getElementById('cliente-login-error');
+    var phoneInput = document.getElementById('cliente-login-phone');
+    var loginSubmit = document.getElementById('cliente-login-submit');
+    var logoutBtn = document.getElementById('cliente-auth-logout');
+    // Botones ya traen data-nt-modal-close; no requieren listeners adicionales
+    // UX: limpiar entrada a dígitos, limitar a 10 y habilitar/deshabilitar submit
+    function updateLoginUI(){
+      try {
+        if (!phoneInput) return;
+        var digits = (phoneInput.value || '').replace(/[^0-9]/g, '').slice(0,10);
+        if (phoneInput.value !== digits) phoneInput.value = digits;
+        var ok = digits.length === 10;
+        if (loginSubmit) loginSubmit.disabled = !ok;
+        if (loginError) loginError.style.display = 'none';
+      } catch(_){}
+    }
+    if (phoneInput) {
+      phoneInput.addEventListener('input', updateLoginUI);
+      phoneInput.addEventListener('keyup', function(e){ if(e.key==='Enter' && loginSubmit && !loginSubmit.disabled){ if (loginForm && loginForm.requestSubmit) loginForm.requestSubmit(); else if (loginForm) loginForm.submit(); }});
+    }
+    function setLoginLoading(loading){
+      try {
+        if (clienteLoginModal) clienteLoginModal.setAttribute('aria-busy', loading ? 'true' : 'false');
+        if (loginSubmit) { loginSubmit.disabled = !!loading; loginSubmit.classList.toggle('is-loading', !!loading); }
+        if (phoneInput) phoneInput.disabled = !!loading;
+        if (loginClose) loginClose.disabled = !!loading;
+        if (loginCancel) loginCancel.disabled = !!loading;
+      } catch(_){}
+    }
+    if (logoutBtn) logoutBtn.addEventListener('click', function(){ clearAuth(); renderClienteAuthInfo(); mostrarBienvenida(); });
+    if (loginForm) {
+      loginForm.addEventListener('submit', function(ev){
+        ev.preventDefault();
+        if (loginError) loginError.style.display = 'none';
+        var phoneVal = normalizePhone((phoneInput && phoneInput.value) || '').slice(0,10);
+        if (!phoneVal || phoneVal.length !== 10) {
+          if (loginError) { loginError.textContent = 'Ingresa un teléfono de 10 dígitos.'; loginError.style.display='block'; }
+          return;
+        }
+        setLoginLoading(true);
+        fetchClientes().then(function(list){
+          var found = findClientByPhone(phoneVal, list);
+          if (!found) {
+            if (loginError) { loginError.textContent = 'Teléfono no encontrado. Verifica tu número.'; loginError.style.display = 'block'; }
+            setLoginLoading(false);
+            return;
+          }
+          var authObj = {
+            nombre: found.Nombre || '',
+            usuario: found.Usuario || '',
+            telefonos: Array.isArray(found.Telefonos) ? found.Telefonos : []
+          };
+            // Normalizar nombre a Title Case si viene todo en minúsculas
+          try { if (authObj.nombre && authObj.nombre === authObj.nombre.toLocaleLowerCase('es-MX')) authObj.nombre = toTitleCaseEs(authObj.nombre); } catch(_){ }
+          setAuth(authObj);
+          cerrarLoginCliente();
+          mostrarCliente(true); // re-entra ya autenticado y ahora sí hace scroll centrado
+          setLoginLoading(false);
+        }).catch(function(){ if (loginError) { loginError.textContent = 'No se pudo validar. Intenta más tarde.'; loginError.style.display='block'; } setLoginLoading(false); });
+      });
+    }
+    // Estado inicial del botón
+    updateLoginUI();
+  } catch(_) {}
+
+  // Si ya hay auth almacenada, preparar UI
+  try { if (clienteEstaAutenticado()) renderClienteAuthInfo(); } catch(_) {}
+
+  // Smooth scroll to advisor with sticky header offset and highlight
+  document.querySelectorAll('a.link-asesor').forEach(function(a){
+    a.addEventListener('click', function(ev){
+      var href = a.getAttribute('href') || '';
+      if (href.startsWith('#')) {
+        ev.preventDefault();
+        var id = href.slice(1);
+        var el = document.getElementById(id);
+        if (el) {
+          var header = document.getElementById('site-header');
+          var y = el.getBoundingClientRect().top + window.pageYOffset - ((header && header.offsetHeight) || 0) - 10;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+          // resaltar contenedor con animación
+          el.classList.remove('highlight');
+          void el.offsetWidth; // reflow to restart animation
+          el.classList.add('highlight');
+        }
+      }
+    });
+  });
+
+  // Contacta a un asesor (WhatsApp)
+  try {
+    var btnAsesor = document.querySelector('.btn-asesor-modern');
+    if (btnAsesor) {
+      btnAsesor.addEventListener('click', function() {
+        var nombreRaw = (document.getElementById('asesor-nombre') || {}).value || '';
+        // Si el campo viene vacío, usa el nombre guardado del modal
+        if (!nombreRaw.trim()) {
+          var st = getStoredName();
+          nombreRaw = st.full || st.first || '';
+        }
+        var nombreTrim = nombreRaw.trim().replace(/\s+/g, ' ');
+        var nombre = nombreTrim;
+        try {
+          if (nombreTrim && nombreTrim === nombreTrim.toLocaleLowerCase('es-MX')) {
+            nombre = toTitleCaseEs(nombreTrim);
+          }
+        } catch(_) {}
+        // Mantener sincronizado el nombre almacenado si el usuario lo escribe aquí
+        if (nombre) setStoredName(nombre, nombre.split(/\s+/)[0] || '');
+  var saludo = nombre ? (EMOJI.wave + ' Hola, mi nombre es ' + nombre + '.') : (EMOJI.wave + ' Hola.');
+  var planSel = '';
+  try { planSel = localStorage.getItem('selectedPlan') || ''; } catch(_) {}
+  var planLinea = planSel ? ('Me gustaría contratar el plan de ' + planSel + '.') : 'Me gustaría recibir más información sobre el servicio de Internet Norttek, costos de instalación y planes disponibles.';
+  var formLink = 'http://clientes.portalinternet.net/solicitar-instalacion/norttek/';
+  var copy = saludo + '\n\n' + planLinea + '\n\n' + '¿Pueden ayudarme a continuar con la solicitud?\n\n' + 'Posteriormente llenaré el formulario para agendar mi instalación:\n' + formLink + '\n\n' + EMOJI.check + ' Quedo pendiente de su apoyo.';
+        var phone = '526252690997';
+        var url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(copy);
+        var msg = document.getElementById('asesor-msg');
+        if (msg) msg.textContent = 'Abriendo WhatsApp…';
+        window.open(url, '_blank');
+      });
+    }
+  } catch(_) {}
+
+  // Botón soporte técnico dentro del dashboard cliente
+  try {
+    document.querySelectorAll('.btn-soporte-wa').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var baseMsg = btn.getAttribute('data-wa') || 'Necesito soporte técnico para mi servicio.';
+        var st = getStoredName();
+        var nombre = (st.full || st.first || '').trim();
+        if (nombre && nombre === nombre.toLocaleLowerCase('es-MX')) {
+          try { nombre = toTitleCaseEs(nombre); } catch(_){ }
+        }
+        var saludo = nombre ? (EMOJI.wave + ' Hola, soy ' + nombre + '.') : (EMOJI.wave + ' Hola.');
+        var copy = saludo + '\n\n' + baseMsg + '\n\n' + EMOJI.check + ' Quedo pendiente de su apoyo.';
+        var wa = 'https://wa.me/526252690997?text=' + encodeURIComponent(copy);
+        window.open(wa, '_blank');
+      });
+    });
+  } catch(_) {}
+
+  // --- Copiar datos bancarios ---
+  try {
+    function copiarValor(valor){
+      if(!valor) return;
+      var ok = false;
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(valor).then(function(){
+          ok = true; if(window.NTNotify) NTNotify.success('Copiado');
+        }).catch(function(){ fallbackCopy(valor); });
+      } else { fallbackCopy(valor); }
+      function fallbackCopy(text){
+        try {
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position='fixed';
+          ta.style.top='-1000px';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          if(window.NTNotify) NTNotify.success('Copiado');
+        } catch(e){ if(window.NTNotify) NTNotify.warning('No se pudo copiar'); }
+      }
+    }
+    document.querySelectorAll('.cliente-card.cuentas-card .clip-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){ copiarValor(btn.getAttribute('data-clip')); });
+    });
+  } catch(_) {}
+
+  // (Eliminado) Manejador duplicado que abría WhatsApp desde el botón de plan
+
+  // Al hacer click en el CTA final - solo envía WhatsApp (sin modal) con protección anti-múltiples clicks
+  try {
+    var ctaBtn = document.getElementById('contratar') || document.getElementById('solicitar');
+    if (ctaBtn) {
+      var enviandoWhatsApp = false; // Flag para prevenir múltiples envíos
+      var ultimoClick = 0; // Timestamp del último click
+      
+      // Remover cualquier listener previo para evitar duplicados
+      ctaBtn.replaceWith(ctaBtn.cloneNode(true));
+      ctaBtn = document.getElementById('contratar') || document.getElementById('solicitar');
+      
+      ctaBtn.addEventListener('click', function(ev){
+        // Prevenir comportamiento por defecto y propagación
+        if (ev) { 
+          ev.preventDefault(); 
+          ev.stopPropagation();
+          ev.stopImmediatePropagation(); // Detener otros listeners
+        }
+        
+        // Throttling: Prevenir clicks muy rápidos (menos de 2 segundos)
+        var ahora = Date.now();
+        if (ahora - ultimoClick < 2000) {
+          console.log('[CTA Instalación] Click demasiado rápido, ignorando');
+          return false;
+        }
+        ultimoClick = ahora;
+        
+        // Prevenir múltiples clicks
+        if (enviandoWhatsApp) {
+          console.log('[CTA Instalación] Envío en progreso, ignorando click');
+          return false;
+        }
+        
+        console.log('[CTA Instalación] Click en botón contratar');
+        var debugInfo = { stage:'validating', plan:null, scen:null, hasName:false };
+        
+        // Verificar que hay plan seleccionado
+        var planData = getStoredPlan();
+        debugInfo.plan = planData.price;
+        if (!planData.price || !planData.megas) {
+          console.warn('[CTA Instalación] Sin plan seleccionado', debugInfo);
+          if(window.NTNotify){ NTNotify.warning('Primero selecciona un plan de internet.'); }
+          if(ctaBtn){ ctaBtn.classList.add('cta-disabled-ping'); setTimeout(function(){ ctaBtn.classList.remove('cta-disabled-ping'); }, 1200); }
+          return false;
+        }
+        
+        // Verificar que hay escenario seleccionado
+        var escenario = STATE ? STATE.escenario : null;
+        debugInfo.scen = escenario;
+        if (!escenario) {
+          console.warn('[CTA Instalación] Sin escenario seleccionado', debugInfo);
+          if(window.NTNotify){ NTNotify.warning('Selecciona si ya tienes antena o necesitas una nueva.'); }
+          if(ctaBtn){ ctaBtn.classList.add('cta-disabled-ping'); setTimeout(function(){ ctaBtn.classList.remove('cta-disabled-ping'); }, 1200); }
+          return false;
+        }
+        
+        // Verificar que hay nombre capturado
+        var st = getStoredName();
+        var nombre = (st.full || st.first || '').trim();
+        debugInfo.hasName = !!nombre;
+        if(!nombre){
+          console.warn('[CTA Instalación] Sin nombre capturado', debugInfo);
+          if(window.NTNotify){ NTNotify.warning('Necesitas proporcionar tu nombre primero. Haz clic en "Ver Planes" para comenzar.'); }
+          return false;
+        }
+        
+        // Todo listo - mostrar modal de aviso en lugar de enviar WhatsApp directamente
+        enviandoWhatsApp = true;
+        ctaBtn.disabled = true;
+        ctaBtn.style.pointerEvents = 'none'; // Prevenir cualquier interacción
+        
+        console.log('[CTA Instalación] Mostrando modal de aviso WhatsApp', debugInfo);
+        
+        // Mostrar modal de aviso con delay para evitar problemas de sincronización
+        setTimeout(function() {
+          try {
+            var modalAvisoWhatsApp = document.getElementById('modal-aviso-whatsapp');
+            if (modalAvisoWhatsApp) {
+              // Llenar datos del modal antes de mostrarlo
+              if (typeof window.llenarModalConfirmacion === 'function') {
+                window.llenarModalConfirmacion();
+              } else {
+                console.warn('[CTA Instalación] Función llenarModalConfirmacion no disponible');
+              }
+              
+              // Configurar event listener para el botón de WhatsApp cada vez que se abre el modal
+              console.log('[CTA Instalación] Llamando configurarEventListenerWhatsApp...');
+              if (typeof configurarEventListenerWhatsApp === 'function') {
+                configurarEventListenerWhatsApp();
+              } else {
+                console.error('[CTA Instalación] Función configurarEventListenerWhatsApp no está definida');
+              }
+              
+              // MÉTODO ALTERNATIVO: Configurar event listener directo como backup
+              setTimeout(function() {
+                var btnWhatsApp = document.getElementById('btn-enviar-whatsapp-final');
+                if (btnWhatsApp && !btnWhatsApp.getAttribute('data-backup-listener')) {
+                  console.log('[CTA Instalación] Configurando event listener de backup...');
+                  btnWhatsApp.setAttribute('data-backup-listener', 'true');
+                  
+                  btnWhatsApp.addEventListener('click', function(e) {
+                    console.log('[BACKUP] Click detectado en btn-enviar-whatsapp-final');
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Obtener nombre guardado
+                    var st = getStoredName();
+                    var nombre = (st.full || st.first || '').trim();
+                    
+                    if (!nombre) {
+                      console.error('[BACKUP] No hay nombre guardado');
+                      if (window.NTNotify) {
+                        NTNotify.error('Error: No se encontró el nombre. Intenta de nuevo.');
+                      }
+                      return false;
+                    }
+                    
+                    console.log('[BACKUP] Enviando WhatsApp con nombre:', nombre);
+                    
+                    // Enviar WhatsApp directamente
+                    try {
+                      enviarWhatsAppInstalacion(nombre);
+                      console.log('[BACKUP] WhatsApp enviado exitosamente');
+                      
+                      // Cerrar modal
+                      setTimeout(function() {
+                        var modal = document.getElementById('modal-aviso-whatsapp');
+                        if (modal) {
+                          modal.style.display = 'none';
+                          document.body.style.overflow = '';
+                        }
+                      }, 500);
+                    } catch(err) {
+                      console.error('[BACKUP] Error enviando WhatsApp:', err);
+                    }
+                    
+                    return false;
+                  });
+                  
+                  console.log('[CTA Instalación] Event listener de backup configurado');
+                }
+              }, 100);
+              
+              modalAvisoWhatsApp.style.display = 'flex';
+              modalAvisoWhatsApp.setAttribute('aria-hidden', 'false');
+              document.body.style.overflow = 'hidden';
+              
+              // Usar NTModal si está disponible
+              if (window.NTModal) {
+                try {
+                  window.NTModal.open(modalAvisoWhatsApp);
+                } catch(e) {
+                  console.warn('[CTA Instalación] Error con NTModal:', e);
+                }
+              }
+              
+              console.log('[CTA Instalación] Modal de aviso WhatsApp mostrado');
+            } else {
+              console.error('[CTA Instalación] Modal de aviso WhatsApp no encontrado');
+            }
+          } catch(e) {
+            console.error('[CTA Instalación] Error al mostrar modal de aviso:', e);
+          }
+          
+          // Resetear después de un momento más largo
+          setTimeout(function() {
+            enviandoWhatsApp = false;
+            ctaBtn.disabled = false;
+            ctaBtn.style.pointerEvents = '';
+          }, 1000);
+        }, 100);
+        
+        return false; // Prevenir cualquier comportamiento adicional
+      }, { capture: true }); // Usar capture para ser el primer listener
+      // Exponer función de prueba en consola
+      try {
+        window.__debugCtaInstalacion = function(){
+          var planVal = getStoredPlan().price || 0;
+          var scenVal = STATE ? STATE.escenario : '';
+          var name = (getStoredName().full||'').trim();
+          return { planVal:planVal, scenVal:scenVal, name:name, disabled: ctaBtn.classList.contains('cta-disabled') };
+        };
+      } catch(_) {}
+    }
+  } catch(_) {}
+
+  // --- Función para configurar event listener del botón WhatsApp ---
+  function configurarEventListenerWhatsApp() {
+    console.log('[Modal Aviso] Ejecutando configurarEventListenerWhatsApp...');
+    try {
+      var btnEnviarWhatsappFinal = document.getElementById('btn-enviar-whatsapp-final');
+      console.log('[Modal Aviso] Buscando botón btn-enviar-whatsapp-final:', btnEnviarWhatsappFinal);
+      
+      if (btnEnviarWhatsappFinal && !btnEnviarWhatsappFinal.hasAttribute('data-listener-added')) {
+        console.log('[Modal Aviso] Configurando listener para btn-enviar-whatsapp-final');
+        
+        // Marcar que ya se agregó el listener
+        btnEnviarWhatsappFinal.setAttribute('data-listener-added', 'true');
+        
+        // Flag para evitar múltiples clicks
+        var isProcessingWhatsapp = false;
+        
+        function handleWhatsappFinal(e) {
+          console.log('[Modal Aviso] ¡CLICK DETECTADO en botón WhatsApp!', e);
+          e.preventDefault();
+          e.stopPropagation();
+          
+          // Evitar múltiples clicks
+          if (isProcessingWhatsapp) {
+            console.log('[Modal Aviso] Click ignorado - ya procesando');
+            return false;
+          }
+          
+          isProcessingWhatsapp = true;
+          console.log('[Modal Aviso] Click en botón enviar WhatsApp final - procesando...');
+          
+          // Deshabilitar botón temporalmente
+          btnEnviarWhatsappFinal.disabled = true;
+          btnEnviarWhatsappFinal.style.opacity = '0.6';
+          btnEnviarWhatsappFinal.style.pointerEvents = 'none';
+          
+          // Obtener nombre guardado
+          var st = getStoredName();
+          var nombre = (st.full || st.first || '').trim();
+          
+          if (!nombre) {
+            console.error('[Modal Aviso] No hay nombre guardado');
+            if (window.NTNotify) {
+              NTNotify.error('Error: No se encontró el nombre. Intenta de nuevo.');
+            }
+            
+            // Rehabilitar botón
+            isProcessingWhatsapp = false;
+            btnEnviarWhatsappFinal.disabled = false;
+            btnEnviarWhatsappFinal.style.opacity = '1';
+            btnEnviarWhatsappFinal.style.pointerEvents = 'auto';
+            return false;
+          }
+          
+          // Enviar WhatsApp
+          console.log('[Modal Aviso] Enviando WhatsApp con nombre:', nombre);
+          enviarWhatsAppInstalacion(nombre);
+          
+          console.log('[Modal Aviso] WhatsApp enviado desde modal');
+          
+          // Cerrar modal después del envío
+          setTimeout(function() {
+            var modalAvisoWhatsApp = document.getElementById('modal-aviso-whatsapp');
+            if (modalAvisoWhatsApp) {
+              modalAvisoWhatsApp.style.display = 'none';
+              modalAvisoWhatsApp.setAttribute('aria-hidden', 'true');
+              document.body.style.overflow = '';
+              
+              if (window.NTModal) {
+                try {
+                  window.NTModal.close(modalAvisoWhatsApp);
+                } catch(e) {
+                  console.warn('[Modal Aviso] Error cerrando con NTModal:', e);
+                }
+              }
+            }
+            
+            // Rehabilitar botón después de cerrar modal
+            setTimeout(function() {
+              isProcessingWhatsapp = false;
+              btnEnviarWhatsappFinal.disabled = false;
+              btnEnviarWhatsappFinal.style.opacity = '1';
+              btnEnviarWhatsappFinal.style.pointerEvents = 'auto';
+              console.log('[Modal Aviso] Botón rehabilitado');
+            }, 100);
+          }, 500);
+          
+          return false;
+        }
+        
+        // Agregar el listener
+        btnEnviarWhatsappFinal.addEventListener('click', handleWhatsappFinal);
+        
+        // Agregar también un listener de test para debug
+        btnEnviarWhatsappFinal.addEventListener('click', function(e) {
+          console.log('[DEBUG] Listener de test detectó click en btn-enviar-whatsapp-final');
+        });
+        
+        console.log('[Modal Aviso] Event listener configurado exitosamente para:', btnEnviarWhatsappFinal.id);
+      } else if (!btnEnviarWhatsappFinal) {
+        console.warn('[Modal Aviso] Botón btn-enviar-whatsapp-final no encontrado');
+      } else {
+        console.log('[Modal Aviso] Event listener ya configurado anteriormente');
+      }
+    } catch(e) {
+      console.error('[Modal Aviso] Error configurando event listener:', e);
+    }
+  }
+
+  // --- Listeners para Modales de Aviso ---
+  try {
+    // Modal de aviso para botones "Pagar con Tarjeta"
+    var btnsPagarTarjeta = document.querySelectorAll('#btn-pagar-tarjeta-1, #btn-pagar-tarjeta-2');
+    btnsPagarTarjeta.forEach(function(btn) {
+      if (btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          console.log('[Modal Aviso] Abriendo modal de aviso para pago con tarjeta');
+          
+          // Abrir modal de aviso
+          var modalAvisoPago = document.getElementById('modal-aviso-pago');
+          if (modalAvisoPago) {
+            modalAvisoPago.style.display = 'flex';
+            modalAvisoPago.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            
+            // Usar NTModal si está disponible
+            if (window.NTModal) {
+              try {
+                window.NTModal.open(modalAvisoPago);
+              } catch(e) {
+                console.warn('[Modal Aviso] Error con NTModal:', e);
+              }
+            }
+          }
+          
+          return false;
+        });
+      }
+    });
+
+    // Configurar event listener inicial (por si el modal ya existe)
+    configurarEventListenerWhatsApp();
+
+    // Listeners para cerrar modales de aviso
+    document.addEventListener('click', function(e) {
+      if (e.target.matches('[data-nt-modal-close]')) {
+        var modals = document.querySelectorAll('#modal-aviso-pago, #modal-aviso-whatsapp');
+        modals.forEach(function(modal) {
+          if (modal && modal.style.display !== 'none') {
+            modal.style.display = 'none';
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            
+            if (window.NTModal) {
+              try {
+                window.NTModal.close(modal);
+              } catch(e) {
+                console.warn('[Modal Aviso] Error cerrando con NTModal:', e);
+              }
+            }
+          }
+        });
+      }
+    });
+
+    // Cerrar modales con Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        var modals = document.querySelectorAll('#modal-aviso-pago, #modal-aviso-whatsapp');
+        modals.forEach(function(modal) {
+          if (modal && modal.style.display !== 'none') {
+            modal.style.display = 'none';
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            
+            if (window.NTModal) {
+              try {
+                window.NTModal.close(modal);
+              } catch(e) {
+                console.warn('[Modal Aviso] Error cerrando con NTModal:', e);
+              }
+            }
+          }
+        });
+      }
+    });
+
+    console.log('[Modal Aviso] Listeners de aviso configurados');
+  } catch(e) {
+    console.error('[Modal Aviso] Error configurando listeners:', e);
+  }
+
+  // Modal captura de nombre (implementación si no existe aún)
+  if(typeof window.abrirModalNombre !== 'function'){
+    window.abrirModalNombre = function(onDone){
+      try {
+        var backdrop = document.getElementById('nombre-modal-backdrop');
+        var input = document.getElementById('nombre-modal-input');
+        var form = document.getElementById('nombre-modal-form');
+        if(!backdrop || !input || !form){ if(onDone) onDone(null); return; }
+        function cerrar(resultado){
+          backdrop.style.display='none';
+          backdrop.setAttribute('aria-hidden','true');
+          document.body.style.overflow='';
+          document.removeEventListener('keydown', escL);
+          if(resultado && resultado.trim()){
+            var full = resultado.trim();
+            var first = full.split(/\s+/)[0];
+            setStoredName(full, first);
+            if(onDone) onDone(full);
+          } else { if(onDone) onDone(null); }
+        }
+        function escL(e){ if(e.key==='Escape'){ cerrar(null); } }
+        document.addEventListener('keydown', escL);
+        backdrop.style.display='flex';
+        backdrop.setAttribute('aria-hidden','false');
+        document.body.style.overflow='hidden';
+        setTimeout(function(){ try { input.focus(); } catch(_) {} }, 40);
+        form.addEventListener('submit', function(ev){ ev.preventDefault(); cerrar(input.value); }, { once:true });
+        backdrop.querySelectorAll('[data-close-nombre]').forEach(function(btn){ btn.addEventListener('click', function(){ cerrar(null); }, { once:true }); });
+      } catch(err){ if(onDone) onDone(null); }
+    };
+  }
+
+  // === MODAL UNIFICADO ESTILO ACCESO CLIENTE ===
+  var modalDatosUsuario = null;
+  var modalDatosTitulo = null;
+  var modalDatosIcon = null;
+  var modalDatosSub = null;
+  var modalDatosForm = null;
+  var modalDatosError = null;
+  var campoNombre = null;
+  var campoTelefono = null;
+  var inputNombre = null;
+  var inputTelefono = null;
+  var modalDatosSubmit = null;
+  var modalContexto = null; // 'cliente' o 'instalacion'
+
+  function initModalUnificado() {
+    console.log('[Modal Unificado] Inicializando...');
+    
+    modalDatosUsuario = document.getElementById('modal-datos-usuario');
+    modalDatosTitulo = document.getElementById('modal-datos-title-text'); // Nuevo selector
+    modalDatosIcon = document.getElementById('modal-datos-icon'); // Nuevo elemento
+    modalDatosSub = document.getElementById('modal-datos-sub'); // Nuevo elemento
+    modalDatosForm = document.getElementById('modal-datos-form');
+    modalDatosError = document.getElementById('modal-datos-error');
+    campoNombre = document.getElementById('campo-nombre');
+    campoTelefono = document.getElementById('campo-telefono');
+    inputNombre = document.getElementById('input-nombre');
+    inputTelefono = document.getElementById('input-telefono');
+    modalDatosSubmit = document.getElementById('modal-datos-submit');
+
+    // Debug logging
+    console.log('[Modal Unificado] Elementos encontrados:', {
+      modalDatosUsuario: !!modalDatosUsuario,
+      modalDatosForm: !!modalDatosForm,
+      campoNombre: !!campoNombre,
+      campoTelefono: !!campoTelefono,
+      inputNombre: !!inputNombre,
+      inputTelefono: !!inputTelefono
+    });
+
+    if (!modalDatosUsuario) {
+      console.error('[Modal Unificado] No se encontró el modal #modal-datos-usuario');
+      return;
+    }
+    
+    if (!modalDatosForm) {
+      console.error('[Modal Unificado] No se encontró el formulario #modal-datos-form');
+      return;
+    }
+
+    // Listeners para botones que abren el modal
+    var modalTriggers = document.querySelectorAll('[data-nt-modal-open="#modal-datos-usuario"]');
+    console.log('[Modal Unificado] Botones encontrados:', modalTriggers.length);
+    
+    modalTriggers.forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('[Modal Unificado] Botón clickeado:', btn.id);
+        var tipo = btn.getAttribute('data-modal-tipo') || 'instalacion';
+        abrirModalDatos(tipo);
+      });
+    });
+
+    // Submit del formulario
+    if (modalDatosForm) {
+      modalDatosForm.addEventListener('submit', function(ev) {
+        ev.preventDefault();
+        // Forzar blur para evitar doble envío en móviles
+        if (document.activeElement) document.activeElement.blur();
+        setTimeout(function(){
+          procesarFormularioDatos();
+        }, 50);
+      });
+    }
+
+    // Limpiar error al escribir
+    if (inputNombre) inputNombre.addEventListener('input', function() {
+      if (modalDatosError) modalDatosError.style.display = 'none';
+    });
+    
+    if (inputTelefono) {
+      inputTelefono.addEventListener('input', function() {
+        var digits = (inputTelefono.value || '').replace(/[^0-9]/g, '').slice(0,10);
+        if (inputTelefono.value !== digits) inputTelefono.value = digits;
+        if (modalDatosError) modalDatosError.style.display = 'none';
+        if (modalDatosSubmit) modalDatosSubmit.disabled = modalContexto === 'cliente' && digits.length !== 10;
+      });
+      inputTelefono.addEventListener('keyup', function(e) {
+        if (e.key === 'Enter' && modalDatosSubmit && !modalDatosSubmit.disabled) {
+          modalDatosForm.dispatchEvent(new Event('submit'));
+        }
+      });
+    }
+
+    // Listeners para cerrar modal
+    document.addEventListener('click', function(e) {
+      if (e.target.matches('[data-nt-modal-close]') && modalDatosUsuario && modalDatosUsuario.style.display !== 'none') {
+        console.log('[Modal Unificado] Cerrando modal por click en botón close');
+        cerrarModalDatos();
+      }
+      
+      // Cerrar al hacer click en el backdrop
+      if (e.target === modalDatosUsuario && modalDatosUsuario.style.display !== 'none') {
+        console.log('[Modal Unificado] Cerrando modal por click en backdrop');
+        cerrarModalDatos();
+      }
+    });
+
+    // Cerrar con Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modalDatosUsuario && modalDatosUsuario.style.display !== 'none') {
+        console.log('[Modal Unificado] Cerrando modal por Escape');
+        cerrarModalDatos();
+      }
+    });
+
+    console.log('[Modal Unificado] Inicialización completa');
+  }
+
+  function abrirModalDatos(tipo) {
+    console.log('[Modal Unificado] Abriendo modal con tipo:', tipo);
+    
+    if (!modalDatosUsuario) {
+      console.error('[Modal Unificado] Modal no inicializado correctamente');
+      // Intentar re-inicializar
+      initModalUnificado();
+      if (!modalDatosUsuario) {
+        console.error('[Modal Unificado] No se pudo encontrar el modal después de re-inicialización');
+        return;
+      }
+    }
+    
+    modalContexto = tipo;
+    limpiarModalDatos();
+    
+    if (tipo === 'cliente') {
+      // Configurar para login de cliente
+      if (modalDatosTitulo) modalDatosTitulo.textContent = 'Acceso Cliente';
+      if (modalDatosIcon) modalDatosIcon.className = 'fa-solid fa-user-shield';
+      if (modalDatosSub) modalDatosSub.textContent = 'Ingresa tu número de teléfono registrado para mostrar tus credenciales.';
+      if (campoNombre) campoNombre.style.display = 'none';
+      if (campoTelefono) campoTelefono.style.display = 'block';
+      if (modalDatosSubmit) modalDatosSubmit.textContent = 'Continuar';
+      // Hacer el campo requerido solo si está visible
+      if (inputTelefono) inputTelefono.required = true;
+      setTimeout(function() {
+        if (inputTelefono) inputTelefono.focus();
+      }, 300);
+    } else if (tipo === 'instalacion') {
+      // Configurar para captura de nombre
+      if (modalDatosTitulo) modalDatosTitulo.textContent = 'Tu Nombre';
+      if (modalDatosIcon) modalDatosIcon.className = 'fa-solid fa-user';
+      if (modalDatosSub) modalDatosSub.textContent = 'Ingresa tu nombre para personalizar el mensaje de WhatsApp y agilizar tu solicitud.';
+      if (campoNombre) campoNombre.style.display = 'block';
+      if (campoTelefono) campoTelefono.style.display = 'none';
+      if (modalDatosSubmit) modalDatosSubmit.textContent = 'Continuar';
+      // Eliminar el atributo requerido si el campo está oculto
+      if (inputTelefono) inputTelefono.required = false;
+      // Pre-llenar con nombre guardado si existe
+      var stored = getStoredName();
+      if (inputNombre && stored.full) inputNombre.value = stored.full;
+      setTimeout(function() {
+        if (inputNombre) inputNombre.focus();
+      }, 300);
+    }
+
+    // Abrir modal con estilo nt-modal
+    console.log('[Modal Unificado] Abriendo modal DOM...');
+    if (modalDatosUsuario) {
+      modalDatosUsuario.style.display = 'flex';
+      modalDatosUsuario.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      
+      // Intentar con NTModal si está disponible
+      if (window.NTModal) {
+        console.log('[Modal Unificado] Usando NTModal para abrir');
+        try {
+          window.NTModal.open('#modal-datos-usuario');
+        } catch(e) {
+          console.warn('[Modal Unificado] Error al usar NTModal:', e);
+        }
+      }
+      
+      console.log('[Modal Unificado] Modal abierto');
+    }
+  }
+
+  function limpiarModalDatos() {
+    if (inputNombre) inputNombre.value = '';
+    if (inputTelefono) inputTelefono.value = '';
+    if (modalDatosError) modalDatosError.style.display = 'none';
+    if (modalDatosSubmit) modalDatosSubmit.disabled = false;
+  }
+
+  function cerrarModalDatos() {
+    console.log('[Modal Unificado] Cerrando modal...');
+    if (modalDatosUsuario) {
+      // Usar método manual directo para mayor compatibilidad
+      modalDatosUsuario.style.display = 'none';
+      modalDatosUsuario.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      
+      // También intentar con NTModal si está disponible
+      if (window.NTModal) {
+        console.log('[Modal Unificado] Usando NTModal para cerrar');
+        try {
+          window.NTModal.close('#modal-datos-usuario');
+        } catch(e) {
+          console.warn('[Modal Unificado] Error al usar NTModal:', e);
+        }
+      }
+    }
+  }
+
+  function procesarFormularioDatos() {
+    // Forzar contexto por seguridad
+    if (modalContexto === 'instalacion' || (campoNombre && campoNombre.style.display !== 'none')) {
+      procesarCapturaNombre();
+    } else {
+      procesarLoginCliente();
+    }
+  }
+
+  function procesarLoginCliente() {
+    var phoneVal = normalizePhone((inputTelefono && inputTelefono.value) || '').slice(0,10);
+    if (!phoneVal || phoneVal.length !== 10) {
+      mostrarErrorModal('Ingresa un teléfono de 10 dígitos.');
+      return;
+    }
+
+    setModalLoading(true);
+    fetchClientes().then(function(list) {
+      var found = findClientByPhone(phoneVal, list);
+      if (!found) {
+        mostrarErrorModal('Teléfono no encontrado. Verifica tu número.');
+        setModalLoading(false);
+        return;
+      }
+
+      var authObj = {
+        nombre: found.Nombre || '',
+        usuario: found.Usuario || '',
+        telefonos: Array.isArray(found.Telefonos) ? found.Telefonos : []
+      };
+
+      // Normalizar nombre a Title Case si viene todo en minúsculas
+      try { 
+        if (authObj.nombre && authObj.nombre === authObj.nombre.toLocaleLowerCase('es-MX')) {
+          authObj.nombre = toTitleCaseEs(authObj.nombre); 
+        }
+      } catch(_) {}
+
+      setAuth(authObj);
+      cerrarModalDatos();
+      mostrarCliente(true);
+      setModalLoading(false);
+    }).catch(function() {
+      mostrarErrorModal('No se pudo validar. Intenta más tarde.');
+      setModalLoading(false);
+    });
+  }
+
+  function procesarCapturaNombre() {
+    var nombreVal = (inputNombre && inputNombre.value || '').trim();
+    if (!nombreVal || nombreVal.length < 2) {
+      mostrarErrorModal('Ingresa tu nombre completo.');
+      return;
+    }
+
+    // Normalizar nombre y guardar
+    var nombreNormalizado = nombreVal;
+    try {
+      if (nombreVal === nombreVal.toLocaleLowerCase('es-MX')) {
+        nombreNormalizado = toTitleCaseEs(nombreVal);
+      }
+    } catch(_) {}
+
+    var firstName = nombreNormalizado.split(/\s+/)[0] || '';
+    setStoredName(nombreNormalizado, firstName);
+
+    // Cerrar el modal y mostrar el contenido nuevo con scroll a #como-funciona
+    cerrarModalDatos();
+    setTimeout(function() {
+      // Forzar blur para evitar conflictos de foco en móviles
+      if (document.activeElement) document.activeElement.blur();
+      
+      // Mostrar contenido de usuarios nuevos después de captura
+      hideSection(welcomeMsg);
+      hideSection(clienteContent);
+      showSection(nuevoContent);
+      resetActive(); 
+      if (btnNuevo) btnNuevo.classList.add('active-menu');
+      try { nuevoContent.classList.add('visited'); } catch(_) {}
+      
+      console.log('[Internet.js] Nombre capturado, mostrando contenido nuevo para:', firstName);
+      
+      // Scroll a la sección #como-funciona después de mostrar el contenido
+      setTimeout(function() {
+        try {
+          var comoFunciona = document.getElementById('como-funciona');
+          if (comoFunciona) {
+            var header = document.getElementById('site-header');
+            var offset = (header && header.offsetHeight) ? header.offsetHeight + 16 : 80;
+            var rect = comoFunciona.getBoundingClientRect();
+            var y = rect.top + window.pageYOffset - offset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+            console.log('[Internet.js] Scroll a #como-funciona realizado');
+          } else {
+            console.warn('[Internet.js] Elemento #como-funciona no encontrado');
+          }
+        } catch(e) {
+          console.error('[Internet.js] Error en scroll a #como-funciona:', e);
+        }
+      }, 300);
+    }, 350);
+  }
+
+  function mostrarErrorModal(mensaje) {
+    if (modalDatosError) {
+      modalDatosError.textContent = mensaje;
+      modalDatosError.style.display = 'block';
+    }
+  }
+
+  function setModalLoading(loading) {
+    if (modalDatosUsuario) modalDatosUsuario.setAttribute('aria-busy', loading ? 'true' : 'false');
+    if (modalDatosSubmit) {
+      modalDatosSubmit.disabled = loading;
+      modalDatosSubmit.classList.toggle('is-loading', loading);
+    }
+    if (inputNombre) inputNombre.disabled = loading;
+    if (inputTelefono) inputTelefono.disabled = loading;
+  }
+
+  // ÚNICA DEFINICIÓN: enviarWhatsAppInstalacion
+  function enviarWhatsAppInstalacion(nombre) {
+    // Protección contra ejecución múltiple con debounce
+    var now = Date.now();
+    if (!window.lastWhatsappCall) window.lastWhatsappCall = 0;
+    
+    if (now - window.lastWhatsappCall < 2000) { // 2 segundos de debounce
+      console.log('[DEBUG] Llamada a WhatsApp bloqueada por debounce');
+      return;
+    }
+    
+    window.lastWhatsappCall = now;
+    
+    // Contador para debug
+    if (!window.whatsappCallCount) window.whatsappCallCount = 0;
+    window.whatsappCallCount++;
+    
+    console.log('[DEBUG] enviarWhatsAppInstalacion llamada #' + window.whatsappCallCount + ' con nombre:', nombre);
+    
+    try { 
+      if (nombre && nombre === nombre.toLocaleLowerCase('es-MX')) {
+        nombre = toTitleCaseEs(nombre); 
+      }
+    } catch(_) {}
+
+    var saludo = nombre ? ("\uD83D\uDC4B Hola, mi nombre es " + nombre + ".") : ("\uD83D\uDC4B Hola.");
+
+    // Obtener datos del plan seleccionado
+    var plan = getStoredPlan();
+    var megas = plan.megas || '';
+    var precio = plan.price || 0;
+    
+    var planLinea = megas ? ('Plan seleccionado: ' + megas + ' Mbps - $' + precio.toLocaleString() + '/mes') : 'Plan seleccionado: Por definir.';
+
+    // Obtener escenario directamente del STATE actual
+    var escenario = '';
+    try {
+      escenario = STATE ? STATE.escenario : '';
+    } catch(_) {}
+
+    var escenarioDesc = '';
+    var costosDetalle = '';
+    
+    if (escenario === 'propio') {
+      escenarioDesc = 'Escenario seleccionado: Ya cuento con antena propia utilizable.';
+      costosDetalle = [
+        '💰 COSTOS DE INSTALACIÓN:',
+        '• Pago inicial: $' + CONST.propio.anticipo.toLocaleString() + ' (incluye alineación, reprogramación, configuración)',
+        '• Mensualidad: $' + precio.toLocaleString() + ' (solo servicio)'
+      ].join('\n');
+    } else if (escenario === 'sinequipo') {
+      escenarioDesc = 'Escenario seleccionado: Necesito antena nueva.';
+      var anticipo = CONST.sinEquipo.instalacion;
+      var antena = CONST.sinEquipo.antena;
+      var pagoAntena = STATE ? STATE.pagoAntena : 'contado';
+      
+      if (pagoAntena === 'contado') {
+        costosDetalle = [
+          '💰 COSTOS DE INSTALACIÓN:',
+          '• Pago inicial: $' + (anticipo + antena).toLocaleString() + ' (instalación + antena)',
+          '  - Instalación: $' + anticipo.toLocaleString(),
+          '  - Antena: $' + antena.toLocaleString(),
+          '• Mensualidad: $' + precio.toLocaleString() + ' (solo servicio)'
+        ].join('\n');
+      } else {
+        var cuotaAntena = antena / CONST.sinEquipo.diferidoMeses;
+        costosDetalle = [
+          '💰 COSTOS DE INSTALACIÓN (DIFERIDO):',
+          '• Pago inicial: $' + anticipo.toLocaleString() + ' (instalación)',
+          '• Costo de antena diferido en ' + CONST.sinEquipo.diferidoMeses + ' meses: $' + cuotaAntena.toLocaleString() + ' c/mes',
+          '• Mensualidad con cuota: $' + (precio + cuotaAntena).toLocaleString() + ' (primeros ' + CONST.sinEquipo.diferidoMeses + ' meses)',
+          '• Mensualidad después: $' + precio.toLocaleString() + ' (solo servicio)'
+        ].join('\n');
+      }
+    } else {
+      escenarioDesc = 'Escenario seleccionado: Por definir.';
+      costosDetalle = '💰 COSTOS: Por definir según escenario seleccionado.';
+    }
+
+    var formLink = 'http://clientes.portalinternet.net/solicitar-instalacion/norttek/';
+
+    var cuerpo = [
+      saludo,
+      '',
+      '📡 SOLICITUD DE INSTALACIÓN DE INTERNET',
+      '',
+      planLinea,
+      escenarioDesc,
+      '',
+      costosDetalle,
+      '',
+      '📋 Formulario de registro:',
+      formLink,
+      '',
+      '\u2705 Quedo atento(a) para coordinar la visita técnica.',
+      '',
+      'Gracias por su tiempo.'
+    ].join('\n');
+
+    var wa = 'https://wa.me/526252690997?text=' + encodeURIComponent(cuerpo);
+
+    try { 
+      window.open(wa, '_blank'); 
+    } catch(_) {}
+  }
+
+  // Funcionalidad para botones de selección de escenario
+  function initEscenarioSelector() {
+    const btnYaTengo = document.getElementById('btn-ya-tengo');
+    const btnNecesito = document.getElementById('btn-necesito');
+    const cardPropio = document.getElementById('esc-propio');
+    const cardSinequipo = document.getElementById('esc-sinequipo');
+
+    if (!btnYaTengo || !btnNecesito || !cardPropio || !cardSinequipo) {
+      console.warn('[Internet.js] Botones o cards de escenario no encontrados');
+      return;
+    }
+
+    // Estilos para botones activos/inactivos
+    const activeStyle = {
+      background: '#edf2ff',
+      borderColor: '#4f8cff',
+      color: '#1e40af',
+      transform: 'scale(1.02)'
+    };
+
+    const inactiveStyle = {
+      background: '#f8fafc',
+      borderColor: '#e2e8f0',
+      color: '#4a5568',
+      transform: 'scale(1)'
+    };
+
+    function applyStyle(button, styles) {
+      Object.assign(button.style, styles);
+    }
+
+    function resetButtons() {
+      applyStyle(btnYaTengo, inactiveStyle);
+      applyStyle(btnNecesito, inactiveStyle);
+    }
+
+    function hideAllCards() {
+      cardPropio.style.display = 'none';
+      cardSinequipo.style.display = 'none';
+    }
+
+    function showCard(card, button, escenario) {
+      hideAllCards();
+      resetButtons();
+      card.style.display = 'block';
+      applyStyle(button, activeStyle);
+      
+      // Animación suave de entrada
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'all 0.3s ease';
+      
+      setTimeout(() => {
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, 10);
+
+      // Llamar directamente a seleccionarEscenario para actualizar el calendario
+      if (typeof seleccionarEscenario === 'function') {
+        seleccionarEscenario(escenario);
+      } else {
+        console.warn('[Internet.js] seleccionarEscenario no está disponible');
+      }
+    }
+
+    // Event listeners - removido localStorage para evitar persistencia
+    btnYaTengo.addEventListener('click', function() {
+      console.log('[Escenario] Seleccionado: Ya tengo antena');
+      showCard(cardPropio, btnYaTengo, 'propio');
+    });
+
+    btnNecesito.addEventListener('click', function() {
+      console.log('[Escenario] Seleccionado: Necesito antena');
+      showCard(cardSinequipo, btnNecesito, 'sinequipo');
+    });
+
+    console.log('[Internet.js] Selector de escenario inicializado');
+  }
+
+  // Llamar la función de inicialización
+  initEscenarioSelector();
+
+  // Hacer funciones accesibles globalmente
+  window.mostrarCliente = mostrarCliente;
+  window.abrirLoginCliente = abrirLoginCliente;
+  window.cerrarLoginCliente = cerrarLoginCliente;
+  window.clienteEstaAutenticado = clienteEstaAutenticado;
+  window.llenarModalConfirmacion = llenarModalConfirmacion; // Hacer disponible globalmente
+  window.configurarEventListenerWhatsApp = configurarEventListenerWhatsApp; // Hacer disponible globalmente
+  
+  // Función de test para debug del botón WhatsApp
+  window.__testWhatsAppButton = function() {
+    console.log('[TEST] Iniciando test del botón WhatsApp...');
+    
+    var btn = document.getElementById('btn-enviar-whatsapp-final');
+    console.log('[TEST] Botón encontrado:', btn);
+    
+    if (btn) {
+      console.log('[TEST] Atributos del botón:', {
+        id: btn.id,
+        disabled: btn.disabled,
+        style: btn.style.display,
+        hasListener: btn.hasAttribute('data-listener-added'),
+        onclick: btn.onclick
+      });
+      
+      // Simular click
+      console.log('[TEST] Simulando click...');
+      btn.click();
+    } else {
+      console.error('[TEST] Botón no encontrado');
+    }
+  };
+  
+  // Función para test directo de WhatsApp
+  window.__testDirectWhatsApp = function() {
+    console.log('[TEST] Test directo de WhatsApp...');
+    var nombre = 'Test Usuario';
+    enviarWhatsAppInstalacion(nombre);
+  };
+  
+  console.log('[Internet.js] Funciones exportadas globalmente');
+
+});
+
+} // Cierre del flag de inicialización global
