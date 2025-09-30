@@ -161,6 +161,16 @@ document.addEventListener('DOMContentLoaded', function() {
       };
     } catch(_) { return { megas: '', price: '' }; }
   }
+  
+  // Constantes globales para costos de instalación
+  var CONST = {
+    propio: { anticipo: 500 },
+    sinEquipo: { antena: 1800, instalacion: 850, diferidoMeses: 3 }
+  };
+  
+  // Estado global para escenario de instalación
+  var STATE = { escenario: null, pagoAntena: 'contado' };
+  
   function renderCtaPlan() {
     var cta = document.getElementById('contratar') || document.getElementById('solicitar');
     var formAlt = document.getElementById('abrir-formulario');
@@ -528,7 +538,7 @@ document.addEventListener('DOMContentLoaded', function() {
   /* === Lógica Costos de Instalación Refactor === */
   
   // Variables globales del STATE para acceso desde initEscenarioSelector
-  var STATE = { escenario:null, pagoAntena:'contado' };
+  // STATE ya está definido globalmente arriba
   var seleccionarEscenario; // Declaración global
   
   (function initInstalacionCostos(){
@@ -547,10 +557,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var sinEquipoResumen = rootSec.querySelector('[data-role="sin-equipo-resumen"]');
   var propioResumen = rootSec.querySelector('[data-role="propio-resumen"]');
 
-    var CONST = {
-      propio:{ anticipo:500 },
-      sinEquipo:{ antena:1800, instalacion:850, diferidoMeses:3 }
-    };
+    // CONST ya está definido globalmente arriba
 
     function getPlan(){
       try { return { megas: localStorage.getItem('selectedPlanMegas')||'', price: parseFloat(localStorage.getItem('selectedPlanPrice')||'')||0 }; } catch(_){ return {megas:'', price:0}; }
@@ -1158,7 +1165,62 @@ document.addEventListener('DOMContentLoaded', function() {
               }
               
               // Configurar event listener para el botón de WhatsApp cada vez que se abre el modal
-              configurarEventListenerWhatsApp();
+              console.log('[CTA Instalación] Llamando configurarEventListenerWhatsApp...');
+              if (typeof configurarEventListenerWhatsApp === 'function') {
+                configurarEventListenerWhatsApp();
+              } else {
+                console.error('[CTA Instalación] Función configurarEventListenerWhatsApp no está definida');
+              }
+              
+              // MÉTODO ALTERNATIVO: Configurar event listener directo como backup
+              setTimeout(function() {
+                var btnWhatsApp = document.getElementById('btn-enviar-whatsapp-final');
+                if (btnWhatsApp && !btnWhatsApp.getAttribute('data-backup-listener')) {
+                  console.log('[CTA Instalación] Configurando event listener de backup...');
+                  btnWhatsApp.setAttribute('data-backup-listener', 'true');
+                  
+                  btnWhatsApp.addEventListener('click', function(e) {
+                    console.log('[BACKUP] Click detectado en btn-enviar-whatsapp-final');
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Obtener nombre guardado
+                    var st = getStoredName();
+                    var nombre = (st.full || st.first || '').trim();
+                    
+                    if (!nombre) {
+                      console.error('[BACKUP] No hay nombre guardado');
+                      if (window.NTNotify) {
+                        NTNotify.error('Error: No se encontró el nombre. Intenta de nuevo.');
+                      }
+                      return false;
+                    }
+                    
+                    console.log('[BACKUP] Enviando WhatsApp con nombre:', nombre);
+                    
+                    // Enviar WhatsApp directamente
+                    try {
+                      enviarWhatsAppInstalacion(nombre);
+                      console.log('[BACKUP] WhatsApp enviado exitosamente');
+                      
+                      // Cerrar modal
+                      setTimeout(function() {
+                        var modal = document.getElementById('modal-aviso-whatsapp');
+                        if (modal) {
+                          modal.style.display = 'none';
+                          document.body.style.overflow = '';
+                        }
+                      }, 500);
+                    } catch(err) {
+                      console.error('[BACKUP] Error enviando WhatsApp:', err);
+                    }
+                    
+                    return false;
+                  });
+                  
+                  console.log('[CTA Instalación] Event listener de backup configurado');
+                }
+              }, 100);
               
               modalAvisoWhatsApp.style.display = 'flex';
               modalAvisoWhatsApp.setAttribute('aria-hidden', 'false');
@@ -1205,8 +1267,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // --- Función para configurar event listener del botón WhatsApp ---
   function configurarEventListenerWhatsApp() {
+    console.log('[Modal Aviso] Ejecutando configurarEventListenerWhatsApp...');
     try {
       var btnEnviarWhatsappFinal = document.getElementById('btn-enviar-whatsapp-final');
+      console.log('[Modal Aviso] Buscando botón btn-enviar-whatsapp-final:', btnEnviarWhatsappFinal);
+      
       if (btnEnviarWhatsappFinal && !btnEnviarWhatsappFinal.hasAttribute('data-listener-added')) {
         console.log('[Modal Aviso] Configurando listener para btn-enviar-whatsapp-final');
         
@@ -1217,6 +1282,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var isProcessingWhatsapp = false;
         
         function handleWhatsappFinal(e) {
+          console.log('[Modal Aviso] ¡CLICK DETECTADO en botón WhatsApp!', e);
           e.preventDefault();
           e.stopPropagation();
           
@@ -1227,7 +1293,7 @@ document.addEventListener('DOMContentLoaded', function() {
           }
           
           isProcessingWhatsapp = true;
-          console.log('[Modal Aviso] Click en botón enviar WhatsApp final');
+          console.log('[Modal Aviso] Click en botón enviar WhatsApp final - procesando...');
           
           // Deshabilitar botón temporalmente
           btnEnviarWhatsappFinal.disabled = true;
@@ -1291,7 +1357,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Agregar el listener
         btnEnviarWhatsappFinal.addEventListener('click', handleWhatsappFinal);
         
-        console.log('[Modal Aviso] Event listener configurado exitosamente');
+        // Agregar también un listener de test para debug
+        btnEnviarWhatsappFinal.addEventListener('click', function(e) {
+          console.log('[DEBUG] Listener de test detectó click en btn-enviar-whatsapp-final');
+        });
+        
+        console.log('[Modal Aviso] Event listener configurado exitosamente para:', btnEnviarWhatsappFinal.id);
       } else if (!btnEnviarWhatsappFinal) {
         console.warn('[Modal Aviso] Botón btn-enviar-whatsapp-final no encontrado');
       } else {
@@ -1781,7 +1852,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var saludo = nombre ? ("\uD83D\uDC4B Hola, mi nombre es " + nombre + ".") : ("\uD83D\uDC4B Hola.");
 
     // Obtener datos del plan seleccionado
-    var plan = getPlan();
+    var plan = getStoredPlan();
     var megas = plan.megas || '';
     var precio = plan.price || 0;
     
@@ -1948,6 +2019,37 @@ document.addEventListener('DOMContentLoaded', function() {
   window.clienteEstaAutenticado = clienteEstaAutenticado;
   window.llenarModalConfirmacion = llenarModalConfirmacion; // Hacer disponible globalmente
   window.configurarEventListenerWhatsApp = configurarEventListenerWhatsApp; // Hacer disponible globalmente
+  
+  // Función de test para debug del botón WhatsApp
+  window.__testWhatsAppButton = function() {
+    console.log('[TEST] Iniciando test del botón WhatsApp...');
+    
+    var btn = document.getElementById('btn-enviar-whatsapp-final');
+    console.log('[TEST] Botón encontrado:', btn);
+    
+    if (btn) {
+      console.log('[TEST] Atributos del botón:', {
+        id: btn.id,
+        disabled: btn.disabled,
+        style: btn.style.display,
+        hasListener: btn.hasAttribute('data-listener-added'),
+        onclick: btn.onclick
+      });
+      
+      // Simular click
+      console.log('[TEST] Simulando click...');
+      btn.click();
+    } else {
+      console.error('[TEST] Botón no encontrado');
+    }
+  };
+  
+  // Función para test directo de WhatsApp
+  window.__testDirectWhatsApp = function() {
+    console.log('[TEST] Test directo de WhatsApp...');
+    var nombre = 'Test Usuario';
+    enviarWhatsAppInstalacion(nombre);
+  };
   
   console.log('[Internet.js] Funciones exportadas globalmente');
 
