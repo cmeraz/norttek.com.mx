@@ -69,14 +69,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ==========================
-    // Función de búsqueda mejorada
+    // Función de búsqueda optimizada con debouncing
     // ==========================
     function configurarBusqueda() {
         if (!buscador) return;
         
+        let debounceTimer;
+        
         buscador.addEventListener('input', function() {
+            clearTimeout(debounceTimer);
             const query = this.value.toLowerCase().trim();
-            filtrarTabla(query);
+            
+            // Debounce para evitar múltiples ejecuciones
+            debounceTimer = setTimeout(() => {
+                filtrarTabla(query);
+            }, 150);
         });
 
         if (btnBorrar) {
@@ -256,21 +263,6 @@ document.addEventListener('DOMContentLoaded', function() {
         tomarBtn.addEventListener('click', () => fotoInput.click());
         box.appendChild(tomarBtn);
 
-        // Animación de icono (rebote)
-        setInterval(() => {
-            const icon = tomarBtn.querySelector('.foto-btn-icon');
-            if (icon) {
-                icon.animate([
-                    { transform: 'translateY(0)' },
-                    { transform: 'translateY(-6px)' },
-                    { transform: 'translateY(0)' }
-                ], {
-                    duration: 700,
-                    iterations: 1
-                });
-            }
-        }, 2200);
-
         // Evento para manejar la imagen seleccionada
         fotoInput.addEventListener('change', function() {
             if (!this.files || !this.files[0]) return;
@@ -282,11 +274,9 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.appendChild(box);
         document.body.appendChild(modal);
 
-        // Animación de aparición del modal
-        setTimeout(() => {
-            box.style.opacity = '1';
-            box.style.transform = 'scale(1)';
-        }, 30);
+        // Mostrar modal inmediatamente
+        box.style.opacity = '1';
+        box.style.transform = 'scale(1)';
     }
 
     // ==========================

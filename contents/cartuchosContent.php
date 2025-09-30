@@ -2,29 +2,88 @@
 require_once __DIR__ . '/../includes/functions.php';
 
 // ======================================
-// Lógica PHP: Leer JSON y generar funciones
+// Lógica PHP optimizada: Sistema de filtrado completo + paginación
 // ======================================
+
+// Configuración de paginación
+$itemsPorPagina = 50;
+$paginaActual = isset($_GET['pagina']) ? max(1, intval($_GET['pagina'])) : 1;
+$busqueda = isset($_GET['buscar']) ? trim($_GET['buscar']) : '';
 
 // Archivo JSON con información de cartuchos
 $jsonFile = __DIR__ . '/../includes/json/cartuchos.json';
 $cartuchos = [];
+$totalCartuchos = 0;
+$cartuchosPaginados = [];
+$cartuchosCompletos = [];
 
 // Validar existencia del archivo JSON
 if (file_exists($jsonFile)) {
     $jsonData = file_get_contents($jsonFile);
-    $cartuchos = json_decode($jsonData, true);
+    $cartuchosCompletos = json_decode($jsonData, true);
 
-    if ($cartuchos === null) {
+    if ($cartuchosCompletos === null) {
         die("Error al decodificar el JSON.");
     }
+    
+    // Convertir a array plano para procesamiento
+    $cartuchosPlanos = [];
+    foreach ($cartuchosCompletos as $marca => $listaCartuchos) {
+        foreach ($listaCartuchos as $cartucho) {
+            $cartucho['marca'] = $marca;
+            $cartuchosPlanos[] = $cartucho;
+        }
+    }
+    
+    // Aplicar filtro de búsqueda si existe
+    $cartuchosFiltrados = $cartuchosPlanos;
+    if (!empty($busqueda)) {
+        $cartuchosFiltrados = array_filter($cartuchosPlanos, function($cartucho) use ($busqueda) {
+            $textoCompleto = strtolower(
+                $cartucho['marca'] . ' ' . 
+                (isset($cartucho['modelo']) ? $cartucho['modelo'] : '') . ' ' . 
+                (isset($cartucho['descripcion']) ? $cartucho['descripcion'] : '') . ' ' .
+                (isset($cartucho['impresoras_compatibles']) ? implode(' ', $cartucho['impresoras_compatibles']) : '') . ' ' .
+                (isset($cartucho['toner_rendimiento']) ? $cartucho['toner_rendimiento'] : '') . ' ' .
+                (isset($cartucho['tambor']['modelo']) ? $cartucho['tambor']['modelo'] : '')
+            );
+            return strpos($textoCompleto, strtolower($busqueda)) !== false;
+        });
+    }
+    
+    $totalCartuchos = count($cartuchosFiltrados);
+    $totalPaginas = ceil($totalCartuchos / $itemsPorPagina);
+    
+    // Aplicar paginación a los resultados filtrados
+    $offset = ($paginaActual - 1) * $itemsPorPagina;
+    $cartuchosPaginados = array_slice($cartuchosFiltrados, $offset, $itemsPorPagina);
+    
+    // Estadísticas
+    $marcasUnicas = array_unique(array_column($cartuchosPlanos, 'marca'));
+    $totalMarcas = count($marcasUnicas);
 } else {
     die("El archivo JSON no se encontró.");
 }
 
-// Función para generar HTML de impresoras compatibles
-function impresorasList($impresoras) {
+// Función optimizada para generar HTML de impresoras compatibles
+function impresorasList($impresoras, $limite = 5) {
+    // Validar entrada
+    if (!is_array($impresoras) || empty($impresoras)) {
+        return '<span class="text-sm text-gray-500 italic">No especificado</span>';
+    }
+    
     $html = '<div class="flex flex-wrap gap-1.5">';
+    $mostradas = 0;
+    
     foreach ($impresoras as $index => $impresora) {
+        if ($mostradas >= $limite) {
+            $restantes = count($impresoras) - $limite;
+            $html .= '<span class="inline-flex items-center px-2 py-1 text-xs font-medium rounded-full border bg-gray-50 text-gray-600 border-gray-200">';
+            $html .= '+' . $restantes . ' más';
+            $html .= '</span>';
+            break;
+        }
+        
         $colorClass = $index % 3 === 0 ? 'bg-blue-50 text-blue-700 border-blue-200' : 
                      ($index % 3 === 1 ? 'bg-green-50 text-green-700 border-green-200' : 
                       'bg-purple-50 text-purple-700 border-purple-200');
@@ -32,16 +91,10 @@ function impresorasList($impresoras) {
         $html .= '<i class="fa-solid fa-print w-3 h-3 mr-1.5 text-current"></i>';
         $html .= htmlspecialchars($impresora);
         $html .= '</span>';
+        $mostradas++;
     }
     $html .= '</div>';
     return $html;
-}
-
-// Contar total de cartuchos para estadísticas
-$totalCartuchos = 0;
-$totalMarcas = count($cartuchos);
-foreach ($cartuchos as $marca => $listaCartuchos) {
-    $totalCartuchos += count($listaCartuchos);
 }
 ?>
 
@@ -243,9 +296,9 @@ foreach ($cartuchos as $marca => $listaCartuchos) {
                         </div>
                     </div>
 
-                    <!-- Buscador rediseñado -->
+                    <!-- Buscador rediseñado con búsqueda completa -->
                     <div class="max-w-2xl mx-auto mb-8">
-                        <div class="relative">
+                        <form method="GET" action="" class="relative">
                             <div class="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
                                 <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
                                     <i class="fa-solid fa-search text-white text-sm"></i>
@@ -254,20 +307,42 @@ foreach ($cartuchos as $marca => $listaCartuchos) {
                             <input 
                                 type="text"
                                 id="buscador"
+                                name="buscar"
+                                value="<?php echo htmlspecialchars($busqueda); ?>"
                                 placeholder="Buscar por marca, modelo, impresora o tambor..."
-                                class="w-full pl-16 pr-16 py-4 bg-white/90 backdrop-blur-sm border-2 border-gray-200 rounded-2xl shadow-lg focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 focus:outline-none transition-all duration-300 text-gray-900 placeholder-gray-500 font-medium"
+                                class="w-full pl-16 pr-32 py-4 bg-white/90 backdrop-blur-sm border-2 border-gray-200 rounded-2xl shadow-lg focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 focus:outline-none transition-all duration-300 text-gray-900 placeholder-gray-500 font-medium"
                             >
+                            
+                            <!-- Botón de búsqueda -->
                             <button 
+                                type="submit"
+                                class="absolute inset-y-0 right-12 flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-300"
+                                title="Buscar"
+                            >
+                                <div class="w-8 h-8 hover:bg-blue-50 rounded-full flex items-center justify-center transition-colors duration-300">
+                                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                                </div>
+                            </button>
+                            
+                            <!-- Botón limpiar -->
+                            <?php if (!empty($busqueda)): ?>
+                            <a 
+                                href="?"
                                 id="limpiarBusqueda"
-                                type="button"
                                 class="absolute inset-y-0 right-0 pr-6 flex items-center text-gray-400 hover:text-gray-600 transition-colors duration-300"
                                 title="Limpiar búsqueda"
                             >
                                 <div class="w-8 h-8 hover:bg-gray-100 rounded-full flex items-center justify-center transition-colors duration-300">
                                     <i class="fa-solid fa-times text-sm"></i>
                                 </div>
-                            </button>
-                        </div>
+                            </a>
+                            <?php endif; ?>
+                            
+                            <!-- Mantener página actual si existe -->
+                            <?php if (isset($_GET['pagina']) && !empty($busqueda)): ?>
+                            <input type="hidden" name="pagina" value="1">
+                            <?php endif; ?>
+                        </form>
                     </div>
 
                     <!-- Herramientas adicionales -->
@@ -281,9 +356,17 @@ foreach ($cartuchos as $marca => $listaCartuchos) {
                             <input type="file" id="fotoInput" accept="image/*" class="hidden">
                         </div>
                         <div class="bg-gradient-to-r from-gray-50 to-gray-100 px-4 py-2 rounded-xl border border-gray-200">
-                            <span class="text-gray-600 font-medium text-sm">Mostrando </span>
-                            <span id="total-resultados" class="text-blue-600 font-bold">0</span>
+                            <span class="text-gray-600 font-medium text-sm">
+                                <?php if (!empty($busqueda)): ?>
+                                    Búsqueda: "<strong><?php echo htmlspecialchars($busqueda); ?></strong>" - 
+                                <?php endif; ?>
+                                Mostrando <?php echo count($cartuchosPaginados); ?> de 
+                            </span>
+                            <span id="total-resultados" class="text-blue-600 font-bold"><?php echo $totalCartuchos; ?></span>
                             <span class="text-gray-600 font-medium text-sm"> cartuchos</span>
+                            <?php if ($totalPaginas > 1): ?>
+                                <span class="text-gray-600 font-medium text-sm"> (Página <?php echo $paginaActual; ?> de <?php echo $totalPaginas; ?>)</span>
+                            <?php endif; ?>
                         </div>
                     </div>
 
@@ -332,52 +415,96 @@ foreach ($cartuchos as $marca => $listaCartuchos) {
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-gray-100">
-                                    <?php foreach ($cartuchos as $marca => $listaCartuchos): ?>
-                                        <?php foreach ($listaCartuchos as $index => $cartucho): ?>
-                                            <tr class="cartucho-row hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-300 group">
-                                                <td class="px-6 py-4 border-r border-gray-100 last:border-r-0">
-                                                    <div class="flex items-center gap-3">
-                                                        <span class="font-semibold text-gray-900"><?= htmlspecialchars($marca) ?></span>
+                                    <?php foreach ($cartuchosPaginados as $cartucho): ?>
+                                        <tr class="cartucho-row hover:bg-blue-50 transition-colors duration-200">
+                                            <td class="px-6 py-4 border-r border-gray-100">
+                                                <span class="font-semibold text-gray-900"><?= htmlspecialchars($cartucho['marca']) ?></span>
+                                            </td>
+                                            <td class="px-6 py-4 border-r border-gray-100">
+                                                <div class="font-mono font-semibold text-gray-900 px-3 py-1 inline-block">
+                                                    <?= htmlspecialchars(isset($cartucho['modelo']) ? $cartucho['modelo'] : 'N/A') ?>
+                                                </div>
+                                            </td>
+                                            <td class="px-6 py-4 border-r border-gray-100">
+                                                <?= impresorasList(isset($cartucho['impresoras_compatibles']) ? $cartucho['impresoras_compatibles'] : []) ?>
+                                            </td>
+                                            <td class="px-6 py-4 border-r border-gray-100">
+                                                <div class="inline-flex items-center gap-2 text-orange-800 px-3 py-2 font-semibold">
+                                                    <i class="fa-solid fa-fill-drip text-orange-600"></i>
+                                                    <?= htmlspecialchars(isset($cartucho['toner_rendimiento']) ? $cartucho['toner_rendimiento'] : 'No especificado') ?>
+                                                </div>
+                                            </td>
+                                            <td class="px-6 py-4 border-r border-gray-100">
+                                                <?php if (isset($cartucho['tambor']['modelo']) && !empty($cartucho['tambor']['modelo']) && $cartucho['tambor']['modelo'] !== 'No aplica'): ?>
+                                                    <div class="font-mono font-semibold text-gray-900 px-3 py-1">
+                                                        <?= htmlspecialchars($cartucho['tambor']['modelo']) ?>
                                                     </div>
-                                                </td>
-                                                <td class="px-6 py-4 border-r border-gray-100 last:border-r-0">
-                                                    <div class="font-mono font-semibold text-gray-900 px-3 py-1 inline-block">
-                                                        <?= htmlspecialchars($cartucho['modelo']) ?>
+                                                <?php else: ?>
+                                                    <span class="text-gray-400 italic">No aplica</span>
+                                                <?php endif; ?>
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                <?php if (isset($cartucho['tambor']['rendimiento']) && !empty($cartucho['tambor']['rendimiento']) && $cartucho['tambor']['rendimiento'] !== 'No aplica'): ?>
+                                                    <div class="font-mono font-semibold text-gray-900 px-3 py-1">
+                                                        <?= htmlspecialchars($cartucho['tambor']['rendimiento']) ?>
                                                     </div>
-                                                </td>
-                                                <td class="px-6 py-4 border-r border-gray-100 last:border-r-0">
-                                                    <?= impresorasList($cartucho['impresoras_compatibles']) ?>
-                                                </td>
-                                                <td class="px-6 py-4 border-r border-gray-100 last:border-r-0">
-                                                    <div class="inline-flex items-center gap-2 from-orange-100 to-red-100 text-orange-800 px-3 py-2 font-semibold">
-                                                        <i class="fa-solid fa-fill-drip text-orange-600"></i>
-                                                        <?= htmlspecialchars($cartucho['toner_rendimiento']) ?>
-                                                    </div>
-                                                </td>
-                                                <td class="px-6 py-4 border-r border-gray-100 last:border-r-0">
-                                                    <?php if (!empty($cartucho['tambor']['modelo'])): ?>
-                                                        <div class="font-mono font-semibold text-gray-900 px-3 py-1 inline-block">
-                                                            <?= htmlspecialchars($cartucho['tambor']['modelo']) ?>
-                                                        </div>
-                                                    <?php else: ?>
-                                                        <span class="text-gray-400 italic">No aplica</span>
-                                                    <?php endif; ?>
-                                                </td>
-                                                <td class="px-6 py-4 border-r border-gray-100 last:border-r-0">
-                                                    <?php if (!empty($cartucho['tambor']['rendimiento'])): ?>
-                                                        <div class="font-mono font-semibold text-gray-900 px-3 py-1 inline-block">
-                                                            <?= htmlspecialchars($cartucho['tambor']['rendimiento']) ?>
-                                                        </div>
-                                                    <?php else: ?>
-                                                        <span class="text-gray-400 italic">No aplica</span>
-                                                    <?php endif; ?>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
+                                                <?php else: ?>
+                                                    <span class="text-gray-400 italic">No aplica</span>
+                                                <?php endif; ?>
+                                            </td>
+                                        </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
+                        
+                        <!-- Controles de paginación -->
+                        <?php if ($totalPaginas > 1): ?>
+                        <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <div class="text-sm text-gray-600">
+                                Mostrando <?= $offset + 1 ?> a <?= min($offset + $itemsPorPagina, $totalCartuchos) ?> de <?= $totalCartuchos ?> cartuchos
+                            </div>
+                            <?php
+                            // Función auxiliar para construir URLs con parámetros
+                            function construirUrl($pagina, $busqueda = '') {
+                                $params = ['pagina' => $pagina];
+                                if (!empty($busqueda)) {
+                                    $params['buscar'] = $busqueda;
+                                }
+                                return '?' . http_build_query($params);
+                            }
+                            ?>
+                            
+                            <nav class="flex items-center gap-2">
+                                <?php if ($paginaActual > 1): ?>
+                                    <a href="<?= construirUrl($paginaActual - 1, $busqueda) ?>" 
+                                       class="px-3 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                                        <i class="fa-solid fa-chevron-left mr-1"></i>
+                                        Anterior
+                                    </a>
+                                <?php endif; ?>
+                                
+                                <?php 
+                                $inicioRango = max(1, $paginaActual - 2);
+                                $finRango = min($totalPaginas, $paginaActual + 2);
+                                
+                                for ($i = $inicioRango; $i <= $finRango; $i++): ?>
+                                    <a href="<?= construirUrl($i, $busqueda) ?>" 
+                                       class="px-3 py-2 text-sm font-medium rounded-lg transition-colors <?= $i === $paginaActual ? 'bg-blue-600 text-white' : 'text-gray-600 bg-white border border-gray-300 hover:bg-gray-50' ?>">
+                                        <?= $i ?>
+                                    </a>
+                                <?php endfor; ?>
+                                
+                                <?php if ($paginaActual < $totalPaginas): ?>
+                                    <a href="<?= construirUrl($paginaActual + 1, $busqueda) ?>" 
+                                       class="px-3 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                                        Siguiente
+                                        <i class="fa-solid fa-chevron-right ml-1"></i>
+                                    </a>
+                                <?php endif; ?>
+                            </nav>
+                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

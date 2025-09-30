@@ -29,14 +29,15 @@ $seo = [
 ];
 
 
-// Archivos CSS y JS específicos para esta página
+// Archivos CSS y JS específicos para esta página - Optimizados
 $cssFiles = ['cartuchos'];
-$jsFiles  = ['cartuchos-modern'];
+$jsFiles  = ['cartuchos-optimized'];
 
 // Mueve esto ANTES del include:
-$externalJsHead = [
-    'https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'
-];
+// OCR deshabilitado temporalmente para mejorar performance
+// $externalJsHead = [
+//     'https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'
+// ];
 
 // Incluir plantilla base (header, navbar, contenido, footer)
 include __DIR__ . '/includes/pageTemplate.php';
