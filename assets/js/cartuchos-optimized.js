@@ -205,39 +205,72 @@ window.analizarImagen = async function(fileOrBlob) {
         // Buscar patrones de modelos de impresora mejorados
         const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
         
+        // Limpiar texto OCR común (caracteres mal interpretados)
+        const cleanText = text
+            .replace(/[|]/g, 'I') // Barras verticales por I
+            .replace(/[0O]/g, '0') // O por 0
+            .replace(/[1Il]/g, '1') // Confusiones con 1, I, l
+            .replace(/[5S]/g, 'S') // Confusiones 5/S
+            .replace(/\s+/g, ' ') // Múltiples espacios por uno solo
+            .toUpperCase();
+        
+        console.log('Texto limpio:', cleanText);
+        
         // Patrones comunes de modelos de impresora
         const patterns = [
             // HP LaserJet, OfficeJet, DeskJet, etc.
-            /\b(LaserJet|OfficeJet|DeskJet|Envy|PhotoSmart)\s+(Pro\s+)?([A-Z]*\d+[A-Z0-9]*)\b/gi,
+            /\b(LASERJET|OFFICEJET|DESKJET|ENVY|PHOTOSMART)\s+(PRO\s+)?([A-Z]*\d+[A-Z0-9]*)\b/gi,
             // Samsung ML, SCX, SL, etc.
-            /\b(ML|SCX|SL|CLX|CLP)-?(\d+[A-Z0-9]*)\b/gi,
+            /\b(ML|SCX|SL|CLX|CLP)[-\s]?(\d+[A-Z0-9]*)\b/gi,
             // Brother HL, DCP, MFC, etc.
-            /\b(HL|DCP|MFC|FAX)-?(\d+[A-Z0-9]*)\b/gi,
+            /\b(HL|DCP|MFC|FAX)[-\s]?(\d+[A-Z0-9]*)\b/gi,
             // Canon i-SENSYS, PIXMA, etc.
-            /\b(i-SENSYS|PIXMA|imageCLASS)\s+([A-Z]*\d+[A-Z0-9]*)\b/gi,
+            /\b(I-SENSYS|PIXMA|IMAGECLASS)\s+([A-Z]*\d+[A-Z0-9]*)\b/gi,
             // Epson WorkForce, Expression, etc.
-            /\b(WorkForce|Expression|EcoTank)\s+([A-Z]*\d+[A-Z0-9]*)\b/gi,
+            /\b(WORKFORCE|EXPRESSION|ECOTANK)\s+([A-Z]*\d+[A-Z0-9]*)\b/gi,
             // Xerox Phaser, WorkCentre, etc.
-            /\b(Phaser|WorkCentre)\s+(\d+[A-Z0-9]*)\b/gi,
+            /\b(PHASER|WORKCENTRE)\s+(\d+[A-Z0-9]*)\b/gi,
             // Kyocera TASKalfa, ECOSYS, etc.
-            /\b(TASKalfa|ECOSYS|FS)\s*-?(\d+[A-Z0-9]*)\b/gi,
-            // Patrón genérico para modelos alfanuméricos
+            /\b(TASKALFA|ECOSYS|FS)\s*-?(\d+[A-Z0-9]*)\b/gi,
+            // Patrones específicos HP comunes
+            /\b(M\d{3,4}[A-Z]*|P\d{3,4}[A-Z]*|CP\d{3,4}[A-Z]*)\b/gi,
+            // Patrones Brother comunes  
+            /\b(DCP-\d+|HL-\d+|MFC-\d+)\b/gi,
+            // Patrones Samsung comunes
+            /\b(ML-\d+|SCX-\d+|SL-\d+)\b/gi,
+            // Patrón genérico mejorado para modelos alfanuméricos
             /\b([A-Z]{1,4}\d{2,5}[A-Z0-9]{0,6})\b/gi
         ];
         
         let modelos = [];
         
+        // Buscar en texto original
         lines.forEach(line => {
             patterns.forEach(pattern => {
                 const matches = [...line.matchAll(pattern)];
                 matches.forEach(match => {
                     if (match.length >= 3) {
-                        // Para patrones con marca y modelo
                         const marca = match[1];
-                        const modelo = match[match.length - 1]; // Último grupo capturado
+                        const modelo = match[match.length - 1];
                         modelos.push(`${marca} ${modelo}`.trim());
                     } else if (match.length === 2) {
-                        // Para patrón genérico
+                        modelos.push(match[1].trim());
+                    }
+                });
+            });
+        });
+        
+        // Buscar también en texto limpio
+        const cleanLines = cleanText.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+        cleanLines.forEach(line => {
+            patterns.forEach(pattern => {
+                const matches = [...line.matchAll(pattern)];
+                matches.forEach(match => {
+                    if (match.length >= 3) {
+                        const marca = match[1];
+                        const modelo = match[match.length - 1];
+                        modelos.push(`${marca} ${modelo}`.trim());
+                    } else if (match.length === 2) {
                         modelos.push(match[1].trim());
                     }
                 });
@@ -247,21 +280,39 @@ window.analizarImagen = async function(fileOrBlob) {
         // Filtrar y limpiar modelos únicos
         modelos = [...new Set(modelos)]
             .filter(m => {
-                const cleaned = m.trim();
-                // Filtrar modelos muy cortos o que sean solo números
+                const cleaned = m.trim().toUpperCase();
+                // Filtrar modelos muy cortos, solo números, solo letras, o texto OCR sin sentido
                 return cleaned.length >= 3 && 
                        !/^\d+$/.test(cleaned) && 
-                       !/^[A-Z]+$/.test(cleaned);
+                       !/^[A-Z]+$/.test(cleaned) &&
+                       !/^[A-Z]{1,2}\s[A-Z]{1,3}$/.test(cleaned) && // Evitar "AY ORY" etc
+                       !/\b(ORY|IEO|AY|OE|IY)\b/.test(cleaned) && // Filtrar texto OCR común
+                       /\d/.test(cleaned); // Debe contener al menos un número
             })
-            .map(m => m.trim())
+            .map(m => {
+                // Aplicar correcciones OCR comunes
+                return m.trim()
+                    .replace(/\bORY\b/gi, '') // Eliminar "ORY" común del OCR
+                    .replace(/\bIE\b/gi, '') // Eliminar "IE" común del OCR
+                    .replace(/\bAY\b/gi, '') // Eliminar "AY" común del OCR
+                    .replace(/\s+/g, ' ') // Limpiar espacios extra
+                    .trim();
+            })
+            .filter(m => m.length >= 3) // Re-filtrar después de limpiar
             .sort((a, b) => {
                 // Priorizar modelos con marcas conocidas
-                const marcasConocidas = ['LaserJet', 'OfficeJet', 'DeskJet', 'Envy', 'ML', 'SCX', 'HL', 'DCP', 'MFC'];
-                const aHasMarca = marcasConocidas.some(marca => a.includes(marca));
-                const bHasMarca = marcasConocidas.some(marca => b.includes(marca));
+                const marcasConocidas = ['LASERJET', 'OFFICEJET', 'DESKJET', 'ENVY', 'ML', 'SCX', 'HL', 'DCP', 'MFC'];
+                const aHasMarca = marcasConocidas.some(marca => a.toUpperCase().includes(marca));
+                const bHasMarca = marcasConocidas.some(marca => b.toUpperCase().includes(marca));
                 if (aHasMarca && !bHasMarca) return -1;
                 if (!aHasMarca && bHasMarca) return 1;
-                return a.length - b.length; // Modelos más cortos primero
+                // Priorizar modelos con números más largos (más específicos)
+                const aNumbers = (a.match(/\d+/g) || []).join('');
+                const bNumbers = (b.match(/\d+/g) || []).join('');
+                if (aNumbers.length !== bNumbers.length) {
+                    return bNumbers.length - aNumbers.length;
+                }
+                return a.length - b.length; // Modelos más cortos primero si igual especificidad
             })
             .slice(0, 5); // Máximo 5 modelos
 
@@ -277,16 +328,46 @@ window.analizarImagen = async function(fileOrBlob) {
                 buscador.dispatchEvent(inputEvent);
             });
         } else {
-            // Si no se detectaron modelos, usar primera línea de texto
-            const firstLine = lines[0] || text.substring(0, 50);
-            buscador.value = firstLine.trim();
+            // Si no se detectaron modelos, limpiar y usar el mejor texto disponible
+            const allText = lines.join(' ') + ' ' + cleanText;
             
-            // Mostrar mensaje informativo
-            window.mostrarMensaje('No se detectaron modelos específicos. Se usó el texto: "' + firstLine + '"', 'warning');
+            // Buscar cualquier secuencia alfanumérica que pueda ser un modelo
+            const possibleModels = allText.match(/\b[A-Z0-9]{3,10}\b/gi) || [];
+            const filteredPossible = possibleModels
+                .filter(m => 
+                    /\d/.test(m) && // Contiene números
+                    !/^(ORY|AY|IE|OE|IY|THE|AND|FOR)$/i.test(m) && // No es texto OCR común
+                    m.length >= 3 && m.length <= 10
+                )
+                .slice(0, 3);
             
-            // Disparar búsqueda
-            const inputEvent = new Event('input', { bubbles: true });
-            buscador.dispatchEvent(inputEvent);
+            if (filteredPossible.length > 0) {
+                // Usar modelos posibles encontrados
+                window.showModelModal(filteredPossible, (selectedModel) => {
+                    buscador.value = selectedModel;
+                    const inputEvent = new Event('input', { bubbles: true });
+                    buscador.dispatchEvent(inputEvent);
+                });
+            } else {
+                // Usar primera línea limpia como último recurso
+                const firstLine = cleanText.split('\n')[0] || text.substring(0, 50);
+                const cleanedFirstLine = firstLine
+                    .replace(/\b(ORY|AY|IE|OE|IY)\b/gi, '')
+                    .replace(/\s+/g, ' ')
+                    .trim();
+                
+                buscador.value = cleanedFirstLine || 'Texto no reconocido';
+                
+                // Mostrar mensaje informativo
+                window.mostrarMensaje(
+                    `No se detectaron modelos específicos. Texto detectado: "${cleanedFirstLine}". Puedes editarlo en el buscador.`, 
+                    'warning'
+                );
+                
+                // Disparar búsqueda
+                const inputEvent = new Event('input', { bubbles: true });
+                buscador.dispatchEvent(inputEvent);
+            }
         }
 
     } catch (error) {
