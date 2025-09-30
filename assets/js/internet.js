@@ -1,5 +1,9 @@
 // JS para la app móvil de Internet
 
+// Flag global para evitar inicialización múltiple
+if (!window.internetJSInitialized) {
+  window.internetJSInitialized = true;
+
 document.addEventListener('DOMContentLoaded', function() {
   // Debug inicial
   console.log('[Internet.js] DOM cargado, iniciando...');
@@ -1111,22 +1115,34 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
-    // Modificar el envío de WhatsApp para mostrar modal de aviso después
-    var originalEnviarWhatsApp = enviarWhatsAppInstalacion;
-    enviarWhatsAppInstalacion = function(nombre) {
-      // Llamar función original
-      originalEnviarWhatsApp(nombre);
+    // Configurar listener directo para el botón de envío final del modal
+    var btnEnviarWhatsappFinal = document.getElementById('btn-enviar-whatsapp-final');
+    if (btnEnviarWhatsappFinal && !btnEnviarWhatsappFinal.hasAttribute('data-listener-added')) {
+      console.log('[Modal Aviso] Configurando listener para btn-enviar-whatsapp-final');
       
-      console.log('[Modal Aviso] WhatsApp enviado desde modal');
-    };
-
-    // Listener para el botón de envío final dentro del modal
-    document.addEventListener('click', function(e) {
-      if (e.target && e.target.id === 'btn-enviar-whatsapp-final') {
+      // Marcar que ya se agregó el listener
+      btnEnviarWhatsappFinal.setAttribute('data-listener-added', 'true');
+      
+      // Flag para evitar múltiples clicks
+      var isProcessingWhatsapp = false;
+      
+      function handleWhatsappFinal(e) {
         e.preventDefault();
         e.stopPropagation();
         
+        // Evitar múltiples clicks
+        if (isProcessingWhatsapp) {
+          console.log('[Modal Aviso] Click ignorado - ya procesando');
+          return false;
+        }
+        
+        isProcessingWhatsapp = true;
         console.log('[Modal Aviso] Click en botón enviar WhatsApp final');
+        
+        // Deshabilitar botón temporalmente
+        btnEnviarWhatsappFinal.disabled = true;
+        btnEnviarWhatsappFinal.style.opacity = '0.6';
+        btnEnviarWhatsappFinal.style.pointerEvents = 'none';
         
         // Obtener nombre guardado
         var st = getStoredName();
@@ -1137,12 +1153,20 @@ document.addEventListener('DOMContentLoaded', function() {
           if (window.NTNotify) {
             NTNotify.error('Error: No se encontró el nombre. Intenta de nuevo.');
           }
+          
+          // Rehabilitar botón
+          isProcessingWhatsapp = false;
+          btnEnviarWhatsappFinal.disabled = false;
+          btnEnviarWhatsappFinal.style.opacity = '1';
+          btnEnviarWhatsappFinal.style.pointerEvents = 'auto';
           return false;
         }
         
         // Enviar WhatsApp
         console.log('[Modal Aviso] Enviando WhatsApp con nombre:', nombre);
         enviarWhatsAppInstalacion(nombre);
+        
+        console.log('[Modal Aviso] WhatsApp enviado desde modal');
         
         // Cerrar modal después del envío
         setTimeout(function() {
@@ -1160,11 +1184,23 @@ document.addEventListener('DOMContentLoaded', function() {
               }
             }
           }
+          
+          // Rehabilitar botón después de cerrar modal
+          setTimeout(function() {
+            isProcessingWhatsapp = false;
+            btnEnviarWhatsappFinal.disabled = false;
+            btnEnviarWhatsappFinal.style.opacity = '1';
+            btnEnviarWhatsappFinal.style.pointerEvents = 'auto';
+            console.log('[Modal Aviso] Botón rehabilitado');
+          }, 100);
         }, 500);
         
         return false;
       }
-    });
+      
+      // Agregar el listener
+      btnEnviarWhatsappFinal.addEventListener('click', handleWhatsappFinal);
+    }
 
     // Listeners para cerrar modales de aviso
     document.addEventListener('click', function(e) {
@@ -1584,6 +1620,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // ÚNICA DEFINICIÓN: enviarWhatsAppInstalacion
   function enviarWhatsAppInstalacion(nombre) {
+    // Protección contra ejecución múltiple con debounce
+    var now = Date.now();
+    if (!window.lastWhatsappCall) window.lastWhatsappCall = 0;
+    
+    if (now - window.lastWhatsappCall < 2000) { // 2 segundos de debounce
+      console.log('[DEBUG] Llamada a WhatsApp bloqueada por debounce');
+      return;
+    }
+    
+    window.lastWhatsappCall = now;
+    
+    // Contador para debug
+    if (!window.whatsappCallCount) window.whatsappCallCount = 0;
+    window.whatsappCallCount++;
+    
+    console.log('[DEBUG] enviarWhatsAppInstalacion llamada #' + window.whatsappCallCount + ' con nombre:', nombre);
+    
     try { 
       if (nombre && nombre === nombre.toLocaleLowerCase('es-MX')) {
         nombre = toTitleCaseEs(nombre); 
@@ -1736,3 +1789,5 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('[Internet.js] Funciones exportadas globalmente');
 
 });
+
+} // Cierre del flag de inicialización global
