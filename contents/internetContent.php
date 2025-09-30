@@ -330,7 +330,6 @@
                 <strong>Pago inicial:</strong> $500 MXN<br>
                 <strong>Pagos futuros:</strong> servicio (depende del plan).
               </div>
-              <button class="btn-escoger" data-select-esc="propio">Usar este escenario</button>
             </article>
             <article class="escenario-card" id="esc-sinequipo" data-esc="sinequipo" style="display: none;">
               <header><h3><i class="fa-solid fa-satellite-dish"></i> Necesito antena</h3></header>
@@ -349,7 +348,6 @@
                 <div class="nota-diferido" data-role="nota-diferido" style="display:none;">Mes 1 pagas anticipo ($850). Meses 2-4: servicio + cuota antena. Después solo servicio.</div>
               </fieldset>
               <div class="resumen-mini" data-role="sin-equipo-resumen"></div>
-              <button class="btn-escoger" data-select-esc="sinequipo">Usar este escenario</button>
             </article>
           </div>
           <div class="calendario-costos">

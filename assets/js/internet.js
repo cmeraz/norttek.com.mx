@@ -397,6 +397,11 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   /* === Lógica Costos de Instalación Refactor === */
+  
+  // Variables globales del STATE para acceso desde initEscenarioSelector
+  var STATE = { escenario:null, pagoAntena:'contado' };
+  var seleccionarEscenario; // Declaración global
+  
   (function initInstalacionCostos(){
     var rootSec = document.getElementById('instalacion-costos');
     if(!rootSec) return;
@@ -413,7 +418,6 @@ document.addEventListener('DOMContentLoaded', function() {
   var sinEquipoResumen = rootSec.querySelector('[data-role="sin-equipo-resumen"]');
   var propioResumen = rootSec.querySelector('[data-role="propio-resumen"]');
 
-  var STATE = { escenario:null, pagoAntena:'contado' };
     var CONST = {
       propio:{ anticipo:500 },
       sinEquipo:{ antena:1800, instalacion:850, diferidoMeses:3 }
@@ -457,14 +461,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     function fmt(n){ return '$'+n.toLocaleString('es-MX'); }
 
-    function seleccionarEscenario(esc){
+    // Asignar función a variable global para acceso desde initEscenarioSelector
+    seleccionarEscenario = function(esc){
       STATE.escenario = esc;
       [escPropio, escSin].forEach(function(card){ if(!card) return; card.classList.toggle('active', card.getAttribute('data-esc')===esc); });
       if(placeholder) placeholder.style.display = 'none';
       calcular();
-      try { localStorage.setItem('installScenario', esc==='propio'?'propio':'sinequipo'); } catch(_) {}
       updateCtaState();
-    }
+    };
     function setPagoAntena(mode){ STATE.pagoAntena = mode; if(notaDiferido) notaDiferido.style.display = (mode==='diferido')?'block':'none'; calcular(); }
 
     function limpiarTabla(){ if(tbody) tbody.innerHTML=''; }
@@ -473,6 +477,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function calcular(){
       var plan = getPlan();
       updateCtaState(plan);
+      
       if(!plan.price){
         limpiarTabla();
         if(resumenLinea) resumenLinea.textContent='Selecciona un plan para continuar.';
@@ -553,12 +558,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('nt-plan-updated', function(e){ updateVisibility(e && e.detail && e.detail.triggered===true); calcular(); });
   window.addEventListener('storage', function(ev){ if(ev.key==='selectedPlanMegas'||ev.key==='selectedPlanPrice'){ updateVisibility(false); calcular(); } });
 
-    // Estado inicial desde localStorage si existe selección previa
-    try {
-      var prevEsc = localStorage.getItem('installScenario');
-      // La selección de escenario se aplicará después de que exista plan; si no hay plan todavía, se ignorará.
-      if(prevEsc==='propio' || prevEsc==='sinequipo'){ STATE.escenario = prevEsc==='propio'?'propio':'sinequipo'; }
-    } catch(_) {}
+    // Estado inicial - no leer desde localStorage para evitar persistencia no deseada
     updateVisibility(false); // Mostrará u ocultará según exista plan previo
     calcular(); // Generará mensajes placeholder apropiados
   })();
@@ -856,39 +856,20 @@ document.addEventListener('DOMContentLoaded', function() {
         debugInfo.hasName = !!nombre;
         if(!nombre){
           console.log('[CTA Instalación] Abriendo modal para capturar nombre', debugInfo);
-          return abrirModalDatos('instalacion'); // Usar modal unificado
+          return abrirModalDatos('instalacion'); // Modal se encarga del envío
         }
         console.log('[CTA Instalación] Enviando WhatsApp con nombre almacenado', debugInfo);
-        enviarWhatsAppInstalacion(nombre); // Usar función unificada
+        enviarWhatsAppInstalacion(nombre); // Solo si ya hay nombre
       });
       // Exponer función de prueba en consola
       try {
         window.__debugCtaInstalacion = function(){
-          var planVal = localStorage.getItem('selectedPlanPrice');
-          var scenVal = localStorage.getItem('installScenario');
-          var name = (localStorage.getItem('customerNameFull')||'').trim();
+          var planVal = getStoredPlan().price || 0;
+          var scenVal = STATE ? STATE.escenario : '';
+          var name = (getStoredName().full||'').trim();
           return { planVal:planVal, scenVal:scenVal, name:name, disabled: ctaBtn.classList.contains('cta-disabled') };
         };
       } catch(_) {}
-    }
-    function enviarWhatsApp(nombre){
-      try { if (nombre && nombre === nombre.toLocaleLowerCase('es-MX')) nombre = toTitleCaseEs(nombre); } catch(_) {}
-      var saludo = nombre ? (EMOJI.wave + ' Hola, mi nombre es ' + nombre + '.') : (EMOJI.wave + ' Hola.');
-      var plan = (function(){ try { return { megas: localStorage.getItem('selectedPlanMegas')||'', price: localStorage.getItem('selectedPlanPrice')||'' }; } catch(_){ return {megas:'', price:''}; } })();
-      var planLinea = plan.megas ? ('Plan seleccionado: ' + plan.megas + ' Megas (' + (plan.price?('$'+plan.price+'/mes'):'mensualidad pendiente') + ').') : 'Aún no aparece un plan seleccionado.';
-      var escenario = (function(){ try { return localStorage.getItem('installScenario')||''; } catch(_){ return ''; } })();
-      var escenarioDesc = '';
-      if(escenario==='propio') escenarioDesc = 'Escenario: Ya cuento con antena.';
-      else if(escenario==='sinequipo') { var pago='contado'; try { var radio=document.querySelector('input[name="pago-antena"]:checked'); if(radio) pago=radio.value; } catch(_) {} escenarioDesc='Escenario: Necesito antena. Forma de pago antena: '+(pago==='diferido'?'Diferido (3 meses)':'Contado'); }
-      else escenarioDesc = 'Escenario aún no seleccionado.';
-      var calendarioLineas=[]; try { var filas=document.querySelectorAll('#tabla-calendario tbody tr'); if(filas.length){ filas.forEach(function(tr){ var c=tr.querySelectorAll('td'); if(c.length>=3){ calendarioLineas.push(c[0].textContent.trim()+': '+c[1].textContent.trim()+' ('+c[2].textContent.trim()+')'); } }); } } catch(_) {}
-      var calendarioTexto = calendarioLineas.length ? ('Calendario de pagos:\n'+calendarioLineas.join('\n')) : 'Calendario de pagos aún no generado (falta plan o escenario).';
-      var resumen=''; try { var rl=document.getElementById('inst-resumen-linea'); if(rl) resumen = rl.textContent.trim() || rl.innerText.trim(); } catch(_) {}
-      resumen = resumen ? 'Resumen: '+resumen : 'Resumen pendiente.';
-      var formLink='http://clientes.portalinternet.net/solicitar-instalacion/norttek/';
-      var cuerpo=[saludo,'',planLinea,escenarioDesc,'',calendarioTexto,'',resumen,'','Formulario:',formLink,'',EMOJI.check+' Quedo atento(a), gracias.'].join('\n');
-      var wa='https://wa.me/526252690997?text='+encodeURIComponent(cuerpo);
-      try { window.open(wa,'_blank'); } catch(_) {}
     }
   } catch(_) {}
 
@@ -1255,10 +1236,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var planLinea = megas ? ('Plan seleccionado: ' + megas + ' Mbps.') : 'Plan seleccionado: Por definir.';
 
-    // Obtener escenario de instalación
+    // Obtener escenario directamente del STATE actual (no localStorage)
     var escenario = '';
     try {
-      escenario = localStorage.getItem('installScenario') || '';
+      escenario = STATE ? STATE.escenario : '';
     } catch(_) {}
 
     var escenarioDesc = '';
@@ -1335,7 +1316,7 @@ document.addEventListener('DOMContentLoaded', function() {
       cardSinequipo.style.display = 'none';
     }
 
-    function showCard(card, button) {
+    function showCard(card, button, escenario) {
       hideAllCards();
       resetButtons();
       card.style.display = 'block';
@@ -1351,34 +1332,29 @@ document.addEventListener('DOMContentLoaded', function() {
         card.style.transform = 'translateY(0)';
       }, 10);
 
-      // Actualizar calendario si hay plan seleccionado
-      setTimeout(() => {
-        if (typeof updateInstalacionCalculo === 'function') {
-          updateInstalacionCalculo();
-        }
-      }, 100);
+      // Llamar directamente a seleccionarEscenario para actualizar el calendario
+      if (typeof seleccionarEscenario === 'function') {
+        seleccionarEscenario(escenario);
+      } else {
+        console.warn('[Internet.js] seleccionarEscenario no está disponible');
+      }
     }
 
-    // Event listeners
+    // Event listeners - removido localStorage para evitar persistencia
     btnYaTengo.addEventListener('click', function() {
       console.log('[Escenario] Seleccionado: Ya tengo antena');
-      showCard(cardPropio, btnYaTengo);
-      // Guardar selección en localStorage
-      try {
-        localStorage.setItem('installScenario', 'propio');
-      } catch(_) {}
+      showCard(cardPropio, btnYaTengo, 'propio');
     });
 
     btnNecesito.addEventListener('click', function() {
       console.log('[Escenario] Seleccionado: Necesito antena');
-      showCard(cardSinequipo, btnNecesito);
-      // Guardar selección en localStorage
-      try {
-        localStorage.setItem('installScenario', 'sinequipo');
-      } catch(_) {}
+      showCard(cardSinequipo, btnNecesito, 'sinequipo');
     });
 
     console.log('[Internet.js] Selector de escenario inicializado');
   }
+
+  // Llamar la función de inicialización
+  initEscenarioSelector();
 
 });
