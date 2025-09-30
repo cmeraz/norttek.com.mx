@@ -4,16 +4,17 @@
 ?>
 
 <!-- HERO -->
-<section class="telefonia-hero nt-hero-wrapper" id="hero" aria-labelledby="hero-title">
-  <div class="telefonia-hero-bg" aria-hidden="true"></div>
-  <div class="telefonia-hero-inner">
-    <div id="hero-title" class="opacity-0 translate-y-10">
+<section class="telefonia-hero nt-hero-wrapper" id="hero" aria-labelledby="hero-title" style="position: relative; min-height: 540px; display: flex; align-items: center; justify-content: center; padding: 150px 1rem 90px;">
+  <div class="telefonia-hero-bg" aria-hidden="true" style="position: absolute; inset: 0; background: url('assets/img/yeastar-hero.webp') center/cover no-repeat; z-index: 1; filter: brightness(1.3) contrast(1.1);"></div>
+
+  <div class="telefonia-hero-inner" style="position: relative; z-index: 3; max-width: 880px; text-align: center; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">
+    <div id="hero-title" style="margin-bottom: 1.5rem;">
   <?= nt_heading('Telefonía IP en la Nube', 'fa-solid fa-phone-volume', 'xl', 'Norttek PBX', ['animate' => true, 'delay' => 'sm','class'=>'nt-heading-hero nt-heading-invert']); ?>
     </div>
-    <p class="telefonia-hero-sub opacity-0 translate-y-10">
+    <p class="telefonia-hero-sub" style="color: white; font-size: 1.1rem; line-height: 1.5; margin: 0 auto 2rem; max-width: 740px; text-shadow: 1px 1px 3px rgba(0,0,0,0.6);">
       Gestiona todas las comunicaciones de tu empresa de manera <strong>centralizada desde la nube</strong>. Administra <strong>extensiones</strong>, configura <strong>troncales</strong>, IVR personalizado, grabación de llamadas y <strong>reportes detallados</strong>. Accede desde <strong>PC, smartphone o teléfono físico</strong>, sin infraestructura local ni mantenimiento complejo.
     </p>
-    <div class="telefonia-hero-actions opacity-0 translate-y-10 nt-stack-tight">
+    <div class="telefonia-hero-actions nt-stack-tight" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
       <a href="#planes" class="nt-btn nt-btn-primary nt-pulse" role="button"><i class="fa-solid fa-coins"></i><span>Cotiza tu plan</span></a>
       <a href="#demo" class="nt-btn nt-btn-outline" role="button" data-nt-modal-open="#modalDemo"><i class="fa-solid fa-rocket"></i><span>Solicitar demo</span></a>
       <a href="#faq" class="nt-btn nt-btn-accent" role="button"><i class="fas fa-question-circle"></i><span>Preguntas Frecuentes</span></a>

@@ -209,28 +209,23 @@ Quedo pendiente de su apoyo. ¡Gracias! 🚀`;
   console.log('[Telefonia.js] Botones de planes inicializados correctamente');
 })();
 
-window.addEventListener('load',()=>{
+// Asegurar que el hero sea visible inmediatamente
+document.addEventListener('DOMContentLoaded', function() {
   const heroTitle = document.querySelector('#hero #hero-title');
   const heroSub = document.querySelector('.telefonia-hero-sub');
   const heroActions = document.querySelector('.telefonia-hero-actions');
   const elems = [heroTitle, heroSub, heroActions];
-  if(window.gsap){
-    const baseEase='power3.out';
-    if(heroTitle) gsap.to(heroTitle,{opacity:1,y:0,duration:1.35,ease:baseEase,delay:.15});
-    if(heroSub) gsap.to(heroSub,{opacity:1,y:0,duration:1.35,ease:baseEase,delay:.55});
-    if(heroActions) {
-      // Primero revelar el contenedor
-      gsap.to(heroActions,{opacity:1,y:0,duration:1.1,ease:baseEase,delay:.95});
-      // Luego cada botón escalonado
-      const btns = heroActions.querySelectorAll('.nt-btn');
-      btns.forEach((btn,i)=>{
-        gsap.fromTo(btn,{opacity:0,y:14,scale:.96},{opacity:1,y:0,scale:1,duration:1,ease:baseEase,delay:1.05 + i*0.12});
-      });
+  
+  // Mostrar elementos inmediatamente
+  elems.forEach(el => {
+    if (el) {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.classList.remove('opacity-0', 'translate-y-10');
     }
-  } else {
-    // Fallback sin GSAP: mostrar inmediatamente
-    elems.forEach(el=>{ if(!el) return; el.style.opacity='1'; el.style.transform='none'; el.classList.remove('opacity-0','translate-y-10'); });
-  }
+  });
+  
+  console.log('[telefonia.js] Hero elements made visible immediately');
 });
 
 console.info('[telefonia.js] animaciones hero extendidas sincronizadas con headings');
