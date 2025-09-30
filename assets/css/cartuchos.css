@@ -208,11 +208,111 @@
     box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
 }
 
-/* Responsive improvements */
-@media (max-width: 768px) {
-    .card-modern {
-        margin-bottom: 16px;
+/* ==========================================================================
+   Optimizaciones móviles para cartuchos
+   ========================================================================== */
+
+/* Mejoras para el buscador en móviles */
+@media (max-width: 640px) {
+    .cartuchos-hero .hero-content h1 {
+        font-size: 2rem;
+        line-height: 2.25rem;
     }
+    
+    .cartuchos-hero .hero-content p {
+        font-size: 1rem;
+    }
+    
+    /* Buscador responsive */
+    #buscador {
+        padding-left: 3.5rem !important;
+        padding-right: 3rem !important;
+        font-size: 0.9rem;
+    }
+    
+    /* Botón de búsqueda minimalista */
+    #botonBuscar {
+        right: 0.5rem !important;
+    }
+    
+    /* Botón limpiar en móviles */
+    #limpiarBusqueda {
+        right: 2.5rem !important;
+    }
+}
+
+/* Cards de cartuchos móviles */
+.cartucho-card-mobile {
+    background: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+}
+
+.cartucho-card-mobile:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Mejoras para badges de impresoras en móviles */
+@media (max-width: 768px) {
+    .printer-badge {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+        margin: 0.125rem;
+    }
+    
+    /* Limitar badges en móviles */
+    .printer-badge:nth-child(n+4) {
+        display: none;
+    }
+}
+
+/* Estilos para tabla responsive */
+.table-modern {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.table-modern thead {
+    background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+}
+
+.table-modern th {
+    padding: 12px 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.75rem;
+}
+
+.table-modern th:last-child {
+    border-right: none;
+}
+
+.table-modern tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table-modern tbody tr:hover {
+    background: #f8fafc;
+}
+
+/* Responsive breakpoints específicos */
+@media (max-width: 1024px) {
+    .table-modern th,
+    .table-modern td {
+        padding: 8px 6px;
+        font-size: 0.875rem;
+    }
+    
+    .table-modern th {
+        font-size: 0.75rem;
+    }
+}
     
     .table-modern {
         font-size: 14px;

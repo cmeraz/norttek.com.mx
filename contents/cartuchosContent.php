@@ -296,7 +296,7 @@ function impresorasList($impresoras, $limite = 5) {
                         </div>
                     </div>
 
-                    <!-- Buscador rediseñado con búsqueda completa -->
+                    <!-- Buscador rediseñado con búsqueda manual -->
                     <div class="max-w-2xl mx-auto mb-8">
                         <form method="GET" action="" class="relative">
                             <div class="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
@@ -309,14 +309,15 @@ function impresorasList($impresoras, $limite = 5) {
                                 id="buscador"
                                 name="buscar"
                                 value="<?php echo htmlspecialchars($busqueda); ?>"
-                                placeholder="Buscar por marca, modelo, impresora o tambor..."
-                                class="w-full pl-16 pr-32 py-4 bg-white/90 backdrop-blur-sm border-2 border-gray-200 rounded-2xl shadow-lg focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 focus:outline-none transition-all duration-300 text-gray-900 placeholder-gray-500 font-medium"
+                                placeholder="Buscar por marca, modelo o impresora..."
+                                class="w-full pl-16 pr-16 py-4 bg-white/90 backdrop-blur-sm border-2 border-gray-200 rounded-2xl shadow-lg focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 focus:outline-none transition-all duration-300 text-gray-900 placeholder-gray-500 font-medium"
                             >
                             
-                            <!-- Botón de búsqueda -->
+                            <!-- Botón de búsqueda simplificado -->
                             <button 
                                 type="submit"
-                                class="absolute inset-y-0 right-12 flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-300"
+                                id="botonBuscar"
+                                class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-blue-600 transition-colors duration-300"
                                 title="Buscar"
                             >
                                 <div class="w-8 h-8 hover:bg-blue-50 rounded-full flex items-center justify-center transition-colors duration-300">
@@ -324,16 +325,16 @@ function impresorasList($impresoras, $limite = 5) {
                                 </div>
                             </button>
                             
-                            <!-- Botón limpiar -->
+                            <!-- Botón limpiar (solo cuando hay búsqueda activa) -->
                             <?php if (!empty($busqueda)): ?>
                             <a 
                                 href="?"
                                 id="limpiarBusqueda"
-                                class="absolute inset-y-0 right-0 pr-6 flex items-center text-gray-400 hover:text-gray-600 transition-colors duration-300"
+                                class="absolute inset-y-0 right-12 pr-2 flex items-center text-gray-400 hover:text-red-500 transition-colors duration-300"
                                 title="Limpiar búsqueda"
                             >
-                                <div class="w-8 h-8 hover:bg-gray-100 rounded-full flex items-center justify-center transition-colors duration-300">
-                                    <i class="fa-solid fa-times text-sm"></i>
+                                <div class="w-6 h-6 hover:bg-red-50 rounded-full flex items-center justify-center transition-colors duration-300">
+                                    <i class="fa-solid fa-times text-xs"></i>
                                 </div>
                             </a>
                             <?php endif; ?>
@@ -343,6 +344,23 @@ function impresorasList($impresoras, $limite = 5) {
                             <input type="hidden" name="pagina" value="1">
                             <?php endif; ?>
                         </form>
+                        
+                        <!-- Instrucciones simplificadas -->
+                        <div class="text-center mt-2">
+                            <p class="text-xs text-gray-500">
+                                Busca automáticamente en la página actual, o presiona <kbd class="px-1 py-0.5 bg-gray-100 rounded text-xs">Enter</kbd> para búsqueda completa
+                            </p>
+                        </div>
+                        
+                        <!-- Datos para búsqueda JavaScript -->
+                        <script>
+                        window.cartuchosData = {
+                            cartuchosPagina: <?php echo json_encode($cartuchosPaginados); ?>,
+                            totalCartuchos: <?php echo $totalCartuchos; ?>,
+                            paginaActual: <?php echo $paginaActual; ?>,
+                            busquedaActiva: <?php echo json_encode($busqueda); ?>
+                        };
+                        </script>
                     </div>
 
                     <!-- Herramientas adicionales -->
@@ -370,43 +388,45 @@ function impresorasList($impresoras, $limite = 5) {
                         </div>
                     </div>
 
-                    <!-- Tabla completamente rediseñada -->
+                    <!-- Tabla responsive optimizada para móviles -->
                     <div class="overflow-hidden rounded-2xl border border-gray-200 shadow-xl bg-white">
-                        <div class="overflow-x-auto">
+                        
+                        <!-- Vista de tabla para desktop -->
+                        <div class="hidden lg:block overflow-x-auto">
                             <table id="tablaCartuchos" class="min-w-full">
                                 <thead>
                                     <tr class="bg-gradient-to-r from-gray-900 to-gray-800 text-white">
-                                        <th class="px-6 py-4 text-left font-bold text-sm uppercase tracking-wider border-r border-gray-700 last:border-r-0">
+                                        <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider border-r border-gray-700">
                                             <div class="flex items-center gap-2">
                                                 <i class="fa-solid fa-tag text-blue-400"></i>
                                                 Marca
                                             </div>
                                         </th>
-                                        <th class="px-6 py-4 text-left font-bold text-sm uppercase tracking-wider border-r border-gray-700 last:border-r-0">
+                                        <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider border-r border-gray-700">
                                             <div class="flex items-center gap-2">
                                                 <i class="fa-solid fa-code text-green-400"></i>
                                                 Modelo
                                             </div>
                                         </th>
-                                        <th class="px-6 py-4 text-left font-bold text-sm uppercase tracking-wider border-r border-gray-700 last:border-r-0">
+                                        <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider border-r border-gray-700">
                                             <div class="flex items-center gap-2">
                                                 <i class="fa-solid fa-print text-purple-400"></i>
                                                 Impresoras
                                             </div>
                                         </th>
-                                        <th class="px-6 py-4 text-left font-bold text-sm uppercase tracking-wider border-r border-gray-700 last:border-r-0">
+                                        <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider border-r border-gray-700">
                                             <div class="flex items-center gap-2">
                                                 <i class="fa-solid fa-fill-drip text-orange-400"></i>
                                                 Tóner
                                             </div>
                                         </th>
-                                        <th class="px-6 py-4 text-left font-bold text-sm uppercase tracking-wider border-r border-gray-700 last:border-r-0">
+                                        <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider border-r border-gray-700">
                                             <div class="flex items-center gap-2">
                                                 <i class="fa-solid fa-circle text-pink-400"></i>
                                                 Tambor
                                             </div>
                                         </th>
-                                        <th class="px-6 py-4 text-left font-bold text-sm uppercase tracking-wider">
+                                        <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">
                                             <div class="flex items-center gap-2">
                                                 <i class="fa-solid fa-chart-bar text-cyan-400"></i>
                                                 Rendimiento
@@ -417,45 +437,109 @@ function impresorasList($impresoras, $limite = 5) {
                                 <tbody class="divide-y divide-gray-100">
                                     <?php foreach ($cartuchosPaginados as $cartucho): ?>
                                         <tr class="cartucho-row hover:bg-blue-50 transition-colors duration-200">
-                                            <td class="px-6 py-4 border-r border-gray-100">
+                                            <td class="px-4 py-3 border-r border-gray-100">
                                                 <span class="font-semibold text-gray-900"><?= htmlspecialchars($cartucho['marca']) ?></span>
                                             </td>
-                                            <td class="px-6 py-4 border-r border-gray-100">
-                                                <div class="font-mono font-semibold text-gray-900 px-3 py-1 inline-block">
+                                            <td class="px-4 py-3 border-r border-gray-100">
+                                                <div class="font-mono font-semibold text-gray-900 px-2 py-1 inline-block bg-gray-50 rounded">
                                                     <?= htmlspecialchars(isset($cartucho['modelo']) ? $cartucho['modelo'] : 'N/A') ?>
                                                 </div>
                                             </td>
-                                            <td class="px-6 py-4 border-r border-gray-100">
+                                            <td class="px-4 py-3 border-r border-gray-100">
                                                 <?= impresorasList(isset($cartucho['impresoras_compatibles']) ? $cartucho['impresoras_compatibles'] : []) ?>
                                             </td>
-                                            <td class="px-6 py-4 border-r border-gray-100">
-                                                <div class="inline-flex items-center gap-2 text-orange-800 px-3 py-2 font-semibold">
+                                            <td class="px-4 py-3 border-r border-gray-100">
+                                                <div class="inline-flex items-center gap-1 text-orange-800 px-2 py-1 font-semibold text-sm">
                                                     <i class="fa-solid fa-fill-drip text-orange-600"></i>
                                                     <?= htmlspecialchars(isset($cartucho['toner_rendimiento']) ? $cartucho['toner_rendimiento'] : 'No especificado') ?>
                                                 </div>
                                             </td>
-                                            <td class="px-6 py-4 border-r border-gray-100">
+                                            <td class="px-4 py-3 border-r border-gray-100">
                                                 <?php if (isset($cartucho['tambor']['modelo']) && !empty($cartucho['tambor']['modelo']) && $cartucho['tambor']['modelo'] !== 'No aplica'): ?>
-                                                    <div class="font-mono font-semibold text-gray-900 px-3 py-1">
+                                                    <div class="font-mono font-semibold text-gray-900 px-2 py-1 bg-gray-50 rounded text-sm">
                                                         <?= htmlspecialchars($cartucho['tambor']['modelo']) ?>
                                                     </div>
                                                 <?php else: ?>
-                                                    <span class="text-gray-400 italic">No aplica</span>
+                                                    <span class="text-gray-400 italic text-sm">No aplica</span>
                                                 <?php endif; ?>
                                             </td>
-                                            <td class="px-6 py-4">
+                                            <td class="px-4 py-3">
                                                 <?php if (isset($cartucho['tambor']['rendimiento']) && !empty($cartucho['tambor']['rendimiento']) && $cartucho['tambor']['rendimiento'] !== 'No aplica'): ?>
-                                                    <div class="font-mono font-semibold text-gray-900 px-3 py-1">
+                                                    <div class="font-mono font-semibold text-gray-900 px-2 py-1 bg-gray-50 rounded text-sm">
                                                         <?= htmlspecialchars($cartucho['tambor']['rendimiento']) ?>
                                                     </div>
                                                 <?php else: ?>
-                                                    <span class="text-gray-400 italic">No aplica</span>
+                                                    <span class="text-gray-400 italic text-sm">No aplica</span>
                                                 <?php endif; ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
+                        </div>
+
+                        <!-- Vista de cards para móviles y tablets -->
+                        <div class="lg:hidden p-4 space-y-4">
+                            <?php foreach ($cartuchosPaginados as $cartucho): ?>
+                                <div class="cartucho-row bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-200">
+                                    <!-- Header del card -->
+                                    <div class="flex items-start justify-between mb-3">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                                                <i class="fa-solid fa-fill-drip text-white text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-gray-900 text-lg"><?= htmlspecialchars($cartucho['marca']) ?></div>
+                                                <div class="font-mono font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded text-sm inline-block">
+                                                    <?= htmlspecialchars(isset($cartucho['modelo']) ? $cartucho['modelo'] : 'N/A') ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Información del tóner -->
+                                    <div class="mb-3">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <i class="fa-solid fa-fill-drip text-orange-500 text-sm w-4"></i>
+                                            <span class="font-medium text-gray-700 text-sm">Rendimiento del Tóner:</span>
+                                        </div>
+                                        <div class="text-orange-800 font-semibold ml-6">
+                                            <?= htmlspecialchars(isset($cartucho['toner_rendimiento']) ? $cartucho['toner_rendimiento'] : 'No especificado') ?>
+                                        </div>
+                                    </div>
+
+                                    <!-- Información del tambor (si aplica) -->
+                                    <?php if (isset($cartucho['tambor']['modelo']) && !empty($cartucho['tambor']['modelo']) && $cartucho['tambor']['modelo'] !== 'No aplica'): ?>
+                                    <div class="mb-3">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <i class="fa-solid fa-circle text-pink-500 text-sm w-4"></i>
+                                            <span class="font-medium text-gray-700 text-sm">Tambor:</span>
+                                        </div>
+                                        <div class="ml-6">
+                                            <div class="font-mono font-semibold text-gray-900 bg-gray-50 px-2 py-1 rounded inline-block text-sm mb-1">
+                                                <?= htmlspecialchars($cartucho['tambor']['modelo']) ?>
+                                            </div>
+                                            <?php if (isset($cartucho['tambor']['rendimiento']) && $cartucho['tambor']['rendimiento'] !== 'No aplica'): ?>
+                                                <div class="text-gray-600 text-sm">
+                                                    Rendimiento: <?= htmlspecialchars($cartucho['tambor']['rendimiento']) ?>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <?php endif; ?>
+
+                                    <!-- Impresoras compatibles -->
+                                    <div>
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <i class="fa-solid fa-print text-purple-500 text-sm w-4"></i>
+                                            <span class="font-medium text-gray-700 text-sm">Impresoras compatibles:</span>
+                                        </div>
+                                        <div class="ml-6">
+                                            <?= impresorasList(isset($cartucho['impresoras_compatibles']) ? $cartucho['impresoras_compatibles'] : [], 3) ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
                         
                         <!-- Controles de paginación -->
