@@ -2,17 +2,17 @@
 // Página modular Telefonía
 $pageName = 'telefonia';
 $seo = [
-  'title' => 'Telefonía IP en la Nube - Norttek Solutions',
-  'description' => 'Centraliza las comunicaciones de tu empresa con Norttek PBX en la nube. Extensiones, IVR, grabación de llamadas y más, desde cualquier dispositivo.',
-  'keywords' => 'Telefonía IP, PBX en la nube, extensiones virtuales, VoIP, Norttek, conmutador, comunicaciones empresariales',
-  'og_title' => 'Telefonía IP en la Nube - Norttek Solutions',
-  'og_description' => 'Centraliza tus comunicaciones empresariales en la nube y trabaja desde cualquier lugar.',
+  'title' => 'Telefonía IP Empresarial - Sistema PBX en la Nube | Norttek Solutions',
+  'description' => 'Transforma tu comunicación empresarial con telefonía IP. Extensiones virtuales, grabación de llamadas, IVR y reportes desde cualquier dispositivo. Prueba gratuita 30 días.',
+  'keywords' => 'Telefonía IP, PBX en la nube, extensiones virtuales, VoIP, sistema telefónico empresarial, comunicaciones unificadas, Norttek',
+  'og_title' => 'Telefonía IP Empresarial - Sistema PBX en la Nube | Norttek Solutions',
+  'og_description' => 'Revolutiona tu comunicación empresarial con telefonía IP: extensiones desde cualquier lugar, grabación de llamadas e IVR profesional.',
   'og_url' => 'https://www.norttek.com.mx/telefonia',
-  'og_image' => 'https://www.norttek.com.mx/assets/img/webpage.png',
-  'twitter_title' => 'Telefonía IP en la Nube - Norttek Solutions',
-  'twitter_description' => 'Centraliza tus comunicaciones empresariales en la nube con Norttek PBX.',
-  'twitter_image' => 'https://www.norttek.com.mx/assets/img/webpage.png'
+  'og_image' => 'https://www.norttek.com.mx/assets/img/business-benefits-phone.jpg',
+  'twitter_title' => 'Telefonía IP Empresarial - Sistema PBX en la Nube',
+  'twitter_description' => 'Transforma tu comunicación empresarial con telefonía IP profesional desde cualquier dispositivo.',
+  'twitter_image' => 'https://www.norttek.com.mx/assets/img/business-benefits-phone.jpg'
 ];
-$cssFiles = ['telefonia'];
-$jsFiles  = ['telefonia'];
+$cssFiles = ['telefonia-refactored'];
+$jsFiles  = ['telefonia-refactored'];
 include __DIR__ . '/includes/pageTemplate.php';

@@ -417,6 +417,10 @@
   background: linear-gradient(90deg, #F59E0B, #D97706);
 }
 
+.benefit-card--communication::before {
+  background: linear-gradient(90deg, #10b981, #059669);
+}
+
 .benefit-card--control::before {
   background: linear-gradient(90deg, #8B5CF6, #7C3AED);
 }

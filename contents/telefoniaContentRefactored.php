@@ -35,6 +35,11 @@
 
     <!-- Historia evolutiva -->
     <div class="evolution-timeline mb-20">
+      <!-- Imagen ilustrativa de la evolución -->
+      <div class="text-center mb-12">
+        <img src="assets/img/evolution-phones.jpg" alt="Evolución de sistemas telefónicos: de analógico a digital" class="mx-auto rounded-lg shadow-lg max-w-3xl w-full" loading="lazy">
+      </div>
+      
       <div class="grid md:grid-cols-3 gap-8 items-center">
         <!-- Era pasada -->
         <div class="timeline-era timeline-era--past">
@@ -46,7 +51,7 @@
           <ul class="timeline-era__features">
             <li><i class="fa-solid fa-times text-red-500"></i>Cables físicos</li>
             <li><i class="fa-solid fa-times text-red-500"></i>Una ubicación</li>
-            <li><i class="fa-solid fa-times text-red-500"></i>Costos por minuto</li>
+            <li><i class="fa-solid fa-times text-red-500"></i>Solo llamar y colgar</li>
           </ul>
         </div>
 
@@ -68,7 +73,7 @@
           <ul class="timeline-era__features">
             <li><i class="fa-solid fa-check text-green-500"></i>Internet global</li>
             <li><i class="fa-solid fa-check text-green-500"></i>Cualquier lugar</li>
-            <li><i class="fa-solid fa-check text-green-500"></i>Tarifa fija</li>
+            <li><i class="fa-solid fa-check text-green-500"></i>Grabar y transferir</li>
           </ul>
         </div>
       </div>
@@ -76,6 +81,11 @@
 
     <!-- Comparación detallada -->
     <div class="detailed-comparison mb-20">
+      <!-- Imagen central de comparación -->
+      <div class="text-center mb-12">
+        <img src="assets/img/traditional-vs-voip.jpg" alt="Comparación: Sistema telefónico tradicional vs Telefonía IP" class="mx-auto rounded-lg shadow-lg max-w-4xl w-full" loading="lazy">
+      </div>
+      
       <div class="grid lg:grid-cols-2 gap-16 items-start">
         <!-- Lado tradicional -->
         <div class="comparison-side comparison-side--old">
@@ -98,10 +108,10 @@
                 </div>
               </div>
               <div class="problem-item">
-                <i class="fa-solid fa-money-bill-wave text-red-500 text-xl"></i>
+                <i class="fa-solid fa-clock text-red-500 text-xl"></i>
                 <div>
-                  <strong>Costos variables:</strong>
-                  <p class="text-sm text-gray-600">Facturas que cambian cada mes</p>
+                  <strong>Pérdida de tiempo:</strong>
+                  <p class="text-sm text-gray-600">Configuraciones complicadas y lentas</p>
                 </div>
               </div>
               <div class="problem-item">
@@ -114,8 +124,8 @@
               <div class="problem-item">
                 <i class="fa-solid fa-ban text-red-500 text-xl"></i>
                 <div>
-                  <strong>Limitaciones:</strong>
-                  <p class="text-sm text-gray-600">Pocas funciones avanzadas</p>
+                  <strong>Sin flexibilidad:</strong>
+                  <p class="text-sm text-gray-600">No puedes grabar, transferir o crear extensiones</p>
                 </div>
               </div>
             </div>
@@ -143,10 +153,10 @@
                 </div>
               </div>
               <div class="benefit-item">
-                <i class="fa-solid fa-hand-holding-dollar text-green-500 text-xl"></i>
+                <i class="fa-solid fa-clock text-green-500 text-xl"></i>
                 <div>
-                  <strong>Costo predecible:</strong>
-                  <p class="text-sm text-gray-600">Una tarifa fija mensual, sin sorpresas</p>
+                  <strong>Configuración rápida:</strong>
+                  <p class="text-sm text-gray-600">Lista para usar en minutos, no días</p>
                 </div>
               </div>
               <div class="benefit-item">
@@ -157,10 +167,10 @@
                 </div>
               </div>
               <div class="benefit-item">
-                <i class="fa-solid fa-rocket text-green-500 text-xl"></i>
+                <i class="fa-solid fa-star text-green-500 text-xl"></i>
                 <div>
-                  <strong>Funciones premium:</strong>
-                  <p class="text-sm text-gray-600">Como las empresas Fortune 500</p>
+                  <strong>Herramientas profesionales:</strong>
+                  <p class="text-sm text-gray-600">Grabación, transferencias, música en espera, reportes</p>
                 </div>
               </div>
             </div>
@@ -222,6 +232,11 @@
       <p class="text-gray-700 max-w-3xl mx-auto text-lg">
         Más allá de la tecnología, estos son los cambios reales que experimentarás en tu empresa.
       </p>
+      
+      <!-- Imagen de beneficios empresariales -->
+      <div class="mt-8 mb-8">
+        <img src="assets/img/business-benefits-phone.jpg" alt="Empresarios utilizando telefonía IP para mejorar su comunicación" class="mx-auto rounded-lg shadow-lg max-w-3xl w-full" loading="lazy">
+      </div>
     </div>
 
     <div class="benefits-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -253,17 +268,17 @@
         </div>
       </article>
 
-      <!-- Beneficio 3: Ahorro -->
-      <article class="benefit-card benefit-card--savings">
+      <!-- Beneficio 3: Comunicación mejorada -->
+      <article class="benefit-card benefit-card--communication">
         <div class="benefit-card__icon">
-          <i class="fa-solid fa-piggy-bank"></i>
+          <i class="fa-solid fa-comments"></i>
         </div>
-        <h3 class="benefit-card__title">Ahorro Inmediato</h3>
+        <h3 class="benefit-card__title">Comunicación Mejorada</h3>
         <p class="benefit-card__desc">
-          Llamadas ilimitadas nacionales, sin sorpresas en la factura telefónica. Un costo fijo mensual y ya.
+          Llamadas ilimitadas nacionales, calidad de audio superior, y nunca más líneas ocupadas. Tu equipo siempre conectado.
         </p>
         <div class="benefit-card__example">
-          <strong>Ejemplo real:</strong> "Antes pagaba $3,000 al mes en llamadas. Ahora pago $605 fijo."
+          <strong>Ejemplo real:</strong> "Mis clientes ya no escuchan 'línea ocupada'. Siempre hay alguien disponible para atenderlos."
         </div>
       </article>
 
@@ -350,6 +365,11 @@
       <p class="text-gray-700 max-w-3xl mx-auto text-lg">
         No te preocupes por la parte técnica. Aquí te explicamos de manera sencilla cómo funciona todo.
       </p>
+      
+      <!-- Imagen del proceso de implementación -->
+      <div class="mt-8 mb-8">
+        <img src="assets/img/voip-setup-process.jpg" alt="Proceso simple de configuración de telefonía IP en 3 pasos" class="mx-auto max-w-4xl w-full" loading="lazy">
+      </div>
     </div>
 
     <div class="process-steps">
@@ -638,6 +658,11 @@
       <p class="text-gray-700 max-w-3xl mx-auto text-lg">
         Estas son historias reales de empresas que ya transformaron su comunicación con Telefonía IP.
       </p>
+      
+      <!-- Imagen de empresas exitosas -->
+      <div class="mt-8 mb-8">
+        <img src="assets/img/successful-businesses-voip.jpg" alt="Empresas exitosas utilizando sistemas de telefonía IP" class="mx-auto rounded-lg shadow-lg max-w-4xl w-full" loading="lazy">
+      </div>
     </div>
 
     <div class="use-cases grid lg:grid-cols-2 gap-12">
@@ -654,12 +679,12 @@
         </div>
         <div class="use-case__content">
           <blockquote class="use-case__quote">
-            "Antes tenía 3 líneas telefónicas que me costaban $4,500 al mes. Ahora con una sola línea IP pago $1,490 y mis contadores pueden atender clientes desde casa durante temporada alta. Es como tener la oficina en todos lados."
+            "Antes tenía 3 líneas telefónicas separadas y era un caos coordinar todo. Ahora con una sola línea IP tengo todo centralizado y mis contadores pueden atender clientes desde casa durante temporada alta. Es como tener la oficina en todos lados."
           </blockquote>
           <div class="use-case__benefits">
             <h4>Lo que más valora:</h4>
             <ul>
-              <li><i class="fa-solid fa-dollar-sign text-green-500"></i>Ahorro de $3,000 mensuales</li>
+              <li><i class="fa-solid fa-network-wired text-green-500"></i>Todo centralizado y organizado</li>
               <li><i class="fa-solid fa-home text-blue-500"></i>Trabajo remoto en temporada alta</li>
               <li><i class="fa-solid fa-record-vinyl text-purple-500"></i>Grabación de consultas importantes</li>
             </ul>
@@ -757,6 +782,11 @@
     <p class="text-gray-700 max-w-3xl mx-auto text-lg mb-12">
       Todos los planes incluyen llamadas ilimitadas nacionales, numeración LADA México, soporte técnico especializado y funciones profesionales avanzadas.
     </p>
+    
+    <!-- Imagen de planes empresariales -->
+    <div class="mb-12">
+      <img src="assets/img/voip-pricing-plans.jpg" alt="Planes de telefonía IP adaptados a diferentes tipos de empresas" class="mx-auto rounded-lg shadow-lg max-w-3xl w-full" loading="lazy">
+    </div>
 
     <div class="pricing-cards grid md:grid-cols-3 gap-10">
       <!-- Plan Básico -->
