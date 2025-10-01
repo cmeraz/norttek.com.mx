@@ -1,6 +1,7 @@
 <?php
 // Página de Telefonía IP - Versión Refactorizada
 $pageName = basename(__FILE__, ".php");
+$cssFiles = ['telefonia', 'telefonia-refactored']; // Incluir ambos archivos CSS
 $seo = [
     'title' => 'Telefonía IP en la Nube - Comunicación Empresarial Moderna | Norttek',
     'description' => 'Descubre cómo la Telefonía IP puede transformar tu empresa. Llamadas ilimitadas, extensiones móviles, sin hardware complicado. Demo gratis 30 días.',

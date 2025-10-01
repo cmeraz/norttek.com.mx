@@ -23,65 +23,187 @@
 
 <!-- PASO 1: ¿QUÉ ES TELEFONÍA IP? - Explicación simple -->
 <section id="que-es" class="py-24 bg-white" aria-labelledby="que-es-title">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center mb-16">
-      <div id="que-es-title" class="nt-stack">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-20">
+      <div id="que-es-title" class="nt-stack mb-6">
         <?= nt_heading('¿Qué es la Telefonía IP?', 'fa-solid fa-question-circle', 'lg', 'Una explicación simple', ['animate' => true, 'class'=>'nt-heading-accent-bar']); ?>
       </div>
-      <p class="text-gray-700 max-w-3xl mx-auto text-lg leading-relaxed">
+      <p class="text-gray-700 max-w-4xl mx-auto text-xl leading-relaxed">
         Olvídate de los conceptos técnicos complicados. Te explicamos de manera sencilla qué es y por qué está revolucionando las comunicaciones empresariales.
       </p>
     </div>
 
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <!-- Comparación visual -->
-      <div class="space-y-8">
-        <!-- Teléfono tradicional -->
-        <div class="comparison-card comparison-card--old">
-          <div class="comparison-card__header">
-            <i class="fa-solid fa-phone-flip text-red-500 text-3xl"></i>
-            <h3 class="text-xl font-bold text-gray-800">Teléfono Tradicional</h3>
+    <!-- Historia evolutiva -->
+    <div class="evolution-timeline mb-20">
+      <div class="grid md:grid-cols-3 gap-8 items-center">
+        <!-- Era pasada -->
+        <div class="timeline-era timeline-era--past">
+          <div class="timeline-era__icon">
+            <i class="fa-solid fa-phone-flip text-4xl text-gray-400"></i>
           </div>
-          <ul class="comparison-card__points text-gray-600">
-            <li><i class="fa-solid fa-times text-red-500"></i>Atado a un lugar físico</li>
-            <li><i class="fa-solid fa-times text-red-500"></i>Costos altos por llamadas</li>
-            <li><i class="fa-solid fa-times text-red-500"></i>Mantenimiento complicado</li>
-            <li><i class="fa-solid fa-times text-red-500"></i>Funciones limitadas</li>
+          <h3 class="timeline-era__title">Era Analógica</h3>
+          <p class="timeline-era__period">Años 1900-2000</p>
+          <ul class="timeline-era__features">
+            <li><i class="fa-solid fa-times text-red-500"></i>Cables físicos</li>
+            <li><i class="fa-solid fa-times text-red-500"></i>Una ubicación</li>
+            <li><i class="fa-solid fa-times text-red-500"></i>Costos por minuto</li>
           </ul>
         </div>
 
-        <!-- Telefonía IP -->
-        <div class="comparison-card comparison-card--new">
-          <div class="comparison-card__header">
-            <i class="fa-solid fa-cloud text-blue-500 text-3xl"></i>
-            <h3 class="text-xl font-bold text-gray-800">Telefonía IP (Internet)</h3>
+        <!-- Transición -->
+        <div class="timeline-transition">
+          <div class="timeline-arrow">
+            <i class="fa-solid fa-arrow-right text-3xl text-blue-500"></i>
           </div>
-          <ul class="comparison-card__points text-gray-600">
-            <li><i class="fa-solid fa-check text-green-500"></i>Funciona desde cualquier lugar</li>
-            <li><i class="fa-solid fa-check text-green-500"></i>Llamadas a costo fijo mensual</li>
-            <li><i class="fa-solid fa-check text-green-500"></i>Sin mantenimiento técnico</li>
-            <li><i class="fa-solid fa-check text-green-500"></i>Funciones profesionales avanzadas</li>
+          <p class="timeline-evolution">Evolución tecnológica</p>
+        </div>
+
+        <!-- Era presente -->
+        <div class="timeline-era timeline-era--present">
+          <div class="timeline-era__icon">
+            <i class="fa-solid fa-cloud text-4xl text-blue-500"></i>
+          </div>
+          <h3 class="timeline-era__title">Era Digital</h3>
+          <p class="timeline-era__period">2000 - Presente</p>
+          <ul class="timeline-era__features">
+            <li><i class="fa-solid fa-check text-green-500"></i>Internet global</li>
+            <li><i class="fa-solid fa-check text-green-500"></i>Cualquier lugar</li>
+            <li><i class="fa-solid fa-check text-green-500"></i>Tarifa fija</li>
           </ul>
         </div>
       </div>
+    </div>
 
-      <!-- Explicación simple -->
-      <div class="space-y-6">
-        <div class="simple-explanation">
-          <div class="simple-explanation__icon">
-            <i class="fa-solid fa-wifi text-4xl text-blue-500"></i>
+    <!-- Comparación detallada -->
+    <div class="detailed-comparison mb-20">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+        <!-- Lado tradicional -->
+        <div class="comparison-side comparison-side--old">
+          <div class="comparison-side__header">
+            <div class="comparison-side__icon-wrapper">
+              <i class="fa-solid fa-phone-flip text-5xl text-red-500"></i>
+            </div>
+            <h3 class="comparison-side__title">Sistema Tradicional</h3>
+            <p class="comparison-side__subtitle">Lo que conoces actualmente</p>
           </div>
-          <h3 class="text-2xl font-bold text-gray-800 mb-4">En palabras simples:</h3>
-          <p class="text-lg text-gray-700 leading-relaxed mb-4">
-            <strong>La Telefonía IP</strong> convierte tu conexión a internet en un sistema telefónico profesional completo.
-          </p>
-          <p class="text-lg text-gray-700 leading-relaxed mb-6">
-            Es como tener una <em>central telefónica virtual</em> que funciona en la nube, sin necesidad de equipos físicos complicados en tu oficina.
-          </p>
-          <div class="highlight-box">
-            <i class="fa-solid fa-lightbulb text-yellow-500 text-xl"></i>
-            <p class="text-gray-800 font-medium">
-              <strong>Piénsalo así:</strong> Es como cambiar de enviar cartas físicas a usar email. Mismo objetivo, pero más rápido, eficiente y con mejores funciones.
+          
+          <div class="comparison-problems">
+            <h4 class="comparison-problems__title">Problemas comunes:</h4>
+            <div class="space-y-4">
+              <div class="problem-item">
+                <i class="fa-solid fa-location-dot text-red-500 text-xl"></i>
+                <div>
+                  <strong>Ubicación fija:</strong>
+                  <p class="text-sm text-gray-600">Solo funciona en la oficina</p>
+                </div>
+              </div>
+              <div class="problem-item">
+                <i class="fa-solid fa-money-bill-wave text-red-500 text-xl"></i>
+                <div>
+                  <strong>Costos variables:</strong>
+                  <p class="text-sm text-gray-600">Facturas que cambian cada mes</p>
+                </div>
+              </div>
+              <div class="problem-item">
+                <i class="fa-solid fa-wrench text-red-500 text-xl"></i>
+                <div>
+                  <strong>Mantenimiento:</strong>
+                  <p class="text-sm text-gray-600">Técnicos, reparaciones, actualizaciones</p>
+                </div>
+              </div>
+              <div class="problem-item">
+                <i class="fa-solid fa-ban text-red-500 text-xl"></i>
+                <div>
+                  <strong>Limitaciones:</strong>
+                  <p class="text-sm text-gray-600">Pocas funciones avanzadas</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lado IP -->
+        <div class="comparison-side comparison-side--new">
+          <div class="comparison-side__header">
+            <div class="comparison-side__icon-wrapper">
+              <i class="fa-solid fa-cloud text-5xl text-blue-500"></i>
+            </div>
+            <h3 class="comparison-side__title">Telefonía IP</h3>
+            <p class="comparison-side__subtitle">La evolución que necesitas</p>
+          </div>
+          
+          <div class="comparison-benefits">
+            <h4 class="comparison-benefits__title">Ventajas inmediatas:</h4>
+            <div class="space-y-4">
+              <div class="benefit-item">
+                <i class="fa-solid fa-globe text-green-500 text-xl"></i>
+                <div>
+                  <strong>Libertad total:</strong>
+                  <p class="text-sm text-gray-600">Funciona desde cualquier lugar del mundo</p>
+                </div>
+              </div>
+              <div class="benefit-item">
+                <i class="fa-solid fa-hand-holding-dollar text-green-500 text-xl"></i>
+                <div>
+                  <strong>Costo predecible:</strong>
+                  <p class="text-sm text-gray-600">Una tarifa fija mensual, sin sorpresas</p>
+                </div>
+              </div>
+              <div class="benefit-item">
+                <i class="fa-solid fa-magic-wand-sparkles text-green-500 text-xl"></i>
+                <div>
+                  <strong>Cero mantenimiento:</strong>
+                  <p class="text-sm text-gray-600">Nosotros nos encargamos de todo</p>
+                </div>
+              </div>
+              <div class="benefit-item">
+                <i class="fa-solid fa-rocket text-green-500 text-xl"></i>
+                <div>
+                  <strong>Funciones premium:</strong>
+                  <p class="text-sm text-gray-600">Como las empresas Fortune 500</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Explicación con analogía mejorada -->
+    <div class="analogy-explanation">
+      <div class="grid lg:grid-cols-3 gap-8 items-center">
+        <div class="analogy-step">
+          <div class="analogy-step__icon">
+            <i class="fa-solid fa-envelope text-4xl text-gray-500"></i>
+          </div>
+          <h4 class="analogy-step__title">Antes: Cartas físicas</h4>
+          <p class="analogy-step__desc">Lentas, costosas, limitadas a un lugar</p>
+        </div>
+        
+        <div class="analogy-arrow">
+          <i class="fa-solid fa-arrow-right text-3xl text-blue-500"></i>
+          <p class="text-sm text-gray-600 mt-2">Evolución</p>
+        </div>
+        
+        <div class="analogy-step">
+          <div class="analogy-step__icon">
+            <i class="fa-solid fa-at text-4xl text-blue-500"></i>
+          </div>
+          <h4 class="analogy-step__title">Ahora: Email</h4>
+          <p class="analogy-step__desc">Instantáneo, económico, desde cualquier lugar</p>
+        </div>
+      </div>
+      
+      <div class="analogy-conclusion">
+        <div class="highlight-box-enhanced">
+          <div class="highlight-box-enhanced__icon">
+            <i class="fa-solid fa-lightbulb text-3xl text-yellow-500"></i>
+          </div>
+          <div class="highlight-box-enhanced__content">
+            <h4 class="highlight-box-enhanced__title">La Telefonía IP es la misma evolución</h4>
+            <p class="highlight-box-enhanced__desc">
+              Tu internet actual se convierte en un sistema telefónico profesional completo. 
+              <strong>Mismo objetivo, pero infinitamente mejor.</strong>
             </p>
           </div>
         </div>
@@ -176,14 +298,42 @@
       <!-- Beneficio 6: Crecimiento -->
       <article class="benefit-card benefit-card--growth">
         <div class="benefit-card__icon">
-          <i class="fa-solid fa-seedling"></i>
+          <i class="fa-solid fa-chart-line-up"></i>
         </div>
-        <h3 class="benefit-card__title">Crece Contigo</h3>
+        <h3 class="benefit-card__title">Escalabilidad Instantánea</h3>
         <p class="benefit-card__desc">
-          ¿Contrataste más personal? Agregamos extensiones en minutos. ¿Abres sucursal? Conectamos todo al mismo sistema.
+          Tu negocio crece y tu telefonía se adapta al instante. Sin comprar equipos, sin instalaciones complicadas, sin dolores de cabeza.
         </p>
+        
+        <div class="growth-scenarios">
+          <div class="growth-scenario">
+            <i class="fa-solid fa-user-plus text-green-500"></i>
+            <span class="growth-scenario__text"><strong>+1 empleado</strong> = +1 extensión en 5 minutos</span>
+          </div>
+          <div class="growth-scenario">
+            <i class="fa-solid fa-building text-blue-500"></i>
+            <span class="growth-scenario__text"><strong>Nueva sucursal</strong> = Mismo sistema, cero instalación</span>
+          </div>
+          <div class="growth-scenario">
+            <i class="fa-solid fa-phone-volume text-purple-500"></i>
+            <span class="growth-scenario__text"><strong>Más llamadas</strong> = Más canales automáticamente</span>
+          </div>
+        </div>
+        
         <div class="benefit-card__example">
-          <strong>Ejemplo real:</strong> "Cuando contraté al quinto empleado, solo pedí una extensión más y listo."
+          <strong>Caso real:</strong> "Empecé con 2 extensiones. Hoy tengo 15 empleados en 3 ciudades. El sistema creció conmigo sin complicaciones."
+        </div>
+        
+        <div class="growth-timeline">
+          <h5 class="growth-timeline__title">Tu crecimiento típico:</h5>
+          <div class="growth-timeline__steps">
+            <span class="growth-step">Mes 1: 1-3 ext.</span>
+            <span class="growth-arrow">→</span>
+            <span class="growth-step">Año 1: 5-10 ext.</span>
+            <span class="growth-arrow">→</span>
+            <span class="growth-step">Año 2+: 15+ ext.</span>
+          </div>
+          <p class="growth-timeline__note">Cada paso es instantáneo y sin costos de instalación</p>
         </div>
       </article>
     </div>
@@ -351,13 +501,127 @@
       </div>
 
       <!-- Combinación de dispositivos -->
-      <div class="devices-combination mt-16 text-center">
-        <div class="combination-highlight">
-          <i class="fa-solid fa-link text-4xl text-blue-500 mb-4"></i>
-          <h3 class="text-2xl font-bold text-gray-800 mb-4">¿Lo mejor de todo?</h3>
-          <p class="text-lg text-gray-700 max-w-2xl mx-auto">
-            <strong>Puedes usar todos al mismo tiempo.</strong> El mismo número, las mismas extensiones, funcionando en todos tus dispositivos. Atiende en el celular, transfiere a la computadora, o termina en el teléfono físico.
-          </p>
+      <div class="devices-combination mt-20">
+        <div class="combination-wrapper">
+          <!-- Título principal con animación -->
+          <div class="combination-header text-center mb-12">
+            <div class="combination-icon-group">
+              <i class="fa-solid fa-mobile-screen-button text-3xl text-blue-500"></i>
+              <i class="fa-solid fa-plus text-xl text-gray-400 mx-3"></i>
+              <i class="fa-solid fa-computer text-3xl text-green-500"></i>
+              <i class="fa-solid fa-plus text-xl text-gray-400 mx-3"></i>
+              <i class="fa-solid fa-phone text-3xl text-purple-500"></i>
+            </div>
+            <h3 class="combination-title">¿Lo mejor de todo?</h3>
+            <p class="combination-subtitle">Funciona en todos tus dispositivos simultáneamente</p>
+          </div>
+
+          <!-- Demostración visual del flujo -->
+          <div class="workflow-demonstration">
+            <div class="workflow-scenario">
+              <h4 class="workflow-scenario__title">Ejemplo de uso real:</h4>
+              <div class="workflow-steps">
+                <!-- Paso 1 -->
+                <div class="workflow-step">
+                  <div class="workflow-step__number">1</div>
+                  <div class="workflow-step__device">
+                    <i class="fa-solid fa-mobile-screen-button text-blue-500"></i>
+                    <span>Celular</span>
+                  </div>
+                  <div class="workflow-step__action">
+                    <strong>Recibes llamada</strong>
+                    <p>Cliente llama mientras estás en la calle</p>
+                  </div>
+                </div>
+
+                <!-- Flecha -->
+                <div class="workflow-arrow">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+                <!-- Paso 2 -->
+                <div class="workflow-step">
+                  <div class="workflow-step__number">2</div>
+                  <div class="workflow-step__device">
+                    <i class="fa-solid fa-computer text-green-500"></i>
+                    <span>Computadora</span>
+                  </div>
+                  <div class="workflow-step__action">
+                    <strong>Transfieres sin cortar</strong>
+                    <p>Llegas a la oficina y cambias de dispositivo</p>
+                  </div>
+                </div>
+
+                <!-- Flecha -->
+                <div class="workflow-arrow">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+                <!-- Paso 3 -->
+                <div class="workflow-step">
+                  <div class="workflow-step__number">3</div>
+                  <div class="workflow-step__device">
+                    <i class="fa-solid fa-phone text-purple-500"></i>
+                    <span>Teléfono físico</span>
+                  </div>
+                  <div class="workflow-step__action">
+                    <strong>Terminas la llamada</strong>
+                    <p>Con mejor audio para tomar notas importantes</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Beneficios clave destacados -->
+          <div class="combination-benefits">
+            <div class="benefits-grid grid md:grid-cols-3 gap-6">
+              <div class="combination-benefit">
+                <div class="combination-benefit__icon">
+                  <i class="fa-solid fa-sync-alt text-blue-500"></i>
+                </div>
+                <h5 class="combination-benefit__title">Sincronización Automática</h5>
+                <p class="combination-benefit__desc">
+                  Todos tus dispositivos comparten la misma información: contactos, historial de llamadas y configuración.
+                </p>
+              </div>
+
+              <div class="combination-benefit">
+                <div class="combination-benefit__icon">
+                  <i class="fa-solid fa-exchange-alt text-green-500"></i>
+                </div>
+                <h5 class="combination-benefit__title">Transferencias Fluidas</h5>
+                <p class="combination-benefit__desc">
+                  Cambia de un dispositivo a otro sin que el cliente se dé cuenta. Sin interrupciones, sin complicaciones.
+                </p>
+              </div>
+
+              <div class="combination-benefit">
+                <div class="combination-benefit__icon">
+                  <i class="fa-solid fa-shield-check text-purple-500"></i>
+                </div>
+                <h5 class="combination-benefit__title">Respaldo Automático</h5>
+                <p class="combination-benefit__desc">
+                  Si un dispositivo falla, los otros siguen funcionando. Nunca pierdes una llamada importante.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Call to action mejorado -->
+          <div class="combination-cta">
+            <div class="cta-highlight">
+              <i class="fa-solid fa-magic-wand-sparkles text-4xl text-yellow-500 mb-4"></i>
+              <h4 class="cta-title">Un solo número, infinitas posibilidades</h4>
+              <p class="cta-description">
+                Tu número empresarial funciona donde tú estés, como tú lo necesites, cuando tú quieras.
+              </p>
+              <a href="#planes" class="nt-btn nt-btn-primary nt-btn-lg">
+                <i class="fa-solid fa-rocket"></i>
+                <span>Ver planes disponibles</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
