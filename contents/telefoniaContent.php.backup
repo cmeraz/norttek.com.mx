@@ -28,13 +28,13 @@
       <div id="que-es-title" class="nt-stack mb-4">
         <?= nt_heading('¿Qué es la Telefonía IP?', 'fa-solid fa-question-circle', 'lg', 'Una explicación simple', ['animate' => true, 'class'=>'nt-heading-accent-bar']); ?>
       </div>
-      <p class="text-gray-700 max-w-3xl mx-auto text-lg leading-relaxed">
+      <p class="text-gray-700 max-w-4xl mx-auto text-lg leading-relaxed">
         Olvídate de los conceptos técnicos complicados. Te explicamos de manera sencilla qué es y por qué está revolucionando las comunicaciones empresariales.
       </p>
     </div>
 
     <!-- Historia evolutiva -->
-    <div class="evolution-timeline mb-6">
+    <div class="evolution-timeline mb-12">
       <!-- Imagen ilustrativa de la evolución -->
       <div class="text-center mb-8">
         <img src="assets/img/evolution-phones.jpg" alt="Evolución de sistemas telefónicos: de analógico a digital" class="mx-auto rounded-lg shadow-lg max-w-2xl w-full" loading="lazy" style="max-height: 250px; object-fit: cover;">
@@ -44,7 +44,7 @@
         <!-- Era pasada -->
         <div class="timeline-era timeline-era--past">
           <div class="timeline-era__icon">
-            <i class="fa-solid fa-phone-flip text-3xl text-gray-400"></i>
+            <i class="fa-solid fa-phone-flip text-4xl text-gray-400"></i>
           </div>
           <h3 class="timeline-era__title">Era Analógica</h3>
           <p class="timeline-era__period">Años 1900-2000</p>
@@ -66,7 +66,7 @@
         <!-- Era presente -->
         <div class="timeline-era timeline-era--present">
           <div class="timeline-era__icon">
-            <i class="fa-solid fa-cloud text-3xl text-blue-500"></i>
+            <i class="fa-solid fa-cloud text-4xl text-blue-500"></i>
           </div>
           <h3 class="timeline-era__title">Era Digital</h3>
           <p class="timeline-era__period">2000 - Presente</p>
@@ -83,7 +83,7 @@
     <div class="detailed-comparison mb-10">
       <!-- Imagen central de comparación -->
       <div class="text-center mb-8">
-        <img src="assets/img/traditional-vs-voip.jpg" alt="Comparación: Sistema telefónico tradicional vs Telefonía IP" class="mx-auto rounded-lg shadow-lg max-w-2xl w-full" loading="lazy" style="max-height: 300px; object-fit: cover;">
+        <img src="assets/img/traditional-vs-voip.jpg" alt="Comparación: Sistema telefónico tradicional vs Telefonía IP" class="mx-auto rounded-lg shadow-lg max-w-3xl w-full" loading="lazy" style="max-height: 300px; object-fit: cover;">
       </div>
       
       <div class="grid lg:grid-cols-2 gap-8 items-start">
@@ -91,7 +91,7 @@
         <div class="comparison-side comparison-side--old">
           <div class="comparison-side__header">
             <div class="comparison-side__icon-wrapper">
-              <i class="fa-solid fa-phone-flip text-3xl text-red-500"></i>
+              <i class="fa-solid fa-phone-flip text-5xl text-red-500"></i>
             </div>
             <h3 class="comparison-side__title">Sistema Tradicional</h3>
             <p class="comparison-side__subtitle">Lo que conoces actualmente</p>
@@ -101,28 +101,28 @@
             <h4 class="comparison-problems__title">Problemas comunes:</h4>
             <div class="space-y-4">
               <div class="problem-item">
-                <i class="fa-solid fa-location-dot text-red-500 text-lg"></i>
+                <i class="fa-solid fa-location-dot text-red-500 text-xl"></i>
                 <div>
                   <strong>Ubicación fija:</strong>
                   <p class="text-sm text-gray-600">Solo funciona en la oficina</p>
                 </div>
               </div>
               <div class="problem-item">
-                <i class="fa-solid fa-clock text-red-500 text-lg"></i>
+                <i class="fa-solid fa-clock text-red-500 text-xl"></i>
                 <div>
                   <strong>Pérdida de tiempo:</strong>
                   <p class="text-sm text-gray-600">Configuraciones complicadas y lentas</p>
                 </div>
               </div>
               <div class="problem-item">
-                <i class="fa-solid fa-wrench text-red-500 text-lg"></i>
+                <i class="fa-solid fa-wrench text-red-500 text-xl"></i>
                 <div>
                   <strong>Mantenimiento:</strong>
                   <p class="text-sm text-gray-600">Técnicos, reparaciones, actualizaciones</p>
                 </div>
               </div>
               <div class="problem-item">
-                <i class="fa-solid fa-ban text-red-500 text-lg"></i>
+                <i class="fa-solid fa-ban text-red-500 text-xl"></i>
                 <div>
                   <strong>Sin flexibilidad:</strong>
                   <p class="text-sm text-gray-600">No puedes grabar, transferir o crear extensiones</p>
@@ -136,7 +136,7 @@
         <div class="comparison-side comparison-side--new">
           <div class="comparison-side__header">
             <div class="comparison-side__icon-wrapper">
-              <i class="fa-solid fa-cloud text-3xl text-blue-500"></i>
+              <i class="fa-solid fa-cloud text-5xl text-blue-500"></i>
             </div>
             <h3 class="comparison-side__title">Telefonía IP</h3>
             <p class="comparison-side__subtitle">La evolución que necesitas</p>
@@ -146,28 +146,28 @@
             <h4 class="comparison-benefits__title">Ventajas inmediatas:</h4>
             <div class="space-y-4">
               <div class="benefit-item">
-                <i class="fa-solid fa-globe text-green-500 text-lg"></i>
+                <i class="fa-solid fa-globe text-green-500 text-xl"></i>
                 <div>
                   <strong>Libertad total:</strong>
                   <p class="text-sm text-gray-600">Funciona desde cualquier lugar del mundo</p>
                 </div>
               </div>
               <div class="benefit-item">
-                <i class="fa-solid fa-clock text-green-500 text-lg"></i>
+                <i class="fa-solid fa-clock text-green-500 text-xl"></i>
                 <div>
                   <strong>Configuración rápida:</strong>
                   <p class="text-sm text-gray-600">Lista para usar en minutos, no días</p>
                 </div>
               </div>
               <div class="benefit-item">
-                <i class="fa-solid fa-magic-wand-sparkles text-green-500 text-lg"></i>
+                <i class="fa-solid fa-magic-wand-sparkles text-green-500 text-xl"></i>
                 <div>
                   <strong>Cero mantenimiento:</strong>
                   <p class="text-sm text-gray-600">Nosotros nos encargamos de todo</p>
                 </div>
               </div>
               <div class="benefit-item">
-                <i class="fa-solid fa-star text-green-500 text-lg"></i>
+                <i class="fa-solid fa-star text-green-500 text-xl"></i>
                 <div>
                   <strong>Herramientas profesionales:</strong>
                   <p class="text-sm text-gray-600">Grabación, transferencias, música en espera, reportes</p>
@@ -184,7 +184,7 @@
       <div class="grid lg:grid-cols-3 gap-8 items-center">
         <div class="analogy-step">
           <div class="analogy-step__icon">
-            <i class="fa-solid fa-envelope text-3xl text-gray-500"></i>
+            <i class="fa-solid fa-envelope text-4xl text-gray-500"></i>
           </div>
           <h4 class="analogy-step__title">Antes: Cartas físicas</h4>
           <p class="analogy-step__desc">Lentas, costosas, limitadas a un lugar</p>
@@ -197,7 +197,7 @@
         
         <div class="analogy-step">
           <div class="analogy-step__icon">
-            <i class="fa-solid fa-at text-3xl text-blue-500"></i>
+            <i class="fa-solid fa-at text-4xl text-blue-500"></i>
           </div>
           <h4 class="analogy-step__title">Ahora: Email</h4>
           <p class="analogy-step__desc">Instantáneo, económico, desde cualquier lugar</p>
@@ -223,9 +223,9 @@
 </section>
 
 <!-- PASO 2: BENEFICIOS TANGIBLES - Conexión emocional -->
-<section id="beneficios" class="py-12 bg-gradient-to-br from-blue-50 to-indigo-100" aria-labelledby="beneficios-title">
-  <div class="max-w-5xl mx-auto px-6">
-    <div class="text-center mb-8">
+<section id="beneficios" class="py-24 bg-gradient-to-br from-blue-50 to-indigo-100" aria-labelledby="beneficios-title">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
       <div id="beneficios-title" class="nt-stack">
         <?= nt_heading('¿Qué cambia en tu día a día?', 'fa-solid fa-heart', 'lg', 'Beneficios que sentirás desde el primer día', ['animate' => true, 'class'=>'nt-heading-accent-bar']); ?>
       </div>
@@ -235,7 +235,7 @@
       
       <!-- Imagen de beneficios empresariales -->
       <div class="mt-8 mb-8">
-        <img src="assets/img/business-benefits-phone.jpg" alt="Empresarios utilizando telefonía IP para mejorar su comunicación" class="mx-auto rounded-lg shadow-md max-w-2xl w-full" loading="lazy" style="max-height: 300px; object-fit: cover;">
+        <img src="assets/img/business-benefits-phone.jpg" alt="Empresarios utilizando telefonía IP para mejorar su comunicación" class="mx-auto rounded-lg shadow-lg max-w-3xl w-full" loading="lazy">
       </div>
     </div>
 
@@ -356,7 +356,7 @@
 </section>
 
 <!-- PLANES -->
-<section id="planes" class="py-12 bg-gray-50" aria-labelledby="planes-title">
+<section id="planes" class="py-24 bg-gray-50" aria-labelledby="planes-title">
   <div class="max-w-7xl mx-auto px-6 text-center nt-stack">
   <div id="planes-title" class="nt-stack">
       <?= nt_heading('Planes y llamadas ilimitadas', 'fa-solid fa-boxes-stacked', 'lg', null, ['animate' => true, 'delay' => 'sm','class'=>'nt-heading-accent-bar']); ?>
@@ -364,7 +364,7 @@
   <p class="text-gray-700 max-w-2xl mx-auto text-lg">
       Elige el plan que mejor se adapta a tu empresa. Todos incluyen numeración LADA México y soporte técnico.
     </p>
-    <div class="mt-14 tel-plans-modern grid md:grid-cols-3 gap-6">
+    <div class="mt-14 tel-plans-modern grid md:grid-cols-3 gap-10">
       <!-- Nuevo Plan Básico -->
       <article class="tel-plan tel-plan--tier-basico" data-plan-tier="basico">
         <header class="tel-plan__hdr">
@@ -440,8 +440,8 @@
 </section>
 
 <!-- DEMO -->
-<section id="demo" class="py-12 bg-gray-50" aria-labelledby="demo-title">
-  <div class="max-w-7xl mx-auto px-6 lg:flex lg:items-center lg:justify-between gap-6 nt-stack">
+<section id="demo" class="py-24 bg-gray-50" aria-labelledby="demo-title">
+  <div class="max-w-7xl mx-auto px-6 lg:flex lg:items-center lg:justify-between gap-10 nt-stack">
     <div class="flex-1 text-center lg:text-left animate-fadeInSlow">
       <div id="demo-title" class="mb-4"><?= nt_heading('¿Listo para migrar a la nube?', 'fa-solid fa-cloud-arrow-up', 'lg', 'Solicita tu demo gratuita', ['animate' => true, 'delay' => 'sm','class'=>'nt-heading-accent-bar']); ?></div>
       <p class="text-gray-700 text-lg mb-6">
