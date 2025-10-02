@@ -12,55 +12,140 @@
 
 /* Espacio reservado para futuros estilos específicos de Telefonía */
 /* ================== PLANES TEL. ================== */
-/* ================== HERO TEL. ================== */
-.telefonia-hero { position:relative; min-height:600px; display:flex; align-items:center; justify-content:center; padding:160px 1rem 100px; }
-@media (min-width:900px){ .telefonia-hero { min-height:680px; padding-top:180px; padding-bottom:120px; } }
-.telefonia-hero-bg { position:absolute; inset:0; background:linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%), url('../img/yeastar-hero.webp') center/cover no-repeat; background-blend-mode:overlay; }
-/* Overlay moderno con gradiente suave inspirado en Yeastar */
-.telefonia-hero-bg::after { content:""; position:absolute; inset:0; background:linear-gradient(135deg, rgba(15,23,42,0.75) 0%, rgba(30,41,59,0.65) 50%, rgba(51,65,85,0.55) 100%); pointer-events:none; }
-.telefonia-hero-inner { position:relative; z-index:2; max-width:920px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:1.5rem; }
-/* Heading limpio y moderno estilo Yeastar */
-.telefonia-hero-inner .nt-heading-hero { filter:none; color:#ffffff; text-shadow:0 2px 4px rgba(0,0,0,0.1); font-weight:800; letter-spacing:-0.5px; }
-.telefonia-hero-inner .nt-heading-hero.nt-heading-invert { text-shadow:0 2px 4px rgba(0,0,0,0.1); }
-/* Subtítulo elegante */
-.telefonia-hero-sub { color:#e2e8f0; font-size:clamp(1rem,1.25vw,1.15rem); line-height:1.6; max-width:760px; margin:0 auto; text-shadow:0 1px 2px rgba(0,0,0,0.1); letter-spacing:0.2px; font-weight:500; }
-.telefonia-hero-actions { display:flex; flex-wrap:wrap; justify-content:center; gap:1.25rem; margin-top:0.5rem; }
-.telefonia-hero-actions a, .telefonia-hero-actions button { position:relative; font-weight:600; letter-spacing:0.4px; }
-/* Botones modernos estilo Yeastar con gradiente vibrante */
-.telefonia-hero-actions a.nt-btn, .telefonia-hero-actions button.nt-btn {
-	--_btn-bg:linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%);
-	--_btn-bg-hover:linear-gradient(135deg, #38bdf8 0%, #0ea5e9 50%, #0284c7 100%);
-	--_btn-color:#ffffff;
-	--_btn-color-hover:#ffffff;
-	background:var(--_btn-bg);
-	color:var(--_btn-color);
-	border:1px solid rgba(255,255,255,0.2);
-	box-shadow:0 4px 14px rgba(14,165,233,0.3), 0 1px 3px rgba(0,0,0,0.2);
-	background-size:120% 120%;
-	transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-	display:inline-flex;
-	align-items:center;
-	justify-content:center;
-	gap:0.6rem;
-	padding:1rem 1.75rem;
-	--hero-btn-h:52px;
-	min-height:var(--hero-btn-h);
-	line-height:1;
-	white-space:nowrap;
-	border-radius:12px;
-	font-size:0.95rem;
+/* ================== HERO TEL. - YEASTAR STYLE ================== */
+.telefonia-hero { 
+	position:relative; 
+	min-height:650px; 
+	display:flex; 
+	align-items:center; 
+	justify-content:center; 
+	padding:180px 1.5rem 120px; 
+	background: #f8fafc;
 }
-.telefonia-hero-actions a.nt-btn i, .telefonia-hero-actions button.nt-btn i { color:var(--_btn-color); transition:transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-.telefonia-hero-actions a.nt-btn:hover, .telefonia-hero-actions a.nt-btn:focus-visible, .telefonia-hero-actions button.nt-btn:hover, .telefonia-hero-actions button.nt-btn:focus-visible {
-	transform:translateY(-3px);
-	background:var(--_btn-bg-hover);
-	box-shadow:0 8px 24px rgba(14,165,233,0.4), 0 4px 8px rgba(0,0,0,0.2);
-	border-color:rgba(255,255,255,0.4);
+@media (min-width:900px){ 
+	.telefonia-hero { 
+		min-height:720px; 
+		padding-top:200px; 
+		padding-bottom:140px; 
+	} 
 }
-.telefonia-hero-actions a.nt-btn:hover i, .telefonia-hero-actions a.nt-btn:focus-visible i, .telefonia-hero-actions button.nt-btn:hover i, .telefonia-hero-actions button.nt-btn:focus-visible i { transform:translateX(3px); }
-.telefonia-hero-actions a.nt-btn:active, .telefonia-hero-actions button.nt-btn:active { transform:translateY(-1px); box-shadow:0 4px 12px rgba(14,165,233,0.3); }
+.telefonia-hero-bg { 
+	position:absolute; 
+	inset:0; 
+	background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+/* Overlay limpio tipo Yeastar */
+.telefonia-hero-bg::after { 
+	content:""; 
+	position:absolute; 
+	inset:0; 
+	background: radial-gradient(ellipse at top, rgba(59,130,246,0.05) 0%, transparent 60%);
+	pointer-events:none; 
+}
+.telefonia-hero-inner { 
+	position:relative; 
+	z-index:2; 
+	max-width:960px; 
+	text-align:center; 
+	display:flex; 
+	flex-direction:column; 
+	align-items:center; 
+	gap:2rem; 
+}
+/* Heading limpio estilo Yeastar */
+.telefonia-hero-inner .nt-heading-hero { 
+	filter:none; 
+	color:#0f172a; 
+	text-shadow:none; 
+	font-weight:700; 
+	letter-spacing:-0.02em; 
+	line-height:1.1;
+}
+.telefonia-hero-inner .nt-heading-hero.nt-heading-invert { 
+	text-shadow:none; 
+	color:#0f172a;
+}
+/* Subtítulo elegante y legible */
+.telefonia-hero-sub { 
+	color:#64748b; 
+	font-size:clamp(1.05rem,1.3vw,1.2rem); 
+	line-height:1.7; 
+	max-width:680px; 
+	margin:0 auto; 
+	text-shadow:none; 
+	letter-spacing:0; 
+	font-weight:400; 
+}
+.telefonia-hero-actions { 
+	display:flex; 
+	flex-wrap:wrap; 
+	justify-content:center; 
+	gap:1rem; 
+	margin-top:0.5rem; 
+}
+.telefonia-hero-actions a, 
+.telefonia-hero-actions button { 
+	position:relative; 
+	font-weight:600; 
+	letter-spacing:0; 
+}
+/* Botones limpios estilo Yeastar - sin gradientes dramáticos */
+.telefonia-hero-actions a.nt-btn, 
+.telefonia-hero-actions button.nt-btn {
+	--_btn-bg: #3b82f6;
+	--_btn-bg-hover: #2563eb;
+	--_btn-color: #ffffff;
+	--_btn-color-hover: #ffffff;
+	background: var(--_btn-bg);
+	color: var(--_btn-color);
+	border: none;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+	transition: all 0.2s ease;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 0.875rem 1.5rem;
+	--hero-btn-h: 48px;
+	min-height: var(--hero-btn-h);
+	line-height: 1.2;
+	white-space: nowrap;
+	border-radius: 8px;
+	font-size: 0.95rem;
+	font-weight: 600;
+}
+.telefonia-hero-actions a.nt-btn i, 
+.telefonia-hero-actions button.nt-btn i { 
+	color: var(--_btn-color); 
+	transition: transform 0.2s ease; 
+	font-size: 1rem;
+}
+.telefonia-hero-actions a.nt-btn:hover, 
+.telefonia-hero-actions a.nt-btn:focus-visible, 
+.telefonia-hero-actions button.nt-btn:hover, 
+.telefonia-hero-actions button.nt-btn:focus-visible {
+	background: var(--_btn-bg-hover);
+	box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+	transform: translateY(-1px);
+}
+.telefonia-hero-actions a.nt-btn:hover i, 
+.telefonia-hero-actions a.nt-btn:focus-visible i, 
+.telefonia-hero-actions button.nt-btn:hover i, 
+.telefonia-hero-actions button.nt-btn:focus-visible i { 
+	transform: translateX(2px); 
+}
+.telefonia-hero-actions a.nt-btn:active, 
+.telefonia-hero-actions button.nt-btn:active { 
+	transform: translateY(0); 
+	box-shadow: 0 1px 2px rgba(0,0,0,0.1); 
+}
 @media (max-width:640px){
-	.telefonia-hero-actions a.nt-btn, .telefonia-hero-actions button.nt-btn { --hero-btn-h:48px; padding:0.875rem 1.25rem; font-size:0.9rem; }
+	.telefonia-hero-actions a.nt-btn, 
+	.telefonia-hero-actions button.nt-btn { 
+		--hero-btn-h: 44px; 
+		padding: 0.75rem 1.25rem; 
+		font-size: 0.9rem; 
+	}
 }
 /* Variante secundaria / ghost dentro del hero: refuerzo de borde y fondo translúcido para contraste */
 /* Botón secundario (ghost) ahora en azul tenue para armonizar */
@@ -84,291 +169,238 @@
 #dispositivos .grid { margin-top:.5rem; }
 
 .telefonia-plans { position:relative; }
-/* ================= REDISEÑO TARJETAS PLANES YEASTAR STYLE ================= */
-/* Sistema de variables por tarjeta moderno y vibrante */
+/* ================= TARJETAS PLANES YEASTAR STYLE ================= */
+/* Sistema limpio y profesional sin gradientes complejos */
 .tel-plan-card { 
-	--plan-accent:#0ea5e9; 
-	--plan-accent-soft:rgba(14,165,233,0.08); 
-	--plan-accent-grad:linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%); 
-	--plan-accent-border:rgba(14,165,233,0.3); 
-	--plan-price-grad:linear-gradient(90deg, #0f172a, #1e293b); 
-	--plan-bg:linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); 
-	--plan-bg-alt:linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6)); 
-	position:relative; 
-	display:flex; 
-	flex-direction:column; 
-	gap:1.25rem; 
-	padding:2rem 1.75rem 2.25rem; 
-	background:var(--plan-bg); 
-	border:1px solid #e2e8f0; 
-	border-radius:24px; 
-	box-shadow:0 4px 20px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04); 
-	overflow:hidden; 
-	isolation:isolate; 
-	text-align:left; 
-	transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+	--plan-accent: #3b82f6; 
+	--plan-accent-soft: rgba(59,130,246,0.1); 
+	--plan-accent-border: rgba(59,130,246,0.2); 
+	--plan-bg: #ffffff; 
+	position: relative; 
+	display: flex; 
+	flex-direction: column; 
+	gap: 1.5rem; 
+	padding: 2.5rem 2rem; 
+	background: var(--plan-bg); 
+	border: 1px solid #e5e7eb; 
+	border-radius: 16px; 
+	box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04); 
+	overflow: hidden; 
+	isolation: isolate; 
+	text-align: left; 
+	transition: all 0.2s ease; 
 }
 .tel-plan-card:before { 
-	content:""; 
-	position:absolute; 
-	inset:0; 
-	background:radial-gradient(circle at 20% 20%, var(--plan-accent-soft), transparent 60%),
-		radial-gradient(circle at 80% 80%, rgba(14,165,233,0.05), transparent 65%);
-	opacity:1; 
-	pointer-events:none; 
-	transition:opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
-}
-.tel-plan-card:after { 
-	content:""; 
-	position:absolute; 
-	inset:-1px; 
-	padding:1px; 
-	border-radius:inherit; 
-	background:linear-gradient(145deg, rgba(255,255,255,0.8), rgba(255,255,255,0)); 
-	-webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); 
-	mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); 
-	-webkit-mask-composite:xor; 
-	mask-composite:exclude; 
-	pointer-events:none; 
-	opacity:0.6; 
+	content: ""; 
+	position: absolute; 
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 4px;
+	background: var(--plan-accent);
+	opacity: 0;
+	transition: opacity 0.2s ease;
 }
 .tel-plan-card:hover { 
-	transform:translateY(-8px); 
-	box-shadow:0 20px 40px rgba(14,165,233,0.15), 0 8px 16px rgba(0,0,0,0.08); 
-	border-color:rgba(14,165,233,0.3);
+	border-color: var(--plan-accent-border);
+	box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+	transform: translateY(-2px);
 }
-.tel-plan-card:hover:before { opacity:1; }
+.tel-plan-card:hover:before { 
+	opacity: 1; 
+}
 .tel-plan-card.destacado { 
-	--plan-accent:#0284c7; 
-	--plan-accent-soft:rgba(2,132,199,0.12); 
-	--plan-accent-grad:linear-gradient(135deg, #0284c7 0%, #0369a1 50%, #075985 100%); 
-	--plan-accent-border:rgba(2,132,199,0.5); 
-	border:2px solid var(--plan-accent); 
-	box-shadow:0 8px 32px rgba(2,132,199,0.25), 0 4px 12px rgba(0,0,0,0.08); 
-	background:linear-gradient(180deg, #ffffff 0%, #f0f9ff 100%);
+	--plan-accent: #2563eb; 
+	--plan-accent-soft: rgba(37,99,235,0.1); 
+	--plan-accent-border: rgba(37,99,235,0.3); 
+	border: 2px solid var(--plan-accent); 
+	box-shadow: 0 10px 15px -3px rgba(37,99,235,0.1), 0 4px 6px -2px rgba(37,99,235,0.05); 
+}
+.tel-plan-card.destacado:before {
+	opacity: 1;
+	height: 5px;
 }
 .tel-plan-card.destacado:hover { 
-	box-shadow:0 24px 48px rgba(2,132,199,0.3), 0 12px 20px rgba(0,0,0,0.1); 
+	box-shadow: 0 20px 25px -5px rgba(37,99,235,0.1), 0 10px 10px -5px rgba(37,99,235,0.04); 
 }
-/* Badge flotante moderno estilo Yeastar */
+/* Badge limpio estilo Yeastar */
 .plan-badge-ribbon { 
-	position:absolute; 
-	top:16px; 
-	right:16px; 
-	z-index:6; 
-	background:var(--plan-accent-grad); 
-	color:#ffffff; 
-	font-size:0.65rem; 
-	font-weight:700; 
-	letter-spacing:0.8px; 
-	text-transform:uppercase; 
-	padding:0.5rem 0.85rem; 
-	border-radius:8px; 
-	box-shadow:0 4px 12px rgba(14,165,233,0.3), 0 2px 4px rgba(0,0,0,0.1); 
-	display:flex; 
-	align-items:center; 
-	gap:0.4rem; 
+	position: absolute; 
+	top: 20px; 
+	right: 20px; 
+	z-index: 6; 
+	background: var(--plan-accent); 
+	color: #ffffff; 
+	font-size: 0.75rem; 
+	font-weight: 600; 
+	letter-spacing: 0.025em; 
+	text-transform: uppercase; 
+	padding: 0.5rem 1rem; 
+	border-radius: 6px; 
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12); 
+	display: flex; 
+	align-items: center; 
+	gap: 0.375rem; 
 }
-.plan-badge-ribbon span { display:block; }
+.plan-badge-ribbon span { display: block; }
 /* Encabezado */
-.tel-plan-header { display:flex; flex-direction:column; align-items:flex-start; gap:0.75rem; }
-/* Icono moderno */
+.tel-plan-header { 
+	display: flex; 
+	flex-direction: column; 
+	align-items: flex-start; 
+	gap: 1rem; 
+}
+/* Icono limpio */
 .tel-plan-icon { 
-	width:68px; 
-	height:68px; 
-	border-radius:16px; 
-	position:relative; 
-	display:flex; 
-	align-items:center; 
-	justify-content:center; 
-	font-size:1.5rem; 
-	font-weight:900; 
-	background:var(--plan-bg-alt); 
-	border:1px solid var(--plan-accent-border); 
-	box-shadow:0 4px 16px rgba(14,165,233,0.15), 0 2px 4px rgba(0,0,0,0.05); 
-	overflow:hidden; 
-	backdrop-filter:saturate(1.2) blur(4px); 
-	-webkit-backdrop-filter:saturate(1.2) blur(4px); 
-}
-.tel-plan-icon:before { 
-	content:""; 
-	position:absolute; 
-	inset:0; 
-	background:var(--plan-accent-grad); 
-	opacity:0.15; 
-	mix-blend-mode:multiply; 
-}
-.tel-plan-icon:after { 
-	content:""; 
-	position:absolute; 
-	inset:0; 
-	background:linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 45%, rgba(255,255,255,0) 70%); 
-	mix-blend-mode:overlay; 
-	transform:translateX(-65%); 
-	animation:ntIconSheen 5.5s cubic-bezier(0.4,0.8,0.4,1) infinite; 
-	opacity:0.85; 
-	pointer-events:none; 
+	width: 64px; 
+	height: 64px; 
+	border-radius: 12px; 
+	position: relative; 
+	display: flex; 
+	align-items: center; 
+	justify-content: center; 
+	font-size: 1.75rem; 
+	font-weight: 700; 
+	background: var(--plan-accent-soft); 
+	color: var(--plan-accent);
+	border: none;
+	box-shadow: none;
 }
 .tel-plan-icon i { 
-	position:relative; 
-	z-index:1; 
-	color:var(--plan-accent); 
-	text-shadow:none; 
+	position: relative; 
+	z-index: 1; 
 }
 /* Títulos limpios */
 .tel-plan-title { 
-	font-size:1.25rem; 
-	font-weight:800; 
-	letter-spacing:-0.3px; 
-	color:#0f172a; 
-	margin:0; 
+	font-size: 1.5rem; 
+	font-weight: 700; 
+	letter-spacing: -0.01em; 
+	color: #111827; 
+	margin: 0; 
+	line-height: 1.2;
 }
 .tel-plan-tagline { 
-	font-size:0.75rem; 
-	font-weight:600; 
-	text-transform:uppercase; 
-	letter-spacing:1px; 
-	margin:0; 
-	background:var(--plan-accent-grad); 
-	-webkit-background-clip:text; 
-	background-clip:text; 
-	color:transparent; 
+	font-size: 0.875rem; 
+	font-weight: 500; 
+	text-transform: none; 
+	letter-spacing: 0; 
+	margin: 0; 
+	color: #6b7280;
 }
-/* Lista de características moderna */
+/* Lista de características limpia */
 .tel-plan-features { 
-	list-style:none; 
-	margin:0.5rem 0 0; 
-	padding:0; 
-	display:flex; 
-	flex-direction:column; 
-	gap:0.65rem; 
-	font-size:0.95rem; 
+	list-style: none; 
+	margin: 0; 
+	padding: 0; 
+	display: flex; 
+	flex-direction: column; 
+	gap: 0.875rem; 
+	font-size: 1rem; 
 }
 .tel-plan-features li { 
-	display:flex; 
-	gap:0.65rem; 
-	line-height:1.5; 
-	color:#475569; 
-	font-weight:500; 
+	display: flex; 
+	gap: 0.75rem; 
+	align-items: flex-start;
+	line-height: 1.6; 
+	color: #4b5563; 
+	font-weight: 400; 
 }
 .tel-plan-features i { 
-	color:var(--plan-accent); 
-	font-size:1rem; 
-	margin-top:0.2rem; 
+	color: var(--plan-accent); 
+	font-size: 1.125rem; 
+	margin-top: 0.125rem; 
+	flex-shrink: 0;
 }
-/* Precio limpio y elegante */
+/* Precio limpio */
 .tel-plan-pricewrap { 
-	margin-top:1rem; 
-	text-align:left; 
-	position:relative; 
-	padding-top:1rem;
-	border-top:1px solid #e2e8f0;
+	margin-top: 0.5rem; 
+	padding-top: 1.5rem;
+	border-top: 1px solid #f3f4f6;
 }
 .tel-plan-price { 
-	--_grad:var(--plan-price-grad); 
-	font-size:2.25rem; 
-	font-weight:900; 
-	letter-spacing:-0.5px; 
-	display:inline-flex; 
-	align-items:baseline; 
-	gap:0.4rem; 
-	background:var(--_grad); 
-	-webkit-background-clip:text; 
-	background-clip:text; 
-	color:transparent; 
-	position:relative; 
-	line-height:1; 
-}
-.tel-plan-price:after { 
-	content:""; 
-	position:absolute; 
-	left:0; 
-	right:0; 
-	bottom:-8px; 
-	height:3px; 
-	border-radius:3px; 
-	background:linear-gradient(90deg, var(--plan-accent) 0%, transparent 60%); 
-	opacity:0.25; 
+	font-size: 3rem; 
+	font-weight: 700; 
+	letter-spacing: -0.02em; 
+	display: flex; 
+	align-items: baseline; 
+	gap: 0.5rem; 
+	color: #111827; 
+	line-height: 1; 
 }
 .tel-plan-price small { 
-	font-size:0.75rem; 
-	font-weight:600; 
-	letter-spacing:0.3px; 
-	background:transparent; 
-	color:#64748b; 
+	font-size: 1rem; 
+	font-weight: 500; 
+	letter-spacing: 0; 
+	color: #6b7280; 
 }
-/* CTA moderno */
+/* CTA limpio */
 .tel-plan-cta { 
-	margin-top:auto; 
-	padding-top:0.5rem;
+	margin-top: 0.5rem; 
 }
 .tel-plan-card .nt-btn { 
-	font-size:0.85rem; 
-	padding:0.875rem 1.25rem; 
-	font-weight:700; 
-	letter-spacing:0.3px; 
-	border-radius:10px;
-	width:100%;
-	justify-content:center;
-	transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	font-size: 0.9375rem; 
+	padding: 0.875rem 1.5rem; 
+	font-weight: 600; 
+	letter-spacing: 0; 
+	border-radius: 8px;
+	width: 100%;
+	justify-content: center;
+	transition: all 0.2s ease;
+	background: var(--plan-accent);
+	color: #ffffff;
+	border: none;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
 }
 .tel-plan-card .nt-btn:hover {
-	transform:translateY(-2px);
+	background: var(--plan-accent);
+	filter: brightness(0.95);
+	box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+	transform: translateY(-1px);
 }
-/* Estados de foco accesibles */
+/* Estados de foco */
 .tel-plan-card:focus-within { 
-	outline:2px solid var(--plan-accent); 
-	outline-offset:4px; 
+	outline: 2px solid var(--plan-accent); 
+	outline-offset: 2px; 
 }
-/* Tier Variables - Colores Yeastar inspirados */
+/* Tier Variables - Colores profesionales */
 .tel-plan-card[data-plan-tier="basico"] { 
-	--plan-accent:#0ea5e9; 
-	--plan-accent-soft:rgba(14,165,233,0.08); 
-	--plan-accent-grad:linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%); 
-	--plan-accent-border:rgba(14,165,233,0.3); 
+	--plan-accent: #3b82f6; 
+	--plan-accent-soft: rgba(59,130,246,0.1); 
+	--plan-accent-border: rgba(59,130,246,0.2); 
 }
 .tel-plan-card[data-plan-tier="premium"] { 
-	--plan-accent:#f59e0b; 
-	--plan-accent-soft:rgba(245,158,11,0.08); 
-	--plan-accent-grad:linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%); 
-	--plan-accent-border:rgba(245,158,11,0.3); 
+	--plan-accent: #f59e0b; 
+	--plan-accent-soft: rgba(245,158,11,0.1); 
+	--plan-accent-border: rgba(245,158,11,0.2); 
 }
 .tel-plan-card[data-plan-tier="empresarial"] { 
-	--plan-accent:#8b5cf6; 
-	--plan-accent-soft:rgba(139,92,246,0.08); 
-	--plan-accent-grad:linear-gradient(135deg, #8b5cf6 0%, #7c3aed 50%, #6d28d9 100%); 
-	--plan-accent-border:rgba(139,92,246,0.3); 
+	--plan-accent: #8b5cf6; 
+	--plan-accent-soft: rgba(139,92,246,0.1); 
+	--plan-accent-border: rgba(139,92,246,0.2); 
 }
-/* Precio adaptando tono según tier */
-.tel-plan-card[data-plan-tier="premium"] .tel-plan-price { --plan-price-grad:linear-gradient(90deg, #78350f, #451a03); }
-.tel-plan-card[data-plan-tier="empresarial"] .tel-plan-price { --plan-price-grad:linear-gradient(90deg, #4c1d95, #2e1065); }
 /* Responsive planes */
 @media (max-width:900px){
 	.tel-plan-card { 
-		padding:1.75rem 1.5rem 2rem; 
+		padding: 2rem 1.5rem; 
 	}
 	.tel-plan-price { 
-		font-size:2rem; 
+		font-size: 2.5rem; 
 	}
 	.tel-plan-icon { 
-		width:62px; 
-		height:62px; 
-		font-size:1.35rem; 
+		width: 56px; 
+		height: 56px; 
+		font-size: 1.5rem; 
 	}
 	.tel-plan-title { 
-		font-size:1.15rem; 
+		font-size: 1.25rem; 
 	}
 }
 @media (prefers-reduced-motion:reduce){
-	.tel-plan-card, .tel-plan-card:before { 
-		transition:none; 
+	.tel-plan-card { 
+		transition: none; 
 	}
 	.tel-plan-card:hover { 
-		transform:none; 
-	}
-	.tel-plan-icon:after { 
-		animation:none; 
-		opacity:0.5; 
+		transform: none; 
 	}
 }
 /* ============================================================ */
@@ -426,180 +458,129 @@
 	.tel-plan__icon:after { animation:none; opacity:.55; }
 }
 /* ============================================================ */
-/* ========== DISPOSITIVOS (cards profesionales Yeastar Style) ========== */
+/* ========== DISPOSITIVOS (cards Yeastar Style) ========== */
 .dev-cards-grid { 
-	display:grid; 
-	gap:2rem; 
-	margin-top:3rem; 
-	grid-template-columns:repeat(auto-fit, minmax(min(100%,340px), 1fr)); 
+	display: grid; 
+	gap: 2rem; 
+	margin-top: 3rem; 
+	grid-template-columns: repeat(auto-fit, minmax(min(100%,320px), 1fr)); 
 }
-@media (min-width:1100px){ .dev-cards-grid { grid-template-columns:repeat(3, 1fr); } }
+@media (min-width:1100px){ 
+	.dev-cards-grid { 
+		grid-template-columns: repeat(3, 1fr); 
+	} 
+}
 .dev-card { 
-	position:relative; 
-	display:flex; 
-	flex-direction:column; 
-	background:linear-gradient(180deg, #ffffff, #f8fafc); 
-	border:1px solid #e2e8f0; 
-	border-radius:20px; 
-	overflow:hidden; 
-	box-shadow:0 4px 20px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04); 
-	isolation:isolate; 
-	min-height:100%; 
-	transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.dev-card:before { 
-	content:""; 
-	position:absolute; 
-	inset:0; 
-	background:radial-gradient(circle at 20% 20%, rgba(14,165,233,0.08), transparent 65%),
-		radial-gradient(circle at 80% 80%, rgba(14,165,233,0.05), transparent 70%);
-	mix-blend-mode:overlay; 
-	opacity:0.8; 
-	pointer-events:none; 
-	transition:opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
-}
-.dev-card:after { 
-	content:""; 
-	position:absolute; 
-	top:0; 
-	left:0; 
-	right:0; 
-	height:45%; 
-	background:linear-gradient(180deg, rgba(14,165,233,0.06), rgba(14,165,233,0)); 
-	pointer-events:none; 
-	opacity:0.9; 
+	position: relative; 
+	display: flex; 
+	flex-direction: column; 
+	background: #ffffff; 
+	border: 1px solid #e5e7eb; 
+	border-radius: 16px; 
+	overflow: hidden; 
+	box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04); 
+	isolation: isolate; 
+	min-height: 100%; 
+	transition: all 0.2s ease;
 }
 .dev-card__media { 
-	position:relative; 
-	aspect-ratio:16/10; 
-	overflow:hidden; 
-	background:#f1f5f9;
+	position: relative; 
+	aspect-ratio: 16/10; 
+	overflow: hidden; 
+	background: #f9fafb;
 }
 .dev-card__media img { 
-	width:100%; 
-	height:100%; 
-	object-fit:cover; 
-	object-position:center; 
-	display:block; 
-	filter:saturate(1.05); 
-	transition:transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s; 
+	width: 100%; 
+	height: 100%; 
+	object-fit: cover; 
+	object-position: center; 
+	display: block; 
+	transition: transform 0.3s ease; 
 }
 .dev-card__content { 
-	position:relative; 
-	display:flex; 
-	flex-direction:column; 
-	gap:1.15rem; 
-	padding:1.75rem 1.5rem 2rem; 
-	flex:1; 
+	position: relative; 
+	display: flex; 
+	flex-direction: column; 
+	gap: 1.25rem; 
+	padding: 2rem 1.75rem; 
+	flex: 1; 
 }
 .dev-card__title { 
-	font-size:1.15rem; 
-	font-weight:800; 
-	letter-spacing:-0.3px; 
-	margin:0; 
-	display:flex; 
-	align-items:center; 
-	gap:0.75rem; 
-	color:#0f172a; 
+	font-size: 1.25rem; 
+	font-weight: 700; 
+	letter-spacing: -0.01em; 
+	margin: 0; 
+	display: flex; 
+	align-items: center; 
+	gap: 0.875rem; 
+	color: #111827; 
+	line-height: 1.3;
 }
 .dev-card__icon { 
-	width:52px; 
-	height:52px; 
-	border-radius:14px; 
-	background:linear-gradient(145deg, rgba(14,165,233,0.1), rgba(14,165,233,0.05)); 
-	display:inline-flex; 
-	align-items:center; 
-	justify-content:center; 
-	font-size:1.3rem; 
-	color:#0ea5e9; 
-	position:relative; 
-	overflow:hidden; 
-	border:1px solid rgba(14,165,233,0.2); 
-	box-shadow:0 4px 12px rgba(14,165,233,0.15); 
-	backdrop-filter:saturate(1.2) blur(4px); 
-	-webkit-backdrop-filter:saturate(1.2) blur(4px); 
-}
-.dev-card__icon:before { 
-	content:""; 
-	position:absolute; 
-	inset:0; 
-	background:linear-gradient(135deg, #0ea5e9, #0284c7); 
-	opacity:0.1; 
-	mix-blend-mode:multiply; 
+	width: 48px; 
+	height: 48px; 
+	border-radius: 10px; 
+	background: rgba(59,130,246,0.1); 
+	display: inline-flex; 
+	align-items: center; 
+	justify-content: center; 
+	font-size: 1.25rem; 
+	color: #3b82f6; 
+	flex-shrink: 0;
 }
 .dev-card__desc { 
-	font-size:0.95rem; 
-	line-height:1.6; 
-	color:#475569; 
-	margin:0; 
-	font-weight:500; 
-	letter-spacing:0.1px; 
+	font-size: 1rem; 
+	line-height: 1.7; 
+	color: #4b5563; 
+	margin: 0; 
+	font-weight: 400; 
 }
 .dev-card__highlights { 
-	list-style:none; 
-	margin:0.5rem 0 0; 
-	padding:0; 
-	display:flex; 
-	flex-direction:column; 
-	gap:0.55rem; 
-	font-size:0.85rem; 
-	font-weight:600; 
-	letter-spacing:0.2px; 
+	list-style: none; 
+	margin: 0.5rem 0 0; 
+	padding: 0; 
+	display: flex; 
+	flex-direction: column; 
+	gap: 0.625rem; 
+	font-size: 0.9375rem; 
+	font-weight: 500; 
 }
 .dev-card__highlights li { 
-	display:flex; 
-	align-items:flex-start; 
-	gap:0.6rem; 
-	color:#334155; 
-	line-height:1.5; 
+	display: flex; 
+	align-items: flex-start; 
+	gap: 0.625rem; 
+	color: #374151; 
+	line-height: 1.6; 
 }
 .dev-card__highlights i { 
-	color:#0ea5e9; 
-	font-size:0.95rem; 
-	margin-top:0.1rem; 
+	color: #3b82f6; 
+	font-size: 1rem; 
+	margin-top: 0.125rem; 
+	flex-shrink: 0;
 }
-/* Variante alterna (middle card) */
-.dev-card--alt { 
-	background:linear-gradient(180deg, #ffffff, #fefce8); 
-	border-color:#fef3c7;
-}
-.dev-card--alt:before {
-	background:radial-gradient(circle at 20% 20%, rgba(245,158,11,0.08), transparent 65%),
-		radial-gradient(circle at 80% 80%, rgba(245,158,11,0.05), transparent 70%);
-}
-.dev-card--alt:after { 
-	background:linear-gradient(180deg, rgba(245,158,11,0.06), rgba(245,158,11,0)); 
-}
+/* Variante alterna */
 .dev-card--alt .dev-card__icon { 
-	color:#f59e0b; 
-	border-color:rgba(245,158,11,0.2); 
-	background:linear-gradient(145deg, rgba(245,158,11,0.1), rgba(245,158,11,0.05)); 
-	box-shadow:0 4px 12px rgba(245,158,11,0.15);
-}
-.dev-card--alt .dev-card__icon:before {
-	background:linear-gradient(135deg, #f59e0b, #d97706);
+	color: #f59e0b; 
+	background: rgba(245,158,11,0.1); 
 }
 .dev-card--alt .dev-card__highlights i { 
-	color:#f59e0b; 
+	color: #f59e0b; 
 }
 /* Interacciones */
 .dev-card:hover { 
-	transform:translateY(-8px); 
-	box-shadow:0 20px 40px rgba(14,165,233,0.15), 0 8px 16px rgba(0,0,0,0.08); 
-	border-color:rgba(14,165,233,0.3);
+	border-color: rgba(59,130,246,0.3);
+	box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); 
+	transform: translateY(-2px);
 }
 .dev-card--alt:hover {
-	box-shadow:0 20px 40px rgba(245,158,11,0.15), 0 8px 16px rgba(0,0,0,0.08); 
-	border-color:rgba(245,158,11,0.3);
+	border-color: rgba(245,158,11,0.3);
 }
-.dev-card:hover:before { opacity:1; }
 .dev-card:hover .dev-card__media img { 
-	transform:scale(1.05); 
-	filter:saturate(1.1); 
+	transform: scale(1.03); 
 }
 .dev-card:focus-within { 
-	outline:2px solid #0ea5e9; 
-	outline-offset:4px; 
+	outline: 2px solid #3b82f6; 
+	outline-offset: 2px; 
 }
 /* Animación escalonada al entrar */
 .dev-cards-grid .dev-card { opacity:0; transform:translateY(18px); animation: devCardIn .9s cubic-bezier(.4,.8,.4,1) forwards; }
@@ -610,27 +591,22 @@
 /* Responsivo dispositivos */
 @media (max-width:820px){
 	.dev-card__content { 
-		padding:1.5rem 1.25rem 1.75rem; 
+		padding: 1.5rem 1.25rem; 
 	}
 	.dev-card__title { 
-		font-size:1.05rem; 
+		font-size: 1.125rem; 
 	}
 	.dev-card__icon { 
-		width:48px; 
-		height:48px; 
-		font-size:1.15rem; 
+		width: 44px; 
+		height: 44px; 
+		font-size: 1.125rem; 
 	}
 }
 @media (prefers-reduced-motion:reduce){
-	.dev-cards-grid .dev-card { 
-		animation:none; 
-		opacity:1; 
-		transform:none; 
-	}
 	.dev-card, .dev-card__media img { 
-		transition:none; 
+		transition: none; 
 	}
 	.dev-card:hover {
-		transform:none;
+		transform: none;
 	}
 }
