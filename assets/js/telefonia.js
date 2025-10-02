@@ -18,6 +18,98 @@
   }
 })();
 
+// ==========================================
+// HERO: Rotación aleatoria de imágenes de fondo
+// ==========================================
+(function() {
+  const heroBackground = document.getElementById('heroBackground');
+  const indicators = document.querySelectorAll('.hero-indicator');
+  
+  if (!heroBackground || indicators.length === 0) {
+    console.log('[Telefonia.js] Hero background o indicadores no encontrados');
+    return;
+  }
+
+  // Array de imágenes de fondo desde la carpeta yeastar-hero
+  const backgroundImages = [
+    'assets/img/yeastar-hero/linkus-desktop-client-banner.png',
+    'assets/img/yeastar-hero/linkus-mobile-client-img.webp',
+    'assets/img/yeastar-hero/linkus-web-client-img.webp',
+    'assets/img/yeastar-hero/software-pbx-banner.png'
+  ];
+
+  let currentIndex = Math.floor(Math.random() * backgroundImages.length);
+  let autoRotateInterval;
+
+  // Función para cambiar la imagen de fondo
+  function changeBackground(index, withTransition = true) {
+    if (index < 0 || index >= backgroundImages.length) return;
+    
+    currentIndex = index;
+    
+    // Aplicar transición suave
+    if (withTransition) {
+      heroBackground.style.opacity = '0';
+    }
+    
+    setTimeout(() => {
+      heroBackground.style.backgroundImage = `url('${backgroundImages[index]}')`;
+      if (withTransition) {
+        heroBackground.style.opacity = '1';
+      }
+      
+      // Actualizar indicadores
+      indicators.forEach((indicator, idx) => {
+        if (idx === index) {
+          indicator.classList.add('active');
+        } else {
+          indicator.classList.remove('active');
+        }
+      });
+    }, withTransition ? 400 : 0);
+  }
+
+  // Función para avanzar a la siguiente imagen
+  function nextBackground() {
+    const nextIndex = (currentIndex + 1) % backgroundImages.length;
+    changeBackground(nextIndex);
+  }
+
+  // Establecer imagen inicial aleatoria
+  changeBackground(currentIndex, false);
+
+  // Auto-rotar cada 6 segundos
+  function startAutoRotate() {
+    stopAutoRotate();
+    autoRotateInterval = setInterval(nextBackground, 6000);
+  }
+
+  function stopAutoRotate() {
+    if (autoRotateInterval) {
+      clearInterval(autoRotateInterval);
+    }
+  }
+
+  // Iniciar auto-rotación
+  startAutoRotate();
+
+  // Manejar clicks en los indicadores
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => {
+      changeBackground(index);
+      stopAutoRotate();
+      // Reiniciar auto-rotación después de 10 segundos de inactividad
+      setTimeout(startAutoRotate, 10000);
+    });
+  });
+
+  // Pausar auto-rotación al hacer hover sobre el hero
+  heroBackground.parentElement.addEventListener('mouseenter', stopAutoRotate);
+  heroBackground.parentElement.addEventListener('mouseleave', startAutoRotate);
+
+  console.log('[Telefonia.js] Hero background rotation inicializado');
+})();
+
 // Implementar sistema de notificaciones simple si no existe NTNotify
 if (!window.NTNotify) {
   console.log('[Telefonia.js] Inicializando sistema de notificaciones');
