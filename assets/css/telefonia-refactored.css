@@ -7,7 +7,7 @@
    SECCIÓN DE COMPARACIÓN - ¿Qué es Telefonía IP?
    ================================================ */
 
-/* Timeline evolutiva */
+/* Timeline evolutiva - Estilo Yeastar limpio */
 .evolution-timeline {
   position: relative;
 }
@@ -15,19 +15,21 @@
 .timeline-era {
   text-align: center;
   padding: 2rem;
-  border-radius: 1rem;
-  transition: all 0.3s ease;
+  border-radius: 12px;
+  transition: all 0.2s ease;
 }
 
 .timeline-era--past {
-  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
-  border: 2px solid #d1d5db;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 .timeline-era--present {
-  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  background: #ffffff;
   border: 2px solid #3b82f6;
-  transform: scale(1.05);
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1);
+  transform: none;
 }
 
 .timeline-era__icon {
@@ -83,27 +85,31 @@
   font-weight: 500;
 }
 
-/* Comparación detallada */
+/* Comparación detallada - Estilo Yeastar limpio */
 .detailed-comparison {
-  background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-  border-radius: 1.5rem;
+  background: #ffffff;
+  border-radius: 16px;
   padding: 3rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 .comparison-side {
   padding: 2rem;
-  border-radius: 1rem;
+  border-radius: 12px;
   height: 100%;
 }
 
 .comparison-side--old {
-  background: linear-gradient(135deg, #fef2f2, #fee2e2);
-  border: 2px solid #fecaca;
+  background: #ffffff;
+  border: 1px solid #fee2e2;
+  box-shadow: 0 1px 3px rgba(254, 202, 202, 0.3);
 }
 
 .comparison-side--new {
-  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
-  border: 2px solid #bbf7d0;
+  background: #ffffff;
+  border: 1px solid #bbf7d0;
+  box-shadow: 0 1px 3px rgba(187, 247, 208, 0.3);
 }
 
 .comparison-side__header {
@@ -115,12 +121,12 @@
   width: 80px;
   height: 80px;
   margin: 0 auto 1rem;
-  background: white;
-  border-radius: 50%;
+  background: #f9fafb;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 .comparison-side__title {
@@ -151,8 +157,9 @@
   gap: 1rem;
   padding: 1rem;
   background: white;
-  border-radius: 0.75rem;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f3f4f6;
 }
 
 .problem-item strong,
@@ -162,12 +169,13 @@
   margin-bottom: 0.25rem;
 }
 
-/* Analogía mejorada */
+/* Analogía mejorada - Estilo Yeastar */
 .analogy-explanation {
   background: white;
-  border-radius: 1.5rem;
+  border-radius: 16px;
   padding: 3rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
 }
 
 .analogy-step {
@@ -178,12 +186,12 @@
   width: 80px;
   height: 80px;
   margin: 0 auto 1rem;
-  background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-  border-radius: 50%;
+  background: #f9fafb;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px solid #e2e8f0;
+  border: 1px solid #e5e7eb;
 }
 
 .analogy-step__title {
@@ -210,13 +218,14 @@
 }
 
 .highlight-box-enhanced {
-  background: linear-gradient(135deg, #fefce8, #fef3c7);
-  border: 2px solid #fbbf24;
-  border-radius: 1rem;
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 12px;
   padding: 2rem;
   display: flex;
   align-items: flex-start;
   gap: 1.5rem;
+  box-shadow: 0 1px 3px rgba(251, 191, 36, 0.1);
 }
 
 .highlight-box-enhanced__icon {
@@ -224,11 +233,11 @@
   width: 60px;
   height: 60px;
   background: white;
-  border-radius: 50%;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 .highlight-box-enhanced__title {
@@ -244,13 +253,13 @@
   line-height: 1.6;
 }
 
-/* Beneficio de crecimiento mejorado */
+/* Beneficio de crecimiento mejorado - Estilo Yeastar */
 .growth-scenarios {
   margin: 1.5rem 0;
   padding: 1rem;
-  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
-  border-radius: 0.75rem;
-  border: 1px solid #0284c7;
+  background: #f0f9ff;
+  border-radius: 8px;
+  border: 1px solid #bae6fd;
 }
 
 .growth-scenario {
@@ -272,9 +281,9 @@
 .growth-timeline {
   margin-top: 1rem;
   padding: 1rem;
-  background: #f8fafc;
-  border-radius: 0.5rem;
-  border-left: 4px solid #06b6d4;
+  background: #f9fafb;
+  border-radius: 8px;
+  border-left: 3px solid #06b6d4;
 }
 
 .growth-timeline__title {
@@ -296,7 +305,7 @@
   background: #06b6d4;
   color: white;
   padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
+  border-radius: 6px;
   font-size: 0.75rem;
   font-weight: 500;
 }
@@ -381,18 +390,20 @@
 
 .benefit-card {
   background-color: white;
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
   transform: translateY(0);
   position: relative;
   overflow: hidden;
 }
 
 .benefit-card:hover {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  transform: translateY(-0.5rem);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  border-color: rgba(59, 130, 246, 0.3);
 }
 
 .benefit-card::before {
@@ -402,35 +413,35 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #3B82F6, #8B5CF6);
+  background: #3b82f6;
 }
 
 .benefit-card--freedom::before {
-  background: linear-gradient(90deg, #10B981, #059669);
+  background: #10b981;
 }
 
 .benefit-card--professional::before {
-  background: linear-gradient(90deg, #3B82F6, #1D4ED8);
+  background: #3b82f6;
 }
 
 .benefit-card--savings::before {
-  background: linear-gradient(90deg, #F59E0B, #D97706);
+  background: #f59e0b;
 }
 
 .benefit-card--communication::before {
-  background: linear-gradient(90deg, #10b981, #059669);
+  background: #10b981;
 }
 
 .benefit-card--control::before {
-  background: linear-gradient(90deg, #8B5CF6, #7C3AED);
+  background: #8b5cf6;
 }
 
 .benefit-card--simplicity::before {
-  background: linear-gradient(90deg, #EF4444, #DC2626);
+  background: #ef4444;
 }
 
 .benefit-card--growth::before {
-  background: linear-gradient(90deg, #06B6D4, #0891B2);
+  background: #06b6d4;
 }
 
 .benefit-card__icon {
@@ -453,13 +464,13 @@
 }
 
 .benefit-card__example {
-  background-color: #F9FAFB;
-  border-radius: 0.5rem;
+  background-color: #f9fafb;
+  border-radius: 8px;
   padding: 1rem;
   font-size: 0.875rem;
   color: #374151;
   font-style: italic;
-  border-left: 4px solid #3B82F6;
+  border-left: 3px solid #3b82f6;
 }
 
 /* ================================================
@@ -502,7 +513,7 @@
   left: -1rem;
   width: 3rem;
   height: 3rem;
-  background-color: #3B82F6;
+  background-color: #3b82f6;
   color: white;
   border-radius: 50%;
   display: flex;
@@ -510,13 +521,13 @@
   justify-content: center;
   font-size: 1.25rem;
   font-weight: bold;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
   z-index: 10;
 }
 
 .process-step__visual img {
-  border-radius: 0.75rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
   width: 100%;
 }
 
@@ -574,16 +585,18 @@
 
 .device-card {
   background-color: white;
-  border-radius: 1rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  transition: all 0.5s ease;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
   transform: translateY(0);
   overflow: hidden;
 }
 
 .device-card:hover {
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  transform: translateY(-0.75rem);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  border-color: rgba(59, 130, 246, 0.3);
 }
 
 .device-card__visual {
@@ -599,7 +612,7 @@
 }
 
 .device-card__visual:hover img {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .device-card__content {
@@ -626,11 +639,12 @@
 }
 
 .device-card__scenario {
-  background: linear-gradient(to right, #eff6ff, #e0e7ff);
-  border-radius: 0.5rem;
+  background: #eff6ff;
+  border-radius: 8px;
   padding: 0.75rem;
   margin-bottom: 1rem;
   font-size: 0.875rem;
+  border-left: 3px solid #3b82f6;
 }
 
 .device-card__features {
@@ -649,9 +663,10 @@
 
 .devices-combination {
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  border-radius: 2rem;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  background: #f9fafb;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
   position: relative;
   overflow: hidden;
   margin: 4rem 0;
@@ -660,17 +675,11 @@
 .devices-combination::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
-  animation: pulse-bg 4s ease-in-out infinite;
-}
-
-@keyframes pulse-bg {
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.1); opacity: 0.8; }
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #3b82f6;
 }
 
 .combination-wrapper {
@@ -697,27 +706,25 @@
 .combination-icon-group i:nth-child(5) {
   background: white;
   padding: 1rem;
-  border-radius: 50%;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
 }
 
 .combination-icon-group i:first-child:hover,
 .combination-icon-group i:nth-child(3):hover,
 .combination-icon-group i:nth-child(5):hover {
-  transform: translateY(-5px) scale(1.1);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .combination-title {
   font-size: 2.5rem;
   font-weight: 800;
-  color: #1e293b;
+  color: #111827;
   margin: 1rem 0;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  letter-spacing: -0.02em;
 }
 
 .combination-subtitle {
@@ -728,14 +735,14 @@
   margin: 0 auto;
 }
 
-/* Demostración del flujo de trabajo */
+/* Demostración del flujo de trabajo - Estilo Yeastar */
 .workflow-demonstration {
   background: white;
-  border-radius: 1.5rem;
+  border-radius: 16px;
   padding: 3rem 2rem;
   margin: 3rem 0;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
 }
 
 .workflow-scenario__title {
@@ -755,7 +762,7 @@
   transform: translateX(-50%);
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, #3b82f6, #10b981);
+  background: #3b82f6;
   border-radius: 2px;
 }
 
@@ -779,7 +786,7 @@
 .workflow-step__number {
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  background: #3b82f6;
   color: white;
   border-radius: 50%;
   display: flex;
@@ -788,7 +795,7 @@
   font-weight: bold;
   font-size: 1.2rem;
   margin-bottom: 1rem;
-  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
 }
 
 .workflow-step__device {
@@ -798,17 +805,17 @@
   gap: 0.5rem;
   margin-bottom: 1rem;
   padding: 1rem;
-  background: #f8fafc;
-  border-radius: 1rem;
-  border: 2px solid #e2e8f0;
-  transition: all 0.3s ease;
+  background: #f9fafb;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
   min-height: 120px;
   justify-content: center;
 }
 
 .workflow-step__device:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   border-color: #3b82f6;
 }
 
@@ -849,11 +856,11 @@
 }
 
 @keyframes pulse-arrow {
-  0%, 100% { transform: scale(1); opacity: 0.7; }
-  50% { transform: scale(1.2); opacity: 1; }
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
 }
 
-/* Beneficios de la combinación */
+/* Beneficios de la combinación - Estilo Yeastar */
 .combination-benefits {
   margin: 3rem 0;
 }
@@ -861,39 +868,39 @@
 .combination-benefit {
   background: white;
   padding: 2rem;
-  border-radius: 1.2rem;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e2e8f0;
-  transition: all 0.3s ease;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
   text-align: center;
 }
 
 .combination-benefit:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-  border-color: #3b82f6;
+  transform: translateY(-4px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-color: rgba(59, 130, 246, 0.3);
 }
 
 .combination-benefit__icon {
   width: 70px;
   height: 70px;
   margin: 0 auto 1.5rem;
-  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-  border-radius: 50%;
+  background: #f9fafb;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px solid #e2e8f0;
-  transition: all 0.3s ease;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
 }
 
 .combination-benefit:hover .combination-benefit__icon {
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  background: #eff6ff;
   border-color: #3b82f6;
 }
 
 .combination-benefit:hover .combination-benefit__icon i {
-  color: white !important;
+  color: #3b82f6 !important;
 }
 
 .combination-benefit__icon i {
@@ -914,18 +921,19 @@
   font-size: 0.95rem;
 }
 
-/* Call to action final */
+/* Call to action final - Estilo Yeastar limpio */
 .combination-cta {
   margin-top: 4rem;
   text-align: center;
 }
 
 .cta-highlight {
-  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-  color: white;
+  background: #ffffff;
+  color: #111827;
   padding: 3rem 2rem;
-  border-radius: 1.5rem;
-  box-shadow: 0 20px 50px rgba(30, 41, 59, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
   position: relative;
   overflow: hidden;
 }
@@ -934,32 +942,23 @@
   content: '';
   position: absolute;
   top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  animation: shine 3s ease-in-out infinite;
-}
-
-@keyframes shine {
-  0% { left: -100%; }
-  50% { left: 100%; }
-  100% { left: 100%; }
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #3b82f6;
 }
 
 .cta-title {
   font-size: 2rem;
   font-weight: 800;
   margin: 1rem 0 1.5rem;
-  background: linear-gradient(135deg, #fbbf24, #f59e0b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #111827;
+  letter-spacing: -0.02em;
 }
 
 .cta-description {
   font-size: 1.2rem;
-  color: #cbd5e1;
+  color: #6b7280;
   margin-bottom: 2rem;
   max-width: 600px;
   margin-left: auto;
@@ -1028,14 +1027,17 @@
 
 .use-case {
   background-color: white;
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
 }
 
 .use-case:hover {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-color: rgba(59, 130, 246, 0.3);
+  transform: translateY(-2px);
 }
 
 .use-case__header {
@@ -1048,7 +1050,7 @@
 .use-case__avatar {
   width: 4rem;
   height: 4rem;
-  background: linear-gradient(to bottom right, #3B82F6, #4F46E5);
+  background: #3b82f6;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1058,19 +1060,19 @@
 }
 
 .use-case--accounting .use-case__avatar {
-  background: linear-gradient(to bottom right, #10B981, #059669);
+  background: #10b981;
 }
 
 .use-case--realestate .use-case__avatar {
-  background: linear-gradient(to bottom right, #8B5CF6, #7C3AED);
+  background: #8b5cf6;
 }
 
 .use-case--dental .use-case__avatar {
-  background: linear-gradient(to bottom right, #06B6D4, #0891B2);
+  background: #06b6d4;
 }
 
 .use-case--logistics .use-case__avatar {
-  background: linear-gradient(to bottom right, #F59E0B, #EA580C);
+  background: #f59e0b;
 }
 
 .use-case__meta h3 {
@@ -1091,7 +1093,7 @@
   line-height: 1.625;
   margin-bottom: 1.5rem;
   padding-left: 1rem;
-  border-left: 4px solid #3B82F6;
+  border-left: 3px solid #3b82f6;
 }
 
 .use-case__benefits h4 {
@@ -1115,7 +1117,7 @@
 }
 
 /* ================================================
-   PRICING CARDS MEJORADOS
+   PRICING CARDS MEJORADOS - Estilo Yeastar
    ================================================ */
 
 .pricing-cards {
@@ -1131,32 +1133,39 @@
 
 .pricing-card {
   background-color: white;
-  border-radius: 1rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  transition: all 0.5s ease;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
   transform: translateY(0) scale(1);
   position: relative;
   overflow: hidden;
 }
 
 .pricing-card:hover {
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  transform: translateY(-0.5rem);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  border-color: rgba(59, 130, 246, 0.3);
 }
 
 .pricing-card.featured {
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.5);
-  transform: scale(1.05);
+  border: 2px solid #3b82f6;
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+  transform: none;
+}
+
+.pricing-card.featured:hover {
+  transform: translateY(-4px);
 }
 
 .pricing-card__badge {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: linear-gradient(to right, #3B82F6, #4F46E5);
+  background: #3b82f6;
   color: white;
   padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
+  border-radius: 6px;
   font-size: 0.75rem;
   font-weight: 600;
   display: flex;
@@ -1165,11 +1174,11 @@
 }
 
 .pricing-card--premium .pricing-card__badge {
-  background: linear-gradient(to right, #8B5CF6, #EC4899);
+  background: #f59e0b;
 }
 
 .pricing-card--enterprise .pricing-card__badge {
-  background: linear-gradient(to right, #F59E0B, #EF4444);
+  background: #8b5cf6;
 }
 
 .pricing-card__header {
@@ -1232,9 +1241,10 @@
 
 .pricing-card__features .feature-highlight {
   background-color: #eff6ff;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   padding: 0.75rem;
   font-weight: 500;
+  border-left: 3px solid #3b82f6;
 }
 
 .pricing-card__footer {
