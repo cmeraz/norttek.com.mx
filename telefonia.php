@@ -13,6 +13,6 @@ $seo = [
   'twitter_description' => 'Transforma tu comunicación empresarial con telefonía IP profesional desde cualquier dispositivo.',
   'twitter_image' => 'https://www.norttek.com.mx/assets/img/business-benefits-phone.jpg'
 ];
-$cssFiles = ['telefonia-refactored'];
-$jsFiles  = ['telefonia-refactored'];
+$cssFiles = ['telefonia'];
+$jsFiles  = ['telefonia'];
 include __DIR__ . '/includes/pageTemplate.php';
