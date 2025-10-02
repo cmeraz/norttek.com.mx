@@ -22,10 +22,10 @@
 </section>
 
 <!-- PASO 1: ¿QUÉ ES TELEFONÍA IP? - Explicación simple -->
-<section id="que-es" class="py-12 bg-white" aria-labelledby="que-es-title">
+<section id="que-es" class="py-8 bg-white" aria-labelledby="que-es-title">
   <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center mb-10">
-      <div id="que-es-title" class="nt-stack mb-4">
+    <div class="text-center mb-3">
+      <div id="que-es-title" class="nt-stack mb-2">
         <?= nt_heading('¿Qué es la Telefonía IP?', 'fa-solid fa-question-circle', 'lg', 'Una explicación simple', ['animate' => true, 'class'=>'nt-heading-accent-bar']); ?>
       </div>
       <p class="text-gray-700 max-w-3xl mx-auto text-lg leading-relaxed">
@@ -34,13 +34,8 @@
     </div>
 
     <!-- Historia evolutiva -->
-    <div class="evolution-timeline mb-6">
-      <!-- Imagen ilustrativa de la evolución -->
-      <div class="text-center mb-8">
-        <img src="assets/img/evolution-phones.jpg" alt="Evolución de sistemas telefónicos: de analógico a digital" class="mx-auto rounded-lg shadow-lg max-w-2xl w-full" loading="lazy" style="max-height: 250px; object-fit: cover;">
-      </div>
-      
-      <div class="grid md:grid-cols-3 gap-6 items-center">
+    <div class="evolution-timeline mb-3">
+      <div class="grid md:grid-cols-3 gap-4 items-center">
         <!-- Era pasada -->
         <div class="timeline-era timeline-era--past">
           <div class="timeline-era__icon">
@@ -80,13 +75,8 @@
     </div>
 
     <!-- Comparación detallada -->
-    <div class="detailed-comparison mb-10">
-      <!-- Imagen central de comparación -->
-      <div class="text-center mb-8">
-        <img src="assets/img/traditional-vs-voip.jpg" alt="Comparación: Sistema telefónico tradicional vs Telefonía IP" class="mx-auto rounded-lg shadow-lg max-w-2xl w-full" loading="lazy" style="max-height: 300px; object-fit: cover;">
-      </div>
-      
-      <div class="grid lg:grid-cols-2 gap-8 items-start">
+    <div class="detailed-comparison mb-3">
+      <div class="grid lg:grid-cols-2 gap-4 items-start">
         <!-- Lado tradicional -->
         <div class="comparison-side comparison-side--old">
           <div class="comparison-side__header">
@@ -181,7 +171,7 @@
 
     <!-- Explicación con analogía mejorada -->
     <div class="analogy-explanation">
-      <div class="grid lg:grid-cols-3 gap-8 items-center">
+      <div class="grid lg:grid-cols-3 gap-4 items-center">
         <div class="analogy-step">
           <div class="analogy-step__icon">
             <i class="fa-solid fa-envelope text-3xl text-gray-500"></i>
@@ -223,23 +213,18 @@
 </section>
 
 <!-- PASO 2: BENEFICIOS TANGIBLES - Conexión emocional -->
-<section id="beneficios" class="py-12 bg-gradient-to-br from-blue-50 to-indigo-100" aria-labelledby="beneficios-title">
+<section id="beneficios" class="py-8 bg-gradient-to-br from-blue-50 to-indigo-100" aria-labelledby="beneficios-title">
   <div class="max-w-5xl mx-auto px-6">
-    <div class="text-center mb-8">
+    <div class="text-center mb-4">
       <div id="beneficios-title" class="nt-stack">
         <?= nt_heading('¿Qué cambia en tu día a día?', 'fa-solid fa-heart', 'lg', 'Beneficios que sentirás desde el primer día', ['animate' => true, 'class'=>'nt-heading-accent-bar']); ?>
       </div>
-      <p class="text-gray-700 max-w-3xl mx-auto text-lg">
+      <p class="text-gray-700 max-w-3xl mx-auto text-base">
         Más allá de la tecnología, estos son los cambios reales que experimentarás en tu empresa.
       </p>
-      
-      <!-- Imagen de beneficios empresariales -->
-      <div class="mt-8 mb-8">
-        <img src="assets/img/business-benefits-phone.jpg" alt="Empresarios utilizando telefonía IP para mejorar su comunicación" class="mx-auto rounded-lg shadow-md max-w-2xl w-full" loading="lazy" style="max-height: 300px; object-fit: cover;">
-      </div>
     </div>
 
-    <div class="benefits-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="benefits-grid grid md:grid-cols-2 lg:grid-cols-3 gap-4">
       <!-- Beneficio 1: Libertad -->
       <article class="benefit-card benefit-card--freedom">
         <div class="benefit-card__icon">
@@ -356,7 +341,7 @@
 </section>
 
 <!-- PLANES -->
-<section id="planes" class="py-12 bg-gray-50" aria-labelledby="planes-title">
+<section id="planes" class="py-8 bg-gray-50" aria-labelledby="planes-title">
   <div class="max-w-7xl mx-auto px-6 text-center nt-stack">
   <div id="planes-title" class="nt-stack">
       <?= nt_heading('Planes y llamadas ilimitadas', 'fa-solid fa-boxes-stacked', 'lg', null, ['animate' => true, 'delay' => 'sm','class'=>'nt-heading-accent-bar']); ?>
@@ -364,7 +349,7 @@
   <p class="text-gray-700 max-w-2xl mx-auto text-lg">
       Elige el plan que mejor se adapta a tu empresa. Todos incluyen numeración LADA México y soporte técnico.
     </p>
-    <div class="mt-14 tel-plans-modern grid md:grid-cols-3 gap-6">
+    <div class="mt-14 tel-plans-modern grid md:grid-cols-3 gap-4">
       <!-- Nuevo Plan Básico -->
       <article class="tel-plan tel-plan--tier-basico" data-plan-tier="basico">
         <header class="tel-plan__hdr">
@@ -440,11 +425,11 @@
 </section>
 
 <!-- DEMO -->
-<section id="demo" class="py-12 bg-gray-50" aria-labelledby="demo-title">
-  <div class="max-w-7xl mx-auto px-6 lg:flex lg:items-center lg:justify-between gap-6 nt-stack">
+<section id="demo" class="py-8 bg-gray-50" aria-labelledby="demo-title">
+  <div class="max-w-7xl mx-auto px-6 lg:flex lg:items-center lg:justify-between gap-4 nt-stack">
     <div class="flex-1 text-center lg:text-left animate-fadeInSlow">
-      <div id="demo-title" class="mb-4"><?= nt_heading('¿Listo para migrar a la nube?', 'fa-solid fa-cloud-arrow-up', 'lg', 'Solicita tu demo gratuita', ['animate' => true, 'delay' => 'sm','class'=>'nt-heading-accent-bar']); ?></div>
-      <p class="text-gray-700 text-lg mb-6">
+      <div id="demo-title" class="mb-2"><?= nt_heading('¿Listo para migrar a la nube?', 'fa-solid fa-cloud-arrow-up', 'lg', 'Solicita tu demo gratuita', ['animate' => true, 'delay' => 'sm','class'=>'nt-heading-accent-bar']); ?></div>
+      <p class="text-gray-700 text-lg mb-3">
         Eleva la productividad de tu empresa, reduce costos y olvídate del mantenimiento de sistemas locales. Solicita ahora tu <strong>demo gratuita de 30 días</strong> y prueba todas las funciones avanzadas de Norttek PBX.
       </p>
       <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
@@ -453,7 +438,7 @@
         <button id="openLinkus" data-video="https://www.youtube.com/embed/LVb0_BUqskQ" class="nt-btn nt-btn-dark" type="button" role="button" data-nt-modal-open="#modalVideo"><i class="fas fa-mobile-alt"></i><span>Linkus UC</span></button>
       </div>
     </div>
-    <div class="flex-1 mt-10 lg:mt-0 text-center animate-fadeInSlow">
+    <div class="flex-1 mt-3 lg:mt-0 text-center animate-fadeInSlow">
       <img alt="Yeastar P-Series Phone System Screenshots" width="830" height="566" src="https://www.yeastar.com/wp-content/uploads/2023/08/easy-first-unified-communications-more-in-one-img.png" loading="lazy">
     </div>
   </div>

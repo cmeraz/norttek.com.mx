@@ -1482,4 +1482,314 @@
   left: 0;
   width: 100%;
   height: 100%;
+}}
+@media (prefers-reduced-motion:reduce){
+	.dev-card, .dev-card__media img { 
+		transition: none; 
+	}
+	.dev-card:hover {
+		transform: none;
+	}
 }
+/* ================== COMPACT SECTIONS ================== */
+.benefit-card {
+padding: 1.25rem !important;
+margin-bottom: 1rem;
+}
+.benefit-card__icon {
+font-size: 2.5rem !important;
+margin-bottom: 0.75rem !important;
+}
+.benefit-card__title {
+font-size: 1.25rem !important;
+margin-bottom: 0.5rem !important;
+}
+.benefit-card__desc {
+font-size: 0.95rem !important;
+line-height: 1.5 !important;
+margin-bottom: 0.75rem !important;
+}
+.benefit-card__example {
+font-size: 0.875rem !important;
+padding: 0.75rem !important;
+margin-top: 0.75rem !important;
+}
+
+/* Timeline compacta */
+.timeline-era {
+padding: 1rem !important;
+}
+.timeline-era__icon i {
+font-size: 2.5rem !important;
+}
+.timeline-era__title {
+font-size: 1.25rem !important;
+margin: 0.5rem 0 !important;
+}
+.timeline-era__period {
+font-size: 0.875rem !important;
+margin-bottom: 0.75rem !important;
+}
+.timeline-era__features {
+padding: 0 !important;
+margin: 0 !important;
+}
+.timeline-era__features li {
+font-size: 0.9rem !important;
+padding: 0.25rem 0 !important;
+}
+
+/* Comparison compacta */
+.comparison-side {
+padding: 1.25rem !important;
+}
+.comparison-side__icon-wrapper i {
+font-size: 3rem !important;
+}
+.comparison-side__title {
+font-size: 1.5rem !important;
+margin: 0.75rem 0 0.25rem !important;
+}
+.comparison-side__subtitle {
+font-size: 0.9rem !important;
+margin-bottom: 1rem !important;
+}
+.problem-item, .benefit-item {
+padding: 0.75rem 0 !important;
+gap: 0.75rem !important;
+}
+.problem-item i, .benefit-item i {
+font-size: 1.25rem !important;
+}
+
+/* Process steps compactos */
+.process-step {
+padding: 1.25rem !important;
+gap: 1rem !important;
+}
+.process-step__number {
+width: 2.5rem !important;
+height: 2.5rem !important;
+font-size: 1.25rem !important;
+}
+.process-step__title {
+font-size: 1.25rem !important;
+margin-bottom: 0.5rem !important;
+}
+.process-step__desc {
+font-size: 0.95rem !important;
+line-height: 1.5 !important;
+}
+.process-step__visual img {
+max-height: 200px !important;
+object-fit: cover !important;
+}
+
+/* Dispositivos compactos */
+.device-showcase {
+padding: 1.25rem !important;
+}
+.device-showcase__title {
+font-size: 1.25rem !important;
+margin-bottom: 0.5rem !important;
+}
+.device-showcase__img {
+max-height: 180px !important;
+object-fit: contain !important;
+}
+
+/* Casos de uso compactos */
+.case-card {
+padding: 1.25rem !important;
+}
+.case-card__header {
+gap: 0.75rem !important;
+margin-bottom: 0.75rem !important;
+}
+.case-card__icon {
+font-size: 2rem !important;
+}
+.case-card__title {
+font-size: 1.125rem !important;
+}
+.case-card__quote {
+font-size: 0.95rem !important;
+padding: 0.75rem !important;
+margin: 0.75rem 0 !important;
+}
+
+/* Growth scenarios compactos */
+.growth-scenario {
+padding: 0.5rem 0.75rem !important;
+gap: 0.5rem !important;
+}
+.growth-scenario__text {
+font-size: 0.9rem !important;
+}
+
+
+/* ================== ULTRA COMPACT STYLES ================== */
+/* Reduce all section padding */
+section {
+padding-top: 2rem !important;
+padding-bottom: 2rem !important;
+}
+
+/* Compact headings */
+.nt-heading-accent-bar {
+margin-bottom: 0.75rem !important;
+}
+
+/* Ultra compact benefit cards */
+.benefit-card {
+padding: 1rem !important;
+border-radius: 0.75rem !important;
+}
+.benefit-card__icon {
+font-size: 2rem !important;
+margin-bottom: 0.5rem !important;
+height: 3rem !important;
+width: 3rem !important;
+}
+.benefit-card__title {
+font-size: 1.125rem !important;
+margin-bottom: 0.375rem !important;
+line-height: 1.3 !important;
+}
+.benefit-card__desc {
+font-size: 0.875rem !important;
+line-height: 1.4 !important;
+margin-bottom: 0.5rem !important;
+}
+.benefit-card__example {
+font-size: 0.8rem !important;
+padding: 0.5rem !important;
+margin-top: 0.5rem !important;
+}
+
+/* Compact comparison cards */
+.comparison-side {
+padding: 1rem !important;
+border-radius: 0.75rem !important;
+}
+.comparison-side__title {
+font-size: 1.25rem !important;
+margin: 0.5rem 0 0.25rem !important;
+}
+.problem-item, .benefit-item {
+padding: 0.5rem 0 !important;
+gap: 0.5rem !important;
+font-size: 0.875rem !important;
+}
+
+/* Compact timeline */
+.timeline-era {
+padding: 0.75rem !important;
+border-radius: 0.75rem !important;
+}
+.timeline-era__title {
+font-size: 1.125rem !important;
+margin: 0.375rem 0 !important;
+}
+.timeline-era__period {
+font-size: 0.8rem !important;
+margin-bottom: 0.5rem !important;
+}
+.timeline-era__features li {
+font-size: 0.85rem !important;
+padding: 0.125rem 0 !important;
+}
+
+/* Compact process steps */
+.process-step {
+padding: 1rem !important;
+gap: 0.75rem !important;
+border-radius: 0.75rem !important;
+}
+.process-step__number {
+width: 2rem !important;
+height: 2rem !important;
+font-size: 1.125rem !important;
+}
+.process-step__title {
+font-size: 1.125rem !important;
+margin-bottom: 0.375rem !important;
+}
+.process-step__desc {
+font-size: 0.875rem !important;
+line-height: 1.4 !important;
+}
+.process-step__visual img {
+max-height: 150px !important;
+object-fit: cover !important;
+border-radius: 0.5rem !important;
+}
+
+/* Compact plans */
+.tel-plan {
+padding: 1.25rem !important;
+border-radius: 0.75rem !important;
+}
+.tel-plan__icon {
+width: 48px !important;
+height: 48px !important;
+font-size: 1.5rem !important;
+}
+.tel-plan__name {
+font-size: 1.25rem !important;
+}
+.tel-plan__tag {
+font-size: 0.8rem !important;
+}
+.tel-plan__features li {
+font-size: 0.875rem !important;
+padding: 0.375rem 0 !important;
+}
+.tel-plan__price {
+font-size: 1.75rem !important;
+}
+
+/* Compact devices */
+.device-showcase {
+padding: 1rem !important;
+border-radius: 0.75rem !important;
+}
+.device-showcase__img {
+max-height: 140px !important;
+}
+
+/* Compact case studies */
+.case-card {
+padding: 1rem !important;
+border-radius: 0.75rem !important;
+}
+.case-card__title {
+font-size: 1rem !important;
+}
+.case-card__quote {
+font-size: 0.875rem !important;
+padding: 0.5rem !important;
+margin: 0.5rem 0 !important;
+}
+
+/* Compact growth scenarios */
+.growth-timeline {
+padding: 0.75rem !important;
+margin-top: 0.75rem !important;
+}
+.growth-timeline__steps {
+gap: 0.5rem !important;
+font-size: 0.85rem !important;
+}
+
+/* Remove excessive margins */
+p + p {
+margin-top: 0.5rem !important;
+}
+
+/* Compact lists */
+ul, ol {
+margin-top: 0.5rem !important;
+margin-bottom: 0.5rem !important;
+}
+
