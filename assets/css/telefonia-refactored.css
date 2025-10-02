@@ -1793,3 +1793,103 @@ margin-top: 0.5rem !important;
 margin-bottom: 0.5rem !important;
 }
 
+
+/* ================== RESPONSIVE GRID OPTIMIZATION ================== */
+/* Make grids more compact on all screen sizes */
+@media (min-width: 768px) {
+.benefits-grid {
+grid-template-columns: repeat(2, 1fr) !important;
+}
+}
+
+@media (min-width: 1024px) {
+.benefits-grid {
+grid-template-columns: repeat(3, 1fr) !important;
+}
+}
+
+/* Compact process steps in horizontal layout */
+.process-steps {
+display: grid !important;
+gap: 1rem !important;
+}
+
+@media (min-width: 768px) {
+.process-steps {
+grid-template-columns: repeat(2, 1fr) !important;
+}
+}
+
+@media (min-width: 1024px) {
+.process-steps {
+grid-template-columns: repeat(3, 1fr) !important;
+}
+}
+
+/* Compact device showcases */
+@media (min-width: 768px) {
+.devices-grid {
+grid-template-columns: repeat(3, 1fr) !important;
+gap: 1rem !important;
+}
+}
+
+/* Compact case studies */
+@media (min-width: 768px) {
+.cases-grid {
+grid-template-columns: repeat(2, 1fr) !important;
+gap: 1rem !important;
+}
+}
+
+/* Remove extra spacing from hero text */
+.telefonia-hero-sub {
+font-size: 1rem !important;
+line-height: 1.5 !important;
+margin-bottom: 1.5rem !important;
+}
+
+/* Compact plan cards in tight grid */
+.tel-plans-modern {
+gap: 1rem !important;
+}
+
+@media (min-width: 768px) {
+.tel-plans-modern {
+grid-template-columns: repeat(3, 1fr) !important;
+}
+}
+
+/* Make all images more compact */
+img {
+border-radius: 0.5rem !important;
+}
+
+section img {
+max-height: 250px !important;
+object-fit: cover !important;
+}
+
+/* Reduce modal padding */
+.nt-modal {
+padding: 1.5rem !important;
+}
+
+.modal-body {
+margin-top: 0.5rem !important;
+}
+
+/* Compact FAQ accordion */
+#faq {
+padding: 2rem 1rem !important;
+}
+
+/* Compact forms */
+.nt-form {
+gap: 0.75rem !important;
+}
+
+.nt-field {
+margin-bottom: 0.75rem !important;
+}
+

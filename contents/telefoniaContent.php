@@ -439,7 +439,7 @@
       </div>
     </div>
     <div class="flex-1 mt-3 lg:mt-0 text-center animate-fadeInSlow">
-      <img alt="Yeastar P-Series Phone System Screenshots" width="830" height="566" src="https://www.yeastar.com/wp-content/uploads/2023/08/easy-first-unified-communications-more-in-one-img.png" loading="lazy">
+      <img alt="Yeastar P-Series Phone System Screenshots" width="830" height="566" src="https://www.yeastar.com/wp-content/uploads/2023/08/easy-first-unified-communications-more-in-one-img.png" loading="lazy" style="max-height: 300px; object-fit: contain;">
     </div>
   </div>
 </section>
@@ -489,6 +489,6 @@
   </div>
 
 <!-- FAQ -->
-<div id="faq" class="mt-24">
+<div id="faq" class="mt-8">
   <?= faq('faq-telefonia', ['title' => 'Preguntas Frecuentes']) ?>
 </div>
