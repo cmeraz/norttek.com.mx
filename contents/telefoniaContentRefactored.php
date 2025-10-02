@@ -3,18 +3,22 @@
 // Estructura narrativa que guía al usuario no técnico paso a paso
 ?>
 
-<!-- HERO INICIAL - Conexión emocional -->
-<section class="telefonia-hero nt-hero-wrapper" id="hero" aria-labelledby="hero-title" style="position: relative; min-height: 600px; display: flex; align-items: center; justify-content: center; padding: 150px 1rem 90px;">
-  <div class="telefonia-hero-bg" aria-hidden="true" style="position: absolute; inset: 0; background: url('assets/img/yeastar-hero.webp') center/cover no-repeat; z-index: 1; filter: brightness(1.3) contrast(1.1);"></div>
+<!-- HERO INICIAL - Conexión emocional con imagen de fondo random -->
+<section class="telefonia-hero nt-hero-wrapper" id="hero" aria-labelledby="hero-title">
+  <!-- Imagen de fondo que se cambiará dinámicamente por JavaScript -->
+  <div class="telefonia-hero-bg" id="heroBackground" aria-hidden="true"></div>
+  
+  <!-- Overlay oscuro para garantizar contraste con el texto -->
+  <div class="telefonia-hero-overlay" aria-hidden="true"></div>
 
-  <div class="telefonia-hero-inner" style="position: relative; z-index: 3; max-width: 980px; text-align: center; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">
-    <div id="hero-title" style="margin-bottom: 2rem;">
+  <div class="telefonia-hero-inner">
+    <div id="hero-title" class="hero-title-wrapper">
       <?= nt_heading('¿Tu teléfono empresarial te limita?', 'fa-solid fa-phone-slash', 'xl', 'Es hora de evolucionar', ['animate' => true, 'delay' => 'sm','class'=>'nt-heading-hero nt-heading-invert']); ?>
     </div>
-    <p class="telefonia-hero-sub" style="color: white; font-size: 1.25rem; line-height: 1.6; margin: 0 auto 2.5rem; max-width: 800px; text-shadow: 1px 1px 3px rgba(0,0,0,0.6);">
+    <p class="telefonia-hero-sub">
       Imagina poder <strong>atender llamadas desde cualquier lugar</strong>, transferir clientes sin cortes, grabar conversaciones importantes y tener reportes detallados de tu comunicación empresarial. <em>Todo sin cables, sin hardware complicado, sin dolores de cabeza.</em>
     </p>
-    <div class="telefonia-hero-actions nt-stack-tight" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+    <div class="telefonia-hero-actions nt-stack-tight">
       <a href="#que-es" class="nt-btn nt-btn-primary nt-pulse" role="button"><i class="fa-solid fa-lightbulb"></i><span>Descubrir cómo funciona</span></a>
       <a href="#demo" class="nt-btn nt-btn-outline" role="button" data-nt-modal-open="#modalDemo"><i class="fa-solid fa-rocket"></i><span>Probar gratis 30 días</span></a>
     </div>

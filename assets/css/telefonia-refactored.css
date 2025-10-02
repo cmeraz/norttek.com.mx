@@ -4,6 +4,228 @@
  */
 
 /* ================================================
+   HERO - YEASTAR STYLE CON IMAGEN RANDOM
+   ================================================ */
+
+/* Hero principal con imagen de fondo */
+.telefonia-hero { 
+	position: relative; 
+	min-height: 650px; 
+	display: flex; 
+	align-items: center; 
+	justify-content: center; 
+	padding: 180px 1.5rem 120px; 
+	background: #1a202c;
+	overflow: hidden;
+}
+
+@media (min-width: 900px) { 
+	.telefonia-hero { 
+		min-height: 720px; 
+		padding-top: 200px; 
+		padding-bottom: 140px; 
+	} 
+}
+
+@media (max-width: 640px) { 
+	.telefonia-hero { 
+		min-height: 520px; 
+		padding-top: 140px; 
+	} 
+}
+
+/* Imagen de fondo con efecto parallax y transición suave */
+.telefonia-hero-bg { 
+	position: absolute; 
+	inset: 0; 
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	z-index: 1;
+	/* Efecto de zoom sutil para profundidad */
+	transform: scale(1.05);
+	/* Transición suave al cambiar imagen */
+	transition: opacity 0.6s ease-in-out;
+}
+
+/* Overlay oscuro para garantizar contraste perfecto con texto blanco */
+.telefonia-hero-overlay { 
+	position: absolute; 
+	inset: 0; 
+	/* Gradiente oscuro desde arriba y desde abajo para enmarcar el contenido */
+	background: 
+		linear-gradient(180deg, 
+			rgba(0, 0, 0, 0.7) 0%, 
+			rgba(0, 0, 0, 0.4) 30%, 
+			rgba(0, 0, 0, 0.4) 70%, 
+			rgba(0, 0, 0, 0.7) 100%
+		),
+		/* Overlay adicional con color azul tenue para armonía de marca */
+		radial-gradient(ellipse at center, 
+			rgba(37, 99, 235, 0.15) 0%, 
+			transparent 70%
+		);
+	z-index: 2;
+	pointer-events: none; 
+}
+
+/* Contenedor interno del hero */
+.telefonia-hero-inner { 
+	position: relative; 
+	z-index: 3; 
+	max-width: 960px; 
+	text-align: center; 
+	display: flex; 
+	flex-direction: column; 
+	align-items: center; 
+	gap: 2rem; 
+}
+
+/* Título con mejor legibilidad */
+.telefonia-hero-inner .nt-heading-hero { 
+	filter: none; 
+	color: #ffffff;
+	text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
+	font-weight: 700; 
+	letter-spacing: -0.02em; 
+	line-height: 1.1;
+}
+
+.telefonia-hero-inner .nt-heading-hero.nt-heading-invert { 
+	text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
+	color: #ffffff;
+}
+
+.hero-title-wrapper {
+	margin-bottom: 1.5rem;
+}
+
+/* Subtítulo elegante y legible sobre cualquier fondo */
+.telefonia-hero-sub { 
+	color: #f3f4f6; 
+	font-size: clamp(1.05rem, 1.3vw, 1.25rem); 
+	line-height: 1.7; 
+	max-width: 800px; 
+	margin: 0 auto 2.5rem; 
+	text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.6);
+	letter-spacing: 0; 
+	font-weight: 400; 
+}
+
+/* Acciones del hero */
+.telefonia-hero-actions { 
+	display: flex; 
+	flex-wrap: wrap; 
+	justify-content: center; 
+	gap: 1rem; 
+	margin-top: 0.5rem; 
+}
+
+.telefonia-hero-actions a, 
+.telefonia-hero-actions button { 
+	position: relative; 
+	font-weight: 600; 
+	letter-spacing: 0; 
+}
+
+/* Botones limpios estilo moderno con excelente contraste */
+.telefonia-hero-actions a.nt-btn, 
+.telefonia-hero-actions button.nt-btn {
+	--_btn-bg: #3b82f6;
+	--_btn-bg-hover: #2563eb;
+	--_btn-color: #ffffff;
+	--_btn-color-hover: #ffffff;
+	background: var(--_btn-bg);
+	color: var(--_btn-color);
+	border: none;
+	box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4), 0 1px 3px rgba(0, 0, 0, 0.2);
+	transition: all 0.2s ease;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 0.875rem 1.5rem;
+	--hero-btn-h: 48px;
+	min-height: var(--hero-btn-h);
+	line-height: 1.2;
+	white-space: nowrap;
+	border-radius: 8px;
+	font-size: 0.95rem;
+	font-weight: 600;
+}
+
+.telefonia-hero-actions a.nt-btn i, 
+.telefonia-hero-actions button.nt-btn i { 
+	color: var(--_btn-color); 
+	transition: transform 0.2s ease; 
+	font-size: 1rem;
+}
+
+.telefonia-hero-actions a.nt-btn:hover, 
+.telefonia-hero-actions a.nt-btn:focus-visible, 
+.telefonia-hero-actions button.nt-btn:hover, 
+.telefonia-hero-actions button.nt-btn:focus-visible {
+	background: var(--_btn-bg-hover);
+	box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5), 0 2px 4px rgba(0, 0, 0, 0.2);
+	transform: translateY(-2px);
+}
+
+.telefonia-hero-actions a.nt-btn:hover i, 
+.telefonia-hero-actions a.nt-btn:focus-visible i, 
+.telefonia-hero-actions button.nt-btn:hover i, 
+.telefonia-hero-actions button.nt-btn:focus-visible i { 
+	transform: translateX(2px); 
+}
+
+.telefonia-hero-actions a.nt-btn:active, 
+.telefonia-hero-actions button.nt-btn:active { 
+	transform: translateY(0); 
+	box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3); 
+}
+
+/* Botón outline para mejor contraste sobre fondos oscuros */
+.telefonia-hero-actions a.nt-btn-outline, 
+.telefonia-hero-actions button.nt-btn-outline {
+	background: rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border: 2px solid rgba(255, 255, 255, 0.6);
+	color: #ffffff;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.telefonia-hero-actions a.nt-btn-outline:hover, 
+.telefonia-hero-actions button.nt-btn-outline:hover {
+	background: rgba(255, 255, 255, 0.25);
+	border-color: rgba(255, 255, 255, 0.9);
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 640px) {
+	.telefonia-hero-actions a.nt-btn, 
+	.telefonia-hero-actions button.nt-btn { 
+		--hero-btn-h: 44px; 
+		padding: 0.75rem 1.25rem; 
+		font-size: 0.9rem; 
+	}
+}
+
+/* Reducir animaciones para accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+	.telefonia-hero-inner [class*='translate-y-10'] { 
+		transform: none !important; 
+		opacity: 1 !important; 
+	}
+	.telefonia-hero-actions a.nt-btn, 
+	.telefonia-hero-actions button.nt-btn { 
+		transition: none; 
+	}
+	.telefonia-hero-bg {
+		transition: none;
+	}
+}
+
+/* ================================================
    SECCIÓN DE COMPARACIÓN - ¿Qué es Telefonía IP?
    ================================================ */
 
