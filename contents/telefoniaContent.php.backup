@@ -4,14 +4,14 @@
 ?>
 
 <!-- HERO INICIAL - Conexión emocional -->
-<section class="telefonia-hero nt-hero-wrapper" id="hero" aria-labelledby="hero-title" style="position: relative; min-height: 450px; display: flex; align-items: center; justify-content: center; padding: 130px 1rem 70px;">
-  <div class="telefonia-hero-bg" aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%); z-index: 1;"></div>
+<section class="telefonia-hero nt-hero-wrapper" id="hero" aria-labelledby="hero-title" style="position: relative; min-height: 600px; display: flex; align-items: center; justify-content: center; padding: 150px 1rem 90px;">
+  <div class="telefonia-hero-bg" aria-hidden="true" style="position: absolute; inset: 0; background: url('assets/img/yeastar-hero.webp') center/cover no-repeat; z-index: 1; filter: brightness(1.3) contrast(1.1);"></div>
 
-  <div class="telefonia-hero-inner" style="position: relative; z-index: 3; max-width: 900px; text-align: center; color: #111827;">
-    <div id="hero-title" style="margin-bottom: 1.5rem;">
-      <?= nt_heading('¿Tu teléfono empresarial te limita?', 'fa-solid fa-phone-slash', 'xl', 'Es hora de evolucionar', ['animate' => true, 'delay' => 'sm','class'=>'nt-heading-hero']); ?>
+  <div class="telefonia-hero-inner" style="position: relative; z-index: 3; max-width: 980px; text-align: center; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">
+    <div id="hero-title" style="margin-bottom: 2rem;">
+      <?= nt_heading('¿Tu teléfono empresarial te limita?', 'fa-solid fa-phone-slash', 'xl', 'Es hora de evolucionar', ['animate' => true, 'delay' => 'sm','class'=>'nt-heading-hero nt-heading-invert']); ?>
     </div>
-    <p class="telefonia-hero-sub" style="color: #475569; font-size: 1.15rem; line-height: 1.6; margin: 0 auto 2rem; max-width: 700px;">
+    <p class="telefonia-hero-sub" style="color: white; font-size: 1.25rem; line-height: 1.6; margin: 0 auto 2.5rem; max-width: 800px; text-shadow: 1px 1px 3px rgba(0,0,0,0.6);">
       Imagina poder <strong>atender llamadas desde cualquier lugar</strong>, transferir clientes sin cortes, grabar conversaciones importantes y tener reportes detallados de tu comunicación empresarial. <em>Todo sin cables, sin hardware complicado, sin dolores de cabeza.</em>
     </p>
     <div class="telefonia-hero-actions nt-stack-tight" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
@@ -22,22 +22,22 @@
 </section>
 
 <!-- PASO 1: ¿QUÉ ES TELEFONÍA IP? - Explicación simple -->
-<section id="que-es" class="py-16 bg-white" aria-labelledby="que-es-title">
+<section id="que-es" class="py-24 bg-white" aria-labelledby="que-es-title">
   <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center mb-12">
-      <div id="que-es-title" class="nt-stack mb-4">
+    <div class="text-center mb-20">
+      <div id="que-es-title" class="nt-stack mb-6">
         <?= nt_heading('¿Qué es la Telefonía IP?', 'fa-solid fa-question-circle', 'lg', 'Una explicación simple', ['animate' => true, 'class'=>'nt-heading-accent-bar']); ?>
       </div>
-      <p class="text-gray-700 max-w-4xl mx-auto text-lg leading-relaxed">
+      <p class="text-gray-700 max-w-4xl mx-auto text-xl leading-relaxed">
         Olvídate de los conceptos técnicos complicados. Te explicamos de manera sencilla qué es y por qué está revolucionando las comunicaciones empresariales.
       </p>
     </div>
 
     <!-- Historia evolutiva -->
-    <div class="evolution-timeline mb-12">
+    <div class="evolution-timeline mb-20">
       <!-- Imagen ilustrativa de la evolución -->
-      <div class="text-center mb-8">
-        <img src="assets/img/evolution-phones.jpg" alt="Evolución de sistemas telefónicos: de analógico a digital" class="mx-auto rounded-lg shadow-lg max-w-full w-full" style="max-width: 600px; max-height: 300px; object-fit: cover;" loading="lazy">
+      <div class="text-center mb-12">
+        <img src="assets/img/evolution-phones.jpg" alt="Evolución de sistemas telefónicos: de analógico a digital" class="mx-auto rounded-lg shadow-lg max-w-3xl w-full" loading="lazy">
       </div>
       
       <div class="grid md:grid-cols-3 gap-8 items-center">
@@ -80,10 +80,10 @@
     </div>
 
     <!-- Comparación detallada -->
-    <div class="detailed-comparison mb-12">
+    <div class="detailed-comparison mb-20">
       <!-- Imagen central de comparación -->
-      <div class="text-center mb-8">
-        <img src="assets/img/traditional-vs-voip.jpg" alt="Comparación: Sistema telefónico tradicional vs Telefonía IP" class="mx-auto rounded-lg shadow-lg max-w-full w-full" style="max-width: 700px; max-height: 350px; object-fit: cover;" loading="lazy">
+      <div class="text-center mb-12">
+        <img src="assets/img/traditional-vs-voip.jpg" alt="Comparación: Sistema telefónico tradicional vs Telefonía IP" class="mx-auto rounded-lg shadow-lg max-w-4xl w-full" loading="lazy">
       </div>
       
       <div class="grid lg:grid-cols-2 gap-16 items-start">
@@ -223,19 +223,19 @@
 </section>
 
 <!-- PASO 2: BENEFICIOS TANGIBLES - Conexión emocional -->
-<section id="beneficios" class="py-16 bg-gradient-to-br from-blue-50 to-indigo-100" aria-labelledby="beneficios-title">
+<section id="beneficios" class="py-24 bg-gradient-to-br from-blue-50 to-indigo-100" aria-labelledby="beneficios-title">
   <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center mb-12">
+    <div class="text-center mb-16">
       <div id="beneficios-title" class="nt-stack">
         <?= nt_heading('¿Qué cambia en tu día a día?', 'fa-solid fa-heart', 'lg', 'Beneficios que sentirás desde el primer día', ['animate' => true, 'class'=>'nt-heading-accent-bar']); ?>
       </div>
-      <p class="text-gray-700 max-w-3xl mx-auto text-base">
+      <p class="text-gray-700 max-w-3xl mx-auto text-lg">
         Más allá de la tecnología, estos son los cambios reales que experimentarás en tu empresa.
       </p>
       
       <!-- Imagen de beneficios empresariales -->
-      <div class="mt-6 mb-6">
-        <img src="assets/img/business-benefits-phone.jpg" alt="Empresarios utilizando telefonía IP para mejorar su comunicación" class="mx-auto rounded-lg shadow-lg max-w-full w-full" style="max-width: 600px; max-height: 300px; object-fit: cover;" loading="lazy">
+      <div class="mt-8 mb-8">
+        <img src="assets/img/business-benefits-phone.jpg" alt="Empresarios utilizando telefonía IP para mejorar su comunicación" class="mx-auto rounded-lg shadow-lg max-w-3xl w-full" loading="lazy">
       </div>
     </div>
 
@@ -356,7 +356,7 @@
 </section>
 
 <!-- PLANES -->
-<section id="planes" class="py-16 bg-gray-50" aria-labelledby="planes-title">
+<section id="planes" class="py-24 bg-gray-50" aria-labelledby="planes-title">
   <div class="max-w-7xl mx-auto px-6 text-center nt-stack">
   <div id="planes-title" class="nt-stack">
       <?= nt_heading('Planes y llamadas ilimitadas', 'fa-solid fa-boxes-stacked', 'lg', null, ['animate' => true, 'delay' => 'sm','class'=>'nt-heading-accent-bar']); ?>
@@ -440,7 +440,7 @@
 </section>
 
 <!-- DEMO -->
-<section id="demo" class="py-16 bg-gray-50" aria-labelledby="demo-title">
+<section id="demo" class="py-24 bg-gray-50" aria-labelledby="demo-title">
   <div class="max-w-7xl mx-auto px-6 lg:flex lg:items-center lg:justify-between gap-10 nt-stack">
     <div class="flex-1 text-center lg:text-left animate-fadeInSlow">
       <div id="demo-title" class="mb-4"><?= nt_heading('¿Listo para migrar a la nube?', 'fa-solid fa-cloud-arrow-up', 'lg', 'Solicita tu demo gratuita', ['animate' => true, 'delay' => 'sm','class'=>'nt-heading-accent-bar']); ?></div>
