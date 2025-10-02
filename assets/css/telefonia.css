@@ -33,18 +33,20 @@
 	position:absolute; 
 	inset:0; 
 	background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+	z-index: 1;
 }
-/* Overlay limpio tipo Yeastar */
+/* Overlay oscuro para mejorar contraste del contenido */
 .telefonia-hero-bg::after { 
 	content:""; 
 	position:absolute; 
 	inset:0; 
-	background: radial-gradient(ellipse at top, rgba(59,130,246,0.05) 0%, transparent 60%);
+	background: rgba(0, 0, 0, 0.45);
 	pointer-events:none; 
+	z-index: 2;
 }
 .telefonia-hero-inner { 
 	position:relative; 
-	z-index:2; 
+	z-index:3; 
 	max-width:960px; 
 	text-align:center; 
 	display:flex; 
