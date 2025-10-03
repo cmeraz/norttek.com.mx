@@ -1,5 +1,12 @@
 
-<div class="ai-layout-wrapper">
+<div class="ai-page">
+    <div class="ai-noise"></div>
+
+    <a href="#contacto" class="ai-floating-cta" id="aiFloatingCta">
+        <i class="fa-solid fa-sparkles"></i>
+        <span>Solicitar demo Yeastar AI</span>
+    </a>
+
     <nav class="ai-section-menu" aria-label="Navegación principal de la página">
         <button class="ai-section-menu__toggle" type="button" aria-expanded="false" aria-label="Mostrar u ocultar navegación">
             <i class="fa-solid fa-bars-staggered"></i>
@@ -14,19 +21,10 @@
             <li><a class="ai-section-menu__link" href="#comparativa"><i class="fa-solid fa-table-columns"></i><span>Comparativa</span></a></li>
             <li><a class="ai-section-menu__link" href="#sectores"><i class="fa-solid fa-industry"></i><span>Sectores</span></a></li>
             <li><a class="ai-section-menu__link" href="#clientes"><i class="fa-solid fa-people-group"></i><span>Clientes</span></a></li>
-            <li><a class="ai-section-menu__link" href="#videos"><i class="fa-brands fa-youtube"></i><span>Videos</span></a></li>
             <li><a class="ai-section-menu__link" href="#faq"><i class="fa-solid fa-circle-question"></i><span>FAQ</span></a></li>
             <li><a class="ai-section-menu__link" href="#contacto"><i class="fa-solid fa-paper-plane"></i><span>Contacto</span></a></li>
         </ul>
     </nav>
-
-    <a href="#contacto" class="ai-floating-cta" id="aiFloatingCta">
-        <i class="fa-solid fa-sparkles"></i>
-        <span>Solicitar demo Yeastar AI</span>
-    </a>
-
-    <div class="ai-page">
-    <div class="ai-noise"></div>
 
     <section class="ai-hero" id="inicio">
         <div class="ai-container">
@@ -499,100 +497,6 @@
         </div>
     </section>
 
-    <section id="videos">
-        <div class="ai-container">
-            <header class="ai-section-header">
-                <span class="ai-badge">
-                    <i class="fa-brands fa-youtube"></i>
-                    <span>Contenido multimedia</span>
-                </span>
-                <h2>Yeastar AI en acción</h2>
-                <p>Explora demostraciones, tutoriales y casos de uso reales de nuestra solución de telefonía con inteligencia artificial.</p>
-            </header>
-            <div class="ai-video-grid ai-animate-group">
-                <article class="ai-video-card">
-                    <div class="ai-video-embed">
-                        <iframe 
-                            src="https://www.youtube.com/embed/QFLobucZv68" 
-                            title="Yeastar AI Short Demo" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div class="ai-video-info">
-                        <h3>Demo rápida de Yeastar AI</h3>
-                        <p>Conoce las capacidades principales de nuestra suite de inteligencia artificial en menos de un minuto.</p>
-                    </div>
-                </article>
-
-                <article class="ai-video-card">
-                    <div class="ai-video-embed">
-                        <iframe 
-                            src="https://www.youtube.com/embed/zzrbwdeU-eY" 
-                            title="Yeastar AI Video 2" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div class="ai-video-info">
-                        <h3>Funcionalidades avanzadas</h3>
-                        <p>Descubre cómo Yeastar AI optimiza la comunicación empresarial y mejora la experiencia del cliente.</p>
-                    </div>
-                </article>
-
-                <article class="ai-video-card">
-                    <div class="ai-video-embed">
-                        <iframe 
-                            src="https://www.youtube.com/embed/HVc0M7uDKAE" 
-                            title="Yeastar AI Video 3" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div class="ai-video-info">
-                        <h3>Integración y configuración</h3>
-                        <p>Tutorial paso a paso sobre la implementación de Yeastar AI en tu infraestructura existente.</p>
-                    </div>
-                </article>
-
-                <article class="ai-video-card">
-                    <div class="ai-video-embed">
-                        <iframe 
-                            src="https://www.youtube.com/embed/Ac4t2nL93S8" 
-                            title="Yeastar AI Video 4" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div class="ai-video-info">
-                        <h3>Casos de uso reales</h3>
-                        <p>Empresas que han transformado su comunicación con Yeastar AI Cloud Suite.</p>
-                    </div>
-                </article>
-
-                <article class="ai-video-card">
-                    <div class="ai-video-embed">
-                        <iframe 
-                            src="https://www.youtube.com/embed/C3FSE-ClsGY" 
-                            title="Yeastar AI Video 5" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div class="ai-video-info">
-                        <h3>Análisis y reportes</h3>
-                        <p>Aprende a aprovechar los insights de IA para mejorar tus operaciones telefónicas.</p>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
     <section id="faq">
         <div class="ai-container">
             <header class="ai-section-header">
@@ -642,5 +546,4 @@
             </div>
         </div>
     </section>
-</div>
 </div>
