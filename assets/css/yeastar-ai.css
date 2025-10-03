@@ -556,6 +556,16 @@ details {
     transition: border 0.3s ease;
 }
 
+@media (min-width: 1200px) {
+    .ai-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .ai-argument-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
 details[open] {
     border-color: rgba(78, 225, 193, 0.45);
 }
