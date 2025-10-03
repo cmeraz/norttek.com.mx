@@ -239,7 +239,7 @@
       </div>
     </div>
 
-    <div class="benefits-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="benefits-grid grid md:grid-cols-2 gap-8">
       <!-- Beneficio 1: Libertad -->
       <article class="benefit-card benefit-card--freedom">
         <div class="benefit-card__icon">
@@ -250,7 +250,7 @@
           Atiende llamadas de la empresa desde casa, en viaje de negocios o en la sucursal. Tu número empresarial te sigue a donde vayas.
         </p>
         <div class="benefit-card__example">
-          <strong>Ejemplo real:</strong> "Estoy en casa con gripe, pero puedo atender a mis clientes como si estuviera en la oficina."
+          <strong>Caso de éxito:</strong> Un gerente de ventas enfermó durante una negociación crítica. Gracias a la telefonía IP, atendió todas las llamadas importantes desde su casa usando su laptop, cerró el trato de $50,000 dólares y sus clientes nunca supieron que no estaba en la oficina. La flexibilidad del sistema le permitió mantener la profesionalidad sin comprometer su recuperación.
         </div>
       </article>
 
@@ -264,7 +264,7 @@
           Contesta automáticamente con música en espera, transfiere llamadas sin cortes, y graba conversaciones importantes.
         </p>
         <div class="benefit-card__example">
-          <strong>Ejemplo real:</strong> "Mis clientes piensan que tengo una gran empresa, aunque seamos solo 3 personas."
+          <strong>Caso de éxito:</strong> Una startup de 3 personas compitió contra corporativos para un contrato gubernamental. Al llamar, los clientes escuchaban un IVR profesional ("Presione 1 para ventas, 2 para soporte técnico, 3 para administración"), música en espera de calidad y transferencias fluidas entre departamentos. Ganaron el contrato porque proyectaron la imagen de una empresa establecida y confiable, todo con el mismo equipo pequeño pero herramientas profesionales.
         </div>
       </article>
 
@@ -278,7 +278,7 @@
           Llamadas ilimitadas nacionales, calidad de audio superior, y nunca más líneas ocupadas. Tu equipo siempre conectado.
         </p>
         <div class="benefit-card__example">
-          <strong>Ejemplo real:</strong> "Mis clientes ya no escuchan 'línea ocupada'. Siempre hay alguien disponible para atenderlos."
+          <strong>Caso de éxito:</strong> Un despacho contable perdía 15-20 llamadas diarias en temporada alta porque todas las líneas estaban ocupadas. Después de implementar telefonía IP con 10 extensiones virtuales, sus 4 contadores pueden atender múltiples llamadas simultáneamente desde cualquier dispositivo. Resultado: cero llamadas perdidas, 30% más clientes atendidos durante el cierre fiscal, y calidad de audio HD que elimina malentendidos en números y fechas críticas.
         </div>
       </article>
 
@@ -292,7 +292,7 @@
           Ve reportes de todas las llamadas, duración, quién llamó y cuándo. Información valiosa para tu negocio.
         </p>
         <div class="benefit-card__example">
-          <strong>Ejemplo real:</strong> "Ahora sé exactamente cuándo llaman más clientes y puedo programar mejor mi personal."
+          <strong>Caso de éxito:</strong> El dueño de una cadena de 3 restaurantes analizó los reportes de llamadas y descubrió que 70% de las reservaciones llegaban entre 2-4 PM. Ajustó los turnos para tener más personal contestando en ese horario, redujo el tiempo de espera de 8 minutos a 45 segundos, y aumentó las reservaciones 40% en dos meses. Los datos precisos de duración, horarios pico y llamadas perdidas le permitieron optimizar operaciones y aumentar ingresos sin contratar más personal.
         </div>
       </article>
 
@@ -306,7 +306,7 @@
           No necesitas ser experto en tecnología. Se configura fácil y funciona solo. Nosotros nos encargamos del mantenimiento.
         </p>
         <div class="benefit-card__example">
-          <strong>Ejemplo real:</strong> "Mi secretaria lo aprendió a usar en 10 minutos. Es más fácil que WhatsApp."
+          <strong>Caso de éxito:</strong> Una veterinaria de 68 años estaba preocupada por la tecnología, pensando que necesitaría cursos o capacitación especial. Su recepcionista de 22 años configuró el sistema en la mañana, y para el mediodía la doctora ya estaba transfiriendo llamadas, revisando mensajes de voz y accediendo al directorio desde su celular. "Si yo pude aprenderlo en una mañana, cualquiera puede", comenta. El sistema es tan intuitivo que hasta envía recordatorios automáticos de citas por SMS sin intervención manual.
         </div>
       </article>
 
@@ -336,7 +336,7 @@
         </div>
         
         <div class="benefit-card__example">
-          <strong>Caso real:</strong> "Empecé con 2 extensiones. Hoy tengo 15 empleados en 3 ciudades. El sistema creció conmigo sin complicaciones."
+          <strong>Caso de éxito:</strong> Una agencia de marketing digital comenzó en un departamento con 2 personas y 2 extensiones. En 18 meses abrieron oficinas en CDMX, Guadalajara y Monterrey con 15 empleados. Cada nueva extensión se activó en menos de 5 minutos desde el panel web, sin técnicos, sin cableado, sin equipos nuevos. El costo: solo $150 pesos más por cada extensión mensual. Lo que hubiera costado $80,000 en instalación tradicional, lo lograron con clicks. "El sistema creció con nosotros sin que tuviéramos que pensar en telefonía", comenta el director.
         </div>
         
         <div class="growth-timeline">
@@ -595,7 +595,7 @@
 
           <!-- Beneficios clave destacados -->
           <div class="combination-benefits">
-            <div class="benefits-grid grid md:grid-cols-3 gap-6">
+            <div class="benefits-grid grid md:grid-cols-2 gap-6">
               <div class="combination-benefit">
                 <div class="combination-benefit__icon">
                   <i class="fa-solid fa-sync-alt text-blue-500"></i>
