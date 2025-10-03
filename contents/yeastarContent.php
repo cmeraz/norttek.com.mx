@@ -1,3 +1,21 @@
+<?php
+/**
+ * yeastarContent.php
+ * Contenido principal de la página de Yeastar Cloud PBX
+ * 
+ * Esta página presenta información sobre el sistema Yeastar Cloud PBX,
+ * incluyendo características, planes, precios y casos de uso.
+ * 
+ * Estructura:
+ * - Hero: Presentación principal del servicio
+ * - Características: Principales ventajas de Yeastar
+ * - Planes: Diferentes opciones de suscripción
+ * - Casos de uso: Ejemplos de empresas
+ * - FAQ: Preguntas frecuentes
+ * - CTA: Llamados a la acción
+ */
+?>
+
 <style>
     :root{--brand:#0f6fbf;--accent:#0fbf94;--bg:#f7f9fb;--card:#ffffff;--muted:#6b7280}
     *{box-sizing:border-box}
