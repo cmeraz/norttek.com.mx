@@ -389,46 +389,47 @@
         </div>
     </section>
 
-    <section id="sectores">
-        <div class="ai-container">
-            <header class="ai-section-header">
-                <h2>Casos listos para implementar por industria</h2>
+   <section id="sectores">
+    <div class="ai-container">
+        <header class="ai-section-header">
+            <h2>Casos listos para implementar por industria</h2>
+            <p>
+                Plantillas operativas que adaptamos a tu vertical en cuestión de días. Integramos datos, definimos KPIs y dejamos la automatización corriendo.
+            </p>
+        </header>
+        <div class="ai-grid ai-animate-group">
+            <article class="ai-card">
+                <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-stethoscope"></i></span>
+                <h3>Salud privada</h3>
                 <p>
-                    Plantillas operativas que adaptamos a tu vertical en cuestión de días. Integramos datos, definimos KPIs y dejamos la automatización corriendo.
+                    Gestiona citas y recordatorios de pacientes, enruta llamadas automáticamente según urgencia, registra interacciones en tu sistema de gestión clínica y permite seguimiento seguro de cada paciente.
                 </p>
-            </header>
-            <div class="ai-grid ai-animate-group">
-                <article class="ai-card">
-                    <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-stethoscope"></i></span>
-                    <h3>Salud privada</h3>
-                    <p>
-                        Prioriza urgencias, confirma citas con TTS, crea recordatorios y sincroniza el expediente del paciente con tu ERP clínico.
-                    </p>
-                </article>
-                <article class="ai-card">
-                    <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-building-columns"></i></span>
-                    <h3>Servicios financieros</h3>
-                    <p>
-                        Monitorea llamadas sensibles, registra aprobaciones verbales y genera expedientes auditables en segundos.
-                    </p>
-                </article>
-                <article class="ai-card">
-                    <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-truck-fast"></i></span>
-                    <h3>Logística y última milla</h3>
-                    <p>
-                        Automatiza confirmaciones de entrega, dispara notificaciones contextuales y alimenta dashboards operativos en tiempo real.
-                    </p>
-                </article>
-                <article class="ai-card">
-                    <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-shop"></i></span>
-                    <h3>Retail y e-commerce</h3>
-                    <p>
-                        Unifica WhatsApp, telefonía y chat en un panel. Detecta señales de abandono y lanza campañas de retención automatizadas.
-                    </p>
-                </article>
-            </div>
+            </article>
+            <article class="ai-card">
+                <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-building-columns"></i></span>
+                <h3>Servicios financieros</h3>
+                <p>
+                    Centraliza llamadas de clientes, registra notas y aprobaciones importantes, integra con CRM y sistemas internos, y mantiene un historial seguro y auditable de todas las interacciones.
+                </p>
+            </article>
+            <article class="ai-card">
+                <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-truck-fast"></i></span>
+                <h3>Logística y transporte</h3>
+                <p>
+                    Confirma entregas y citas por teléfono o SMS, enruta llamadas a la sucursal o repartidor correcto, integra datos con sistemas operativos y permite monitoreo en tiempo real de las operaciones.
+                </p>
+            </article>
+            <article class="ai-card">
+                <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-shop"></i></span>
+                <h3>Retail y comercio</h3>
+                <p>
+                    Unifica llamadas, chat y mensajes en un solo panel, registra interacciones con clientes, automatiza notificaciones de seguimiento y facilita la integración con sistemas de ventas y CRM.
+                </p>
+            </article>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <section id="clientes">
         <div class="ai-container">
