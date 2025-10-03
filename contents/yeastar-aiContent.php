@@ -402,40 +402,40 @@
                 <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-stethoscope"></i></span>
                 <h3>Salud privada</h3>
                 <ul class="ai-bullet-grid">
-                    <li>Gestiona citas y recordatorios de pacientes con confirmaciones automatizadas.</li>
-                    <li>Enruta llamadas según urgencia hacia médicos, enfermería o triage.</li>
-                    <li>Registra interacciones en tu sistema de gestión clínica de forma centralizada.</li>
-                    <li>Permite seguimiento seguro del historial de cada paciente.</li>
+                    <li><i class="fa-solid fa-calendar-check"></i><span>Gestiona citas y recordatorios de pacientes con confirmaciones automatizadas.</span></li>
+                    <li><i class="fa-solid fa-notes-medical"></i><span>Enruta llamadas según urgencia hacia médicos, enfermería o triage.</span></li>
+                    <li><i class="fa-solid fa-clipboard-list"></i><span>Registra interacciones en tu sistema de gestión clínica de forma centralizada.</span></li>
+                    <li><i class="fa-solid fa-user-shield"></i><span>Permite seguimiento seguro del historial de cada paciente.</span></li>
                 </ul>
             </article>
             <article class="ai-card">
                 <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-building-columns"></i></span>
                 <h3>Servicios financieros</h3>
                 <ul class="ai-bullet-grid">
-                    <li>Centraliza llamadas de clientes con identificación automática de cuenta.</li>
-                    <li>Registra notas, aprobaciones y acuerdos en CRM y sistemas internos.</li>
-                    <li>Genera alertas para operaciones sensibles y documentación regulatoria.</li>
-                    <li>Mantiene un historial seguro y auditable de cada interacción.</li>
+                    <li><i class="fa-solid fa-id-card-clip"></i><span>Centraliza llamadas de clientes con identificación automática de cuenta.</span></li>
+                    <li><i class="fa-solid fa-pen-to-square"></i><span>Registra notas, aprobaciones y acuerdos en CRM y sistemas internos.</span></li>
+                    <li><i class="fa-solid fa-bell"></i><span>Genera alertas para operaciones sensibles y documentación regulatoria.</span></li>
+                    <li><i class="fa-solid fa-shield-halved"></i><span>Mantiene un historial seguro y auditable de cada interacción.</span></li>
                 </ul>
             </article>
             <article class="ai-card">
                 <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-truck-fast"></i></span>
                 <h3>Logística y transporte</h3>
                 <ul class="ai-bullet-grid">
-                    <li>Confirma entregas y citas vía llamada, SMS o WhatsApp.</li>
-                    <li>Enruta llamadas a la sucursal o repartidor correcto en segundos.</li>
-                    <li>Integra datos con WMS, TMS y sistemas operativos centrales.</li>
-                    <li>Permite monitoreo en tiempo real de incidencias y SLA.</li>
+                    <li><i class="fa-solid fa-clipboard-check"></i><span>Confirma entregas y citas vía llamada, SMS o WhatsApp.</span></li>
+                    <li><i class="fa-solid fa-route"></i><span>Enruta llamadas a la sucursal o repartidor correcto en segundos.</span></li>
+                    <li><i class="fa-solid fa-network-wired"></i><span>Integra datos con WMS, TMS y sistemas operativos centrales.</span></li>
+                    <li><i class="fa-solid fa-chart-line"></i><span>Permite monitoreo en tiempo real de incidencias y SLA.</span></li>
                 </ul>
             </article>
             <article class="ai-card">
                 <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-shop"></i></span>
                 <h3>Retail y comercio</h3>
                 <ul class="ai-bullet-grid">
-                    <li>Unifica llamadas, chat y mensajes en una sola vista de atención.</li>
-                    <li>Registra interacciones con clientes y contexto de compra.</li>
-                    <li>Automatiza notificaciones de seguimiento y campañas de retención.</li>
-                    <li>Facilita la integración con POS, inventarios y CRM.</li>
+                    <li><i class="fa-solid fa-comments"></i><span>Unifica llamadas, chat y mensajes en una sola vista de atención.</span></li>
+                    <li><i class="fa-solid fa-clipboard"></i><span>Registra interacciones con clientes y contexto de compra.</span></li>
+                    <li><i class="fa-solid fa-paper-plane"></i><span>Automatiza notificaciones de seguimiento y campañas de retención.</span></li>
+                    <li><i class="fa-solid fa-store"></i><span>Facilita la integración con POS, inventarios y CRM.</span></li>
                 </ul>
             </article>
         </div>
