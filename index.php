@@ -27,8 +27,8 @@ $seo['twitter_image']   = $seo['twitter_image']   ?? $seo['og_image'];
 $pageName = basename(__FILE__, ".php");
 
 // --------------- ASSETS ESPECÍFICOS POR PÁGINA ---------------
-$cssFiles = ['servicios']; // CSS específico para sección servicios/FAQ separado de plantilla
-$jsFiles  = ['home','servicios']; // JS principal + lógica de anclas/FAQ
+$cssFiles = ['servicios', 'premium-enhancements']; // CSS específico para sección servicios/FAQ + efectos premium
+$jsFiles  = ['home','servicios', 'premium-enhancements']; // JS principal + lógica de anclas/FAQ + efectos premium
 
 // --------------- INCLUYE LA PLANTILLA BASE DEL SITIO ---------------
 include __DIR__ . '/includes/pageTemplate.php';

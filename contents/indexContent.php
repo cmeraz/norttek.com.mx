@@ -12,13 +12,13 @@
 
   <!-- Contenido del hero -->
   <div class="relative max-w-7xl mx-auto px-6 pt-2 md:pt-2 lg:pt-2 pb-16 md:pb-20 text-center text-white">
-    <div class="mb-4">
+    <div class="mb-4 animate-fade-in-down">
   <?= nt_heading('Protege tu espacio · Potencia tu productividad', 'fa-solid fa-shield-halved', 'lg', 'Soluciones integrales para hogar y empresa', ['animate'=>true,'delay'=>'sm','class'=>'nt-heading-hero nt-heading-invert']); ?>
     </div>
-    <div class="max-w-2xl mx-auto mb-8 site-status-wrap">
+    <div class="max-w-2xl mx-auto mb-8 site-status-wrap animate-fade-in-up delay-100">
   <?= nt_alert('accent', 'Sitio en actualización visual. Algunos módulos están en fase de integración al nuevo sistema.'); ?>
     </div>
-    <div class="max-w-4xl mx-auto mb-10">
+    <div class="max-w-4xl mx-auto mb-10 animate-fade-in-up delay-200">
       <p class="text-base md:text-lg leading-relaxed font-light">
         En <strong>Norttek Solutions</strong> (Cd. Cuauhtémoc, Chihuahua) integramos <strong>seguridad</strong>, <strong>tecnología</strong> y <strong>automatización</strong> para empresas, oficinas, comercios y residencias: <strong>CCTV</strong>, <strong>alarmas inteligentes</strong>, <strong>control de acceso</strong>, <strong>accesos vehiculares</strong>, <strong>redes</strong>, <strong>cableado estructurado</strong>, <strong>automatización</strong>, <strong>audio ambiental</strong>, <strong>telefonía IP</strong>, <strong>electrónicos</strong> y <strong>consultoría</strong>.
       </p>
@@ -112,13 +112,13 @@
     ];
     ?>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-5 max-w-4xl mx-auto">
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-5 max-w-4xl mx-auto animate-fade-in-up delay-300">
       <?php foreach ($itemsHero as $i => $item): ?>
         <a href="#<?= $item['enlace']; ?>" aria-label="Abrir sección <?= htmlspecialchars($item['titulo'], ENT_QUOTES, 'UTF-8'); ?>" class="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/70 rounded-2xl">
-          <div class="nt-hero-card relative overflow-hidden rounded-2xl p-4 flex flex-col items-center gap-3 bg-white/20 backdrop-blur-md text-white border border-white/20 ring-1 ring-white/20 shadow-sm transition will-change-transform group-hover:shadow-lg group-hover:ring-orange-500/60 group-active:scale-[0.98]">
-            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-sm">
+          <div class="nt-hero-card relative overflow-hidden rounded-2xl p-4 flex flex-col items-center gap-3 bg-white/20 backdrop-blur-md text-white border border-white/20 ring-1 ring-white/20 shadow-sm transition will-change-transform group-hover:shadow-lg group-hover:ring-orange-500/60 group-active:scale-[0.98] hover-lift glass-effect card-gradient-overlay">
+            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-sm icon-circle-gradient">
               <?php if(isset($item['tipo']) && $item['tipo']=='fa'): ?>
-                <i class="<?= $item['icono']; ?> text-lg"></i>
+                <i class="<?= $item['icono']; ?> text-lg icon-pulse"></i>
               <?php else: ?>
                 <img src="<?= $item['icono']; ?>" alt="<?= $item['titulo']; ?>" class="w-7 h-7 object-contain filter invert-0"/>
               <?php endif; ?>
@@ -136,19 +136,19 @@
 <!-- SECCIÓN DE TIENDA: estilo app-like en tarjeta -->
 <section class="py-20 bg-gray-50">
   <div class="max-w-7xl mx-auto px-6">
-    <div class="rounded-3xl bg-white/95 ring-1 ring-slate-200/70 shadow-sm p-6 md:p-10 grid md:grid-cols-2 items-center gap-8 md:gap-12">
-      <div class="text-left">
+    <div class="rounded-3xl bg-white/95 ring-1 ring-slate-200/70 shadow-sm p-6 md:p-10 grid md:grid-cols-2 items-center gap-8 md:gap-12 hover-lift">
+      <div class="text-left animate-fade-in-left">
         <?= nt_heading('Explora nuestra tienda en línea', 'fa-solid fa-store', 'md', 'Compra fácil y segura', ['animate'=>true,'class'=>'nt-heading-accent-bar']); ?>
         <p class="nt-lead mt-6 text-slate-700">
           Catálogo amplio en <strong>seguridad</strong>, <strong>control de acceso</strong>, <strong>redes</strong>, <strong>cableado</strong>, <strong>automatización</strong>, <strong>audio ambiental</strong> y más. Compra desde cualquier dispositivo con envíos locales.
         </p>
         <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-7">
-          <a href="https://tienda.norttek.com.mx" class="nt-btn nt-btn-primary"><i class="fas fa-store"></i><span>Visitar Tienda</span></a>
+          <a href="https://tienda.norttek.com.mx" class="nt-btn nt-btn-primary btn-premium"><i class="fas fa-store"></i><span>Visitar Tienda</span></a>
           <button id="btnWhatsapp" class="nt-btn nt-btn-outline" data-nt-modal-open="#modalWhatsapp"><i class="fab fa-whatsapp"></i><span>Compartir</span></button>
         </div>
       </div>
-      <div class="flex justify-center">
-        <div class="rounded-2xl overflow-hidden ring-1 ring-slate-200 bg-white shadow-sm">
+      <div class="flex justify-center animate-fade-in-right">
+        <div class="rounded-2xl overflow-hidden ring-1 ring-slate-200 bg-white shadow-sm hover-lift">
           <img src="https://www.sicarx.com/images/new/analyze-data-03.webp" alt="Tienda en línea Norttek" class="w-full max-w-sm">
         </div>
       </div>
