@@ -25,7 +25,7 @@ include __DIR__ . '/../includes/functions.php';
 includeSection('header', ['seo' => $seo, 'pageName' => $pageName, 'cssFiles' => $cssFiles]);
 ?>
 <!-- CSS específico de telefonía desde su carpeta local -->
-<link rel="stylesheet" href="telefonia/assets/css/telefonia.css">
+<link rel="stylesheet" href="/telefonia/assets/css/telefonia.css">
 <?php
 includeSection('navbar');
 
@@ -44,5 +44,5 @@ includeSection('footer');
 
 // 4️⃣ JS desde /telefonia/assets/js/
 ?>
-<script src="telefonia/assets/js/telefonia.js" defer></script>
+<script src="/telefonia/assets/js/telefonia.js" defer></script>
 
