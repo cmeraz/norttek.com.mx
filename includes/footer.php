@@ -181,6 +181,6 @@ $footerVariantClass = $footerStyle === 'light' ? ' nt-footer--light' : '';
     <?php endif; ?>
     </script>
 
-    <script src="assets/js/scripts.js" defer></script>
+    <script src="/assets/js/scripts.js" defer></script>
   </body>
 </html>

@@ -234,7 +234,7 @@
         <p>Datos oficiales registrados ante el Servicio de Administración Tributaria</p>
         
         <div class="fiscal-content">
-          <a href="assets/documents/SAT.pdf" download="Constancia_Situacion_Fiscal_Norttek.pdf" class="fiscal-header fiscal-download-btn" title="Descargar Constancia de Situación Fiscal">
+          <a href="/assets/documents/SAT.pdf" download="Constancia_Situacion_Fiscal_Norttek.pdf" class="fiscal-header fiscal-download-btn" title="Descargar Constancia de Situación Fiscal">
             <div class="sat-logo">
               <img src="/assets/img/SAT-logo.png" alt="Logo SAT" class="sat-logo-img">
             </div>
