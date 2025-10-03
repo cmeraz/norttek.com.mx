@@ -19,7 +19,7 @@ $menu = [
             ['label'=>'Alarmas Inteligentes','icon'=>'fa-solid fa-bell','url'=>'alarma','desc'=>'Sensores, alertas móviles y respuesta rápida.'],
             ['label'=>'Control de Acceso','icon'=>'fa-solid fa-key','url'=>'control-acceso','desc'=>'Biométrico, tarjetas, QR y auditoría.'],
             ['label'=>'Redes y Cableado','icon'=>'fa-solid fa-network-wired','url'=>'networks','desc'=>'Infraestructura, switching y cableado estructurado.'],
-            ['label'=>'Telefonía IP','icon'=>'fa-solid fa-phone-volume','url'=>'telefonia','desc'=>'PBX en la nube, extensiones y comunicación unificada.'],
+            ['label'=>'Telefonía IP','icon'=>'fa-solid fa-phone-volume','url'=>'telefonia/','desc'=>'PBX en la nube, extensiones y comunicación unificada.'],
             ['label'=>'Interfón / Telefonía','icon'=>'fa-solid fa-headset','url'=>'interfon','desc'=>'Intercomunicación y atención remota.'],
         ]
     ],
