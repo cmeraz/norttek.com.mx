@@ -54,7 +54,7 @@ function nt_is_active($itemUrl, $activePage){
     <div class="nt-nav-main flex items-center justify-between px-4 md:px-8 py-2 gap-6">
         <!-- Logo + Wordmark -->
     <a href="/" class="flex items-center gap-2 shrink-0 group leading-none" aria-label="Inicio Norttek Solutions">
-            <img src="assets/img/logo-norttek.png" alt="Norttek" class="nt-logo w-12 md:w-14 h-auto drop-shadow transition-all duration-300" loading="lazy">
+            <img src="/assets/img/logo-norttek.png" alt="Norttek" class="nt-logo w-12 md:w-14 h-auto drop-shadow transition-all duration-300" loading="lazy">
             <span class="nt-logo-title-mobile sm:hidden">Norttek</span>
             <span class="hidden sm:inline text-base md:text-lg font-semibold tracking-tight text-slate-800 group-hover:text-slate-900 dark:text-slate-100">Norttek Solutions</span>
         </a>

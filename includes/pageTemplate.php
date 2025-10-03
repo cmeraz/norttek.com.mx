@@ -64,14 +64,14 @@ if(is_array($jsFiles)){
     foreach($jsFiles as $js){
         $js = basename($js);
         $jsServer = __DIR__ . '/../assets/js/' . $js . '.js';
-        $jsBrowser = 'assets/js/' . $js . '.js';
+        $jsBrowser = '/assets/js/' . $js . '.js';
         if(file_exists($jsServer)) echo "<script src='$jsBrowser' defer></script>\n";
     }
 }
 // Autoload según pageName si existe un JS homónimo
 $autoJsServer = __DIR__ . '/../assets/js/' . $pageName . '.js';
 if(file_exists($autoJsServer)){
-    $autoJsBrowser = 'assets/js/' . $pageName . '.js';
+    $autoJsBrowser = '/assets/js/' . $pageName . '.js';
     echo "<script src='$autoJsBrowser' defer></script>\n";
 }
 

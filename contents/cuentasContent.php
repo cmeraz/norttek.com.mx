@@ -159,7 +159,7 @@
         <div class="company-content">
           <div class="company-header">
             <div class="company-logo-container">
-              <img src="assets/img/logo-norttek.png" alt="Norttek Solutions" class="company-logo-img">
+              <img src="/assets/img/logo-norttek.png" alt="Norttek Solutions" class="company-logo-img">
             </div>
             <div class="company-info">
               <h4>Norttek Solutions</h4>
@@ -236,7 +236,7 @@
         <div class="fiscal-content">
           <a href="assets/documents/SAT.pdf" download="Constancia_Situacion_Fiscal_Norttek.pdf" class="fiscal-header fiscal-download-btn" title="Descargar Constancia de Situación Fiscal">
             <div class="sat-logo">
-              <img src="assets/img/SAT-logo.png" alt="Logo SAT" class="sat-logo-img">
+              <img src="/assets/img/SAT-logo.png" alt="Logo SAT" class="sat-logo-img">
             </div>
             <div class="fiscal-info">
               <h4>Constancia de Situación Fiscal</h4>

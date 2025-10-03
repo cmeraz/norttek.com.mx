@@ -5,7 +5,7 @@
 
 <!-- HERO INICIAL - Conexión emocional -->
 <section class="telefonia-hero nt-hero-wrapper" id="hero" aria-labelledby="hero-title" style="position: relative; min-height: 600px; display: flex; align-items: center; justify-content: center; padding: 150px 1rem 90px;">
-  <div class="telefonia-hero-bg" aria-hidden="true" style="position: absolute; inset: 0; background: url('assets/img/yeastar-hero.webp') center/cover no-repeat; z-index: 1; filter: brightness(1.3) contrast(1.1);"></div>
+  <div class="telefonia-hero-bg" aria-hidden="true" style="position: absolute; inset: 0; background: url('/assets/img/yeastar-hero.webp') center/cover no-repeat; z-index: 1; filter: brightness(1.3) contrast(1.1);"></div>
 
   <div class="telefonia-hero-inner" style="position: relative; z-index: 3; max-width: 980px; text-align: center; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">
     <div id="hero-title" style="margin-bottom: 2rem;">
@@ -37,7 +37,7 @@
     <div class="evolution-timeline mb-20">
       <!-- Imagen ilustrativa de la evolución -->
       <div class="text-center mb-12">
-        <img src="assets/img/evolution-phones.jpg" alt="Evolución de sistemas telefónicos: de analógico a digital" class="mx-auto rounded-lg shadow-lg max-w-3xl w-full" loading="lazy">
+        <img src="/assets/img/evolution-phones.jpg" alt="Evolución de sistemas telefónicos: de analógico a digital" class="mx-auto rounded-lg shadow-lg max-w-3xl w-full" loading="lazy">
       </div>
       
       <div class="grid md:grid-cols-3 gap-8 items-center">
@@ -83,7 +83,7 @@
     <div class="detailed-comparison mb-20">
       <!-- Imagen central de comparación -->
       <div class="text-center mb-12">
-        <img src="assets/img/traditional-vs-voip.jpg" alt="Comparación: Sistema telefónico tradicional vs Telefonía IP" class="mx-auto rounded-lg shadow-lg max-w-4xl w-full" loading="lazy">
+        <img src="/assets/img/traditional-vs-voip.jpg" alt="Comparación: Sistema telefónico tradicional vs Telefonía IP" class="mx-auto rounded-lg shadow-lg max-w-4xl w-full" loading="lazy">
       </div>
       
       <div class="grid lg:grid-cols-2 gap-16 items-start">
@@ -235,7 +235,7 @@
       
       <!-- Imagen de beneficios empresariales -->
       <div class="mt-8 mb-8">
-        <img src="assets/img/business-benefits-phone.jpg" alt="Empresarios utilizando telefonía IP para mejorar su comunicación" class="mx-auto rounded-lg shadow-lg max-w-3xl w-full" loading="lazy">
+        <img src="/assets/img/business-benefits-phone.jpg" alt="Empresarios utilizando telefonía IP para mejorar su comunicación" class="mx-auto rounded-lg shadow-lg max-w-3xl w-full" loading="lazy">
       </div>
     </div>
 
@@ -444,7 +444,7 @@
       
       <!-- Imagen del proceso de implementación -->
       <div class="mt-8 mb-8">
-        <img src="assets/img/voip-setup-process.jpg" alt="Proceso simple de configuración de telefonía IP en 3 pasos" class="mx-auto max-w-4xl w-full" loading="lazy">
+        <img src="/assets/img/voip-setup-process.jpg" alt="Proceso simple de configuración de telefonía IP en 3 pasos" class="mx-auto max-w-4xl w-full" loading="lazy">
       </div>
     </div>
 
@@ -737,7 +737,7 @@
       
       <!-- Imagen de empresas exitosas -->
       <div class="mt-8 mb-8">
-        <img src="assets/img/successful-businesses-voip.jpg" alt="Empresas exitosas utilizando sistemas de telefonía IP" class="mx-auto rounded-lg shadow-lg max-w-4xl w-full" loading="lazy">
+        <img src="/assets/img/successful-businesses-voip.jpg" alt="Empresas exitosas utilizando sistemas de telefonía IP" class="mx-auto rounded-lg shadow-lg max-w-4xl w-full" loading="lazy">
       </div>
     </div>
 
@@ -861,7 +861,7 @@
     
     <!-- Imagen de planes empresariales -->
     <div class="mb-12">
-      <img src="assets/img/voip-pricing-plans.jpg" alt="Planes de telefonía IP adaptados a diferentes tipos de empresas" class="mx-auto rounded-lg shadow-lg max-w-3xl w-full" loading="lazy">
+      <img src="/assets/img/voip-pricing-plans.jpg" alt="Planes de telefonía IP adaptados a diferentes tipos de empresas" class="mx-auto rounded-lg shadow-lg max-w-3xl w-full" loading="lazy">
     </div>
 
     <div class="pricing-cards grid md:grid-cols-3 gap-10">

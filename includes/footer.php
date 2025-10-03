@@ -41,7 +41,7 @@ $footerVariantClass = $footerStyle === 'light' ? ' nt-footer--light' : '';
           <!-- Marca / Descripción -->
           <div class="col-span-1 xl:col-span-2 flex flex-col gap-5">
             <div class="flex items-center gap-3">
-              <img src="assets/img/logo-norttek.png" alt="Logo Norttek Solutions" class="h-14 w-auto drop-shadow" loading="lazy" decoding="async">
+              <img src="/assets/img/logo-norttek.png" alt="Logo Norttek Solutions" class="h-14 w-auto drop-shadow" loading="lazy" decoding="async">
               <div class="text-sm font-semibold tracking-wide uppercase text-slate-600 dark:text-slate-300">Norttek Solutions</div>
             </div>
             <p class="text-[.82rem] leading-relaxed text-slate-600 dark:text-slate-300 max-w-md">
@@ -135,7 +135,7 @@ $footerVariantClass = $footerStyle === 'light' ? ' nt-footer--light' : '';
       foreach($jsFiles as $js){
         $jsFile = basename($js).'.js';
         $server = __DIR__.'/../assets/js/'.$jsFile;
-        $browser = 'assets/js/'.$jsFile;
+        $browser = '/assets/js/'.$jsFile;
         if(file_exists($server)) {
           echo "<script src=\"$browser\" defer></script>\n"; // defer para mejor rendimiento percibido
         } else {

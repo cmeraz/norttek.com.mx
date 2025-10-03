@@ -37,12 +37,12 @@ $seo = $seo ?? [];
 <link rel="canonical" href="https://www.norttek.com.mx/<?= $pageName ?>.php">
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="assets/img/favicon-32x32.png" type="image/png">
+<link rel="shortcut icon" href="/assets/img/favicon-32x32.png" type="image/png">
 
 <!-- CSS global (orden: componentes > layout/base para minimizar colisiones) -->
-<link href="assets/css/loader.css" rel="stylesheet">
-<link href="assets/css/nt-theme.css" rel="stylesheet">
-<link href="assets/css/style.css" rel="stylesheet">
+<link href="/assets/css/loader.css" rel="stylesheet">
+<link href="/assets/css/nt-theme.css" rel="stylesheet">
+<link href="/assets/css/style.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
 <!-- CSS específicos por página -->
@@ -51,7 +51,7 @@ foreach($cssFiles as $css){
     // Construye la ruta de cada archivo CSS
     $cssFile = "$css.css"; 
     $cssPathServer = __DIR__ . "/../assets/css/$cssFile"; // Ruta del servidor
-    $cssPathBrowser = "assets/css/$cssFile";             // Ruta para el navegador
+    $cssPathBrowser = "/assets/css/$cssFile";             // Ruta para el navegador
     if(file_exists($cssPathServer)){
         // Agregar cache busting con timestamp del archivo
         $fileTime = filemtime($cssPathServer);
@@ -62,7 +62,7 @@ foreach($cssFiles as $css){
 // CSS automático según el nombre de la página
 $autoCssFile = "$pageName.css";
 $autoCssPathServer = __DIR__ . "/../assets/css/$autoCssFile";
-$autoCssPathBrowser = "assets/css/$autoCssFile";
+$autoCssPathBrowser = "/assets/css/$autoCssFile";
 if(file_exists($autoCssPathServer)){
     // Agregar cache busting con timestamp del archivo
     $fileTime = filemtime($autoCssPathServer);
@@ -92,7 +92,7 @@ if(file_exists($autoCssPathServer)){
 
 <!-- Scripts generales -->
 <script src="https://unpkg.com/feather-icons"></script>
-<script src="assets/js/loader.js"></script>
+<script src="/assets/js/loader.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
 
 <?php if (!empty($externalJsHead)): ?>
@@ -117,14 +117,14 @@ if(file_exists($autoCssPathServer)){
 <body>
 
 <!-- Preload de imagen de fondo (oculto inicialmente) -->
-<img id="preload-bg" src="assets/img/loader.jpg" style="display:none;">
+<img id="preload-bg" src="/assets/img/loader.jpg" style="display:none;">
 
 <!-- Loader inicial de la página - Remasterizado -->
 <div id="loader" style="display: flex !important; opacity: 1 !important;">
     <div class="loader-content">
         <!-- Logo con animación de entrada -->
         <div class="logo-container">
-            <img src="assets/img/logo-norttek.png" alt="Logo Norttek" class="company-logo">
+            <img src="/assets/img/logo-norttek.png" alt="Logo Norttek" class="company-logo">
             <div class="logo-glow"></div>
         </div>
         

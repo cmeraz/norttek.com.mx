@@ -20,7 +20,7 @@
   <div class="max-w-4xl mx-auto px-6 lg:px-12">
     <div class="flex flex-col md:flex-row items-start gap-6">
       <img 
-        src="assets/img/control-acceso-intro.jpg" 
+        src="/assets/img/control-acceso-intro.jpg" 
         alt="Control de Acceso Norttek" 
         class="w-40 h-40 object-cover rounded-lg shadow-md flex-shrink-0 mx-auto md:mx-0"
       >
