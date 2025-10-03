@@ -369,39 +369,39 @@
                     <tbody>
                         <tr>
                             <th scope="row">Experiencia del cliente</th>
-                            <td>Guiones dinámicos, resúmenes automáticos y monitoreo de sentimiento en vivo.</td>
-                            <td>Respuesta variable según cada colaborador; sin retroalimentación inmediata.</td>
-                            <td>Atención rígida, dependiente de horarios fijos y operadores locales.</td>
+                            <td data-label="Yeastar + IA">Guiones dinámicos, resúmenes automáticos y monitoreo de sentimiento en vivo.</td>
+                            <td data-label="Telefonía celular">Respuesta variable según cada colaborador; sin retroalimentación inmediata.</td>
+                            <td data-label="Telefonía análoga">Atención rígida, dependiente de horarios fijos y operadores locales.</td>
                         </tr>
                         <tr>
                             <th scope="row">Visibilidad y analítica</th>
-                            <td>Dashboards en tiempo real, insights accionables y KPIs personalizados.</td>
-                            <td>Datos dispersos en dispositivos individuales; sin métricas consolidadas.</td>
-                            <td>Reportes manuales, sin trazabilidad ni correlación con resultados.</td>
+                            <td data-label="Yeastar + IA">Dashboards en tiempo real, insights accionables y KPIs personalizados.</td>
+                            <td data-label="Telefonía celular">Datos dispersos en dispositivos individuales; sin métricas consolidadas.</td>
+                            <td data-label="Telefonía análoga">Reportes manuales, sin trazabilidad ni correlación con resultados.</td>
                         </tr>
                         <tr>
                             <th scope="row">Escalabilidad</th>
-                            <td>Usuarios y campañas activados en minutos desde la nube.</td>
-                            <td>Depende de contratar líneas adicionales y equipamiento por colaborador.</td>
-                            <td>Requiere hardware nuevo, cableado y visitas técnicas por cada expansión.</td>
+                            <td data-label="Yeastar + IA">Usuarios y campañas activados en minutos desde la nube.</td>
+                            <td data-label="Telefonía celular">Depende de contratar líneas adicionales y equipamiento por colaborador.</td>
+                            <td data-label="Telefonía análoga">Requiere hardware nuevo, cableado y visitas técnicas por cada expansión.</td>
                         </tr>
                         <tr>
                             <th scope="row">Integraciones</th>
-                            <td>Conectores nativos y APIs para CRM, ERP, BI y plataformas colaborativas.</td>
-                            <td>Integraciones limitadas o basadas en aplicaciones ajenas a TI corporativo.</td>
-                            <td>Casi inexistentes; procesos paralelos manuales.</td>
+                            <td data-label="Yeastar + IA">Conectores nativos y APIs para CRM, ERP, BI y plataformas colaborativas.</td>
+                            <td data-label="Telefonía celular">Integraciones limitadas o basadas en aplicaciones ajenas a TI corporativo.</td>
+                            <td data-label="Telefonía análoga">Casi inexistentes; procesos paralelos manuales.</td>
                         </tr>
                         <tr>
                             <th scope="row">Seguridad y cumplimiento</th>
-                            <td>Cifrado end-to-end, roles por perfil y cumplimiento normativo.</td>
-                            <td>Dependencia del usuario final; riesgo elevado de fuga de información.</td>
-                            <td>Infraestructura expuesta y sin controles de acceso granulares.</td>
+                            <td data-label="Yeastar + IA">Cifrado end-to-end, roles por perfil y cumplimiento normativo.</td>
+                            <td data-label="Telefonía celular">Dependencia del usuario final; riesgo elevado de fuga de información.</td>
+                            <td data-label="Telefonía análoga">Infraestructura expuesta y sin controles de acceso granulares.</td>
                         </tr>
                         <tr>
                             <th scope="row">Costo total</th>
-                            <td>Modelo OPEX con ROI medible desde el primer trimestre.</td>
-                            <td>Gastos recurrentes dispersos y difícil control presupuestal.</td>
-                            <td>Inversiones CAPEX altas y mantenimiento permanente.</td>
+                            <td data-label="Yeastar + IA">Modelo OPEX con ROI medible desde el primer trimestre.</td>
+                            <td data-label="Telefonía celular">Gastos recurrentes dispersos y difícil control presupuestal.</td>
+                            <td data-label="Telefonía análoga">Inversiones CAPEX altas y mantenimiento permanente.</td>
                         </tr>
                     </tbody>
                 </table>
