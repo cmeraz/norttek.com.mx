@@ -1316,92 +1316,105 @@ details p {
 }
 
 @media (max-width: 768px) {
-    /* Tabla comparativa estilo cards en móvil - diseño simplificado */
-    .ai-comparison-wrapper {
-        overflow-x: visible;
-        overflow-y: visible;
+    /* Ocultar tabla en móvil y mostrar versión alternativa */
+    .ai-comparison-table {
+        display: none;
     }
 
-    .ai-comparison-table,
-    .ai-comparison-table thead,
-    .ai-comparison-table tbody,
-    .ai-comparison-table tr,
-    .ai-comparison-table th,
-    .ai-comparison-table td {
+    /* Crear diseño de comparación mobile-friendly */
+    .ai-comparison-wrapper::after {
+        content: '';
         display: block;
-        width: 100%;
+    }
+}
+
+/* Diseño alternativo para móviles */
+.ai-comparison-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .ai-comparison-mobile {
+        display: block;
     }
 
-    .ai-comparison-table thead {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-
-    .ai-comparison-table tbody tr {
-        margin-bottom: 28px;
+    .ai-comparison-mobile-item {
         background: linear-gradient(160deg, rgba(13, 18, 46, 0.92), rgba(8, 10, 27, 0.88));
         border: 1px solid rgba(122, 139, 255, 0.32);
         border-radius: 20px;
-        overflow: hidden;
-        padding: 0;
+        padding: 24px 20px;
+        margin-bottom: 20px;
     }
 
-    .ai-comparison-table tbody th {
-        background: linear-gradient(135deg, rgba(58, 123, 255, 0.3), rgba(143, 93, 255, 0.2));
-        color: #fff;
-        font-size: 17px;
+    .ai-comparison-mobile-title {
+        font-size: 18px;
         font-weight: 700;
-        padding: 20px;
-        border: none;
+        color: var(--ai-text);
+        margin-bottom: 20px;
+        padding-bottom: 14px;
         border-bottom: 2px solid rgba(78, 225, 193, 0.3);
         text-align: center;
-        letter-spacing: 0.02em;
     }
 
-    .ai-comparison-table tbody td {
-        padding: 0;
-        border: none;
-        margin: 0;
-        background: transparent;
+    .ai-comparison-mobile-option {
+        margin-bottom: 16px;
+        padding: 16px;
+        background: rgba(9, 12, 32, 0.6);
+        border-radius: 14px;
+        border-left: 3px solid var(--ai-accent);
     }
 
-    .ai-comparison-table tbody td::before {
-        content: attr(data-label);
-        display: block;
+    .ai-comparison-mobile-option:last-child {
+        margin-bottom: 0;
+    }
+
+    .ai-comparison-mobile-option.is-yeastar {
+        border-left-color: #4ee1c1;
+        background: rgba(78, 225, 193, 0.08);
+    }
+
+    .ai-comparison-mobile-option.is-celular {
+        border-left-color: #ff9066;
+        background: rgba(255, 144, 102, 0.08);
+    }
+
+    .ai-comparison-mobile-option.is-analogica {
+        border-left-color: #ff6b6b;
+        background: rgba(255, 107, 107, 0.08);
+    }
+
+    .ai-comparison-mobile-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
         font-weight: 700;
         color: var(--ai-accent);
-        font-size: 13px;
-        letter-spacing: 0.08em;
         text-transform: uppercase;
-        padding: 16px 20px 8px 20px;
-        background: rgba(9, 12, 32, 0.4);
-        border-bottom: 1px solid rgba(122, 139, 255, 0.15);
+        letter-spacing: 0.08em;
+        margin-bottom: 8px;
     }
 
-    .ai-comparison-table tbody td {
-        padding: 0 20px 16px 20px;
-        line-height: 1.7;
+    .ai-comparison-mobile-label i {
+        font-size: 16px;
+    }
+
+    .ai-comparison-mobile-option.is-yeastar .ai-comparison-mobile-label {
+        color: #4ee1c1;
+    }
+
+    .ai-comparison-mobile-option.is-celular .ai-comparison-mobile-label {
+        color: #ff9066;
+    }
+
+    .ai-comparison-mobile-option.is-analogica .ai-comparison-mobile-label {
+        color: #ff6b6b;
+    }
+
+    .ai-comparison-mobile-text {
         color: var(--ai-text-muted);
-    }
-
-    .ai-comparison-table tbody td:not(:last-child) {
-        border-bottom: 1px solid rgba(122, 139, 255, 0.15);
-        padding-bottom: 0;
-    }
-
-    .ai-comparison-table tbody tr:nth-child(even) td {
-        background: transparent;
-    }
-
-    /* Iconos */
-    .ai-comparison-table tbody td i {
-        margin-right: 8px;
-        color: var(--ai-accent);
-    }
-
-    .ai-comparison-table tbody tr:last-child {
-        margin-bottom: 0;
+        line-height: 1.65;
+        font-size: 14px;
     }
 }
 

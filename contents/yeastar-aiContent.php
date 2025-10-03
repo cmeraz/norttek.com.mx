@@ -405,6 +405,159 @@
                         </tr>
                     </tbody>
                 </table>
+
+                <!-- Versión mobile-friendly -->
+                <div class="ai-comparison-mobile">
+                    <div class="ai-comparison-mobile-item">
+                        <h3 class="ai-comparison-mobile-title">Experiencia del cliente</h3>
+                        <div class="ai-comparison-mobile-option is-yeastar">
+                            <div class="ai-comparison-mobile-label">
+                                <i class="fa-solid fa-bolt"></i>
+                                <span>Yeastar + IA</span>
+                            </div>
+                            <p class="ai-comparison-mobile-text">Guiones dinámicos, resúmenes automáticos y monitoreo de sentimiento en vivo.</p>
+                        </div>
+                        <div class="ai-comparison-mobile-option is-celular">
+                            <div class="ai-comparison-mobile-label">
+                                <i class="fa-solid fa-mobile-screen-button"></i>
+                                <span>Telefonía celular</span>
+                            </div>
+                            <p class="ai-comparison-mobile-text">Respuesta variable según cada colaborador; sin retroalimentación inmediata.</p>
+                        </div>
+                        <div class="ai-comparison-mobile-option is-analogica">
+                            <div class="ai-comparison-mobile-label">
+                                <i class="fa-solid fa-phone-volume"></i>
+                                <span>Telefonía análoga</span>
+                            </div>
+                            <p class="ai-comparison-mobile-text">Atención rígida, dependiente de horarios fijos y operadores locales.</p>
+                        </div>
+                    </div>
+
+                    <div class="ai-comparison-mobile-item">
+                        <h3 class="ai-comparison-mobile-title">Visibilidad y analítica</h3>
+                        <div class="ai-comparison-mobile-option is-yeastar">
+                            <div class="ai-comparison-mobile-label">
+                                <i class="fa-solid fa-bolt"></i>
+                                <span>Yeastar + IA</span>
+                            </div>
+                            <p class="ai-comparison-mobile-text">Dashboards en tiempo real, insights accionables y KPIs personalizados.</p>
+                        </div>
+                        <div class="ai-comparison-mobile-option is-celular">
+                            <div class="ai-comparison-mobile-label">
+                                <i class="fa-solid fa-mobile-screen-button"></i>
+                                <span>Telefonía celular</span>
+                            </div>
+                            <p class="ai-comparison-mobile-text">Datos dispersos en dispositivos individuales; sin métricas consolidadas.</p>
+                        </div>
+                        <div class="ai-comparison-mobile-option is-analogica">
+                            <div class="ai-comparison-mobile-label">
+                                <i class="fa-solid fa-phone-volume"></i>
+                                <span>Telefonía análoga</span>
+                            </div>
+                            <p class="ai-comparison-mobile-text">Reportes manuales, sin trazabilidad ni correlación con resultados.</p>
+                        </div>
+                    </div>
+
+                    <div class="ai-comparison-mobile-item">
+                        <h3 class="ai-comparison-mobile-title">Escalabilidad</h3>
+                        <div class="ai-comparison-mobile-option is-yeastar">
+                            <div class="ai-comparison-mobile-label">
+                                <i class="fa-solid fa-bolt"></i>
+                                <span>Yeastar + IA</span>
+                            </div>
+                            <p class="ai-comparison-mobile-text">Usuarios y campañas activados en minutos desde la nube.</p>
+                        </div>
+                        <div class="ai-comparison-mobile-option is-celular">
+                            <div class="ai-comparison-mobile-label">
+                                <i class="fa-solid fa-mobile-screen-button"></i>
+                                <span>Telefonía celular</span>
+                            </div>
+                            <p class="ai-comparison-mobile-text">Depende de contratar líneas adicionales y equipamiento por colaborador.</p>
+                        </div>
+                        <div class="ai-comparison-mobile-option is-analogica">
+                            <div class="ai-comparison-mobile-label">
+                                <i class="fa-solid fa-phone-volume"></i>
+                                <span>Telefonía análoga</span>
+                            </div>
+                            <p class="ai-comparison-mobile-text">Requiere hardware nuevo, cableado y visitas técnicas por cada expansión.</p>
+                        </div>
+                    </div>
+
+                    <div class="ai-comparison-mobile-item">
+                        <h3 class="ai-comparison-mobile-title">Integraciones</h3>
+                        <div class="ai-comparison-mobile-option is-yeastar">
+                            <div class="ai-comparison-mobile-label">
+                                <i class="fa-solid fa-bolt"></i>
+                                <span>Yeastar + IA</span>
+                            </div>
+                            <p class="ai-comparison-mobile-text">Conectores nativos y APIs para CRM, ERP, BI y plataformas colaborativas.</p>
+                        </div>
+                        <div class="ai-comparison-mobile-option is-celular">
+                            <div class="ai-comparison-mobile-label">
+                                <i class="fa-solid fa-mobile-screen-button"></i>
+                                <span>Telefonía celular</span>
+                            </div>
+                            <p class="ai-comparison-mobile-text">Integraciones limitadas o basadas en aplicaciones ajenas a TI corporativo.</p>
+                        </div>
+                        <div class="ai-comparison-mobile-option is-analogica">
+                            <div class="ai-comparison-mobile-label">
+                                <i class="fa-solid fa-phone-volume"></i>
+                                <span>Telefonía análoga</span>
+                            </div>
+                            <p class="ai-comparison-mobile-text">Casi inexistentes; procesos paralelos manuales.</p>
+                        </div>
+                    </div>
+
+                    <div class="ai-comparison-mobile-item">
+                        <h3 class="ai-comparison-mobile-title">Seguridad y cumplimiento</h3>
+                        <div class="ai-comparison-mobile-option is-yeastar">
+                            <div class="ai-comparison-mobile-label">
+                                <i class="fa-solid fa-bolt"></i>
+                                <span>Yeastar + IA</span>
+                            </div>
+                            <p class="ai-comparison-mobile-text">Cifrado end-to-end, roles por perfil y cumplimiento normativo.</p>
+                        </div>
+                        <div class="ai-comparison-mobile-option is-celular">
+                            <div class="ai-comparison-mobile-label">
+                                <i class="fa-solid fa-mobile-screen-button"></i>
+                                <span>Telefonía celular</span>
+                            </div>
+                            <p class="ai-comparison-mobile-text">Dependencia del usuario final; riesgo elevado de fuga de información.</p>
+                        </div>
+                        <div class="ai-comparison-mobile-option is-analogica">
+                            <div class="ai-comparison-mobile-label">
+                                <i class="fa-solid fa-phone-volume"></i>
+                                <span>Telefonía análoga</span>
+                            </div>
+                            <p class="ai-comparison-mobile-text">Infraestructura expuesta y sin controles de acceso granulares.</p>
+                        </div>
+                    </div>
+
+                    <div class="ai-comparison-mobile-item">
+                        <h3 class="ai-comparison-mobile-title">Costo total</h3>
+                        <div class="ai-comparison-mobile-option is-yeastar">
+                            <div class="ai-comparison-mobile-label">
+                                <i class="fa-solid fa-bolt"></i>
+                                <span>Yeastar + IA</span>
+                            </div>
+                            <p class="ai-comparison-mobile-text">Modelo OPEX con ROI medible desde el primer trimestre.</p>
+                        </div>
+                        <div class="ai-comparison-mobile-option is-celular">
+                            <div class="ai-comparison-mobile-label">
+                                <i class="fa-solid fa-mobile-screen-button"></i>
+                                <span>Telefonía celular</span>
+                            </div>
+                            <p class="ai-comparison-mobile-text">Gastos recurrentes dispersos y difícil control presupuestal.</p>
+                        </div>
+                        <div class="ai-comparison-mobile-option is-analogica">
+                            <div class="ai-comparison-mobile-label">
+                                <i class="fa-solid fa-phone-volume"></i>
+                                <span>Telefonía análoga</span>
+                            </div>
+                            <p class="ai-comparison-mobile-text">Inversiones CAPEX altas y mantenimiento permanente.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
