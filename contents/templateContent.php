@@ -42,7 +42,7 @@
 
         <!-- Instrucciones -->
         <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 mb-8">
-            <h2 class="text-2xl font-semibold text-gray-900 mb-6">📋 Cómo usar esta plantilla</h2>
+            <h2 class="text-2xl font-semibold text-gray-900 mb-6"><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i> Cómo usar esta plantilla</h2>
             
             <div class="space-y-6">
                 <div class="flex items-start">
@@ -91,7 +91,7 @@
 
         <!-- Ejemplo de código actualizado -->
         <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-            <h2 class="text-2xl font-semibold text-gray-900 mb-6">💻 Ejemplo de implementación</h2>
+            <h2 class="text-2xl font-semibold text-gray-900 mb-6"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i> Ejemplo de implementación</h2>
             
             <div class="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
                 <pre class="text-sm"><code><?php echo htmlspecialchars('<?php

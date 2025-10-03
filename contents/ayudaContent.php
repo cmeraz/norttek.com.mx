@@ -235,17 +235,17 @@
                     
                     <div class="quick-steps">
                         <div class="quick-step">
-                            <span class="step-icon">📱</span>
+                            <span class="step-icon"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i></span>
                             <h4>En la app</h4>
                             <p>Toca "¿Olvidaste tu contraseña?" en la pantalla de inicio de sesión</p>
                         </div>
                         <div class="quick-step">
-                            <span class="step-icon">📧</span>
+                            <span class="step-icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
                             <h4>Ingresa tu email</h4>
                             <p>Escribe el email que usaste para registrarte</p>
                         </div>
                         <div class="quick-step">
-                            <span class="step-icon">🔑</span>
+                            <span class="step-icon"><i class="fa-solid fa-key" aria-hidden="true"></i></span>
                             <h4>Revisa tu correo</h4>
                             <p>Sigue las instrucciones del email para crear una nueva contraseña</p>
                         </div>
@@ -262,8 +262,8 @@
                         </div>
                         <div class="code-content">
                             1. Abre la app Hik-Connect<br>
-                            2. Ve a "Dispositivos" → Selecciona tu cámara<br>
-                            3. Toca el ícono de compartir (👥)<br>
+                            2. Ve a "Dispositivos" <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> Selecciona tu cámara<br>
+                            3. Toca el ícono de compartir (<i class="fa-solid fa-users" aria-hidden="true"></i>)<br>
                             4. Ingresa el email del usuario destinatario<br>
                             5. Selecciona permisos (solo ver o ver + controlar)<br>
                             6. Envía la invitación
@@ -284,19 +284,19 @@
                     
                     <div class="feature-showcase">
                         <div class="showcase-item">
-                            <h4>🎥 Vista única</h4>
+                            <h4><i class="fa-solid fa-video" aria-hidden="true"></i> Vista única</h4>
                             <p>Toca cualquier cámara en tu lista para ver en pantalla completa</p>
                         </div>
                         <div class="showcase-item">
-                            <h4>📱 Vista múltiple</h4>
+                            <h4><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i> Vista múltiple</h4>
                             <p>Desliza hacia la izquierda para ver hasta 4 cámaras simultáneamente</p>
                         </div>
                         <div class="showcase-item">
-                            <h4>🔍 Zoom digital</h4>
+                            <h4><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Zoom digital</h4>
                             <p>Pellizca para hacer zoom en áreas específicas de la imagen</p>
                         </div>
                         <div class="showcase-item">
-                            <h4>📸 Captura</h4>
+                            <h4><i class="fa-solid fa-camera" aria-hidden="true"></i> Captura</h4>
                             <p>Toca el botón de cámara para tomar capturas de pantalla</p>
                         </div>
                     </div>
@@ -318,7 +318,7 @@
                             <div class="timeline-marker">2</div>
                             <div class="timeline-content">
                                 <h4>Ir a Playback</h4>
-                                <p>Toca el ícono de reproducción (▶️) en la parte inferior</p>
+                                <p>Toca el ícono de reproducción (<i class="fa-solid fa-play" aria-hidden="true"></i>) en la parte inferior</p>
                             </div>
                         </div>
                         <div class="timeline-item">
@@ -484,17 +484,17 @@
                     
                     <div class="solution-grid">
                         <div class="solution-card">
-                            <h4>🔌 Interferencia eléctrica</h4>
+                            <h4><i class="fa-solid fa-plug" aria-hidden="true"></i> Interferencia eléctrica</h4>
                             <p><strong>Causa:</strong> Cables cerca de fuentes eléctricas</p>
                             <p><strong>Solución:</strong> Aleja los cables de transformadores, motores o luces LED</p>
                         </div>
                         <div class="solution-card">
-                            <h4>📺 Frecuencia incorrecta</h4>
+                            <h4><i class="fa-solid fa-tv" aria-hidden="true"></i> Frecuencia incorrecta</h4>
                             <p><strong>Causa:</strong> Configuración de Hz incorrecta</p>
                             <p><strong>Solución:</strong> Cambiar de 50Hz a 60Hz (o viceversa) en configuración</p>
                         </div>
                         <div class="solution-card">
-                            <h4>🔧 Cable dañado</h4>
+                            <h4><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i> Cable dañado</h4>
                             <p><strong>Causa:</strong> Cable coaxial o UTP en mal estado</p>
                             <p><strong>Solución:</strong> Reemplazar el cable de video/datos</p>
                         </div>
@@ -633,17 +633,17 @@
                                         <span class="sequence-number">1</span>
                                         <p>Desconecta el módem (30 segundos)</p>
                                     </div>
-                                    <div class="sequence-arrow">→</div>
+                                    <div class="sequence-arrow"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
                                     <div class="sequence-item">
                                         <span class="sequence-number">2</span>
                                         <p>Desconecta el router (30 segundos)</p>
                                     </div>
-                                    <div class="sequence-arrow">→</div>
+                                    <div class="sequence-arrow"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
                                     <div class="sequence-item">
                                         <span class="sequence-number">3</span>
                                         <p>Conecta primero el módem</p>
                                     </div>
-                                    <div class="sequence-arrow">→</div>
+                                    <div class="sequence-arrow"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
                                     <div class="sequence-item">
                                         <span class="sequence-number">4</span>
                                         <p>Espera 2 minutos y conecta el router</p>
@@ -684,7 +684,7 @@
                     <p>Diagnóstico y optimización de la velocidad de tu conexión a Internet.</p>
                     
                     <div class="speed-test-card">
-                        <h4>🚀 Test de velocidad</h4>
+                        <h4><i class="fa-solid fa-rocket" aria-hidden="true"></i> Test de velocidad</h4>
                         <p>Antes de reportar lentitud, realiza una prueba de velocidad:</p>
                         <div class="test-buttons">
                             <a href="https://www.speedtest.net/" target="_blank" class="test-btn">Speedtest.net</a>
@@ -697,22 +697,22 @@
                         <h4>Consejos para optimizar tu conexión:</h4>
                         <div class="tips-grid">
                             <div class="tip-card">
-                                <span class="tip-icon">📱</span>
+                                <span class="tip-icon"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i></span>
                                 <h5>Limita dispositivos conectados</h5>
                                 <p>Desconecta dispositivos que no estés usando activamente</p>
                             </div>
                             <div class="tip-card">
-                                <span class="tip-icon">📺</span>
+                                <span class="tip-icon"><i class="fa-solid fa-tv" aria-hidden="true"></i></span>
                                 <h5>Pausa streaming innecesario</h5>
                                 <p>Detén Netflix, YouTube u otras apps de video que consuman ancho de banda</p>
                             </div>
                             <div class="tip-card">
-                                <span class="tip-icon">💾</span>
+                                <span class="tip-icon"><i class="fa-solid fa-download" aria-hidden="true"></i></span>
                                 <h5>Pausa descargas grandes</h5>
                                 <p>Suspende actualizaciones automáticas y descargas de archivos pesados</p>
                             </div>
                             <div class="tip-card">
-                                <span class="tip-icon">📍</span>
+                                <span class="tip-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
                                 <h5>Acércate al router</h5>
                                 <p>Si usas WiFi, prueba conectarte más cerca del router o usa cable</p>
                             </div>

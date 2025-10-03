@@ -38,8 +38,8 @@
                             
                             <p class="font-semibold text-blue-800 mb-2 mt-4">Contacto:</p>
                             <p class="text-gray-700">
-                                📧 [ESPECIFICAR EMAIL]<br>
-                                📱 [ESPECIFICAR TELÉFONO]
+                                <i class="fa-solid fa-envelope" aria-hidden="true"></i> [ESPECIFICAR EMAIL]<br>
+                                <i class="fa-solid fa-phone" aria-hidden="true"></i> [ESPECIFICAR TELÉFONO]
                             </p>
                         </div>
                     </div>
@@ -336,15 +336,15 @@
                     </p>
                     <div class="grid md:grid-cols-2 gap-6">
                         <div class="space-y-2">
-                            <p class="font-semibold text-blue-800">📧 Email especializado:</p>
+                            <p class="font-semibold text-blue-800"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Email especializado:</p>
                             <p class="text-gray-700 font-mono bg-white px-3 py-2 rounded border">
                                 privacidad@norttek.com.mx
                             </p>
-                            <p class="font-semibold text-blue-800">📱 Teléfono:</p>
+                            <p class="font-semibold text-blue-800"><i class="fa-solid fa-phone" aria-hidden="true"></i> Teléfono:</p>
                             <p class="text-gray-700">[ESPECIFICAR TELÉFONO]</p>
                         </div>
                         <div class="space-y-2">
-                            <p class="font-semibold text-blue-800">🏢 Horario de atención:</p>
+                            <p class="font-semibold text-blue-800"><i class="fa-solid fa-building" aria-hidden="true"></i> Horario de atención:</p>
                             <p class="text-gray-700">
                                 Lunes a Viernes: 9:00 - 18:00 hrs<br>
                                 Sábados: 9:00 - 14:00 hrs
