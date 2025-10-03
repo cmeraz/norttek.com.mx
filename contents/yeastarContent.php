@@ -434,12 +434,16 @@
         color: var(--yeastar-text);
     }
 
-    .yeastar-plan-features li::before {
-        content: '✓';
-        color: var(--yeastar-secondary);
-        font-weight: 700;
-        font-size: 18px;
-    }
+  .yeastar-plan-features li::before {
+    /* Usar icono FontAwesome (check) en pseudo-elemento */
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900; /* solid */
+    color: var(--yeastar-secondary);
+    font-size: 18px;
+    display: inline-block;
+    line-height: 1;
+  }
 
     /* ==========================================
        TESTIMONIALS SECTION
@@ -716,14 +720,18 @@
         <div class="yeastar-cta-group">
           <a href="#contacto" class="yeastar-btn yeastar-btn-primary" onclick="scrollToContact(event)">
             <span>Solicitar Demo</span>
-            <span>→</span>
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
           </a>
           <a href="#planes" class="yeastar-btn yeastar-btn-outline" onclick="scrollToPlans(event)">
             <span>Ver Planes</span>
-            <span>→</span>
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
           </a>
         </div>
-        <p class="yeastar-hero-trust">✓ Sin instalación local • ✓ Actualización automática • ✓ Soporte experto 24/7</p>
+        <p class="yeastar-hero-trust">
+          <i class="fa-solid fa-check" aria-hidden="true"></i> Sin instalación local •
+          <i class="fa-solid fa-check" aria-hidden="true"></i> Actualización automática •
+          <i class="fa-solid fa-check" aria-hidden="true"></i> Soporte experto 24/7
+        </p>
       </div>
       <div class="yeastar-hero-right">
         <div class="yeastar-hero-mockup">
@@ -746,37 +754,37 @@
     
     <div class="yeastar-features-grid">
       <div class="yeastar-feature-card">
-        <div class="yeastar-feature-icon">📞</div>
+        <div class="yeastar-feature-icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></div>
         <h4>Llamadas desde cualquier lugar</h4>
         <p>Atiende desde tu celular, laptop o teléfono de escritorio con la misma extensión. Total flexibilidad para trabajar remoto o híbrido.</p>
       </div>
       
       <div class="yeastar-feature-card">
-        <div class="yeastar-feature-icon">⚡</div>
+        <div class="yeastar-feature-icon"><i class="fa-solid fa-bolt" aria-hidden="true"></i></div>
         <h4>Instalación rápida</h4>
         <p>Configuración guiada en minutos. Sin necesidad de equipos físicos complejos ni técnicos especializados. Empieza a operar el mismo día.</p>
       </div>
       
       <div class="yeastar-feature-card">
-        <div class="yeastar-feature-icon">🔒</div>
+        <div class="yeastar-feature-icon"><i class="fa-solid fa-lock" aria-hidden="true"></i></div>
         <h4>Seguridad empresarial</h4>
         <p>Conexiones cifradas, respaldo automático en la nube y cumplimiento de estándares internacionales de seguridad.</p>
       </div>
       
       <div class="yeastar-feature-card">
-        <div class="yeastar-feature-icon">🔗</div>
+        <div class="yeastar-feature-icon"><i class="fa-solid fa-link" aria-hidden="true"></i></div>
         <h4>Integraciones inteligentes</h4>
         <p>Conecta con CRM, WhatsApp Business, Microsoft Teams, Linkus UC y más de 100 aplicaciones empresariales.</p>
       </div>
       
       <div class="yeastar-feature-card">
-        <div class="yeastar-feature-icon">📊</div>
+        <div class="yeastar-feature-icon"><i class="fa-solid fa-chart-bar" aria-hidden="true"></i></div>
         <h4>Reportes en tiempo real</h4>
         <p>Analiza métricas de llamadas, rendimiento del equipo y satisfacción del cliente con dashboards interactivos.</p>
       </div>
       
       <div class="yeastar-feature-card">
-        <div class="yeastar-feature-icon">🌐</div>
+        <div class="yeastar-feature-icon"><i class="fa-solid fa-globe" aria-hidden="true"></i></div>
         <h4>Escalabilidad infinita</h4>
         <p>Crece sin límites: añade extensiones, usuarios y funciones según las necesidades de tu empresa.</p>
       </div>
@@ -1032,7 +1040,7 @@
         <div class="yeastar-form-group full-width">
           <button type="submit" class="yeastar-btn yeastar-btn-primary" style="width:100%">
             <span>Solicitar demo gratuita</span>
-            <span>→</span>
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
           </button>
           <p style="font-size:13px; color:var(--yeastar-text-light); margin-top:12px; text-align:center;">
             Al enviar aceptas nuestra <a href="/privacidad.php" style="color:var(--yeastar-primary)">política de privacidad</a>. Te contactaremos en menos de 24 horas.

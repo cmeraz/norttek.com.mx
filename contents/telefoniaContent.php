@@ -343,9 +343,9 @@
           <h5 class="growth-timeline__title">Tu crecimiento típico:</h5>
           <div class="growth-timeline__steps">
             <span class="growth-step">Mes 1: 1-3 ext.</span>
-            <span class="growth-arrow">→</span>
+            <span class="growth-arrow"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
             <span class="growth-step">Año 1: 5-10 ext.</span>
-            <span class="growth-arrow">→</span>
+            <span class="growth-arrow"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
             <span class="growth-step">Año 2+: 15+ ext.</span>
           </div>
           <p class="growth-timeline__note">Cada paso es instantáneo y sin costos de instalación</p>

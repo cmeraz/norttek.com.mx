@@ -226,19 +226,19 @@
                     </p>
                     <div class="grid md:grid-cols-2 gap-6 text-sm">
                         <div>
-                            <p class="font-semibold text-gray-800">📧 Email:</p>
+                            <p class="font-semibold text-gray-800"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Email:</p>
                             <p class="text-gray-700">[ESPECIFICAR EMAIL]</p>
                         </div>
                         <div>
-                            <p class="font-semibold text-gray-800">📱 Teléfono:</p>
+                            <p class="font-semibold text-gray-800"><i class="fa-solid fa-phone" aria-hidden="true"></i> Teléfono:</p>
                             <p class="text-gray-700">[ESPECIFICAR TELÉFONO]</p>
                         </div>
                         <div>
-                            <p class="font-semibold text-gray-800">🏢 Dirección:</p>
+                            <p class="font-semibold text-gray-800"><i class="fa-solid fa-building" aria-hidden="true"></i> Dirección:</p>
                             <p class="text-gray-700">[ESPECIFICAR DIRECCIÓN COMPLETA]</p>
                         </div>
                         <div>
-                            <p class="font-semibold text-gray-800">🌐 Sitio web:</p>
+                            <p class="font-semibold text-gray-800"><i class="fa-solid fa-globe" aria-hidden="true"></i> Sitio web:</p>
                             <p class="text-gray-700">www.norttek.com.mx</p>
                         </div>
                     </div>

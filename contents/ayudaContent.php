@@ -262,8 +262,8 @@
                         </div>
                         <div class="code-content">
                             1. Abre la app Hik-Connect<br>
-                            2. Ve a "Dispositivos" → Selecciona tu cámara<br>
-                            3. Toca el ícono de compartir (👥)<br>
+                            2. Ve a "Dispositivos" <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> Selecciona tu cámara<br>
+                            3. Toca el ícono de compartir (<i class="fa-solid fa-users" aria-hidden="true"></i>)<br>
                             4. Ingresa el email del usuario destinatario<br>
                             5. Selecciona permisos (solo ver o ver + controlar)<br>
                             6. Envía la invitación
@@ -633,17 +633,17 @@
                                         <span class="sequence-number">1</span>
                                         <p>Desconecta el módem (30 segundos)</p>
                                     </div>
-                                    <div class="sequence-arrow">→</div>
+                                    <div class="sequence-arrow"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
                                     <div class="sequence-item">
                                         <span class="sequence-number">2</span>
                                         <p>Desconecta el router (30 segundos)</p>
                                     </div>
-                                    <div class="sequence-arrow">→</div>
+                                    <div class="sequence-arrow"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
                                     <div class="sequence-item">
                                         <span class="sequence-number">3</span>
                                         <p>Conecta primero el módem</p>
                                     </div>
-                                    <div class="sequence-arrow">→</div>
+                                    <div class="sequence-arrow"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
                                     <div class="sequence-item">
                                         <span class="sequence-number">4</span>
                                         <p>Espera 2 minutos y conecta el router</p>
