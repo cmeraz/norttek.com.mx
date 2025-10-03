@@ -19,7 +19,7 @@
 
 .ai-page {
     position: relative;
-    overflow-x: hidden;
+    overflow-x: clip;
     background: radial-gradient(circle at 10% 20%, #0a1540 0%, var(--ai-bg) 45%, #02030a 100%);
     color: var(--ai-text);
     font-family: "Inter", "Segoe UI", system-ui, sans-serif;
@@ -713,7 +713,7 @@ details p {
    ========================================== */
 
 .ai-section-menu {
-    position: fixed;
+    position: fixed !important;
     top: 140px;
     right: 24px;
     z-index: 100;
@@ -722,11 +722,6 @@ details p {
     gap: 10px;
     animation: ai-menu-slide-in 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
     transition: top 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Cuando el navbar se contrae por scroll */
-.nt-nav-shell.scrolled ~ main .ai-section-menu {
-    top: 90px;
 }
 
 @keyframes ai-menu-slide-in {

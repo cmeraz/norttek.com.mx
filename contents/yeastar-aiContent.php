@@ -1,30 +1,30 @@
 
+<nav class="ai-section-menu" aria-label="Navegación principal de la página">
+    <button class="ai-section-menu__toggle" type="button" aria-expanded="false" aria-label="Mostrar u ocultar navegación">
+        <i class="fa-solid fa-bars-staggered"></i>
+    </button>
+    <ul class="ai-section-menu__list">
+        <li><a class="ai-section-menu__link" href="#inicio"><i class="fa-solid fa-house"></i><span>Inicio</span></a></li>
+        <li><a class="ai-section-menu__link" href="#transformacion"><i class="fa-solid fa-wand-magic-sparkles"></i><span>Transformación</span></a></li>
+        <li><a class="ai-section-menu__link" href="#capacidades"><i class="fa-solid fa-layer-group"></i><span>Capacidades</span></a></li>
+        <li><a class="ai-section-menu__link" href="#demo"><i class="fa-solid fa-circle-play"></i><span>Demo guiada</span></a></li>
+        <li><a class="ai-section-menu__link" href="#limitaciones-celular"><i class="fa-solid fa-mobile-screen-button"></i><span>Limitaciones celular</span></a></li>
+        <li><a class="ai-section-menu__link" href="#limitaciones-analogica"><i class="fa-solid fa-phone-volume"></i><span>Limitaciones análoga</span></a></li>
+        <li><a class="ai-section-menu__link" href="#comparativa"><i class="fa-solid fa-table-columns"></i><span>Comparativa</span></a></li>
+        <li><a class="ai-section-menu__link" href="#sectores"><i class="fa-solid fa-industry"></i><span>Sectores</span></a></li>
+        <li><a class="ai-section-menu__link" href="#clientes"><i class="fa-solid fa-people-group"></i><span>Clientes</span></a></li>
+        <li><a class="ai-section-menu__link" href="#faq"><i class="fa-solid fa-circle-question"></i><span>FAQ</span></a></li>
+        <li><a class="ai-section-menu__link" href="#contacto"><i class="fa-solid fa-paper-plane"></i><span>Contacto</span></a></li>
+    </ul>
+</nav>
+
+<a href="#contacto" class="ai-floating-cta" id="aiFloatingCta">
+    <i class="fa-solid fa-sparkles"></i>
+    <span>Solicitar demo Yeastar AI</span>
+</a>
+
 <div class="ai-page">
     <div class="ai-noise"></div>
-
-    <a href="#contacto" class="ai-floating-cta" id="aiFloatingCta">
-        <i class="fa-solid fa-sparkles"></i>
-        <span>Solicitar demo Yeastar AI</span>
-    </a>
-
-    <nav class="ai-section-menu" aria-label="Navegación principal de la página">
-        <button class="ai-section-menu__toggle" type="button" aria-expanded="false" aria-label="Mostrar u ocultar navegación">
-            <i class="fa-solid fa-bars-staggered"></i>
-        </button>
-        <ul class="ai-section-menu__list">
-            <li><a class="ai-section-menu__link" href="#inicio"><i class="fa-solid fa-house"></i><span>Inicio</span></a></li>
-            <li><a class="ai-section-menu__link" href="#transformacion"><i class="fa-solid fa-wand-magic-sparkles"></i><span>Transformación</span></a></li>
-            <li><a class="ai-section-menu__link" href="#capacidades"><i class="fa-solid fa-layer-group"></i><span>Capacidades</span></a></li>
-            <li><a class="ai-section-menu__link" href="#demo"><i class="fa-solid fa-circle-play"></i><span>Demo guiada</span></a></li>
-            <li><a class="ai-section-menu__link" href="#limitaciones-celular"><i class="fa-solid fa-mobile-screen-button"></i><span>Limitaciones celular</span></a></li>
-            <li><a class="ai-section-menu__link" href="#limitaciones-analogica"><i class="fa-solid fa-phone-volume"></i><span>Limitaciones análoga</span></a></li>
-            <li><a class="ai-section-menu__link" href="#comparativa"><i class="fa-solid fa-table-columns"></i><span>Comparativa</span></a></li>
-            <li><a class="ai-section-menu__link" href="#sectores"><i class="fa-solid fa-industry"></i><span>Sectores</span></a></li>
-            <li><a class="ai-section-menu__link" href="#clientes"><i class="fa-solid fa-people-group"></i><span>Clientes</span></a></li>
-            <li><a class="ai-section-menu__link" href="#faq"><i class="fa-solid fa-circle-question"></i><span>FAQ</span></a></li>
-            <li><a class="ai-section-menu__link" href="#contacto"><i class="fa-solid fa-paper-plane"></i><span>Contacto</span></a></li>
-        </ul>
-    </nav>
 
     <section class="ai-hero" id="inicio">
         <div class="ai-container">
