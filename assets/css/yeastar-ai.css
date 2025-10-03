@@ -721,6 +721,12 @@ details p {
     flex-direction: column;
     gap: 10px;
     animation: ai-menu-slide-in 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
+    transition: top 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Cuando el navbar se contrae por scroll */
+.nt-nav-shell.scrolled ~ main .ai-section-menu {
+    top: 90px;
 }
 
 @keyframes ai-menu-slide-in {
@@ -735,7 +741,7 @@ details p {
 }
 
 .ai-section-menu__toggle {
-    display: none;
+    display: inline-flex;
     width: 54px;
     height: 54px;
     border-radius: 16px;
@@ -748,6 +754,7 @@ details p {
     justify-content: center;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: blur(12px);
+    align-self: flex-end;
 }
 
 .ai-section-menu__toggle:hover {
@@ -779,6 +786,52 @@ details p {
     box-shadow: 0 20px 60px -15px rgba(8, 15, 40, 0.7),
                 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
     backdrop-filter: blur(20px);
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scrollbar personalizada para el menú */
+.ai-section-menu__list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ai-section-menu__list::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 999px;
+}
+
+.ai-section-menu__list::-webkit-scrollbar-thumb {
+    background: rgba(78, 225, 193, 0.4);
+    border-radius: 999px;
+}
+
+.ai-section-menu__list::-webkit-scrollbar-thumb:hover {
+    background: rgba(78, 225, 193, 0.6);
+}
+
+/* Estado colapsado */
+.ai-section-menu.is-collapsed .ai-section-menu__list {
+    width: 60px;
+    padding: 10px;
+}
+
+.ai-section-menu.is-collapsed .ai-section-menu__link span {
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.ai-section-menu.is-collapsed .ai-section-menu__link {
+    justify-content: center;
+    padding: 11px;
+}
+
+.ai-section-menu.is-collapsed .ai-section-menu__link::before {
+    display: none;
 }
 
 .ai-section-menu__link {
@@ -879,9 +932,17 @@ details p {
         gap: 12px;
     }
 
-    .ai-section-menu__toggle {
-        display: inline-flex;
-        box-shadow: 0 8px 28px -8px rgba(58, 123, 255, 0.65);
+    /* En móvil siempre colapsado por defecto */
+    .ai-section-menu.is-collapsed .ai-section-menu__list,
+    .ai-section-menu .ai-section-menu__list {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .ai-section-menu.is-collapsed .ai-section-menu__link span,
+    .ai-section-menu .ai-section-menu__link span {
+        width: auto;
+        opacity: 1;
     }
 
     .ai-section-menu__list {
@@ -892,6 +953,7 @@ details p {
         padding: 12px;
         overflow-x: auto;
         overflow-y: hidden;
+        max-height: none;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: thin;
@@ -931,6 +993,7 @@ details p {
         height: 3px;
         bottom: 0;
         top: auto;
+        left: 0;
         border-radius: 4px 4px 0 0;
     }
 
@@ -975,6 +1038,12 @@ details p {
 
     .ai-section-menu__toggle[aria-expanded="true"] i {
         transform: rotate(180deg);
+    }
+
+    /* En móvil no hay estado colapsado del toggle */
+    .ai-section-menu.is-collapsed .ai-section-menu__link {
+        justify-content: center;
+        padding: 14px 10px;
     }
 }
 

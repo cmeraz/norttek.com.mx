@@ -52,28 +52,45 @@ document.addEventListener('DOMContentLoaded', () => {
         const isMobile = window.matchMedia('(max-width: 1024px)').matches;
         
         if (isMobile) {
-            // Mostrar toggle en móvil
-            sectionMenu.classList.add('is-mobile');
+            // Móvil: sistema de toggle
+            sectionMenu.classList.remove('is-collapsed');
             const isOpen = sectionMenu.classList.contains('is-open');
             if (sectionMenuToggle) {
                 sectionMenuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                sectionMenuToggle.setAttribute('aria-label', 'Mostrar u ocultar navegación');
             }
         } else {
-            // Desktop: siempre visible
-            sectionMenu.classList.remove('is-mobile', 'is-open');
+            // Desktop: sistema de collapse
+            sectionMenu.classList.remove('is-open');
+            const isCollapsed = sectionMenu.classList.contains('is-collapsed');
             if (sectionMenuToggle) {
                 sectionMenuToggle.setAttribute('aria-expanded', 'false');
+                sectionMenuToggle.setAttribute('aria-label', isCollapsed ? 'Expandir menú' : 'Contraer menú');
             }
         }
     };
 
-    // Toggle del menú móvil
+    // Toggle del menú (móvil = mostrar/ocultar, desktop = expandir/contraer)
     if (sectionMenuToggle) {
-        sectionMenuToggle.addEventListener('click', () => {
+        sectionMenuToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
             if (!sectionMenu) return;
-            const willOpen = !sectionMenu.classList.contains('is-open');
-            sectionMenu.classList.toggle('is-open', willOpen);
-            sectionMenuToggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+            
+            const isMobile = window.matchMedia('(max-width: 1024px)').matches;
+            
+            if (isMobile) {
+                // Móvil: toggle open/close
+                const willOpen = !sectionMenu.classList.contains('is-open');
+                sectionMenu.classList.toggle('is-open', willOpen);
+                sectionMenuToggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+            } else {
+                // Desktop: toggle collapsed/expanded
+                const willCollapse = !sectionMenu.classList.contains('is-collapsed');
+                sectionMenu.classList.toggle('is-collapsed', willCollapse);
+                sectionMenuToggle.setAttribute('aria-label', willCollapse ? 'Expandir menú' : 'Contraer menú');
+            }
         });
     }
 
@@ -81,9 +98,12 @@ document.addEventListener('DOMContentLoaded', () => {
     sectionMenuLinks.forEach((link) => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
+            
+            console.log('Link clicked:', link.getAttribute('href'));
             
             // Cerrar menú si está en móvil
-            if (sectionMenu && sectionMenu.classList.contains('is-mobile')) {
+            if (sectionMenu && sectionMenu.classList.contains('is-open')) {
                 sectionMenu.classList.remove('is-open');
                 if (sectionMenuToggle) {
                     sectionMenuToggle.setAttribute('aria-expanded', 'false');
@@ -95,11 +115,19 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Scroll suave a la sección
             const targetId = link.getAttribute('href');
+            console.log('Target ID:', targetId);
+            
             if (targetId && targetId.startsWith('#')) {
                 const target = document.querySelector(targetId);
+                console.log('Target element:', target);
+                
                 if (target) {
-                    const offset = 100; // Offset para el navbar
+                    const navbarHeight = document.querySelector('#site-header')?.offsetHeight || 100;
+                    const offset = navbarHeight + 20; // navbar + padding
                     const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    
+                    console.log('Scrolling to:', targetPosition);
+                    
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
@@ -129,20 +157,20 @@ document.addEventListener('DOMContentLoaded', () => {
             .filter((entry) => entry.isIntersecting)
             .sort((a, b) => {
                 // Priorizar la sección más alta en pantalla
-                const aTop = a.boundingClientRect.top;
-                const bTop = b.boundingClientRect.top;
-                return Math.abs(aTop) - Math.abs(bTop);
+                const aTop = Math.abs(a.boundingClientRect.top);
+                const bTop = Math.abs(b.boundingClientRect.top);
+                return aTop - bTop;
             });
 
         if (visibleSections.length > 0) {
             const { target } = visibleSections[0];
             const activeLink = sectionLinkMap.get(target.id);
-            if (activeLink) {
+            if (activeLink && !activeLink.matches(':hover')) {
                 setActiveMenuLink(activeLink);
             }
         }
     }, {
-        threshold: [0.1, 0.5],
+        threshold: [0.1, 0.3, 0.5],
         rootMargin: '-15% 0px -50% 0px'
     });
 
@@ -150,17 +178,51 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Activar primer enlace por defecto
     if (sectionMenuLinks.length) {
-        setActiveMenuLink(sectionMenuLinks[0]);
+        setTimeout(() => {
+            setActiveMenuLink(sectionMenuLinks[0]);
+        }, 500);
+    }
+
+    // ==========================================
+    // SEGUIMIENTO DEL NAVBAR (scroll sync)
+    // ==========================================
+    const syncMenuWithNavbar = () => {
+        const navbar = document.querySelector('#site-header');
+        if (!navbar || !sectionMenu) return;
+        
+        const isScrolled = navbar.classList.contains('scrolled');
+        const isMobile = window.matchMedia('(max-width: 1024px)').matches;
+        
+        // Solo ajustar en desktop
+        if (!isMobile) {
+            if (isScrolled) {
+                sectionMenu.style.top = '90px';
+            } else {
+                sectionMenu.style.top = '140px';
+            }
+        }
+    };
+
+    // Observar cambios en la clase del navbar
+    const navbarObserver = new MutationObserver(syncMenuWithNavbar);
+    const navbar = document.querySelector('#site-header');
+    if (navbar) {
+        navbarObserver.observe(navbar, { attributes: true, attributeFilter: ['class'] });
     }
 
     // ==========================================
     // RESIZE HANDLER
     // ==========================================
     updateMenuLayout();
+    syncMenuWithNavbar();
+    
     let resizeTimeout;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(updateMenuLayout, 200);
+        resizeTimeout = setTimeout(() => {
+            updateMenuLayout();
+            syncMenuWithNavbar();
+        }, 200);
     });
 
     // ==========================================
@@ -181,12 +243,15 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     updateFloatingCta();
-    window.addEventListener('scroll', updateFloatingCta, { passive: true });
+    window.addEventListener('scroll', () => {
+        updateFloatingCta();
+        syncMenuWithNavbar();
+    }, { passive: true });
 
     // ==========================================
     // SCROLL SUAVE PARA TODOS LOS ENLACES INTERNOS
     // ==========================================
-    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    document.querySelectorAll('a[href^="#"]:not(.ai-section-menu__link)').forEach((link) => {
         link.addEventListener('click', (event) => {
             const targetId = link.getAttribute('href');
             if (!targetId || targetId === '#') return;
@@ -194,8 +259,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = document.querySelector(targetId);
             if (target) {
                 event.preventDefault();
-                const offset = 100;
+                const navbarHeight = document.querySelector('#site-header')?.offsetHeight || 100;
+                const offset = navbarHeight + 20;
                 const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
@@ -208,10 +275,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // CERRAR MENÚ AL HACER ESC (móvil)
     // ==========================================
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && sectionMenu && sectionMenu.classList.contains('is-open')) {
-            sectionMenu.classList.remove('is-open');
-            if (sectionMenuToggle) {
-                sectionMenuToggle.setAttribute('aria-expanded', 'false');
+        if (e.key === 'Escape' && sectionMenu) {
+            if (sectionMenu.classList.contains('is-open')) {
+                sectionMenu.classList.remove('is-open');
+                if (sectionMenuToggle) {
+                    sectionMenuToggle.setAttribute('aria-expanded', 'false');
+                }
+            }
+        }
+    });
+
+    // ==========================================
+    // CERRAR MENÚ AL HACER CLICK FUERA (móvil)
+    // ==========================================
+    document.addEventListener('click', (e) => {
+        if (!sectionMenu) return;
+        
+        const isMobile = window.matchMedia('(max-width: 1024px)').matches;
+        if (isMobile && sectionMenu.classList.contains('is-open')) {
+            if (!sectionMenu.contains(e.target)) {
+                sectionMenu.classList.remove('is-open');
+                if (sectionMenuToggle) {
+                    sectionMenuToggle.setAttribute('aria-expanded', 'false');
+                }
             }
         }
     });
