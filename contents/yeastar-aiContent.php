@@ -1,165 +1,313 @@
-<style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; color: #333; background-color: #f5f7fa; }
-    header { background: linear-gradient(90deg, #0052cc, #0073e6); color: #fff; text-align: center; padding: 60px 20px; }
-    header h1 { font-size: 3rem; margin-bottom: 10px; }
-    header p { font-size: 1.2rem; max-width: 700px; margin: auto; }
-    section { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
-    h2 { color: #0052cc; margin-bottom: 20px; text-align: center; }
-    h3 { color: #0073e6; margin-bottom: 10px; }
-    .cards { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-    .card { background: #fff; border-radius: 10px; padding: 20px; flex: 1 1 300px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.2s; }
-    .card:hover { transform: translateY(-5px); }
-    .card h3 { margin-top: 0; }
-    .card p { font-size: 0.95rem; line-height: 1.5; }
-    .example { background: #e6f0ff; padding: 10px; border-left: 5px solid #0052cc; margin: 10px 0; border-radius: 5px; }
-    table { width: 100%; border-collapse: collapse; margin: 40px 0; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-    th, td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; }
-    th { background: #f2f6ff; }
-    .cta { display: inline-block; background: #ff6600; color: #fff; padding: 18px 35px; font-weight: bold; text-decoration: none; border-radius: 8px; margin: 20px auto; display: block; text-align: center; transition: background 0.3s; }
-    .cta:hover { background: #e65c00; }
-    ul { margin-bottom: 20px; padding-left: 20px; }
-    @media (max-width: 900px) {
-        .cards { flex-direction: column; align-items: center; }
-    }
-</style>
-</head>
-<body>
 
-<header>
-    <h1>Yeastar con Inteligencia Artificial</h1>
-    <p>Transforma la comunicación de tu negocio, mejora la atención al cliente y convierte cada llamada en información valiosa y ventaja competitiva.</p>
-</header>
+<div class="ai-page">
+    <div class="ai-noise"></div>
 
-<section>
-    <h2>¿Qué es Yeastar?</h2>
-    <p style="text-align:center; max-width:800px; margin:auto;">Yeastar es un sistema telefónico inteligente que organiza, prioriza y optimiza todas tus comunicaciones. Con Inteligencia Artificial, cada llamada y mensaje se convierte en información útil, agilizando procesos y aumentando la productividad de tu negocio.</p>
-</section>
+    <a href="#contacto" class="ai-floating-cta" id="aiFloatingCta">
+        <i class="fa-solid fa-sparkles"></i>
+        <span>Solicitar demo Yeastar AI</span>
+    </a>
 
-<section>
-    <h2>Características principales</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>📝 Transcripción de mensajes</h3>
-            <p>Convierte mensajes de voz en texto automáticamente para leerlos y actuar al instante.</p>
-            <div class="example"><strong>Consultorio:</strong> Agenda citas directamente desde el mensaje.</div>
-            <div class="example"><strong>Restaurante:</strong> Ajusta pedidos sin escuchar el audio.</div>
-            <div class="example"><strong>Contabilidad:</strong> Integra notas en el CRM automáticamente.</div>
+    <section class="ai-hero" id="inicio">
+        <div class="ai-container">
+            <div class="ai-hero-grid">
+                <header>
+                    <div class="ai-badge">
+                        <i class="fa-solid fa-microchip"></i>
+                        <span>Inteligencia aplicada a tu telefonía</span>
+                    </div>
+                    <h1 class="ai-title">
+                        Eleva cada conversación con <span>Yeastar AI Cloud Suite</span>
+                    </h1>
+                    <p class="ai-lead">
+                        Automatiza la operación telefónica, analiza interacciones en segundos y entrega la experiencia de servicio que tus clientes esperan. Todo desde una plataforma segura, escalable y lista para integrarse con tu stack actual.
+                    </p>
+                    <nav class="ai-actions" aria-label="Acciones principales">
+                        <a href="#demo" class="ai-btn ai-btn-primary">
+                            <i class="fa-solid fa-rocket"></i>
+                            <span>Explorar demo interactiva</span>
+                        </a>
+                        <a href="#sectores" class="ai-btn ai-btn-outline">
+                            <span>Casos reales por industria</span>
+                            <i class="fa-solid fa-angle-down"></i>
+                        </a>
+                    </nav>
+                </header>
+                <aside class="ai-hero-visual" aria-label="Métricas destacadas">
+                    <ul class="ai-visual-metrics">
+                        <li class="ai-visual-card">
+                            <div>
+                                <span>Tiempo medio de resolución</span>
+                                <strong>-48%</strong>
+                            </div>
+                            <i class="fa-solid fa-chart-line"></i>
+                        </li>
+                        <li class="ai-visual-card">
+                            <div>
+                                <span>Exactitud de transcripción</span>
+                                <strong>97.6%</strong>
+                            </div>
+                            <i class="fa-solid fa-wave-square"></i>
+                        </li>
+                        <li class="ai-visual-card">
+                            <div>
+                                <span>Integraciones activas</span>
+                                <strong>+35</strong>
+                            </div>
+                            <i class="fa-solid fa-diagram-project"></i>
+                        </li>
+                    </ul>
+                </aside>
+            </div>
         </div>
-        <div class="card">
-            <h3>🔊 Texto a voz (TTS)</h3>
-            <p>Genera audios profesionales para menús, IVR y anuncios sin grabaciones manuales.</p>
-            <div class="example"><strong>Hotel:</strong> Mensaje de bienvenida actualizado automáticamente.</div>
-            <div class="example"><strong>Farmacia:</strong> Promociones en voz profesional.</div>
-            <div class="example"><strong>Tienda online:</strong> Menús IVR dinámicos editables.</div>
+    </section>
+
+    <section id="capacidades">
+        <div class="ai-container">
+            <header class="ai-section-header">
+                <h2>Capacidades de Yeastar AI que transforman tu operación</h2>
+                <p>
+                    Una suite que integra automatización, analítica avanzada y flujos omnicanal para que tu equipo se enfoque en cerrar oportunidades, no en registrar tareas manuales.
+                </p>
+            </header>
+            <div class="ai-grid ai-animate-group">
+                <article class="ai-card">
+                    <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-file-lines"></i></span>
+                    <h3>Resúmenes automáticos enriquecidos</h3>
+                    <p>
+                        Cada llamada se convierte en un reporte accionable con compromisos, próximos pasos y sentimiento detectado. Exporta los insights directo a tu CRM o canal interno.
+                    </p>
+                    <ul class="ai-pill-list">
+                        <li class="ai-pill">CRM sync</li>
+                        <li class="ai-pill">Sentiment AI</li>
+                        <li class="ai-pill">Next best action</li>
+                    </ul>
+                </article>
+                <article class="ai-card">
+                    <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-waveform-lines"></i></span>
+                    <h3>Transcripción contextual en tiempo real</h3>
+                    <p>
+                        Visualiza conversaciones mientras ocurren. Detectamos entidades críticas (productos, montos, fechas) y generamos alertas si el cliente menciona objeciones o intención de compra.
+                    </p>
+                    <ul class="ai-pill-list">
+                        <li class="ai-pill">Entity tracking</li>
+                        <li class="ai-pill">Live prompts</li>
+                        <li class="ai-pill">Compliance</li>
+                    </ul>
+                </article>
+                <article class="ai-card">
+                    <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-sliders"></i></span>
+                    <h3>Automatización de flujos críticos</h3>
+                    <p>
+                        Conecta Yeastar con HubSpot, Salesforce, Zendesk o Power BI. Crea tareas, tickets y dashboards sin intervención manual.
+                    </p>
+                    <ul class="ai-pill-list">
+                        <li class="ai-pill">Webhooks</li>
+                        <li class="ai-pill">Playbooks</li>
+                        <li class="ai-pill">Data Lake</li>
+                    </ul>
+                </article>
+                <article class="ai-card">
+                    <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-shield-check"></i></span>
+                    <h3>Control y seguridad enterprise</h3>
+                    <p>
+                        Perfiles por rol, auditoría de sesiones, cifrado end-to-end y cumplimiento con NOM-151, Ley Federal de Protección de Datos y estándares internacionales.
+                    </p>
+                    <ul class="ai-pill-list">
+                        <li class="ai-pill">Single Sign-On</li>
+                        <li class="ai-pill">Granular roles</li>
+                        <li class="ai-pill">Compliance toolkit</li>
+                    </ul>
+                </article>
+            </div>
         </div>
-        <div class="card">
-            <h3>📄 Resúmenes automáticos</h3>
-            <p>Analiza llamadas y genera resúmenes con puntos clave y tareas pendientes.</p>
-            <div class="example"><strong>Legal:</strong> Resumen de revisión de contratos.</div>
-            <div class="example"><strong>Agencia de viajes:</strong> Detalles de paquetes vacacionales.</div>
-            <div class="example"><strong>Soporte técnico:</strong> Incidencias y acciones claras.</div>
+    </section>
+
+    <section id="demo">
+        <div class="ai-container">
+            <header class="ai-section-header">
+                <h2>Demo guiada: de la llamada al insight en 90 segundos</h2>
+                <p>
+                    Así fluye la información cuando tus asesores utilizan Yeastar AI. Todo ocurre en segundo plano mientras ellos se concentran en la conversación.
+                </p>
+            </header>
+            <div class="ai-stacked-layout ai-animate-group">
+                <article class="ai-card ai-card-sticky" aria-label="Invitación a demo">
+                    <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-circle-play"></i></span>
+                    <h3>Selecciona un escenario y solicita tu demo</h3>
+                    <p>
+                        Nuestro equipo te conecta a un entorno en vivo donde podrás cargar audios reales de tu operación o utilizar casos preconfigurados por industria. Recibirás el análisis completo en tu correo.
+                    </p>
+                    <a href="mailto:ventas@nortteksolutions.com" class="ai-btn ai-btn-primary">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                        <span>Agendar demostración</span>
+                    </a>
+                </article>
+                <ol class="ai-timeline" aria-label="Flujo de demo">
+                    <li class="ai-timeline-step">
+                        <strong><span>01</span> Captura inteligente</strong>
+                        <p>
+                            La llamada se graba y transcribe en tiempo real. La IA identifica actores, intención, nivel de urgencia y sentimiento.
+                        </p>
+                    </li>
+                    <li class="ai-timeline-step">
+                        <strong><span>02</span> Clasificación automática</strong>
+                        <p>
+                            Generamos resúmenes ejecutivos, tareas sugeridas, campos personalizados y alertas para enviar al CRM o helpdesk.
+                        </p>
+                    </li>
+                    <li class="ai-timeline-step">
+                        <strong><span>03</span> Integración con tus sistemas</strong>
+                        <p>
+                            Yeastar envía la información a HubSpot, Microsoft Teams, Zoho o Slack para mantener a todos sincronizados.
+                        </p>
+                    </li>
+                    <li class="ai-timeline-step">
+                        <strong><span>04</span> Monitoreo y mejora continua</strong>
+                        <p>
+                            Recibe reportes semanales con tendencias, oportunidades de capacitación y recomendaciones para acelerar cierres.
+                        </p>
+                    </li>
+                </ol>
+            </div>
+            <div class="ai-stats">
+                <article class="ai-stat-card">
+                    <strong>12 min</strong>
+                    <span>Tiempo promedio para generar informes completos tras la llamada</span>
+                </article>
+                <article class="ai-stat-card">
+                    <strong>3.2x</strong>
+                    <span>Incremento en oportunidades calificadas mediante playbooks automatizados</span>
+                </article>
+                <article class="ai-stat-card">
+                    <strong>94%</strong>
+                    <span>Clientes que perciben mejoras inmediatas en la atención</span>
+                </article>
+            </div>
         </div>
-        <div class="card">
-            <h3>🔗 Integración con sistemas</h3>
-            <p>Sincroniza llamadas, contactos y clientes con CRM y sistemas internos.</p>
-            <div class="example"><strong>Contabilidad:</strong> Registro automático en CRM.</div>
-            <div class="example"><strong>E-commerce:</strong> Pedidos sincronizados con stock y facturación.</div>
-            <div class="example"><strong>Inmobiliaria:</strong> Asignación de prospectos automática.</div>
+    </section>
+
+    <section id="sectores">
+        <div class="ai-container">
+            <header class="ai-section-header">
+                <h2>Casos listos para implementar por industria</h2>
+                <p>
+                    Plantillas operativas que adaptamos a tu vertical en cuestión de días. Integramos datos, definimos KPIs y dejamos la automatización corriendo.
+                </p>
+            </header>
+            <div class="ai-grid ai-animate-group">
+                <article class="ai-card">
+                    <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-stethoscope"></i></span>
+                    <h3>Salud privada</h3>
+                    <p>
+                        Prioriza urgencias, confirma citas con TTS, crea recordatorios y sincroniza el expediente del paciente con tu ERP clínico.
+                    </p>
+                </article>
+                <article class="ai-card">
+                    <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-building-columns"></i></span>
+                    <h3>Servicios financieros</h3>
+                    <p>
+                        Monitorea llamadas sensibles, registra aprobaciones verbales y genera expedientes auditables en segundos.
+                    </p>
+                </article>
+                <article class="ai-card">
+                    <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-truck-fast"></i></span>
+                    <h3>Logística y última milla</h3>
+                    <p>
+                        Automatiza confirmaciones de entrega, dispara notificaciones contextuales y alimenta dashboards operativos en tiempo real.
+                    </p>
+                </article>
+                <article class="ai-card">
+                    <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-shop"></i></span>
+                    <h3>Retail y e-commerce</h3>
+                    <p>
+                        Unifica WhatsApp, telefonía y chat en un panel. Detecta señales de abandono y lanza campañas de retención automatizadas.
+                    </p>
+                </article>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section>
-    <h2>Por qué los celulares no reemplazan Yeastar</h2>
-    <ul>
-        <li>Falta de centralización y seguimiento de llamadas.</li>
-        <li>No se integra con CRM ni sistemas internos.</li>
-        <li>Sin transcripciones ni resúmenes automáticos.</li>
-        <li>Atención limitada: sin IVR ni menús inteligentes.</li>
-        <li>Ineficiencia operativa: alternar entre móviles, notas y sistemas dispersos.</li>
-    </ul>
-</section>
+    <section id="clientes">
+        <div class="ai-container">
+            <header class="ai-section-header">
+                <h2>Equipos que ya capitalizan Yeastar AI</h2>
+                <p>
+                    Historias de compañías que sustituyeron procesos manuales por automatización inteligente.
+                </p>
+            </header>
+            <div class="ai-testimonials ai-animate-group">
+                <article class="ai-quote">
+                    <i class="fa-solid fa-quote-right"></i>
+                    <p>
+                        “Reducimos a la mitad el tiempo de seguimiento después de cada llamada. Los reportes clínicos con IA ahora son nuestro estándar y el personal médico trabaja con mayor seguridad.”
+                    </p>
+                    <strong>Dra. Marcela Ortiz · Coordinación de atención hospitalaria</strong>
+                </article>
+                <article class="ai-quote">
+                    <i class="fa-solid fa-quote-right"></i>
+                    <p>
+                        “Yeastar AI se integra directo con Salesforce y automatiza los playbooks. Detectamos señales de compra durante la llamada y reaccionamos en el momento.”
+                    </p>
+                    <strong>Iván Treviño · Director comercial en SaaS B2B</strong>
+                </article>
+                <article class="ai-quote">
+                    <i class="fa-solid fa-quote-right"></i>
+                    <p>
+                        “Las alertas tempranas nos permiten contener quejas antes de escalar. Escuchar a la IA sugerir la siguiente acción fue el cambio más radical en nuestra operación.”
+                    </p>
+                    <strong>Ana Liz Sánchez · Customer Success en marketplace</strong>
+                </article>
+            </div>
+        </div>
+    </section>
 
-<section>
-    <h2>Por qué la telefonía análoga tradicional no reemplaza Yeastar</h2>
-    <ul>
-        <li>Sin centralización ni control de llamadas.</li>
-        <li>No se integra con sistemas internos ni CRM.</li>
-        <li>Sin transcripciones ni resúmenes automáticos; riesgo de errores.</li>
-        <li>Sin menús automáticos ni mensajes profesionales.</li>
-        <li>Escalabilidad limitada: cada línea requiere teléfono físico adicional.</li>
-        <li>Ineficiencia operativa: seguimiento lento y sin análisis de datos.</li>
-    </ul>
-</section>
+    <section id="faq">
+        <div class="ai-container">
+            <header class="ai-section-header">
+                <h2>Preguntas frecuentes</h2>
+                <p>Respuestas claras para tu equipo comercial, de operaciones y TI.</p>
+            </header>
+            <div class="ai-faq ai-animate-group">
+                <details>
+                    <summary>¿En cuánto tiempo está operativo Yeastar AI?</summary>
+                    <p>
+                        El despliegue base toma entre 5 y 7 días hábiles. Activamos transcripción, resúmenes y dashboards iniciales. Las integraciones avanzadas se implementan en fases adicionales.
+                    </p>
+                </details>
+                <details>
+                    <summary>¿Necesitamos cambiar nuestra infraestructura telefónica?</summary>
+                    <p>
+                        No. Yeastar AI funciona sobre Yeastar Cloud PBX y se conecta a tu infraestructura SIP, Microsoft Teams o teléfonos IP existentes. Añadimos solo los componentes de IA.
+                    </p>
+                </details>
+                <details>
+                    <summary>¿Cómo protegen la privacidad de las llamadas?</summary>
+                    <p>
+                        Aplicamos cifrado en tránsito y en reposo, anonimización configurable y retención ajustable por políticas internas. Puedes elegir regiones de almacenamiento y definimos roles por área.
+                    </p>
+                </details>
+                <details>
+                    <summary>¿Se puede probar con nuestros propios audios?</summary>
+                    <p>
+                        Sí. Durante la demo cargamos fragmentos reales de tu operación (con autorización) para validar transcripción, detección de entidades y recomendaciones específicas.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
 
-<section>
-    <h2>Ventajas competitivas comparadas</h2>
-    <table>
-        <tr>
-            <th>Característica / Beneficio</th>
-            <th>Yeastar con AI</th>
-            <th>Telefonía análoga</th>
-            <th>Telefonía celular</th>
-        </tr>
-        <tr>
-            <td>Atención al cliente</td>
-            <td>Rápida, profesional, con transcripciones y resúmenes</td>
-            <td>Lenta; sin registro de llamadas</td>
-            <td>Limitada; depende de disponibilidad del personal</td>
-        </tr>
-        <tr>
-            <td>Gestión de llamadas</td>
-            <td>Inteligente, integrable con CRM y sistemas internos</td>
-            <td>Manual, sin organización</td>
-            <td>Limitada a contactos personales</td>
-        </tr>
-        <tr>
-            <td>Transcripción de mensajes</td>
-            <td>Automática; voz a texto</td>
-            <td>No disponible</td>
-            <td>Solo notas manuales o apps externas</td>
-        </tr>
-        <tr>
-            <td>IVR y menús automáticos</td>
-            <td>TTS profesional y flexible</td>
-            <td>No disponible</td>
-            <td>Solo mensajes grabados o apps externas</td>
-        </tr>
-        <tr>
-            <td>Resumen y análisis de llamadas</td>
-            <td>Reportes y resúmenes automáticos</td>
-            <td>No disponible</td>
-            <td>Solo notas manuales</td>
-        </tr>
-        <tr>
-            <td>Escalabilidad</td>
-            <td>Alta: múltiples líneas y sucursales</td>
-            <td>Baja: requiere teléfono físico por línea</td>
-            <td>Media; depende de número de móviles</td>
-        </tr>
-        <tr>
-            <td>Seguridad y control</td>
-            <td>Acceso remoto seguro y control de usuarios</td>
-            <td>Baja; sin control central</td>
-            <td>Media; depende de configuración del dispositivo</td>
-        </tr>
-        <tr>
-            <td>Eficiencia operativa</td>
-            <td>Muy alta; ahorro de tiempo y errores</td>
-            <td>Baja; todo manual</td>
-            <td>Media; dependiente de disponibilidad del personal</td>
-        </tr>
-    </table>
-</section>
-
-<section>
-    <h2>La evolución de la telefonía empresarial</h2>
-    <ul>
-        <li>Cada llamada se convierte en información valiosa.</li>
-        <li>Atención al cliente más rápida, precisa y personalizada.</li>
-        <li>Obtención de insights en tiempo real para decisiones estratégicas.</li>
-    </ul>
-    <p style="text-align:center;">
-        <a href="mailto:ventas@nortteksolutions.com" class="cta">Solicita Yeastar con AI</a>
-    </p>
-</section>
+    <section id="contacto">
+        <div class="ai-container">
+            <div class="ai-cta-final ai-animate">
+                <h2>Agenda tu sesión estratégica</h2>
+                <p>
+                    Revisemos juntos tu caso de uso. En la primera reunión definimos objetivos, sistemas a integrar y un roadmap de adopción. Nuestro objetivo: poner Yeastar AI a generar valor en menos de 30 días.
+                </p>
+                <a href="mailto:ventas@nortteksolutions.com" class="ai-btn ai-btn-primary">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span>Reservar discovery call</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
