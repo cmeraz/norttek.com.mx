@@ -61,6 +61,21 @@
         </div>
     </section>
 
+    <section id="transformacion">
+        <div class="ai-container">
+            <div class="ai-script-intro ai-animate">
+                <span class="ai-badge">
+                    <i class="fa-solid fa-star"></i>
+                    <span>Yeastar + IA para empresas exigentes</span>
+                </span>
+                <h2>Yeastar transforma tu comunicación empresarial con inteligencia artificial</h2>
+                <p>
+                    Tu sistema telefónico deja de ser un simple canal de voz para convertirse en un asistente estratégico. Yeastar organiza, prioriza y optimiza cada interacción con clientes, proveedores y equipos internos, mientras que la inteligencia artificial convierte llamadas y mensajes en información accionable, automatiza la atención y eleva la experiencia de servicio.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <section id="capacidades">
         <div class="ai-container">
             <header class="ai-section-header">
@@ -71,51 +86,51 @@
             </header>
             <div class="ai-grid ai-animate-group">
                 <article class="ai-card">
-                    <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-file-lines"></i></span>
-                    <h3>Resúmenes automáticos enriquecidos</h3>
+                    <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-microphone-lines"></i></span>
+                    <h3>Transcripción de mensajes de voz a texto</h3>
                     <p>
-                        Cada llamada se convierte en un reporte accionable con compromisos, próximos pasos y sentimiento detectado. Exporta los insights directo a tu CRM o canal interno.
+                        Convierte automáticamente los mensajes de voz en texto listo para actuar. Tus equipos reciben la información en segundos para programar, ajustar pedidos o documentar compromisos sin escuchar audios.
                     </p>
-                    <ul class="ai-pill-list">
-                        <li class="ai-pill">CRM sync</li>
-                        <li class="ai-pill">Sentiment AI</li>
-                        <li class="ai-pill">Next best action</li>
+                    <ul class="ai-example-list">
+                        <li><i class="fa-solid fa-stethoscope"></i><div class="ai-example-copy"><strong>Consultorio médico:</strong> La recepcionista agenda una revisión solicitada para el lunes a las 10:00.</div></li>
+                        <li><i class="fa-solid fa-pizza-slice"></i><div class="ai-example-copy"><strong>Restaurante:</strong> El gerente cambia una pizza grande por dos medianas sin reproducir mensajes.</div></li>
+                        <li><i class="fa-solid fa-calculator"></i><div class="ai-example-copy"><strong>Despacho contable:</strong> La AI documenta facturas a revisar y crea tareas en el CRM.</div></li>
                     </ul>
                 </article>
                 <article class="ai-card">
                     <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-waveform-lines"></i></span>
-                    <h3>Transcripción contextual en tiempo real</h3>
+                    <h3>Texto a voz profesional (TTS)</h3>
                     <p>
-                        Visualiza conversaciones mientras ocurren. Detectamos entidades críticas (productos, montos, fechas) y generamos alertas si el cliente menciona objeciones o intención de compra.
+                        Genera audios naturales para menús, IVR y anuncios sin depender de grabaciones manuales. Actualiza mensajes en segundos desde un editor amigable.
                     </p>
-                    <ul class="ai-pill-list">
-                        <li class="ai-pill">Entity tracking</li>
-                        <li class="ai-pill">Live prompts</li>
-                        <li class="ai-pill">Compliance</li>
+                    <ul class="ai-example-list">
+                        <li><i class="fa-solid fa-hotel"></i><div class="ai-example-copy"><strong>Hotel:</strong> Mensajes de bienvenida y horarios se refrescan cada temporada.</div></li>
+                        <li><i class="fa-solid fa-prescription-bottle-medical"></i><div class="ai-example-copy"><strong>Farmacia:</strong> Promociones cambiantes con voces profesionales automáticas.</div></li>
+                        <li><i class="fa-solid fa-bag-shopping"></i><div class="ai-example-copy"><strong>Tienda en línea:</strong> Menú IVR editable que responde a la estrategia comercial del día.</div></li>
                     </ul>
                 </article>
                 <article class="ai-card">
-                    <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-sliders"></i></span>
-                    <h3>Automatización de flujos críticos</h3>
+                    <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-file-lines"></i></span>
+                    <h3>Resúmenes automáticos de llamadas</h3>
                     <p>
-                        Conecta Yeastar con HubSpot, Salesforce, Zendesk o Power BI. Crea tareas, tickets y dashboards sin intervención manual.
+                        La IA analiza cada conversación, destaca puntos clave y asigna acciones siguientes para que ningún compromiso quede sin seguimiento.
                     </p>
-                    <ul class="ai-pill-list">
-                        <li class="ai-pill">Webhooks</li>
-                        <li class="ai-pill">Playbooks</li>
-                        <li class="ai-pill">Data Lake</li>
+                    <ul class="ai-example-list">
+                        <li><i class="fa-solid fa-scale-balanced"></i><div class="ai-example-copy"><strong>Despacho legal:</strong> Registra temas, responsables y fechas de entrega del contrato.</div></li>
+                        <li><i class="fa-solid fa-plane-departure"></i><div class="ai-example-copy"><strong>Agencia de viajes:</strong> Captura destino, fechas y presupuesto en el CRM.</div></li>
+                        <li><i class="fa-solid fa-headset"></i><div class="ai-example-copy"><strong>Soporte técnico:</strong> Prioriza fallas, versión afectada y acciones sugeridas.</div></li>
                     </ul>
                 </article>
                 <article class="ai-card">
-                    <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-shield-check"></i></span>
-                    <h3>Control y seguridad enterprise</h3>
+                    <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-diagram-project"></i></span>
+                    <h3>Integración con sistemas internos y CRM</h3>
                     <p>
-                        Perfiles por rol, auditoría de sesiones, cifrado end-to-end y cumplimiento con NOM-151, Ley Federal de Protección de Datos y estándares internacionales.
+                        Sincroniza información de llamadas, contactos y pedidos con tus herramientas críticas para automatizar flujos, reportes y facturación.
                     </p>
-                    <ul class="ai-pill-list">
-                        <li class="ai-pill">Single Sign-On</li>
-                        <li class="ai-pill">Granular roles</li>
-                        <li class="ai-pill">Compliance toolkit</li>
+                    <ul class="ai-example-list">
+                        <li><i class="fa-solid fa-chart-line"></i><div class="ai-example-copy"><strong>Despacho contable:</strong> Registros automáticos en CRM según cliente y servicio.</div></li>
+                        <li><i class="fa-solid fa-store"></i><div class="ai-example-copy"><strong>E-commerce:</strong> Pedidos telefónicos actualizan inventario y emiten facturas.</div></li>
+                        <li><i class="fa-solid fa-building"></i><div class="ai-example-copy"><strong>Inmobiliaria:</strong> Prospectos se asignan al agente disponible con notas contextualizadas.</div></li>
                     </ul>
                 </article>
             </div>
@@ -194,6 +209,13 @@
                     Cuando tu operación depende de celulares individuales, pierdes control, trazabilidad y capacidad para crecer. Yeastar AI integra cada interacción en un entorno gobernado y automatizado.
                 </p>
             </header>
+            <ul class="ai-checklist ai-animate">
+                <li><i class="fa-solid fa-circle-xmark"></i><span><strong>Falta de centralización:</strong> cada línea es independiente y no existe registro unificado de llamadas.</span></li>
+                <li><i class="fa-solid fa-ban"></i><span><strong>Sin integración con CRM:</strong> los datos no se sincronizan con sistemas internos, generando duplicidad y errores.</span></li>
+                <li><i class="fa-solid fa-file-circle-question"></i><span><strong>Sin transcripciones ni resúmenes:</strong> todo se captura manualmente, con riesgo de perder información crítica.</span></li>
+                <li><i class="fa-solid fa-phone-slash"></i><span><strong>Atención limitada:</strong> no hay IVR dinámico ni priorización de llamadas para experiencias consistentes.</span></li>
+                <li><i class="fa-solid fa-hourglass-end"></i><span><strong>Ineficiencia operativa:</strong> los colaboradores alternan entre móviles, notas y aplicaciones dispersas.</span></li>
+            </ul>
             <div class="ai-argument-grid ai-animate-group">
                 <article class="ai-argument-card">
                     <div class="ai-argument-icon" aria-hidden="true"><i class="fa-solid fa-user-lock"></i></div>
@@ -235,6 +257,14 @@
                     Centrales físicas y cableado dedicado implican altos costos fijos, cero analítica y una experiencia rígida. Yeastar AI aporta flexibilidad en la nube con inteligencia aplicada desde el día uno.
                 </p>
             </header>
+            <ul class="ai-checklist ai-animate">
+                <li><i class="fa-solid fa-diagram-project"></i><span><strong>Sin centralización ni control:</strong> las llamadas se gestionan de forma aislada y no existe priorización.</span></li>
+                <li><i class="fa-solid fa-plug-circle-xmark"></i><span><strong>Sin integración con sistemas:</strong> CRM, ERP y plataformas de servicio permanecen desconectadas.</span></li>
+                <li><i class="fa-solid fa-pen-to-square"></i><span><strong>Sin transcripciones automáticas:</strong> la información depende de notas manuales sujetas a errores.</span></li>
+                <li><i class="fa-solid fa-robot"></i><span><strong>Sin atención profesional automatizada:</strong> menús IVR rígidos y mensajes difíciles de actualizar.</span></li>
+                <li><i class="fa-solid fa-tower-cell"></i><span><strong>Escalabilidad limitada:</strong> cada nueva extensión requiere cableado, hardware y visitas técnicas.</span></li>
+                <li><i class="fa-solid fa-gauge-low"></i><span><strong>Ineficiencia operativa:</strong> procesos manuales, seguimiento lento y cero analítica para decisiones.</span></li>
+            </ul>
             <div class="ai-argument-grid ai-animate-group">
                 <article class="ai-argument-card">
                     <div class="ai-argument-icon" aria-hidden="true"><i class="fa-solid fa-gears"></i></div>
