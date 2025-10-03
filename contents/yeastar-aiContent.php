@@ -7,6 +7,25 @@
         <span>Solicitar demo Yeastar AI</span>
     </a>
 
+    <nav class="ai-section-menu" aria-label="Navegación principal de la página">
+        <button class="ai-section-menu__toggle" type="button" aria-expanded="false" aria-label="Mostrar u ocultar navegación">
+            <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        <ul class="ai-section-menu__list">
+            <li><a class="ai-section-menu__link" href="#inicio"><i class="fa-solid fa-house"></i><span>Inicio</span></a></li>
+            <li><a class="ai-section-menu__link" href="#transformacion"><i class="fa-solid fa-wand-magic-sparkles"></i><span>Transformación</span></a></li>
+            <li><a class="ai-section-menu__link" href="#capacidades"><i class="fa-solid fa-layer-group"></i><span>Capacidades</span></a></li>
+            <li><a class="ai-section-menu__link" href="#demo"><i class="fa-solid fa-circle-play"></i><span>Demo guiada</span></a></li>
+            <li><a class="ai-section-menu__link" href="#limitaciones-celular"><i class="fa-solid fa-mobile-screen-button"></i><span>Limitaciones celular</span></a></li>
+            <li><a class="ai-section-menu__link" href="#limitaciones-analogica"><i class="fa-solid fa-phone-volume"></i><span>Limitaciones análoga</span></a></li>
+            <li><a class="ai-section-menu__link" href="#comparativa"><i class="fa-solid fa-table-columns"></i><span>Comparativa</span></a></li>
+            <li><a class="ai-section-menu__link" href="#sectores"><i class="fa-solid fa-industry"></i><span>Sectores</span></a></li>
+            <li><a class="ai-section-menu__link" href="#clientes"><i class="fa-solid fa-people-group"></i><span>Clientes</span></a></li>
+            <li><a class="ai-section-menu__link" href="#faq"><i class="fa-solid fa-circle-question"></i><span>FAQ</span></a></li>
+            <li><a class="ai-section-menu__link" href="#contacto"><i class="fa-solid fa-paper-plane"></i><span>Contacto</span></a></li>
+        </ul>
+    </nav>
+
     <section class="ai-hero" id="inicio">
         <div class="ai-container">
             <div class="ai-hero-grid">
@@ -389,7 +408,7 @@
         </div>
     </section>
 
-   <section id="sectores">
+ <section id="sectores">
     <div class="ai-container">
         <header class="ai-section-header">
             <h2>Casos listos para implementar por industria</h2>
@@ -402,45 +421,46 @@
                 <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-stethoscope"></i></span>
                 <h3>Salud privada</h3>
                 <ul class="ai-bullet-grid">
-                    <li><i class="fa-solid fa-calendar-check"></i><span>Gestiona citas y recordatorios de pacientes con confirmaciones automatizadas.</span></li>
-                    <li><i class="fa-solid fa-notes-medical"></i><span>Enruta llamadas según urgencia hacia médicos, enfermería o triage.</span></li>
-                    <li><i class="fa-solid fa-clipboard-list"></i><span>Registra interacciones en tu sistema de gestión clínica de forma centralizada.</span></li>
-                    <li><i class="fa-solid fa-user-shield"></i><span>Permite seguimiento seguro del historial de cada paciente.</span></li>
+                    <li><i class="fa-solid fa-calendar-check"></i><span>Confirma citas automáticamente por llamada o mensaje, sin intervención manual.</span></li>
+                    <li><i class="fa-solid fa-notes-medical"></i><span>Dirige llamadas de pacientes al especialista adecuado según su necesidad.</span></li>
+                    <li><i class="fa-solid fa-clipboard-list"></i><span>Registra cada interacción en el sistema de gestión clínica para un seguimiento organizado.</span></li>
+                    <li><i class="fa-solid fa-user-shield"></i><span>Garantiza la seguridad y privacidad del historial médico de cada paciente.</span></li>
                 </ul>
             </article>
             <article class="ai-card">
                 <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-building-columns"></i></span>
                 <h3>Servicios financieros</h3>
                 <ul class="ai-bullet-grid">
-                    <li><i class="fa-solid fa-id-card-clip"></i><span>Centraliza llamadas de clientes con identificación automática de cuenta.</span></li>
-                    <li><i class="fa-solid fa-pen-to-square"></i><span>Registra notas, aprobaciones y acuerdos en CRM y sistemas internos.</span></li>
-                    <li><i class="fa-solid fa-bell"></i><span>Genera alertas para operaciones sensibles y documentación regulatoria.</span></li>
-                    <li><i class="fa-solid fa-shield-halved"></i><span>Mantiene un historial seguro y auditable de cada interacción.</span></li>
+                    <li><i class="fa-solid fa-id-card-clip"></i><span>Identifica automáticamente a los clientes al recibir sus llamadas.</span></li>
+                    <li><i class="fa-solid fa-pen-to-square"></i><span>Registra notas, aprobaciones y acuerdos directamente en el sistema.</span></li>
+                    <li><i class="fa-solid fa-bell"></i><span>Recibe alertas para operaciones sensibles y tareas pendientes.</span></li>
+                    <li><i class="fa-solid fa-shield-halved"></i><span>Mantén un historial seguro y auditable de cada interacción.</span></li>
                 </ul>
             </article>
             <article class="ai-card">
                 <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-truck-fast"></i></span>
                 <h3>Logística y transporte</h3>
                 <ul class="ai-bullet-grid">
-                    <li><i class="fa-solid fa-clipboard-check"></i><span>Confirma entregas y citas vía llamada, SMS o WhatsApp.</span></li>
-                    <li><i class="fa-solid fa-route"></i><span>Enruta llamadas a la sucursal o repartidor correcto en segundos.</span></li>
-                    <li><i class="fa-solid fa-network-wired"></i><span>Integra datos con WMS, TMS y sistemas operativos centrales.</span></li>
-                    <li><i class="fa-solid fa-chart-line"></i><span>Permite monitoreo en tiempo real de incidencias y SLA.</span></li>
+                    <li><i class="fa-solid fa-clipboard-check"></i><span>Confirma entregas y citas automáticamente por llamada, SMS o WhatsApp.</span></li>
+                    <li><i class="fa-solid fa-route"></i><span>Redirige llamadas al repartidor o a la oficina correcta en segundos.</span></li>
+                    <li><i class="fa-solid fa-network-wired"></i><span>Muestra toda la información de envíos y rutas en un solo lugar, fácil de consultar.</span></li>
+                    <li><i class="fa-solid fa-chart-line"></i><span>Supervisa en tiempo real el estado de entregas y posibles retrasos.</span></li>
                 </ul>
             </article>
             <article class="ai-card">
                 <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-shop"></i></span>
                 <h3>Retail y comercio</h3>
                 <ul class="ai-bullet-grid">
-                    <li><i class="fa-solid fa-comments"></i><span>Unifica llamadas, chat y mensajes en una sola vista de atención.</span></li>
-                    <li><i class="fa-solid fa-clipboard"></i><span>Registra interacciones con clientes y contexto de compra.</span></li>
-                    <li><i class="fa-solid fa-paper-plane"></i><span>Automatiza notificaciones de seguimiento y campañas de retención.</span></li>
-                    <li><i class="fa-solid fa-store"></i><span>Facilita la integración con POS, inventarios y CRM.</span></li>
+                    <li><i class="fa-solid fa-comments"></i><span>Reúne llamadas, mensajes y chats en una sola pantalla para atender clientes rápidamente.</span></li>
+                    <li><i class="fa-solid fa-clipboard"></i><span>Guarda la información de cada cliente y su historial de compras de forma clara.</span></li>
+                    <li><i class="fa-solid fa-paper-plane"></i><span>Envía avisos automáticos sobre pedidos, entregas o promociones sin intervención manual.</span></li>
+                    <li><i class="fa-solid fa-store"></i><span>Conecta la información con tu sistema de ventas e inventario para que todo esté actualizado.</span></li>
                 </ul>
             </article>
         </div>
     </div>
 </section>
+
 
 
     <section id="clientes">
