@@ -253,6 +253,53 @@
     padding: 0;
 }
 
+.ai-argument-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 26px;
+    list-style: none;
+    padding: 0;
+}
+
+.ai-argument-card {
+    background: linear-gradient(160deg, rgba(14, 16, 33, 0.88), rgba(8, 12, 32, 0.78));
+    border: 1px solid rgba(74, 104, 255, 0.25);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: var(--ai-shadow);
+    transition: transform 0.28s ease, border-color 0.28s ease;
+    position: relative;
+}
+
+.ai-argument-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(78, 225, 193, 0.5);
+}
+
+.ai-argument-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(140deg, rgba(78, 225, 193, 0.18), rgba(58, 123, 255, 0.2));
+    color: var(--ai-accent);
+    font-size: 22px;
+    margin-bottom: 18px;
+}
+
+.ai-argument-card h3 {
+    margin: 0 0 12px;
+    font-size: 20px;
+}
+
+.ai-argument-card p {
+    margin: 0;
+    color: var(--ai-text-muted);
+    line-height: 1.7;
+}
+
 .ai-card {
     background: var(--ai-surface);
     border: 1px solid var(--ai-border);
@@ -523,6 +570,61 @@ details p {
     max-width: 580px;
     margin: 0 auto 32px;
     line-height: 1.7;
+}
+
+.ai-comparison-wrapper {
+    background: linear-gradient(160deg, rgba(13, 18, 46, 0.92), rgba(8, 10, 27, 0.88));
+    border-radius: var(--ai-radius-lg);
+    border: 1px solid rgba(122, 139, 255, 0.32);
+    box-shadow: var(--ai-shadow);
+    overflow: hidden;
+}
+
+.ai-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--ai-text-muted);
+}
+
+.ai-comparison-table thead th {
+    background: rgba(62, 123, 255, 0.2);
+    color: var(--ai-text);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 20px;
+    border-bottom: 1px solid rgba(122, 139, 255, 0.35);
+}
+
+.ai-comparison-table tbody th {
+    color: var(--ai-text);
+    font-weight: 600;
+    text-align: left;
+    padding: 20px 22px;
+    border-right: 1px solid rgba(122, 139, 255, 0.16);
+    background: rgba(9, 12, 32, 0.85);
+}
+
+.ai-comparison-table tbody td {
+    padding: 20px 22px;
+    border-bottom: 1px solid rgba(122, 139, 255, 0.14);
+    border-right: 1px solid rgba(122, 139, 255, 0.1);
+    line-height: 1.6;
+}
+
+.ai-comparison-table tbody tr:nth-child(even) td {
+    background: rgba(13, 18, 46, 0.6);
+}
+
+.ai-comparison-table tbody tr:last-child td,
+.ai-comparison-table tbody tr:last-child th {
+    border-bottom: none;
+}
+
+.ai-comparison-table th i,
+.ai-comparison-table td i {
+    margin-right: 10px;
+    color: var(--ai-accent);
 }
 
 .ai-animate-group,

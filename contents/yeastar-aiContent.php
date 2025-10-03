@@ -186,6 +186,149 @@
         </div>
     </section>
 
+    <section id="limitaciones-celular">
+        <div class="ai-container">
+            <header class="ai-section-header">
+                <h2>¿Por qué la telefonía celular ya no alcanza?</h2>
+                <p>
+                    Cuando tu operación depende de celulares individuales, pierdes control, trazabilidad y capacidad para crecer. Yeastar AI integra cada interacción en un entorno gobernado y automatizado.
+                </p>
+            </header>
+            <div class="ai-argument-grid ai-animate-group">
+                <article class="ai-argument-card">
+                    <div class="ai-argument-icon" aria-hidden="true"><i class="fa-solid fa-user-lock"></i></div>
+                    <h3>Sin gobierno ni auditoría</h3>
+                    <p>
+                        Las conversaciones viven en dispositivos personales. No hay registro homologado, ni historial de compromisos que puedas auditar. Con Yeastar AI, cada llamada se documenta y se clasifica en un panel único.
+                    </p>
+                </article>
+                <article class="ai-argument-card">
+                    <div class="ai-argument-icon" aria-hidden="true"><i class="fa-solid fa-scale-unbalanced"></i></div>
+                    <h3>Experiencias inconsistentes</h3>
+                    <p>
+                        Cada asesor responde a su manera. No existen guías, resúmenes ni acciones recomendadas. Yeastar AI sugiere el siguiente paso óptimo y mantiene el tono de la marca en toda la organización.
+                    </p>
+                </article>
+                <article class="ai-argument-card">
+                    <div class="ai-argument-icon" aria-hidden="true"><i class="fa-solid fa-chart-pie"></i></div>
+                    <h3>Datos dispersos, decisiones lentas</h3>
+                    <p>
+                        Intentar consolidar reportes desde celulares toma horas. Nuestra plataforma genera dashboards automáticos y alimenta tu BI en minutos, acelerando comités comerciales y de servicio.
+                    </p>
+                </article>
+                <article class="ai-argument-card">
+                    <div class="ai-argument-icon" aria-hidden="true"><i class="fa-solid fa-headset"></i></div>
+                    <h3>Sin soporte profesional</h3>
+                    <p>
+                        La telefonía celular depende del proveedor de red y del usuario final. Yeastar AI ofrece SLA, redundancia y soporte especializado para garantizar continuidad operativa.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="limitaciones-analogica">
+        <div class="ai-container">
+            <header class="ai-section-header">
+                <h2>La telefonía análoga quedó atrás</h2>
+                <p>
+                    Centrales físicas y cableado dedicado implican altos costos fijos, cero analítica y una experiencia rígida. Yeastar AI aporta flexibilidad en la nube con inteligencia aplicada desde el día uno.
+                </p>
+            </header>
+            <div class="ai-argument-grid ai-animate-group">
+                <article class="ai-argument-card">
+                    <div class="ai-argument-icon" aria-hidden="true"><i class="fa-solid fa-gears"></i></div>
+                    <h3>Escalamiento lento y costoso</h3>
+                    <p>
+                        Cada nueva extensión requiere hardware, cableado y visitas técnicas. Con Yeastar AI, habilitas usuarios desde un panel web y los conectas en minutos.
+                    </p>
+                </article>
+                <article class="ai-argument-card">
+                    <div class="ai-argument-icon" aria-hidden="true"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    <h3>Sin visibilidad en tiempo real</h3>
+                    <p>
+                        Las centrales análogas no ofrecen analítica profunda ni grabaciones accesibles. Nuestra plataforma transcribe, resume y etiqueta cada llamada para convertirla en inteligencia accionable.
+                    </p>
+                </article>
+                <article class="ai-argument-card">
+                    <div class="ai-argument-icon" aria-hidden="true"><i class="fa-solid fa-person-running"></i></div>
+                    <h3>Operación rígida</h3>
+                    <p>
+                        Ajustar horarios IVR o mensajes requiere programación manual. Yeastar AI permite flujos dinámicos, locuciones generadas con IA y routing inteligente en segundos.
+                    </p>
+                </article>
+                <article class="ai-argument-card">
+                    <div class="ai-argument-icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Seguridad limitada</h3>
+                    <p>
+                        El acceso físico a la central es un punto único de falla. En la nube de Yeastar AI cuentas con cifrado extremo a extremo, roles granulares y auditoría continua.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="comparativa">
+        <div class="ai-container">
+            <header class="ai-section-header">
+                <h2>Comparativa rápida: ¿Dónde está la ventaja competitiva?</h2>
+                <p>
+                    Evalúa los pilares críticos para una operación moderna y descubre por qué Yeastar AI es la única opción que combina gobernanza, automatización y experiencia del cliente.
+                </p>
+            </header>
+            <div class="ai-comparison-wrapper ai-animate">
+                <table class="ai-comparison-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Criterio</th>
+                            <th scope="col"><i class="fa-solid fa-bolt"></i> Yeastar + IA</th>
+                            <th scope="col"><i class="fa-solid fa-mobile-screen-button"></i> Telefonía celular</th>
+                            <th scope="col"><i class="fa-solid fa-phone-volume"></i> Telefonía análoga</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Experiencia del cliente</th>
+                            <td>Guiones dinámicos, resúmenes automáticos y monitoreo de sentimiento en vivo.</td>
+                            <td>Respuesta variable según cada colaborador; sin retroalimentación inmediata.</td>
+                            <td>Atención rígida, dependiente de horarios fijos y operadores locales.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Visibilidad y analítica</th>
+                            <td>Dashboards en tiempo real, insights accionables y KPIs personalizados.</td>
+                            <td>Datos dispersos en dispositivos individuales; sin métricas consolidadas.</td>
+                            <td>Reportes manuales, sin trazabilidad ni correlación con resultados.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Escalabilidad</th>
+                            <td>Usuarios y campañas activados en minutos desde la nube.</td>
+                            <td>Depende de contratar líneas adicionales y equipamiento por colaborador.</td>
+                            <td>Requiere hardware nuevo, cableado y visitas técnicas por cada expansión.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Integraciones</th>
+                            <td>Conectores nativos y APIs para CRM, ERP, BI y plataformas colaborativas.</td>
+                            <td>Integraciones limitadas o basadas en aplicaciones ajenas a TI corporativo.</td>
+                            <td>Casi inexistentes; procesos paralelos manuales.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Seguridad y cumplimiento</th>
+                            <td>Cifrado end-to-end, roles por perfil y cumplimiento normativo.</td>
+                            <td>Dependencia del usuario final; riesgo elevado de fuga de información.</td>
+                            <td>Infraestructura expuesta y sin controles de acceso granulares.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Costo total</th>
+                            <td>Modelo OPEX con ROI medible desde el primer trimestre.</td>
+                            <td>Gastos recurrentes dispersos y difícil control presupuestal.</td>
+                            <td>Inversiones CAPEX altas y mantenimiento permanente.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
     <section id="sectores">
         <div class="ai-container">
             <header class="ai-section-header">
