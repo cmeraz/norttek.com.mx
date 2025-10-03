@@ -401,30 +401,42 @@
             <article class="ai-card">
                 <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-stethoscope"></i></span>
                 <h3>Salud privada</h3>
-                <p>
-                    Gestiona citas y recordatorios de pacientes, enruta llamadas automáticamente según urgencia, registra interacciones en tu sistema de gestión clínica y permite seguimiento seguro de cada paciente.
-                </p>
+                <ul class="ai-bullet-grid">
+                    <li>Gestiona citas y recordatorios de pacientes con confirmaciones automatizadas.</li>
+                    <li>Enruta llamadas según urgencia hacia médicos, enfermería o triage.</li>
+                    <li>Registra interacciones en tu sistema de gestión clínica de forma centralizada.</li>
+                    <li>Permite seguimiento seguro del historial de cada paciente.</li>
+                </ul>
             </article>
             <article class="ai-card">
                 <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-building-columns"></i></span>
                 <h3>Servicios financieros</h3>
-                <p>
-                    Centraliza llamadas de clientes, registra notas y aprobaciones importantes, integra con CRM y sistemas internos, y mantiene un historial seguro y auditable de todas las interacciones.
-                </p>
+                <ul class="ai-bullet-grid">
+                    <li>Centraliza llamadas de clientes con identificación automática de cuenta.</li>
+                    <li>Registra notas, aprobaciones y acuerdos en CRM y sistemas internos.</li>
+                    <li>Genera alertas para operaciones sensibles y documentación regulatoria.</li>
+                    <li>Mantiene un historial seguro y auditable de cada interacción.</li>
+                </ul>
             </article>
             <article class="ai-card">
                 <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-truck-fast"></i></span>
                 <h3>Logística y transporte</h3>
-                <p>
-                    Confirma entregas y citas por teléfono o SMS, enruta llamadas a la sucursal o repartidor correcto, integra datos con sistemas operativos y permite monitoreo en tiempo real de las operaciones.
-                </p>
+                <ul class="ai-bullet-grid">
+                    <li>Confirma entregas y citas vía llamada, SMS o WhatsApp.</li>
+                    <li>Enruta llamadas a la sucursal o repartidor correcto en segundos.</li>
+                    <li>Integra datos con WMS, TMS y sistemas operativos centrales.</li>
+                    <li>Permite monitoreo en tiempo real de incidencias y SLA.</li>
+                </ul>
             </article>
             <article class="ai-card">
                 <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-shop"></i></span>
                 <h3>Retail y comercio</h3>
-                <p>
-                    Unifica llamadas, chat y mensajes en un solo panel, registra interacciones con clientes, automatiza notificaciones de seguimiento y facilita la integración con sistemas de ventas y CRM.
-                </p>
+                <ul class="ai-bullet-grid">
+                    <li>Unifica llamadas, chat y mensajes en una sola vista de atención.</li>
+                    <li>Registra interacciones con clientes y contexto de compra.</li>
+                    <li>Automatiza notificaciones de seguimiento y campañas de retención.</li>
+                    <li>Facilita la integración con POS, inventarios y CRM.</li>
+                </ul>
             </article>
         </div>
     </div>
