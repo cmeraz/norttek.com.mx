@@ -681,7 +681,7 @@ details p {
     position: fixed;
     bottom: 28px;
     right: 28px;
-    z-index: 12;
+    z-index: 90;
     display: inline-flex;
     align-items: center;
     gap: 14px;
@@ -713,7 +713,7 @@ details p {
     top: 50%;
     right: 32px;
     transform: translateY(-50%);
-    z-index: 13;
+    z-index: 100;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
