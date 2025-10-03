@@ -410,6 +410,43 @@
     color: var(--ai-text-muted);
 }
 
+.ai-example-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    font-size: 12px;
+    line-height: 1;
+    margin-right: 8px;
+    background: rgba(58, 123, 255, 0.18);
+    color: #fff;
+}
+
+.ai-example-label i {
+    font-size: 14px;
+    color: var(--ai-accent);
+}
+
+.ai-example-label--how {
+    background: rgba(143, 93, 255, 0.22);
+}
+
+.ai-example-label--how i {
+    color: #cbb5ff;
+}
+
+.ai-example-label--benefit {
+    background: rgba(78, 225, 193, 0.22);
+    color: #052432;
+}
+
+.ai-example-label--benefit i {
+    color: #0d7f68;
+}
+
 .ai-example-list li strong {
     color: var(--ai-text);
     font-weight: 600;

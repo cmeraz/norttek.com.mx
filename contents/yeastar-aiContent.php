@@ -97,27 +97,27 @@
                             <i class="fa-solid fa-scale-balanced"></i>
                             <div class="ai-example-copy">
                                 <strong>Despacho jurídico</strong>
-                                <p>Mensaje recibido del cliente: “Necesitamos revisar el contrato de arrendamiento de la empresa XYZ antes del viernes.”</p>
-                                <p>Cómo funciona: La AI transcribe el mensaje y lo integra en el sistema de gestión de casos.</p>
-                                <p>Beneficio: El abogado recibe el texto completo con todos los detalles, asegurando que las tareas se asignen correctamente y se cumplan los plazos.</p>
+                                <p><span class="ai-example-label ai-example-label--message"><i class="fa-solid fa-inbox"></i> Mensaje recibido del cliente:</span> “Necesitamos revisar el contrato de arrendamiento de la empresa XYZ antes del viernes.”</p>
+                                <p><span class="ai-example-label ai-example-label--how"><i class="fa-solid fa-gears"></i> Cómo funciona:</span> La AI transcribe el mensaje y lo integra en el sistema de gestión de casos.</p>
+                                <p><span class="ai-example-label ai-example-label--benefit"><i class="fa-solid fa-star"></i> Beneficio:</span> El abogado recibe el texto completo con todos los detalles, asegurando que las tareas se asignen correctamente y se cumplan los plazos.</p>
                             </div>
                         </li>
                         <li>
                             <i class="fa-solid fa-chart-line"></i>
                             <div class="ai-example-copy">
                                 <strong>Consultoría financiera</strong>
-                                <p>Mensaje recibido del cliente: “Por favor, revisa los estados financieros del tercer trimestre y envía recomendaciones antes del martes.”</p>
-                                <p>Cómo funciona: La AI convierte el audio en texto y lo asocia al proyecto correspondiente en el CRM.</p>
-                                <p>Beneficio: Se ahorra tiempo, se minimizan errores de interpretación y se mejora la organización de los informes.</p>
+                                <p><span class="ai-example-label ai-example-label--message"><i class="fa-solid fa-inbox"></i> Mensaje recibido del cliente:</span> “Por favor, revisa los estados financieros del tercer trimestre y envía recomendaciones antes del martes.”</p>
+                                <p><span class="ai-example-label ai-example-label--how"><i class="fa-solid fa-gears"></i> Cómo funciona:</span> La AI convierte el audio en texto y lo asocia al proyecto correspondiente en el CRM.</p>
+                                <p><span class="ai-example-label ai-example-label--benefit"><i class="fa-solid fa-star"></i> Beneficio:</span> Se ahorra tiempo, se minimizan errores de interpretación y se mejora la organización de los informes.</p>
                             </div>
                         </li>
                         <li>
                             <i class="fa-solid fa-stethoscope"></i>
                             <div class="ai-example-copy">
                                 <strong>Clínica especializada</strong>
-                                <p>Mensaje recibido del paciente: “Solicito una cita con el especialista en cardiología el próximo miércoles a las 11 am.”</p>
-                                <p>Cómo funciona: El sistema genera automáticamente el texto y lo integra en la agenda digital del centro médico.</p>
-                                <p>Beneficio: La recepción puede confirmar la cita rápidamente, evitando errores de horario y mejorando la experiencia del paciente.</p>
+                                <p><span class="ai-example-label ai-example-label--message"><i class="fa-solid fa-inbox"></i> Mensaje recibido del paciente:</span> “Solicito una cita con el especialista en cardiología el próximo miércoles a las 11 am.”</p>
+                                <p><span class="ai-example-label ai-example-label--how"><i class="fa-solid fa-gears"></i> Cómo funciona:</span> El sistema genera automáticamente el texto y lo integra en la agenda digital del centro médico.</p>
+                                <p><span class="ai-example-label ai-example-label--benefit"><i class="fa-solid fa-star"></i> Beneficio:</span> La recepción puede confirmar la cita rápidamente, evitando errores de horario y mejorando la experiencia del paciente.</p>
                             </div>
                         </li>
                     </ul>
@@ -135,7 +135,7 @@
                             <div class="ai-example-copy">
                                 <strong>Hospital privado</strong>
                                 <p>Texto del mensaje: “Gracias por llamar al Hospital San Lucas. Para consultas médicas presione 1, para urgencias presione 2, para administración presione 3.”</p>
-                                <p>Beneficio: La voz profesional brinda información clara y actualizable automáticamente, sin necesidad de grabaciones externas, mejorando la atención de pacientes y familiares.</p>
+                                <p><span class="ai-example-label ai-example-label--benefit"><i class="fa-solid fa-star"></i> Beneficio:</span> La voz profesional brinda información clara y actualizable automáticamente, sin necesidad de grabaciones externas, mejorando la atención de pacientes y familiares.</p>
                             </div>
                         </li>
                         <li>
@@ -143,7 +143,7 @@
                             <div class="ai-example-copy">
                                 <strong>Despacho de arquitectos</strong>
                                 <p>Texto del mensaje promocional: “Ofrecemos asesoría completa en diseño arquitectónico, remodelaciones y proyectos corporativos.”</p>
-                                <p>Beneficio: La AI genera un audio profesional para la central telefónica, proyectando imagen moderna y confiable ante clientes potenciales.</p>
+                                <p><span class="ai-example-label ai-example-label--benefit"><i class="fa-solid fa-star"></i> Beneficio:</span> La AI genera un audio profesional para la central telefónica, proyectando imagen moderna y confiable ante clientes potenciales.</p>
                             </div>
                         </li>
                         <li>
@@ -151,7 +151,7 @@
                             <div class="ai-example-copy">
                                 <strong>Empresa de servicios TI</strong>
                                 <p>Menú IVR: “Presione 1 para soporte técnico, 2 para ventas de software, 3 para consultas generales.”</p>
-                                <p>Beneficio: Cambiar opciones es tan simple como editar el texto; la AI genera automáticamente la voz, facilitando la atención profesional y evitando errores en la comunicación.</p>
+                                <p><span class="ai-example-label ai-example-label--benefit"><i class="fa-solid fa-star"></i> Beneficio:</span> Cambiar opciones es tan simple como editar el texto; la AI genera automáticamente la voz, facilitando la atención profesional y evitando errores en la comunicación.</p>
                             </div>
                         </li>
                     </ul>
@@ -170,7 +170,7 @@
                                 <strong>Firma de abogados corporativos</strong>
                                 <p>Llamada del cliente: “Necesitamos revisar y firmar el contrato de asociación estratégica antes del lunes.”</p>
                                 <p>Resumen automático: “Cliente: empresa ABC, Tema: contrato de asociación, Acción: preparar borrador y enviar revisión legal antes del lunes.”</p>
-                                <p>Beneficio: El abogado recibe un resumen completo y organizado, optimizando el tiempo y reduciendo riesgos de errores o tareas olvidadas.</p>
+                                <p><span class="ai-example-label ai-example-label--benefit"><i class="fa-solid fa-star"></i> Beneficio:</span> El abogado recibe un resumen completo y organizado, optimizando el tiempo y reduciendo riesgos de errores o tareas olvidadas.</p>
                             </div>
                         </li>
                         <li>
@@ -179,7 +179,7 @@
                                 <strong>Consultoría empresarial</strong>
                                 <p>Llamada del cliente: Solicitud de auditoría interna para el departamento de finanzas.</p>
                                 <p>Resumen automático: “Cliente solicita auditoría interna para departamento financiero, Fecha límite: 30 de octubre, Acción: asignar equipo auditor y preparar informe preliminar.”</p>
-                                <p>Beneficio: Facilita la planificación de equipos y la comunicación interna, mejorando la eficiencia y la satisfacción del cliente.</p>
+                                <p><span class="ai-example-label ai-example-label--benefit"><i class="fa-solid fa-star"></i> Beneficio:</span> Facilita la planificación de equipos y la comunicación interna, mejorando la eficiencia y la satisfacción del cliente.</p>
                             </div>
                         </li>
                         <li>
@@ -188,7 +188,7 @@
                                 <strong>Clínica especializada en rehabilitación</strong>
                                 <p>Llamada: Paciente reporta evolución en tratamiento fisioterapéutico.</p>
                                 <p>Resumen automático: “Paciente: Juan Pérez, Tratamiento: rehabilitación postoperatoria, Observaciones: dolor reducido, Acción: actualizar plan de ejercicios y agendar próxima cita.”</p>
-                                <p>Beneficio: El personal clínico recibe información organizada que facilita seguimiento preciso del tratamiento.</p>
+                                <p><span class="ai-example-label ai-example-label--benefit"><i class="fa-solid fa-star"></i> Beneficio:</span> El personal clínico recibe información organizada que facilita seguimiento preciso del tratamiento.</p>
                             </div>
                         </li>
                     </ul>
@@ -205,91 +205,27 @@
                             <i class="fa-solid fa-calculator"></i>
                             <div class="ai-example-copy">
                                 <strong>Despacho contable y financiero</strong>
-                                <p>Cómo funciona: Cada llamada entrante se registra automáticamente en el CRM, asociada al cliente correcto y al proyecto correspondiente.</p>
-                                <p>Beneficio: Evita errores manuales, asegura historial completo de interacciones y facilita asignar tareas automáticamente al equipo adecuado.</p>
+                                <p><span class="ai-example-label ai-example-label--how"><i class="fa-solid fa-gears"></i> Cómo funciona:</span> Cada llamada entrante se registra automáticamente en el CRM, asociada al cliente correcto y al proyecto correspondiente.</p>
+                                <p><span class="ai-example-label ai-example-label--benefit"><i class="fa-solid fa-star"></i> Beneficio:</span> Evita errores manuales, asegura historial completo de interacciones y facilita asignar tareas automáticamente al equipo adecuado.</p>
                             </div>
                         </li>
                         <li>
                             <i class="fa-solid fa-drafting-compass"></i>
                             <div class="ai-example-copy">
                                 <strong>Firma de arquitectura y diseño</strong>
-                                <p>Cómo funciona: Llamadas de clientes sobre proyectos se integran al sistema de gestión de proyectos, incluyendo notas y plazos.</p>
-                                <p>Beneficio: Permite un seguimiento exacto de cada proyecto, asignando responsables y controlando avances sin perder información.</p>
+                                <p><span class="ai-example-label ai-example-label--how"><i class="fa-solid fa-gears"></i> Cómo funciona:</span> Llamadas de clientes sobre proyectos se integran al sistema de gestión de proyectos, incluyendo notas y plazos.</p>
+                                <p><span class="ai-example-label ai-example-label--benefit"><i class="fa-solid fa-star"></i> Beneficio:</span> Permite un seguimiento exacto de cada proyecto, asignando responsables y controlando avances sin perder información.</p>
                             </div>
                         </li>
                         <li>
                             <i class="fa-solid fa-truck"></i>
                             <div class="ai-example-copy">
                                 <strong>Empresa de logística y transporte</strong>
-                                <p>Cómo funciona: Las llamadas de clientes solicitando envíos se sincronizan con el software de gestión logística y la planificación de rutas.</p>
-                                <p>Beneficio: Reduce errores de coordinación, asegura tiempos de entrega precisos y mantiene toda la información organizada y accesible para el equipo.</p>
+                                <p><span class="ai-example-label ai-example-label--how"><i class="fa-solid fa-gears"></i> Cómo funciona:</span> Las llamadas de clientes solicitando envíos se sincronizan con el software de gestión logística y la planificación de rutas.</p>
+                                <p><span class="ai-example-label ai-example-label--benefit"><i class="fa-solid fa-star"></i> Beneficio:</span> Reduce errores de coordinación, asegura tiempos de entrega precisos y mantiene toda la información organizada y accesible para el equipo.</p>
                             </div>
                         </li>
                     </ul>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section id="demo">
-        <div class="ai-container">
-            <header class="ai-section-header">
-                <h2>Demo guiada: de la llamada al insight en 90 segundos</h2>
-                <p>
-                    Así fluye la información cuando tus asesores utilizan Yeastar AI. Todo ocurre en segundo plano mientras ellos se concentran en la conversación.
-                </p>
-            </header>
-            <div class="ai-stacked-layout ai-animate-group">
-                <article class="ai-card ai-card-sticky" aria-label="Invitación a demo">
-                    <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-circle-play"></i></span>
-                    <h3>Selecciona un escenario y solicita tu demo</h3>
-                    <p>
-                        Nuestro equipo te conecta a un entorno en vivo donde podrás cargar audios reales de tu operación o utilizar casos preconfigurados por industria. Recibirás el análisis completo en tu correo.
-                    </p>
-                    <a href="mailto:ventas@nortteksolutions.com" class="ai-btn ai-btn-primary">
-                        <i class="fa-solid fa-envelope-open-text"></i>
-                        <span>Agendar demostración</span>
-                    </a>
-                </article>
-                <ol class="ai-timeline" aria-label="Flujo de demo">
-                    <li class="ai-timeline-step">
-                        <strong><span>01</span> Captura inteligente</strong>
-                        <p>
-                            La llamada se graba y transcribe en tiempo real. La IA identifica actores, intención, nivel de urgencia y sentimiento.
-                        </p>
-                    </li>
-                    <li class="ai-timeline-step">
-                        <strong><span>02</span> Clasificación automática</strong>
-                        <p>
-                            Generamos resúmenes ejecutivos, tareas sugeridas, campos personalizados y alertas para enviar al CRM o helpdesk.
-                        </p>
-                    </li>
-                    <li class="ai-timeline-step">
-                        <strong><span>03</span> Integración con tus sistemas</strong>
-                        <p>
-                            Yeastar envía la información a HubSpot, Microsoft Teams, Zoho o Slack para mantener a todos sincronizados.
-                        </p>
-                    </li>
-                    <li class="ai-timeline-step">
-                        <strong><span>04</span> Monitoreo y mejora continua</strong>
-                        <p>
-                            Recibe reportes semanales con tendencias, oportunidades de capacitación y recomendaciones para acelerar cierres.
-                        </p>
-                    </li>
-                </ol>
-            </div>
-            <div class="ai-stats">
-                <article class="ai-stat-card">
-                    <strong>12 min</strong>
-                    <span>Tiempo promedio para generar informes completos tras la llamada</span>
-                </article>
-                <article class="ai-stat-card">
-                    <strong>3.2x</strong>
-                    <span>Incremento en oportunidades calificadas mediante playbooks automatizados</span>
-                </article>
-                <article class="ai-stat-card">
-                    <strong>94%</strong>
-                    <span>Clientes que perciben mejoras inmediatas en la atención</span>
                 </article>
             </div>
         </div>
