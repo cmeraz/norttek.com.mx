@@ -92,9 +92,9 @@
                         Convierte automáticamente los mensajes de voz en texto listo para actuar. Tus equipos reciben la información en segundos para programar, ajustar pedidos o documentar compromisos sin escuchar audios.
                     </p>
                     <ul class="ai-example-list">
-                        <li><i class="fa-solid fa-stethoscope"></i><div class="ai-example-copy"><strong>Consultorio médico:</strong> La recepcionista agenda una revisión solicitada para el lunes a las 10:00.</div></li>
-                        <li><i class="fa-solid fa-pizza-slice"></i><div class="ai-example-copy"><strong>Restaurante:</strong> El gerente cambia una pizza grande por dos medianas sin reproducir mensajes.</div></li>
-                        <li><i class="fa-solid fa-calculator"></i><div class="ai-example-copy"><strong>Despacho contable:</strong> La AI documenta facturas a revisar y crea tareas en el CRM.</div></li>
+                        <li><i class="fa-solid fa-stethoscope"></i><div class="ai-example-copy"><strong>Consultorio médico:</strong> La IA transcribe un mensaje urgente, etiqueta síntomas relevantes y agenda la revisión solicitada para el lunes a las 10:00 con confirmación automática al paciente.</div></li>
+                        <li><i class="fa-solid fa-pizza-slice"></i><div class="ai-example-copy"><strong>Restaurante:</strong> El gerente recibe un audio con ajustes de catering; la plataforma extrae cantidades, actualiza el POS y alerta a cocina sin escuchar el mensaje completo.</div></li>
+                        <li><i class="fa-solid fa-calculator"></i><div class="ai-example-copy"><strong>Despacho contable:</strong> La IA clasifica facturas mencionadas, asigna responsables y crea recordatorios en el CRM con plazos y montos verificados.</div></li>
                     </ul>
                 </article>
                 <article class="ai-card">
@@ -104,9 +104,9 @@
                         Genera audios naturales para menús, IVR y anuncios sin depender de grabaciones manuales. Actualiza mensajes en segundos desde un editor amigable.
                     </p>
                     <ul class="ai-example-list">
-                        <li><i class="fa-solid fa-hotel"></i><div class="ai-example-copy"><strong>Hotel:</strong> Mensajes de bienvenida y horarios se refrescan cada temporada.</div></li>
-                        <li><i class="fa-solid fa-prescription-bottle-medical"></i><div class="ai-example-copy"><strong>Farmacia:</strong> Promociones cambiantes con voces profesionales automáticas.</div></li>
-                        <li><i class="fa-solid fa-bag-shopping"></i><div class="ai-example-copy"><strong>Tienda en línea:</strong> Menú IVR editable que responde a la estrategia comercial del día.</div></li>
+                        <li><i class="fa-solid fa-hotel"></i><div class="ai-example-copy"><strong>Hotel:</strong> El director de rooms actualiza en 30 segundos el guion de bienvenida, la IA genera locución multilingüe y la publica en el IVR sin depender de un estudio.</div></li>
+                        <li><i class="fa-solid fa-prescription-bottle-medical"></i><div class="ai-example-copy"><strong>Farmacia:</strong> El gerente de marketing cambia la promoción del día, recibe audios con tono profesional y los rota por sucursal según inventario.</div></li>
+                        <li><i class="fa-solid fa-bag-shopping"></i><div class="ai-example-copy"><strong>Tienda en línea:</strong> El equipo e-commerce programa mensajes contextuales por horario o temporada y mantiene la voz alineada a la identidad de marca.</div></li>
                     </ul>
                 </article>
                 <article class="ai-card">
@@ -116,9 +116,9 @@
                         La IA analiza cada conversación, destaca puntos clave y asigna acciones siguientes para que ningún compromiso quede sin seguimiento.
                     </p>
                     <ul class="ai-example-list">
-                        <li><i class="fa-solid fa-scale-balanced"></i><div class="ai-example-copy"><strong>Despacho legal:</strong> Registra temas, responsables y fechas de entrega del contrato.</div></li>
-                        <li><i class="fa-solid fa-plane-departure"></i><div class="ai-example-copy"><strong>Agencia de viajes:</strong> Captura destino, fechas y presupuesto en el CRM.</div></li>
-                        <li><i class="fa-solid fa-headset"></i><div class="ai-example-copy"><strong>Soporte técnico:</strong> Prioriza fallas, versión afectada y acciones sugeridas.</div></li>
+                        <li><i class="fa-solid fa-scale-balanced"></i><div class="ai-example-copy"><strong>Despacho legal:</strong> Tras la llamada, la IA resume cláusulas clave, plazos y responsables, dejando la minuta lista en el expediente digital.</div></li>
+                        <li><i class="fa-solid fa-plane-departure"></i><div class="ai-example-copy"><strong>Agencia de viajes:</strong> Detecta destino, fechas, presupuesto y preferencias de asientos, generando una propuesta inicial en el CRM.</div></li>
+                        <li><i class="fa-solid fa-headset"></i><div class="ai-example-copy"><strong>Soporte técnico:</strong> Analiza el incidente, evalúa severidad y sugiere el runbook ideal notificando a los especialistas adecuados.</div></li>
                     </ul>
                 </article>
                 <article class="ai-card">
@@ -128,9 +128,9 @@
                         Sincroniza información de llamadas, contactos y pedidos con tus herramientas críticas para automatizar flujos, reportes y facturación.
                     </p>
                     <ul class="ai-example-list">
-                        <li><i class="fa-solid fa-chart-line"></i><div class="ai-example-copy"><strong>Despacho contable:</strong> Registros automáticos en CRM según cliente y servicio.</div></li>
-                        <li><i class="fa-solid fa-store"></i><div class="ai-example-copy"><strong>E-commerce:</strong> Pedidos telefónicos actualizan inventario y emiten facturas.</div></li>
-                        <li><i class="fa-solid fa-building"></i><div class="ai-example-copy"><strong>Inmobiliaria:</strong> Prospectos se asignan al agente disponible con notas contextualizadas.</div></li>
+                        <li><i class="fa-solid fa-chart-line"></i><div class="ai-example-copy"><strong>Despacho contable:</strong> Cuando el cliente solicita un ajuste, la IA crea la nota en el CRM, adjunta los archivos mencionados y actualiza el estado contable.</div></li>
+                        <li><i class="fa-solid fa-store"></i><div class="ai-example-copy"><strong>E-commerce:</strong> Las órdenes telefónicas se vuelven pedidos en el ERP, descuentan inventario y disparan confirmaciones por correo y WhatsApp.</div></li>
+                        <li><i class="fa-solid fa-building"></i><div class="ai-example-copy"><strong>Inmobiliaria:</strong> El sistema identifica la etapa del prospecto, agenda la visita desde el calendario del agente y sincroniza la ficha del inmueble.</div></li>
                     </ul>
                 </article>
             </div>
