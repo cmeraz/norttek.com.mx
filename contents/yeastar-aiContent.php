@@ -89,48 +89,142 @@
                     <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-microphone-lines"></i></span>
                     <h3>Transcripción de mensajes de voz a texto</h3>
                     <p>
-                        Convierte automáticamente los mensajes de voz en texto listo para actuar. Tus equipos reciben la información en segundos para programar, ajustar pedidos o documentar compromisos sin escuchar audios.
+                        Convierte automáticamente los mensajes de voz en texto, listo para leer y actuar de inmediato, evitando escuchar cada mensaje y reduciendo errores humanos.
                     </p>
+                    <p class="ai-examples-intro">Ejemplos prácticos:</p>
                     <ul class="ai-example-list">
-                        <li><i class="fa-solid fa-stethoscope"></i><div class="ai-example-copy"><strong>Consultorio médico:</strong> La IA transcribe un mensaje urgente, etiqueta síntomas relevantes y agenda la revisión solicitada para el lunes a las 10:00 con confirmación automática al paciente.</div></li>
-                        <li><i class="fa-solid fa-pizza-slice"></i><div class="ai-example-copy"><strong>Restaurante:</strong> El gerente recibe un audio con ajustes de catering; la plataforma extrae cantidades, actualiza el POS y alerta a cocina sin escuchar el mensaje completo.</div></li>
-                        <li><i class="fa-solid fa-calculator"></i><div class="ai-example-copy"><strong>Despacho contable:</strong> La IA clasifica facturas mencionadas, asigna responsables y crea recordatorios en el CRM con plazos y montos verificados.</div></li>
+                        <li>
+                            <i class="fa-solid fa-scale-balanced"></i>
+                            <div class="ai-example-copy">
+                                <strong>Despacho jurídico</strong>
+                                <p>Mensaje recibido del cliente: “Necesitamos revisar el contrato de arrendamiento de la empresa XYZ antes del viernes.”</p>
+                                <p>Cómo funciona: La AI transcribe el mensaje y lo integra en el sistema de gestión de casos.</p>
+                                <p>Beneficio: El abogado recibe el texto completo con todos los detalles, asegurando que las tareas se asignen correctamente y se cumplan los plazos.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-chart-line"></i>
+                            <div class="ai-example-copy">
+                                <strong>Consultoría financiera</strong>
+                                <p>Mensaje recibido del cliente: “Por favor, revisa los estados financieros del tercer trimestre y envía recomendaciones antes del martes.”</p>
+                                <p>Cómo funciona: La AI convierte el audio en texto y lo asocia al proyecto correspondiente en el CRM.</p>
+                                <p>Beneficio: Se ahorra tiempo, se minimizan errores de interpretación y se mejora la organización de los informes.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-stethoscope"></i>
+                            <div class="ai-example-copy">
+                                <strong>Clínica especializada</strong>
+                                <p>Mensaje recibido del paciente: “Solicito una cita con el especialista en cardiología el próximo miércoles a las 11 am.”</p>
+                                <p>Cómo funciona: El sistema genera automáticamente el texto y lo integra en la agenda digital del centro médico.</p>
+                                <p>Beneficio: La recepción puede confirmar la cita rápidamente, evitando errores de horario y mejorando la experiencia del paciente.</p>
+                            </div>
+                        </li>
                     </ul>
                 </article>
                 <article class="ai-card">
                     <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-waveform-lines"></i></span>
                     <h3>Texto a voz profesional (TTS)</h3>
                     <p>
-                        Genera audios naturales para menús, IVR y anuncios sin depender de grabaciones manuales. Actualiza mensajes en segundos desde un editor amigable.
+                        Convierte textos en audio con voz natural para menús telefónicos, IVR o anuncios, eliminando la necesidad de grabar manualmente, ofreciendo comunicación clara y profesional.
                     </p>
+                    <p class="ai-examples-intro">Ejemplos prácticos:</p>
                     <ul class="ai-example-list">
-                        <li><i class="fa-solid fa-hotel"></i><div class="ai-example-copy"><strong>Hotel:</strong> El director de rooms actualiza en 30 segundos el guion de bienvenida, la IA genera locución multilingüe y la publica en el IVR sin depender de un estudio.</div></li>
-                        <li><i class="fa-solid fa-prescription-bottle-medical"></i><div class="ai-example-copy"><strong>Farmacia:</strong> El gerente de marketing cambia la promoción del día, recibe audios con tono profesional y los rota por sucursal según inventario.</div></li>
-                        <li><i class="fa-solid fa-bag-shopping"></i><div class="ai-example-copy"><strong>Tienda en línea:</strong> El equipo e-commerce programa mensajes contextuales por horario o temporada y mantiene la voz alineada a la identidad de marca.</div></li>
+                        <li>
+                            <i class="fa-solid fa-hospital"></i>
+                            <div class="ai-example-copy">
+                                <strong>Hospital privado</strong>
+                                <p>Texto del mensaje: “Gracias por llamar al Hospital San Lucas. Para consultas médicas presione 1, para urgencias presione 2, para administración presione 3.”</p>
+                                <p>Beneficio: La voz profesional brinda información clara y actualizable automáticamente, sin necesidad de grabaciones externas, mejorando la atención de pacientes y familiares.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-drafting-compass"></i>
+                            <div class="ai-example-copy">
+                                <strong>Despacho de arquitectos</strong>
+                                <p>Texto del mensaje promocional: “Ofrecemos asesoría completa en diseño arquitectónico, remodelaciones y proyectos corporativos.”</p>
+                                <p>Beneficio: La AI genera un audio profesional para la central telefónica, proyectando imagen moderna y confiable ante clientes potenciales.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-server"></i>
+                            <div class="ai-example-copy">
+                                <strong>Empresa de servicios TI</strong>
+                                <p>Menú IVR: “Presione 1 para soporte técnico, 2 para ventas de software, 3 para consultas generales.”</p>
+                                <p>Beneficio: Cambiar opciones es tan simple como editar el texto; la AI genera automáticamente la voz, facilitando la atención profesional y evitando errores en la comunicación.</p>
+                            </div>
+                        </li>
                     </ul>
                 </article>
                 <article class="ai-card">
                     <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-file-lines"></i></span>
                     <h3>Resúmenes automáticos de llamadas</h3>
                     <p>
-                        La IA analiza cada conversación, destaca puntos clave y asigna acciones siguientes para que ningún compromiso quede sin seguimiento.
+                        La AI analiza la conversación y genera resúmenes claros con los puntos clave y tareas pendientes, asegurando que la información importante nunca se pierda.
                     </p>
+                    <p class="ai-examples-intro">Ejemplos prácticos:</p>
                     <ul class="ai-example-list">
-                        <li><i class="fa-solid fa-scale-balanced"></i><div class="ai-example-copy"><strong>Despacho legal:</strong> Tras la llamada, la IA resume cláusulas clave, plazos y responsables, dejando la minuta lista en el expediente digital.</div></li>
-                        <li><i class="fa-solid fa-plane-departure"></i><div class="ai-example-copy"><strong>Agencia de viajes:</strong> Detecta destino, fechas, presupuesto y preferencias de asientos, generando una propuesta inicial en el CRM.</div></li>
-                        <li><i class="fa-solid fa-headset"></i><div class="ai-example-copy"><strong>Soporte técnico:</strong> Analiza el incidente, evalúa severidad y sugiere el runbook ideal notificando a los especialistas adecuados.</div></li>
+                        <li>
+                            <i class="fa-solid fa-scale-balanced"></i>
+                            <div class="ai-example-copy">
+                                <strong>Firma de abogados corporativos</strong>
+                                <p>Llamada del cliente: “Necesitamos revisar y firmar el contrato de asociación estratégica antes del lunes.”</p>
+                                <p>Resumen automático: “Cliente: empresa ABC, Tema: contrato de asociación, Acción: preparar borrador y enviar revisión legal antes del lunes.”</p>
+                                <p>Beneficio: El abogado recibe un resumen completo y organizado, optimizando el tiempo y reduciendo riesgos de errores o tareas olvidadas.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-briefcase"></i>
+                            <div class="ai-example-copy">
+                                <strong>Consultoría empresarial</strong>
+                                <p>Llamada del cliente: Solicitud de auditoría interna para el departamento de finanzas.</p>
+                                <p>Resumen automático: “Cliente solicita auditoría interna para departamento financiero, Fecha límite: 30 de octubre, Acción: asignar equipo auditor y preparar informe preliminar.”</p>
+                                <p>Beneficio: Facilita la planificación de equipos y la comunicación interna, mejorando la eficiencia y la satisfacción del cliente.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-hand-holding-medical"></i>
+                            <div class="ai-example-copy">
+                                <strong>Clínica especializada en rehabilitación</strong>
+                                <p>Llamada: Paciente reporta evolución en tratamiento fisioterapéutico.</p>
+                                <p>Resumen automático: “Paciente: Juan Pérez, Tratamiento: rehabilitación postoperatoria, Observaciones: dolor reducido, Acción: actualizar plan de ejercicios y agendar próxima cita.”</p>
+                                <p>Beneficio: El personal clínico recibe información organizada que facilita seguimiento preciso del tratamiento.</p>
+                            </div>
+                        </li>
                     </ul>
                 </article>
                 <article class="ai-card">
                     <span class="ai-card-icon" aria-hidden="true"><i class="fa-solid fa-diagram-project"></i></span>
                     <h3>Integración con sistemas internos y CRM</h3>
                     <p>
-                        Sincroniza información de llamadas, contactos y pedidos con tus herramientas críticas para automatizar flujos, reportes y facturación.
+                        Permite que todas las llamadas, contactos y mensajes se sincronicen automáticamente con tus sistemas internos, optimizando la gestión de datos y coordinación del equipo.
                     </p>
+                    <p class="ai-examples-intro">Ejemplos prácticos:</p>
                     <ul class="ai-example-list">
-                        <li><i class="fa-solid fa-chart-line"></i><div class="ai-example-copy"><strong>Despacho contable:</strong> Cuando el cliente solicita un ajuste, la IA crea la nota en el CRM, adjunta los archivos mencionados y actualiza el estado contable.</div></li>
-                        <li><i class="fa-solid fa-store"></i><div class="ai-example-copy"><strong>E-commerce:</strong> Las órdenes telefónicas se vuelven pedidos en el ERP, descuentan inventario y disparan confirmaciones por correo y WhatsApp.</div></li>
-                        <li><i class="fa-solid fa-building"></i><div class="ai-example-copy"><strong>Inmobiliaria:</strong> El sistema identifica la etapa del prospecto, agenda la visita desde el calendario del agente y sincroniza la ficha del inmueble.</div></li>
+                        <li>
+                            <i class="fa-solid fa-calculator"></i>
+                            <div class="ai-example-copy">
+                                <strong>Despacho contable y financiero</strong>
+                                <p>Cómo funciona: Cada llamada entrante se registra automáticamente en el CRM, asociada al cliente correcto y al proyecto correspondiente.</p>
+                                <p>Beneficio: Evita errores manuales, asegura historial completo de interacciones y facilita asignar tareas automáticamente al equipo adecuado.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-drafting-compass"></i>
+                            <div class="ai-example-copy">
+                                <strong>Firma de arquitectura y diseño</strong>
+                                <p>Cómo funciona: Llamadas de clientes sobre proyectos se integran al sistema de gestión de proyectos, incluyendo notas y plazos.</p>
+                                <p>Beneficio: Permite un seguimiento exacto de cada proyecto, asignando responsables y controlando avances sin perder información.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-truck"></i>
+                            <div class="ai-example-copy">
+                                <strong>Empresa de logística y transporte</strong>
+                                <p>Cómo funciona: Las llamadas de clientes solicitando envíos se sincronizan con el software de gestión logística y la planificación de rutas.</p>
+                                <p>Beneficio: Reduce errores de coordinación, asegura tiempos de entrega precisos y mantiene toda la información organizada y accesible para el equipo.</p>
+                            </div>
+                        </li>
                     </ul>
                 </article>
             </div>
