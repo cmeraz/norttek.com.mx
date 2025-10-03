@@ -752,7 +752,7 @@ details p {
 }
 
 .ai-floating-cta {
-    position: fixed;
+    position: absolute;
     bottom: 28px;
     right: 28px;
     z-index: 90;
@@ -787,7 +787,7 @@ details p {
    ========================================== */
 
 .ai-section-menu {
-    position: fixed !important;
+    position: absolute;
     top: 140px;
     right: 24px;
     z-index: 100;
