@@ -4,8 +4,61 @@
  * Dashboard privado de cuentas de pago y datos empresariales
  * Carlos Prisciliano Meraz Marioni - Norttek Solutions
  * Estilo: Dashboard de clientes (internetContent.php)
+ * 
+ * SEGURIDAD: Solo visible para administradores autenticados o usuarios con token válido
  */
+
+// Obtener variables de seguridad desde cuentas.php
+$showShareButton = $showShareButton ?? false;
+$isAdmin = $isAdmin ?? false;
 ?>
+
+<!-- Mensajes de sistema (solo admin) -->
+<?php if ($isAdmin && isset($successMessage)): ?>
+<div style="position: fixed; top: 20px; right: 20px; z-index: 9999; background: #4caf50; color: white; padding: 16px 24px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); max-width: 400px;">
+    <strong><i class="fa-solid fa-check-circle"></i> Éxito</strong>
+    <p style="margin: 8px 0 0 0;"><?= htmlspecialchars($successMessage) ?></p>
+    <div style="margin-top: 12px; padding: 10px; background: rgba(255,255,255,0.2); border-radius: 4px;">
+        <p style="margin: 0; font-size: 12px; font-weight: 600;">Enlace de compartición:</p>
+        <input type="text" id="generated-token-url" value="<?= htmlspecialchars($tokenURL ?? '') ?>" 
+               style="width: 100%; padding: 8px; margin-top: 6px; border: none; border-radius: 4px; font-family: monospace; font-size: 12px;" 
+               readonly onclick="this.select()">
+        <button onclick="copyTokenURL()" style="margin-top: 8px; width: 100%; padding: 8px; background: white; color: #4caf50; border: none; border-radius: 4px; font-weight: 600; cursor: pointer;">
+            <i class="fa-solid fa-copy"></i> Copiar Enlace
+        </button>
+    </div>
+    <button onclick="this.parentElement.remove()" style="position: absolute; top: 8px; right: 8px; background: none; border: none; color: white; font-size: 20px; cursor: pointer; opacity: 0.7; line-height: 1;">&times;</button>
+</div>
+<script>
+function copyTokenURL() {
+    const input = document.getElementById('generated-token-url');
+    input.select();
+    document.execCommand('copy');
+    
+    const btn = event.target.closest('button');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<i class="fa-solid fa-check"></i> ¡Copiado!';
+    btn.style.background = '#2e7d32';
+    btn.style.color = 'white';
+    
+    setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.style.background = 'white';
+        btn.style.color = '#4caf50';
+    }, 2000);
+}
+</script>
+<?php endif; ?>
+
+<!-- Admin Toolbar (solo visible para administrador) -->
+<?php if ($isAdmin): ?>
+<div style="position: fixed; bottom: 20px; left: 20px; z-index: 9999; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); font-size: 14px;">
+    <i class="fa-solid fa-shield-halved"></i> <strong>Sesión Admin:</strong> <?= htmlspecialchars($_SESSION['admin_user'] ?? '') ?>
+    <a href="?logout" style="margin-left: 16px; color: white; text-decoration: underline;">
+        <i class="fa-solid fa-sign-out-alt"></i> Cerrar Sesión
+    </a>
+</div>
+<?php endif; ?>
 
 <!-- Contenedor principal estilo Internet App -->
 <div class="cuentas-app">
@@ -21,13 +74,21 @@
       </p>
       </p>
       <div class="flex flex-wrap justify-center gap-4 mt-8 opacity-0 nt-heading-anim delay-lg" style="transform:translateY(34px) scale(.955);">
-        <button id="btn-compartir" class="nt-btn" data-variant="primary">
-          <i class="fa-solid fa-share-alt" aria-hidden="true"></i>
-          <span>Compartir Página</span>
-        </button>
+        
+        <!-- Botón Compartir (solo visible para admin) -->
+        <?php if ($showShareButton): ?>
+        <form method="POST" action="" style="display: inline-block; margin: 0;">
+            <button type="submit" name="generate_token" id="btn-compartir" class="nt-btn" data-variant="primary">
+                <i class="fa-solid fa-share-alt" aria-hidden="true"></i>
+                <span>Compartir Página</span>
+            </button>
+        </form>
+        <?php endif; ?>
+        
         <button id="btn-descargar-contactos" class="nt-btn" data-variant="accent">
           <i class="fa-solid fa-address-card" aria-hidden="true"></i>
           <span>Descargar vCards</span>
+        </button>
         </button>
       </div>
     </div>

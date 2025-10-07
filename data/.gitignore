@@ -1,0 +1,9 @@
+# Ignorar archivos de datos sensibles
+*.json
+*.txt
+log.txt
+tokens.json
+blocked_ips.json
+
+# Mantener el directorio
+!.gitignore
