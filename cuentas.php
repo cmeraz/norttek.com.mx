@@ -19,7 +19,7 @@ session_start();
 
 // Configuración de seguridad
 define('ADMIN_USER', 'cmeraz');
-define('ADMIN_PASSWORD_HASH', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'); // Hash de: Root01068280
+define('ADMIN_PASSWORD_HASH', '$2y$10$0gqPOWiClmOUbdaa/c4HbushOkS5atgmV7CeYabZmOGH9bnxoo1DK'); // Hash de: Root01068280
 define('MAX_LOGIN_ATTEMPTS', 5);
 define('LOCKOUT_TIME', 900); // 15 minutos en segundos
 define('TOKEN_EXPIRATION', 86400); // 24 horas en segundos
