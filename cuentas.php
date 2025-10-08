@@ -15,7 +15,42 @@
 // ============================================
 // CONFIGURACIÓN INICIAL
 // ============================================
-session_start();
+
+// Habilitar errores en desarrollo (comentar en producción)
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+
+// Configurar directorio de sesiones personalizado si es necesario
+$customSessionPath = __DIR__ . '/data/sessions';
+if (is_dir($customSessionPath) && is_writable($customSessionPath)) {
+    session_save_path($customSessionPath);
+}
+
+// Configurar sesión antes de iniciarla
+ini_set('session.use_only_cookies', 1);
+ini_set('session.cookie_httponly', 1);
+
+// Detectar HTTPS correctamente (incluso detrás de proxy/CDN)
+$isHttps = (
+    (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ||
+    (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') ||
+    (!empty($_SERVER['HTTP_X_FORWARDED_SSL']) && $_SERVER['HTTP_X_FORWARDED_SSL'] === 'on') ||
+    (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443)
+);
+
+ini_set('session.cookie_secure', $isHttps ? 1 : 0);
+ini_set('session.cookie_samesite', 'Lax');
+
+// Configuración adicional para producción
+ini_set('session.gc_maxlifetime', 86400); // 24 horas
+ini_set('session.cookie_lifetime', 0); // Hasta cerrar navegador
+
+// Intentar iniciar sesión con manejo de errores
+$sessionStarted = @session_start();
+if (!$sessionStarted) {
+    // Si falla session_start(), registrar error y continuar
+    error_log('ERROR: No se pudo iniciar sesión en cuentas.php');
+}
 
 // Configuración de seguridad
 define('ADMIN_USER', 'cmeraz');
@@ -226,10 +261,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
             $_SESSION['admin_user'] = $username;
             $_SESSION['admin_role'] = 'admin';
             $_SESSION['login_time'] = time();
+            $_SESSION['authenticated'] = true; // Flag adicional
+            
+            // Forzar escritura de la sesión antes de redirigir
+            session_write_close();
             
             clearFailedAttempts(); // Limpiar intentos fallidos
             logAccess("Login exitoso de administrador: {$username}");
             
+            // Redirigir sin token en la URL
             header('Location: cuentas.php');
             exit;
         } else {
