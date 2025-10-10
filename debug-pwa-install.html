@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico PWA - Norttek</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f7fa;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1a202c;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #2d3748;
+            font-size: 18px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #4f8cff;
+            padding-bottom: 8px;
+        }
+        .check {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            background: #f8fafc;
+        }
+        .check.ok {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .check.error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        .check.warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            font-weight: bold;
+        }
+        .code {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        button {
+            background: #4f8cff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        button:hover {
+            background: #3b82f6;
+            transform: translateY(-1px);
+        }
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Diagnóstico PWA - Internet Norttek</h1>
+
+    <div class="section">
+        <h2>1. Estado del Navegador</h2>
+        <div id="browser-checks"></div>
+    </div>
+
+    <div class="section">
+        <h2>2. Estado del Service Worker</h2>
+        <div id="sw-checks"></div>
+    </div>
+
+    <div class="section">
+        <h2>3. Estado del Manifest</h2>
+        <div id="manifest-checks"></div>
+    </div>
+
+    <div class="section">
+        <h2>4. Criterios de Instalación</h2>
+        <div id="install-checks"></div>
+    </div>
+
+    <div class="section">
+        <h2>5. LocalStorage</h2>
+        <div id="storage-checks"></div>
+    </div>
+
+    <div class="section">
+        <h2>6. Comandos Útiles</h2>
+        <div class="code" id="commands">
+            <div>// Limpiar localStorage de rechazo de instalación</div>
+            <div>localStorage.removeItem('pwa-install-dismissed');</div>
+            <div></div>
+            <div>// Verificar si PWA está instalada</div>
+            <div>window.matchMedia('(display-mode: standalone)').matches;</div>
+            <div></div>
+            <div>// Ver todos los Service Workers</div>
+            <div>navigator.serviceWorker.getRegistrations().then(console.log);</div>
+            <div></div>
+            <div>// Desregistrar Service Worker</div>
+            <div>navigator.serviceWorker.getRegistrations().then(r => r[0]?.unregister());</div>
+        </div>
+        <div class="actions">
+            <button onclick="clearDismissed()">Limpiar Rechazo</button>
+            <button onclick="runDiagnostics()">Re-diagnosticar</button>
+            <button onclick="window.location.href='internet.php'">Ir a Internet.php</button>
+        </div>
+    </div>
+
+    <script>
+        async function runDiagnostics() {
+            // 1. Browser Checks
+            const browserChecks = document.getElementById('browser-checks');
+            browserChecks.innerHTML = '';
+            
+            addCheck(browserChecks, 'serviceWorker' in navigator, 
+                'Service Worker API soportado', 
+                'Service Worker NO soportado');
+            
+            addCheck(browserChecks, 'BeforeInstallPromptEvent' in window || 'onbeforeinstallprompt' in window,
+                'beforeinstallprompt soportado',
+                'beforeinstallprompt NO soportado (puede ser normal en algunos navegadores)');
+            
+            addCheck(browserChecks, window.location.protocol === 'https:' || window.location.hostname === 'localhost',
+                `Protocolo correcto: ${window.location.protocol}`,
+                'HTTPS requerido en producción');
+            
+            const isStandalone = window.matchMedia('(display-mode: standalone)').matches || 
+                               window.navigator.standalone ||
+                               document.referrer.includes('android-app://');
+            addCheck(browserChecks, !isStandalone,
+                'PWA NO instalada (disponible para instalar)',
+                'PWA ya está instalada', 
+                isStandalone ? 'warning' : 'ok');
+
+            // 2. Service Worker Checks
+            const swChecks = document.getElementById('sw-checks');
+            swChecks.innerHTML = '';
+            
+            if ('serviceWorker' in navigator) {
+                const registrations = await navigator.serviceWorker.getRegistrations();
+                addCheck(swChecks, registrations.length > 0,
+                    `Service Worker registrado (${registrations.length} activo(s))`,
+                    'Service Worker NO registrado');
+                
+                if (registrations.length > 0) {
+                    const reg = registrations[0];
+                    addCheck(swChecks, reg.active !== null,
+                        `SW activo: ${reg.active?.scriptURL || 'N/A'}`,
+                        'SW no está activo');
+                }
+            }
+
+            // 3. Manifest Checks
+            const manifestChecks = document.getElementById('manifest-checks');
+            manifestChecks.innerHTML = '';
+            
+            try {
+                const response = await fetch('manifest.json');
+                const manifest = await response.json();
+                
+                addCheck(manifestChecks, true,
+                    `Manifest cargado: "${manifest.name}"`,
+                    'Error al cargar manifest');
+                
+                addCheck(manifestChecks, manifest.icons && manifest.icons.length >= 2,
+                    `Iconos: ${manifest.icons?.length || 0} definidos`,
+                    'Faltan iconos en manifest');
+                
+                const has192 = manifest.icons?.some(i => i.sizes.includes('192x192'));
+                const has512 = manifest.icons?.some(i => i.sizes.includes('512x512'));
+                
+                addCheck(manifestChecks, has192,
+                    'Icono 192x192 presente',
+                    'Falta icono 192x192 (REQUERIDO)');
+                
+                addCheck(manifestChecks, has512,
+                    'Icono 512x512 presente',
+                    'Falta icono 512x512 (REQUERIDO)');
+                
+            } catch (error) {
+                addCheck(manifestChecks, false,
+                    'Manifest OK',
+                    `Error: ${error.message}`);
+            }
+
+            // 4. Install Criteria
+            const installChecks = document.getElementById('install-checks');
+            installChecks.innerHTML = '';
+            
+            const dismissed = localStorage.getItem('pwa-install-dismissed');
+            if (dismissed) {
+                const dayInMs = 24 * 60 * 60 * 1000;
+                const hoursAgo = Math.round((Date.now() - parseInt(dismissed)) / (60 * 60 * 1000));
+                const canShow = (Date.now() - parseInt(dismissed)) >= dayInMs;
+                
+                addCheck(installChecks, canShow,
+                    `Prompt disponible (rechazado hace ${hoursAgo}h)`,
+                    `Prompt bloqueado por 24h (rechazado hace ${hoursAgo}h)`,
+                    canShow ? 'ok' : 'warning');
+            } else {
+                addCheck(installChecks, true,
+                    'Nunca rechazado - Prompt disponible',
+                    'N/A');
+            }
+
+            // 5. Storage Checks
+            const storageChecks = document.getElementById('storage-checks');
+            storageChecks.innerHTML = '';
+            
+            const dismissedValue = localStorage.getItem('pwa-install-dismissed');
+            if (dismissedValue) {
+                const date = new Date(parseInt(dismissedValue));
+                storageChecks.innerHTML = `<div class="check warning">
+                    <span class="icon">⏰</span>
+                    <div>
+                        <strong>pwa-install-dismissed:</strong> ${date.toLocaleString('es-MX')}
+                        <br><small>El prompt no se mostrará hasta que pasen 24 horas</small>
+                    </div>
+                </div>`;
+            } else {
+                storageChecks.innerHTML = `<div class="check ok">
+                    <span class="icon">✅</span>
+                    <div>LocalStorage limpio - Prompt puede mostrarse</div>
+                </div>`;
+            }
+        }
+
+        function addCheck(container, condition, okMessage, errorMessage, type = null) {
+            const div = document.createElement('div');
+            const finalType = type || (condition ? 'ok' : 'error');
+            div.className = `check ${finalType}`;
+            
+            const icon = finalType === 'ok' ? '✅' : finalType === 'warning' ? '⚠️' : '❌';
+            const message = condition ? okMessage : errorMessage;
+            
+            div.innerHTML = `
+                <span class="icon">${icon}</span>
+                <div>${message}</div>
+            `;
+            container.appendChild(div);
+        }
+
+        function clearDismissed() {
+            localStorage.removeItem('pwa-install-dismissed');
+            alert('✅ LocalStorage limpiado. Recarga internet.php para ver el prompt de instalación.');
+            runDiagnostics();
+        }
+
+        // Run on load
+        runDiagnostics();
+    </script>
+</body>
+</html>
