@@ -690,9 +690,6 @@
   </div>
 </div>
 
-<!-- Script específico de la vista de Internet -->
-<script src="assets/js/internet.js"></script>
-
 <!-- Estilos adicionales para modales mejorados -->
 <style>
 @keyframes fadeIn {

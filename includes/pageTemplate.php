@@ -86,4 +86,8 @@ if(file_exists($extraScriptFile)){
 }
 
 // 6️⃣ Scripts externos que el desarrollador solicitó para el head (ya impresos allí si existían)
+
+// 7️⃣ Cerrar body y html DESPUES de cargar todos los scripts
 ?>
+  </body>
+</html>

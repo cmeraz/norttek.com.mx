@@ -129,21 +129,6 @@ $footerVariantClass = $footerStyle === 'light' ? ' nt-footer--light' : '';
       "url":"https://www.norttek.com.mx"
     }</script>
 
-    <?php
-      // Carga automática de scripts específicos declarados en la página
-      global $jsFiles; if(!isset($jsFiles) || !is_array($jsFiles)) { $jsFiles = []; }
-      foreach($jsFiles as $js){
-        $jsFile = basename($js).'.js';
-        $server = __DIR__.'/../assets/js/'.$jsFile;
-        $browser = 'assets/js/'.$jsFile;
-        if(file_exists($server)) {
-          echo "<script src=\"$browser\" defer></script>\n"; // defer para mejor rendimiento percibido
-        } else {
-          echo "<!-- JS $browser no encontrado -->\n";
-        }
-      }
-    ?>
-
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -182,5 +167,6 @@ $footerVariantClass = $footerStyle === 'light' ? ' nt-footer--light' : '';
     </script>
 
     <script src="assets/js/scripts.js" defer></script>
-  </body>
-</html>
+<?php
+// NO cerrar </body></html> aqui - el pageTemplate.php lo hara despues de cargar scripts adicionales
+?>
