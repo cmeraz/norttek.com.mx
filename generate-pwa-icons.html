@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Iconos PWA - Norttek</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f8fafc;
+        }
+        h1 {
+            color: #1e293b;
+            margin-bottom: 30px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .icon-item {
+            text-align: center;
+        }
+        canvas {
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            max-width: 100%;
+            height: auto;
+        }
+        button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #4f8cff 0%, #3b82f6 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 140, 255, 0.3);
+        }
+        .info {
+            background: #e0f2fe;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #0ea5e9;
+        }
+        .download-btn {
+            background: #10b981;
+            font-size: 0.9rem;
+            padding: 8px 16px;
+            margin-top: 10px;
+        }
+        .size-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Generador de Iconos PWA - Norttek Solutions</h1>
+        
+        <div class="info">
+            <strong>ℹ️ Instrucciones:</strong>
+            <p>Este generador crea iconos placeholder para la PWA. Para mejores resultados, reemplázalos con el logo oficial de Norttek.</p>
+        </div>
+
+        <div>
+            <button onclick="generateIcons()">🚀 Generar Iconos</button>
+            <button onclick="downloadAll()">📦 Descargar Todos</button>
+        </div>
+
+        <div class="icon-grid" id="iconGrid"></div>
+    </div>
+
+    <script>
+        const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
+        const canvases = {};
+
+        function generateIcons() {
+            const grid = document.getElementById('iconGrid');
+            grid.innerHTML = '';
+
+            sizes.forEach(size => {
+                // Crear contenedor
+                const item = document.createElement('div');
+                item.className = 'icon-item';
+
+                // Crear canvas
+                const canvas = document.createElement('canvas');
+                canvas.width = size;
+                canvas.height = size;
+                canvas.id = `icon-${size}`;
+                canvases[size] = canvas;
+
+                // Dibujar icono
+                const ctx = canvas.getContext('2d');
+                
+                // Gradiente de fondo
+                const gradient = ctx.createLinearGradient(0, 0, size, size);
+                gradient.addColorStop(0, '#4f8cff');
+                gradient.addColorStop(1, '#3b82f6');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, size, size);
+
+                // Texto "N"
+                ctx.fillStyle = 'white';
+                ctx.font = `bold ${size * 0.6}px Arial`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('N', size / 2, size / 2);
+
+                // Label de tamaño
+                const sizeLabel = document.createElement('div');
+                sizeLabel.className = 'size-label';
+                sizeLabel.textContent = `${size}x${size}px`;
+
+                // Botón de descarga
+                const downloadBtn = document.createElement('button');
+                downloadBtn.className = 'download-btn';
+                downloadBtn.textContent = '⬇️ Descargar';
+                downloadBtn.onclick = () => downloadIcon(size);
+
+                // Agregar elementos
+                item.appendChild(canvas);
+                item.appendChild(sizeLabel);
+                item.appendChild(downloadBtn);
+                grid.appendChild(item);
+            });
+
+            console.log('✅ Iconos generados');
+        }
+
+        function downloadIcon(size) {
+            const canvas = canvases[size];
+            if (!canvas) return;
+
+            canvas.toBlob(blob => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `icon-${size}x${size}.png`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+        }
+
+        function downloadAll() {
+            if (Object.keys(canvases).length === 0) {
+                alert('Primero genera los iconos haciendo clic en "Generar Iconos"');
+                return;
+            }
+
+            sizes.forEach((size, index) => {
+                setTimeout(() => {
+                    downloadIcon(size);
+                }, index * 300);
+            });
+        }
+
+        // Generar automáticamente al cargar
+        window.addEventListener('load', generateIcons);
+    </script>
+</body>
+</html>

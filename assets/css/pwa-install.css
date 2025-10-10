@@ -1,0 +1,346 @@
+/**
+ * PWA Installation Prompt & UI Styles
+ * Estilos para el prompt de instalación y elementos PWA
+ */
+
+/* Contenedor principal del prompt */
+#pwa-install-container {
+    position: fixed;
+    bottom: -200px;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    padding: 1rem;
+    transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+#pwa-install-container.show {
+    bottom: 0;
+    pointer-events: all;
+}
+
+/* Prompt de instalación */
+.pwa-install-prompt {
+    background: linear-gradient(135deg, #4f8cff 0%, #3b82f6 100%);
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    padding: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pwa-prompt-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: white;
+}
+
+.pwa-prompt-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.pwa-prompt-text {
+    flex: 1;
+}
+
+.pwa-prompt-text h4 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.pwa-prompt-text p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.95;
+}
+
+.pwa-prompt-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+/* Botón de instalar */
+.btn-install {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: white;
+    color: #3b82f6;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-install:hover {
+    background: #f8fafc;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-install:active {
+    transform: translateY(0);
+}
+
+.btn-install:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Botón de cerrar */
+.btn-dismiss {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1.2rem;
+}
+
+.btn-dismiss:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+/* Banner de actualización */
+#pwa-update-banner {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10001;
+    transition: top 0.3s ease-out;
+}
+
+#pwa-update-banner.show {
+    top: 20px;
+}
+
+.pwa-update-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #10b981;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+    font-weight: 600;
+}
+
+.pwa-update-content i {
+    font-size: 1.5rem;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.btn-update {
+    padding: 0.5rem 1rem;
+    background: white;
+    color: #10b981;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-update:hover {
+    background: #f0fdf4;
+    transform: scale(1.05);
+}
+
+/* Toast notifications */
+.pwa-toast {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1e293b;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    font-weight: 500;
+    z-index: 10002;
+    transition: bottom 0.3s ease-out;
+    max-width: 90%;
+    text-align: center;
+}
+
+.pwa-toast.show {
+    bottom: 80px;
+}
+
+.pwa-toast-success {
+    background: #10b981;
+}
+
+.pwa-toast-error {
+    background: #ef4444;
+}
+
+.pwa-toast-warning {
+    background: #f59e0b;
+}
+
+.pwa-toast-info {
+    background: #3b82f6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .pwa-install-prompt {
+        border-radius: 16px 16px 0 0;
+        padding: 1rem;
+    }
+    
+    .pwa-prompt-content {
+        flex-wrap: wrap;
+    }
+    
+    .pwa-prompt-icon {
+        font-size: 2rem;
+    }
+    
+    .pwa-prompt-text h4 {
+        font-size: 1rem;
+    }
+    
+    .pwa-prompt-text p {
+        font-size: 0.85rem;
+    }
+    
+    .btn-install {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.9rem;
+    }
+    
+    #pwa-update-banner.show {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        transform: none;
+    }
+    
+    .pwa-update-content {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .pwa-prompt-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .btn-install {
+        flex: 1;
+    }
+}
+
+/* Estilos cuando la app está instalada (standalone mode) */
+@media (display-mode: standalone) {
+    /* Ocultar elementos que no se necesitan en modo app */
+    .browser-only {
+        display: none !important;
+    }
+    
+    /* Ajustes para apps instaladas */
+    body {
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Añadir padding superior en iOS para status bar */
+    @supports (padding-top: env(safe-area-inset-top)) {
+        body {
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+    }
+}
+
+/* Splash screen personalizado (solo iOS) */
+@media (display-mode: standalone) and (max-width: 768px) {
+    .pwa-splash {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        z-index: 99999;
+        animation: fadeOut 0.5s ease-out 2s forwards;
+    }
+    
+    @keyframes fadeOut {
+        to {
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+}
+
+/* Badge para indicar que es PWA */
+.pwa-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    background: linear-gradient(135deg, #4f8cff 0%, #3b82f6 100%);
+    color: white;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.pwa-badge i {
+    font-size: 0.85rem;
+}

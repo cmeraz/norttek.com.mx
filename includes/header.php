@@ -39,6 +39,34 @@ $seo = $seo ?? [];
 <!-- Favicon -->
 <link rel="shortcut icon" href="assets/img/favicon-32x32.png" type="image/png">
 
+<!-- PWA Manifest -->
+<link rel="manifest" href="manifest.json">
+
+<!-- Meta tags PWA -->
+<meta name="theme-color" content="<?= $metaTags['theme-color'] ?? '#4f8cff' ?>">
+<meta name="apple-mobile-web-app-capable" content="<?= $metaTags['apple-mobile-web-app-capable'] ?? 'yes' ?>">
+<meta name="apple-mobile-web-app-status-bar-style" content="<?= $metaTags['apple-mobile-web-app-status-bar-style'] ?? 'black-translucent' ?>">
+<meta name="apple-mobile-web-app-title" content="<?= $metaTags['apple-mobile-web-app-title'] ?? 'Norttek' ?>">
+<meta name="mobile-web-app-capable" content="<?= $metaTags['mobile-web-app-capable'] ?? 'yes' ?>">
+<meta name="application-name" content="<?= $metaTags['application-name'] ?? 'Norttek Solutions' ?>">
+
+<!-- Apple Touch Icons -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/pwa/icon-192x192.png">
+<link rel="apple-touch-icon" sizes="152x152" href="assets/img/pwa/icon-152x152.png">
+<link rel="apple-touch-icon" sizes="144x144" href="assets/img/pwa/icon-144x144.png">
+<link rel="apple-touch-icon" sizes="120x120" href="assets/img/pwa/icon-128x128.png">
+
+<!-- Splash Screens para iOS (opcional) -->
+<link rel="apple-touch-startup-image" href="assets/img/pwa/splash-640x1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
+<link rel="apple-touch-startup-image" href="assets/img/pwa/splash-750x1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)">
+<link rel="apple-touch-startup-image" href="assets/img/pwa/splash-1242x2208.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)">
+<link rel="apple-touch-startup-image" href="assets/img/pwa/splash-1125x2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)">
+
+<!-- Microsoft Tiles -->
+<meta name="msapplication-TileColor" content="#4f8cff">
+<meta name="msapplication-TileImage" content="assets/img/pwa/icon-144x144.png">
+<meta name="msapplication-config" content="browserconfig.xml">
+
 <!-- CSS global (orden: componentes > layout/base para minimizar colisiones) -->
 <link href="assets/css/loader.css" rel="stylesheet">
 <link href="assets/css/nt-theme.css" rel="stylesheet">
