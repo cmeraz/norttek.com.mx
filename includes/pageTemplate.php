@@ -65,14 +65,18 @@ if(is_array($jsFiles)){
         $js = basename($js);
         $jsServer = __DIR__ . '/../assets/js/' . $js . '.js';
         $jsBrowser = 'assets/js/' . $js . '.js';
-        if(file_exists($jsServer)) echo "<script src='$jsBrowser' defer></script>\n";
+        // Agregar version para evitar cache
+        $jsVersion = '?v=' . filemtime($jsServer);
+        if(file_exists($jsServer)) echo "<script src='$jsBrowser$jsVersion' defer></script>\n";
     }
 }
 // Autoload según pageName si existe un JS homónimo
 $autoJsServer = __DIR__ . '/../assets/js/' . $pageName . '.js';
 if(file_exists($autoJsServer)){
     $autoJsBrowser = 'assets/js/' . $pageName . '.js';
-    echo "<script src='$autoJsBrowser' defer></script>\n";
+    // Agregar version para evitar cache
+    $jsVersion = '?v=' . filemtime($autoJsServer);
+    echo "<script src='$autoJsBrowser$jsVersion' defer></script>\n";
 }
 
 // 5️⃣ Scripts adicionales desde extra/scripts (PHP que genera JS inline si aplica)

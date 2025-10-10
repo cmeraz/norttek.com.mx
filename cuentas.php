@@ -281,15 +281,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     }
 }
 
-// Procesar generación de token (solo admin)
+// Procesar generación de token (solo admin) - AJAX
 if (isset($_POST['generate_token']) && isset($_SESSION['admin_role'])) {
-    $token = generateToken();
-    $tokenURL = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") 
-                . "://" . $_SERVER['HTTP_HOST'] 
-                . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) 
-                . "?token=" . $token;
-    
-    $successMessage = "Enlace generado exitosamente. Válido por 24 horas.";
+    // Si es una petición AJAX, retornar JSON
+    if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+        $token = generateToken();
+        $tokenURL = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") 
+                    . "://" . $_SERVER['HTTP_HOST'] 
+                    . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) 
+                    . "?token=" . $token;
+        
+        header('Content-Type: application/json');
+        echo json_encode([
+            'success' => true,
+            'token' => $token,
+            'url' => $tokenURL
+        ]);
+        exit;
+    }
 }
 
 // ============================================

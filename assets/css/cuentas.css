@@ -1416,3 +1416,80 @@ body section.nt-hero-wrapper.cuentas-hero {
         padding: .5rem;
     }
 }
+
+/* ==========================================================================
+   Modal de WhatsApp - Estilos específicos
+   ========================================================================== */
+
+#modal-whatsapp .nt-modal {
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+#telefono-whatsapp:focus {
+    border-color: #25D366;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.1);
+}
+
+#telefono-whatsapp::placeholder {
+    color: #9ca3af;
+    font-weight: 400;
+}
+
+#preview-whatsapp {
+    animation: fadeInDown 0.3s ease-out;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#mensaje-preview {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+#btn-enviar-whatsapp:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #9ca3af !important;
+}
+
+#btn-enviar-whatsapp:not(:disabled):hover {
+    background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(37, 211, 102, 0.3);
+}
+
+#btn-enviar-whatsapp:not(:disabled):active {
+    transform: translateY(0);
+}
+
+/* Responsive para modal de WhatsApp */
+@media (max-width: 640px) {
+    #modal-whatsapp .nt-modal {
+        max-width: 95vw;
+        margin: 1rem;
+    }
+    
+    #telefono-whatsapp {
+        font-size: 16px; /* Evita zoom en iOS */
+    }
+}

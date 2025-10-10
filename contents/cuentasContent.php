@@ -13,43 +13,6 @@ $showShareButton = $showShareButton ?? false;
 $isAdmin = $isAdmin ?? false;
 ?>
 
-<!-- Mensajes de sistema (solo admin) -->
-<?php if ($isAdmin && isset($successMessage)): ?>
-<div style="position: fixed; top: 20px; right: 20px; z-index: 9999; background: #4caf50; color: white; padding: 16px 24px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); max-width: 400px;">
-    <strong><i class="fa-solid fa-check-circle"></i> Éxito</strong>
-    <p style="margin: 8px 0 0 0;"><?= htmlspecialchars($successMessage) ?></p>
-    <div style="margin-top: 12px; padding: 10px; background: rgba(255,255,255,0.2); border-radius: 4px;">
-        <p style="margin: 0; font-size: 12px; font-weight: 600;">Enlace de compartición:</p>
-        <input type="text" id="generated-token-url" value="<?= htmlspecialchars($tokenURL ?? '') ?>" 
-               style="width: 100%; padding: 8px; margin-top: 6px; border: none; border-radius: 4px; font-family: monospace; font-size: 12px;" 
-               readonly onclick="this.select()">
-        <button onclick="copyTokenURL()" style="margin-top: 8px; width: 100%; padding: 8px; background: white; color: #4caf50; border: none; border-radius: 4px; font-weight: 600; cursor: pointer;">
-            <i class="fa-solid fa-copy"></i> Copiar Enlace
-        </button>
-    </div>
-    <button onclick="this.parentElement.remove()" style="position: absolute; top: 8px; right: 8px; background: none; border: none; color: white; font-size: 20px; cursor: pointer; opacity: 0.7; line-height: 1;">&times;</button>
-</div>
-<script>
-function copyTokenURL() {
-    const input = document.getElementById('generated-token-url');
-    input.select();
-    document.execCommand('copy');
-    
-    const btn = event.target.closest('button');
-    const originalText = btn.innerHTML;
-    btn.innerHTML = '<i class="fa-solid fa-check"></i> ¡Copiado!';
-    btn.style.background = '#2e7d32';
-    btn.style.color = 'white';
-    
-    setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.style.background = 'white';
-        btn.style.color = '#4caf50';
-    }, 2000);
-}
-</script>
-<?php endif; ?>
-
 <!-- Admin Toolbar (solo visible para administrador) -->
 <?php if ($isAdmin): ?>
 <div style="position: fixed; bottom: 20px; left: 20px; z-index: 9999; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); font-size: 14px;">
@@ -77,12 +40,10 @@ function copyTokenURL() {
         
         <!-- Botón Compartir (solo visible para admin) -->
         <?php if ($showShareButton): ?>
-        <form method="POST" action="" style="display: inline-block; margin: 0;">
-            <button type="submit" name="generate_token" id="btn-compartir" class="nt-btn" data-variant="primary">
-                <i class="fa-solid fa-share-alt" aria-hidden="true"></i>
-                <span>Compartir Página</span>
-            </button>
-        </form>
+        <button type="button" id="btn-compartir" class="nt-btn" data-variant="primary">
+            <i class="fa-solid fa-share-alt" aria-hidden="true"></i>
+            <span>Compartir Página</span>
+        </button>
         <?php endif; ?>
         
         <button id="btn-descargar-contactos" class="nt-btn" data-variant="accent">
@@ -547,6 +508,65 @@ function copyTokenURL() {
     </div>
   </section>
 
+</div>
+
+<!-- Modal de WhatsApp para compartir -->
+<div id="modal-whatsapp" class="nt-modal-backdrop" style="display: none;" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="nt-modal" role="document" style="max-width: 500px;">
+    <button type="button" class="nt-modal-close" onclick="cerrarModalWhatsApp()" aria-label="Cerrar">&times;</button>
+    <h3 class="nt-modal-title" style="display:flex; align-items:center; gap:.5rem;">
+      <i class="fa-brands fa-whatsapp" aria-hidden="true" style="color: #25D366;"></i>
+      Compartir por WhatsApp
+    </h3>
+    <p class="nt-modal-sub">Ingresa el número de teléfono para enviar el enlace de acceso</p>
+    
+    <div class="modal-body">
+      <div style="margin-bottom: 1.5rem;">
+        <label for="telefono-whatsapp" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #374151;">
+          <i class="fa-solid fa-phone"></i> Número de teléfono
+        </label>
+        <div style="position: relative;">
+          <span style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #6b7280; font-weight: 500;">
+            +52
+          </span>
+          <input 
+            type="tel" 
+            id="telefono-whatsapp" 
+            placeholder="6251234567" 
+            maxlength="10"
+            pattern="[0-9]{10}"
+            style="width: 100%; padding: 12px 12px 12px 50px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px; transition: all 0.3s; font-family: monospace;"
+            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+          >
+        </div>
+        <small style="display: block; margin-top: 0.5rem; color: #6b7280;">
+          <i class="fa-solid fa-info-circle"></i> Ingresa solo 10 dígitos sin espacios ni guiones
+        </small>
+      </div>
+
+      <div id="preview-whatsapp" style="display: none; background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+        <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: #166534;">
+          <i class="fa-solid fa-eye"></i> Vista previa del mensaje:
+        </p>
+        <div style="background: white; padding: 0.75rem; border-radius: 6px; font-size: 0.9rem; color: #374151; line-height: 1.6; white-space: pre-wrap;" id="mensaje-preview"></div>
+      </div>
+
+      <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1rem; border-radius: 6px;">
+        <p style="margin: 0; font-size: 0.9rem; color: #92400e;">
+          <i class="fa-solid fa-exclamation-triangle" style="color: #f59e0b;"></i>
+          <strong>Importante:</strong> El enlace es válido por 24 horas y permite acceso completo a la información de cuentas.
+        </p>
+      </div>
+    </div>
+    
+    <div class="nt-modal-actions">
+      <button id="btn-enviar-whatsapp" class="btn-primario btn btn-primary" style="background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);" disabled>
+        <i class="fa-brands fa-whatsapp"></i>
+        Enviar por WhatsApp
+      </button>
+      <button type="button" class="btn-secundario btn btn-secondary" onclick="cerrarModalWhatsApp()">Cancelar</button>
+    </div>
+  </div>
 </div>
 
 <!-- Modal de Confirmación estilo Internet -->

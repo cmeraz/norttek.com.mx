@@ -3,7 +3,11 @@
  * Dashboard privado de cuentas de pago - Funcionalidades JavaScript
  * Carlos Prisciliano Meraz Marioni - Norttek Solutions
  * Estilo: Dashboard de clientes (internetContent.php)
+ * Versión: 2.0 - WhatsApp Share Integration
  */
+
+console.log('🔄 Cuentas.js v2.0 - WhatsApp Integration CARGADO');
+console.log('📅 Timestamp:', new Date().toISOString());
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🏦 DOM cargado, inicializando Dashboard de Cuentas...');
@@ -225,7 +229,9 @@ function initShareButton() {
     const shareBtn = document.getElementById('btn-compartir');
     
     if (shareBtn) {
-        shareBtn.addEventListener('click', async function() {
+        shareBtn.addEventListener('click', async function(e) {
+            e.preventDefault();
+            
             // Animación de botón
             this.style.transform = 'translateY(-2px)';
             this.style.boxShadow = '0 8px 16px rgba(79, 140, 255, 0.3)';
@@ -235,32 +241,173 @@ function initShareButton() {
                 this.style.boxShadow = '';
             }, 200);
             
-            await sharePage();
+            // Deshabilitar botón mientras se genera el token
+            const originalHTML = this.innerHTML;
+            this.disabled = true;
+            this.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Generando enlace...</span>';
+            
+            try {
+                await generarTokenYAbrirModal();
+            } catch (error) {
+                console.error('Error:', error);
+                showToastModern('❌ Error', 'No se pudo generar el enlace', 'error');
+            } finally {
+                // Restaurar botón
+                this.disabled = false;
+                this.innerHTML = originalHTML;
+            }
         });
+        
+        console.log('✅ Botón compartir inicializado');
     }
 }
 
-async function sharePage() {
-    const shareData = {
-        title: 'Cuentas de Pago - Norttek Solutions',
-        text: 'Información de cuentas bancarias y datos empresariales de Norttek Solutions',
-        url: window.location.href
-    };
-    
+// Variable global para almacenar el token y URL generados
+let tokenData = {
+    token: '',
+    url: ''
+};
+
+async function generarTokenYAbrirModal() {
     try {
-        if (navigator.share && /android|iphone|ipad|mobile/i.test(navigator.userAgent)) {
-            await navigator.share(shareData);
-            showToastModern('📤 Compartido', 'Página compartida exitosamente', 'success');
+        // Hacer petición AJAX para generar el token
+        const response = await fetch('cuentas.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: 'generate_token=1'
+        });
+        
+        if (!response.ok) {
+            throw new Error('Error en la respuesta del servidor');
+        }
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            // Guardar datos del token
+            tokenData.token = data.token;
+            tokenData.url = data.url;
+            
+            // Abrir modal de WhatsApp
+            abrirModalWhatsApp();
         } else {
-            // Fallback: Copiar URL
-            await copyToClipboard(window.location.href);
-            showToastModern('🔗 URL Copiada', 'Link copiado al portapapeles', 'success');
+            throw new Error('No se pudo generar el token');
         }
+        
     } catch (error) {
-        if (error.name !== 'AbortError') {
-            showToastModern('❌ Error', 'No se pudo compartir la página', 'error');
-        }
+        console.error('Error al generar token:', error);
+        throw error;
     }
+}
+
+function abrirModalWhatsApp() {
+    const modal = document.getElementById('modal-whatsapp');
+    const input = document.getElementById('telefono-whatsapp');
+    const btnEnviar = document.getElementById('btn-enviar-whatsapp');
+    const preview = document.getElementById('preview-whatsapp');
+    const mensajePreview = document.getElementById('mensaje-preview');
+    
+    if (!modal) return;
+    
+    // Limpiar input
+    input.value = '';
+    btnEnviar.disabled = true;
+    preview.style.display = 'none';
+    
+    // Mostrar modal
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden', 'false');
+    
+    // Focus en el input
+    setTimeout(() => input.focus(), 100);
+    
+    // Event listener para el input
+    input.addEventListener('input', function() {
+        const telefono = this.value.trim();
+        
+        if (telefono.length === 10) {
+            btnEnviar.disabled = false;
+            preview.style.display = 'block';
+            
+            // Generar mensaje
+            const mensaje = generarMensajeWhatsApp(tokenData.url);
+            mensajePreview.textContent = mensaje;
+        } else {
+            btnEnviar.disabled = true;
+            preview.style.display = 'none';
+        }
+    });
+    
+    // Event listener para el botón de enviar
+    btnEnviar.onclick = function() {
+        const telefono = input.value.trim();
+        if (telefono.length === 10) {
+            enviarPorWhatsApp(telefono, tokenData.url);
+        }
+    };
+}
+
+function cerrarModalWhatsApp() {
+    const modal = document.getElementById('modal-whatsapp');
+    if (modal) {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+        
+        // Limpiar datos
+        const input = document.getElementById('telefono-whatsapp');
+        if (input) input.value = '';
+        
+        tokenData = { token: '', url: '' };
+    }
+}
+
+function generarMensajeWhatsApp(url) {
+    return `🏦 *Norttek Solutions - Acceso a Información de Cuentas*
+
+Hola, te comparto el acceso a la información de cuentas bancarias y datos empresariales de Norttek Solutions.
+
+🔗 *Link de acceso:*
+${url}
+
+⏰ *Válido por:* 24 horas
+🔒 *Acceso seguro y temporal*
+
+_Este enlace te permite ver información confidencial de cuentas de pago. Por favor, manéjalo con cuidado._`;
+}
+
+function enviarPorWhatsApp(telefono, url) {
+    // Validar que el teléfono tenga 10 dígitos
+    if (!/^\d{10}$/.test(telefono)) {
+        showToastModern('❌ Error', 'El teléfono debe tener 10 dígitos', 'error');
+        return;
+    }
+    
+    // Construir número con código de país
+    const telefonoCompleto = `52${telefono}`;
+    
+    // Generar mensaje
+    const mensaje = generarMensajeWhatsApp(url);
+    
+    // Construir URL de WhatsApp
+    const whatsappURL = `https://wa.me/${telefonoCompleto}?text=${encodeURIComponent(mensaje)}`;
+    
+    // Abrir WhatsApp en nueva pestaña
+    window.open(whatsappURL, '_blank');
+    
+    // Cerrar modal
+    cerrarModalWhatsApp();
+    
+    // Mostrar confirmación
+    showToastModern('✅ Éxito', `Enlace enviado a +52 ${telefono}`, 'success');
+}
+
+// Función antigua removida - ahora se usa generarTokenYAbrirModal
+async function sharePage() {
+    // Esta función ya no se usa, pero la dejo comentada por si acaso
+    console.warn('sharePage() está deprecada, usar generarTokenYAbrirModal()');
 }
 
 // ==========================================================================
@@ -680,6 +827,11 @@ function hideMobileTooltip() {
         }, 200);
     }
 }
+
+// ==========================================================================
+// Exponer funciones globales para uso en HTML inline
+// ==========================================================================
+window.cerrarModalWhatsApp = cerrarModalWhatsApp;
 
 // CSS dinámico para toasts y elementos adicionales
 const additionalStyles = document.createElement('style');

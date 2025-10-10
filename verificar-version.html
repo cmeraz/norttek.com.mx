@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Verificar Versión JS</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 40px;
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+        .info {
+            background: #334155;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #3b82f6;
+        }
+        h1 { color: #60a5fa; }
+        code {
+            background: #1e293b;
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: #fbbf24;
+        }
+        .success { color: #34d399; }
+        .error { color: #f87171; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Verificador de Versión de cuentas.js</h1>
+    
+    <div class="info">
+        <h3>Instrucciones:</h3>
+        <ol>
+            <li>Abre <code>http://localhost/norttek.com.mx/cuentas.php</code></li>
+            <li>Abre la Consola del Navegador (F12 → Console)</li>
+            <li>Busca el mensaje: <code>🔄 Cuentas.js v2.0 - WhatsApp Integration CARGADO</code></li>
+        </ol>
+    </div>
+
+    <div class="info">
+        <h3>✅ Si ves el mensaje v2.0:</h3>
+        <p class="success">La nueva versión se cargó correctamente. El botón "Compartir" debería abrir el modal de WhatsApp.</p>
+    </div>
+
+    <div class="info">
+        <h3>❌ Si NO ves el mensaje v2.0:</h3>
+        <p class="error">El navegador sigue usando cache. Intenta:</p>
+        <ul>
+            <li><strong>Chrome/Edge:</strong> Ctrl + Shift + Delete → Borrar caché</li>
+            <li><strong>Firefox:</strong> Ctrl + Shift + Delete → Caché</li>
+            <li><strong>Modo incógnito:</strong> Ctrl + Shift + N</li>
+            <li><strong>Desactivar caché:</strong> F12 → Network → Disable cache</li>
+        </ul>
+    </div>
+
+    <div class="info">
+        <h3>🔗 URL del archivo JS con versión:</h3>
+        <p>El sistema ahora carga automáticamente con parámetro de versión:</p>
+        <code id="js-url">assets/js/cuentas.js?v=<?php echo time(); ?></code>
+    </div>
+
+    <div class="info">
+        <h3>📋 Verificación manual:</h3>
+        <p>Puedes verificar el contenido del archivo directamente:</p>
+        <a href="http://localhost/norttek.com.mx/assets/js/cuentas.js" target="_blank" 
+           style="color: #60a5fa; text-decoration: none; font-weight: bold;">
+            → Ver cuentas.js
+        </a>
+        <p style="margin-top: 10px; font-size: 14px;">
+            Busca en las primeras líneas: <code>Versión: 2.0 - WhatsApp Share Integration</code>
+        </p>
+    </div>
+
+    <div class="info" style="border-left-color: #8b5cf6;">
+        <h3>🧪 Test rápido en esta página:</h3>
+        <button id="test-btn" onclick="testFunctionality()" 
+                style="padding: 12px 24px; background: #3b82f6; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+            🚀 Probar Funcionalidad
+        </button>
+        <div id="result" style="margin-top: 20px;"></div>
+    </div>
+
+    <script>
+        function testFunctionality() {
+            const result = document.getElementById('result');
+            result.innerHTML = '<p style="color: #fbbf24;">⏳ Cargando cuentas.js...</p>';
+            
+            // Cargar el script dinámicamente
+            const script = document.createElement('script');
+            script.src = `http://localhost/norttek.com.mx/assets/js/cuentas.js?v=${Date.now()}`;
+            script.onload = function() {
+                result.innerHTML = `
+                    <p class="success">✅ Script cargado correctamente</p>
+                    <p>Verifica la consola para ver los mensajes de log.</p>
+                    <p>Si ves <code>🔄 Cuentas.js v2.0</code>, la nueva versión está activa.</p>
+                `;
+            };
+            script.onerror = function() {
+                result.innerHTML = '<p class="error">❌ Error al cargar el script</p>';
+            };
+            document.head.appendChild(script);
+        }
+
+        // Log de timestamp
+        console.log('📅 Página de verificación cargada:', new Date().toLocaleString());
+    </script>
+</body>
+</html>

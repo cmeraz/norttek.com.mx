@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Botón Compartir WhatsApp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f8fafc;
+        }
+        .test-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #4f8cff 0%, #3b82f6 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(79, 140, 255, 0.3);
+        }
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .log {
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 13px;
+        }
+        .log-entry {
+            padding: 5px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+        .success { color: #10b981; }
+        .error { color: #ef4444; }
+        .info { color: #3b82f6; }
+    </style>
+</head>
+<body>
+    <div class="test-section">
+        <h1>🧪 Test de Funcionalidad: Compartir por WhatsApp</h1>
+        <p style="color: #64748b; margin-bottom: 20px;">
+            Prueba del flujo completo: Generar token → Modal WhatsApp → Validación → Envío
+        </p>
+        
+        <button id="btn-compartir" class="btn">
+            <i class="fa-solid fa-share-alt"></i>
+            <span>Compartir Página</span>
+        </button>
+
+        <div class="log" id="log">
+            <div class="log-entry info">📝 Registro de eventos (se actualizará en tiempo real)</div>
+        </div>
+    </div>
+
+    <!-- Modal de WhatsApp (copiado de cuentasContent.php) -->
+    <div id="modal-whatsapp" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center;" aria-hidden="true" role="dialog" aria-modal="true">
+        <div style="background: white; border-radius: 12px; padding: 30px; max-width: 500px; margin: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);" role="document">
+            <button type="button" onclick="cerrarModalWhatsApp()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #64748b;" aria-label="Cerrar">&times;</button>
+            
+            <h3 style="display:flex; align-items:center; gap:.5rem; margin-bottom: 10px; color: #1e293b;">
+                <i class="fa-brands fa-whatsapp" aria-hidden="true" style="color: #25D366;"></i>
+                Compartir por WhatsApp
+            </h3>
+            <p style="color: #64748b; margin-bottom: 20px;">Ingresa el número de teléfono para enviar el enlace de acceso</p>
+            
+            <div>
+                <div style="margin-bottom: 1.5rem;">
+                    <label for="telefono-whatsapp" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #374151;">
+                        <i class="fa-solid fa-phone"></i> Número de teléfono
+                    </label>
+                    <div style="position: relative;">
+                        <span style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #6b7280; font-weight: 500;">
+                            +52
+                        </span>
+                        <input 
+                            type="tel" 
+                            id="telefono-whatsapp" 
+                            placeholder="6251234567" 
+                            maxlength="10"
+                            pattern="[0-9]{10}"
+                            style="width: 100%; padding: 12px 12px 12px 50px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px; transition: all 0.3s; font-family: monospace;"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                        >
+                    </div>
+                    <small style="display: block; margin-top: 0.5rem; color: #6b7280;">
+                        <i class="fa-solid fa-info-circle"></i> Ingresa solo 10 dígitos sin espacios ni guiones
+                    </small>
+                </div>
+
+                <div id="preview-whatsapp" style="display: none; background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+                    <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: #166534;">
+                        <i class="fa-solid fa-eye"></i> Vista previa del mensaje:
+                    </p>
+                    <div style="background: white; padding: 0.75rem; border-radius: 6px; font-size: 0.9rem; color: #374151; line-height: 1.6; white-space: pre-wrap;" id="mensaje-preview"></div>
+                </div>
+
+                <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1rem; border-radius: 6px; margin-bottom: 20px;">
+                    <p style="margin: 0; font-size: 0.9rem; color: #92400e;">
+                        <i class="fa-solid fa-exclamation-triangle" style="color: #f59e0b;"></i>
+                        <strong>Importante:</strong> El enlace es válido por 24 horas y permite acceso completo a la información de cuentas.
+                    </p>
+                </div>
+            </div>
+            
+            <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                <button id="btn-enviar-whatsapp" class="btn" style="background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);" disabled>
+                    <i class="fa-brands fa-whatsapp"></i>
+                    Enviar por WhatsApp
+                </button>
+                <button type="button" onclick="cerrarModalWhatsApp()" style="padding: 12px 24px; background: #e2e8f0; color: #475569; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Variable global para almacenar el token y URL generados
+        let tokenData = {
+            token: '',
+            url: ''
+        };
+
+        // Función de logging
+        function addLog(message, type = 'info') {
+            const log = document.getElementById('log');
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            const time = new Date().toLocaleTimeString();
+            entry.textContent = `[${time}] ${message}`;
+            log.appendChild(entry);
+            log.scrollTop = log.scrollHeight;
+        }
+
+        // Inicializar botón compartir
+        document.getElementById('btn-compartir').addEventListener('click', async function(e) {
+            e.preventDefault();
+            addLog('👆 Click en botón "Compartir Página"', 'info');
+            
+            const btn = this;
+            const originalHTML = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Generando enlace...</span>';
+            addLog('⏳ Generando token de acceso...', 'info');
+            
+            try {
+                await generarTokenYAbrirModal();
+            } catch (error) {
+                addLog('❌ Error: ' + error.message, 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = originalHTML;
+            }
+        });
+
+        async function generarTokenYAbrirModal() {
+            try {
+                addLog('🔄 Haciendo petición AJAX a cuentas.php...', 'info');
+                
+                // Simular respuesta del servidor (en producción esto es real)
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+                // Simular token generado
+                const mockToken = 'test_' + Math.random().toString(36).substr(2, 32);
+                const mockURL = `http://localhost/norttek.com.mx/cuentas.php?token=${mockToken}`;
+                
+                tokenData.token = mockToken;
+                tokenData.url = mockURL;
+                
+                addLog('✅ Token generado exitosamente: ' + mockToken.substr(0, 20) + '...', 'success');
+                addLog('🔗 URL generada: ' + mockURL, 'success');
+                addLog('📱 Abriendo modal de WhatsApp...', 'info');
+                
+                abrirModalWhatsApp();
+                
+            } catch (error) {
+                addLog('❌ Error al generar token: ' + error.message, 'error');
+                throw error;
+            }
+        }
+
+        function abrirModalWhatsApp() {
+            const modal = document.getElementById('modal-whatsapp');
+            const input = document.getElementById('telefono-whatsapp');
+            const btnEnviar = document.getElementById('btn-enviar-whatsapp');
+            const preview = document.getElementById('preview-whatsapp');
+            const mensajePreview = document.getElementById('mensaje-preview');
+            
+            if (!modal) return;
+            
+            addLog('✅ Modal abierto correctamente', 'success');
+            
+            // Limpiar input
+            input.value = '';
+            btnEnviar.disabled = true;
+            preview.style.display = 'none';
+            
+            // Mostrar modal
+            modal.style.display = 'flex';
+            modal.setAttribute('aria-hidden', 'false');
+            
+            // Focus en el input
+            setTimeout(() => input.focus(), 100);
+            
+            // Event listener para el input
+            input.addEventListener('input', function() {
+                const telefono = this.value.trim();
+                addLog(`⌨️ Teléfono ingresado: ${telefono} (${telefono.length}/10 dígitos)`, 'info');
+                
+                if (telefono.length === 10) {
+                    btnEnviar.disabled = false;
+                    preview.style.display = 'block';
+                    
+                    // Generar mensaje
+                    const mensaje = generarMensajeWhatsApp(tokenData.url);
+                    mensajePreview.textContent = mensaje;
+                    
+                    addLog('✅ Número válido (10 dígitos), botón habilitado', 'success');
+                    addLog('👁️ Vista previa del mensaje mostrada', 'info');
+                } else {
+                    btnEnviar.disabled = true;
+                    preview.style.display = 'none';
+                }
+            });
+            
+            // Event listener para el botón de enviar
+            btnEnviar.onclick = function() {
+                const telefono = input.value.trim();
+                if (telefono.length === 10) {
+                    addLog(`📤 Enviando por WhatsApp a: +52 ${telefono}`, 'success');
+                    enviarPorWhatsApp(telefono, tokenData.url);
+                }
+            };
+        }
+
+        function cerrarModalWhatsApp() {
+            const modal = document.getElementById('modal-whatsapp');
+            if (modal) {
+                modal.style.display = 'none';
+                modal.setAttribute('aria-hidden', 'true');
+                
+                const input = document.getElementById('telefono-whatsapp');
+                if (input) input.value = '';
+                
+                tokenData = { token: '', url: '' };
+                
+                addLog('🔒 Modal cerrado, datos limpiados', 'info');
+            }
+        }
+
+        function generarMensajeWhatsApp(url) {
+            return `🏦 *Norttek Solutions - Acceso a Información de Cuentas*
+
+Hola, te comparto el acceso a la información de cuentas bancarias y datos empresariales de Norttek Solutions.
+
+🔗 *Link de acceso:*
+${url}
+
+⏰ *Válido por:* 24 horas
+🔒 *Acceso seguro y temporal*
+
+_Este enlace te permite ver información confidencial de cuentas de pago. Por favor, manéjalo con cuidado._`;
+        }
+
+        function enviarPorWhatsApp(telefono, url) {
+            // Validar que el teléfono tenga 10 dígitos
+            if (!/^\d{10}$/.test(telefono)) {
+                addLog('❌ Error: El teléfono debe tener 10 dígitos', 'error');
+                return;
+            }
+            
+            // Construir número con código de país
+            const telefonoCompleto = `52${telefono}`;
+            addLog(`📞 Número completo con código: +${telefonoCompleto}`, 'info');
+            
+            // Generar mensaje
+            const mensaje = generarMensajeWhatsApp(url);
+            
+            // Construir URL de WhatsApp
+            const whatsappURL = `https://wa.me/${telefonoCompleto}?text=${encodeURIComponent(mensaje)}`;
+            addLog(`🔗 URL de WhatsApp generada (${whatsappURL.length} caracteres)`, 'success');
+            
+            // Abrir WhatsApp en nueva pestaña
+            addLog('🚀 Abriendo WhatsApp en nueva pestaña...', 'success');
+            window.open(whatsappURL, '_blank');
+            
+            // Cerrar modal
+            cerrarModalWhatsApp();
+            
+            addLog(`✅ ¡Éxito! Enlace enviado a +52 ${telefono}`, 'success');
+            addLog('═══════════════════════════════════════', 'info');
+        }
+
+        // Log inicial
+        addLog('🚀 Sistema inicializado correctamente', 'success');
+        addLog('👆 Haz clic en "Compartir Página" para comenzar', 'info');
+    </script>
+</body>
+</html>
