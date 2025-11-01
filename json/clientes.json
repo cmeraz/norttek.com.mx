@@ -298,5 +298,10 @@
     "Nombre": "Adolfo Arvizu",
     "Usuario": "adolfo-arvizu@norttek",
     "Telefonos": ["6251339160"]
-  }
+  },
+  {
+  "Nombre": "Jose Pacheco Martínez",
+  "Usuario": "jose-pacheco@norttek",
+  "Telefonos": ["6145092361", "6251088732"]
+}
 ]
