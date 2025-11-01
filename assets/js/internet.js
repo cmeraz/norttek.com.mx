@@ -333,13 +333,33 @@ document.addEventListener('DOMContentLoaded', function() {
         var telEl = document.getElementById('cliente-auth-tels');
         var refNombre = document.getElementById('ref-pago-nombre');
         var refUsuario = document.getElementById('ref-pago-usuario');
+        
+        // Campos adicionales para la sección de App
+        var appUsuEl = document.getElementById('app-auth-usuario');
+        var appPassEl = document.getElementById('app-auth-password');
+        
         if (nomEl) nomEl.textContent = auth.nombre || '';
         if (usuEl) {
-          var simpleUser = (auth.usuario||'').replace(/@.*$/,'');
-          usuEl.textContent = simpleUser;
+          // Mostrar usuario completo con @norttek
+          var fullUser = auth.usuario || '';
+          if (fullUser && !fullUser.includes('@')) {
+            fullUser = fullUser + '@norttek';
+          }
+          usuEl.textContent = fullUser;
         }
-        if (passEl) passEl.textContent = 'norttek123';
+        if (passEl) passEl.textContent = auth.password || 'norttek123';
         if (telEl) telEl.textContent = (auth.telefonos||[]).join(', ');
+        
+        // Poblar campos de la App con las mismas credenciales
+        if (appUsuEl) {
+          var fullUser2 = auth.usuario || '';
+          if (fullUser2 && !fullUser2.includes('@')) {
+            fullUser2 = fullUser2 + '@norttek';
+          }
+          appUsuEl.textContent = fullUser2;
+        }
+        if (appPassEl) appPassEl.textContent = auth.password || 'norttek123';
+        
         // Poblar referencias de pago
         if (refNombre) {
           var simpleName = auth.nombre || '';
@@ -956,6 +976,7 @@ document.addEventListener('DOMContentLoaded', function() {
           var authObj = {
             nombre: found.Nombre || '',
             usuario: found.Usuario || '',
+            password: found.Password || 'norttek123',
             telefonos: Array.isArray(found.Telefonos) ? found.Telefonos : []
           };
             // Normalizar nombre a Title Case si viene todo en minúsculas
@@ -1785,6 +1806,7 @@ document.addEventListener('DOMContentLoaded', function() {
       var authObj = {
         nombre: found.Nombre || '',
         usuario: found.Usuario || '',
+        password: found.Password || 'norttek123',
         telefonos: Array.isArray(found.Telefonos) ? found.Telefonos : []
       };
 

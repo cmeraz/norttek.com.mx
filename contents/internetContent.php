@@ -455,6 +455,9 @@
   <article class="cliente-card app-card wide nt-soft-seq nt-breath" data-nt-anim>
     <h3><i class="fa-solid fa-mobile-screen" aria-hidden="true" data-nt-icon-drift></i> App Servicio WiFi</h3>
           <p>Administra pagos, notificaciones y tu red desde la app oficial.</p>
+          <p>Solo tienes que ingresar a la app con tus credenciales:<br>
+          <strong>Usuario:</strong> <code id="app-auth-usuario" style="font-weight:800; font-size:.95rem; color:#1f2937; background:#f3f4f6; padding:2px 6px; border-radius:4px;"></code><br>
+          <strong>Contraseña:</strong> <code id="app-auth-password" style="font-weight:800; font-size:.95rem; color:#1f2937; background:#f3f4f6; padding:2px 6px; border-radius:4px;"></code></p>
           <div class="app-links-inline">
             <a href="https://play.google.com/store/apps/details?id=net.wisphub.app" target="_blank" rel="noopener" class="mini-store">
               <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" />
